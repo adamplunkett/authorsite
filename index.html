@@ -30,6 +30,7 @@
         padding: 48px 30px;
         text-align: center;
         border-bottom: 0px solid transparent;
+        position: relative; /* Added for positioning the book title */
     }
     
     .site-title {
@@ -182,6 +183,27 @@
         line-height: 26px !important;
     }
     
+    /* Added styles for book title and button */
+    .book-title {
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        text-align: right;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 700;
+        font-size: 18px;
+        text-transform: uppercase;
+        color: #333;
+        max-width: 200px;
+        line-height: 1.3;
+    }
+    
+    .book-button {
+        position: absolute;
+        top: 90px;
+        right: 30px;
+    }
+    
     /* Responsive adjustments */
     @media only screen and (max-width: 1000px) {
         .one-fourth, .one-half {
@@ -194,6 +216,18 @@
             float: none;
             margin: 20px auto;
             display: block;
+        }
+        
+        .book-title, .book-button {
+            position: static;
+            text-align: center;
+            margin: 10px auto;
+            display: block;
+            max-width: 100%;
+        }
+        
+        .book-title {
+            margin-bottom: 15px;
         }
     }
     
@@ -227,6 +261,14 @@
                         <a href="#">Adam Plunkett</a>
                     </p>
                     <!-- Site description removed as requested -->
+                </div>
+                <!-- Added book title in header case -->
+                <div class="book-title">
+                    LOVE AND NEED: THE LIFE OF ROBERT FROST'S POETRY
+                </div>
+                <!-- Added button with link -->
+                <div class="book-button">
+                    <a href="https://us.macmillan.com/books/9780374282080/loveandneed/" class="button" target="_blank">Available Now</a>
                 </div>
                 <nav class="nav-primary" aria-label="Main">
                     <div class="wrap">
