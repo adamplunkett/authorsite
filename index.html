@@ -185,23 +185,19 @@
     
     /* Added styles for book title and button */
     .book-title {
-        position: absolute;
-        top: 20px;
-        right: 30px;
-        text-align: right;
         font-family: 'Poppins', sans-serif;
         font-weight: 700;
-        font-size: 18px;
+        font-size: 24px;
         text-transform: uppercase;
-        color: #333;
-        max-width: 200px;
+        color: #e26f3c;
+        margin: 20px 0 15px 0;
+        text-align: center;
         line-height: 1.3;
     }
     
-    .book-button {
-        position: absolute;
-        top: 90px;
-        right: 30px;
+    .book-button-container {
+        text-align: center;
+        margin-bottom: 30px;
     }
     
     /* Responsive adjustments */
@@ -218,16 +214,13 @@
             display: block;
         }
         
-        .book-title, .book-button {
-            position: static;
-            text-align: center;
-            margin: 10px auto;
-            display: block;
+        .book-title {
+            margin: 15px auto;
             max-width: 100%;
         }
         
-        .book-title {
-            margin-bottom: 15px;
+        .book-button-container {
+            margin-bottom: 25px;
         }
     }
     
@@ -261,14 +254,6 @@
                         <a href="#">Adam Plunkett</a>
                     </p>
                     <!-- Site description removed as requested -->
-                </div>
-                <!-- Added book title in header case -->
-                <div class="book-title">
-                    LOVE AND NEED: THE LIFE OF ROBERT FROST'S POETRY
-                </div>
-                <!-- Added button with link -->
-                <div class="book-button">
-                    <a href="https://us.macmillan.com/books/9780374282080/loveandneed/" class="button" target="_blank">Available Now</a>
                 </div>
                 <nav class="nav-primary" aria-label="Main">
                     <div class="wrap">
@@ -306,6 +291,14 @@
                                     <img class="alignleft" src="images/loveandneed_cover.jpeg" alt="Love and Need: The Life of Robert Frost's Poetry by Adam Plunkett" width="400" height="600" style="border: none;"/>
                                 </a>
                             </p>
+                            <!-- Added book title in header case -->
+                            <div class="book-title">
+                                LOVE AND NEED: THE LIFE OF ROBERT FROST'S POETRY
+                            </div>
+                            <!-- Added button with link -->
+                            <div class="book-button-container">
+                                <a href="https://us.macmillan.com/books/9780374282080/loveandneed/" class="button" target="_blank">Available Now</a>
+                            </div>
                             <!-- Orange header removed -->
                             <!-- Order Now button removed as requested -->
                             <!-- Beginning text removed as requested -->
