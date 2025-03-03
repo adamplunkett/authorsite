@@ -246,6 +246,15 @@
     }
     
     @media only screen and (max-width: 768px) {
+        /* Make background solid on mobile for &c. page only */
+        .site-container {
+            background-color: #FFF6E9; /* Solid background for mobile */
+        }
+        
+        body {
+            background-image: none; /* Remove background image on mobile */
+        }
+        
         .site-header {
             padding: 25px 15px 15px; /* Reduced padding */
         }
