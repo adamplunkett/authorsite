@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'/>
+    <title>Adam Plunkett - &c.</title>
+    <meta name="description" content="Interviews and more - Adam Plunkett"/>
+    <style>
+    /* Main styles */
+    body {
+        background-image: url('images/sitebackground 1.png');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        font-family: 'Lora', Georgia, serif;
+        margin: 0;
+        padding: 0;
+        color: #333;
+        line-height: 1.6;
+    }
+    
+    .site-container {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    
+    .site-header {
+        background-color: rgba(244, 170, 109, 0.9); /* Muted orange from book cover with transparency */
+        padding: 48px 30px;
+        text-align: center;
+        border-bottom: 0px solid transparent;
+        position: relative;
+    }
+    
+    .site-title {
+        margin: 0;
+        font-size: 42px;
+        font-weight: 400;
+        font-family: 'Lora', Georgia, serif;
+    }
+    
+    .site-title a {
+        color: #333;
+        text-decoration: none;
+    }
+    
+    .site-description {
+        margin: 5px 0 0;
+        font-style: italic;
+    }
+    
+    .nav-primary {
+        margin-top: 20px;
+    }
+    
+    .menu {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    .menu-item {
+        margin: 0 15px;
+    }
+    
+    .menu-item a {
+        text-decoration: none;
+        color: #333;
+        font-family: 'Lora', Georgia, serif;
+        font-weight: 400;
+        text-transform: uppercase;
+        font-size: 14px;
+        letter-spacing: 1px;
+    }
+    
+    .menu-item a:hover {
+        color: #555;
+    }
+    
+    .site-inner {
+        background-color: rgba(255, 246, 233, 0.95); /* Light warm background color with transparency */
+        padding: 40px;
+        margin: 20px auto;
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.3);
+        max-width: 1100px;
+    }
+    
+    .content {
+        max-width: 900px;
+        margin: 0 auto;
+    }
+    
+    .entry-title {
+        display: none;
+    }
+    
+    h1, h2, h3, h4 {
+        font-family: 'Lora', Georgia, serif;
+        font-weight: 400;
+        color: #000;
+    }
+    
+    h1 {
+        margin-top: 80px;
+        font-size: A36px;
+        text-align: center;
+    }
+    
+    h4 {
+        text-align: center;
+    }
+    
+    .button {
+        background-color: #e26f3c !important; /* Bright orange from book cover */
+        color: #fff;
+        padding: 12px 24px;
+        text-decoration: none;
+        display: inline-block;
+        border: none;
+        border-radius: 4px;
+        font-family: 'Lora', Georgia, serif;
+        font-weight: 400;
+        font-size: 16px;
+        transition: background-color 0.3s;
+    }
+    
+    .button:hover {
+        background-color: #d85c25 !important;
+    }
+    
+    .alignleft {
+        float: left;
+        margin-right: 20px;
+        margin-bottom: 20px;
+    }
+    
+    .aligncenter {
+        display: block;
+        margin: 0 auto;
+    }
+    
+    .one-fourth {
+        width: 25%;
+        float: left;
+        padding: 0 15px;
+        box-sizing: border-box;
+    }
+    
+    .one-half {
+        width: 50%;
+        float: left;
+        padding: 0 15px;
+        box-sizing: border-box;
+    }
+    
+    .first {
+        clear: both;
+    }
+    
+    .clearfix {
+        clear: both;
+        display: block;
+    }
+    
+    hr {
+        margin: 40px 0;
+        border: 0;
+        border-top: 1px solid #eee;
+    }
+    
+    .site-footer {
+        background-color: #f4aa6d; /* Muted orange from book cover */
+        color: #333;
+        padding: 20px;
+        text-align: center;
+        font-size: 14px;
+    }
+    
+    .smaller2 {
+        font-size: 16px !important;
+        line-height: 26px !important;
+    }
+    
+    .book-title {
+        font-family: 'Lora', Georgia, serif;
+        text-align: center;
+        margin: 15px 0 5px 0;
+        line-height: 1.2;
+    }
+    
+    .book-title-main {
+        font-size: 42px;
+        font-weight: 400;
+        color: #000;
+        display: block;
+        margin-bottom: 10px;
+    }
+    
+    .book-title-sub {
+        font-size: 24px;
+        font-weight: 400;
+        color: #000;
+        display: block;
+    }
+    
+    .book-button-container {
+        text-align: center;
+        margin: 25px 0 30px 0;
+    }
+    
+    .author-bio {
+        margin-top: 30px;
+    }
+    
+    .interview-item {
+        margin-bottom: 20px;
+    }
+    
+    /* Responsive adjustments */
+    @media only screen and (max-width: 1000px) {
+        .one-fourth, .one-half {
+            width: 100%;
+            float: none;
+            margin: 20px 0;
+        }
+        
+        .alignleft {
+            float: none;
+            margin: 20px auto;
+            display: block;
+        }
+        
+        .book-title {
+            margin: 15px auto;
+            max-width: 100%;
+        }
+        
+        .book-button-container {
+            margin-bottom: 25px;
+        }
+    }
+    
+    @media only screen and (max-width: 768px) {
+        .site-header {
+            padding: 30px 15px;
+        }
+        
+        .site-inner {
+            padding: 20px;
+        }
+        
+        .menu {
+            flex-direction: column;
+        }
+        
+        .menu-item {
+            margin: 5px 0;
+        }
+    }
+    </style>
+    <link href="https://fonts.googleapis.com/css?family=Lora:400,400italic,700,700italic&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div class="site-container">
+        <header class="site-header">
+            <div class="wrap">
+                <div class="title-area">
+                    <p class="site-title">
+                        <a href="#">Adam Plunkett</a>
+                    </p>
+                </div>
+                <nav class="nav-primary" aria-label="Main">
+                    <div class="wrap">
+                        <ul class="menu">
+                            <li class="menu-item">
+                                <a href="index.html">
+                                    <span>Love and Need</span>
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="interviews.html">
+                                    <span>&c.</span>
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a href="contact.html">
+                                    <span>Contact</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <div class="site-inner">
+            <div class="content-sidebar-wrap">
+                <main class="content">
+                    <article class="entry">
+                        <header class="entry-header">
+                            <h1 class="entry-title">&c.</h1>
+                        </header>
+                        <div class="entry-content">
+                            <p>
+                                <img class="aligncenter" src="images/author photo.png" alt="Adam Plunkett" width="400" style="border: none;"/>
+                            </p>
+                            
+                            <div class="author-bio">
+                                <p><em><a href="https://us.macmillan.com/books/9780374282080/loveandneed/" target="_blank">Love and Need</a></em> is my first book, out as of Feb. 18, 2025. I am working on a somewhat similar book about Emily Dickinson, also under contract with FSG.</p>
+                                <p>My e-mail address is my name at gmail.</p>
+                                <p>I will be updating this site with interviews and so on.</p>
+                            </div>
+                            
+                            <div class="interviews">
+                                <div class="interview-item">
+                                    <p><a href="https://www.wamc.org/podcast/the-roundtable/2025-02-19/adam-plunkett-constructs-an-original-portrait-of-robert" target="_blank">Adam Plunkett constructs an original portrait of Robert Frost in "Love and Need: The Life of Robert Frost's Poetry"</a>—WAMC: The Roundtable, Feb. 19, 2025</p>
+                                </div>
+                                
+                                <div class="interview-item">
+                                    <p><a href="https://www.ctpublic.org/show/the-colin-mcenroe-show/2025-02-24/beyond-woods-and-roads-the-life-and-poetry-of-robert-frost" target="_blank">Beyond woods and roads: The life and poetry of Robert Frost</a>—The Colin McEnroe Show, Feb. 24, 2025</p>
+                                </div>
+                            </div>
+                            
+                            <div class="clearfix"></div>
+                        </div>
+                    </article>
+                </main>
+            </div>
+        </div>
+        <footer class="site-footer">
+            <div class="wrap">
+                <p>Copyright &copy; 2025 Adam Plunkett</p>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
