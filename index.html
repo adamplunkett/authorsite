@@ -1,4 +1,4 @@
-f<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en-US">
 <head>
     <meta charset="UTF-8"/>
@@ -7,283 +7,275 @@ f<!DOCTYPE html>
     <title>Adam Plunkett - Author of Love and Need: The Life of Robert Frost's Poetry</title>
     <meta name="description" content="Love and Need: The Life of Robert Frost's Poetry - a book by Adam Plunkett"/>
     <style>
-/* Main styles */
-body {
-    background-image: url('images/IMG_9577.heic');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    font-family: 'Playfair Display', Georgia, serif;
-    font-weight: 300;
-    margin: 0;
-    padding: 0;
-    color: #333;
-    line-height: 1.6;
-    background-color: #FFF6E9; /* Fallback color if image fails to load */
-}
-
-.site-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    background-color: rgba(255, 246, 233, 0.95); /* Light apricot background with transparency */
-}
-
-.site-header {
-    padding: 48px 30px 30px;
-    text-align: center;
-    border-bottom: 0px solid transparent;
-}
-
-.site-title {
-    margin: 0;
-    font-size: 42px;
-    font-weight: 300;
-    font-family: 'Playfair Display', Georgia, serif;
-}
-
-.site-title a {
-    color: #333;
-    text-decoration: none;
-}
-
-.site-description {
-    margin: 5px 0 0;
-    font-style: italic;
-}
-
-.nav-primary {
-    margin-top: 20px;
-}
-
-.menu {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
-.menu-item {
-    margin: 0 15px;
-}
-
-.menu-item a {
-    text-decoration: none;
-    color: #333;
-    font-family: 'Playfair Display', Georgia, serif;
-    font-weight: 300;
-    text-transform: uppercase;
-    font-size: 14px;
-    letter-spacing: 1px;
-}
-
-.menu-item a:hover {
-    color: #555;
-}
-
-.site-inner {
-    padding: 20px 40px 40px;
-    margin: 0 auto;
-    max-width: 1100px;
-}
-
-.content {
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-.entry-title {
-    display: none;
-}
-
-h1, h2, h3, h4 {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-weight: 300;
-    color: #000;
-}
-
-h1 {
-    margin-top: 80px;
-    font-size: 36px;
-    text-align: center;
-}
-
-h4 {
-    text-align: center;
-}
-
-.button {
-    background-color: #e26f3c !important;
-    color: #fff;
-    padding: 12px 24px;
-    text-decoration: none;
-    display: inline-block;
-    border: none;
-    border-radius: 4px;
-    font-family: 'Playfair Display', Georgia, serif;
-    font-weight: 300;
-    font-size: 16px;
-    transition: background-color 0.3s;
-}
-
-.button:hover {
-    background-color: #d85c25 !important;
-}
-
-.alignleft {
-    float: left;
-    margin-right: 20px;
-    margin-bottom: 20px;
-}
-
-.aligncenter {
-    display: block;
-    margin: 0 auto;
-}
-
-.one-fourth {
-    width: 25%;
-    float: left;
-    padding: 0 15px;
-    box-sizing: border-box;
-}
-
-.one-half {
-    width: 50%;
-    float: left;
-    padding: 0 15px;
-    box-sizing: border-box;
-}
-
-.first {
-    clear: both;
-}
-
-.clearfix {
-    clear: both;
-    display: block;
-}
-
-hr {
-    margin: 40px 0;
-    border: 0;
-    border-top: 1px solid #eee;
-}
-
-.site-footer {
-    color: #333;
-    padding: 20px;
-    text-align: center;
-    font-size: 14px;
-    font-weight: 300;
-    margin-top: 40px;
-}
-
-.smaller2 {
-    font-size: 16px !important;
-    line-height: 26px !important;
-}
-
-/* Added styles for book title and button */
-.book-title {
-    font-family: 'Playfair Display', Georgia, serif;
-    text-align: center;
-    margin: 15px 0 5px 0;
-    line-height: 1.2;
-}
-
-.book-title-main {
-    font-size: 42px;
-    font-weight: 300;
-    color: #000;
-    display: block;
-    margin-bottom: 10px;
-}
-
-.book-title-sub {
-    font-size: 24px;
-    font-weight: 300;
-    color: #000;
-    display: block;
-}
-
-.book-button-container {
-    text-align: center;
-    margin: 25px 0 30px 0;
-}
-
-/* Author bio and interview styles for second page */
-.author-bio {
-    margin-top: 30px;
-}
-
-.interview-item {
-    margin-bottom: 20px;
-}
-
-/* Responsive adjustments */
-@media only screen and (max-width: 1000px) {
-    .one-fourth, .one-half {
-        width: 100%;
-        float: none;
-        margin: 20px 0;
+    /* Main styles */
+    body {
+        background-image: url('images/IMG_9577.heic');
+        background-size: cover;
+        background-position: top center; /* Changed to top center to remove wood display at top */
+        background-attachment: fixed;
+        font-family: 'Playfair Display', Georgia, serif;
+        font-weight: 300;
+        margin: 0;
+        padding: 0;
+        color: #333;
+        line-height: 1.6;
+        background-color: #FFF6E9; /* Fallback color if image fails to load */
     }
-    
+
+    .site-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        background-color: rgba(255, 246, 233, 0.95); /* Light apricot background with transparency */
+        min-height: 100vh; /* Ensure container covers full height */
+    }
+
+    .site-header {
+        padding: 48px 30px 30px;
+        text-align: center;
+        border-bottom: 0px solid transparent;
+    }
+
+    .site-title {
+        margin: 0;
+        font-size: 42px;
+        font-weight: 300;
+        font-family: 'Playfair Display', Georgia, serif;
+    }
+
+    .site-title a {
+        color: #333;
+        text-decoration: none;
+    }
+
+    .site-description {
+        margin: 5px 0 0;
+        font-style: italic;
+    }
+
+    .nav-primary {
+        margin-top: 20px;
+    }
+
+    .menu {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    .menu-item {
+        margin: 0 15px;
+    }
+
+    .menu-item a {
+        text-decoration: none;
+        color: #333;
+        font-family: 'Playfair Display', Georgia, serif;
+        font-weight: 300;
+        text-transform: uppercase;
+        font-size: 14px;
+        letter-spacing: 1px;
+    }
+
+    .menu-item a:hover {
+        color: #555;
+    }
+
+    .site-inner {
+        padding: 20px 40px 40px;
+        margin: 0 auto;
+        max-width: 1100px;
+    }
+
+    .content {
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    .entry-title {
+        display: none;
+    }
+
+    h1, h2, h3, h4 {
+        font-family: 'Playfair Display', Georgia, serif;
+        font-weight: 300;
+        color: #000;
+    }
+
+    h1 {
+        margin-top: 80px;
+        font-size: 36px;
+        text-align: center;
+    }
+
+    h4 {
+        text-align: center;
+    }
+
+    .button {
+        background-color: #e26f3c !important;
+        color: #fff;
+        padding: 12px 24px;
+        text-decoration: none;
+        display: inline-block;
+        border: none;
+        border-radius: 4px;
+        font-family: 'Playfair Display', Georgia, serif;
+        font-weight: 300;
+        font-size: 16px;
+        transition: background-color 0.3s;
+    }
+
+    .button:hover {
+        background-color: #d85c25 !important;
+    }
+
     .alignleft {
-        float: none;
-        margin: 20px auto;
+        float: left;
+        margin-right: 20px;
+        margin-bottom: 20px;
+    }
+
+    .aligncenter {
+        display: block;
+        margin: 0 auto;
+    }
+
+    .one-fourth {
+        width: 25%;
+        float: left;
+        padding: 0 15px;
+        box-sizing: border-box;
+    }
+
+    .one-half {
+        width: 50%;
+        float: left;
+        padding: 0 15px;
+        box-sizing: border-box;
+    }
+
+    .first {
+        clear: both;
+    }
+
+    .clearfix {
+        clear: both;
         display: block;
     }
-    
-    .book-title {
-        margin: 15px auto;
-        max-width: 100%;
-    }
-    
-    .book-button-container {
-        margin-bottom: 25px;
-    }
-}
 
-@media only screen and (max-width: 768px) {
-    .site-header {
-        padding: 25px 15px 15px; /* Reduced padding */
+    hr {
+        margin: 40px 0;
+        border: 0;
+        border-top: 1px solid #eee;
     }
-    
-    .site-inner {
-        padding: 10px 20px; /* Reduced padding */
+
+    .site-footer {
+        color: #333;
+        padding: 20px;
+        text-align: center;
+        font-size: 14px;
+        font-weight: 300;
+        margin-top: 40px;
     }
-    
-    .menu {
-        flex-direction: column;
+
+    .smaller2 {
+        font-size: 16px !important;
+        line-height: 26px !important;
     }
-    
-    .menu-item {
-        margin: 5px 0;
-    }
-    
-    /* Fix gap between header and content on mobile */
-    h1 {
-        margin-top: 20px; /* Reduced from 80px */
-    }
-    
-    /* Adjust image positioning on mobile */
-    .alignleft {
-        margin-top: 10px;
-    }
-    
-    /* Ensure book title has proper spacing on mobile */
+
+    /* Added styles for book title and button */
     .book-title {
-        margin-top: 5px;
+        font-family: 'Playfair Display', Georgia, serif;
+        text-align: center;
+        margin: 15px 0 5px 0;
+        line-height: 1.2;
     }
-    
-    /* Improve image display on small screens */
-    .alignleft {
-        max-width: 100%;
-        height: auto;
+
+    .book-title-main {
+        font-size: 42px;
+        font-weight: 300;
+        color: #000;
+        display: block;
+        margin-bottom: 10px;
     }
-}
+
+    .book-title-sub {
+        font-size: 24px;
+        font-weight: 300;
+        color: #000;
+        display: block;
+    }
+
+    .book-button-container {
+        text-align: center;
+        margin: 25px 0 30px 0;
+    }
+
+    /* Responsive adjustments */
+    @media only screen and (max-width: 1000px) {
+        .one-fourth, .one-half {
+            width: 100%;
+            float: none;
+            margin: 20px 0;
+        }
+        
+        .alignleft {
+            float: none;
+            margin: 20px auto;
+            display: block;
+        }
+        
+        .book-title {
+            margin: 15px auto;
+            max-width: 100%;
+        }
+        
+        .book-button-container {
+            margin-bottom: 25px;
+        }
+    }
+
+    @media only screen and (max-width: 768px) {
+        .site-header {
+            padding: 25px 15px 15px; /* Reduced padding */
+        }
+        
+        .site-inner {
+            padding: 10px 20px; /* Reduced padding */
+        }
+        
+        .menu {
+            flex-direction: column;
+        }
+        
+        .menu-item {
+            margin: 5px 0;
+        }
+        
+        /* Fix gap between header and content on mobile */
+        h1 {
+            margin-top: 20px; /* Reduced from 80px */
+        }
+        
+        /* Adjust image positioning on mobile */
+        .alignleft {
+            margin-top: 10px;
+        }
+        
+        /* Ensure book title has proper spacing on mobile */
+        .book-title {
+            margin-top: 5px;
+        }
+        
+        /* Improve image display on small screens */
+        .alignleft {
+            max-width: 100%;
+            height: auto;
+        }
+    }
     </style>
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:300,300italic,400,400italic,700,700italic&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
