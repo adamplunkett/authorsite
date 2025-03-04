@@ -8,16 +8,34 @@
     <meta name="description" content="Love and Need: The Life of Robert Frost's Poetry - a book by Adam Plunkett"/>
     <link rel="icon" href="images/favicon.png" type="image/png">
     <style>
-    /* Main styles */
-    body {
-        background: #FFF6E9 url('images/background.jpg') no-repeat center top fixed;
-        background-size: cover;
-        font-family: 'Playfair Display', Georgia, serif;
-        font-weight: 300;
+    /* Main styles with a new approach for the background */
+    html, body {
         margin: 0;
         padding: 0;
+        height: 100%;
+        font-family: 'Playfair Display', Georgia, serif;
+        font-weight: 300;
         color: #333;
         line-height: 1.6;
+    }
+    
+    /* This adds a background wrapper that sits behind everything */
+    .background-wrapper {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -10;
+        background-color: #FFF6E9; /* Fallback color */
+        overflow: hidden;
+    }
+    
+    .background-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 1;
     }
 
     .site-container {
@@ -25,6 +43,8 @@
         margin: 0 auto;
         background-color: rgba(255, 246, 233, 0.95); /* Light apricot background with transparency */
         min-height: 100vh; /* Ensure container covers full height */
+        position: relative;
+        z-index: 1;
     }
 
     .site-header {
@@ -279,6 +299,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
+    <!-- New background wrapper with image element instead of CSS background -->
+    <div class="background-wrapper">
+        <img class="background-image" src="images/background.jpg" alt="">
+    </div>
+    
     <div class="site-container">
         <header class="site-header">
             <div class="wrap">
