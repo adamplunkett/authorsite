@@ -537,7 +537,7 @@
             <form class="add-form" id="addForm">
                 <input type="text" id="titleInput" placeholder="Title (optional - auto-generates from link)">
                 <input type="url" id="linkInput" placeholder="Link (optional)">
-                <textarea id="notesInput" placeholder="Notes (e.g., 'Found on Craigslist, looks promising')" required></textarea>
+                <textarea id="notesInput" placeholder="Notes (optional)"></textarea>
                 <select id="sectionInput">
                     <option value="immediate">Immediate-term</option>
                     <option value="yearlong">Year-long rental</option>
@@ -618,6 +618,14 @@
             const notes = document.getElementById('notesInput').value.trim();
             const section = document.getElementById('sectionInput').value;
 
+            // Require at least a link or notes
+            if (!link && !notes && !title) {
+                alert('Please add a link, notes, or title.');
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Add Listing';
+                return;
+            }
+
             // Auto-generate title if not provided
             if (!title) {
                 if (link) {
@@ -640,8 +648,10 @@
                     } catch {
                         title = 'New Listing';
                     }
-                } else {
+                } else if (notes) {
                     title = notes.length > 30 ? notes.substring(0, 30) + '...' : notes;
+                } else {
+                    title = 'New Listing';
                 }
             }
 
