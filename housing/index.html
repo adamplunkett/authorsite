@@ -535,7 +535,7 @@
         <div class="add-form-container">
             <h3 class="add-form-title">Add a listing or note</h3>
             <form class="add-form" id="addForm">
-                <input type="text" id="titleInput" placeholder="Title (e.g., 'Cozy Capitol Hill Apartment')" required>
+                <input type="text" id="titleInput" placeholder="Title (optional - auto-generates from link)">
                 <input type="url" id="linkInput" placeholder="Link (optional)">
                 <textarea id="notesInput" placeholder="Notes (e.g., 'Found on Craigslist, looks promising')" required></textarea>
                 <select id="sectionInput">
@@ -613,10 +613,37 @@
             submitBtn.disabled = true;
             submitBtn.textContent = 'Adding...';
 
-            const title = document.getElementById('titleInput').value.trim();
+            let title = document.getElementById('titleInput').value.trim();
             const link = document.getElementById('linkInput').value.trim();
             const notes = document.getElementById('notesInput').value.trim();
             const section = document.getElementById('sectionInput').value;
+
+            // Auto-generate title if not provided
+            if (!title) {
+                if (link) {
+                    try {
+                        const url = new URL(link);
+                        const host = url.hostname.replace('www.', '');
+                        if (host.includes('airbnb')) {
+                            title = 'Airbnb Listing';
+                        } else if (host.includes('facebook')) {
+                            title = 'Facebook Listing';
+                        } else if (host.includes('craigslist')) {
+                            title = 'Craigslist Listing';
+                        } else if (host.includes('zillow')) {
+                            title = 'Zillow Listing';
+                        } else if (host.includes('apartments.com')) {
+                            title = 'Apartments.com Listing';
+                        } else {
+                            title = host.split('.')[0].charAt(0).toUpperCase() + host.split('.')[0].slice(1) + ' Listing';
+                        }
+                    } catch {
+                        title = 'New Listing';
+                    }
+                } else {
+                    title = notes.length > 30 ? notes.substring(0, 30) + '...' : notes;
+                }
+            }
 
             try {
                 const docRef = await addDoc(collection(db, "listings"), {
