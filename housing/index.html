@@ -205,6 +205,12 @@
             border-left-color: #ff9800;
         }
 
+        .note.user-added {
+            background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%);
+            color: #7b1fa2;
+            border-left-color: #9c27b0;
+        }
+
         .card-link {
             display: inline-block;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -251,6 +257,85 @@
             justify-content: center;
             color: #757575;
             font-size: 3rem;
+        }
+
+        /* Add listing form */
+        .add-form-container {
+            background: rgba(255,255,255,0.15);
+            border-radius: 16px;
+            padding: 24px;
+            margin-top: 40px;
+            backdrop-filter: blur(10px);
+        }
+
+        .add-form-title {
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 16px;
+        }
+
+        .add-form {
+            display: grid;
+            gap: 12px;
+        }
+
+        .add-form input,
+        .add-form textarea,
+        .add-form select {
+            width: 100%;
+            padding: 12px 14px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 8px;
+            outline: none;
+            font-family: inherit;
+        }
+
+        .add-form textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .add-form select {
+            cursor: pointer;
+        }
+
+        .add-form button {
+            padding: 14px 24px;
+            font-size: 1rem;
+            background: white;
+            color: #667eea;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .add-form button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .add-form button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .delete-btn {
+            background: #ffebee;
+            color: #c62828;
+            border: none;
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .delete-btn:hover {
+            background: #ffcdd2;
         }
 
         @media (max-width: 600px) {
@@ -308,6 +393,10 @@
             .password-box {
                 padding: 30px 24px;
             }
+
+            .add-form-container {
+                padding: 18px;
+            }
         }
     </style>
 </head>
@@ -327,7 +416,7 @@
 
         <h2 class="section-title">Immediate-term</h2>
 
-        <div class="cards">
+        <div class="cards" id="immediateCards">
             <div class="card">
                 <img src="https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTE0MDE0NDM0NDI5NDQ0MjI0MQ%3D%3D/original/6508670b-1731-4a38-a213-f0af9d4d1a79.jpeg" alt="Stylish home in Ballard" class="card-image">
                 <div class="card-content">
@@ -424,7 +513,7 @@
 
         <h2 class="section-title">~Year-long rental</h2>
 
-        <div class="cards">
+        <div class="cards" id="yearLongCards">
             <div class="long-term-card">
                 <h3 class="card-title">Heather - Real Estate Agent</h3>
                 <div class="amenities">Seems great, is friends with Jeanne, happy to look into year-long situations whenever you're ready. Is not pushy.</div>
@@ -441,13 +530,145 @@
                 <div class="note warning">But did Dale get out of Lake City just to go back!?!?!</div>
             </div>
         </div>
+
+        <!-- Add listing form -->
+        <div class="add-form-container">
+            <h3 class="add-form-title">Add a listing or note</h3>
+            <form class="add-form" id="addForm">
+                <input type="text" id="titleInput" placeholder="Title (e.g., 'Cozy Capitol Hill Apartment')" required>
+                <input type="url" id="linkInput" placeholder="Link (optional)">
+                <textarea id="notesInput" placeholder="Notes (e.g., 'Found on Craigslist, looks promising')" required></textarea>
+                <select id="sectionInput">
+                    <option value="immediate">Immediate-term</option>
+                    <option value="yearlong">Year-long rental</option>
+                </select>
+                <button type="submit" id="submitBtn">Add Listing</button>
+            </form>
+        </div>
     </div>
+
+    <!-- Firebase SDK -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { getFirestore, collection, addDoc, getDocs, deleteDoc, doc, orderBy, query } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyBEQ_4gDUKRsFvH2JO6hBK7Mnv32Xzw_QI",
+            authDomain: "seattle-housing-531cd.firebaseapp.com",
+            projectId: "seattle-housing-531cd",
+            storageBucket: "seattle-housing-531cd.firebasestorage.app",
+            messagingSenderId: "422349653710",
+            appId: "1:422349653710:web:8ad9c6fcfcfba243e3329f",
+            measurementId: "G-TRNJXTSJ9Z"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // Load existing user-added listings
+        async function loadListings() {
+            try {
+                const q = query(collection(db, "listings"), orderBy("createdAt", "desc"));
+                const querySnapshot = await getDocs(q);
+
+                querySnapshot.forEach((docSnap) => {
+                    const data = docSnap.data();
+                    addCardToPage(data, docSnap.id);
+                });
+            } catch (error) {
+                console.error("Error loading listings:", error);
+            }
+        }
+
+        // Add a card to the page
+        function addCardToPage(data, docId) {
+            const container = data.section === 'immediate'
+                ? document.getElementById('immediateCards')
+                : document.getElementById('yearLongCards');
+
+            const card = document.createElement('div');
+            card.className = 'long-term-card';
+            card.innerHTML = `
+                <h3 class="card-title">${escapeHtml(data.title)}</h3>
+                ${data.notes ? `<div class="note user-added">${escapeHtml(data.notes)}</div>` : ''}
+                ${data.link ? `<a href="${escapeHtml(data.link)}" target="_blank" class="card-link">View Link →</a>` : ''}
+                <button class="delete-btn" onclick="window.deleteListing('${docId}', this)">Delete</button>
+            `;
+
+            container.appendChild(card);
+        }
+
+        // Escape HTML to prevent XSS
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // Handle form submission
+        document.getElementById('addForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Adding...';
+
+            const title = document.getElementById('titleInput').value.trim();
+            const link = document.getElementById('linkInput').value.trim();
+            const notes = document.getElementById('notesInput').value.trim();
+            const section = document.getElementById('sectionInput').value;
+
+            try {
+                const docRef = await addDoc(collection(db, "listings"), {
+                    title,
+                    link,
+                    notes,
+                    section,
+                    createdAt: new Date()
+                });
+
+                addCardToPage({ title, link, notes, section }, docRef.id);
+
+                // Clear form
+                document.getElementById('titleInput').value = '';
+                document.getElementById('linkInput').value = '';
+                document.getElementById('notesInput').value = '';
+
+            } catch (error) {
+                console.error("Error adding listing:", error);
+                alert("Error adding listing. Please try again.");
+            }
+
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Add Listing';
+        });
+
+        // Delete a listing
+        window.deleteListing = async function(docId, btn) {
+            if (!confirm('Delete this listing?')) return;
+
+            try {
+                await deleteDoc(doc(db, "listings", docId));
+                btn.closest('.long-term-card').remove();
+            } catch (error) {
+                console.error("Error deleting:", error);
+                alert("Error deleting. Please try again.");
+            }
+        };
+
+        // Load listings when authenticated
+        window.loadListingsOnAuth = loadListings;
+    </script>
 
     <script>
         // Check if already authenticated this session
         if (sessionStorage.getItem('housing_auth') === 'true') {
             document.getElementById('passwordOverlay').classList.add('hidden');
             document.getElementById('mainContent').classList.remove('hidden');
+            // Load Firebase listings after a short delay to ensure module is loaded
+            setTimeout(() => {
+                if (window.loadListingsOnAuth) window.loadListingsOnAuth();
+            }, 500);
         }
 
         // Handle Enter key
@@ -463,6 +684,10 @@
                 sessionStorage.setItem('housing_auth', 'true');
                 document.getElementById('passwordOverlay').classList.add('hidden');
                 document.getElementById('mainContent').classList.remove('hidden');
+                // Load Firebase listings
+                setTimeout(() => {
+                    if (window.loadListingsOnAuth) window.loadListingsOnAuth();
+                }, 500);
             } else {
                 document.getElementById('passwordError').style.display = 'block';
                 document.getElementById('passwordInput').value = '';
