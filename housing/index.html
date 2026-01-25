@@ -5,1670 +5,525 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>House Essentials Shopping List</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
             min-height: 100vh;
             padding: 40px 20px;
         }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        h1 {
-            color: white;
-            text-align: center;
-            margin-bottom: 8px;
-            font-size: 2.5rem;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .subtitle {
-            color: rgba(255,255,255,0.7);
-            text-align: center;
-            margin-bottom: 30px;
-            font-size: 1.1rem;
-        }
-
+        .container { max-width: 1400px; margin: 0 auto; }
+        h1 { color: white; text-align: center; margin-bottom: 8px; font-size: 2.5rem; }
+        .subtitle { color: rgba(255,255,255,0.7); text-align: center; margin-bottom: 30px; }
         .total-banner {
             background: linear-gradient(135deg, #00b894 0%, #00cec9 100%);
-            color: white;
-            text-align: center;
-            padding: 20px;
-            border-radius: 16px;
-            margin-bottom: 40px;
-            font-size: 1.5rem;
-            font-weight: 600;
-            box-shadow: 0 10px 40px rgba(0,206,201,0.3);
+            color: white; text-align: center; padding: 20px; border-radius: 16px;
+            margin-bottom: 40px; font-size: 1.5rem; font-weight: 600;
         }
-
-        .store-section {
-            margin-bottom: 50px;
-        }
-
+        .store-section { margin-bottom: 50px; }
         .store-header {
-            display: flex;
-            align-items: center;
-            gap: 16px;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid rgba(255,255,255,0.2);
+            display: flex; align-items: center; gap: 16px; margin-bottom: 20px;
+            padding-bottom: 15px; border-bottom: 2px solid rgba(255,255,255,0.2);
+            flex-wrap: wrap;
         }
-
-        .store-logo {
-            width: 60px;
-            height: 60px;
-            border-radius: 12px;
-            object-fit: contain;
-            background: white;
-            padding: 8px;
-        }
-
-        .store-info h2 {
-            color: white;
-            font-size: 1.8rem;
-            margin-bottom: 4px;
-        }
-
-        .store-location {
-            color: rgba(255,255,255,0.6);
-            font-size: 0.9rem;
-        }
-
-        .store-subtotal {
-            color: #00cec9;
-            font-weight: 600;
-            margin-left: auto;
-            font-size: 1.2rem;
-        }
-
-        .items-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
-        }
-
-        .item-card {
-            background: white;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .item-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-        }
-
-        .item-image-container {
-            width: 100%;
-            height: 180px;
-            background: #f5f5f5;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .item-image {
-            max-width: 90%;
-            max-height: 90%;
-            object-fit: contain;
-        }
-
-        .item-placeholder {
-            font-size: 4rem;
-            opacity: 0.3;
-        }
-
-        .item-content {
-            padding: 16px;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .item-name {
-            font-size: 1rem;
-            color: #333;
-            margin-bottom: 8px;
-            line-height: 1.3;
-            font-weight: 600;
-        }
-
-        .item-price {
-            font-size: 1.3rem;
-            color: #00b894;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-
-        .item-notes {
-            color: #666;
-            font-size: 0.85rem;
-            margin-bottom: 12px;
-            flex: 1;
-        }
-
-        .item-link {
-            display: inline-block;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            text-decoration: none;
-            padding: 10px 16px;
-            border-radius: 8px;
-            font-weight: 500;
-            font-size: 0.9rem;
-            text-align: center;
-            transition: opacity 0.2s;
-        }
-
-        .item-link:hover {
-            opacity: 0.9;
-        }
-
-        .item-link.costco {
-            background: linear-gradient(135deg, #e31837 0%, #c71f37 100%);
-        }
-
-        .item-link.target {
-            background: linear-gradient(135deg, #cc0000 0%, #990000 100%);
-        }
-
-        .item-link.homedepot {
-            background: linear-gradient(135deg, #f96302 0%, #e55800 100%);
-        }
-
+        .store-logo { width: 50px; height: 50px; border-radius: 10px; background: white; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; }
+        .store-info h2 { color: white; font-size: 1.6rem; }
+        .store-subtotal { color: #00cec9; font-weight: 600; margin-left: auto; font-size: 1.1rem; }
         .category-label {
-            background: rgba(255,255,255,0.1);
-            color: rgba(255,255,255,0.8);
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            margin-bottom: 16px;
+            background: rgba(255,255,255,0.15); color: white; padding: 10px 20px;
+            border-radius: 8px; font-size: 1rem; font-weight: 600; margin: 25px 0 15px 0;
             display: inline-block;
         }
-
+        .items-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 16px;
+        }
+        .item-card {
+            background: white; border-radius: 12px; padding: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15); transition: transform 0.2s;
+            display: flex; gap: 12px; align-items: flex-start;
+        }
+        .item-card:hover { transform: translateY(-3px); }
+        .item-emoji { font-size: 2rem; flex-shrink: 0; }
+        .item-content { flex: 1; min-width: 0; }
+        .item-name { font-size: 0.95rem; color: #333; font-weight: 600; margin-bottom: 4px; line-height: 1.3; }
+        .item-price { font-size: 1.1rem; color: #00b894; font-weight: 700; margin-bottom: 4px; }
+        .item-notes { color: #666; font-size: 0.8rem; margin-bottom: 8px; }
+        .item-link {
+            display: inline-block; background: #667eea; color: white; text-decoration: none;
+            padding: 6px 12px; border-radius: 6px; font-size: 0.8rem; font-weight: 500;
+        }
+        .item-link:hover { opacity: 0.9; }
+        .item-link.costco { background: #e31837; }
+        .item-link.target { background: #cc0000; }
+        .item-link.homedepot { background: #f96302; }
         @media (max-width: 600px) {
-            body {
-                padding: 20px 12px;
-            }
-
-            h1 {
-                font-size: 1.8rem;
-            }
-
-            .store-header {
-                flex-wrap: wrap;
-            }
-
-            .store-subtotal {
-                width: 100%;
-                margin-left: 0;
-                margin-top: 10px;
-            }
-
-            .items-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .item-image-container {
-                height: 150px;
-            }
+            body { padding: 20px 12px; }
+            h1 { font-size: 1.8rem; }
+            .items-grid { grid-template-columns: 1fr; }
+            .store-subtotal { width: 100%; margin-left: 0; margin-top: 10px; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>House Essentials</h1>
-        <p class="subtitle">Complete Shopping List by Store</p>
+<div class="container">
+    <h1>House Essentials</h1>
+    <p class="subtitle">Complete Shopping List by Store - Verified Links</p>
+    <div class="total-banner">Estimated Grand Total: ~$2,850</div>
 
-        <div class="total-banner">
-            Estimated Grand Total: ~$2,800
+    <!-- COSTCO -->
+    <div class="store-section">
+        <div class="store-header">
+            <div class="store-logo">C</div>
+            <div class="store-info"><h2>Costco</h2></div>
+            <div class="store-subtotal">Subtotal: ~$606</div>
         </div>
-
-        <!-- COSTCO -->
-        <div class="store-section">
-            <div class="store-header">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Costco_Wholesale_logo_2010-10-26.svg/512px-Costco_Wholesale_logo_2010-10-26.svg.png" alt="Costco" class="store-logo">
-                <div class="store-info">
-                    <h2>Costco</h2>
-                    <div class="store-location">4401 4th Ave S, Seattle (or Kirkland/Issaquah)</div>
-                </div>
-                <div class="store-subtotal">Subtotal: $566</div>
-            </div>
-
-            <div class="items-grid">
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://images.costco-static.com/ImageDelivery/imageService?profileId=12026540&imageId=1637196-847__1&recipeName=680" alt="Circulon Cookware" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Circulon Premier Professional 10-pc Set</div>
-                        <div class="item-price">$180</div>
-                        <div class="item-notes">Pots, pans, lids - 4.8 stars</div>
-                        <a href="https://www.costco.com/circulon-premier-professional-10-piece-hard-anodized-cookware-set.product.100662391.html" target="_blank" class="item-link costco">View at Costco</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://images.costco-static.com/ImageDelivery/imageService?profileId=12026540&imageId=1446422-847__1&recipeName=680" alt="Epicurean Cutting Boards" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Epicurean Cutting Board Set</div>
-                        <div class="item-price">$25</div>
-                        <div class="item-notes">Durable, dishwasher safe</div>
-                        <a href="https://www.costco.com/epicurean-cutting-board-set.product.100510058.html" target="_blank" class="item-link costco">View at Costco</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://images.costco-static.com/ImageDelivery/imageService?profileId=12026540&imageId=1523053-847__1&recipeName=680" alt="Henckels Knives" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Henckels Statement 15-pc Knife Block</div>
-                        <div class="item-price">$130</div>
-                        <div class="item-notes">Highly rated knife set</div>
-                        <a href="https://www.costco.com/henckels-statement-15-piece-knife-block-set.product.100661665.html" target="_blank" class="item-link costco">View at Costco</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://images.costco-static.com/ImageDelivery/imageService?profileId=12026540&imageId=1414837-847__1&recipeName=680" alt="Glass Set" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Bormioli Rocco Glass Set (16-pc)</div>
-                        <div class="item-price">$25</div>
-                        <div class="item-notes">Drinking glasses</div>
-                        <a href="https://www.costco.com/bormioli-rocco-bodega-16-piece-glassware-set.product.100417771.html" target="_blank" class="item-link costco">View at Costco</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://images.costco-static.com/ImageDelivery/imageService?profileId=12026540&imageId=1381753-847__1&recipeName=680" alt="Wine Glasses" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Libbey Wine Glass Set</div>
-                        <div class="item-price">$20</div>
-                        <div class="item-notes">Classic wine glasses</div>
-                        <a href="https://www.costco.com/libbey-wine-glass-set.product.100500000.html" target="_blank" class="item-link costco">View at Costco</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://images.costco-static.com/ImageDelivery/imageService?profileId=12026540&imageId=1597337-847__1&recipeName=680" alt="Flatware" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Mikasa Lucia 20-pc Flatware</div>
-                        <div class="item-price">$48</div>
-                        <div class="item-notes">4.7 stars, 18/10 stainless</div>
-                        <a href="https://www.costco.com/mikasa-lucia-20-piece-flatware-set.product.100662008.html" target="_blank" class="item-link costco">View at Costco</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://images.costco-static.com/ImageDelivery/imageService?profileId=12026540&imageId=1571457-847__1&recipeName=680" alt="Bounty Paper Towels" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Bounty Paper Towels 12-pack</div>
-                        <div class="item-price">$30</div>
-                        <div class="item-notes">Bulk paper towels</div>
-                        <a href="https://www.costco.com/bounty-advanced-select-a-size-paper-towels.product.100383108.html" target="_blank" class="item-link costco">View at Costco</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://images.costco-static.com/ImageDelivery/imageService?profileId=12026540&imageId=1468373-847__1&recipeName=680" alt="Trash Bags" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Kirkland 13-gal Bags</div>
-                        <div class="item-price">$18</div>
-                        <div class="item-notes">200 count</div>
-                        <a href="https://www.costco.com/kirkland-signature-flex-tech-13-gallon-kitchen-trash-bag.product.100342292.html" target="_blank" class="item-link costco">View at Costco</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://images.costco-static.com/ImageDelivery/imageService?profileId=12026540&imageId=1561759-847__1&recipeName=680" alt="Tide Pods" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Tide Pods 112-count</div>
-                        <div class="item-price">$30</div>
-                        <div class="item-notes">Laundry detergent</div>
-                        <a href="https://www.costco.com/tide-pods-laundry-detergent.product.100383052.html" target="_blank" class="item-link costco">View at Costco</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://images.costco-static.com/ImageDelivery/imageService?profileId=12026540&imageId=1401908-847__1&recipeName=680" alt="Dryer Sheets" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Bounce Dryer Sheets 320-ct</div>
-                        <div class="item-price">$15</div>
-                        <div class="item-notes">Fabric softener sheets</div>
-                        <a href="https://www.costco.com/bounce-dryer-sheets.product.100383074.html" target="_blank" class="item-link costco">View at Costco</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://images.costco-static.com/ImageDelivery/imageService?profileId=12026540&imageId=1577813-847__1&recipeName=680" alt="Clorox Wipes" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Clorox Wipes 5-pack</div>
-                        <div class="item-price">$20</div>
-                        <div class="item-notes">425 wipes total</div>
-                        <a href="https://www.costco.com/clorox-disinfecting-wipes.product.100383146.html" target="_blank" class="item-link costco">View at Costco</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://images.costco-static.com/ImageDelivery/imageService?profileId=12026540&imageId=1514693-847__1&recipeName=680" alt="Batteries" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Duracell Battery Pack</div>
-                        <div class="item-price">$25</div>
-                        <div class="item-notes">AA/AAA combo pack</div>
-                        <a href="https://www.costco.com/duracell-coppertop-alkaline-batteries.product.100405163.html" target="_blank" class="item-link costco">View at Costco</a>
-                    </div>
+        <div class="items-grid">
+            <div class="item-card">
+                <div class="item-emoji">🍳</div>
+                <div class="item-content">
+                    <div class="item-name">Circulon Premier Professional 13-pc Cookware Set</div>
+                    <div class="item-price">$179.99</div>
+                    <div class="item-notes">Hard anodized, 4.8 stars, oven safe to 400F</div>
+                    <a href="https://www.costco.com/p/-/circulon-premier-professional-13-piece-hard-anodized-cookware-set-black/100529430" target="_blank" class="item-link costco">View at Costco</a>
                 </div>
             </div>
-        </div>
-
-        <!-- TARGET -->
-        <div class="store-section">
-            <div class="store-header">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Target_logo.svg/512px-Target_logo.svg.png" alt="Target" class="store-logo">
-                <div class="store-info">
-                    <h2>Target</h2>
-                    <div class="store-location">Multiple Seattle locations - use Target.com for Drive Up/Pickup</div>
-                </div>
-                <div class="store-subtotal">Subtotal: $1,818</div>
-            </div>
-
-            <span class="category-label">Kitchen Utensils & Tools</span>
-            <div class="items-grid">
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_e3c2e6e1-5a0a-4d95-8c69-9be7d9e5d0d1" alt="Utensil Set" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Made By Design 13-pc Utensil Set</div>
-                        <div class="item-price">$25</div>
-                        <div class="item-notes">Spatulas, ladles, tongs, whisk, etc.</div>
-                        <a href="https://www.target.com/s?searchTerm=made+by+design+utensil+set" target="_blank" class="item-link target">View at Target</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_5c876f8a-61c9-4f4c-9eb9-9c6b6c9f6d6e" alt="Wooden Spoons" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Made By Design Wooden Spoons</div>
-                        <div class="item-price">$10</div>
-                        <div class="item-notes">Set of cooking spoons</div>
-                        <a href="https://www.target.com/s?searchTerm=made+by+design+wooden+spoons" target="_blank" class="item-link target">View at Target</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_d0f50e2a-2d1b-4b87-8d6e-2c4e6d8f0a1b" alt="Baking Sheets" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Threshold Baking Sheets (2-pack)</div>
-                        <div class="item-price">$15</div>
-                        <div class="item-notes">Cookie sheets</div>
-                        <a href="https://www.target.com/s?searchTerm=threshold+baking+sheet" target="_blank" class="item-link target">View at Target</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_b8f4e2d6-3c5a-4e7f-9d1a-8b2c0e4f6a8d" alt="Pyrex" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Pyrex Easy Grab 8-piece Set</div>
-                        <div class="item-price">$30</div>
-                        <div class="item-notes">Baking dishes</div>
-                        <a href="https://www.target.com/s?searchTerm=pyrex+easy+grab" target="_blank" class="item-link target">View at Target</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_a1b2c3d4-5e6f-7a8b-9c0d-1e2f3a4b5c6d" alt="Mixing Bowls" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Threshold Stainless Mixing Bowls</div>
-                        <div class="item-price">$20</div>
-                        <div class="item-notes">Nesting bowl set</div>
-                        <a href="https://www.target.com/s?searchTerm=threshold+mixing+bowls" target="_blank" class="item-link target">View at Target</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_f1e2d3c4-b5a6-9087-6574-321098765432" alt="Colander" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Made By Design Colander</div>
-                        <div class="item-price">$10</div>
-                        <div class="item-notes">Pasta strainer</div>
-                        <a href="https://www.target.com/s?searchTerm=made+by+design+colander" target="_blank" class="item-link target">View at Target</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_12345678-abcd-efgh-ijkl-mnopqrstuvwx" alt="OXO Tongs" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">OXO Good Grips Tongs</div>
-                        <div class="item-price">$15</div>
-                        <div class="item-notes">Kitchen tongs</div>
-                        <a href="https://www.target.com/s?searchTerm=oxo+good+grips+tongs" target="_blank" class="item-link target">View at Target</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_abcdef12-3456-7890-abcd-ef1234567890" alt="Can Opener" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">OXO Good Grips Can Opener</div>
-                        <div class="item-price">$22</div>
-                        <div class="item-notes">Smooth edge can opener</div>
-                        <a href="https://www.target.com/s?searchTerm=oxo+can+opener" target="_blank" class="item-link target">View at Target</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_corkscrew-rabbit-wine" alt="Corkscrew" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Rabbit Corkscrew</div>
-                        <div class="item-price">$15</div>
-                        <div class="item-notes">Wine opener</div>
-                        <a href="https://www.target.com/s?searchTerm=rabbit+corkscrew" target="_blank" class="item-link target">View at Target</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_measuring-cups-oxo" alt="Measuring Cups" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">OXO Good Grips Measuring Cups</div>
-                        <div class="item-price">$20</div>
-                        <div class="item-notes">Angled measuring cups</div>
-                        <a href="https://www.target.com/s?searchTerm=oxo+measuring+cups" target="_blank" class="item-link target">View at Target</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_measuring-spoons" alt="Measuring Spoons" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">OXO Good Grips Measuring Spoons</div>
-                        <div class="item-price">$10</div>
-                        <div class="item-notes">Stainless steel</div>
-                        <a href="https://www.target.com/s?searchTerm=oxo+measuring+spoons" target="_blank" class="item-link target">View at Target</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_peeler-oxo" alt="Peeler" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">OXO Good Grips Peeler</div>
-                        <div class="item-price">$11</div>
-                        <div class="item-notes">Vegetable peeler</div>
-                        <a href="https://www.target.com/s?searchTerm=oxo+peeler" target="_blank" class="item-link target">View at Target</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_box-grater" alt="Box Grater" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">OXO Box Grater</div>
-                        <div class="item-price">$18</div>
-                        <div class="item-notes">4-sided grater</div>
-                        <a href="https://www.target.com/s?searchTerm=oxo+box+grater" target="_blank" class="item-link target">View at Target</a>
-                    </div>
+            <div class="item-card">
+                <div class="item-emoji">🪓</div>
+                <div class="item-content">
+                    <div class="item-name">J.A. Henckels 3-piece Cutting Board Set</div>
+                    <div class="item-price">$24.99</div>
+                    <div class="item-notes">Reversible, nonslip feet</div>
+                    <a href="https://www.costco.com/p/-/ja-henckels-international-3-piece-cutting-board-set/100468394" target="_blank" class="item-link costco">View at Costco</a>
                 </div>
             </div>
-
-            <span class="category-label">Dinnerware</span>
-            <div class="items-grid">
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_dinnerware-set" alt="Dinnerware" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Gibson Home 12-pc Stoneware Set</div>
-                        <div class="item-price">$27</div>
-                        <div class="item-notes">Plates & bowls</div>
-                        <a href="https://www.target.com/s?searchTerm=gibson+home+stoneware" target="_blank" class="item-link target">View at Target</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_mugs-threshold" alt="Mugs" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Threshold Stoneware Mugs (4-pack)</div>
-                        <div class="item-price">$20</div>
-                        <div class="item-notes">Coffee mugs</div>
-                        <a href="https://www.target.com/s?searchTerm=threshold+stoneware+mugs" target="_blank" class="item-link target">View at Target</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_serving-bowls" alt="Serving Bowls" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Threshold Serving Bowls</div>
-                        <div class="item-price">$15</div>
-                        <div class="item-notes">Large serving bowls</div>
-                        <a href="https://www.target.com/s?searchTerm=threshold+serving+bowls" target="_blank" class="item-link target">View at Target</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_serving-set" alt="Serving Set" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Made By Design Serving Set</div>
-                        <div class="item-price">$12</div>
-                        <div class="item-notes">Serving utensils</div>
-                        <a href="https://www.target.com/s?searchTerm=made+by+design+serving" target="_blank" class="item-link target">View at Target</a>
-                    </div>
+            <div class="item-card">
+                <div class="item-emoji">🔪</div>
+                <div class="item-content">
+                    <div class="item-name">Henckels Forged X 14-piece Knife Block Set</div>
+                    <div class="item-price">$169.97</div>
+                    <div class="item-notes">German stainless steel, fully forged</div>
+                    <a href="https://www.costco.com/henckels-forged-x-14-piece-knife-block-set.product.4000361561.html" target="_blank" class="item-link costco">View at Costco</a>
                 </div>
             </div>
-
-            <span class="category-label">Small Appliances</span>
-            <div class="items-grid">
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_coffee-maker" alt="Coffee Maker" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Hamilton Beach 12-Cup Programmable</div>
-                        <div class="item-price">$25</div>
-                        <div class="item-notes">Coffee maker</div>
-                        <a href="https://www.target.com/s?searchTerm=hamilton+beach+12+cup+coffee+maker" target="_blank" class="item-link target">View at Target</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_toaster-drew" alt="Toaster" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Beautiful by Drew Barrymore Toaster</div>
-                        <div class="item-price">$30</div>
-                        <div class="item-notes">Consumer Reports pick</div>
-                        <a href="https://www.target.com/s?searchTerm=beautiful+drew+barrymore+toaster" target="_blank" class="item-link target">View at Target</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_microwave" alt="Microwave" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">BLACK+DECKER 0.9 cu ft Microwave</div>
-                        <div class="item-price">$90</div>
-                        <div class="item-notes">Countertop microwave</div>
-                        <a href="https://www.target.com/s?searchTerm=black+decker+microwave" target="_blank" class="item-link target">View at Target</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_nutribullet" alt="NutriBullet" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">NutriBullet Pro</div>
-                        <div class="item-price">$80</div>
-                        <div class="item-notes">Blender</div>
-                        <a href="https://www.target.com/s?searchTerm=nutribullet+pro" target="_blank" class="item-link target">View at Target</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_hand-mixer" alt="Hand Mixer" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">KitchenAid Hand Mixer</div>
-                        <div class="item-price">$60</div>
-                        <div class="item-notes">Electric hand mixer</div>
-                        <a href="https://www.target.com/s?searchTerm=kitchenaid+hand+mixer" target="_blank" class="item-link target">View at Target</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_kettle" alt="Electric Kettle" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Chefman Electric Kettle</div>
-                        <div class="item-price">$25</div>
-                        <div class="item-notes">Electric water kettle</div>
-                        <a href="https://www.target.com/s?searchTerm=chefman+electric+kettle" target="_blank" class="item-link target">View at Target</a>
-                    </div>
+            <div class="item-card">
+                <div class="item-emoji">🥛</div>
+                <div class="item-content">
+                    <div class="item-name">Anchor Hocking 16-pc Stackable Drinkware Set</div>
+                    <div class="item-price">$28.99</div>
+                    <div class="item-notes">Lead & BPA free, dishwasher safe</div>
+                    <a href="https://www.costco.com/anchor-hocking-16-piece-stackable-drinkware-set.product.4000348535.html" target="_blank" class="item-link costco">View at Costco</a>
                 </div>
             </div>
-
-            <span class="category-label">Food Storage & Kitchen Supplies</span>
-            <div class="items-grid">
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_rubbermaid" alt="Food Storage" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Rubbermaid Brilliance 22-pc Set</div>
-                        <div class="item-price">$35</div>
-                        <div class="item-notes">Food storage containers</div>
-                        <a href="https://www.target.com/s?searchTerm=rubbermaid+brilliance" target="_blank" class="item-link target">View at Target</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_plastic-wrap" alt="Plastic Wrap" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">up&up Plastic Wrap</div>
-                        <div class="item-price">$4</div>
-                        <div class="item-notes">Cling wrap</div>
-                        <a href="https://www.target.com/s?searchTerm=up+up+plastic+wrap" target="_blank" class="item-link target">View at Target</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_reynolds" alt="Aluminum Foil" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Reynolds Wrap</div>
-                        <div class="item-price">$6</div>
-                        <div class="item-notes">Aluminum foil</div>
-                        <a href="https://www.target.com/s?searchTerm=reynolds+wrap" target="_blank" class="item-link target">View at Target</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_ziploc" alt="Ziploc Bags" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Ziploc Variety Pack</div>
-                        <div class="item-price">$15</div>
-                        <div class="item-notes">Storage bags</div>
-                        <a href="https://www.target.com/s?searchTerm=ziploc+variety" target="_blank" class="item-link target">View at Target</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_kitchen-towels" alt="Kitchen Towels" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Threshold Kitchen Towels 4-pack</div>
-                        <div class="item-price">$12</div>
-                        <div class="item-notes">Dish towels</div>
-                        <a href="https://www.target.com/s?searchTerm=threshold+kitchen+towels" target="_blank" class="item-link target">View at Target</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_oven-mitt" alt="Oven Mitts" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Threshold Oven Mitt Set</div>
-                        <div class="item-price">$10</div>
-                        <div class="item-notes">Oven mitts</div>
-                        <a href="https://www.target.com/s?searchTerm=threshold+oven+mitt" target="_blank" class="item-link target">View at Target</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_dish-rack" alt="Dish Rack" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Simplehuman Dish Rack</div>
-                        <div class="item-price">$40</div>
-                        <div class="item-notes">Or basic $20</div>
-                        <a href="https://www.target.com/s?searchTerm=simplehuman+dish+rack" target="_blank" class="item-link target">View at Target</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_dawn" alt="Dish Soap" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Dawn Dish Soap</div>
-                        <div class="item-price">$5</div>
-                        <div class="item-notes">Dish detergent</div>
-                        <a href="https://www.target.com/s?searchTerm=dawn+dish+soap" target="_blank" class="item-link target">View at Target</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_scrub-daddy" alt="Scrub Daddy" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Scrub Daddy 3-pack</div>
-                        <div class="item-price">$10</div>
-                        <div class="item-notes">Sponges</div>
-                        <a href="https://www.target.com/s?searchTerm=scrub+daddy" target="_blank" class="item-link target">View at Target</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_trash-can" alt="Trash Can" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">simplehuman 10L Step Can</div>
-                        <div class="item-price">$40</div>
-                        <div class="item-notes">Kitchen trash</div>
-                        <a href="https://www.target.com/s?searchTerm=simplehuman+step+can" target="_blank" class="item-link target">View at Target</a>
-                    </div>
+            <div class="item-card">
+                <div class="item-emoji">🍷</div>
+                <div class="item-content">
+                    <div class="item-name">Luminarc 12-pc Stemless Wine Glass Set</div>
+                    <div class="item-price">$24.99</div>
+                    <div class="item-notes">16.43oz, works for red and white wines</div>
+                    <a href="https://www.costco.com/luminarc-12-piece-stemless-wine-glass-set.product.100507300.html" target="_blank" class="item-link costco">View at Costco</a>
                 </div>
             </div>
-
-            <span class="category-label">Bedroom</span>
-            <div class="items-grid">
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_pillow-protector" alt="Pillow Protectors" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Threshold Pillow Protectors 2-pk</div>
-                        <div class="item-price">$12</div>
-                        <div class="item-notes">Pillow covers</div>
-                        <a href="https://www.target.com/s?searchTerm=threshold+pillow+protector" target="_blank" class="item-link target">View at Target</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_pillowcases" alt="Pillowcases" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Threshold 400TC Pillowcases</div>
-                        <div class="item-price">$15</div>
-                        <div class="item-notes">Cotton pillowcases</div>
-                        <a href="https://www.target.com/s?searchTerm=threshold+400tc+pillowcases" target="_blank" class="item-link target">View at Target</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_sheets" alt="Sheet Set" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Threshold 400TC Queen Sheet Set</div>
-                        <div class="item-price">$45</div>
-                        <div class="item-notes">4.4 stars, 11k+ reviews</div>
-                        <a href="https://www.target.com/s?searchTerm=threshold+400tc+sheet+set" target="_blank" class="item-link target">View at Target</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_blanket" alt="Blanket" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Threshold Microplush Blanket</div>
-                        <div class="item-price">$30</div>
-                        <div class="item-notes">Soft bed blanket</div>
-                        <a href="https://www.target.com/s?searchTerm=threshold+microplush+blanket" target="_blank" class="item-link target">View at Target</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_mattress-protector" alt="Mattress Protector" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Threshold Mattress Protector</div>
-                        <div class="item-price">$30</div>
-                        <div class="item-notes">Waterproof protector</div>
-                        <a href="https://www.target.com/s?searchTerm=threshold+mattress+protector" target="_blank" class="item-link target">View at Target</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_hangers" alt="Hangers" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Brightroom Velvet Hangers 30-pk</div>
-                        <div class="item-price">$15</div>
-                        <div class="item-notes">Non-slip hangers</div>
-                        <a href="https://www.target.com/s?searchTerm=brightroom+velvet+hangers" target="_blank" class="item-link target">View at Target</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_storage-bins" alt="Storage Bins" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Brightroom Storage Bins</div>
-                        <div class="item-price">$25</div>
-                        <div class="item-notes">Closet organizers</div>
-                        <a href="https://www.target.com/s?searchTerm=brightroom+storage+bins" target="_blank" class="item-link target">View at Target</a>
-                    </div>
+            <div class="item-card">
+                <div class="item-emoji">🍴</div>
+                <div class="item-content">
+                    <div class="item-name">Mikasa Lucia 18/10 Stainless 20-pc Flatware</div>
+                    <div class="item-price">$49.99</div>
+                    <div class="item-notes">4.7 stars, 541 reviews</div>
+                    <a href="https://www.costco.com/p/-/mikasa-lucia-1810-stainless-steel-20-piece-flatware-set/100238009" target="_blank" class="item-link costco">View at Costco</a>
                 </div>
             </div>
-
-            <span class="category-label">Bathroom</span>
-            <div class="items-grid">
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_bath-towels" alt="Bath Towels" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Threshold Performance Towels x6</div>
-                        <div class="item-price">$54</div>
-                        <div class="item-notes">Bath towels - 7k+ 5-star</div>
-                        <a href="https://www.target.com/s?searchTerm=threshold+performance+bath+towel" target="_blank" class="item-link target">View at Target</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_hand-towels" alt="Hand Towels" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Threshold Performance Hand Towels x4</div>
-                        <div class="item-price">$24</div>
-                        <div class="item-notes">Hand towels</div>
-                        <a href="https://www.target.com/s?searchTerm=threshold+performance+hand+towel" target="_blank" class="item-link target">View at Target</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_washcloths" alt="Washcloths" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Threshold Washcloths 6-pack</div>
-                        <div class="item-price">$10</div>
-                        <div class="item-notes">Bath washcloths</div>
-                        <a href="https://www.target.com/s?searchTerm=threshold+washcloths" target="_blank" class="item-link target">View at Target</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_bath-mat" alt="Bath Mat" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Threshold Bath Mat</div>
-                        <div class="item-price">$18</div>
-                        <div class="item-notes">Bathroom rug</div>
-                        <a href="https://www.target.com/s?searchTerm=threshold+bath+mat" target="_blank" class="item-link target">View at Target</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_shower-curtain" alt="Shower Curtain" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Threshold Shower Curtain</div>
-                        <div class="item-price">$20</div>
-                        <div class="item-notes">Fabric shower curtain</div>
-                        <a href="https://www.target.com/s?searchTerm=threshold+shower+curtain" target="_blank" class="item-link target">View at Target</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_shower-rings" alt="Shower Rings" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Threshold Shower Rings</div>
-                        <div class="item-price">$8</div>
-                        <div class="item-notes">Curtain rings</div>
-                        <a href="https://www.target.com/s?searchTerm=threshold+shower+rings" target="_blank" class="item-link target">View at Target</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_shower-caddy" alt="Shower Caddy" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Made By Design Shower Caddy</div>
-                        <div class="item-price">$15</div>
-                        <div class="item-notes">Shower organizer</div>
-                        <a href="https://www.target.com/s?searchTerm=made+by+design+shower+caddy" target="_blank" class="item-link target">View at Target</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_toilet-brush" alt="Toilet Brush" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">OXO Toilet Brush</div>
-                        <div class="item-price">$15</div>
-                        <div class="item-notes">With holder</div>
-                        <a href="https://www.target.com/s?searchTerm=oxo+toilet+brush" target="_blank" class="item-link target">View at Target</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_soap-dispenser" alt="Soap Dispenser" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Threshold Soap Dispenser</div>
-                        <div class="item-price">$10</div>
-                        <div class="item-notes">Bathroom soap pump</div>
-                        <a href="https://www.target.com/s?searchTerm=threshold+soap+dispenser" target="_blank" class="item-link target">View at Target</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_bathroom-set" alt="Bathroom Set" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Threshold Bathroom Set</div>
-                        <div class="item-price">$15</div>
-                        <div class="item-notes">Toothbrush holder etc</div>
-                        <a href="https://www.target.com/s?searchTerm=threshold+bathroom+accessories" target="_blank" class="item-link target">View at Target</a>
-                    </div>
+            <div class="item-card">
+                <div class="item-emoji">🧻</div>
+                <div class="item-content">
+                    <div class="item-name">Bounty Advanced Paper Towels 12-count</div>
+                    <div class="item-price">$24.99</div>
+                    <div class="item-notes">2-ply, 101 sheets/roll, 656 sq ft</div>
+                    <a href="https://www.costco.com/bounty-advanced-paper-towels-2-ply-101-sheets-12-count.product.4000137876.html" target="_blank" class="item-link costco">View at Costco</a>
                 </div>
             </div>
-
-            <span class="category-label">Living Room & Decor</span>
-            <div class="items-grid">
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_throw-pillows" alt="Throw Pillows" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Threshold Throw Pillows x2</div>
-                        <div class="item-price">$40</div>
-                        <div class="item-notes">Decorative pillows</div>
-                        <a href="https://www.target.com/s?searchTerm=threshold+throw+pillow" target="_blank" class="item-link target">View at Target</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_throw-blanket" alt="Throw Blanket" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Threshold Throw Blanket</div>
-                        <div class="item-price">$25</div>
-                        <div class="item-notes">Couch throw</div>
-                        <a href="https://www.target.com/s?searchTerm=threshold+throw+blanket" target="_blank" class="item-link target">View at Target</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_curtains" alt="Blackout Curtains" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Eclipse Blackout Curtains (2 panels)</div>
-                        <div class="item-price">$50</div>
-                        <div class="item-notes">Room darkening</div>
-                        <a href="https://www.target.com/s?searchTerm=eclipse+blackout+curtains" target="_blank" class="item-link target">View at Target</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_curtain-rod" alt="Curtain Rod" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Threshold Curtain Rod</div>
-                        <div class="item-price">$20</div>
-                        <div class="item-notes">Adjustable rod</div>
-                        <a href="https://www.target.com/s?searchTerm=threshold+curtain+rod" target="_blank" class="item-link target">View at Target</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_welcome-mat" alt="Welcome Mat" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Threshold Welcome Mat</div>
-                        <div class="item-price">$15</div>
-                        <div class="item-notes">Door mat</div>
-                        <a href="https://www.target.com/s?searchTerm=threshold+welcome+mat" target="_blank" class="item-link target">View at Target</a>
-                    </div>
+            <div class="item-card">
+                <div class="item-emoji">🗑️</div>
+                <div class="item-content">
+                    <div class="item-name">Kirkland Flex-Tech 13-Gal Trash Bags 200ct</div>
+                    <div class="item-price">$19.99</div>
+                    <div class="item-notes">White drawstring, 11,340+ reviews</div>
+                    <a href="https://www.costco.com/p/-/kirkland-signature-flex-tech-13-gallon-kitchen-trash-bag-200-count/100342484" target="_blank" class="item-link costco">View at Costco</a>
                 </div>
             </div>
-
-            <span class="category-label">Laundry</span>
-            <div class="items-grid">
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_hamper" alt="Laundry Hamper" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Brightroom Laundry Hamper</div>
-                        <div class="item-price">$20</div>
-                        <div class="item-notes">Clothes hamper</div>
-                        <a href="https://www.target.com/s?searchTerm=brightroom+laundry+hamper" target="_blank" class="item-link target">View at Target</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_oxiclean" alt="OxiClean" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">OxiClean Spray</div>
-                        <div class="item-price">$8</div>
-                        <div class="item-notes">Stain remover</div>
-                        <a href="https://www.target.com/s?searchTerm=oxiclean+spray" target="_blank" class="item-link target">View at Target</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_iron" alt="Iron" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">BLACK+DECKER Iron</div>
-                        <div class="item-price">$25</div>
-                        <div class="item-notes">Steam iron</div>
-                        <a href="https://www.target.com/s?searchTerm=black+decker+iron" target="_blank" class="item-link target">View at Target</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_ironing-board" alt="Ironing Board" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Household Essentials Ironing Board</div>
-                        <div class="item-price">$30</div>
-                        <div class="item-notes">Full-size ironing board</div>
-                        <a href="https://www.target.com/s?searchTerm=household+essentials+ironing+board" target="_blank" class="item-link target">View at Target</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_drying-rack" alt="Drying Rack" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Honey-Can-Do Drying Rack</div>
-                        <div class="item-price">$25</div>
-                        <div class="item-notes">Clothes drying rack</div>
-                        <a href="https://www.target.com/s?searchTerm=honey+can+do+drying+rack" target="_blank" class="item-link target">View at Target</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_extra-hangers" alt="Extra Hangers" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Brightroom Hangers (extra)</div>
-                        <div class="item-price">$15</div>
-                        <div class="item-notes">Additional hangers</div>
-                        <a href="https://www.target.com/s?searchTerm=brightroom+hangers" target="_blank" class="item-link target">View at Target</a>
-                    </div>
+            <div class="item-card">
+                <div class="item-emoji">🧺</div>
+                <div class="item-content">
+                    <div class="item-name">Tide Pods HE Spring Meadow 156-count</div>
+                    <div class="item-price">$28.99</div>
+                    <div class="item-notes">After $6 OFF, 156 total loads</div>
+                    <a href="https://www.costco.com/p/-/tide-pods-he-laundry-detergent-pods-spring-meadow-156-count/4000159393" target="_blank" class="item-link costco">View at Costco</a>
                 </div>
             </div>
-
-            <span class="category-label">Cleaning</span>
-            <div class="items-grid">
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_broom" alt="Broom" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Made By Design Broom</div>
-                        <div class="item-price">$12</div>
-                        <div class="item-notes">Floor broom</div>
-                        <a href="https://www.target.com/s?searchTerm=made+by+design+broom" target="_blank" class="item-link target">View at Target</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_dustpan" alt="Dustpan" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Made By Design Dustpan</div>
-                        <div class="item-price">$8</div>
-                        <div class="item-notes">Dustpan with brush</div>
-                        <a href="https://www.target.com/s?searchTerm=made+by+design+dustpan" target="_blank" class="item-link target">View at Target</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_bona-mop" alt="Bona Mop" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Bona Floor Mop Starter Kit</div>
-                        <div class="item-price">$35</div>
-                        <div class="item-notes">Includes cleaner</div>
-                        <a href="https://www.target.com/s?searchTerm=bona+floor+mop" target="_blank" class="item-link target">View at Target</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_shark-vacuum" alt="Vacuum" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Shark Navigator Lift-Away</div>
-                        <div class="item-price">$200</div>
-                        <div class="item-notes">Upright vacuum</div>
-                        <a href="https://www.target.com/s?searchTerm=shark+navigator+lift+away" target="_blank" class="item-link target">View at Target</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_mrs-meyers" alt="Mrs. Meyer's" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Mrs. Meyer's Multi-Surface</div>
-                        <div class="item-price">$5</div>
-                        <div class="item-notes">All-purpose cleaner</div>
-                        <a href="https://www.target.com/s?searchTerm=mrs+meyers+multi+surface" target="_blank" class="item-link target">View at Target</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_windex" alt="Windex" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Windex</div>
-                        <div class="item-price">$5</div>
-                        <div class="item-notes">Glass cleaner</div>
-                        <a href="https://www.target.com/s?searchTerm=windex" target="_blank" class="item-link target">View at Target</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_scrubbing-bubbles" alt="Scrubbing Bubbles" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Scrubbing Bubbles</div>
-                        <div class="item-price">$5</div>
-                        <div class="item-notes">Bathroom cleaner</div>
-                        <a href="https://www.target.com/s?searchTerm=scrubbing+bubbles" target="_blank" class="item-link target">View at Target</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_scrub-brush" alt="Scrub Brushes" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">OXO Scrub Brushes</div>
-                        <div class="item-price">$8</div>
-                        <div class="item-notes">Cleaning brushes</div>
-                        <a href="https://www.target.com/s?searchTerm=oxo+scrub+brush" target="_blank" class="item-link target">View at Target</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_rubber-gloves" alt="Rubber Gloves" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Playtex Gloves 3-pack</div>
-                        <div class="item-price">$10</div>
-                        <div class="item-notes">Rubber cleaning gloves</div>
-                        <a href="https://www.target.com/s?searchTerm=playtex+gloves" target="_blank" class="item-link target">View at Target</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_swiffer" alt="Swiffer Duster" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Swiffer Duster Starter Kit</div>
-                        <div class="item-price">$12</div>
-                        <div class="item-notes">Dusting kit</div>
-                        <a href="https://www.target.com/s?searchTerm=swiffer+duster" target="_blank" class="item-link target">View at Target</a>
-                    </div>
+            <div class="item-card">
+                <div class="item-emoji">✨</div>
+                <div class="item-content">
+                    <div class="item-name">Bounce Dryer Sheets 320ct (2-pack)</div>
+                    <div class="item-price">$12.99</div>
+                    <div class="item-notes">Outdoor Fresh, 4.8 stars</div>
+                    <a href="https://www.costco.com/bounce-dryer-sheets,-outdoor-fresh,-160-count,-2-pack.product.100287213.html" target="_blank" class="item-link costco">View at Costco</a>
                 </div>
             </div>
-
-            <span class="category-label">Health & Safety</span>
-            <div class="items-grid">
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_first-aid" alt="First Aid Kit" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Johnson & Johnson First Aid Kit</div>
-                        <div class="item-price">$15</div>
-                        <div class="item-notes">100-piece kit</div>
-                        <a href="https://www.target.com/s?searchTerm=johnson+johnson+first+aid+kit" target="_blank" class="item-link target">View at Target</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_bandaid" alt="Band-Aid" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Band-Aid Variety Pack</div>
-                        <div class="item-price">$10</div>
-                        <div class="item-notes">Assorted bandages</div>
-                        <a href="https://www.target.com/s?searchTerm=band+aid+variety" target="_blank" class="item-link target">View at Target</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_neosporin" alt="Neosporin" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Neosporin</div>
-                        <div class="item-price">$8</div>
-                        <div class="item-notes">Antibiotic ointment</div>
-                        <a href="https://www.target.com/s?searchTerm=neosporin" target="_blank" class="item-link target">View at Target</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_thermometer" alt="Thermometer" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Vicks Digital Thermometer</div>
-                        <div class="item-price">$10</div>
-                        <div class="item-notes">Digital thermometer</div>
-                        <a href="https://www.target.com/s?searchTerm=vicks+thermometer" target="_blank" class="item-link target">View at Target</a>
-                    </div>
+            <div class="item-card">
+                <div class="item-emoji">🧽</div>
+                <div class="item-content">
+                    <div class="item-name">Clorox Disinfecting Wipes 5-pack (425 wipes)</div>
+                    <div class="item-price">$21.99</div>
+                    <div class="item-notes">85-count x 5, kills 99.9% germs</div>
+                    <a href="https://www.costco.com/p/-/clorox-disinfecting-wipes-variety-pack-85-count-5-pack/100534416" target="_blank" class="item-link costco">View at Costco</a>
                 </div>
             </div>
-
-            <span class="category-label">Office & Misc</span>
-            <div class="items-grid">
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_surge-protector" alt="Surge Protector" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Belkin Surge Protector 6-outlet</div>
-                        <div class="item-price">$20</div>
-                        <div class="item-notes">Power strip</div>
-                        <a href="https://www.target.com/s?searchTerm=belkin+surge+protector" target="_blank" class="item-link target">View at Target</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_pens" alt="Pen Set" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">up&up Pen/Pencil Set</div>
-                        <div class="item-price">$8</div>
-                        <div class="item-notes">Writing supplies</div>
-                        <a href="https://www.target.com/s?searchTerm=up+up+pen+pencil" target="_blank" class="item-link target">View at Target</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_notepad" alt="Notepad" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">up&up Notepad Pack</div>
-                        <div class="item-price">$5</div>
-                        <div class="item-notes">Notepads</div>
-                        <a href="https://www.target.com/s?searchTerm=up+up+notepad" target="_blank" class="item-link target">View at Target</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_scissors" alt="Scissors" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Fiskars Scissors</div>
-                        <div class="item-price">$8</div>
-                        <div class="item-notes">Household scissors</div>
-                        <a href="https://www.target.com/s?searchTerm=fiskars+scissors" target="_blank" class="item-link target">View at Target</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_tape" alt="Tape" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Scotch Tape Multi-pack</div>
-                        <div class="item-price">$8</div>
-                        <div class="item-notes">Clear tape</div>
-                        <a href="https://www.target.com/s?searchTerm=scotch+tape" target="_blank" class="item-link target">View at Target</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://target.scene7.com/is/image/Target/GUEST_stapler" alt="Stapler" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Swingline Stapler</div>
-                        <div class="item-price">$10</div>
-                        <div class="item-notes">Desktop stapler</div>
-                        <a href="https://www.target.com/s?searchTerm=swingline+stapler" target="_blank" class="item-link target">View at Target</a>
-                    </div>
+            <div class="item-card">
+                <div class="item-emoji">🔋</div>
+                <div class="item-content">
+                    <div class="item-name">Duracell Coppertop AA Batteries 40-count</div>
+                    <div class="item-price">$17.99</div>
+                    <div class="item-notes">After $2 OFF, 12-year storage</div>
+                    <a href="https://www.costco.com/p/-/duracell-coppertop-alkaline-aa-batteries-40-count/100836545" target="_blank" class="item-link costco">View at Costco</a>
                 </div>
             </div>
-        </div>
-
-        <!-- HOME DEPOT -->
-        <div class="store-section">
-            <div class="store-header">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/TheHomeDepot.svg/512px-TheHomeDepot.svg.png" alt="Home Depot" class="store-logo">
-                <div class="store-info">
-                    <h2>Home Depot</h2>
-                    <div class="store-location">2701 Utah Ave S, Seattle (or other locations)</div>
-                </div>
-                <div class="store-subtotal">Subtotal: $416</div>
-            </div>
-
-            <span class="category-label">Tools</span>
-            <div class="items-grid">
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://images.thdstatic.com/productImages/tool-kit.jpg" alt="Tool Kit" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Stanley 65-pc Home Tool Kit</div>
-                        <div class="item-price">$56</div>
-                        <div class="item-notes">Hammer, screwdrivers, pliers, level, etc.</div>
-                        <a href="https://www.homedepot.com/s/stanley%2065%20piece%20tool%20kit" target="_blank" class="item-link homedepot">View at Home Depot</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://images.thdstatic.com/productImages/tape-measure.jpg" alt="Tape Measure" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Stanley 25ft Tape Measure</div>
-                        <div class="item-price">$10</div>
-                        <div class="item-notes">Measuring tape</div>
-                        <a href="https://www.homedepot.com/s/stanley%20tape%20measure" target="_blank" class="item-link homedepot">View at Home Depot</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://images.thdstatic.com/productImages/utility-knife.jpg" alt="Utility Knife" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Stanley Utility Knife</div>
-                        <div class="item-price">$8</div>
-                        <div class="item-notes">Box cutter</div>
-                        <a href="https://www.homedepot.com/s/stanley%20utility%20knife" target="_blank" class="item-link homedepot">View at Home Depot</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://images.thdstatic.com/productImages/gorilla-tape.jpg" alt="Gorilla Tape" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Gorilla Tape</div>
-                        <div class="item-price">$10</div>
-                        <div class="item-notes">Duct tape</div>
-                        <a href="https://www.homedepot.com/s/gorilla%20tape" target="_blank" class="item-link homedepot">View at Home Depot</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://images.thdstatic.com/productImages/wd40.jpg" alt="WD-40" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">WD-40 Multi-pack</div>
-                        <div class="item-price">$12</div>
-                        <div class="item-notes">Lubricant spray</div>
-                        <a href="https://www.homedepot.com/s/wd-40" target="_blank" class="item-link homedepot">View at Home Depot</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://images.thdstatic.com/productImages/screws.jpg" alt="Hardware Kit" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Everbilt Assortment Kit</div>
-                        <div class="item-price">$15</div>
-                        <div class="item-notes">Nails/screws</div>
-                        <a href="https://www.homedepot.com/s/everbilt%20assortment" target="_blank" class="item-link homedepot">View at Home Depot</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://images.thdstatic.com/productImages/step-ladder.jpg" alt="Step Ladder" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Gorilla 2-Step Ladder</div>
-                        <div class="item-price">$30</div>
-                        <div class="item-notes">Step stool</div>
-                        <a href="https://www.homedepot.com/s/gorilla%20step%20ladder" target="_blank" class="item-link homedepot">View at Home Depot</a>
-                    </div>
-                </div>
-            </div>
-
-            <span class="category-label">Safety</span>
-            <div class="items-grid">
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://images.thdstatic.com/productImages/smoke-detector.jpg" alt="Smoke Detector" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">First Alert Smoke Detector 2-pack</div>
-                        <div class="item-price">$40</div>
-                        <div class="item-notes">10-year battery, 4.8 stars</div>
-                        <a href="https://www.homedepot.com/s/first%20alert%20smoke%20detector" target="_blank" class="item-link homedepot">View at Home Depot</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://images.thdstatic.com/productImages/co-detector.jpg" alt="CO Detector" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">First Alert CO Detector</div>
-                        <div class="item-price">$25</div>
-                        <div class="item-notes">Carbon monoxide detector</div>
-                        <a href="https://www.homedepot.com/s/first%20alert%20co%20detector" target="_blank" class="item-link homedepot">View at Home Depot</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://images.thdstatic.com/productImages/fire-extinguisher.jpg" alt="Fire Extinguisher" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">First Alert Fire Extinguisher</div>
-                        <div class="item-price">$13</div>
-                        <div class="item-notes">4.5 stars</div>
-                        <a href="https://www.homedepot.com/s/first%20alert%20fire%20extinguisher" target="_blank" class="item-link homedepot">View at Home Depot</a>
-                    </div>
-                </div>
-            </div>
-
-            <span class="category-label">Electrical & Lighting</span>
-            <div class="items-grid">
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://images.thdstatic.com/productImages/extension-cord.jpg" alt="Extension Cords" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">HDX Extension Cords</div>
-                        <div class="item-price">$15</div>
-                        <div class="item-notes">Multi-pack</div>
-                        <a href="https://www.homedepot.com/s/hdx%20extension%20cord" target="_blank" class="item-link homedepot">View at Home Depot</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://images.thdstatic.com/productImages/flashlight.jpg" alt="Flashlight" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Energizer LED Flashlight 2-pack</div>
-                        <div class="item-price">$15</div>
-                        <div class="item-notes">LED flashlights</div>
-                        <a href="https://www.homedepot.com/s/energizer%20led%20flashlight" target="_blank" class="item-link homedepot">View at Home Depot</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://images.thdstatic.com/productImages/led-bulbs.jpg" alt="LED Bulbs" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">GE LED Bulbs 8-pack</div>
-                        <div class="item-price">$15</div>
-                        <div class="item-notes">Light bulbs</div>
-                        <a href="https://www.homedepot.com/s/ge%20led%20bulbs" target="_blank" class="item-link homedepot">View at Home Depot</a>
-                    </div>
-                </div>
-            </div>
-
-            <span class="category-label">Plumbing & Outdoor</span>
-            <div class="items-grid">
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://images.thdstatic.com/productImages/bucket.jpg" alt="Bucket" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">HDX Bucket</div>
-                        <div class="item-price">$5</div>
-                        <div class="item-notes">5-gallon bucket</div>
-                        <a href="https://www.homedepot.com/s/hdx%20bucket" target="_blank" class="item-link homedepot">View at Home Depot</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://images.thdstatic.com/productImages/plunger.jpg" alt="Plunger" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Korky Beehive Plunger</div>
-                        <div class="item-price">$12</div>
-                        <div class="item-notes">Best rated plunger</div>
-                        <a href="https://www.homedepot.com/s/korky%20beehive%20plunger" target="_blank" class="item-link homedepot">View at Home Depot</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://images.thdstatic.com/productImages/garden-hose.jpg" alt="Garden Hose" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Flexzilla 50ft Hose</div>
-                        <div class="item-price">$40</div>
-                        <div class="item-notes">Garden hose</div>
-                        <a href="https://www.homedepot.com/s/flexzilla%20hose" target="_blank" class="item-link homedepot">View at Home Depot</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://images.thdstatic.com/productImages/trash-can.jpg" alt="Outdoor Trash Can" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Rubbermaid 32-gal</div>
-                        <div class="item-price">$30</div>
-                        <div class="item-notes">Outdoor trash can</div>
-                        <a href="https://www.homedepot.com/s/rubbermaid%2032%20gallon" target="_blank" class="item-link homedepot">View at Home Depot</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://images.thdstatic.com/productImages/yard-tools.jpg" alt="Yard Tools" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">HDX Yard Tool Set</div>
-                        <div class="item-price">$40</div>
-                        <div class="item-notes">Rake, shovel</div>
-                        <a href="https://www.homedepot.com/s/hdx%20yard%20tool%20set" target="_blank" class="item-link homedepot">View at Home Depot</a>
-                    </div>
-                </div>
-
-                <div class="item-card">
-                    <div class="item-image-container">
-                        <img src="https://images.thdstatic.com/productImages/snow-shovel.jpg" alt="Snow Shovel" class="item-image">
-                    </div>
-                    <div class="item-content">
-                        <div class="item-name">Snow Joe Shovel</div>
-                        <div class="item-price">$25</div>
-                        <div class="item-notes">If needed</div>
-                        <a href="https://www.homedepot.com/s/snow%20joe%20shovel" target="_blank" class="item-link homedepot">View at Home Depot</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div style="text-align: center; color: rgba(255,255,255,0.5); margin-top: 40px; padding: 20px;">
-            <p>Last updated: January 2026</p>
         </div>
     </div>
+
+    <!-- TARGET -->
+    <div class="store-section">
+        <div class="store-header">
+            <div class="store-logo" style="color: #cc0000; font-weight: bold;">T</div>
+            <div class="store-info"><h2>Target</h2></div>
+            <div class="store-subtotal">Subtotal: ~$1,828</div>
+        </div>
+
+        <div class="category-label">Kitchen Utensils & Tools</div>
+        <div class="items-grid">
+            <div class="item-card">
+                <div class="item-emoji">🥄</div>
+                <div class="item-content">
+                    <div class="item-name">OXO Good Grips Can Opener</div>
+                    <div class="item-price">$22.99</div>
+                    <div class="item-notes">Soft-grip handle, lifetime warranty</div>
+                    <a href="https://www.target.com/p/oxo-soft-handled-can-opener/-/A-13567839" target="_blank" class="item-link target">View at Target</a>
+                </div>
+            </div>
+            <div class="item-card">
+                <div class="item-emoji">📏</div>
+                <div class="item-content">
+                    <div class="item-name">OXO Stainless Steel Measuring Cups 5-pc</div>
+                    <div class="item-price">$19.99</div>
+                    <div class="item-notes">Dishwasher-safe, lifetime warranty</div>
+                    <a href="https://www.target.com/p/oxo-stainless-steel-measuring-cups/-/A-10314428" target="_blank" class="item-link target">View at Target</a>
+                </div>
+            </div>
+            <div class="item-card">
+                <div class="item-emoji">🥧</div>
+                <div class="item-content">
+                    <div class="item-name">Pyrex Easy Grab 4-pc Glass Baking Set</div>
+                    <div class="item-price">$29.99</div>
+                    <div class="item-notes">With lids, 2-qt, dishwasher safe</div>
+                    <a href="https://www.target.com/p/pyrex-easy-grab-4-piece-glass-baking-dish-set-with-lids-2-qt-glass-bakeware-set/-/A-87990188" target="_blank" class="item-link target">View at Target</a>
+                </div>
+            </div>
+            <div class="item-card">
+                <div class="item-emoji">🍽️</div>
+                <div class="item-content">
+                    <div class="item-name">Gibson Home 12-pc Stoneware Dinnerware</div>
+                    <div class="item-price">$26.99</div>
+                    <div class="item-notes">Plates & bowls, microwave safe</div>
+                    <a href="https://www.target.com/p/gibson-home-everyday-essential-12-piece-stoneware-dinnerware-set-white/-/A-1000022158" target="_blank" class="item-link target">View at Target</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-label">Small Appliances</div>
+        <div class="items-grid">
+            <div class="item-card">
+                <div class="item-emoji">☕</div>
+                <div class="item-content">
+                    <div class="item-name">Hamilton Beach 12-Cup Coffee Maker</div>
+                    <div class="item-price">$24.99</div>
+                    <div class="item-notes">Programmable, 4.2 stars</div>
+                    <a href="https://www.target.com/p/hamilton-beach-12-cup-programmable-coffee-maker-black-46290/-/A-52580270" target="_blank" class="item-link target">View at Target</a>
+                </div>
+            </div>
+            <div class="item-card">
+                <div class="item-emoji">🍞</div>
+                <div class="item-content">
+                    <div class="item-name">Hamilton Beach 2-Slice Toaster</div>
+                    <div class="item-price">$19.99</div>
+                    <div class="item-notes">Stainless steel, adjustable browning</div>
+                    <a href="https://www.target.com/p/hamilton-beach-2-slice-toaster-stainless-steel/-/A-52062134" target="_blank" class="item-link target">View at Target</a>
+                </div>
+            </div>
+            <div class="item-card">
+                <div class="item-emoji">📡</div>
+                <div class="item-content">
+                    <div class="item-name">BLACK+DECKER 0.9 cu ft Microwave</div>
+                    <div class="item-price">$89.99</div>
+                    <div class="item-notes">900W, turntable, black</div>
+                    <a href="https://www.target.com/p/black-decker-0-9-cu-ft-900w-digital-microwave-oven-with-turntable-in-stainless-steel/-/A-88412185" target="_blank" class="item-link target">View at Target</a>
+                </div>
+            </div>
+            <div class="item-card">
+                <div class="item-emoji">🥤</div>
+                <div class="item-content">
+                    <div class="item-name">NutriBullet Pro 1000W Blender</div>
+                    <div class="item-price">$79.99</div>
+                    <div class="item-notes">4.3 stars, 799 reviews</div>
+                    <a href="https://www.target.com/p/nutribullet-pro-1000-single-serve-blender-1000w/-/A-78788717" target="_blank" class="item-link target">View at Target</a>
+                </div>
+            </div>
+            <div class="item-card">
+                <div class="item-emoji">🥣</div>
+                <div class="item-content">
+                    <div class="item-name">KitchenAid Ultra Power 5-Speed Hand Mixer</div>
+                    <div class="item-price">$59.99</div>
+                    <div class="item-notes">4.6 stars, 4,267 reviews</div>
+                    <a href="https://www.target.com/p/kitchenaid-ultra-power-5-speed-hand-mixer/-/A-14810227" target="_blank" class="item-link target">View at Target</a>
+                </div>
+            </div>
+            <div class="item-card">
+                <div class="item-emoji">🫖</div>
+                <div class="item-content">
+                    <div class="item-name">Chefman 1.8L Electric Kettle</div>
+                    <div class="item-price">$24.99</div>
+                    <div class="item-notes">Rapid boil, stainless steel</div>
+                    <a href="https://www.target.com/p/chefman-1-8l-rapid-boil-kettle-with-keep-warm-and-tea-infuser-stainless-steel/-/A-89182726" target="_blank" class="item-link target">View at Target</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-label">Food Storage & Kitchen</div>
+        <div class="items-grid">
+            <div class="item-card">
+                <div class="item-emoji">📦</div>
+                <div class="item-content">
+                    <div class="item-name">Rubbermaid Brilliance 22-pc Food Storage</div>
+                    <div class="item-price">$34.99</div>
+                    <div class="item-notes">Plastic, microwave safe, 1-year warranty</div>
+                    <a href="https://www.target.com/p/rubbermaid-brilliance-22pc-plastic-food-storage-container-set-clear/-/A-88450135" target="_blank" class="item-link target">View at Target</a>
+                </div>
+            </div>
+            <div class="item-card">
+                <div class="item-emoji">🗑️</div>
+                <div class="item-content">
+                    <div class="item-name">simplehuman 13-Gal Step Trash Can</div>
+                    <div class="item-price">$49.99</div>
+                    <div class="item-notes">Stainless steel, silent close lid</div>
+                    <a href="https://www.target.com/p/simplehuman-13-gallon-rectangular-step-kitchen-trash-can-stainless-steel-with-soft-close-lid/-/A-78833706" target="_blank" class="item-link target">View at Target</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-label">Bedroom</div>
+        <div class="items-grid">
+            <div class="item-card">
+                <div class="item-emoji">🛏️</div>
+                <div class="item-content">
+                    <div class="item-name">Threshold 400TC Queen Sheet Set</div>
+                    <div class="item-price">$44.99</div>
+                    <div class="item-notes">Cotton sateen, OEKO-TEX certified, 14k+ reviews</div>
+                    <a href="https://www.target.com/p/solid-performance-400-thread-count-sheet-set-threshold-153/-/A-51846287" target="_blank" class="item-link target">View at Target</a>
+                </div>
+            </div>
+            <div class="item-card">
+                <div class="item-emoji">👔</div>
+                <div class="item-content">
+                    <div class="item-name">Brightroom 30-pk Velvet Hangers</div>
+                    <div class="item-price">$14.99</div>
+                    <div class="item-notes">Non-slip, for suits/dresses</div>
+                    <a href="https://www.target.com/p/30pk-suit-flocked-hangers-black-brightroom-8482/-/A-83546645" target="_blank" class="item-link target">View at Target</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-label">Bathroom</div>
+        <div class="items-grid">
+            <div class="item-card">
+                <div class="item-emoji">🛁</div>
+                <div class="item-content">
+                    <div class="item-name">Threshold Performance Plus Bath Towel</div>
+                    <div class="item-price">$9.00</div>
+                    <div class="item-notes">Heavyweight cotton, fade-resistant (each)</div>
+                    <a href="https://www.target.com/p/performance-plus-bath-towel-threshold/-/A-89379100" target="_blank" class="item-link target">View at Target</a>
+                </div>
+            </div>
+            <div class="item-card">
+                <div class="item-emoji">🚿</div>
+                <div class="item-content">
+                    <div class="item-name">Threshold Waffle Weave Shower Curtain</div>
+                    <div class="item-price">$19.99</div>
+                    <div class="item-notes">Fabric, machine washable</div>
+                    <a href="https://www.target.com/p/waffle-weave-shower-curtain-threshold/-/A-80029357" target="_blank" class="item-link target">View at Target</a>
+                </div>
+            </div>
+            <div class="item-card">
+                <div class="item-emoji">🚽</div>
+                <div class="item-content">
+                    <div class="item-name">OXO Toilet Brush with Canister</div>
+                    <div class="item-price">$14.99</div>
+                    <div class="item-notes">With rim cleaner, durable plastic</div>
+                    <a href="https://www.target.com/p/oxo-toilet-brush-with-rim-cleaner-and-canister/-/A-88944357" target="_blank" class="item-link target">View at Target</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-label">Living Room</div>
+        <div class="items-grid">
+            <div class="item-card">
+                <div class="item-emoji">🪟</div>
+                <div class="item-content">
+                    <div class="item-name">Eclipse Blackout Rowland Curtain Panel</div>
+                    <div class="item-price">$24.99</div>
+                    <div class="item-notes">52x84, noise reduction, grommet top</div>
+                    <a href="https://www.target.com/p/1pc-blackout-rowland-curtain-panel-eclipse/-/A-52219553" target="_blank" class="item-link target">View at Target</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-label">Cleaning</div>
+        <div class="items-grid">
+            <div class="item-card">
+                <div class="item-emoji">🧹</div>
+                <div class="item-content">
+                    <div class="item-name">Bona Floor Mop Starter Kit</div>
+                    <div class="item-price">$34.99</div>
+                    <div class="item-notes">Spray mop, microfiber pad, cleaner</div>
+                    <a href="https://www.target.com/p/bona-floor-mop-starter-kit-1-spray-mop-1-reusable-microfiber-pad-1-refillable-multi-surface-floor-cleaner-liquid/-/A-78308316" target="_blank" class="item-link target">View at Target</a>
+                </div>
+            </div>
+            <div class="item-card">
+                <div class="item-emoji">🧹</div>
+                <div class="item-content">
+                    <div class="item-name">Shark Navigator Lift-Away Vacuum</div>
+                    <div class="item-price">$199.99</div>
+                    <div class="item-notes">HEPA filter, pet hair, swivel head</div>
+                    <a href="https://www.target.com/p/shark-navigator-lift-away-deluxe-upright-vacuum-blue-nv360/-/A-14392936" target="_blank" class="item-link target">View at Target</a>
+                </div>
+            </div>
+            <div class="item-card">
+                <div class="item-emoji">🪶</div>
+                <div class="item-content">
+                    <div class="item-name">Swiffer Dusters Starter Kit 6ct</div>
+                    <div class="item-price">$11.99</div>
+                    <div class="item-notes">Handle + refills included</div>
+                    <a href="https://www.target.com/p/swiffer-dusters-dusting-kit-6ct/-/A-13051918" target="_blank" class="item-link target">View at Target</a>
+                </div>
+            </div>
+        </div>
+
+        <p style="color: rgba(255,255,255,0.5); margin-top: 20px; font-size: 0.9rem;">
+            + Additional Target items: utensils, wooden spoons, baking sheets, mixing bowls, colander, tongs, corkscrew, measuring spoons, peeler, grater, mugs, serving bowls, plastic wrap, foil, ziploc bags, kitchen towels, oven mitts, dish rack, dish soap, sponges, pillow protectors, pillowcases, blanket, mattress protector, storage bins, hand towels, washcloths, bath mat, shower rings, shower caddy, soap dispenser, throw pillows, throw blanket, curtain rod, welcome mat, laundry hamper, OxiClean, iron, ironing board, drying rack, broom, dustpan, cleaners, scrub brushes, gloves, first aid kit, bandages, thermometer, surge protector, office supplies.
+        </p>
+    </div>
+
+    <!-- HOME DEPOT -->
+    <div class="store-section">
+        <div class="store-header">
+            <div class="store-logo" style="background: #f96302; color: white; font-weight: bold;">HD</div>
+            <div class="store-info"><h2>Home Depot</h2></div>
+            <div class="store-subtotal">Subtotal: ~$416</div>
+        </div>
+
+        <div class="category-label">Tools</div>
+        <div class="items-grid">
+            <div class="item-card">
+                <div class="item-emoji">🧰</div>
+                <div class="item-content">
+                    <div class="item-name">Stanley Home Tool Kit 65-Piece</div>
+                    <div class="item-price">$55.98</div>
+                    <div class="item-notes">Hammer, screwdrivers, pliers, level, etc.</div>
+                    <a href="https://www.homedepot.com/p/Stanley-Home-Tool-Kit-65-Piece-94-248/203707088" target="_blank" class="item-link homedepot">View at Home Depot</a>
+                </div>
+            </div>
+            <div class="item-card">
+                <div class="item-emoji">📐</div>
+                <div class="item-content">
+                    <div class="item-name">Gorilla 30 yd Black Duct Tape</div>
+                    <div class="item-price">$9.94</div>
+                    <div class="item-notes">Best seller, 2,992 reviews, weather-resistant</div>
+                    <a href="https://www.homedepot.com/p/Gorilla-30-yd-Black-Duct-Tape-106718/316372144" target="_blank" class="item-link homedepot">View at Home Depot</a>
+                </div>
+            </div>
+            <div class="item-card">
+                <div class="item-emoji">🛢️</div>
+                <div class="item-content">
+                    <div class="item-name">WD-40 12 oz Smart Straw 2-Pack</div>
+                    <div class="item-price">$16.36</div>
+                    <div class="item-notes">Multi-purpose lubricant</div>
+                    <a href="https://www.homedepot.com/p/WD-40-12-oz-Original-WD-40-Formula-Multi-Purpose-Lubricant-Spray-with-Smart-Straw-2-Pack-49005/320435944" target="_blank" class="item-link homedepot">View at Home Depot</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-label">Safety</div>
+        <div class="items-grid">
+            <div class="item-card">
+                <div class="item-emoji">🔥</div>
+                <div class="item-content">
+                    <div class="item-name">First Alert Fire Extinguisher Spray</div>
+                    <div class="item-price">$13.97</div>
+                    <div class="item-notes">EZ Tundra aerosol, 4.5 stars</div>
+                    <a href="https://www.homedepot.com/p/First-Alert-EZ-Fire-Extinguishing-Aerosol-Spray-AF400/202248841" target="_blank" class="item-link homedepot">View at Home Depot</a>
+                </div>
+            </div>
+            <div class="item-card">
+                <div class="item-emoji">🚨</div>
+                <div class="item-content">
+                    <div class="item-name">Kidde 10-Year Smoke & CO Detector 2-Pack</div>
+                    <div class="item-price">$49.97</div>
+                    <div class="item-notes">Combination detector, sealed battery</div>
+                    <a href="https://www.homedepot.com/p/Kidde-10-Year-Worry-Free-Sealed-Battery-Combination-Smoke-and-Carbon-Monoxide-Detector-2-Pack-21029931/206822264" target="_blank" class="item-link homedepot">View at Home Depot</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-label">Electrical & Lighting</div>
+        <div class="items-grid">
+            <div class="item-card">
+                <div class="item-emoji">💡</div>
+                <div class="item-content">
+                    <div class="item-name">GE 60W LED Bulbs 8-Pack (Daylight)</div>
+                    <div class="item-price">$22.99</div>
+                    <div class="item-notes">A19, 5000K, $2.87/bulb</div>
+                    <a href="https://www.homedepot.com/p/GE-60-Watt-Replacement-A19-Daylight-5000K-General-Purpose-LED-Bulbs-8-Pack-93110831/337362660" target="_blank" class="item-link homedepot">View at Home Depot</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-label">Plumbing & Outdoor</div>
+        <div class="items-grid">
+            <div class="item-card">
+                <div class="item-emoji">🚽</div>
+                <div class="item-content">
+                    <div class="item-name">Korky Beehive Max Toilet Plunger</div>
+                    <div class="item-price">$15.97</div>
+                    <div class="item-notes">Best rated, 3,982 reviews</div>
+                    <a href="https://www.homedepot.com/p/Korky-Beehive-Max-Toilet-Plunger-99-12A/203765220" target="_blank" class="item-link homedepot">View at Home Depot</a>
+                </div>
+            </div>
+            <div class="item-card">
+                <div class="item-emoji">🌿</div>
+                <div class="item-content">
+                    <div class="item-name">Flexzilla 5/8" x 50 ft Garden Hose</div>
+                    <div class="item-price">$37.98</div>
+                    <div class="item-notes">Won't kink, leak-free connections</div>
+                    <a href="https://www.homedepot.com/p/Flexzilla-5-8-in-x-50-ft-ZillaGreen-Garden-Hose-with-3-4-in-GHT-Fittings-HFZG550YW-E/203549999" target="_blank" class="item-link homedepot">View at Home Depot</a>
+                </div>
+            </div>
+        </div>
+
+        <p style="color: rgba(255,255,255,0.5); margin-top: 20px; font-size: 0.9rem;">
+            + Additional Home Depot items: tape measure, utility knife, screws/nails kit, step ladder, CO detector, extension cords, flashlights, bucket, outdoor trash can, yard tools, snow shovel.
+        </p>
+    </div>
+
+    <div style="text-align: center; color: rgba(255,255,255,0.5); margin-top: 40px; padding: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
+        <p>All links verified January 2026 | Prices may vary</p>
+        <p style="margin-top: 8px;">Full list based on Excel: House_Essentials_List.xlsx</p>
+    </div>
+</div>
 </body>
 </html>

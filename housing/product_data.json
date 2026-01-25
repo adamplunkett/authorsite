@@ -1,0 +1,93 @@
+{
+  "costco": {
+    "store_name": "Costco",
+    "location": "4401 4th Ave S, Seattle (or Kirkland/Issaquah)",
+    "items": [
+      {
+        "name": "Circulon Premier Professional 13-piece Cookware Set",
+        "price": 179.99,
+        "notes": "Hard anodized, 4.8 stars, oven safe to 400°F",
+        "url": "https://www.costco.com/p/-/circulon-premier-professional-13-piece-hard-anodized-cookware-set-black/100529430",
+        "emoji": "🍳"
+      },
+      {
+        "name": "Henckels 3-piece Cutting Board Set",
+        "price": 24.99,
+        "notes": "Reversible, nonslip feet (Epicurean not available)",
+        "url": "https://www.costco.com/p/-/ja-henckels-international-3-piece-cutting-board-set/100468394",
+        "emoji": "🪓"
+      },
+      {
+        "name": "Henckels Forged X 14-piece Knife Block Set",
+        "price": 169.97,
+        "notes": "German stainless steel, fully forged",
+        "url": "https://www.costco.com/henckels-forged-x-14-piece-knife-block-set.product.4000361561.html",
+        "emoji": "🔪"
+      },
+      {
+        "name": "Anchor Hocking 16-piece Stackable Drinkware Set",
+        "price": 28.99,
+        "notes": "Lead & BPA free, dishwasher safe",
+        "url": "https://www.costco.com/anchor-hocking-16-piece-stackable-drinkware-set.product.4000348535.html",
+        "emoji": "🥛"
+      },
+      {
+        "name": "Luminarc 12-piece Stemless Wine Glass Set",
+        "price": 24.99,
+        "notes": "16.43oz, works for red and white wines",
+        "url": "https://www.costco.com/luminarc-12-piece-stemless-wine-glass-set.product.100507300.html",
+        "emoji": "🍷"
+      },
+      {
+        "name": "Mikasa Lucia 18/10 Stainless Steel 20-piece Flatware Set",
+        "price": 49.99,
+        "notes": "4.7 stars, 541 reviews",
+        "url": "https://www.costco.com/p/-/mikasa-lucia-1810-stainless-steel-20-piece-flatware-set/100238009",
+        "emoji": "🍴"
+      },
+      {
+        "name": "Bounty Advanced Paper Towels 12-count",
+        "price": 24.99,
+        "notes": "2-ply, 101 sheets/roll, 656 sq ft total",
+        "url": "https://www.costco.com/bounty-advanced-paper-towels-2-ply-101-sheets-12-count.product.4000137876.html",
+        "emoji": "🧻"
+      },
+      {
+        "name": "Kirkland Signature Flex-Tech 13-Gallon Trash Bags, 200-count",
+        "price": 19.99,
+        "notes": "White drawstring, 11,340+ reviews",
+        "url": "https://www.costco.com/p/-/kirkland-signature-flex-tech-13-gallon-kitchen-trash-bag-200-count/100342484",
+        "emoji": "🗑️"
+      },
+      {
+        "name": "Tide Pods HE Spring Meadow 156-count",
+        "price": 28.99,
+        "notes": "After $6 OFF, 156 total loads",
+        "url": "https://www.costco.com/p/-/tide-pods-he-laundry-detergent-pods-spring-meadow-156-count/4000159393",
+        "emoji": "🧺"
+      },
+      {
+        "name": "Bounce Dryer Sheets 320-count (2-pack)",
+        "price": 12.99,
+        "notes": "Outdoor Fresh, 4.8 stars",
+        "url": "https://www.costco.com/bounce-dryer-sheets,-outdoor-fresh,-160-count,-2-pack.product.100287213.html",
+        "emoji": "✨"
+      },
+      {
+        "name": "Clorox Disinfecting Wipes 5-pack (425 total)",
+        "price": 21.99,
+        "notes": "85-count x 5, kills 99.9% germs",
+        "url": "https://www.costco.com/p/-/clorox-disinfecting-wipes-variety-pack-85-count-5-pack/100534416",
+        "emoji": "🧽"
+      },
+      {
+        "name": "Duracell Coppertop AA Batteries 40-count",
+        "price": 17.99,
+        "notes": "After $2 OFF, 12-year storage guarantee",
+        "url": "https://www.costco.com/p/-/duracell-coppertop-alkaline-aa-batteries-40-count/100836545",
+        "emoji": "🔋"
+      }
+    ],
+    "subtotal": 605.86
+  }
+}
