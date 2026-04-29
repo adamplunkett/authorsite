@@ -3,410 +3,267 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'/>
-    <title>Adam Plunkett - Author of Love and Need: The Life of Robert Frost's Poetry</title>
-    <meta name="description" content="Love and Need: The Life of Robert Frost's Poetry - a book by Adam Plunkett"/>
-    <style>
-    /* Main styles */
-    body {
-        background-size: cover;
-        background-position: top center; /* Changed to top center to remove wood display at top */
-        background-attachment: fixed;
-        font-family: 'Playfair Display', Georgia, serif;
-        font-weight: 300;
-        margin: 0;
-        padding: 0;
-        color: #333;
-        line-height: 1.6;
-        background-color: #FFF6E9; /* Fallback color if image fails to load */
-    }
-
-    .site-container {
-        max-width: 1200px;
-        margin: 0 auto;
-        background-color: rgba(255, 246, 233, 0.95); /* Light apricot background with transparency */
-        min-height: 100vh; /* Ensure container covers full height */
-    }
-
-    .site-header {
-        padding: 48px 30px 30px;
-        text-align: center;
-        border-bottom: 0px solid transparent;
-    }
-
-    .site-title {
-        margin: 0;
-        font-size: 42px;
-        font-weight: 300;
-        font-family: 'Playfair Display', Georgia, serif;
-    }
-
-    .site-title a {
-        color: #333;
-        text-decoration: none;
-    }
-
-    .site-description {
-        margin: 5px 0 0;
-        font-style: italic;
-    }
-
-    .nav-primary {
-        margin-top: 20px;
-    }
-
-    .menu {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-
-    .menu-item {
-        margin: 0 15px;
-    }
-
-    .menu-item a {
-        text-decoration: none;
-        color: #333;
-        font-family: 'Playfair Display', Georgia, serif;
-        font-weight: 300;
-        text-transform: uppercase;
-        font-size: 14px;
-        letter-spacing: 1px;
-    }
-
-    .menu-item a:hover {
-        color: #555;
-    }
-
-    .announcement-banner {
-        text-align: center;
-        padding: 14px 30px;
-        margin: -10px auto 0;
-        max-width: 800px;
-        border-top: 1px solid #c8b8a4;
-        border-bottom: 1px solid #c8b8a4;
-        font-family: 'Playfair Display', Georgia, serif;
-        font-weight: 300;
-        font-style: italic;
-        font-size: 15.5px;
-        line-height: 1.5;
-        color: #555;
-    }
-
-    .announcement-banner a {
-        color: #555;
-        text-decoration: none;
-        transition: color 0.3s;
-    }
-
-    .announcement-banner a:hover {
-        color: #333;
-    }
-
-    .site-inner {
-        padding: 20px 40px 40px;
-        margin: 0 auto;
-        max-width: 1100px;
-    }
-
-    .content {
-        max-width: 900px;
-        margin: 0 auto;
-    }
-
-    .entry-title {
-        display: none;
-    }
-
-    h1, h2, h3, h4 {
-        font-family: 'Playfair Display', Georgia, serif;
-        font-weight: 300;
-        color: #000;
-    }
-
-    h1 {
-        margin-top: 80px;
-        font-size: 36px;
-        text-align: center;
-    }
-
-    h4 {
-        text-align: center;
-    }
-
-    .button {
-        background-color: #e26f3c !important;
-        color: #fff;
-        padding: 12px 24px;
-        text-decoration: none;
-        display: inline-block;
-        border: none;
-        border-radius: 4px;
-        font-family: 'Playfair Display', Georgia, serif;
-        font-weight: 300;
-        font-size: 16px;
-        transition: background-color 0.3s;
-    }
-
-    .button:hover {
-        background-color: #d85c25 !important;
-    }
-
-    .alignleft {
-        float: left;
-        margin-right: 20px;
-        margin-bottom: 20px;
-    }
-
-    .aligncenter {
-        display: block;
-        margin: 0 auto;
-    }
-
-    .one-fourth {
-        width: 25%;
-        float: left;
-        padding: 0 15px;
-        box-sizing: border-box;
-    }
-
-    .one-half {
-        width: 50%;
-        float: left;
-        padding: 0 15px;
-        box-sizing: border-box;
-    }
-
-    .first {
-        clear: both;
-    }
-
-    .clearfix {
-        clear: both;
-        display: block;
-    }
-
-    hr {
-        margin: 40px 0;
-        border: 0;
-        border-top: 1px solid #eee;
-    }
-
-    .site-footer {
-        color: #333;
-        padding: 20px;
-        text-align: center;
-        font-size: 14px;
-        font-weight: 300;
-        margin-top: 40px;
-    }
-
-    .smaller2 {
-        font-size: 16px !important;
-        line-height: 26px !important;
-    }
-
-    /* Added styles for book title and button */
-    .book-title {
-        font-family: 'Playfair Display', Georgia, serif;
-        text-align: center;
-        margin: 15px 0 5px 0;
-        line-height: 1.2;
-    }
-
-    .book-title-main {
-        font-size: 42px;
-        font-weight: 300;
-        color: #000;
-        display: block;
-        margin-bottom: 10px;
-    }
-
-    .book-title-sub {
-        font-size: 24px;
-        font-weight: 300;
-        color: #000;
-        display: block;
-    }
-
-    .book-button-container {
-        text-align: center;
-        margin: 25px 0 30px 0;
-    }
-
-    /* Responsive adjustments */
-    @media only screen and (max-width: 1000px) {
-        .one-fourth, .one-half {
-            width: 100%;
-            float: none;
-            margin: 20px 0;
-        }
-        
-        .alignleft {
-            float: none;
-            margin: 20px auto;
-            display: block;
-        }
-        
-        .book-title {
-            margin: 15px auto;
-            max-width: 100%;
-        }
-        
-        .book-button-container {
-            margin-bottom: 25px;
-        }
-    }
-
-    @media only screen and (max-width: 768px) {
-        .site-header {
-            padding: 25px 15px 15px; /* Reduced padding */
-        }
-        
-        .site-inner {
-            padding: 10px 20px; /* Reduced padding */
-        }
-        
-        .menu {
-            flex-direction: column;
-        }
-        
-        .menu-item {
-            margin: 5px 0;
-        }
-        
-        /* Fix gap between header and content on mobile */
-        h1 {
-            margin-top: 20px; /* Reduced from 80px */
-        }
-        
-        /* Adjust image positioning on mobile */
-        .alignleft {
-            margin-top: 10px;
-        }
-        
-        /* Ensure book title has proper spacing on mobile */
-        .book-title {
-            margin-top: 5px;
-        }
-
-        .announcement-banner {
-            font-size: 14px;
-            padding: 12px 20px;
-            margin: 0 15px;
-        }
-        
-        /* Improve image display on small screens */
-        .alignleft {
-            max-width: 100%;
-            height: auto;
-        }
-    }
-    </style>
-    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:300,300italic,400,400italic,700,700italic&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"/>
+    <title>Adam Plunkett — Love and Need: The Life of Robert Frost&rsquo;s Poetry</title>
+    <meta name="description" content="Love and Need: The Life of Robert Frost&rsquo;s Poetry — a book by Adam Plunkett."/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&display=swap">
+    <link rel="stylesheet" href="assets/css/site.css">
 </head>
 <body>
-    <div class="site-container">
-        <header class="site-header">
-            <div class="wrap">
-                <div class="title-area">
-                    <p class="site-title">
-                        <a href="#">Adam Plunkett</a>
-                    </p>
-                    <!-- Site description removed as requested -->
-                </div>
-                <nav class="nav-primary" aria-label="Main">
-                    <div class="wrap">
-                        <ul class="menu">
-                            <li class="menu-item">
-                                <a href="index.html">
-                                    <span>Love and Need</span>
-                                </a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="&c.html">
-                                    <span>&c.</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
-            </div>
+    <div id="content">
+        <header class="masthead shell">
+            <p class="brand"><a href="index.html">Adam Plunkett</a></p>
+            <nav aria-label="Main">
+                <ul class="nav">
+                    <li><a href="index.html" aria-current="page">Love and Need</a></li>
+                    <li><a href="&c.html">&amp;c.</a></li>
+                </ul>
+            </nav>
         </header>
-        <div class="announcement-banner">
-            <a href="https://libertiesjournal.com/articles/stopping-by-milton/" target="_blank" rel="noopener">In the spring 2026 issue of Liberties: &ldquo;Stopping by Milton,&rdquo; my essay on Frost, Eliot, and Milton&rsquo;s compound ghost</a>
-        </div>
-        <div class="site-inner">
-            <div class="content-sidebar-wrap">
-                <main class="content">
-                    <article class="entry">
-                        <header class="entry-header">
-                            <h1 class="entry-title">Home</h1>
-                        </header>
-                        <div class="entry-content">
-                            <p>
-                                <a href="#">
-                                    <img class="alignleft" src="images/loveandneed_cover.jpeg" alt="Love and Need: The Life of Robert Frost's Poetry by Adam Plunkett" width="400" height="600" style="border: none;"/>
-                                </a>
-                            </p>
-                            <!-- Added book title to match provided image -->
-                            <div class="book-title">
-                                <span class="book-title-main">Love and Need</span>
-                                <span class="book-title-sub">The Life of Robert Frost's Poetry</span>
-                            </div>
-                            <!-- Added button with link -->
-                            <div class="book-button-container">
-                                <a href="https://us.macmillan.com/books/9780374282080/loveandneed/" class="button" target="_blank">Available Now</a>
-                            </div>
-                            <!-- Orange header removed -->
-                            <!-- Order Now button removed as requested -->
-                            <!-- Beginning text removed as requested -->
-                            <p><a href="https://www.kirkusreviews.com/book-lists/best-biographies-2025/" target="_blank" rel="noopener"><em>Kirkus Reviews</em>' Best Books of 2025</a></p>
-                            <p><a href="https://www.newyorker.com/best-books-2025" target="_blank" rel="noopener"><em>The New Yorker</em>'s Best Books of 2025</a></p>
-                            <p>“The author of ‘After Apple-Picking’ is the subject of Adam Plunkett’s brilliant <em>Love and Need: The Life of Robert Frost’s Poetry</em> (FSG), which offers profound connections such as the one between Frost’s ‘tree branch laden with fruit’ and ‘the fruit-laden tree branches of the harvest in the seventh idyll of Theocritus.'” <br/>—<a href="https://www.the-tls.com/regular-features/arts-books-roundups/tls-books-of-the-year-2025" target="_blank" rel="noopener">Paul Muldoon, <em>The Times Literary Supplement</em>’s Books of the Year 2025</a></p>
-                            <p>"The critic Adam Plunkett expertly teases out the many meanings of Frost's poems... Blending biography and criticism, Plunkett shows how the circumstances of Frost's peripatetic life gave rise to some of his most successful poems. As in the best critical biographies, Plunkett does not merely track down real-world inspiration for a given work. Rather, he brings together Frost's personal life, literary sources, and publication history to enrich our understanding of the poems, then uses the poems to enhance our understanding of the life. The result is a thorough, elegant, and, at times, surprising study of Frost, who emerges as a remarkably complex poet and a compelling but complicated man." <br/>—<a href="https://www.newyorker.com/magazine/2025/03/03/love-and-need-the-life-of-robert-frosts-poetry-adam-plunkett-book-review" target="_blank">Maggie Doherty, <em>The New Yorker</em></a></p>
-                            <p>"In his excellent new biography, <em>Love and Need: The Life of Robert Frost's Poetry</em>, critic Adam Plunkett wrestles with how to fit [Frost's] mercurial work (no American poet shifts tones so suddenly or subtly as Frost) with [his] mercurial life…In Plunkett, Frost has found an ideal biographer, possessed of an ear for the tonal and moral uncertainties that constitute his subject's legacy." <br/>—<a href="https://www.washingtonpost.com/books/2025/02/18/robert-frost-love-need-biography-adam-plunkett-review/" target="_blank">Anthony Domestico, <em>The Washington Post</em></a></p>
-                            <p>"Plunkett's close readings of several of Frost's best poems brilliantly bring out the "hidden architecture" that underlies them all…Plunkett’s book, perhaps better than any other on Frost, illuminates the theological and spiritual core of Frost’s thought and art…<em>Love and Need</em> is the best introduction to Frost available, and a tonic even for those of us who already long ago chose to follow Frost into "those dark trees, / So old and firm they scarcely show the breeze."<br/>—<a href="https://thepointmag.com/criticism/the-way-to-a-poem/" target="_blank">Sam Gee, <em>The Point</em></a></p>                            
-                            <p>"A capacious exploration of Frost's complicated life and poetry…A superb biography that neatly weaves in nuanced and insightful readings of many poems." <br/>—<a href="https://www.kirkusreviews.com/book-reviews/adam-plunkett/love-and-need/" target="_blank"><em>Kirkus Reviews</em>, starred review</a></p>
-                            <p>"Though interest in poetry overall is dwindling and rather rapidly, Frost continues to draw readers and top-flight critics. Adam Plunkett's recently published <em>Love and Need: The Life of Robert Frost</em>, for example, is a deeply thoughtful blending of reflections on Frost's life and his work. It testifies eloquently to our culture's need to continue reading and brooding on the poems of this profound and often misunderstood man… Obvious allusion is not common in Frost, though his work is drenched in the English poetic tradition, as Plunkett demonstrates…"<br/>—<a href="https://libertiesjournal.com/articles/wwe-need-robert-frost/?cache_busting=695f1003580a1" target="_blank">Mark Edmundson, <em>Liberties</em></a></p>
-                            <p>"Just as Plunkett is the unique reader of Frost interested in both our studied and unstudied reactions to the poems, he is the unique biographer of Frost whose work is neither hagiography nor slander. His is a middle way of which, I think, Frost would approve."<br/>—<a href="https://www.theparisreview.org/blog/2025/03/17/is-robert-frost-even-a-good-poet/" target="_blank">Jessica Laser, <em>The Paris Review Daily</em> (Interview)</a></p>
-                            <p>"<em>Love and Need</em> proves an illuminating tour of Frost's life as well as his afterlife on the page, and these nuanced readings deepen our understanding of his still-powerful poems."<br/>—<a href="https://www.wsj.com/arts-culture/books/love-and-need-review-robert-frosts-dark-journey-30025930" target="_blank">Abigail Deutsch, <em>The Wall Street Journal</em></a></p>
-                            <p>"In his definitive critical-biographical study, <em>Love and Need: The Life of Robert Frost's Poetry</em>, Adam Plunkett asserts that the man and his work, Frost and his poetry, are one…Plunkett restores the wonder of Frost's initial mystery as poet and person, his beguiling talk-song reverie, his otherworldly spell-casting."<br/>—<a href="https://artsfuse.org/305211/book-review-love-and-need-the-life-of-robert-frosts-poetry-into-a-new-clearing/" target="_blank">James Provencher, <em>The Arts Fuse</em></a></p>
-                            <p>"Plunkett’s brilliant readings of Frost’s best-known poems offer refreshing, alternative interpretations... Plunkett's refined prose and his astute readings of Frost's poems in <em>Love and Need</em> offer a candid portrait of the poet's enduring creative genius." <br/>—<a href="https://www.bookpage.com/reviews/love-and-need-adam-plunkett-book-review/" target="_blank">Henry L. Carrigan Jr., <em>Bookpage</em></a></p>
-                            <p>"[<em>Love and Need</em>] offers something of a recuperation of the poet by reminding us that Frost's fierceness is also a source of the considerable power of his work…Plunkett excels at bringing the poems to life with contextual details and literary resonances." <br/>—<a href="https://www.washingtonexaminer.com/premium/3320057/separating-art-from-poet-review-love-and-need-the-life-of-robert-frosts-poetry-adam-plunkett/" target="_blank">Micah Mattix, <em>Washington Examiner</em></a></p>
-                            <p>"In Adam Plunkett's new biography, <em>Love and Need</em>, both Frost and his work receive a fresh re-examination. Plunkett's own prose is smooth and compelling, inviting readers into a writer and a life more surprising than we suspected." <br/>—<a href="https://www.bostonglobe.com/2025/02/13/arts/robin-bernstein-freeman-challenge-prison-system/" target="_blank">Kate Tuttle, <em>The Boston Globe</em></a></p>
-                            <p>"Adam Plunkett is an eloquent and meticulous writer, and his new biographical study of Robert Frost, <em>Love and Need</em>, is a welcome addition to a long list of excellent books on the poet…His work adds handsomely to our understanding of Frost, bringing us closer to the poems themselves."<br/>—<a href="https://theamericanscholar.org/chapters-and-verse/" target="_blank">Jay Parini, <em>The American Scholar</em></a></p>
-                            <p>"Literary critic Plunkett debuts with a nuanced examination of how a desire for privacy clashed with a need to be known in the poems and life of Robert Frost."<br/>—<a href="https://www.publishersweekly.com/9780374282080" target="_blank"><em>Publishers Weekly</em></a></p>
-                            <p>"[<em>Love and Need</em>] is powerful not only in its tellings of Frost's relationships, career and somewhat inaccessible inner life, but also in its analyses of Frost's poetry…An immensely challenging, worthwhile read."<br/>—<a href="https://lit.newcity.com/2025/02/20/robert-frosts-life-reclaimed-a-review-of-love-and-need-the-life-of-robert-frosts-poetry-by-adam-plunkett/" target="_blank">Natalia Nebel, <em>Newcity</em></a></p>
-                            <p>"Adam Plunkett's superb new biography of Robert Frost [is] written not only as a searching commentary on a poet's life and work, and the influence of other poets on him, but as a deeply engaging dialogue with other Frost biographers, and how their personalities interacted with the poet, alternately illuminating and distorting the understanding of the man and his work. As tempted as some reviewers might be to call Mr. Plunkett's biography "definitive" because of his exquisitely balanced, Richard Ellmann-like narrative, his work too will have an expiration date, as I'm sure [Hans] Renders would say, because biography by definition is in flux over time, constantly accumulating new evidence and interpretations..."<br/>—<a href="https://www.nysun.com/article/robert-frost-and-the-future-of-biography" target="_blank">Carl Rollyson, <em>The New York Sun</em></a></p>
-                            <p>"Plunkett’s lively narrative ... moves dexterously between the life, Frost’s relationships, the progression of the books, and Frost’s inspirational sources to limn Frost’s turbulent psyche and its interplay with the poems... He also reveals many of Frost’s rhetorical influences and borrowings from Shakespeare, Herrick, Wordsworth, Coleridge, Tennyson, Emerson and Browning."<a href="#footnote1">*</a><br/>—<a href="https://www.ronslate.com/book-notes-nonfiction-on-love-and-need-by-adam-plunkett-hypochondria-by-will-rees-the-only-face-by-herve-guibert/" target="_blank">Ron Slate, <em>On the Seawall</em></a></p>
-                            <p>"This book surprised me by making me see a more human, more complicated, and more likable Frost. While changing the reader’s perspective of the poet himself, this book takes the reader into a deeper look at the work that came out of his complex psychology... Plunkett shows us the changes in Frost’s political views, his conflicted relationship with Christianity and the Bible, his insight into the meaning of metaphor, and his lifelong attempts to balance loyalty and ideals, justice and mercy (he preferred justice and called himself an “Old Testament Christian”)."<br/>—<a href="https://www.christianitytoday.com/2025/12/russell-moore-favorite-books-2025/" target="_blank">Russell Moore's Favorite Books of 2025, <em>Christianity Today</em></a></p>
-                            <p>"I've been rereading Robert Frost lately. The immediate occasion is Adam Plunkett's superb new biography, <em>Love and Need: The Life of Robert Frost's Poetry</em>. But Frost is always worth returning to."<br/>—<a href="https://www.commonwealmagazine.org/inflooding-realm" target="_blank">Anthony Domestico (again!), <em>Commonweal</em></a></p>
-                            <p>"In <em>Love and Need</em>, Adam Plunkett gives us a fresh, expansive, and intimate account of Robert Frost's life and poetry. Blending literary criticism and life writing in innovative ways, Plunkett offers new perspectives on Frost as a poet, friend, husband, lover, and father, and interrogates the damaging myths perpetuated by Frost's past biographers. Erudite, meticulously researched, and beautifully written, <em>Love and Need</em> is a brilliant tribute to one of America's most beloved, complex, and misunderstood poets." <br/>—Heather Clark, author of <em>Red Comet: The Short Life and Blazing Art of Sylvia Plath</em></p>
-                            <p>"Adam Plunkett's book is an impressive fusion of biography and criticism, taking us through Frost's career from beginning to conclusion, always keeping closely in touch with the poems that matter most. Plunkett's own writing is notable for its poetic strength, for bold speculation along with a subtle humor worthy of its subject. Richly convincing, this is a major addition to our appreciation of Frost's achievement." <br/>—William Pritchard, author of <em>Frost: A Literary Life Reconsidered</em></p>
-                            <p>"This is a book I have needed for years, without knowing how much I did. <em>Love and Need</em>, precisely titled, tells the story of great art attained in the course of ordinary human foibles and affections, varieties of decency and rage, in a particular American life. Adam Plunkett's patient, high-grade attention to Robert Frost's life and work cleans away the encrusted stupidities of fame." <br/>—Robert Pinsky</p>
-                            <p>"This is an exemplary literary biography—concise, elegantly written, and appropriately focused on the life as a means for understanding the work. I wouldn't have thought I had much to discover about Robert Frost at this point, but Adam Plunkett's book has been a revelation to me." <br/>—Christian Wiman</p>
-                            <p>"My contribution to <a href="https://www.ctpublic.org/show/the-colin-mcenroe-show/2025-02-24/beyond-woods-and-roads-the-life-and-poetry-of-robert-frost">this radio show</a>, aired by Connecticut Public Radio, is relatively short, most of the conversation quite rightly being with Adam Plunkett, author of an excellent new critical biography of Frost. Among other things, it's a balanced corrective to the unrelievedly disparaging one by Lawrance Thompson."<br/>—<a href="https://sydneylea.substack.com/p/some-commentary-on-robert-frost" target="_blank">Sydney Lea, former Poet Laureate of Vermont</a></p>
-                            <p>"A critical biography of Robert Frost wouldn't rank among my reading priorities; the delight of Adam Plunkett's <em>Love and Need: The Life of Robert Frost's Poetry</em> rests on his consistently fresh interpretations and a prose style resistant to high art mummeries."<br/>—<a href="https://humanizingthevacuum.wordpress.com/2025/03/04/my-february-2025-reading/" target="_blank">Alfred Soto, <em>Humanizing the Vacuum</em></a></p>
-                            <p>"I like what Plunkett has done. Some of his work is, frankly, amazing... The book is precisely written, albeit as though in a dream state. Plunkett is a poet and it shows."<br/>—<a href="https://niklas.reviews/adam-plunkett-love-and-need" target="_blank">Niklas Pivic, <em>Niklas Reviews</em></a></p>
-                            <p>Very grateful to everyone quoted above for reading the book so generously.<br/>—Adam</p>
-                            <p id="footnote1">*: I'd also note, e.g., Milton, Catullus, Marvell, Keats, Shelley, Dickinson, Longfellow, Yeats, Eliot, Abraham Lincoln</p>
-                            <div class="clearfix"></div>
-                        </div>
-                    </article>
-                </main>
-            </div>
-        </div>
+
+        <aside class="announce shell">
+            In the spring 2026 issue of <em>Liberties</em>: <a href="https://libertiesjournal.com/articles/stopping-by-milton/" target="_blank" rel="noopener">&ldquo;Stopping by Milton,&rdquo; my essay on Frost, Eliot, and Milton&rsquo;s compound ghost</a>
+        </aside>
+
+        <main>
+            <header class="book-heading shell">
+                <h1>Love and Need</h1>
+                <p class="book-subtitle">The Life of Robert Frost&rsquo;s Poetry</p>
+            </header>
+
+            <section class="hero shell" aria-label="Book">
+                <a href="https://us.macmillan.com/books/9780374282080/loveandneed/" class="hero-cover" target="_blank" rel="noopener">
+                    <img src="images/loveandneed_cover.jpeg" alt="Cover of Love and Need: The Life of Robert Frost&rsquo;s Poetry by Adam Plunkett" width="720" height="1080">
+                </a>
+                <div class="hero-pitch">
+                    <figure class="featured-quote">
+                        <blockquote>
+                            Brilliant&hellip; offers profound connections
+                        </blockquote>
+                        <figcaption>
+                            &mdash;&thinsp;Paul Muldoon, <a href="https://www.the-tls.com/regular-features/arts-books-roundups/tls-books-of-the-year-2025" target="_blank" rel="noopener"><em>The Times Literary Supplement</em>, Books&nbsp;of&nbsp;the&nbsp;Year&nbsp;2025</a>
+                        </figcaption>
+                    </figure>
+                    <ul class="honor-list" aria-label="Year-end honors">
+                        <li>
+                            <a href="https://www.kirkusreviews.com/book-lists/best-biographies-2025/" target="_blank" rel="noopener">
+                                <span class="hh-pub">Kirkus Reviews</span><span class="hh-line">Best Biographies of 2025</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.newyorker.com/best-books-2025" target="_blank" rel="noopener">
+                                <span class="hh-pub">The New Yorker</span><span class="hh-line">Best Books of 2025</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://www.christianitytoday.com/2025/12/russell-moore-favorite-books-2025/" target="_blank" rel="noopener">
+                                <span class="hh-pub">Christianity Today</span><span class="hh-line">Russell Moore&rsquo;s Favorite Books of 2025</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+
+            <section class="reviews shell" aria-label="Press">
+                <ul class="review-list">
+                    <li class="review">
+                        <blockquote>
+                            The critic Adam Plunkett expertly teases out the many meanings of Frost&rsquo;s poems&hellip; Blending biography and criticism, Plunkett shows how the circumstances of Frost&rsquo;s peripatetic life gave rise to some of his most successful poems. As in the best critical biographies, Plunkett does not merely track down real-world inspiration for a given work. Rather, he brings together Frost&rsquo;s personal life, literary sources, and publication history to enrich our understanding of the poems, then uses the poems to enhance our understanding of the life. The result is a thorough, elegant, and, at times, surprising study of Frost, who emerges as a remarkably complex poet and a compelling but complicated man.
+                        </blockquote>
+                        <cite><a href="https://www.newyorker.com/magazine/2025/03/03/love-and-need-the-life-of-robert-frosts-poetry-adam-plunkett-book-review" target="_blank" rel="noopener">Maggie Doherty &middot; <em>The New Yorker</em></a></cite>
+                    </li>
+
+                    <li class="review">
+                        <blockquote>
+                            In his excellent new biography, <em>Love and Need: The Life of Robert Frost&rsquo;s Poetry</em>, critic Adam Plunkett wrestles with how to fit [Frost&rsquo;s] mercurial work (no American poet shifts tones so suddenly or subtly as Frost) with [his] mercurial life&hellip; In Plunkett, Frost has found an ideal biographer, possessed of an ear for the tonal and moral uncertainties that constitute his subject&rsquo;s legacy.
+                        </blockquote>
+                        <cite><a href="https://www.washingtonpost.com/books/2025/02/18/robert-frost-love-need-biography-adam-plunkett-review/" target="_blank" rel="noopener">Anthony Domestico &middot; <em>The Washington Post</em></a></cite>
+                    </li>
+
+                    <li class="review">
+                        <blockquote>
+                            <em>Love and Need</em> proves an illuminating tour of Frost&rsquo;s life as well as his afterlife on the page, and these nuanced readings deepen our understanding of his still-powerful poems.
+                        </blockquote>
+                        <cite><a href="https://www.wsj.com/arts-culture/books/love-and-need-review-robert-frosts-dark-journey-30025930" target="_blank" rel="noopener">Abigail Deutsch &middot; <em>The Wall Street Journal</em></a></cite>
+                    </li>
+
+                    <li class="review">
+                        <blockquote>
+                            A capacious exploration of Frost&rsquo;s complicated life and poetry&hellip; A superb biography that neatly weaves in nuanced and insightful readings of many poems.
+                        </blockquote>
+                        <cite><a href="https://www.kirkusreviews.com/book-reviews/adam-plunkett/love-and-need/" target="_blank" rel="noopener"><em>Kirkus Reviews</em> (Starred Review)</a></cite>
+                    </li>
+
+                    <li class="review">
+                        <blockquote>
+                            Plunkett&rsquo;s close readings of several of Frost&rsquo;s best poems brilliantly bring out the &ldquo;hidden architecture&rdquo; that underlies them all&hellip; Plunkett&rsquo;s book, perhaps better than any other on Frost, illuminates the theological and spiritual core of Frost&rsquo;s thought and art&hellip; <em>Love and Need</em> is the best introduction to Frost available, and a tonic even for those of us who already long ago chose to follow Frost into &ldquo;those dark trees, / So old and firm they scarcely show the breeze.&rdquo;
+                        </blockquote>
+                        <cite><a href="https://thepointmag.com/criticism/the-way-to-a-poem/" target="_blank" rel="noopener">Sam Gee &middot; <em>The Point</em></a></cite>
+                    </li>
+
+                    <li class="review">
+                        <blockquote>
+                            Though interest in poetry overall is dwindling and rather rapidly, Frost continues to draw readers and top-flight critics. Adam Plunkett&rsquo;s recently published <em>Love and Need: The Life of Robert Frost</em>, for example, is a deeply thoughtful blending of reflections on Frost&rsquo;s life and his work. It testifies eloquently to our culture&rsquo;s need to continue reading and brooding on the poems of this profound and often misunderstood man&hellip; Obvious allusion is not common in Frost, though his work is drenched in the English poetic tradition, as Plunkett demonstrates.
+                        </blockquote>
+                        <cite><a href="https://libertiesjournal.com/articles/wwe-need-robert-frost/?cache_busting=695f1003580a1" target="_blank" rel="noopener">Mark Edmundson &middot; <em>Liberties</em></a></cite>
+                    </li>
+
+                    <li class="review">
+                        <blockquote>
+                            I&rsquo;ve been rereading Robert Frost lately. The immediate occasion is Adam Plunkett&rsquo;s superb new biography, <em>Love and Need: The Life of Robert Frost&rsquo;s Poetry</em>. But Frost is always worth returning to.
+                        </blockquote>
+                        <cite><a href="https://www.commonwealmagazine.org/inflooding-realm" target="_blank" rel="noopener">Anthony Domestico (again!) &middot; <em>Commonweal</em></a></cite>
+                    </li>
+
+                    <li class="review">
+                        <blockquote>
+                            This book surprised me by making me see a more human, more complicated, and more likable Frost. While changing the reader&rsquo;s perspective of the poet himself, this book takes the reader into a deeper look at the work that came out of his complex psychology&hellip; Plunkett shows us the changes in Frost&rsquo;s political views, his conflicted relationship with Christianity and the Bible, his insight into the meaning of metaphor, and his lifelong attempts to balance loyalty and ideals, justice and mercy (he preferred justice and called himself an &ldquo;Old Testament Christian&rdquo;).
+                        </blockquote>
+                        <cite><a href="https://www.christianitytoday.com/2025/12/russell-moore-favorite-books-2025/" target="_blank" rel="noopener">Russell Moore &middot; <em>Christianity Today</em></a></cite>
+                    </li>
+
+                    <li class="review">
+                        <blockquote>
+                            Adam Plunkett&rsquo;s superb new biography of Robert Frost [is] written not only as a searching commentary on a poet&rsquo;s life and work, and the influence of other poets on him, but as a deeply engaging dialogue with other Frost biographers, and how their personalities interacted with the poet, alternately illuminating and distorting the understanding of the man and his work. As tempted as some reviewers might be to call Mr. Plunkett&rsquo;s biography &ldquo;definitive&rdquo; because of his exquisitely balanced, Richard Ellmann-like narrative, his work too will have an expiration date, as I&rsquo;m sure [Hans] Renders would say, because biography by definition is in flux over time, constantly accumulating new evidence and interpretations.
+                        </blockquote>
+                        <cite><a href="https://www.nysun.com/article/robert-frost-and-the-future-of-biography" target="_blank" rel="noopener">Carl Rollyson &middot; <em>The New York Sun</em></a></cite>
+                    </li>
+
+                    <li class="review">
+                        <blockquote>
+                            Adam Plunkett is an eloquent and meticulous writer, and his new biographical study of Robert Frost, <em>Love and Need</em>, is a welcome addition to a long list of excellent books on the poet&hellip; His work adds handsomely to our understanding of Frost, bringing us closer to the poems themselves.
+                        </blockquote>
+                        <cite><a href="https://theamericanscholar.org/chapters-and-verse/" target="_blank" rel="noopener">Jay Parini &middot; <em>The American Scholar</em></a></cite>
+                    </li>
+
+                    <li class="review">
+                        <blockquote>
+                            Just as Plunkett is the unique reader of Frost interested in both our studied and unstudied reactions to the poems, he is the unique biographer of Frost whose work is neither hagiography nor slander. His is a middle way of which, I think, Frost would approve.
+                        </blockquote>
+                        <cite><a href="https://www.theparisreview.org/blog/2025/03/17/is-robert-frost-even-a-good-poet/" target="_blank" rel="noopener">Jessica Laser &middot; <em>The Paris Review Daily</em> &middot; Interview</a></cite>
+                    </li>
+
+                    <li class="review">
+                        <blockquote>
+                            Plunkett&rsquo;s brilliant readings of Frost&rsquo;s best-known poems offer refreshing, alternative interpretations&hellip; Plunkett&rsquo;s refined prose and his astute readings of Frost&rsquo;s poems in <em>Love and Need</em> offer a candid portrait of the poet&rsquo;s enduring creative genius.
+                        </blockquote>
+                        <cite><a href="https://www.bookpage.com/reviews/love-and-need-adam-plunkett-book-review/" target="_blank" rel="noopener">Henry L. Carrigan Jr. &middot; <em>BookPage</em></a></cite>
+                    </li>
+
+                    <li class="review">
+                        <blockquote>
+                            In his definitive critical-biographical study, <em>Love and Need: The Life of Robert Frost&rsquo;s Poetry</em>, Adam Plunkett asserts that the man and his work, Frost and his poetry, are one&hellip; Plunkett restores the wonder of Frost&rsquo;s initial mystery as poet and person, his beguiling talk-song reverie, his otherworldly spell-casting.
+                        </blockquote>
+                        <cite><a href="https://artsfuse.org/305211/book-review-love-and-need-the-life-of-robert-frosts-poetry-into-a-new-clearing/" target="_blank" rel="noopener">James Provencher &middot; <em>The Arts Fuse</em></a></cite>
+                    </li>
+
+                    <li class="review">
+                        <blockquote>
+                            [<em>Love and Need</em>] offers something of a recuperation of the poet by reminding us that Frost&rsquo;s fierceness is also a source of the considerable power of his work&hellip; Plunkett excels at bringing the poems to life with contextual details and literary resonances.
+                        </blockquote>
+                        <cite><a href="https://www.washingtonexaminer.com/premium/3320057/separating-art-from-poet-review-love-and-need-the-life-of-robert-frosts-poetry-adam-plunkett/" target="_blank" rel="noopener">Micah Mattix &middot; <em>Washington Examiner</em></a></cite>
+                    </li>
+
+                    <li class="review">
+                        <blockquote>
+                            In Adam Plunkett&rsquo;s new biography, <em>Love and Need</em>, both Frost and his work receive a fresh re-examination. Plunkett&rsquo;s own prose is smooth and compelling, inviting readers into a writer and a life more surprising than we suspected.
+                        </blockquote>
+                        <cite><a href="https://www.bostonglobe.com/2025/02/13/arts/robin-bernstein-freeman-challenge-prison-system/" target="_blank" rel="noopener">Kate Tuttle &middot; <em>The Boston Globe</em></a></cite>
+                    </li>
+
+                    <li class="review">
+                        <blockquote>
+                            Literary critic Plunkett debuts with a nuanced examination of how a desire for privacy clashed with a need to be known in the poems and life of Robert Frost.
+                        </blockquote>
+                        <cite><a href="https://www.publishersweekly.com/9780374282080" target="_blank" rel="noopener"><em>Publishers Weekly</em></a></cite>
+                    </li>
+
+                    <li class="review">
+                        <blockquote>
+                            [<em>Love and Need</em>] is powerful not only in its tellings of Frost&rsquo;s relationships, career and somewhat inaccessible inner life, but also in its analyses of Frost&rsquo;s poetry&hellip; An immensely challenging, worthwhile read.
+                        </blockquote>
+                        <cite><a href="https://lit.newcity.com/2025/02/20/robert-frosts-life-reclaimed-a-review-of-love-and-need-the-life-of-robert-frosts-poetry-by-adam-plunkett/" target="_blank" rel="noopener">Natalia Nebel &middot; <em>Newcity</em></a></cite>
+                    </li>
+
+                    <li class="review">
+                        <blockquote>
+                            Plunkett&rsquo;s lively narrative &hellip; moves dexterously between the life, Frost&rsquo;s relationships, the progression of the books, and Frost&rsquo;s inspirational sources to limn Frost&rsquo;s turbulent psyche and its interplay with the poems&hellip; He also reveals many of Frost&rsquo;s rhetorical influences and borrowings from Shakespeare, Herrick, Wordsworth, Coleridge, Tennyson, Emerson and Browning.<a href="#footnote1">*</a>
+                        </blockquote>
+                        <cite><a href="https://www.ronslate.com/book-notes-nonfiction-on-love-and-need-by-adam-plunkett-hypochondria-by-will-rees-the-only-face-by-herve-guibert/" target="_blank" rel="noopener">Ron Slate &middot; <em>On the Seawall</em></a></cite>
+                    </li>
+
+                    <li class="review">
+                        <blockquote>
+                            A critical biography of Robert Frost wouldn&rsquo;t rank among my reading priorities; the delight of Adam Plunkett&rsquo;s <em>Love and Need: The Life of Robert Frost&rsquo;s Poetry</em> rests on his consistently fresh interpretations and a prose style resistant to high art mummeries.
+                        </blockquote>
+                        <cite><a href="https://humanizingthevacuum.wordpress.com/2025/03/04/my-february-2025-reading/" target="_blank" rel="noopener">Alfred Soto &middot; <em>Humanizing the Vacuum</em></a></cite>
+                    </li>
+
+                    <li class="review">
+                        <blockquote>
+                            I like what Plunkett has done. Some of his work is, frankly, amazing&hellip; The book is precisely written, albeit as though in a dream state. Plunkett is a poet and it shows.
+                        </blockquote>
+                        <cite><a href="https://niklas.reviews/adam-plunkett-love-and-need" target="_blank" rel="noopener">Niklas Pivic &middot; <em>Niklas Reviews</em></a></cite>
+                    </li>
+                </ul>
+            </section>
+
+            <section class="praise shell" aria-label="Praise">
+                <ul class="praise-list">
+                    <li class="review">
+                        <blockquote>
+                            This is a book I have needed for years, without knowing how much I did. <em>Love and Need</em>, precisely titled, tells the story of great art attained in the course of ordinary human foibles and affections, varieties of decency and rage, in a particular American life. Adam Plunkett&rsquo;s patient, high-grade attention to Robert Frost&rsquo;s life and work cleans away the encrusted stupidities of fame.
+                        </blockquote>
+                        <cite>Robert Pinsky</cite>
+                    </li>
+
+                    <li class="review">
+                        <blockquote>
+                            This is an exemplary literary biography&mdash;concise, elegantly written, and appropriately focused on the life as a means for understanding the work. I wouldn&rsquo;t have thought I had much to discover about Robert Frost at this point, but Adam Plunkett&rsquo;s book has been a revelation to me.
+                        </blockquote>
+                        <cite>Christian Wiman</cite>
+                    </li>
+
+                    <li class="review">
+                        <blockquote>
+                            In <em>Love and Need</em>, Adam Plunkett gives us a fresh, expansive, and intimate account of Robert Frost&rsquo;s life and poetry. Blending literary criticism and life writing in innovative ways, Plunkett offers new perspectives on Frost as a poet, friend, husband, lover, and father, and interrogates the damaging myths perpetuated by Frost&rsquo;s past biographers. Erudite, meticulously researched, and beautifully written, <em>Love and Need</em> is a brilliant tribute to one of America&rsquo;s most beloved, complex, and misunderstood poets.
+                        </blockquote>
+                        <cite>Heather Clark &middot; <em>author of Red Comet</em></cite>
+                    </li>
+
+                    <li class="review">
+                        <blockquote>
+                            Adam Plunkett&rsquo;s book is an impressive fusion of biography and criticism, taking us through Frost&rsquo;s career from beginning to conclusion, always keeping closely in touch with the poems that matter most. Plunkett&rsquo;s own writing is notable for its poetic strength, for bold speculation along with a subtle humor worthy of its subject. Richly convincing, this is a major addition to our appreciation of Frost&rsquo;s achievement.
+                        </blockquote>
+                        <cite>William Pritchard &middot; <em>author of Frost: A Literary Life Reconsidered</em></cite>
+                    </li>
+
+                    <li class="review">
+                        <blockquote>
+                            My contribution to this radio show, aired by Connecticut Public Radio, is relatively short, most of the conversation quite rightly being with Adam Plunkett, author of an excellent new critical biography of Frost. Among other things, it&rsquo;s a balanced corrective to the unrelievedly disparaging one by Lawrance Thompson.
+                        </blockquote>
+                        <cite><a href="https://sydneylea.substack.com/p/some-commentary-on-robert-frost" target="_blank" rel="noopener">Sydney Lea &middot; <em>former Poet Laureate of Vermont</em></a></cite>
+                    </li>
+                </ul>
+            </section>
+
+            <section class="closing shell">
+                <p>Very grateful to everyone quoted above for reading the book so generously.</p>
+                <p>&mdash;Adam</p>
+            </section>
+
+            <p id="footnote1" class="footnote shell">
+                * I&rsquo;d also note, e.g., Milton, Catullus, Marvell, Keats, Shelley, Dickinson, Longfellow, Yeats, Eliot, Abraham Lincoln.
+            </p>
+        </main>
+
         <footer class="site-footer">
-            <div class="wrap">
-                <p>Copyright &copy; 2026 Adam Plunkett</p>
-            </div>
+            <p>&copy; 2026 Adam Plunkett</p>
         </footer>
     </div>
+
 </body>
 </html>

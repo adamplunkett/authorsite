@@ -3,386 +3,110 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <meta name='robots' content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'/>
-    <title>Adam Plunkett - &c.</title>
-    <meta name="description" content="Interviews and more - Adam Plunkett"/>
-    <style>
-    /* Main styles */
-    body {
-        background-size: cover;
-        background-position: top center; /* Changed to top center to remove wood display at top */
-        background-attachment: fixed;
-        font-family: 'Playfair Display', Georgia, serif;
-        font-weight: 300;
-        margin: 0;
-        padding: 0;
-        color: #333;
-        line-height: 1.6;
-        background-color: #FFF6E9; /* Fallback color if image fails to load */
-    }
-    
-    .site-container {
-        max-width: 1200px;
-        margin: 0 auto;
-        background-color: rgba(255, 246, 233, 0.95); /* Light apricot background with transparency */
-        min-height: 100vh; /* Ensure container covers full height */
-    }
-    
-    .site-header {
-        padding: 48px 30px 30px;
-        text-align: center;
-        border-bottom: 0px solid transparent;
-    }
-    
-    .site-title {
-        margin: 0;
-        font-size: 42px;
-        font-weight: 300;
-        font-family: 'Playfair Display', Georgia, serif;
-    }
-    
-    .site-title a {
-        color: #333;
-        text-decoration: none;
-    }
-    
-    .site-description {
-        margin: 5px 0 0;
-        font-style: italic;
-    }
-    
-    .nav-primary {
-        margin-top: 20px;
-    }
-    
-    .menu {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-    }
-    
-    .menu-item {
-        margin: 0 15px;
-    }
-    
-    .menu-item a {
-        text-decoration: none;
-        color: #333;
-        font-family: 'Playfair Display', Georgia, serif;
-        font-weight: 300;
-        text-transform: uppercase;
-        font-size: 14px;
-        letter-spacing: 1px;
-    }
-    
-    .menu-item a:hover {
-        color: #555;
-    }
-    
-    .site-inner {
-        padding: 20px 40px 40px;
-        margin: 0 auto;
-        max-width: 1100px;
-    }
-    
-    .content {
-        max-width: 900px;
-        margin: 0 auto;
-    }
-    
-    .entry-title {
-        display: none;
-    }
-    
-    h1, h2, h3, h4 {
-        font-family: 'Playfair Display', Georgia, serif;
-        font-weight: 300;
-        color: #000;
-    }
-    
-    h1 {
-        margin-top: 80px;
-        font-size: 36px;
-        text-align: center;
-    }
-    
-    h4 {
-        text-align: center;
-    }
-    
-    .button {
-        background-color: #e26f3c !important; /* Bright orange from book cover */
-        color: #fff;
-        padding: 12px 24px;
-        text-decoration: none;
-        display: inline-block;
-        border: none;
-        border-radius: 4px;
-        font-family: 'Playfair Display', Georgia, serif;
-        font-weight: 300;
-        font-size: 16px;
-        transition: background-color 0.3s;
-    }
-    
-    .button:hover {
-        background-color: #d85c25 !important;
-    }
-    
-    .alignleft {
-        float: left;
-        margin-right: 20px;
-        margin-bottom: 20px;
-    }
-    
-    .aligncenter {
-        display: block;
-        margin: 0 auto;
-    }
-    
-    .one-fourth {
-        width: 25%;
-        float: left;
-        padding: 0 15px;
-        box-sizing: border-box;
-    }
-    
-    .one-half {
-        width: 50%;
-        float: left;
-        padding: 0 15px;
-        box-sizing: border-box;
-    }
-    
-    .first {
-        clear: both;
-    }
-    
-    .clearfix {
-        clear: both;
-        display: block;
-    }
-    
-    hr {
-        margin: 40px 0;
-        border: 0;
-        border-top: 1px solid #eee;
-    }
-    
-    .site-footer {
-        color: #333;
-        padding: 20px;
-        text-align: center;
-        font-size: 14px;
-        font-weight: 300;
-        margin-top: 40px;
-    }
-    
-    .smaller2 {
-        font-size: 16px !important;
-        line-height: 26px !important;
-    }
-    
-    .book-title {
-        font-family: 'Playfair Display', Georgia, serif;
-        text-align: center;
-        margin: 15px 0 5px 0;
-        line-height: 1.2;
-    }
-    
-    .book-title-main {
-        font-size: 42px;
-        font-weight: 300;
-        color: #000;
-        display: block;
-        margin-bottom: 10px;
-    }
-    
-    .book-title-sub {
-        font-size: 24px;
-        font-weight: 300;
-        color: #000;
-        display: block;
-    }
-    
-    .book-button-container {
-        text-align: center;
-        margin: 25px 0 30px 0;
-    }
-    
-    .author-bio {
-        margin-top: 30px;
-    }
-    
-    .interview-item {
-        margin-bottom: 20px;
-    }
-    
-    /* Responsive adjustments */
-    @media only screen and (max-width: 1000px) {
-        .one-fourth, .one-half {
-            width: 100%;
-            float: none;
-            margin: 20px 0;
-        }
-        
-        .alignleft {
-            float: none;
-            margin: 20px auto;
-            display: block;
-        }
-        
-        .book-title {
-            margin: 15px auto;
-            max-width: 100%;
-        }
-        
-        .book-button-container {
-            margin-bottom: 25px;
-        }
-    }
-    
-    @media only screen and (max-width: 768px) {
-        /* Make background solid on mobile for &c. page only */
-        .site-container {
-            background-color: #FFF6E9; /* Solid background for mobile */
-        }
-        
-        body {
-            background-image: none; /* Remove background image on mobile */
-        }
-        
-        .site-header {
-            padding: 25px 15px 15px; /* Reduced padding */
-        }
-        
-        .site-inner {
-            padding: 10px 20px; /* Reduced padding */
-        }
-        
-        .menu {
-            flex-direction: column;
-        }
-        
-        .menu-item {
-            margin: 5px 0;
-        }
-        
-        /* Fix gap between header and content on mobile */
-        h1 {
-            margin-top: 20px; /* Reduced from 80px */
-        }
-        
-        /* Adjust image positioning on mobile */
-        .alignleft {
-            margin-top: 10px;
-        }
-        
-        /* Ensure book title has proper spacing on mobile */
-        .book-title {
-            margin-top: 5px;
-        }
-        
-        /* Improve image display on small screens */
-        .alignleft {
-            max-width: 100%;
-            height: auto;
-        }
-    }
-    </style>
-    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:300,300italic,400,400italic,700,700italic&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"/>
+    <title>Adam Plunkett &mdash; &amp;c.</title>
+    <meta name="description" content="Adam Plunkett &mdash; biographical note, interviews, and excerpts."/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&display=swap">
+    <link rel="stylesheet" href="assets/css/site.css">
 </head>
 <body>
-    <div class="site-container">
-        <header class="site-header">
-            <div class="wrap">
-                <div class="title-area">
-                    <p class="site-title">
-                        <a href="#">Adam Plunkett</a>
-                    </p>
-                </div>
-                <nav class="nav-primary" aria-label="Main">
-                    <div class="wrap">
-                        <ul class="menu">
-                            <li class="menu-item">
-                                <a href="index.html">
-                                    <span>Love and Need</span>
-                                </a>
-                            </li>
-                            <li class="menu-item">
-                                <a href="&c.html">
-                                    <span>&c.</span>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
-            </div>
+    <div id="content">
+        <header class="masthead shell">
+            <p class="brand"><a href="index.html">Adam Plunkett</a></p>
+            <nav aria-label="Main">
+                <ul class="nav">
+                    <li><a href="index.html">Love and Need</a></li>
+                    <li><a href="&c.html" aria-current="page">&amp;c.</a></li>
+                </ul>
+            </nav>
         </header>
-        <div class="site-inner">
-            <div class="content-sidebar-wrap">
-                <main class="content">
-                    <article class="entry">
-                        <header class="entry-header">
-                            <h1 class="entry-title">&c.</h1>
-                        </header>
-                        <div class="entry-content">
-                            <p>
-                                <img class="alignleft" src="images/author photo.png" alt="Adam Plunkett" width="400" style="border: none;"/>
-                            </p>
-                            
-                            <div class="author-bio" style="margin-top: 0;">
-                                <p><em><a href="https://us.macmillan.com/books/9780374282080/loveandneed/" target="_blank">Love and Need</a></em> is my first book, out as of Feb. 18, 2025. I am working on a somewhat similar book about Emily Dickinson, also under contract with FSG.</p>
-                                <p>My email address is my name at gmail.</p>
-                                <p>Audio/Video:</p>
-</div>
-                            
-<div class="interviews">
-    <div class="interview-item">
-        <p><a href="https://biographersinternational.org/news/podcast/podcast-218-adam-plunkett/">Podcast #218 – Adam Plunkett (interview with Heather Clark)</a>–Biographers International Organization</p>
-    </div>
-    <div class="interview-item">
-        <p><a href="https://www.youtube.com/watch?v=DJNotyz8zUw">"Love and Need" — Adam Plunkett w/ Seth Gannon @ Powell's 3/21/25</a></p>
-    </div>
-    <div class="interview-item">
-        <p><a href="https://www.youtube.com/watch?v=hfUxv3VQrXU" target="_blank">Adam Plunkett on Robert Frost, with Heather Clark, Feb 20, The Graduate Center, CUNY</a>—Leon Levy Center for Biography</p>
-    </div>
-    <div class="interview-item">
-        <p><a href="https://www.ctpublic.org/show/the-colin-mcenroe-show/2025-02-24/beyond-woods-and-roads-the-life-and-poetry-of-robert-frost" target="_blank">Beyond woods and roads: The life and poetry of Robert Frost</a>—The Colin McEnroe Show</p>
-    </div>                        
-    <div class="interview-item">
-        <p><a href="https://www.wamc.org/podcast/the-roundtable/2025-02-19/adam-plunkett-constructs-an-original-portrait-of-robert" target="_blank">Adam Plunkett constructs an original portrait of Robert Frost in "Love and Need: The Life of Robert Frost's Poetry"</a>—WAMC: The Roundtable</p>
-    </div>
-    <div class="interview-item">
-        <p><a href="https://www.siriusxm.com/player/episode-linear/entity/78afaff1-bace-477d-ca87-90e5284dec2b?utm_medium=shared">Literary critic Adam Plunkett dives deep into the legacy of the poet Robert Frost</a>—Elevation with John Kelly, SiriusXM</p>
-    </div>
-</div>
 
-                            <p>Excerpts:</p>
+        <main>
+            <section class="author-section shell">
+                <div class="author-photo">
+                    <img src="images/author photo.png" alt="Portrait of Adam Plunkett" width="720" height="900">
+                </div>
+                <div class="author-bio">
+                    <p>
+                        <em><a href="https://us.macmillan.com/books/9780374282080/loveandneed/" target="_blank" rel="noopener">Love and Need</a></em> is my first book, out as of February 18, 2025. I am working on a somewhat similar book about Emily Dickinson, also under contract with FSG.
+                    </p>
+                    <p>My email address is my name at gmail.</p>
+                </div>
+            </section>
 
-<div class="interview-item">
-    <p><a href="https://poets.org/text/love-and-need-life-robert-frosts-poetry-adam-plunkett" target="_blank">On "Stopping by Woods on a Snowy Evening"</a> — <i>Academy of American Poets</i></p>
-</div>
+            <section class="link-section shell" aria-label="Audio and video">
+                <h2 class="section-heading">Audio &amp; Video</h2>
+                <ul class="link-list">
+                    <li>
+                        <a href="https://www.brattleborotv.org/brattleboro-literary-festival/regarding-frost-adam-plunkett/" target="_blank" rel="noopener">
+                            <span class="link-title">On Frost, Eliot, and <em>Paradise Lost</em></span>
+                            <span class="link-source">Brattleboro Literary Festival</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://biographersinternational.org/news/podcast/podcast-218-adam-plunkett/" target="_blank" rel="noopener">
+                            <span class="link-title">Podcast #218 &mdash; Adam Plunkett (interview with Heather Clark)</span>
+                            <span class="link-source">Biographers International Organization</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/watch?v=DJNotyz8zUw" target="_blank" rel="noopener">
+                            <span class="link-title">&ldquo;Love and Need&rdquo; &mdash; Adam Plunkett with Seth Gannon at Powell&rsquo;s, March 21, 2025</span>
+                            <span class="link-source">Powell&rsquo;s Books</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/watch?v=hfUxv3VQrXU" target="_blank" rel="noopener">
+                            <span class="link-title">Adam Plunkett on Robert Frost, with Heather Clark, February 20, 2025</span>
+                            <span class="link-source">Leon Levy Center for Biography &middot; The Graduate Center, CUNY</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.ctpublic.org/show/the-colin-mcenroe-show/2025-02-24/beyond-woods-and-roads-the-life-and-poetry-of-robert-frost" target="_blank" rel="noopener">
+                            <span class="link-title">Beyond Woods and Roads: The Life and Poetry of Robert Frost</span>
+                            <span class="link-source">The Colin McEnroe Show</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.wamc.org/podcast/the-roundtable/2025-02-19/adam-plunkett-constructs-an-original-portrait-of-robert" target="_blank" rel="noopener">
+                            <span class="link-title">Adam Plunkett constructs an original portrait of Robert Frost in <em>Love and Need: The Life of Robert Frost&rsquo;s Poetry</em></span>
+                            <span class="link-source">WAMC &middot; The Roundtable</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.siriusxm.com/player/episode-linear/entity/78afaff1-bace-477d-ca87-90e5284dec2b?utm_medium=shared" target="_blank" rel="noopener">
+                            <span class="link-title">Literary critic Adam Plunkett dives deep into the legacy of the poet Robert Frost</span>
+                            <span class="link-source">Elevation with John Kelly &middot; SiriusXM</span>
+                        </a>
+                    </li>
+                </ul>
+            </section>
 
-<div class="interview-item">
-    <p><a href="https://lithub.com/what-robert-frosts-philosophy-of-the-human-spirit-says-about-his-artistic-ethos/" target="_blank">What Robert Frost's Philosophy of the Human Spirit Says About His Artistic Ethos</a> — <i>Lit Hub</i></p>
-</div>
+            <section class="link-section shell" aria-label="Excerpts">
+                <h2 class="section-heading">Excerpts</h2>
+                <ul class="link-list">
+                    <li>
+                        <a href="https://poets.org/text/love-and-need-life-robert-frosts-poetry-adam-plunkett" target="_blank" rel="noopener">
+                            <span class="link-title">On &ldquo;Stopping by Woods on a Snowy Evening&rdquo;</span>
+                            <span class="link-source">Academy of American Poets</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://lithub.com/what-robert-frosts-philosophy-of-the-human-spirit-says-about-his-artistic-ethos/" target="_blank" rel="noopener">
+                            <span class="link-title">What Robert Frost&rsquo;s Philosophy of the Human Spirit Says About His Artistic Ethos</span>
+                            <span class="link-source">Lit Hub</span>
+                        </a>
+                    </li>
+                </ul>
+            </section>
+        </main>
 
-
-                            <div class="clearfix"></div>
-                        </div>
-                    </article>
-                </main>
-            </div>
-        </div>
         <footer class="site-footer">
-            <div class="wrap">
-                <p>Copyright &copy; 2025 Adam Plunkett</p>
-            </div>
+            <p>&copy; 2026 Adam Plunkett</p>
         </footer>
     </div>
+
 </body>
 </html>

@@ -1,0 +1,652 @@
+/* ============================================================
+   Adam Plunkett — author site, redesign v2
+   ============================================================ */
+
+:root {
+    /* Color — warm cream, ink, restrained accent picked off the cover */
+    --ink: #1c1a14;
+    --ink-strong: #0e0d09;
+    --ink-muted: #6b6555;
+    --ink-faint: #a59d8a;
+    --paper: #f7f1e5;
+    --paper-deep: #efe7d4;
+    --rule: #d4c5a8;
+    --rule-soft: #e6dcc4;
+    --accent: #8b3a1f;
+    --accent-hover: #6e2d17;
+
+    /* Typography */
+    --serif: 'Newsreader', 'Source Serif 4', 'Iowan Old Style', Georgia, serif;
+    --sans: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+
+    /* Type scale */
+    --t-xs: 0.78rem;
+    --t-sm: 0.92rem;
+    --t-base: 1.0625rem;
+    --t-md: 1.1875rem;
+    --t-lg: 1.4rem;
+    --t-xl: 1.75rem;
+    --t-2xl: 2.25rem;
+    --t-hero: clamp(3rem, 8vw, 5.25rem);
+    --t-pull: clamp(1.5rem, 3.2vw, 2.05rem);
+
+    /* Space scale */
+    --s-1: 0.25rem;
+    --s-2: 0.5rem;
+    --s-3: 0.75rem;
+    --s-4: 1rem;
+    --s-5: 1.5rem;
+    --s-6: 2rem;
+    --s-7: 3rem;
+    --s-8: 4rem;
+    --s-9: 6rem;
+    --s-10: 8rem;
+
+    /* Layout — one spine, one column */
+    --measure: 62ch;
+    --page: 56rem;
+}
+
+/* ---------- Reset (modern, lightweight) ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; }
+html { -webkit-text-size-adjust: 100%; text-rendering: optimizeLegibility; }
+body { line-height: 1.6; -webkit-font-smoothing: antialiased; }
+img, picture { display: block; max-width: 100%; height: auto; }
+input, button, textarea, select { font: inherit; }
+h1, h2, h3, h4 { line-height: 1.15; text-wrap: balance; font-weight: 400; }
+p { text-wrap: pretty; }
+a { color: inherit; }
+ul { padding: 0; }
+
+/* ---------- Base ---------- */
+body {
+    font-family: var(--serif);
+    font-size: var(--t-base);
+    font-weight: 400;
+    font-optical-sizing: auto;
+    color: var(--ink);
+    background: var(--paper);
+}
+
+::selection { background: var(--accent); color: var(--paper); }
+
+/* ---------- Page spine (single shared column) ---------- */
+.shell {
+    max-width: var(--page);
+    margin-inline: auto;
+    padding-inline: clamp(1.5rem, 5vw, 3rem);
+}
+
+/* ---------- Masthead — one row, wordmark left, nav right ---------- */
+.masthead {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: var(--s-5);
+    padding-block: var(--s-5) var(--s-3);
+    flex-wrap: wrap;
+}
+.brand {
+    font-family: var(--serif);
+    font-size: var(--t-xl);
+    font-weight: 400;
+    letter-spacing: -0.005em;
+    font-variation-settings: "opsz" 32;
+    margin: 0;
+}
+.brand a {
+    color: var(--ink-strong);
+    text-decoration: none;
+}
+.nav {
+    display: flex;
+    gap: clamp(1.25rem, 3vw, 2rem);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.nav a {
+    font-family: var(--sans);
+    font-size: var(--t-xs);
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--ink);
+    padding-block-end: 3px;
+    border-block-end: 1px solid transparent;
+    transition: border-color 0.2s ease, color 0.2s ease;
+}
+.nav a:hover { border-block-end-color: var(--ink-strong); }
+.nav a[aria-current="page"] {
+    border-block-end-color: var(--ink-strong);
+    color: var(--ink-strong);
+}
+
+/* ---------- Announcement banner (between masthead and hero) ---------- */
+.announce {
+    text-align: left;
+    font-style: italic;
+    font-size: var(--t-base);
+    color: var(--ink-muted);
+    padding-block: var(--s-4);
+    border-block-start: 1px solid var(--rule-soft);
+    border-block-end: 1px solid var(--rule-soft);
+}
+.announce a {
+    color: inherit;
+    text-decoration: none;
+    border-block-end: 1px solid var(--rule-soft);
+    padding-block-end: 1px;
+    transition: color 0.2s, border-color 0.2s;
+}
+.announce a:hover { color: var(--accent); border-block-end-color: var(--accent); }
+
+/* ---------- Book heading (centered, between banner and hero) ---------- */
+.book-heading {
+    text-align: center;
+    padding-block: var(--s-7) 0;
+}
+.book-heading h1 {
+    font-family: var(--serif);
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin: 0;
+    color: var(--ink-strong);
+    font-variation-settings: "opsz" 60;
+}
+.book-subtitle {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(1.2rem, 2vw, 1.5rem);
+    font-weight: 400;
+    color: var(--ink-muted);
+    margin-block-start: var(--s-2);
+    font-variation-settings: "opsz" 24;
+    line-height: 1.3;
+}
+
+/* ---------- Hero (cover left, pull-quote right) ---------- */
+.hero {
+    display: grid;
+    grid-template-columns: minmax(280px, auto) minmax(0, 1fr);
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: center;
+    padding-block: var(--s-5) var(--s-7);
+}
+.hero-cover {
+    display: block;
+    width: 360px;
+    max-width: 100%;
+}
+.hero-cover img {
+    width: 100%;
+    height: auto;
+    box-shadow:
+        0 1px 2px rgba(28, 26, 20, 0.06),
+        0 10px 20px rgba(28, 26, 20, 0.08),
+        0 32px 60px -18px rgba(28, 26, 20, 0.18);
+    border-radius: 2px;
+}
+.hero-pitch {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-7);
+    align-items: flex-start;
+}
+.featured-quote {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-4);
+}
+.featured-quote blockquote {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(1.35rem, 2.2vw, 1.6rem);
+    font-weight: 380;
+    line-height: 1.4;
+    color: var(--ink);
+    font-variation-settings: "opsz" 32;
+    text-wrap: pretty;
+}
+.featured-quote blockquote a {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-color: var(--rule-soft);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+    transition: color 0.2s, text-decoration-color 0.2s;
+}
+.featured-quote blockquote a:hover {
+    color: var(--accent);
+    text-decoration-color: var(--accent);
+}
+.featured-quote figcaption {
+    font-family: var(--serif);
+    font-style: normal;
+    font-size: var(--t-base);
+    color: var(--ink-muted);
+    line-height: 1.5;
+    font-variation-settings: "opsz" 18;
+}
+.featured-quote figcaption em { font-style: italic; color: var(--ink); }
+.featured-quote figcaption a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+.featured-quote figcaption a:hover { color: var(--accent); }
+.featured-quote figcaption a:hover em { color: var(--accent); }
+
+/* ---------- Honors list (vertical, inside hero-pitch) ---------- */
+.honor-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-4);
+    font-family: var(--serif);
+    font-size: var(--t-base);
+    line-height: 1.5;
+    color: var(--ink-muted);
+}
+.honor-list li { font-style: normal; }
+.honor-list a {
+    text-decoration: none;
+    color: inherit;
+    transition: color 0.2s ease;
+}
+.honor-list a:hover { color: var(--accent); }
+.honor-list a:hover .hh-pub { color: var(--accent); }
+.hh-pub {
+    font-style: italic;
+    color: var(--ink);
+}
+.hh-pub::after {
+    content: "\00A0\2014\00A0";
+    font-style: normal;
+    color: var(--ink-faint);
+}
+.hh-line { font-style: normal; }
+
+.btn {
+    display: inline-block;
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: var(--t-lg);
+    font-weight: 400;
+    letter-spacing: 0;
+    text-transform: none;
+    text-decoration: none;
+    color: var(--accent);
+    background: transparent;
+    border: 1px solid var(--accent);
+    border-radius: 2px;
+    padding: var(--s-3) var(--s-6);
+    margin-block-start: var(--s-5);
+    transition: background 0.2s ease, color 0.2s ease;
+}
+.btn:hover { background: var(--accent); color: var(--paper); }
+
+/* ---------- Section heading ---------- */
+.section-heading {
+    font-family: var(--sans);
+    font-size: var(--t-xs);
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    text-align: left;
+    margin-block-end: var(--s-5);
+}
+
+/* ---------- Featured pull-quote ---------- */
+.featured {
+    padding-block: var(--s-7) var(--s-6);
+    max-width: 50rem;
+    margin-inline: auto;
+    text-align: center;
+}
+.featured figure { display: contents; }
+.featured blockquote {
+    font-size: var(--t-pull);
+    font-weight: 350;
+    font-style: italic;
+    font-variation-settings: "opsz" 36;
+    line-height: 1.35;
+    letter-spacing: -0.005em;
+    color: var(--ink);
+    text-wrap: balance;
+}
+.featured blockquote::before {
+    content: "\201C"; /* opening curly quote */
+    display: block;
+    font-style: normal;
+    font-size: 4.5rem;
+    font-weight: 300;
+    color: var(--accent);
+    line-height: 0.5;
+    margin-block-end: var(--s-5);
+    margin-inline: auto;
+}
+.featured figcaption {
+    margin-block-start: var(--s-6);
+    font-family: var(--sans);
+    font-size: var(--t-xs);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-1);
+    align-items: center;
+}
+.featured .cite-author {
+    font-weight: 600;
+    color: var(--ink);
+}
+.featured a {
+    color: inherit;
+    text-decoration: none;
+    border-block-end: 1px solid var(--rule);
+    padding-block-end: 1px;
+    transition: color 0.2s, border-color 0.2s;
+}
+.featured a:hover { color: var(--accent); border-block-end-color: var(--accent); }
+
+/* ---------- Year-end honors (compact, no heading) ---------- */
+.honors {
+    padding-block: var(--s-3) var(--s-5);
+    max-width: 56rem;
+    margin-inline: auto;
+}
+.honor-grid {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(1rem, 3vw, 2rem);
+    text-align: center;
+}
+.honor a { text-decoration: none; display: block; }
+.honor a:hover .honor-line { color: var(--accent); }
+.honor-pub {
+    font-family: var(--sans);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-block-end: var(--s-1);
+}
+.honor-line {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: var(--t-sm);
+    color: var(--ink-muted);
+    transition: color 0.2s ease;
+    line-height: 1.3;
+}
+@media (max-width: 620px) {
+    .honor-grid { grid-template-columns: 1fr; gap: var(--s-3); }
+}
+
+/* ---------- Reviews / Praise ---------- */
+.reviews, .praise {
+    padding-block: var(--s-6) var(--s-6);
+    border-block-start: 1px solid var(--rule-soft);
+}
+.review-list, .praise-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-6);
+}
+.review blockquote, .praise-list blockquote {
+    font-size: var(--t-md);
+    line-height: 1.55;
+    color: var(--ink);
+    font-weight: 400;
+    font-variation-settings: "opsz" 18;
+}
+.review blockquote em, .praise-list blockquote em { font-style: italic; }
+.review cite, .praise-list cite {
+    display: block;
+    margin-block-start: var(--s-3);
+    font-family: var(--serif);
+    font-style: normal;
+    font-size: var(--t-base);
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--ink-muted);
+    line-height: 1.5;
+}
+.review cite em, .praise-list cite em {
+    font-style: italic;
+    color: var(--ink);
+}
+.review cite a, .praise-list cite a {
+    color: inherit;
+    text-decoration: none;
+    border-block-end: 1px solid var(--rule-soft);
+    padding-block-end: 1px;
+    transition: color 0.2s, border-color 0.2s;
+}
+.review cite a:hover, .praise-list cite a:hover { color: var(--accent); border-block-end-color: var(--accent); }
+.review cite a:hover em, .praise-list cite a:hover em { color: var(--accent); }
+
+/* ---------- Closing note ---------- */
+.closing {
+    padding-block: var(--s-7) var(--s-5);
+    font-style: italic;
+    color: var(--ink-muted);
+    font-size: var(--t-sm);
+}
+.closing p + p { margin-block-start: var(--s-2); }
+.footnote {
+    padding-block-end: var(--s-7);
+    font-size: var(--t-xs);
+    color: var(--ink-faint);
+    font-style: italic;
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+    border-block-start: 1px solid var(--rule-soft);
+    padding-block: var(--s-5);
+    font-family: var(--sans);
+    font-size: var(--t-xs);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+}
+
+/* ---------- &c. page ---------- */
+.author-section {
+    display: grid;
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+    gap: clamp(2rem, 5vw, 4rem);
+    padding-block: var(--s-7) var(--s-7);
+    align-items: center;
+}
+.author-photo {
+    display: flex;
+    justify-content: center;
+}
+.author-photo img {
+    width: 100%;
+    max-width: 360px;
+    border-radius: 2px;
+    box-shadow:
+        0 1px 2px rgba(28, 26, 20, 0.06),
+        0 12px 32px rgba(28, 26, 20, 0.10);
+}
+.author-bio {
+    font-size: var(--t-md);
+    line-height: 1.65;
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-4);
+}
+.author-bio a {
+    color: var(--accent);
+    text-decoration: none;
+    border-block-end: 1px solid currentColor;
+    padding-block-end: 1px;
+}
+.author-bio a:hover { color: var(--accent-hover); }
+
+/* Link list — interviews, excerpts */
+.link-section {
+    padding-block: var(--s-6) 0;
+}
+.link-section:last-of-type {
+    padding-block-end: var(--s-7);
+}
+.link-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+.link-list li {
+    padding-block: var(--s-4);
+    border-block-end: 1px solid var(--rule-soft);
+}
+.link-list li:last-child { border-block-end: 0; }
+.link-list a {
+    text-decoration: none;
+    color: var(--ink);
+    display: block;
+    transition: color 0.2s ease;
+}
+.link-list a:hover { color: var(--accent); }
+.link-list a:hover .link-source { color: var(--accent); }
+.link-title {
+    font-size: var(--t-md);
+    line-height: 1.4;
+}
+.link-title em { font-style: italic; }
+.link-source {
+    display: block;
+    margin-block-start: var(--s-1);
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: var(--t-base);
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--ink-muted);
+    transition: color 0.2s ease;
+}
+.link-source em { font-style: normal; color: var(--ink); }
+
+/* ---------- Mobile ---------- */
+@media (max-width: 720px) {
+    .masthead {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--s-3);
+    }
+    .hero {
+        grid-template-columns: 1fr;
+        gap: var(--s-5);
+        padding-block: var(--s-5) var(--s-6);
+    }
+    .hero-cover {
+        width: 220px;
+        margin-inline: auto;
+    }
+    .hero-pitch { align-items: stretch; }
+    .author-section { grid-template-columns: 1fr; gap: var(--s-5); }
+    .author-bio { margin-inline: auto; text-align: left; }
+    .nav { gap: var(--s-4); }
+}
+
+/* ---------- Auth gate ---------- */
+#auth-overlay {
+    position: fixed;
+    inset: 0;
+    background: var(--paper);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: var(--s-5);
+}
+#auth-overlay[hidden] { display: none !important; }
+.auth-card {
+    max-width: 360px;
+    width: 100%;
+    text-align: center;
+}
+.auth-card .auth-mark {
+    font-family: var(--sans);
+    font-size: var(--t-xs);
+    font-weight: 600;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--ink-muted);
+    margin-block-end: var(--s-3);
+}
+.auth-card h1 {
+    font-family: var(--serif);
+    font-size: var(--t-xl);
+    font-weight: 400;
+    margin-block-end: var(--s-3);
+}
+.auth-card p {
+    font-size: var(--t-sm);
+    color: var(--ink-muted);
+    margin-block-end: var(--s-5);
+    font-style: italic;
+}
+.auth-card form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-3);
+}
+.auth-card input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--rule);
+    background: var(--paper-deep);
+    font-family: var(--serif);
+    font-size: var(--t-base);
+    border-radius: 2px;
+    color: var(--ink);
+    transition: border-color 0.2s;
+}
+.auth-card input:focus {
+    outline: none;
+    border-color: var(--accent);
+}
+.auth-card button {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    background: var(--accent);
+    color: var(--paper);
+    border: none;
+    font-family: var(--sans);
+    font-size: var(--t-sm);
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.auth-card button:hover { background: var(--accent-hover); }
+.auth-err {
+    color: var(--accent);
+    font-size: var(--t-xs);
+    font-style: italic;
+    margin-block-start: var(--s-2);
+    height: 1em;
+}
