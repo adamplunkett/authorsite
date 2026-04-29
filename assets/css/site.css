@@ -553,7 +553,7 @@ body {
         flex-direction: column;
         align-items: flex-start;
         gap: var(--s-3);
-        padding-block: var(--s-6) var(--s-3);
+        padding-block: calc(var(--s-6) + env(safe-area-inset-top, 0px)) var(--s-3);
     }
     .book-heading { padding-block: var(--s-4) 0; }
     .hero {
