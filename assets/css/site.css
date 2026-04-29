@@ -146,7 +146,7 @@ body {
 /* ---------- Book heading (centered, between banner and hero) ---------- */
 .book-heading {
     text-align: center;
-    padding-block: var(--s-7) 0;
+    padding-block: var(--s-5) 0;
 }
 .book-heading h1 {
     font-family: var(--serif);
@@ -553,19 +553,29 @@ body {
         flex-direction: column;
         align-items: flex-start;
         gap: var(--s-3);
+        padding-block: var(--s-6) var(--s-3);
     }
+    .book-heading { padding-block: var(--s-4) 0; }
     .hero {
         grid-template-columns: 1fr;
         gap: var(--s-5);
-        padding-block: var(--s-5) var(--s-6);
+        padding-block: var(--s-4) var(--s-5);
     }
     .hero-cover {
         width: 220px;
         margin-inline: auto;
     }
-    .hero-pitch { align-items: stretch; }
-    .author-section { grid-template-columns: 1fr; gap: var(--s-5); }
+    .hero-pitch { align-items: stretch; gap: var(--s-5); }
+    .author-section {
+        grid-template-columns: 1fr;
+        gap: var(--s-5);
+        padding-block: var(--s-5) var(--s-5);
+    }
     .author-bio { margin-inline: auto; text-align: left; }
+    .author-photo img { max-width: 280px; }
+    .link-section { padding-block: var(--s-5) 0; }
+    .link-section:last-of-type { padding-block-end: var(--s-6); }
+    .reviews, .praise { padding-block: var(--s-5) var(--s-5); }
     .nav { gap: var(--s-4); }
 }
 
