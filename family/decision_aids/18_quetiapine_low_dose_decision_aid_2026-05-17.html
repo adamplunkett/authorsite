@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Decision Aid — Quetiapine (Seroquel) low-dose proposal — 2026-05-17</title>
+<style>
+  @page { size: letter; margin: 0.55in 0.65in; }
+  :root {
+    --navy: #1a3a5c; --navy-dark: #0f2640;
+    --against-accent: #8b2c2c; --for-accent: #2c5e3f;
+    --text: #1f1f1f; --text-muted: #5a5a5a;
+    --rule: #c8c8c8; --rule-strong: #6a6a6a;
+    --tint: #f5f3f0; --tint-pro: #f0f4f8; --tint-con: #f9f2f0;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    font-family: "Charter", "Georgia", "Times New Roman", serif;
+    font-size: 9.75pt; line-height: 1.42; color: var(--text);
+    -webkit-font-smoothing: antialiased;
+  }
+  .doc-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    padding-bottom: 6pt; border-bottom: 1.5pt solid var(--navy); margin-bottom: 14pt;
+  }
+  .doc-header .title {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 600; font-size: 15pt; line-height: 1.2;
+    color: var(--navy-dark); letter-spacing: -0.01em;
+  }
+  .doc-header .meta {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 7.5pt; color: var(--text-muted); text-align: right;
+    letter-spacing: 0.03em; line-height: 1.5;
+  }
+  .section-label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 7.5pt; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.14em; color: var(--navy); margin: 14pt 0 5pt 0;
+  }
+  .section-label.first { margin-top: 0; }
+  .key-message {
+    border-left: 4pt solid var(--against-accent); background: var(--tint);
+    padding: 9pt 13pt; margin: 0 0 10pt 0;
+  }
+  .key-message p {
+    margin: 0;
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 10.5pt; line-height: 1.42; font-weight: 500; color: var(--text);
+  }
+  .context { font-size: 9.5pt; line-height: 1.5; color: var(--text); margin: 0 0 4pt 0; }
+  table.evidence {
+    width: 100%; border-collapse: collapse; margin: 4pt 0 8pt 0; table-layout: fixed;
+  }
+  table.evidence thead th {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 600; font-size: 8.25pt; padding: 6pt 9pt; text-align: left;
+    background: var(--navy); color: white; letter-spacing: 0.02em;
+  }
+  table.evidence thead th.pro { background: #4a6a8a; }
+  table.evidence thead th.con { background: var(--against-accent); }
+  table.evidence td {
+    padding: 6pt 9pt; vertical-align: top;
+    border-bottom: 0.5pt solid var(--rule);
+    font-size: 9pt; line-height: 1.4;
+  }
+  table.evidence td.pro { background: var(--tint-pro); }
+  table.evidence td.con { background: var(--tint-con); }
+  table.evidence tbody tr:last-child td { border-bottom: none; }
+  table.evidence td strong { color: var(--navy-dark); }
+  .strength-row {
+    display: flex; align-items: baseline; margin: 6pt 0 2pt 0; white-space: nowrap;
+  }
+  .strength-label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 8.5pt; font-weight: 600; color: var(--text);
+    margin-right: 10pt; white-space: nowrap;
+  }
+  .stars { color: var(--against-accent); letter-spacing: 0.12em; font-size: 11pt; white-space: nowrap; }
+  .strength-rationale {
+    font-size: 8.5pt; color: var(--text-muted); font-style: italic;
+    margin: 2pt 0 6pt 0; line-height: 1.4;
+  }
+  ol.next-steps {
+    margin: 4pt 0 8pt 0; padding-left: 18pt; font-size: 9.25pt; line-height: 1.4;
+  }
+  ol.next-steps li { margin-bottom: 4pt; padding-left: 3pt; }
+  ol.next-steps li::marker {
+    color: var(--navy); font-weight: 700;
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+  }
+  .bottom-line {
+    border-top: 1pt solid var(--rule-strong); padding-top: 6pt; margin-top: 10pt;
+    font-style: italic; font-size: 9pt; color: var(--text); line-height: 1.4;
+  }
+  .bottom-line .label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-style: normal; font-weight: 700; font-size: 7.5pt;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--navy); margin-right: 6pt;
+  }
+  .neutral-block {
+    background: #f3f3f1; border-left: 3pt solid #888;
+    padding: 9pt 14pt 6pt 14pt; margin: 4pt 0 8pt 0;
+  }
+  .neutral-block ul { list-style: none; padding: 0; margin: 0; }
+  .neutral-block li {
+    font-size: 9pt; line-height: 1.45; margin-bottom: 6pt;
+    padding-left: 14pt; position: relative;
+  }
+  .neutral-block li::before {
+    content: "•"; position: absolute; left: 0; color: #888; font-weight: bold;
+  }
+  .neutral-block li:last-child { margin-bottom: 0; }
+  .neutral-block strong { color: var(--navy-dark); }
+  .back-header {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 14pt; font-weight: 600; color: var(--navy-dark);
+    border-bottom: 1.5pt solid var(--navy); padding-bottom: 5pt;
+    margin-top: 18pt; margin-bottom: 4pt;
+  }
+  .citation, .tier-header { page-break-inside: avoid; }
+  .back-subhead {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 8pt; color: var(--text-muted); margin-bottom: 14pt; letter-spacing: 0.03em;
+  }
+  .tier-header {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 9pt; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.12em; color: var(--navy);
+    margin: 11pt 0 6pt 0; padding-bottom: 2pt; border-bottom: 0.5pt solid var(--rule);
+  }
+  .tier-header .tier-stars { float: right; color: var(--navy); font-size: 10pt; letter-spacing: 0.04em; }
+  .citation {
+    margin: 0 0 9pt 0; padding-left: 9pt; border-left: 2pt solid var(--rule);
+    font-size: 8.75pt; line-height: 1.4;
+  }
+  .citation .cite-title {
+    font-weight: 700; color: var(--navy-dark);
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif; font-size: 8.75pt;
+  }
+  .citation .cite-source { color: var(--text-muted); font-style: italic; font-size: 8.5pt; }
+  .citation .cite-finding, .citation .cite-apply { margin-top: 2pt; font-size: 8.5pt; }
+  .citation .label-inline {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 700; font-size: 7pt; text-transform: uppercase;
+    letter-spacing: 0.08em; color: var(--navy); margin-right: 4pt;
+  }
+  .citation .cite-link {
+    color: var(--navy); text-decoration: underline;
+    text-decoration-thickness: 0.4pt; text-underline-offset: 1.5pt;
+    font-style: normal; font-weight: 500; margin-left: 2pt;
+  }
+  .citation .cite-link:hover { color: var(--navy-dark); }
+</style>
+</head>
+<body>
+
+<div class="doc-header">
+  <div class="title">Should Dad start low-dose quetiapine (Seroquel) tonight, with a ketamine session tomorrow?</div>
+  <div class="meta">
+    Decision Aid · 2026-05-17<br>
+    For Dad, Mom, Dr. R, Dr. Chilton (K Clinic),<br>
+    Julane &amp; the family team
+  </div>
+</div>
+
+<div class="section-label first">Recommendation</div>
+<div class="key-message">
+  <p><strong>The cleanest version of Dr. R's plan — given the ketamine infusion tomorrow morning — is to skip Seroquel tonight, continue doxepin at 6 mg HS, loop the ketamine clinic in first thing tomorrow, and revisit the Seroquel timing after tomorrow's session.</strong> Dr. R's pharmacological framing is supported by the evidence: at 25–50 mg, quetiapine is genuinely different from the atypicals Dad has reacted to (D2 occupancy in the single-digit-percent range; H1 sedation dominates; akathisia risk the lowest of the second-generation antipsychotics). The 11/2025 single fill was at 50 mg with no documented reason for stopping — worth asking Dr. R what happened. <strong>Three things shift the calculus for tonight specifically:</strong> (1) <strong>tomorrow's IV ketamine session</strong> — no published data exist on quetiapine + ketamine, the mechanistic prior is "attenuation, not augmentation" via 5-HT2A antagonism, and standard ketamine-clinic protocols ask about antipsychotic timing around session days; (2) <strong>the AM dose has no published evidence base</strong> in elderly anxiety and would put peak quetiapine levels right at infusion time tomorrow; (3) <strong>the doxepin reduction from 12 → 6 mg may be most of the answer</strong> — TCAs in older adults can produce paradoxical activation during rapid uptitration, so backing off the doxepin alone may resolve last night's episode without adding anything. <strong>If Seroquel does proceed after the ketamine session</strong>: start at 12.5 mg HS only (omit the AM dose entirely until daytime anxiety is shown to be the limiting symptom), fresh ECG within the first week given LAFB + bradycardia + the 1-year-old baseline, orthostatic vitals the next morning, and clear stopping rules for any new motor symptom. The operative plan otherwise — watchful waiting on doxepin 6 mg, trazodone PRN as the next step if needed, ketamine doing the heavy lifting — is well-shaped for this moment and should stay the comparator.</p>
+</div>
+
+<div class="section-label">Why this matters for Dad specifically</div>
+<p class="context">Dr. R called this morning after Dad woke agitated last night with a "body shaking" sensation lasting ~2 hours. The plan he proposed has two parts: (1) reduce doxepin from 12 mg HS back to 6 mg HS — on the working hypothesis that the recent uptitration may be contributing to the physical symptoms — and (2) add quetiapine (Seroquel) as a 90-day prescription written as 25–50 mg HS plus 6.25–12.5 mg AM. The acute trigger was a single overnight event, and Dad has an IV ketamine session tomorrow morning. The operative plan up to now has been deliberately conservative: doxepin 6 mg HS for sleep maintenance, trazodone 50 mg as a PRN backup (used once on 5/15), watchful waiting on adding anything else, and letting the ketamine restart do the heavy lifting on mood and anxiety. That conservative shape is the right comparator for whether Seroquel is the right addition right now. The question isn't whether Seroquel is dangerous — Dr. R's pharmacological framing is supported by the evidence and quetiapine at 25–50 mg is genuinely distinct from the atypicals Dad has reacted to. The question is whether tonight is the right night to start it, given the ketamine session tomorrow and the fact that the doxepin reduction alone may be most of the answer.</p>
+
+<div class="section-label">The evidence</div>
+<table class="evidence">
+  <thead>
+    <tr>
+      <th class="pro" style="width: 47%;">What supports Dr. R's plan</th>
+      <th class="con" style="width: 53%;">What argues for the modified version — in Dad's specific profile</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="pro"><strong>"Acts differently from the other atypicals" is supported by the receptor data.</strong> PET imaging studies show that at 25 mg, quetiapine produces 56–81% H1 receptor occupancy in the cortex (Sato 2015) while D2 occupancy remains in the single-digit-percent range at trough. The Lako 2013 meta-analysis estimated quetiapine's maximum achievable D2 occupancy at only 49% (vs. ~70–80% for olanzapine, aripiprazole, brexpiprazole at their typical doses). The binding hierarchy (H1 Ki 4.4 nM &gt;&gt; α1b 14.6 nM &gt;&gt; 5-HT2A 38 nM &gt;&gt; D2 626 nM) means at 25–50 mg the dominant effects are sedation and α1 blockade, not D2 antagonism. <em>Dr. R's framing is pharmacologically accurate.</em></td>
+      <td class="con"><strong>Tomorrow's IV ketamine session is the immediate timing constraint.</strong> There are no published trials of quetiapine + IV ketamine for TRD. The benzodiazepine-attenuation literature (Andrashko 2020; Feeney 2022) doesn't translate mechanistically — quetiapine isn't a GABA agent. But the closer mechanistic concern is quetiapine's potent 5-HT2A antagonism, which sits on the same downstream pathway ketamine uses for synaptogenesis and plasticity. The direction of the prior is "attenuation or neutral," not "augmentation." Standard ketamine-clinic protocols ask about antipsychotic timing around session days regardless. With infusion ~10–12 hours after a bedtime dose, parent drug would still be at ~25% of peak and norquetiapine substantial. <em>The AM dose tomorrow before infusion is the worst-case timing.</em></td>
+    </tr>
+    <tr>
+      <td class="pro"><strong>Quetiapine is the safest atypical for possible Lewy-spectrum disease.</strong> Per the DLB consensus literature (Aarsland 2005; McKeith 2017 DLB Consortium; NICE NG97; MDS guidance on PD psychosis): quetiapine has the lowest D2 occupancy among the "full" atypicals and is the preferred choice when an antipsychotic is required in DLB or PD psychosis. This is meaningfully different from the prior agents Dad reacted to — aripiprazole and brexpiprazole are D2 partial agonists with high D2 affinity; olanzapine has substantially higher D2 affinity than quetiapine. <em>If an antipsychotic must be on board during the neurology workup, quetiapine is the right choice.</em></td>
+      <td class="con"><strong>The AM dose has no published evidence base.</strong> The GAD trial in older adults (Mezhebovsky 2013) used quetiapine XR once daily in the evening, not a split HS + AM schedule. No published data support 6.25–12.5 mg AM quetiapine for anxiety in elderly patients. At that dose the dominant effect is H1-mediated sedation (the same effect that helps sleep at night), with minimal NET occupancy from norquetiapine since the metabolite requires higher parent-drug doses (~150 mg) for meaningful noradrenergic activity. <em>Daytime sedation, orthostasis, and cognitive blunting are the likely effects — without a clear anxiolytic mechanism at this dose.</em> Dad still drives, bikes, plays disc golf, and reads — the daytime burden matters.</td>
+    </tr>
+    <tr>
+      <td class="pro"><strong>Akathisia and EPS risk are the lowest among second-generation antipsychotics.</strong> A dose-response meta-analysis (Wu 2023) found quetiapine carried "negligible risks for akathisia across examined doses (flat curve)." Annual akathisia incidence is ~4% (vs. ~20% for other SGAs, 50% for haloperidol). In the MDD adjunctive therapy trial, akathisia incidence was 1.5% at 300 mg. <em>The activation-intolerance concern from prior agents is mechanistically less likely to transfer to quetiapine, because the receptors that produce activation on aripiprazole/brexpiprazole/olanzapine (D2) and on mirtazapine (noradrenergic alpha-2 disinhibition) are not the dominant receptors at quetiapine 25–50 mg.</em></td>
+      <td class="con"><strong>The cardiac stack warrants a fresh ECG before initiation.</strong> The Association of Medicine and Psychiatry consensus (Xiong 2020) recommends baseline ECG when ≥2 QT risk factors are present. Dad has at least 4: age &gt;65, bradycardia (HR 49–53), conduction abnormalities (LAFB, borderline 1° AVB, QRS 120), and polypharmacy with QT-active agents (duloxetine, doxepin, trazodone PRN). The last ECG (5/19/2025) showed QTc 401 — within range — but it's a year old. Quetiapine carries a pharmacovigilance signal for QT prolongation and TdP (FAERS ROR 1.58/2.39), almost always in the presence of multiple risk factors. <em>Cost of a fresh ECG is low; cost of layering quetiapine on a year-old baseline is real.</em></td>
+    </tr>
+    <tr>
+      <td class="pro"><strong>The norquetiapine NRI concern is smaller than worried.</strong> Norquetiapine is a potent NET inhibitor (Ki 12 nM) and the metabolite-mediated noradrenergic activity is part of why quetiapine was initially feared as an analog for the mirtazapine mechanism. But the PET data (Nyberg 2013) show only 19% NET occupancy at 150 mg/day and 35% at 300 mg/day; at 25–50 mg the metabolite exposure is far below the threshold for meaningful NET occupancy. <em>Quetiapine 25–50 mg is unlikely to recapitulate the mirtazapine-at-45 mg activation mechanism, despite the metabolite's pharmacology.</em></td>
+      <td class="con"><strong>The doxepin reduction alone may be most of the answer.</strong> Last night's episode happened after a same-evening uptitration of doxepin from 6 → 12 mg HS. TCAs in older adults can produce paradoxical activation, restlessness, and physical symptoms during rapid uptitration. Dr. R's first move — taking doxepin back to 6 mg — directly addresses that mechanism. <em>Whether last night repeats at 6 mg is the question the next 1–2 nights would answer, and that observation is destroyed if a second new agent is added concurrently.</em> The handout #08 framing applies here: don't run two pharmacological changes simultaneously in a 76-year-old when one of them addresses the most plausible cause directly.</td>
+    </tr>
+    <tr>
+      <td class="pro" style="background: #fbfbf8; color: #777;">—</td>
+      <td class="con"><strong>The "body shaking" event may be RBD exacerbation rather than anxiety.</strong> The OE response flagged this directly: antidepressants — including duloxetine, which Dad is on at 60 mg — can trigger or worsen RBD, and Dad has formal RBD (G47.52) since 2017. Quetiapine suppresses REM sleep (Gedge 2010) and is <em>not</em> among the AASM-recommended RBD agents (clonazepam, melatonin, rivastigmine, pramipexole). If the overnight event was a dream-enactment episode rather than anxiety/agitation, the right intervention is different — and reaches the neurology workup that's already in motion. <em>Worth asking: did Dad recall a dream content with the shaking, or was it a sustained physical sensation without dream context?</em></td>
+    </tr>
+    <tr>
+      <td class="pro" style="background: #fbfbf8; color: #777;">—</td>
+      <td class="con"><strong>Orthostatic hypotension risk is real in Dad's hemodynamic profile.</strong> Published rates of postural hypotension on quetiapine in older adults are 6–18% (El-Saifi 2016), with FDA reporting 1% syncope. Dad's baseline (BP 112/58, HR 49–53, already on tadalafil 5 mg daily for BPH) has limited compensatory reserve — the bradycardia caps the tachycardic response to orthostatic challenge, and tadalafil is an additive α1 vasodilator. <em>Orthostatic vitals the morning after the first dose, and counseling to rise slowly during nocturnal awakenings, are essential if quetiapine starts.</em></td>
+    </tr>
+    <tr>
+      <td class="pro" style="background: #fbfbf8; color: #777;">—</td>
+      <td class="con"><strong>The 11/2025 single-fill failure is a flag worth resolving before tonight.</strong> Quetiapine 50 mg was filled once on 11/3/2025 (concurrent with the duloxetine titration from 20 → 60 mg replacing escitalopram) and appears in the clinical brief as "brief failed trial" with no documented reason. If that earlier failure was for activation, orthostasis, or anything that recurred-on-rechallenge-relevant, the priors for this attempt change. <em>This is the single most predictive data point and it should be sitting in someone's notes.</em> Worth a quick text to Dr. R asking what happened then.</td>
+    </tr>
+    <tr>
+      <td class="pro" style="background: #fbfbf8; color: #777;">—</td>
+      <td class="con"><strong>The four-agent activation pattern is still a vulnerability signal, even if mechanistically less likely to transfer.</strong> Dad has had documented agitation, EPS, or paradoxical responses to aripiprazole (2 mg, pseudoparkinsonian), mirtazapine (30–45 mg, agitation), brexpiprazole (1 mg, balance issues), olanzapine (2.5–5 mg, "robotic" gait), and pramipexole (0.125 mg, physical symptoms within days). The receptor profiles differ enough that strict prediction doesn't transfer — but the pattern itself is consistent with an intrinsic vulnerability, possibly related to the prodromal-synucleinopathy picture under neurology evaluation. <em>"Less mechanistically likely" is not "rule-out."</em></td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="strength-row">
+  <span class="strength-label">Strength of evidence for the modified version (skip tonight, loop in clinic, revisit):</span>
+  <span class="stars">★★★★</span>
+</div>
+<div class="strength-rationale">Convergent reasoning rather than a single decisive trial: the ketamine session tomorrow with no published data on the interaction (mechanistic prior "attenuation, not augmentation"); the AM dose with no published evidence base in elderly anxiety; the cardiac stack warranting fresh ECG before initiation; the doxepin reduction alone being the most plausible direct address of last night's trigger; the operative plan otherwise being well-shaped for this moment. The pharmacological case for quetiapine 25–50 mg being qualitatively different from the prior atypicals Dad reacted to is real and supports Dr. R's framing — the question is timing and dose schedule, not whether quetiapine is wrong in principle.</div>
+
+<div class="section-label">What everyone agrees on</div>
+<div class="neutral-block">
+  <ul>
+    <li><strong>Dr. R's "acts differently" pharmacology framing is supported by the evidence.</strong> Quetiapine at 25–50 mg is genuinely distinct from the atypicals Dad has reacted to. This isn't another aripiprazole or olanzapine in disguise.</li>
+    <li><strong>The doxepin reduction from 12 → 6 mg is the right move.</strong> Whether last night's event recurs at 6 mg is the question the next 1–2 nights would answer cleanly if no other new agent is added at the same time.</li>
+    <li><strong>Mom's observation about the Dr. R relationship matters.</strong> Going into the ketamine course with a solid psychiatrist relationship is itself therapeutically valuable. The handout's recommendation isn't "don't follow Dr. R's plan" — it's "here's the cleanest version of his plan, given the ketamine session tomorrow."</li>
+    <li><strong>The ketamine course is the highest-value intervention Dad has going.</strong> February 2026 produced a dramatic response. Protecting that signal — and getting any antipsychotic decision sequenced cleanly with the infusion schedule — matters more than starting tonight vs. tomorrow night.</li>
+    <li><strong>Whatever happens with Seroquel, the AM dose should not be taken on a ketamine-session morning.</strong> Peak quetiapine levels at infusion time is the most clearly avoidable interaction risk.</li>
+    <li><strong>Trazodone uptitration remains the lower-risk next step if doxepin alone isn't enough.</strong> It's already in the operative plan as PRN, Dad has tolerated single 50 mg doses, and it doesn't introduce a new class. A standing 25–50 mg HS for 2–3 nights is a smaller change than adding a new antipsychotic.</li>
+  </ul>
+</div>
+
+<div class="section-label">Recommended next steps</div>
+<ol class="next-steps">
+  <li><strong>Tonight: doxepin 6 mg HS, no Seroquel.</strong> Let the doxepin reduction alone be the test of whether last night's episode repeats. Track sleep, any overnight events, and whether Dad notes the "body shaking" sensation again.</li>
+  <li><strong>First thing tomorrow morning: call the ketamine clinic.</strong> Tell them about the new Seroquel prescription and ask their explicit protocol for antipsychotic timing around infusion days. They have an authority position on this and need to know regardless of whether Seroquel starts. The ketamine therapist (Julane) is a reasonable second point of contact for the integration-session piece.</li>
+  <li><strong>At Dr. R's next check-in</strong>, surface (a) what happened with the 11/2025 quetiapine 50 mg single fill — specific reason for stopping; (b) the rationale for the AM dose given no published evidence base for split-dose low-dose quetiapine in elderly anxiety; (c) the ketamine clinic's response; (d) whether the doxepin reduction alone might be enough to address last night's episode before adding a new agent; (e) whether the overnight "body shaking" might warrant the dream-enactment / RBD differential rather than the anxiety/agitation differential.</li>
+  <li><strong>If Seroquel does proceed after tomorrow's ketamine session</strong>: start at 12.5 mg HS only (half a 25 mg tablet), omit the AM dose entirely until daytime anxiety is shown to be the limiting symptom. Obtain a fresh ECG within the first week — the 5/19/2025 baseline is a year old and the cardiac stack now includes duloxetine + doxepin + trazodone-PRN. Check orthostatic vitals the morning after the first dose. Counsel slow rising during nocturnal awakenings given bradycardia + tadalafil.</li>
+  <li><strong>Reserve trazodone uptitration as the lower-risk next step if doxepin 6 mg HS alone isn't enough.</strong> A standing 25–50 mg HS for 2–3 nights — already in the operative plan as PRN, already tolerated as a single dose 5/15, doesn't introduce a new class. Smaller change than adding a new antipsychotic mid-ketamine-course.</li>
+  <li><strong>Discontinuation triggers</strong> if Seroquel does start: new or worsened parkinsonism, rigidity, or gait deterioration (treat as possible neuroleptic sensitivity reaction given prodromal-synucleinopathy concern); syncope or symptomatic orthostatic hypotension with falls or near-falls; QTc &gt;500 ms or increase &gt;60 ms from baseline; delirium or acute cognitive decline; severe akathisia or paradoxical agitation that doesn't resolve within 48 hours of dose reduction. Any of these → stop and call Dr. R, don't try to dose-adjust through it.</li>
+</ol>
+
+<div class="bottom-line">
+  <span class="label">Bottom line</span>
+  Dr. R's plan isn't wrong in principle — quetiapine at 25–50 mg really is pharmacologically distinct from the atypicals Dad has reacted to, and is the right choice if an antipsychotic must be on board during the neurology workup. The issues are timing and dose shape: the IV ketamine session tomorrow morning is an immediate constraint that warrants ketamine-clinic input before tonight's first dose; the AM dose has no published evidence base in elderly anxiety and adds daytime burden without a clear mechanism; the cardiac stack warrants a fresh ECG; and the doxepin reduction from 12 → 6 mg may be most of the answer on its own. The cleanest move is to skip Seroquel tonight, let the doxepin reduction be the test, loop the ketamine clinic in first thing tomorrow, and revisit after tomorrow's session — with a modified schedule (12.5 mg HS only, no AM dose, fresh ECG, orthostatic checks) if Seroquel does proceed. The operative plan otherwise — watchful waiting on doxepin 6 mg, trazodone as the lower-risk next step if needed, ketamine doing the heavy lifting — is well-shaped and should stay the comparator.
+</div>
+
+<div class="back-header">Key Studies &amp; Findings</div>
+<div class="back-subhead">Ranked by authority · Each citation summarized for how it applies to Dad's case</div>
+
+<div class="tier-header">Tier 0 — Family's Prior Analytical Work and Operative Plan <span class="tier-stars">★★★★★</span></div>
+
+<div class="citation">
+  <div class="cite-title">Clinical Brief — Operative Plan (5/4/2026).</div>
+  <div class="cite-source">Located in `Dad Health/provider_outreach/00_clinical_brief.md`.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Operative plan since 4/23 Dr. R call: maintain duloxetine 60 mg; ketamine restart as major near-term intervention; ECT held as contingent backup; sleep-and-anxiety coverage initially PRN. Doxepin 6 mg HS added 5/2 for sleep maintenance. Trazodone 50 mg available PRN. Watchful waiting on additional pharmacology.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>This is the comparator. The question isn't "quetiapine vs. buspirone vs. DORA" — it's "quetiapine vs. the operative plan of watchful waiting + doxepin + trazodone PRN + ketamine doing the heavy lifting."</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Literature Review #11 — Late-Life Anxiety in TRD: Evidence-Based Alternatives to Olanzapine.</div>
+  <div class="cite-source">Adam Plunkett / family, 2026-04-20. Located in `Dad Health/literature_reviews/11_late_life_anxiety_TRD_alternatives.md`.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Analytical review of anxiety alternatives. Explicit conclusion: "Replacing olanzapine with another antipsychotic (quetiapine, aripiprazole) — defeats the purpose." Named Dad's activation-intolerance pattern across multiple agents as a load-bearing clinical signal. Worth distinguishing: this was an analytical position on tonic anxiety management, not on acute overnight agitation during a ketamine course.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The lit review's general framing against adding an antipsychotic for anxiety still stands. The acute-overnight-agitation context shifts the calculus slightly (rapid onset is genuinely useful in a way buspirone isn't) but doesn't reverse the broader concern.</div>
+</div>
+
+<div class="tier-header">Tier 1 — Receptor Pharmacology of Low-Dose Quetiapine <span class="tier-stars">★★★★★</span></div>
+
+<div class="citation">
+  <div class="cite-title">Sato H, Ito C, Hiraoka K et al. Histamine H1 Receptor Occupancy by the New-Generation Antipsychotics Olanzapine and Quetiapine: A PET Study in Healthy Volunteers.</div>
+  <div class="cite-source">Psychopharmacology 2015;232:3497–3505. Read <a href="https://doi.org/10.1007/s00213-015-4002-2" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>A single 25 mg dose of quetiapine produced 56–81% H1 receptor occupancy in the cerebral cortex — high enough to drive subjective sedation, consistent with the binding hierarchy where H1 affinity (Ki 4.4 nM) far exceeds D2 affinity (Ki 626 nM).</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Anchors Dr. R's "acts differently" pharmacology claim. At 25 mg, quetiapine is functionally an antihistamine first and a D2 antagonist a distant fourth.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Lako IM, van den Heuvel ER, Knegtering H, Bruggeman R, Taxis K. Estimating Dopamine D2 Receptor Occupancy for Doses of 8 Antipsychotics: A Meta-Analysis.</div>
+  <div class="cite-source">J Clin Psychopharmacol 2013;33:675–681. Read <a href="https://doi.org/10.1097/JCP.0b013e3182983ffa" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Quetiapine's maximum achievable D2 occupancy is only 49.1% (95% CI 18.7–79.6), far below the 65% EPS threshold. By contrast, olanzapine and the D2 partial agonists routinely reach 65–80% at clinical doses.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The mechanism-distinct-from-prior-agents argument. The receptors that produced EPS on aripiprazole/brexpiprazole/olanzapine for Dad are not the dominant receptors at quetiapine 25–50 mg.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Nyberg S, Jucaite A, Takano A et al. Norepinephrine Transporter Occupancy in the Human Brain After Oral Administration of Quetiapine XR.</div>
+  <div class="cite-source">Int J Neuropsychopharmacol 2013;16:2235–2244. Read <a href="https://doi.org/10.1017/S1461145713000680" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Norquetiapine (the active NRI metabolite) produced only 19% NET occupancy at quetiapine XR 150 mg/day and 35% at 300 mg/day. The threshold for meaningful NET occupancy requires parent-drug doses well above 50 mg.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The mirtazapine-analog concern via the noradrenergic metabolite is smaller than initially worried at 25–50 mg parent dose. The metabolite-mediated activation mechanism is not meaningfully recruited at this dose.</div>
+</div>
+
+<div class="tier-header">Tier 2 — Quetiapine and Ketamine Interaction <span class="tier-stars">★★★</span></div>
+
+<div class="citation">
+  <div class="cite-title">Veraart JKE, Smith-Apeldoorn SY, Bakker IM et al. Pharmacodynamic Interactions Between Ketamine and Psychiatric Medications Used in the Treatment of Depression: A Systematic Review.</div>
+  <div class="cite-source">Int J Neuropsychopharmacol 2021;24:808–831. Read <a href="https://doi.org/10.1093/ijnp/pyab039" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Benzodiazepines repeatedly reduced the duration of ketamine's antidepressant effect (Andrashko 2020; Feeney 2022; dose-dependent above 8 mg diazepam equivalent). Antipsychotic data are sparser: risperidone attenuated ketamine-induced brain perfusion changes, clozapine blunted positive symptoms, haloperidol showed an interaction. Quetiapine specifically: no published data.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The benzo mechanism (GABA-A potentiation) doesn't translate to quetiapine, but the 5-HT2A antagonism is on the same downstream pathway ketamine uses for plasticity. Direction of prior is "attenuation or neutral," not "augmentation." Loops back to why the ketamine clinic's input matters before tomorrow's session.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Amiaz R, Saporta R, Noy A, Berkenstadt H, Weiser M. Can Quetiapine Prolong the Antidepressant Effect of Ketamine?: A 5-Year Follow-Up Study.</div>
+  <div class="cite-source">J Clin Psychopharmacol 2021;41:673–675. Read <a href="https://doi.org/10.1097/JCP.0000000000001489" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Small 5-year follow-up (N = 16) found that patients taking quetiapine had significantly longer time to ketamine relapse (966 vs. 81 days), with 3 of 5 quetiapine patients maintaining remission at 5 years. Hypothesis-generating; very low-quality evidence.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The one data point pointing in the augment-rather-than-attenuate direction. N = 16 with no control for selection effects. Worth knowing exists but not strong enough to override the mechanistic prior or the absence of trial data.</div>
+</div>
+
+<div class="tier-header">Tier 3 — Cardiac and Orthostatic Safety in Older Adults <span class="tier-stars">★★★★</span></div>
+
+<div class="citation">
+  <div class="cite-title">Xiong GL, Pinkhasov A, Mangal JP et al. QTc Monitoring in Adults With Medical and Psychiatric Comorbidities: Expert Consensus From the Association of Medicine and Psychiatry.</div>
+  <div class="cite-source">J Psychosom Res 2020;135:110138. Read <a href="https://doi.org/10.1016/j.jpsychores.2020.110138" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Baseline ECG recommended when ≥2 QT risk factors are present. QTc &gt;500 ms or increase &gt;60 ms from baseline should prompt discontinuation; QTc 450–499 ms in males warrants risk-benefit reassessment.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Dad has ≥4 risk factors (age &gt;65; bradycardia HR 49–53; LAFB + borderline 1° AVB + QRS 120; polypharmacy with QT-active duloxetine + doxepin + trazodone PRN). 5/19/2025 ECG was QTc 401 — fine, but it's a year old. Fresh ECG before any new QT-active agent is the consensus standard.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">El-Saifi N, Moyle W, Jones C, Tuffaha H. Quetiapine Safety in Older Adults: A Systematic Literature Review.</div>
+  <div class="cite-source">J Clin Pharm Ther 2016;41:7–18. Read <a href="https://doi.org/10.1111/jcpt.12357" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Postural hypotension rates of 6–18% in older adults on quetiapine. Most events during initial titration. FDA recommends limiting the initial dose to 25 mg and returning to the previous dose if hypotension occurs.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Dad's BP 112/58 + HR 49–53 + tadalafil 5 mg daily for BPH limits compensatory reserve for orthostatic challenge. Bradycardia caps the tachycardic response; tadalafil is an additive α1 vasodilator. Morning-after orthostatic vitals are essential if quetiapine starts.</div>
+</div>
+
+<div class="tier-header">Tier 4 — Akathisia, DLB Safety, and REM Effects <span class="tier-stars">★★★★</span></div>
+
+<div class="citation">
+  <div class="cite-title">Wu H, Siafis S, Wang D et al. Antipsychotic-Induced Akathisia in Adults With Acute Schizophrenia: A Systematic Review and Dose-Response Meta-Analysis.</div>
+  <div class="cite-source">Eur Neuropsychopharmacol 2023;72:40–49. Read <a href="https://doi.org/10.1016/j.euroneuro.2023.03.015" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Quetiapine carried "negligible risks for akathisia across examined doses (flat curve)." Lowest of the second-generation antipsychotics studied. MDD adjunctive akathisia incidence was 1.5% at 300 mg.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The activation-intolerance concern from prior agents is mechanistically less likely to transfer to quetiapine. "Less likely" is not "rule-out" — the four-agent pattern is still a vulnerability signal — but the mechanism that produced EPS on aripiprazole/brexpiprazole/olanzapine isn't dominant at quetiapine 25–50 mg.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Taylor JP, McKeith IG, Burn DJ et al. New Evidence on the Management of Lewy Body Dementia.</div>
+  <div class="cite-source">Lancet Neurol 2020;19:157–169. Read <a href="https://doi.org/10.1016/S1474-4422(19)30153-X" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Quetiapine is positioned as having the "fewest side effects" among antipsychotics in DLB based on low D2 affinity, though evidence for efficacy is insufficient. Severe neuroleptic sensitivity reactions occur in up to 50% of patients with established DLB exposed to any traditional antipsychotic. No published data exist on neuroleptic sensitivity rates specifically with low-dose quetiapine in DLB-spectrum patients, nor on safety when the indication is anxiety/sleep rather than psychosis.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>If an antipsychotic must be on board during the neurology workup, quetiapine is the right choice from the DLB-safety standpoint. The caveat — that the indication-creep from psychosis to anxiety hasn't been validated — is real but doesn't change the relative-safety ranking.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Gedge L, Lazowski L, Murray D, Jokic R, Milev R. Effects of Quetiapine on Sleep Architecture in Patients With Unipolar or Bipolar Depression.</div>
+  <div class="cite-source">Neuropsychiatr Dis Treat 2010;6:501–508. Read <a href="https://doi.org/10.2147/ndt.s12433" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Quetiapine at clinical doses (100–200 mg) decreases REM sleep percentage and increases REM latency. Effect appears within 2–4 days of initiation. Quetiapine is not among the AASM-recommended RBD agents (clonazepam, melatonin, rivastigmine, pramipexole).</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Theoretical REM suppression could reduce RBD-episode frequency by decreasing time in REM, but this is symptomatic suppression, not disease-modifying — and isn't validated for RBD. If the overnight "body shaking" was an RBD episode rather than anxiety/agitation, the right intervention is in the neurology workup, not quetiapine.</div>
+</div>
+
+</body>
+</html>
+</content>
+</invoke>

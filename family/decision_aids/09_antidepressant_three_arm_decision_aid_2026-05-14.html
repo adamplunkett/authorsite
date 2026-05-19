@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Decision Aid — Three-arm antidepressant strategy — 2026-05-14</title>
+<style>
+  @page { size: letter; margin: 0.55in 0.65in; }
+  :root {
+    --navy: #1a3a5c; --navy-dark: #0f2640;
+    --against-accent: #8b2c2c; --for-accent: #2c5e3f;
+    --text: #1f1f1f; --text-muted: #5a5a5a;
+    --rule: #c8c8c8; --rule-strong: #6a6a6a;
+    --tint-a: #eef3ee;
+    --tint-b: #f9f2f0;
+    --tint-c: #f3f3f1;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    font-family: "Charter", "Georgia", "Times New Roman", serif;
+    font-size: 9.75pt; line-height: 1.42; color: var(--text);
+    -webkit-font-smoothing: antialiased;
+  }
+  .doc-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    padding-bottom: 6pt; border-bottom: 1.5pt solid var(--navy); margin-bottom: 14pt;
+  }
+  .doc-header .title {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 600; font-size: 15pt; line-height: 1.2;
+    color: var(--navy-dark); letter-spacing: -0.01em;
+  }
+  .doc-header .meta {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 7.5pt; color: var(--text-muted); text-align: right;
+    letter-spacing: 0.03em; line-height: 1.5;
+  }
+  .section-label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 7.5pt; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.14em; color: var(--navy); margin: 14pt 0 5pt 0;
+  }
+  .section-label.first { margin-top: 0; }
+  .key-message {
+    border-left: 4pt solid var(--navy); background: #f5f5f0;
+    padding: 9pt 13pt; margin: 0 0 10pt 0;
+  }
+  .key-message p {
+    margin: 0;
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 10.5pt; line-height: 1.42; font-weight: 500; color: var(--text);
+  }
+  .context { font-size: 9.5pt; line-height: 1.5; color: var(--text); margin: 0 0 4pt 0; }
+
+  /* Three-arm option panels */
+  .option-block {
+    padding: 10pt 14pt; margin: 0 0 8pt 0;
+    border-left: 4pt solid;
+  }
+  .option-a { background: var(--tint-a); border-left-color: var(--for-accent); }
+  .option-b { background: var(--tint-b); border-left-color: var(--against-accent); }
+  .option-c { background: var(--tint-c); border-left-color: #888; }
+
+  .option-header {
+    display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 5pt;
+  }
+  .option-title {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 700; font-size: 10.5pt; color: var(--navy-dark);
+  }
+  .option-tag {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 8pt; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.1em; padding: 2pt 6pt; border-radius: 2pt; color: white;
+  }
+  .option-a .option-tag { background: var(--for-accent); }
+  .option-b .option-tag { background: var(--against-accent); }
+  .option-c .option-tag { background: #6a6a6a; }
+
+  .option-description { font-size: 9pt; line-height: 1.45; margin-bottom: 6pt; }
+
+  .option-prosrons {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 12pt; margin-top: 4pt;
+  }
+  .option-prosrons-block {
+    font-size: 8.75pt; line-height: 1.4;
+  }
+  .option-prosrons-label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 7pt; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.08em; color: var(--navy-dark); margin-bottom: 2pt;
+  }
+  .option-prosrons ul {
+    list-style: none; padding: 0; margin: 0;
+  }
+  .option-prosrons li {
+    padding-left: 11pt; position: relative; margin-bottom: 3pt;
+  }
+  .option-prosrons li::before {
+    content: "•"; position: absolute; left: 0; color: var(--navy);
+  }
+
+  .neutral-block {
+    background: #f3f3f1; border-left: 3pt solid #888;
+    padding: 9pt 14pt 6pt 14pt; margin: 4pt 0 8pt 0;
+  }
+  .neutral-block ul { list-style: none; padding: 0; margin: 0; }
+  .neutral-block li {
+    font-size: 9pt; line-height: 1.45; margin-bottom: 6pt;
+    padding-left: 14pt; position: relative;
+  }
+  .neutral-block li::before {
+    content: "•"; position: absolute; left: 0; color: #888; font-weight: bold;
+  }
+  .neutral-block li:last-child { margin-bottom: 0; }
+  .neutral-block strong { color: var(--navy-dark); }
+
+  ol.next-steps {
+    margin: 4pt 0 8pt 0; padding-left: 18pt; font-size: 9.25pt; line-height: 1.4;
+  }
+  ol.next-steps li { margin-bottom: 4pt; padding-left: 3pt; }
+  ol.next-steps li::marker {
+    color: var(--navy); font-weight: 700;
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+  }
+
+  .bottom-line {
+    border-top: 1pt solid var(--rule-strong); padding-top: 6pt; margin-top: 10pt;
+    font-style: italic; font-size: 9pt; color: var(--text); line-height: 1.4;
+  }
+  .bottom-line .label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-style: normal; font-weight: 700; font-size: 7.5pt;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--navy); margin-right: 6pt;
+  }
+
+  .back-header {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 14pt; font-weight: 600; color: var(--navy-dark);
+    border-bottom: 1.5pt solid var(--navy); padding-bottom: 5pt;
+    margin-top: 18pt; margin-bottom: 4pt;
+  }
+  .citation, .tier-header { page-break-inside: avoid; }
+  .back-subhead {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 8pt; color: var(--text-muted); margin-bottom: 14pt; letter-spacing: 0.03em;
+  }
+  .tier-header {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 9pt; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.12em; color: var(--navy);
+    margin: 11pt 0 6pt 0; padding-bottom: 2pt; border-bottom: 0.5pt solid var(--rule);
+  }
+  .tier-header .tier-stars { float: right; color: var(--navy); font-size: 10pt; letter-spacing: 0.04em; }
+  .citation {
+    margin: 0 0 9pt 0; padding-left: 9pt; border-left: 2pt solid var(--rule);
+    font-size: 8.75pt; line-height: 1.4;
+  }
+  .citation .cite-title {
+    font-weight: 700; color: var(--navy-dark);
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif; font-size: 8.75pt;
+  }
+  .citation .cite-source { color: var(--text-muted); font-style: italic; font-size: 8.5pt; }
+  .citation .cite-finding, .citation .cite-apply { margin-top: 2pt; font-size: 8.5pt; }
+  .citation .label-inline {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 700; font-size: 7pt; text-transform: uppercase;
+    letter-spacing: 0.08em; color: var(--navy); margin-right: 4pt;
+  }
+  .citation .cite-link {
+    color: var(--navy); text-decoration: underline;
+    text-decoration-thickness: 0.4pt; text-underline-offset: 1.5pt;
+    font-style: normal; font-weight: 500; margin-left: 2pt;
+  }
+  .citation .cite-link:hover { color: var(--navy-dark); }
+</style>
+</head>
+<body>
+
+<div class="doc-header">
+  <div class="title">What's the right antidepressant strategy for Dad going forward?</div>
+  <div class="meta">
+    Decision Aid · 2026-05-14<br>
+    For Dad, Mom, Dr. Rubin, the K Clinic<br>
+    psychiatrist, Julane &amp; the family team
+  </div>
+</div>
+
+<div class="section-label first">Recommendation</div>
+<div class="key-message">
+  <p>Three options are now on the table for Dad's longer-term antidepressant strategy. <strong>For the May 18 ketamine restart, all three options share the same immediate action: stay on Cymbalta 60 mg unchanged.</strong> The genuine decision — among (A) staying on Cymbalta long-term, (B) switching to Lexapro, or (C) tapering off all SSRIs/SNRIs and relying on ketamine alone — should be made later, after the family has more information from (1) the ketamine response at 2–3 sessions, (2) the June neurology evaluation, and (3) the August 6 MMA recheck. <strong>Of the three options, Option B (switch to Lexapro) is the weakest of the three in Dad's specific profile and should be reconsidered.</strong> The recent confirmation that the ketamine protocol will be <strong>twice-weekly IV (with occasional at-home lozenges as supplementary)</strong> — rather than sublingual lozenges as the primary route — meaningfully strengthens Option C, because the 3–4 day inter-dose interval keeps Dad within the window where even ketamine monotherapy has been shown to maintain its antidepressant effect.</p>
+</div>
+
+<div class="section-label">Why this matters for Dad specifically</div>
+<p class="context">Dad's current pharmacy record shows escitalopram (Lexapro) 10 mg and reduced-dose duloxetine (Cymbalta) 20 mg both filled 5/11/2026 — suggesting the cross-taper to Option B is what's currently planned. So far, Dad has taken one 5 mg Lexapro dose; he remains on Cymbalta 60 mg, and the cross-taper is barely begun pharmacologically. This means the family has a real window to consider whether Option B (Lexapro) is actually the right longer-term direction — or whether one of the other two options would better fit Dad's specific profile. Four things have shifted the analysis since the earlier discussions: (1) a 2025 randomized trial of esketamine monotherapy (Janik et al., n=378, JAMA Psychiatry) showed that ketamine can work effectively without a concurrent oral antidepressant — and the FDA Spravato label has been updated to reflect this new monotherapy indication. (2) Dad's REM Sleep Behavior Disorder episodes have decreased over 8.5 years on antidepressants — a pattern consistent with antidepressant-associated RBD that might further improve with antidepressant discontinuation. (3) The Faraj 2023 EBioMedicine study found that ~20% of patients over 65 reach pro-arrhythmic Lexapro blood levels at the FDA-recommended elderly maximum of 10 mg/day — a real cardiac concern given Dad's partial heart-block (LAFB) and bradycardia. (4) <strong>The ketamine protocol is now confirmed as twice-weekly IV (with occasional at-home lozenges as supplementary), not primarily sublingual.</strong> This matters substantively because IV ketamine has 100% bioavailability versus sublingual's ~25–30%; produces larger acute effect sizes; is the route with the strongest published maintenance RCTs (Singh 2016, Phillips 2019); is the route used in the late-life pilot study showing improved executive function in adults ≥60 (Oughli 2023); and — most importantly for the three-arm decision — the twice-weekly dosing interval keeps Dad within the 3–4 day window where even monotherapy ketamine has been shown to maintain its antidepressant effect. None of these findings alone changes the answer, but together they make Option B the weakest of the three and narrow the gap between Options A and C.</p>
+
+<div class="section-label">The three options</div>
+
+<!-- OPTION A -->
+<div class="option-block option-a">
+  <div class="option-header">
+    <div class="option-title">Option A — Stay on Cymbalta 60 mg + ketamine</div>
+    <div class="option-tag">Strongest evidence</div>
+  </div>
+  <div class="option-description">Keep duloxetine 60 mg unchanged; begin twice-weekly IV ketamine (with occasional at-home lozenges as needed) on May 18 and continue indefinitely as the primary depression-and-anxiety treatment. No antidepressant transition at any point unless a specific clinical reason emerges later.</div>
+  <div class="option-prosrons">
+    <div class="option-prosrons-block">
+      <div class="option-prosrons-label">In favor</div>
+      <ul>
+        <li>Preserves the medication condition under which Dad's February dramatic ketamine response occurred</li>
+        <li>Del Casale 2025 (n=55,480): SNRI + ketamine had lower mortality (5.3% vs. 9.1%) and lower relapse (14.8% vs. 21.2%) than SSRI + ketamine</li>
+        <li>Singh 2016 RCT: twice-weekly IV ketamine at 0.5 mg/kg achieved 69% response, 37.5% remission over 15 days — the maintenance protocol Dad will be on</li>
+        <li>Phillips 2019: scheduled maintenance IV infusions associated with ~27% relapse vs. ~46% with variable protocols</li>
+        <li>Thorlund 2015 elderly meta-analysis: duloxetine significantly outperformed placebo in adults ≥60; escitalopram did not</li>
+        <li>Cleanest path through the May 18 restart — no transitions, attribution intact</li>
+      </ul>
+    </div>
+    <div class="option-prosrons-block">
+      <div class="option-prosrons-label">Against</div>
+      <ul>
+        <li>Maintains a serotonergic AD that may be contributing to Dad's RBD</li>
+        <li>Doesn't address the possible prodromal Lewy-spectrum concern about long-term serotonergic exposure</li>
+        <li>Locks in current side effects (whatever those are for Dad)</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- OPTION B -->
+<div class="option-block option-b">
+  <div class="option-header">
+    <div class="option-title">Option B — Cross-taper Cymbalta → Lexapro + ketamine</div>
+    <div class="option-tag">Weakest of the three</div>
+  </div>
+  <div class="option-description">Step down duloxetine over 2–4 weeks while titrating up escitalopram to the FDA elderly maximum of 10 mg/day. Continue ketamine throughout. This is what the 5/11 prescriptions suggest is currently planned.</div>
+  <div class="option-prosrons">
+    <div class="option-prosrons-block">
+      <div class="option-prosrons-label">In favor</div>
+      <ul>
+        <li>Dad has years of prior tolerability with Lexapro (his historical SSRI before duloxetine)</li>
+        <li>SSRIs have modestly larger anxiety symptom reductions in older adults than SNRIs (Neil-Sztramko 2025 Lancet Psychiatry meta-analysis, effect size −1.84 vs. −0.46)</li>
+        <li>Some patients prefer the SSRI side-effect profile to SNRI</li>
+      </ul>
+    </div>
+    <div class="option-prosrons-block">
+      <div class="option-prosrons-label">Against</div>
+      <ul>
+        <li><strong>Cardiac concern</strong>: Faraj 2023 — ~20% of patients over 65 reach pro-arrhythmic Lexapro levels at just 10 mg/day. Dad has LAFB + HR 57</li>
+        <li>FAERS 2025 pharmacovigilance: Lexapro has signals for QTc prolongation, atrial fibrillation, ventricular arrhythmia; Cymbalta has none</li>
+        <li><strong>The cardiac contrast is sharper with IV ketamine</strong>: Wutzler 2013 found that IV ketamine produced a modest ~12 bpm heart-rate increase, shortened atrial conduction time, and may be <em>beneficial</em> in patients with pre-existing bradycardia. Adding Lexapro (QTc-prolonging) to IV ketamine (which already has a mild sympathomimetic profile) is an unfavorable combination in Dad's cardiac picture, when staying on Cymbalta produces no equivalent concern</li>
+        <li>TRANSFORM-3: esketamine + new oral AD failed primary endpoint in adults ≥65</li>
+        <li>Del Casale 2025: SSRI + esketamine had higher mortality and relapse than SNRI + esketamine</li>
+        <li>Switching from one serotonergic AD to another doesn't address Dad's RBD</li>
+        <li>Parkinson's-spectrum guidance names duloxetine, not escitalopram, for PD-related depression — relevant given the active neurology workup</li>
+        <li>Neil-Sztramko 2025: the SSRI anxiety advantage was in symptom-intensity measures only; no significant difference in response or remission rates between classes</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- OPTION C -->
+<div class="option-block option-c">
+  <div class="option-header">
+    <div class="option-title">Option C — Taper off Cymbalta, no replacement; ketamine + integration only</div>
+    <div class="option-tag">Newly viable</div>
+  </div>
+  <div class="option-description">Slow taper of duloxetine 60 → 40 → 20 → 0 mg over 6–12 weeks (initiated after IV ketamine response is established, not before). No replacement SSRI or SNRI. Rely on twice-weekly IV ketamine (with PRN at-home lozenges as needed) + structured maintenance + integration sessions as the primary mood treatment.</div>
+  <div class="option-prosrons">
+    <div class="option-prosrons-block">
+      <div class="option-prosrons-label">In favor</div>
+      <ul>
+        <li>Janik 2025 RCT (n=378, JAMA Psychiatry): esketamine monotherapy outperformed placebo at day 28 in TRD — the first placebo-controlled trial of ketamine without concurrent oral AD</li>
+        <li>FDA Spravato label updated to include monotherapy as approved indication (no longer requires co-administration with oral AD)</li>
+        <li><strong>Twice-weekly IV dosing matches the protocol used in the best-studied maintenance RCTs.</strong> The Singh 2016 RCT specifically studied this regimen (0.5 mg/kg twice weekly) and found durable response. The 3–4 day inter-dose interval keeps Dad within the window where even monotherapy ketamine has been shown to maintain antidepressant effect — partially closing the durability gap that was Option C's main weakness</li>
+        <li><strong>IV ketamine has direct late-life evidence supporting use.</strong> The Oughli 2023 pilot (n=25, adults ≥60) used IV ketamine specifically and found improved executive function (Cohen's d = 0.61) and sleep, with no cognitive decline. This is the most age-relevant ketamine evidence available</li>
+        <li><strong>IV ketamine's cardiac effect is favorable for Dad's bradycardia.</strong> Mild ~12 bpm heart-rate increase per Wutzler 2013, which described ketamine as possibly beneficial in patients with bradycardia. Combined with removing the QTc concern from Lexapro, Option C has the cleanest cardiac profile of the three</li>
+        <li>Removes potential antidepressant contribution to Dad's RBD pattern (AASM 2023 conditionally recommends AD discontinuation in drug-induced/exacerbated RBD)</li>
+        <li>IV ketamine's REM suppression is transient and glutamatergic — mechanistically distinct from the chronic serotonergic REM-without-atonia that underlies antidepressant-associated RBD</li>
+        <li>Eliminates all SSRI/SNRI-specific cardiac and Lewy-spectrum concerns</li>
+        <li>Twice-weekly clinic visits provide supervised monitoring of hemodynamics, cognition, and fall risk — a built-in safety infrastructure for a 76-year-old</li>
+        <li>Aligns with the long-term goal if the June neurology evaluation reveals a synucleinopathy diagnosis</li>
+        <li>Reduces overall medication burden, important in an older patient with possible neurodegenerative substrate</li>
+      </ul>
+    </div>
+    <div class="option-prosrons-block">
+      <div class="option-prosrons-label">Against</div>
+      <ul>
+        <li>No long-term (≥6 month) relapse-prevention RCTs of ketamine monotherapy specifically (the longest monotherapy RCT — Janik 2025 — was 4 weeks double-blind + 12 weeks open-label)</li>
+        <li>No published cohorts of adults ≥65 on ketamine maintenance without concurrent oral AD specifically</li>
+        <li>The Janik 2025 monotherapy evidence is for intranasal esketamine, not the IV racemic ketamine Dad will receive — but the route IV has stronger overall evidence base than intranasal</li>
+        <li>Brief REM-rebound period (1–4 weeks) during AD taper could temporarily worsen RBD before improvement</li>
+        <li><strong>Anxiety coverage between IV sessions is the main remaining concern.</strong> Duloxetine provides continuous anxiolysis; IV ketamine's anxiolytic effect may wane between sessions. At-home lozenges can partially bridge but the hybrid approach hasn't been studied in RCTs</li>
+        <li>Loses the antidepressant effect Cymbalta is currently providing</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="section-label">What's true regardless of which option is chosen</div>
+<div class="neutral-block">
+  <ul>
+    <li><strong>All three options share the same immediate next step: continue Cymbalta 60 mg at the May 18 ketamine restart.</strong> The disagreement among the options is about the longer-term direction, not about what to do this week. Don't change Cymbalta at the restart.</li>
+    <li><strong>The twice-weekly IV protocol is well-evidenced as a stand-alone factor.</strong> Singh 2016 and Phillips 2019 both used IV dosing at this frequency. This is the maintenance regimen with the strongest published RCT support, regardless of which longer-term antidepressant strategy is chosen.</li>
+    <li><strong>At-home sublingual lozenges as a supplement to IV sessions is reasonable but understudied.</strong> The hybrid IV-plus-PRN-lozenge model is used in clinical practice but has not been examined in RCTs. It could plausibly help bridge anxiety symptoms between IV sessions (relevant especially for Option C) but should not replace the IV protocol.</li>
+    <li><strong>Whatever the eventual choice, the antidepressant transition should not be concurrent with the May 18 ketamine restart.</strong> Both Option B (cross-taper) and Option C (taper off) should wait until ketamine response is established at 2–3 sessions, ideally with input from the K Clinic psychiatrist and the June neurology evaluation before initiating any taper.</li>
+    <li><strong>The June neurology evaluation and the August 6 MMA recheck are real decision points.</strong> If neurology confirms a Parkinson's-spectrum diagnosis, the calculus shifts toward Option C. If the MMA normalizes with B12 supplementation and Dad's cognitive picture improves substantially, that may shift the decision in other ways. Waiting preserves the option to make this decision with more information.</li>
+    <li><strong>Tapering Cymbalta requires a slow, geriatric-appropriate schedule.</strong> If Option B or C is eventually pursued, the recommended approach is to reduce duloxetine by ~25% every 2–4 weeks (60 → 40 → 20 → 0 mg, possibly with bead-counting at the lowest steps), monitor for discontinuation symptoms using the DESS criteria, and distinguish discontinuation symptoms from depressive relapse by their physical character (paresthesia, dizziness) and rapid onset.</li>
+  </ul>
+</div>
+
+<div class="section-label">Recommended next steps</div>
+<ol class="next-steps">
+  <li><strong>For the May 18 ketamine restart: stay on Cymbalta 60 mg unchanged.</strong> All three options support this immediate step. Do not continue the Lexapro titration that was started this week; do not begin a Cymbalta taper.</li>
+  <li><strong>For the May 19 follow-up with Dr. Rubin</strong>: bring the three-arm framing and ask which option he is recommending and why. The cross-taper to Lexapro (Option B) is the weakest of the three for Dad's profile — but the family should hear his clinical reasoning before pushing back.</li>
+  <li><strong>For the K Clinic psychiatrist call</strong>: bring the same three-arm framing. The K Clinic psychiatrist has specifically been described as experienced with medication tapering — her input on Option C (off Cymbalta, ketamine only) is particularly relevant given the Janik 2025 evidence and updated Spravato monotherapy label.</li>
+  <li><strong>Reassess at the 2–3 ketamine session mark</strong> (approximately late May / early June). At that point, with a clearer ketamine response read and a few weeks of post-benzodiazepine rebound resolution, the family can revisit the longer-term antidepressant strategy with more information.</li>
+  <li><strong>Pre-position the June neurology evaluation question</strong>. If the neurology evaluation suggests a Parkinson's-spectrum diagnosis, Option C becomes more strongly indicated. Ask the neurologist explicitly whether their findings change the antidepressant strategy.</li>
+  <li><strong>The August 6 MMA recheck is the second decision point</strong>. If MMA normalizes and Dad's cognitive picture improves with B12 supplementation, that could shift the calculus. If MMA persists despite supplementation, additional workup may be needed.</li>
+  <li><strong>If a taper is eventually pursued (either Option B cross-taper or Option C off entirely)</strong>: use a slow geriatric schedule of ~25% reductions every 2–4 weeks, with close monitoring for discontinuation symptoms and any depressive relapse. Watch for transient REM rebound that may briefly worsen RBD in the first 1–4 weeks of the taper.</li>
+</ol>
+
+<div class="bottom-line">
+  <span class="label">Bottom line</span>
+  For the May 18 ketamine restart, all three options agree: stay on Cymbalta 60 mg. For the longer-term direction, Option A (stay on Cymbalta) has the strongest published evidence; Option C (off all SSRIs/SNRIs, ketamine alone) is now genuinely viable thanks to Janik 2025, the updated Spravato monotherapy label, and the confirmed twice-weekly IV protocol (which matches the dosing of the best maintenance RCTs and keeps Dad inside the inter-dose durability window) — particularly attractive given Dad's RBD and cardiac profile; Option B (switch to Lexapro) is the weakest of the three given Dad's cardiac findings, the late-life trial data, the failure to address the RBD concern, and the unfavorable combination of Lexapro's QTc risk with IV ketamine's mild sympathomimetic profile. The cross-taper to Lexapro that's currently been initiated should be reconsidered.
+</div>
+
+<div class="back-header">Key Studies &amp; Findings</div>
+<div class="back-subhead">Ranked by authority · Each citation summarized for how it applies to Dad's case</div>
+
+<div class="tier-header">Tier 1 — Major Clinical Guidelines and Regulatory Sources <span class="tier-stars">★★★★★</span></div>
+
+<div class="citation">
+  <div class="cite-title">FDA Spravato (esketamine) Label, updated 2026.</div>
+  <div class="cite-source">FDA prescribing information for esketamine nasal spray. Read <a href="https://www.accessdata.fda.gov/drugsatfda_docs/label/2026/211243s000lbl.pdf" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>The Spravato label has been updated to include treatment-resistant depression as "monotherapy or in conjunction with an oral antidepressant." This is a label expansion from the original 2019 approval which had required co-administration with an oral AD.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Regulatory backing for Option C (ketamine without concurrent oral antidepressant) — a recent change that makes the monotherapy approach evidence-supported and FDA-approved, not just off-label clinical practice.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Steffens DC. Treatment-Resistant Depression in Older Adults.</div>
+  <div class="cite-source">NEJM 2024;390:630–639. Read <a href="https://doi.org/10.1056/NEJMcp2305428" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>The current NEJM review of late-life TRD acknowledges the limited evidence for class-switching of antidepressants. Notes that "switching from one antidepressant class to another is an approach that is common clinical practice" but cautions that "there is little evidence to support it."</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Authoritative geriatric-psychiatry caution against the assumption that an SSRI switch will help. Supports the framing that Option B is not the obvious choice.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Kaila LV, Ikeda M et al. The Evolving Therapeutic Landscape of Dementia With Lewy Bodies.</div>
+  <div class="cite-source">Lancet Neurology 2025;24:1038–1052. Read <a href="https://doi.org/10.1016/S1474-4422(25)00323-0" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Lancet Neurology review on Lewy body disease therapeutics. Parkinson's UK depression guidelines (cited within) specifically name duloxetine, mirtazapine, venlafaxine, and sertraline as appropriate antidepressants in PD-related dementia. Escitalopram is not specifically named.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>If the June neurology evaluation reveals a Parkinson's-spectrum diagnosis, duloxetine is on the recommended list and escitalopram is not. Supports Option A or Option C, not Option B.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Howell M, Avidan AY et al. Management of REM Sleep Behavior Disorder: AASM Clinical Practice Guideline.</div>
+  <div class="cite-source">J Clin Sleep Med 2023;19:759–768. Read <a href="https://doi.org/10.5664/jcsm.10424" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>For patients with drug-induced or drug-exacerbated RBD, AASM gives a conditional recommendation for discontinuation of the inciting agent. Five observational studies showed clinically meaningful RBD improvement after stopping serotonergic antidepressants. Improvement may take several months and may be partial rather than complete.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The most relevant guideline-level support for Option C — particularly given that Dad's RBD pattern is more consistent with antidepressant-associated RBD than with classical idiopathic RBD.</div>
+</div>
+
+<div class="tier-header">Tier 2 — Major RCTs <span class="tier-stars">★★★★</span></div>
+
+<div class="citation">
+  <div class="cite-title">Janik A, Qiu X et al. Esketamine Monotherapy in Adults With Treatment-Resistant Depression.</div>
+  <div class="cite-source">JAMA Psychiatry 2025;82:877–887. Read <a href="https://doi.org/10.1001/jamapsychiatry.2025.1317" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>n=378. First placebo-controlled RCT of esketamine monotherapy (after ≥2-week antidepressant-free period) in TRD. Both 56 mg and 84 mg doses significantly outperformed placebo at day 28 (effect sizes 0.48 and 0.63). Numbers-needed-to-treat comparable to adjunctive esketamine trials. This is the regulatory basis for the FDA's monotherapy indication.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The pivotal evidence that makes Option C (off SSRIs/SNRIs entirely with ketamine alone) genuinely viable rather than theoretical. Caveats: 4-week trial; no late-life subgroup; for intranasal esketamine, not sublingual racemic ketamine. But the principle is established.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Daly EJ, Trivedi MH et al. Efficacy of Esketamine Nasal Spray Plus Oral Antidepressant for Relapse Prevention (SUSTAIN-1).</div>
+  <div class="cite-source">JAMA Psychiatry 2019;76:893–903. Read <a href="https://doi.org/10.1001/jamapsychiatry.2019.1189" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Landmark ketamine relapse-prevention trial. Continued esketamine + oral antidepressant reduced relapse by 51% compared to antidepressant alone (number needed to treat: 4). The oral antidepressant was maintained throughout — no monotherapy comparison.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The strongest long-term ketamine maintenance evidence. Used concurrent oral antidepressant. Supports Option A (stay on Cymbalta) on durability grounds — though it doesn't rule out Option C since monotherapy wasn't compared.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Ochs-Ross R, Daly EJ et al. Esketamine Nasal Spray Plus Oral Antidepressant in Elderly Patients (TRANSFORM-3).</div>
+  <div class="cite-source">Am J Geriatr Psychiatry 2020;28:121–141. Read <a href="https://doi.org/10.1016/j.jagp.2019.10.008" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>The pivotal trial of esketamine + newly initiated oral antidepressant in adults ≥65 with TRD. Failed its primary endpoint — did not show significant superiority over placebo + oral antidepressant.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Specifically argues against Option B (cross-taper to a new oral antidepressant during ketamine treatment) in adults ≥65. The trial design is closest to what Option B would create.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Singh JB, Fedgchin M et al. A Double-Blind, Randomized, Placebo-Controlled, Dose-Frequency Study of Intravenous Ketamine in Patients With Treatment-Resistant Depression.</div>
+  <div class="cite-source">Am J Psychiatry 2016;173:816–826. Read <a href="https://doi.org/10.1176/appi.ajp.2016.16010037" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>RCT (n=67) of IV ketamine 0.5 mg/kg administered twice weekly vs. three times weekly vs. placebo. Twice-weekly IV ketamine produced 69% response and 37.5% remission rates over 15 days, with durable antidepressant effects through the maintenance period.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>This is the RCT that most directly studied Dad's planned protocol (twice-weekly IV). The dosing schedule keeps the inter-dose interval at 3–4 days, which is within the window where even monotherapy ketamine maintains antidepressant effect — meaningfully strengthening Option C.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Phillips JL, Norris S et al. Single, Repeated, and Maintenance Ketamine Infusions for Treatment-Resistant Depression.</div>
+  <div class="cite-source">Am J Psychiatry 2019;176:401–409. Read <a href="https://doi.org/10.1176/appi.ajp.2018.18070834" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>RCT examining single, repeated, and maintenance IV ketamine for TRD. Repeated infusions showed cumulative antidepressant effects with a median of 3 infusions to response. Patients on scheduled maintenance had relapse rates of ~27%, vs. ~46% with variable protocols.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Establishes the value of structured maintenance dosing (rather than ad hoc), which is what Dad's twice-weekly IV plan provides. Relevant to all three options but particularly to Option C, where structured maintenance is the only continuous treatment.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Oughli HA, Gebara MA et al. Intravenous Ketamine for Late-Life Treatment-Resistant Depression: A Pilot Study.</div>
+  <div class="cite-source">Am J Geriatr Psychiatry 2023;31:210–221. Read <a href="https://doi.org/10.1016/j.jagp.2022.11.013" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Pilot study (n=25, adults ≥60) of IV ketamine for late-life TRD. 48% response rate. Importantly, executive function improved (Cohen's d = 0.61), sleep quality improved, and no cognitive decline was observed during the continuation phase.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The most directly age-relevant IV ketamine study. Supports the route choice (IV) for Dad's age group, with positive cognitive outcomes. The cognitive-safety finding is particularly relevant for Option C (where ketamine is the sole oral/IV mood treatment).</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Vankawala J et al. Meta-Analysis: Hemodynamic Responses to Sub-Anesthetic Doses of Ketamine in Patients With Psychiatric Disorders.</div>
+  <div class="cite-source">Front Psychiatry 2021;12:549080. Read <a href="https://doi.org/10.3389/fpsyt.2021.549080" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Meta-analysis of 2,252 ketamine treatments. Modest, transient increases: blood pressure +12.6/+8.5 mmHg, heart rate +4.1 bpm. Effects typically resolve within 1–2 hours. No serious cardiac adverse events.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The mild heart-rate increase from IV ketamine is favorable in Dad's bradycardia (HR 57). Combined with Wutzler 2013's finding that ketamine may benefit bradycardic patients, this means IV ketamine's cardiac profile is actually cleaner than Lexapro's in this specific patient.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Wutzler A, Huemer M et al. Effects of Deep Sedation on Cardiac Electrophysiology: Impact of Propofol and Ketamine.</div>
+  <div class="cite-source">Europace 2013;15:1019–1024. Read <a href="https://doi.org/10.1093/europace/eut025" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Electrophysiology study finding that ketamine increased heart rate by ~12 bpm and shortened atrial conduction time without significantly affecting sinus or AV node function. Authors concluded ketamine "may be beneficial in patients with pre-existing hypotension and bradycardia."</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Direct cardiac-electrophysiology finding that supports IV ketamine as cardiovascularly favorable for Dad's LAFB + bradycardia profile. Contrasts sharply with Lexapro's QTc-prolonging effect at the elderly dose maximum.</div>
+</div>
+
+<div class="tier-header">Tier 3 — Large Cohorts and Meta-analyses <span class="tier-stars">★★★</span></div>
+
+<div class="citation">
+  <div class="cite-title">Del Casale A et al. Esketamine Combined With SSRI or SNRI for Treatment-Resistant Depression.</div>
+  <div class="cite-source">JAMA Psychiatry 2025;82:810–817. Read <a href="https://doi.org/10.1001/jamapsychiatry.2025.0200" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Propensity-matched cohort, n=55,480. SNRI + esketamine had lower mortality (5.3% vs. 9.1%), lower hospitalization (0.1% vs. 0.2%), and lower depression relapse (14.8% vs. 21.2%) than SSRI + esketamine. Authors hypothesized that the dual SNRI mechanism synergizes with ketamine's glutamatergic effects.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Argues against Option B specifically (SSRI + ketamine has worse hard-outcomes than SNRI + ketamine). Supports Option A on the same comparison. Does not address Option C (no AD).</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Thorlund K, Druyts E et al. Comparative Efficacy and Safety of SSRIs and SNRIs in Older Adults: A Network Meta-Analysis.</div>
+  <div class="cite-source">J Am Geriatr Soc 2015;63:1002–1009. Read <a href="https://doi.org/10.1111/jgs.13395" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Network meta-analysis in adults ≥60. Duloxetine, sertraline, and paroxetine each significantly outperformed placebo for response. Escitalopram did not reach statistical significance over placebo in this older-adult population.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Direct comparative-efficacy evidence: Cymbalta has a stronger late-life evidence signal than Lexapro. Argues against Option B.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Neil-Sztramko SE, Levy A et al. Pharmacological Treatment of Anxiety in Older Adults: A Systematic Review and Meta-Analysis.</div>
+  <div class="cite-source">Lancet Psychiatry 2025;12:421–432. Read <a href="https://doi.org/10.1016/S2215-0366(25)00100-2" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Meta-analysis of 19 RCTs, 2,336 older adults. SSRIs produced larger reductions in anxiety symptom scores than SNRIs (standardized effect size −1.84 vs. −0.46), but no significant difference in response or remission rates between the two classes.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The strongest evidence supporting any aspect of Option B (Lexapro for anxiety). The advantage is real but modest, only in symptom-intensity measures, and not strong enough to outweigh the other concerns about switching.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Faraj P, Størset E et al. Pro-Arrhythmic Effect of Escitalopram and Citalopram at Serum Concentrations Commonly Observed in Older Patients.</div>
+  <div class="cite-source">EBioMedicine 2023;95:104779. Read <a href="https://doi.org/10.1016/j.ebiom.2023.104779" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Study of 19,742 patients. Approximately 20% of patients over 65 were predicted to reach potentially pro-arrhythmic blood levels of escitalopram at just 10 mg/day — the FDA-recommended elderly maximum — due to age-related slower drug clearance.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The most decision-relevant cardiac safety finding for Option B. Combined with Dad's LAFB and bradycardia, this is a meaningful risk that doesn't apply to Option A or C.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Cao S, Huang Z et al. Arrhythmic Events Pertinent With Antidepressants: A FAERS Pharmacovigilance Analysis.</div>
+  <div class="cite-source">Front Psychiatry 2025;16:1637471. Read <a href="https://doi.org/10.3389/fpsyt.2025.1637471" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>FDA Adverse Event Reporting System pharmacovigilance analysis. Escitalopram showed elevated signals for QTc prolongation/torsades de pointes (reporting odds ratio 1.72), atrial fibrillation (ROR 1.34), and ventricular arrhythmia (ROR 1.51). Duloxetine and venlafaxine showed no pharmacovigilance signals for any arrhythmia.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Direct comparative-cardiac-safety data: Cymbalta has a clean signal; Lexapro has multiple. In Dad's cardiac profile, this is decision-relevant and argues against Option B.</div>
+</div>
+
+<div class="tier-header">Tier 4 — Late-Life and RBD-Specific Cohorts <span class="tier-stars">★★</span></div>
+
+<div class="citation">
+  <div class="cite-title">Postuma RB, Gagnon JF et al. Antidepressants and REM Sleep Behavior Disorder: Isolated Side Effect or Neurodegenerative Signal?</div>
+  <div class="cite-source">Sleep 2013;36:1579–1585. Read <a href="https://doi.org/10.5665/sleep.3102" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Prospective cohort study of 100 PSG-confirmed RBD patients. Antidepressant-associated RBD had similar baseline neurodegenerative markers as idiopathic RBD but lower 5-year phenoconversion to overt disease (22% vs. 59%).</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Provides the framework for interpreting Dad's RBD as likely antidepressant-associated (decreasing frequency over 8.5 years on SSRIs/SNRIs). Argues that removing the antidepressant (Option C) could plausibly reduce both RBD episodes and the longer-term phenoconversion risk.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Sukhdeo R et al. Ketamine and Esketamine for Late-Life Depression: A Systematic Review.</div>
+  <div class="cite-source">Am J Geriatr Psychiatry 2025. Read <a href="https://doi.org/10.1016/j.jagp.2025.08.001" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Systematic review of 13 studies, 757 adults ≥60. Cognitive outcomes were mostly stable or improved on ketamine. Adverse events generally mild to moderate.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Supports continued ketamine in older adults as well-tolerated and cognitively safe — relevant for any of the three options.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Tan L, Zhou J et al. Duloxetine-Induced Rapid Eye Movement Sleep Behavior Disorder: A Case Report.</div>
+  <div class="cite-source">BMC Psychiatry 2017;17:372. Read <a href="https://doi.org/10.1186/s12888-017-1535-4" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Case report of duloxetine-induced RBD that fully resolved 37 days after duloxetine discontinuation.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Provides a published case parallel to what could happen to Dad's RBD if Option C is pursued — full resolution within weeks of stopping duloxetine. The case-report level of evidence isn't generalizable, but it's consistent with the AASM RBD guideline recommendation.</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Decision Aid — Lab additions for next PCP visit — 2026-05-16</title>
+<style>
+  @page { size: letter; margin: 0.55in 0.65in; }
+  :root {
+    --navy: #1a3a5c; --navy-dark: #0f2640;
+    --against-accent: #8b2c2c; --for-accent: #2c5e3f;
+    --text: #1f1f1f; --text-muted: #5a5a5a;
+    --rule: #c8c8c8; --rule-strong: #6a6a6a;
+    --tint: #f3f6f3;
+    --tint-essential: #eaf2ea;
+    --tint-consider: #f0f4ee;
+    --tint-defer: #f1f1ee;
+    --tint-skip: #f7eeed;
+    --label-essential: #2c5e3f;
+    --label-consider: #486b4d;
+    --label-defer: #6a6a6a;
+    --label-skip: #8b2c2c;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    font-family: "Charter", "Georgia", "Times New Roman", serif;
+    font-size: 9.75pt; line-height: 1.42; color: var(--text);
+    -webkit-font-smoothing: antialiased;
+  }
+  .doc-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    padding-bottom: 6pt; border-bottom: 1.5pt solid var(--navy); margin-bottom: 14pt;
+  }
+  .doc-header .title {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 600; font-size: 15pt; line-height: 1.2;
+    color: var(--navy-dark); letter-spacing: -0.01em;
+  }
+  .doc-header .meta {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 7.5pt; color: var(--text-muted); text-align: right;
+    letter-spacing: 0.03em; line-height: 1.5;
+  }
+  .section-label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 7.5pt; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.14em; color: var(--navy); margin: 14pt 0 5pt 0;
+  }
+  .section-label.first { margin-top: 0; }
+  .key-message {
+    border-left: 4pt solid var(--for-accent); background: var(--tint);
+    padding: 9pt 13pt; margin: 0 0 10pt 0;
+  }
+  .key-message p {
+    margin: 0;
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 10.5pt; line-height: 1.42; font-weight: 500; color: var(--text);
+  }
+  .context { font-size: 9.5pt; line-height: 1.5; color: var(--text); margin: 0 0 4pt 0; }
+
+  table.landscape {
+    width: 100%; border-collapse: collapse; margin: 4pt 0 8pt 0; table-layout: fixed;
+  }
+  table.landscape thead th {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 600; font-size: 8pt; padding: 6pt 9pt; text-align: left;
+    background: var(--navy); color: white; letter-spacing: 0.02em;
+  }
+  table.landscape td {
+    padding: 6pt 9pt; vertical-align: top;
+    border-bottom: 0.5pt solid var(--rule);
+    font-size: 8.75pt; line-height: 1.38;
+  }
+  table.landscape tbody tr:last-child td { border-bottom: none; }
+  table.landscape td.test {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 600; color: var(--navy-dark); font-size: 8.5pt; line-height: 1.32;
+  }
+  table.landscape td.rec {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 700; font-size: 7.75pt; text-transform: uppercase;
+    letter-spacing: 0.04em; line-height: 1.3;
+  }
+  tr.row-essential td { background: var(--tint-essential); }
+  tr.row-essential td.rec { color: var(--label-essential); }
+  tr.row-consider td { background: var(--tint-consider); }
+  tr.row-consider td.rec { color: var(--label-consider); }
+  tr.row-defer td { background: var(--tint-defer); }
+  tr.row-defer td.rec { color: var(--label-defer); }
+  tr.row-skip td { background: var(--tint-skip); }
+  tr.row-skip td.rec { color: var(--label-skip); }
+
+  .strength-row {
+    display: flex; align-items: baseline; margin: 6pt 0 2pt 0; white-space: nowrap;
+  }
+  .strength-label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 8.5pt; font-weight: 600; color: var(--text);
+    margin-right: 10pt; white-space: nowrap;
+  }
+  .stars { color: var(--for-accent); letter-spacing: 0.12em; font-size: 11pt; white-space: nowrap; }
+  .strength-rationale {
+    font-size: 8.5pt; color: var(--text-muted); font-style: italic;
+    margin: 2pt 0 6pt 0; line-height: 1.4;
+  }
+  ol.next-steps {
+    margin: 4pt 0 8pt 0; padding-left: 18pt; font-size: 9.25pt; line-height: 1.4;
+  }
+  ol.next-steps li { margin-bottom: 4pt; padding-left: 3pt; }
+  ol.next-steps li::marker {
+    color: var(--navy); font-weight: 700;
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+  }
+  .bottom-line {
+    border-top: 1pt solid var(--rule-strong); padding-top: 6pt; margin-top: 10pt;
+    font-style: italic; font-size: 9pt; color: var(--text); line-height: 1.4;
+  }
+  .bottom-line .label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-style: normal; font-weight: 700; font-size: 7.5pt;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--navy); margin-right: 6pt;
+  }
+  .neutral-block {
+    background: #f3f3f1; border-left: 3pt solid #888;
+    padding: 9pt 14pt 6pt 14pt; margin: 4pt 0 8pt 0;
+  }
+  .neutral-block ul { list-style: none; padding: 0; margin: 0; }
+  .neutral-block li {
+    font-size: 9pt; line-height: 1.45; margin-bottom: 6pt;
+    padding-left: 14pt; position: relative;
+  }
+  .neutral-block li::before {
+    content: "•"; position: absolute; left: 0; color: #888; font-weight: bold;
+  }
+  .neutral-block li:last-child { margin-bottom: 0; }
+  .neutral-block strong { color: var(--navy-dark); }
+
+  .summary-table {
+    width: 100%; border-collapse: collapse; margin: 4pt 0 8pt 0; table-layout: fixed;
+  }
+  .summary-table thead th {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 600; font-size: 8pt; padding: 5pt 8pt; text-align: left;
+    background: var(--navy); color: white; letter-spacing: 0.02em;
+  }
+  .summary-table td {
+    padding: 4pt 8pt; vertical-align: top;
+    border-bottom: 0.5pt solid var(--rule);
+    font-size: 8.5pt; line-height: 1.35;
+  }
+  .summary-table tbody tr:last-child td { border-bottom: none; }
+
+  .back-header {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 14pt; font-weight: 600; color: var(--navy-dark);
+    border-bottom: 1.5pt solid var(--navy); padding-bottom: 5pt;
+    margin-top: 18pt; margin-bottom: 4pt;
+  }
+  .citation, .tier-header { page-break-inside: avoid; }
+  .back-subhead {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 8pt; color: var(--text-muted); margin-bottom: 14pt; letter-spacing: 0.03em;
+  }
+  .tier-header {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 9pt; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.12em; color: var(--navy);
+    margin: 11pt 0 6pt 0; padding-bottom: 2pt; border-bottom: 0.5pt solid var(--rule);
+  }
+  .tier-header .tier-stars { float: right; color: var(--navy); font-size: 10pt; letter-spacing: 0.04em; }
+  .citation {
+    margin: 0 0 9pt 0; padding-left: 9pt; border-left: 2pt solid var(--rule);
+    font-size: 8.75pt; line-height: 1.4;
+  }
+  .citation .cite-title {
+    font-weight: 700; color: var(--navy-dark);
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif; font-size: 8.75pt;
+  }
+  .citation .cite-source { color: var(--text-muted); font-style: italic; font-size: 8.5pt; }
+  .citation .cite-finding, .citation .cite-apply { margin-top: 2pt; font-size: 8.5pt; }
+  .citation .label-inline {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 700; font-size: 7pt; text-transform: uppercase;
+    letter-spacing: 0.08em; color: var(--navy); margin-right: 4pt;
+  }
+  .citation .cite-link {
+    color: var(--navy); text-decoration: underline;
+    text-decoration-thickness: 0.4pt; text-underline-offset: 1.5pt;
+    font-style: normal; font-weight: 500; margin-left: 2pt;
+  }
+  .citation .cite-link:hover { color: var(--navy-dark); }
+</style>
+</head>
+<body>
+
+<div class="doc-header">
+  <div class="title">Lab additions for the next PCP visit</div>
+  <div class="meta">
+    Decision Aid · 2026-05-16<br>
+    For Dad, Mom, Dr. Straka (PCP), Dr. R,<br>
+    Dr. Chilton (K Clinic) &amp; the family team
+  </div>
+</div>
+
+<div class="section-label first">Recommendation</div>
+<div class="key-message">
+  <p>At the next PCP draw, ten lab additions are high-yield in Dad's profile. <strong>Three were already on the family's proposed list</strong> from the 5/4 clinical brief but haven't been done yet: <strong>iron panel (ferritin + TSAT + CRP)</strong>, <strong>homocysteine (paired with folate)</strong>, and <strong>vitamin D</strong>. <strong>Seven more emerged as worth adding</strong> based on new evidence and the picture as it's developed: <strong>AM cortisol + ACTH</strong> (rule out adrenal insufficiency given fatigue + weight loss + anorexia), <strong>hypogonadism characterization (repeat AM total T + LH + FSH + prolactin)</strong>, <strong>SPEP + LDH</strong> (weight loss workup standards), <strong>urinalysis</strong>, <strong>FIT (fecal immunochemical test)</strong> (overdue given colon adenoma history), <strong>PSA</strong> (baseline if TRT considered) and <strong>lipid panel</strong> (statin monitoring), and <strong>NT-proBNP</strong> (occult heart failure rule-out given bradycardia + LAFB + functional decline). Several specialty-driven labs (plasma p-Tau217 and other Alzheimer biomarkers, skin α-synuclein test) should be coordinated through U-M Neurology rather than ordered by PCP. A handful of commonly-ordered tests (free T3, reverse T3, heavy metals, holotranscobalamin) are low-yield in his exact profile and worth skipping.</p>
+</div>
+
+<div class="section-label">Why this matters for Dad specifically</div>
+<p class="context">The labs Dad has had so far (CMP + CBC + TSH + B12 + MMA + free T4 + magnesium + testosterone panel) are reassuring on most axes but leave several plausible contributors to the current picture unchecked. The chronic fatigue (R53.82, coded 4/23), the continuing unintentional weight loss (183 → 169 lbs over 2.5 years), the borderline-elevated MMA (0.46 vs &lt;0.40 — the basis for the methylmalonic acidemia diagnosis and B12 supplementation), and the biochemical hypogonadism (free T 3.6 low, bioavailable T 82 low) all suggest specific next-tier labs that are individually low-cost and informative. The family's prior literature review and clinical brief had already identified iron panel + vitamin D + homocysteine as worth adding 12 days ago; what's emerged since is a clearer case for adrenal-insufficiency rule-out (cortisol + ACTH), full hypogonadism workup (LH/FSH/prolactin/repeat AM T/PSA), SPEP + LDH as standard weight-loss workup, urinalysis, FIT (colon adenoma + family history), and NT-proBNP for occult heart failure rule-out. Several of these were on Dr. Straka's radar already; this handout consolidates the full ranked list to bring to the next visit so the conversation is efficient and the decision logic is on the page.</p>
+
+<div class="section-label">Recent labs already done — for reference</div>
+<table class="summary-table">
+  <thead>
+    <tr>
+      <th style="width: 32%;">Test</th>
+      <th style="width: 14%;">Value</th>
+      <th style="width: 14%;">Reference</th>
+      <th style="width: 40%;">Interpretation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>Vitamin B12 (4/14)</td><td>408 pg/mL</td><td>211–911</td><td>Within range but borderline-low; functional deficiency confirmed by MMA</td></tr>
+    <tr><td>Methylmalonic Acid (5/4)</td><td><strong>0.46 umol/L (H)</strong></td><td>&lt;0.40</td><td>Mildly elevated — basis for E71.120 methylmalonic acidemia diagnosis; B12 supplementation started</td></tr>
+    <tr><td>Hgb / MCV / RDW (4/14)</td><td>14.3 / 91.8 / 12.6</td><td>normal</td><td>No anemia signal; mid-normal MCV with normal RDW makes mixed deficiency less likely (but not ruled out)</td></tr>
+    <tr><td>TSH (4/14)</td><td>1.05 mIU/L</td><td>0.30–5.50</td><td>Normal</td></tr>
+    <tr><td>Free T4 (5/4)</td><td>0.94 ng/dL</td><td>0.61–1.24</td><td>Normal</td></tr>
+    <tr><td>eGFR (4/14)</td><td>78 mL/min/1.73m²</td><td>≥60</td><td>Mild age-related decline (G2 category)</td></tr>
+    <tr><td>HbA1c (4/14)</td><td>5.7%</td><td>—</td><td>Pre-diabetes range</td></tr>
+    <tr><td>Total Testosterone (5/4)</td><td>304 ng/dL</td><td>175–781</td><td>Borderline (at hypogonadism cutoff of 300)</td></tr>
+    <tr><td><strong>Free T (5/4)</strong></td><td><strong>3.6 ng/dL (L)</strong></td><td>4.9–19.0</td><td>Frankly low — biochemical hypogonadism</td></tr>
+    <tr><td><strong>Bioavailable T (5/4)</strong></td><td><strong>82 ng/dL (L)</strong></td><td>115–447</td><td>Frankly low — confirms hypogonadism</td></tr>
+    <tr><td>SHBG (5/4)</td><td>70.1 nmol/L</td><td>13.3–89.5</td><td>High-normal — sequesters testosterone, driving the discordance between total and bioavailable</td></tr>
+    <tr><td>BUN (4/14)</td><td><strong>21 mg/dL (H)</strong></td><td>8–20</td><td>Mildly elevated — likely benign in context</td></tr>
+  </tbody>
+</table>
+
+<div class="section-label">Ranked lab additions for next PCP draw</div>
+<table class="landscape">
+  <thead>
+    <tr>
+      <th style="width: 30%;">Test</th>
+      <th style="width: 17%;">Priority</th>
+      <th style="width: 53%;">Rationale in his profile</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="row-essential">
+      <td class="test">AM cortisol + ACTH<br><span style="font-weight: 400; font-size: 8pt; color: #5a5a5a;">(8 AM fasting)</span></td>
+      <td class="rec">Essential — high-yield rule-out</td>
+      <td>Inexpensive, high-consequence rule-out for adrenal insufficiency. The symptom triad of <strong>chronic fatigue (R53.82) + unintentional weight loss (R63.4) + decreased appetite (R63.0)</strong> overlaps with adrenal insufficiency presentation. Morning cortisol &gt;10 µg/dL very likely excludes it; &lt;3 µg/dL is highly suggestive. Pre-test probability is low (no exogenous glucocorticoid exposure) but the cost is low and the consequence of a missed diagnosis is high.</td>
+    </tr>
+    <tr class="row-essential">
+      <td class="test">Repeat AM total T (fasting) + LH + FSH + prolactin</td>
+      <td class="rec">Essential — hypogonadism characterization</td>
+      <td>Confirmed biochemical hypogonadism on 5/4. <strong>Repeat morning total T</strong> is mandatory (~30% of men with initially low T normalize on retest). <strong>LH/FSH</strong> distinguish primary (testicular) from secondary (pituitary/hypothalamic) hypogonadism. <strong>Prolactin</strong> is especially important given the recent olanzapine exposure — antipsychotic-induced hyperprolactinemia can suppress gonadotropins and lower T, typically resolving within 4–6 weeks of discontinuation (so prolactin drawn now is well-timed to catch any residual elevation). Per Endocrine Society + AUA guidelines.</td>
+    </tr>
+    <tr class="row-essential">
+      <td class="test">Iron panel — ferritin + TSAT + CRP<br><span style="font-weight: 400; font-size: 8pt; color: #5a5a5a;">(serum iron + TIBC also acceptable)</span></td>
+      <td class="rec">Essential — already on family's list</td>
+      <td>Already in the clinical brief's proposed adds; not yet done. Ferritin + TSAT is the AGA-recommended starting panel. <strong>CRP serves double duty</strong> — interpretive context for ferritin (any inflammation can falsely elevate it) plus weight-loss workup baseline. Ferritin alone can mislead in elderly inflammation; pair it with CRP. Soluble transferrin receptor (sTfR) reserved for ambiguous cases (ferritin 30–100 with elevated CRP). Even with normal CBC, early iron deficiency presents with low ferritin before MCV/RDW change — Hgb 14.3 is reassuring but doesn't rule out the question.</td>
+    </tr>
+    <tr class="row-essential">
+      <td class="test">Homocysteine + folate</td>
+      <td class="rec">Essential — completes B12 functional picture</td>
+      <td>The complementary B12 functional marker — paired with the existing MMA (0.46, borderline elevated), homocysteine distinguishes mechanism: both elevated → B12 deficiency confirmed; MMA elevated + homocysteine normal → B12 specific; MMA normal + homocysteine elevated → folate deficiency or renal. <strong>Folate drawn simultaneously</strong> — folate deficiency independently contributes to depression and cognitive symptoms and is inexpensive to check. Holotranscobalamin is optional given MMA is already done.</td>
+    </tr>
+    <tr class="row-essential">
+      <td class="test">25(OH) Vitamin D</td>
+      <td class="rec">Essential — already on family's list</td>
+      <td>Already in the clinical brief's proposed adds; not yet done. The 2024 Endocrine Society guideline suggests empiric vitamin D supplementation (800–1000 IU/day) for all adults ≥75 regardless of testing, but for patients with depression + cognitive complaints + fall-risk picture, measurement guides dosing intensity. Decision-relevant thresholds: &lt;20 ng/mL warrants pharmacologic supplementation; &lt;30 ng/mL warrants OTC supplementation; ≥30 ng/mL adequate.</td>
+    </tr>
+    <tr class="row-essential">
+      <td class="test">SPEP + LDH</td>
+      <td class="rec">Essential — weight loss workup standards</td>
+      <td>Per AAFP unintentional-weight-loss guideline. <strong>SPEP (serum protein electrophoresis)</strong> screens for monoclonal gammopathies (MGUS, multiple myeloma, Waldenström's, AL amyloidosis) — these can present with fatigue, weight loss, neuropathy, and cognitive decline in elderly men. <strong>LDH</strong> is a nonspecific but inexpensive marker included in standard weight-loss/malignancy screening. These are notable omissions from the labs done so far.</td>
+    </tr>
+    <tr class="row-essential">
+      <td class="test">Urinalysis</td>
+      <td class="rec">Essential — weight loss workup</td>
+      <td>Standard component of the AAFP unintentional-weight-loss workup. Also relevant ~8 weeks post-Aquablation (any residual hematuria, signs of UTI, glycosuria given pre-diabetes), and could pick up signs of occult renal or urologic process. Inexpensive, no patient burden.</td>
+    </tr>
+    <tr class="row-essential">
+      <td class="test">FIT (fecal immunochemical test)<br><span style="font-weight: 400; font-size: 8pt; color: #5a5a5a;">(at-home collection)</span></td>
+      <td class="rec">Essential — colon adenoma surveillance</td>
+      <td>Dad has colon adenoma (D12.6) on his problem list since 2016 and family history of colon cancer (Z80.0). FIT is the modern fecal occult blood test for colorectal screening in patients with adenoma history. Particularly important to have on file <em>before</em> any iron-panel results — if iron studies come back low, colonoscopy becomes more urgent and a positive FIT would accelerate the timeline. Independent of the iron question, the family-history + adenoma combination makes this overdue.</td>
+    </tr>
+    <tr class="row-essential">
+      <td class="test">PSA + lipid panel<br><span style="font-weight: 400; font-size: 8pt; color: #5a5a5a;">(baselines)</span></td>
+      <td class="rec">Essential — baselines</td>
+      <td><strong>PSA</strong> is required as a baseline before any TRT consideration (which depends on the hypogonadism workup direction) and is a standard add at this age. <strong>Lipid panel</strong> is standard statin-monitoring on rosuvastatin 20 mg — likely overdue. Both are routine, low-cost adds.</td>
+    </tr>
+    <tr class="row-essential">
+      <td class="test">NT-proBNP</td>
+      <td class="rec">Essential — occult heart failure rule-out</td>
+      <td>Given the <strong>bradycardia (HR 57) + LAFB + chronic fatigue + functional decline + weight loss</strong> picture, NT-proBNP is the right rule-out for occult heart failure as a contributor. In patients &gt;75, NT-proBNP &lt;125 pg/mL effectively excludes heart failure; rule-in threshold is 1,800 pg/mL. Normal result closes off that piece of the differential cleanly. If elevated, would prompt echocardiogram referral.</td>
+    </tr>
+    <tr class="row-consider">
+      <td class="test">ESR<br><span style="font-weight: 400; font-size: 8pt; color: #5a5a5a;">(add to CRP)</span></td>
+      <td class="rec">Consider — moderate add to CRP</td>
+      <td>Adds modestly to CRP for the inflammation/weight-loss workup. Different time-course than CRP (slower to rise and fall). Worth adding if it's a low-effort include; CRP alone is sufficient if the draw is being kept focused.</td>
+    </tr>
+    <tr class="row-consider">
+      <td class="test">Estradiol</td>
+      <td class="rec">Consider — if symptomatic</td>
+      <td>Part of full hypogonadism workup if breast symptoms or gynecomastia present; otherwise lower priority. Add if endocrine workup direction warrants.</td>
+    </tr>
+    <tr class="row-defer">
+      <td class="test">Plasma p-Tau217, NfL, GFAP, Aβ42/40 ratio</td>
+      <td class="rec">Defer to U-M Cognitive Disorders</td>
+      <td>Plasma p-Tau217 is the AAIC-2025 Core 1 blood biomarker for Alzheimer pathology. But the cognitive picture isn't yet formally characterized (depression-related cognitive symptoms vs. medication effects vs. neurodegenerative process are all on the differential), and pre-test probability matters for interpretation. <strong>Let U-M Cognitive Disorders coordinate</strong> these in the context of their full evaluation — neuropsychological testing, imaging, clinical interview — rather than ordering at the PCP level.</td>
+    </tr>
+    <tr class="row-defer">
+      <td class="test">Skin α-synuclein SAA<br><span style="font-weight: 400; font-size: 8pt; color: #5a5a5a;">(Syn-One)</span></td>
+      <td class="rec">Defer to U-M Movement Disorders</td>
+      <td>Sensitivity 75–87%, specificity ~100% for detecting synucleinopathy in patients with RBD. FDA Breakthrough Device Designation 10/2025; not yet 510(k) cleared. Best coordinated by U-M Movement Disorders alongside their clinical exam, DaTscan, and other assessments — they can integrate the result properly and navigate insurance/availability questions.</td>
+    </tr>
+    <tr class="row-defer">
+      <td class="test">Repeat MMA (~August 2026)</td>
+      <td class="rec">Defer — recheck at 3 months</td>
+      <td>To assess B12 supplementation response. MMA typically normalizes within 6–12 weeks of adequate B12 supplementation; ~15–25% of elderly with moderately poor B12 status show persistent elevation at 8 weeks of 500 µg/day. Recheck around August 2026. Non-normalizing MMA would prompt anti-intrinsic factor antibody testing and possible switch to parenteral B12.</td>
+    </tr>
+    <tr class="row-skip">
+      <td class="test">Free T3 + reverse T3</td>
+      <td class="rec">Skip — low yield with normal TSH</td>
+      <td>TSH 1.05 and free T4 0.94 are solidly normal. The American Thyroid Association explicitly notes that reverse T3 "adds little" to clinical practice with no evidence to support its use in guiding therapy. Low yield here.</td>
+    </tr>
+    <tr class="row-skip">
+      <td class="test">Heavy metals panel<br><span style="font-weight: 400; font-size: 8pt; color: #5a5a5a;">(lead, mercury, arsenic)</span></td>
+      <td class="rec">Skip unless exposure history</td>
+      <td>Population-level associations between heavy metals and cognitive decline exist, but as individual diagnostic tests these are low-yield without a specific exposure history (occupational, hobby, lead paint, fish consumption, well water). AAFP dementia guidelines list this as "consider based on clinical circumstances" rather than routine. Skip unless targeted history reveals plausible exposure.</td>
+    </tr>
+    <tr class="row-skip">
+      <td class="test">Holotranscobalamin (active B12)</td>
+      <td class="rec">Skip — redundant</td>
+      <td>More sensitive first-line B12 marker than serum B12, but adds limited value when MMA is already done and B12 supplementation has started. Skip.</td>
+    </tr>
+    <tr class="row-skip">
+      <td class="test">Equilibrium dialysis free T</td>
+      <td class="rec">Skip — calculated values clear</td>
+      <td>Gold standard for free T, but not necessary when calculated free T (Vermeulen equation) with known SHBG and albumin is already clearly low. Could be added as confirmatory if clinical-laboratory discordance arises, but not needed now.</td>
+    </tr>
+    <tr class="row-skip">
+      <td class="test">Pituitary MRI</td>
+      <td class="rec">Skip — only if LH/FSH point that way</td>
+      <td>Indicated only if total T &lt;150 or if LH/FSH suggest secondary hypogonadism with concerning features. Wait for the LH/FSH results before considering this.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="strength-row">
+  <span class="strength-label">Strength of evidence on this ranked panel:</span>
+  <span class="stars">★★★★★</span>
+</div>
+<div class="strength-rationale">Each recommendation is anchored in published guidelines (AGA iron deficiency guideline, AAFP unintentional weight loss guideline, AAFP dementia evaluation guideline, Endocrine Society hypogonadism + vitamin D + adrenal insufficiency guidelines, AUA testosterone deficiency guideline, JACC heart failure guideline, AGS Beers alternatives 2025). The high-priority adds reflect convergent multi-guideline support; the "defer to specialty" items reflect the principle that some labs are best coordinated within the broader specialty workup; the "skip" items reflect explicit guideline-level guidance against routine use in this profile. Three of the high-priority adds (iron, vitamin D, homocysteine) were already on the family's proposed list from the 5/4 clinical brief — this isn't new analysis, it's overdue execution.</div>
+
+<div class="section-label">What everyone agrees on</div>
+<div class="neutral-block">
+  <ul>
+    <li><strong>The recent labs are largely reassuring</strong>, but they don't address all the relevant differentials in the current picture. Fatigue + weight loss + biochemical hypogonadism + borderline B12 functional deficiency each warrant their own next-tier workup.</li>
+    <li><strong>The 5/4 clinical brief already proposed iron + vitamin D + homocysteine</strong>, plus the contingent endocrine workup. None of those have been done yet. The next PCP visit is the natural venue to put them through.</li>
+    <li><strong>The PCP is the right level for most of this</strong> — the high-priority adds are all routine PCP-level labs. Specialty-coordinated labs (Alzheimer biomarkers, α-synuclein test) should wait for the U-M neurology workup.</li>
+    <li><strong>Sequencing matters</strong>: PCP first (the basics), then endocrinology if hypogonadism workup direction warrants, then specialty neurology (cognitive + movement disorders) coordinates the more specialized testing in June.</li>
+    <li><strong>FIT specifically is independent of any iron result</strong> — the colon adenoma + family history justifies it on its own. Worth getting done regardless.</li>
+  </ul>
+</div>
+
+<div class="section-label">Recommended next steps</div>
+<ol class="next-steps">
+  <li><strong>Bring this handout to the next PCP draw with Dr. Straka.</strong> The 10 essential adds plus the 2 "consider" adds are the discussion items.</li>
+  <li><strong>Ask for the AM cortisol + ACTH to be drawn fasting at 8 AM</strong> — the test timing is important for interpretation.</li>
+  <li><strong>Confirm the FIT kit is sent home regardless of iron-panel timing.</strong> The colon adenoma + family history justify it independently.</li>
+  <li><strong>Ask for the hypogonadism panel (repeat AM T + LH + FSH + prolactin) to be drawn fasting between 8–10 AM</strong> — testosterone has substantial diurnal variation.</li>
+  <li><strong>If iron panel returns low</strong>: colonoscopy referral is the next step regardless of FIT result, per AGA. The bidirectional endoscopy framing applies in elderly men with iron deficiency.</li>
+  <li><strong>If hypogonadism workup points to secondary picture</strong> (low or normal LH/FSH with elevated prolactin, or persistent low T after prolactin normalization), endocrinology referral is the next step before any TRT decision.</li>
+  <li><strong>Defer the Alzheimer blood biomarkers and Syn-One test</strong> until U-M Cognitive Disorders and Movement Disorders evaluations in June. Let the specialty team coordinate.</li>
+  <li><strong>Plan for repeat MMA around August 2026</strong> to assess B12 supplementation response. If still elevated, anti-intrinsic factor antibodies + possible switch to parenteral B12.</li>
+</ol>
+
+<div class="bottom-line">
+  <span class="label">Bottom line</span>
+  Ten lab adds are essential at the next PCP visit: three carry over from the family's 5/4 proposal (iron panel, vitamin D, homocysteine) that haven't been done yet, and seven are additions based on the developing picture (AM cortisol + ACTH, full hypogonadism panel, SPEP + LDH, urinalysis, FIT, PSA + lipid, NT-proBNP). Specialty-driven labs (Alzheimer biomarkers, Syn-One) should be coordinated through U-M neurology, not PCP. The "skip" list (free T3, heavy metals, holotranscobalamin) saves draw volume and patient burden. The recent labs are largely reassuring, but the differential isn't closed without these additions.
+</div>
+
+<div class="back-header">Key Studies &amp; Findings</div>
+<div class="back-subhead">Ranked by authority · Each citation summarized for how it applies to Dad's case</div>
+
+<div class="tier-header">Tier 0 — Family's Prior Analytical Work <span class="tier-stars">★★★★★</span></div>
+
+<div class="citation">
+  <div class="cite-title">Clinical Brief — James Plunkett, 76yo male.</div>
+  <div class="cite-source">Adam Plunkett / family, last updated 2026-05-04. Located in `Dad Health/provider_outreach/00_clinical_brief.md`.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>The canonical current-state document. Already proposed (line 324, 5/4): "PCP to add: iron panel (ferritin + transferrin saturation), vitamin D, MMA + homocysteine, free T4." Of those five, MMA and free T4 have been done; iron panel + vitamin D + homocysteine remain undone. Also proposed (line 325, 5/4) for hypogonadism workup contingent on direction: LH, FSH, prolactin, repeat morning T, estradiol, PSA, hematocrit.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Three of the ten high-priority adds in this handout are already on the family's existing proposed list — they just haven't been executed yet. The next PCP visit is the natural venue to put them through.</div>
+</div>
+
+<div class="tier-header">Tier 1 — Major Clinical Guidelines <span class="tier-stars">★★★★★</span></div>
+
+<div class="citation">
+  <div class="cite-title">Ko CW, Siddique SM et al. AGA Clinical Practice Guidelines on the Gastrointestinal Evaluation of Iron Deficiency Anemia.</div>
+  <div class="cite-source">Gastroenterology 2020;159:1085–1094. Read <a href="https://doi.org/10.1053/j.gastro.2020.06.046" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>AGA recommendation for iron deficiency workup: ferritin + TSAT as initial panel. Ferritin &lt;30 ng/mL confirms iron deficiency. Bidirectional endoscopy (colonoscopy + upper) for postmenopausal women and men with iron deficiency anemia.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Anchors the iron panel composition (ferritin + TSAT) and the colonoscopy-if-low pathway. The bidirectional endoscopy guidance is the reason FIT and iron panel together are decision-relevant for the next steps.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Gaddey HL, Holder KK. Unintentional Weight Loss in Older Adults.</div>
+  <div class="cite-source">Am Fam Physician 2021;104:34–40. Read <a href="https://pubmed.ncbi.nlm.nih.gov/34264599/" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Standard AAFP unintentional-weight-loss workup includes: CMP, CBC, TSH, urinalysis, CRP/ESR, LDH, SPEP, and consider chest radiography. Elevated inflammatory markers are among findings most associated with occult cancer.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Anchors the SPEP + LDH + urinalysis + ESR adds. Notable omissions from labs done so far given the documented unintentional weight loss (R63.4) coded 5/11.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Vaidya A, Findling J, Bancos I. Adrenal Insufficiency in Adults.</div>
+  <div class="cite-source">JAMA 2025;334:714–725. Read <a href="https://doi.org/10.1001/jama.2025.5485" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Morning cortisol + ACTH is the standard rule-out for adrenal insufficiency. Morning cortisol &gt;10 µg/dL very likely excludes; &lt;3 µg/dL highly suggestive. Pre-test probability matters: most cases are exogenous-glucocorticoid related; primary adrenal insufficiency is rare.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The fatigue + weight loss + anorexia triad warrants rule-out. Low cost, high consequence if missed. Pre-test probability is low (no glucocorticoid exposure) but the test is cheap and the consequence of missing it is high.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Demay MB, Pittas AG et al. Vitamin D for the Prevention of Disease: An Endocrine Society Clinical Practice Guideline.</div>
+  <div class="cite-source">J Clin Endocrinol Metab 2024;109:1907–1947. Read <a href="https://doi.org/10.1210/clinem/dgae290" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>2024 Endocrine Society guideline. Suggests empiric vitamin D supplementation (800–1000 IU/day) for adults ≥75 without routine 25(OH)D testing. For patients with depression + cognitive complaints, screening for deficiency is recommended as adjunct. Decision-relevant thresholds for supplementation intensity: &lt;20 ng/mL (pharmacologic), &lt;30 ng/mL (OTC).</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Anchors the vitamin D add. The fall/balance picture and depression context make measurement decision-relevant rather than just empiric.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Bhasin S, Brito JP et al. Testosterone Therapy in Men With Hypogonadism: An Endocrine Society Clinical Practice Guideline.</div>
+  <div class="cite-source">J Clin Endocrinol Metab 2018;103:1715–1744. Read <a href="https://doi.org/10.1210/jc.2018-00229" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Confirmed hypogonadism workup: repeat morning total T (~30% of men with initial low T normalize on retest), LH + FSH to distinguish primary vs. secondary, prolactin if secondary suspected, PSA + hematocrit baselines before TRT. Pituitary MRI only if total T &lt;150 or red flags.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The hypogonadism characterization panel. Especially important to draw prolactin now given the recent olanzapine — antipsychotic-induced hyperprolactinemia typically resolves within 4–6 weeks of discontinuation, so the timing is right to catch any residual elevation.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Stabler SP. Vitamin B12 Deficiency.</div>
+  <div class="cite-source">NEJM 2013;368:149–160. Read <a href="https://doi.org/10.1056/NEJMcp1113996" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Standard NEJM reference for B12 deficiency. MMA and homocysteine paired: both elevated confirms functional B12 deficiency in &gt;98% of clinically deficient patients; MMA elevated alone is more specific; homocysteine elevated alone suggests folate or renal cause. Folate should be drawn alongside.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The homocysteine + folate adds. Pairs with the existing MMA (0.46) to complete the functional B12 picture and distinguish mechanism. Folate independently contributes to depression and cognitive symptoms.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Kramer ES, Johnson MN et al. Evaluation of Suspected Dementia.</div>
+  <div class="cite-source">Am Fam Physician 2025;112:657–667. Read <a href="https://pubmed.ncbi.nlm.nih.gov/40512148/" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>AAFP dementia workup guidelines. Heavy metals listed as "consider based on clinical circumstances" rather than routine. AD blood biomarkers (pTau217) supported in primary care for patients with abnormal cognitive assessments where other causes have been ruled out.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Supports the heavy metals "skip unless exposure history" position and the pTau217 "defer to specialty" position. Pre-test probability matters for biomarker interpretation; the cognitive picture isn't yet formally characterized.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Forman DE, de Lemos JA et al. Cardiovascular Biomarkers and Imaging in Older Adults: JACC Council Perspectives.</div>
+  <div class="cite-source">J Am Coll Cardiol 2020;76:1577–1594. Read <a href="https://doi.org/10.1016/j.jacc.2020.07.055" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>NT-proBNP in adults &gt;75: &lt;125 pg/mL effectively excludes heart failure; rule-in threshold 1,800 pg/mL. Specificity diminishes with age but negative predictive value remains high. Standard add for unexplained functional decline.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The NT-proBNP add. Given the bradycardia + LAFB + chronic fatigue + functional decline, occult heart failure is a defensible piece of the differential to rule out. Echocardiogram only if NT-proBNP is elevated.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Steinman MA. Alternative Treatments to Selected Medications in the 2023 American Geriatrics Society Beers Criteria.</div>
+  <div class="cite-source">J Am Geriatr Soc 2025;73:2657–2677. Read <a href="https://doi.org/10.1111/jgs.19500" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>The companion alternatives document. Provides geriatric prescribing guidance that informs the broader workup framing in elderly patients with complex polypharmacy.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Geriatric-specific framing that informs the overall approach — not directly a lab-recommendation source, but the broader context for elderly-appropriate workup decisions.</div>
+</div>
+
+</body>
+</html>

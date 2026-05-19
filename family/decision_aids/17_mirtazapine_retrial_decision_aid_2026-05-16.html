@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Decision Aid — Mirtazapine 7.5 mg retrial — 2026-05-16</title>
+<style>
+  @page { size: letter; margin: 0.55in 0.65in; }
+  :root {
+    --navy: #1a3a5c; --navy-dark: #0f2640;
+    --against-accent: #8b2c2c; --for-accent: #2c5e3f;
+    --text: #1f1f1f; --text-muted: #5a5a5a;
+    --rule: #c8c8c8; --rule-strong: #6a6a6a;
+    --tint: #f5f3f0; --tint-pro: #f0f4f8; --tint-con: #f9f2f0;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    font-family: "Charter", "Georgia", "Times New Roman", serif;
+    font-size: 9.75pt; line-height: 1.42; color: var(--text);
+    -webkit-font-smoothing: antialiased;
+  }
+  .doc-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    padding-bottom: 6pt; border-bottom: 1.5pt solid var(--navy); margin-bottom: 14pt;
+  }
+  .doc-header .title {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 600; font-size: 15pt; line-height: 1.2;
+    color: var(--navy-dark); letter-spacing: -0.01em;
+  }
+  .doc-header .meta {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 7.5pt; color: var(--text-muted); text-align: right;
+    letter-spacing: 0.03em; line-height: 1.5;
+  }
+  .section-label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 7.5pt; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.14em; color: var(--navy); margin: 14pt 0 5pt 0;
+  }
+  .section-label.first { margin-top: 0; }
+  .key-message {
+    border-left: 4pt solid var(--against-accent); background: var(--tint);
+    padding: 9pt 13pt; margin: 0 0 10pt 0;
+  }
+  .key-message p {
+    margin: 0;
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 10.5pt; line-height: 1.42; font-weight: 500; color: var(--text);
+  }
+  .context { font-size: 9.5pt; line-height: 1.5; color: var(--text); margin: 0 0 4pt 0; }
+  table.evidence {
+    width: 100%; border-collapse: collapse; margin: 4pt 0 8pt 0; table-layout: fixed;
+  }
+  table.evidence thead th {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 600; font-size: 8.25pt; padding: 6pt 9pt; text-align: left;
+    background: var(--navy); color: white; letter-spacing: 0.02em;
+  }
+  table.evidence thead th.pro { background: #4a6a8a; }
+  table.evidence thead th.con { background: var(--against-accent); }
+  table.evidence td {
+    padding: 6pt 9pt; vertical-align: top;
+    border-bottom: 0.5pt solid var(--rule);
+    font-size: 9pt; line-height: 1.4;
+  }
+  table.evidence td.pro { background: var(--tint-pro); }
+  table.evidence td.con { background: var(--tint-con); }
+  table.evidence tbody tr:last-child td { border-bottom: none; }
+  table.evidence td strong { color: var(--navy-dark); }
+  .strength-row {
+    display: flex; align-items: baseline; margin: 6pt 0 2pt 0; white-space: nowrap;
+  }
+  .strength-label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 8.5pt; font-weight: 600; color: var(--text);
+    margin-right: 10pt; white-space: nowrap;
+  }
+  .stars { color: var(--against-accent); letter-spacing: 0.12em; font-size: 11pt; white-space: nowrap; }
+  .strength-rationale {
+    font-size: 8.5pt; color: var(--text-muted); font-style: italic;
+    margin: 2pt 0 6pt 0; line-height: 1.4;
+  }
+  ol.next-steps {
+    margin: 4pt 0 8pt 0; padding-left: 18pt; font-size: 9.25pt; line-height: 1.4;
+  }
+  ol.next-steps li { margin-bottom: 4pt; padding-left: 3pt; }
+  ol.next-steps li::marker {
+    color: var(--navy); font-weight: 700;
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+  }
+  .bottom-line {
+    border-top: 1pt solid var(--rule-strong); padding-top: 6pt; margin-top: 10pt;
+    font-style: italic; font-size: 9pt; color: var(--text); line-height: 1.4;
+  }
+  .bottom-line .label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-style: normal; font-weight: 700; font-size: 7.5pt;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--navy); margin-right: 6pt;
+  }
+  .neutral-block {
+    background: #f3f3f1; border-left: 3pt solid #888;
+    padding: 9pt 14pt 6pt 14pt; margin: 4pt 0 8pt 0;
+  }
+  .neutral-block ul { list-style: none; padding: 0; margin: 0; }
+  .neutral-block li {
+    font-size: 9pt; line-height: 1.45; margin-bottom: 6pt;
+    padding-left: 14pt; position: relative;
+  }
+  .neutral-block li::before {
+    content: "•"; position: absolute; left: 0; color: #888; font-weight: bold;
+  }
+  .neutral-block li:last-child { margin-bottom: 0; }
+  .neutral-block strong { color: var(--navy-dark); }
+  .back-header {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 14pt; font-weight: 600; color: var(--navy-dark);
+    border-bottom: 1.5pt solid var(--navy); padding-bottom: 5pt;
+    margin-top: 18pt; margin-bottom: 4pt;
+  }
+  .citation, .tier-header { page-break-inside: avoid; }
+  .back-subhead {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 8pt; color: var(--text-muted); margin-bottom: 14pt; letter-spacing: 0.03em;
+  }
+  .tier-header {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 9pt; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.12em; color: var(--navy);
+    margin: 11pt 0 6pt 0; padding-bottom: 2pt; border-bottom: 0.5pt solid var(--rule);
+  }
+  .tier-header .tier-stars { float: right; color: var(--navy); font-size: 10pt; letter-spacing: 0.04em; }
+  .citation {
+    margin: 0 0 9pt 0; padding-left: 9pt; border-left: 2pt solid var(--rule);
+    font-size: 8.75pt; line-height: 1.4;
+  }
+  .citation .cite-title {
+    font-weight: 700; color: var(--navy-dark);
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif; font-size: 8.75pt;
+  }
+  .citation .cite-source { color: var(--text-muted); font-style: italic; font-size: 8.5pt; }
+  .citation .cite-finding, .citation .cite-apply { margin-top: 2pt; font-size: 8.5pt; }
+  .citation .label-inline {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 700; font-size: 7pt; text-transform: uppercase;
+    letter-spacing: 0.08em; color: var(--navy); margin-right: 4pt;
+  }
+  .citation .cite-link {
+    color: var(--navy); text-decoration: underline;
+    text-decoration-thickness: 0.4pt; text-underline-offset: 1.5pt;
+    font-style: normal; font-weight: 500; margin-left: 2pt;
+  }
+  .citation .cite-link:hover { color: var(--navy-dark); }
+</style>
+</head>
+<body>
+
+<div class="doc-header">
+  <div class="title">Should Dad try low-dose mirtazapine (Remeron 7.5 mg) for sleep?</div>
+  <div class="meta">
+    Decision Aid · 2026-05-16<br>
+    For Dad, Mom, Dr. R, Dr. Chilton (K Clinic),<br>
+    Julane &amp; the family team
+  </div>
+</div>
+
+<div class="section-label first">Recommendation</div>
+<div class="key-message">
+  <p><strong>Not at this time, and probably not at all during the ketamine restart period.</strong> A 7.5 mg mirtazapine retrial is pharmacologically defensible — at this dose the drug is mostly H1 antihistamine (the part that helped Dad's sleep last fall), with the noradrenergic activation that produced the agitation at 30–45 mg emerging much less. But three Dad-specific factors make this the wrong moment to test the retrial: <strong>(1) timing</strong> — adding mirtazapine simultaneously with the IV ketamine restart on 5/18 and the doxepin uptitration in progress creates an unacceptable confound for attributing what's working; <strong>(2) REM-sleep concerns</strong> — mirtazapine has been documented to induce or exacerbate dream-enactment behavior in patients with parkinsonian features, and Dad's formal RBD diagnosis + pending neurology workup make this a real flag the family's prior literature review #11 also weighted; <strong>(3) better alternatives are available</strong> — the doxepin uptitration to 10–12 mg HS already underway is the right bridge, and a dual orexin receptor antagonist (DORA) would be the more evidence-supported addition if doxepin alone proves insufficient. <strong>If mirtazapine is eventually pursued</strong> (after the ketamine response is stabilized and other options have been tried), the conditions should include neurology clearance given the RBD, a baseline ECG given LAFB + bradycardia, starting at 3.75 mg (half a 7.5 mg tablet) for 5–7 nights before considering 7.5 mg, and a strict monitoring protocol with clear stopping rules. Mom's recall of sleep benefit last fall is real and consistent with mirtazapine's H1 effect — the question isn't whether mirtazapine can help sleep, it's whether the timing and risk profile are right now.</p>
+</div>
+
+<div class="section-label">Why this matters for Dad specifically</div>
+<p class="context">Dr. R raised low-dose mirtazapine as a "consider" option in the 5/16 plan, alongside continuing the doxepin uptitration. Mom recalls that the prior trial (7/23/2025 – 10/1/2025) helped with sleep before the agitation emerged — and that recall is accurate. The chart confirms a real 2+ month trial: 30 mg starting 7/23, refill at 30 mg on 9/4, dose increased to 45 mg on 9/9, last fill 10/1 at 30 mg, discontinued ~October 2025. The 30 → 45 → 30 → stop pattern suggests the agitation emerged with the dose bump to 45 mg and persisted on the return to 30 mg until discontinuation — pharmacologically consistent with the noradrenergic-activation mechanism that becomes clinically meaningful in the 15–30 mg range. The proposed retrial at 7.5 mg would, in theory, capture the H1-mediated sleep benefit without recruiting the noradrenergic activation. That theory is reasonable but not directly tested in clinical trials of agitation-prone patients. The family's prior literature review #11 (4/20/2026) weighed this exact question and concluded "off the table for now... Only consider if all other options fail." Three factors make that conclusion still right today: the timing relative to the IV ketamine restart, the specific RBD-related concerns, and the availability of better-evidenced alternatives (doxepin uptitration already underway; DORA class available as the next step if needed).</p>
+
+<div class="section-label">The evidence</div>
+<table class="evidence">
+  <thead>
+    <tr>
+      <th class="pro" style="width: 47%;">What might support a 7.5 mg retrial</th>
+      <th class="con" style="width: 53%;">What argues against — in Dad's specific profile</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="pro"><strong>Mom's recall of sleep benefit is accurate and grounded in real pharmacology.</strong> Mirtazapine has very high affinity for H1 histamine receptors (Ki ~0.14 nM) — at low doses (≤7.5 mg), H1 occupancy approaches saturation while the noradrenergic alpha-2 effects remain minimal. The Karsten 2017 RCT in healthy volunteers showed 7.5 mg significantly increased total sleep time by ~30 minutes, reduced awakenings by 35–40%, and specifically enhanced deep (slow-wave) sleep. Sleep benefit appears on the first night.</td>
+      <td class="con"><strong>Timing is the dominant concern.</strong> The IV ketamine restart on 5/18 is the highest-priority intervention and the main expected driver of sleep, anxiety, and mood improvement over the next 1–2 weeks. The doxepin uptitration to 10–12 mg HS is already in progress as the bridge strategy. Adding mirtazapine simultaneously means three pharmacological changes in the same window — which destroys the family's ability to attribute any change (positive or negative) to a specific agent. The handout #08 framing applies here: don't run multiple pharmacological transitions concurrently in a 76-year-old.</td>
+    </tr>
+    <tr>
+      <td class="pro"><strong>The 7.5 mg vs. 30–45 mg pharmacological distinction is real.</strong> The dose-response is continuous, not biphasic, but the clinical inflection point where noradrenergic activation becomes meaningful is in the 15–30 mg range. At 7.5 mg, the noradrenergic contribution is expected to be minimal. The family's framing — "7.5 mg captures only H1/5-HT2A effects without the noradrenergic rebound" — is a reasonable simplification.</td>
+      <td class="con"><strong>The RBD/REM concern is meaningful and underappreciated.</strong> Mirtazapine has been directly implicated in inducing or exacerbating RBD, particularly in patients with parkinsonian features (Onofrj 2003 case series — four patients with parkinsonism developed RBD shortly after mirtazapine initiation at 15 mg, with resolution on discontinuation). Antidepressants as a class increase REM sleep without atonia even in patients without clinical RBD (McCarter 2015). Dad has formal RBD (G47.52) since 2017, prior drug-induced parkinsonism from aripiprazole, and a neurology referral pending June. Postuma 2013 found that patients with antidepressant-associated RBD still showed prodromal-neurodegeneration markers — suggesting antidepressants may unmask underlying pathology rather than just cause de novo REM-sleep changes. Whether 7.5 mg carries the same REM risk as 15 mg is not directly studied.</td>
+    </tr>
+    <tr>
+      <td class="pro"><strong>Weight/appetite effect could be beneficial.</strong> Mirtazapine reliably increases appetite and weight gain — potentially helpful given Dad's documented unintentional weight loss (R63.4, 183 → 169 lbs over 2.5 years). At 30 mg in a fibromyalgia trial, weight gain was 4.5 kg over 13 weeks; at 15 mg, 2 kg; at placebo, 1 kg. At 7.5 mg the effect is attenuated but present.</td>
+      <td class="con"><strong>The activation-intolerance pattern is broader than dose.</strong> Dad has shown paradoxical or activation responses to multiple agents across multiple mechanisms: aripiprazole akathisia at even 1 mg, mirtazapine agitation at 30–45 mg, olanzapine "agitation before benefit," brexpiprazole self-discontinued for balance. This breadth suggests an intrinsic vulnerability — possibly related to the underlying neurology picture under evaluation — that isn't cleanly dose-dependent. The pharmacological argument for 7.5 mg avoiding the noradrenergic mechanism is reasonable but unproven in the specific scenario of an activation-prone patient retrying after a higher-dose failure.</td>
+    </tr>
+    <tr>
+      <td class="pro"><strong>Sleep architecture profile is favorable.</strong> Unlike SSRIs and SNRIs, mirtazapine does <em>not</em> significantly suppress REM sleep at either low or standard doses. The slow-wave sleep enhancement is the specific benefit that the Karsten 2017 trial captured.</td>
+      <td class="con"><strong>Better-evidenced alternatives are available.</strong> The AGS Beers Criteria companion document explicitly states there is "insufficient evidence to recommend mirtazapine" for insomnia in older adults, while endorsing <strong>low-dose doxepin (up to 6 mg) and dual orexin receptor antagonists (DORAs — lemborexant, suvorexant, daridorexant)</strong> as safer alternatives with evidence of effectiveness. Doxepin uptitration to 10–12 mg HS is already in motion. If that proves insufficient after the ketamine course stabilizes, a DORA is the more evidence-supported next step than mirtazapine retrial.</td>
+    </tr>
+    <tr>
+      <td class="pro" style="background: #fbfbf8; color: #777;">—</td>
+      <td class="con"><strong>The standing serotonergic stack would become three agents</strong> (duloxetine 60 mg + doxepin 6–12 mg HS + mirtazapine 7.5 mg HS), with trazodone 50 mg as a PRN backup (prescription active; one dose taken 5/15; the current plan is doxepin uptitration <em>instead of</em> regular trazodone use). At low doses, individual serotonergic contributions are modest, but cumulative burden on a daily basis is non-trivial and serotonin syndrome (though rare) is a real consideration. The FDA mirtazapine label explicitly lists SNRIs (duloxetine) as drugs that increase serotonin syndrome risk when combined.</td>
+    </tr>
+    <tr>
+      <td class="pro" style="background: #fbfbf8; color: #777;">—</td>
+      <td class="con"><strong>Cumulative H1 antagonism and sedation</strong> with doxepin 10–12 mg + mirtazapine 7.5 mg + melatonin 3–5 mg is additive. In a 76-year-old with brain fog (R41.89), chronic fatigue (R53.82), and who drives independently, cumulative sedative load matters — particularly for the morning after dosing. Both doxepin and mirtazapine are H1 antagonists; both have low but non-zero anticholinergic activity; both have meaningful next-day half-life.</td>
+    </tr>
+    <tr>
+      <td class="pro" style="background: #fbfbf8; color: #777;">—</td>
+      <td class="con"><strong>No published RCT for low-dose retrial after prior high-dose agitation.</strong> The pharmacological reasoning that 7.5 mg avoids the noradrenergic mechanism is plausible but not directly tested in patients with Dad's specific history. The Karsten 2017 trial used healthy volunteers without prior mirtazapine intolerance. The published success rate of 7.5 mg retrials in agitation-prone patients is unknown.</td>
+    </tr>
+    <tr>
+      <td class="pro" style="background: #fbfbf8; color: #777;">—</td>
+      <td class="con"><strong>Cardiac caution warranted.</strong> Mirtazapine doesn't prolong QTc meaningfully at standard doses, and risk at 7.5 mg is negligible — but the Dutch consensus on antidepressant ECG monitoring recommends baseline ECG when ≥2 risk factors are present (age &gt;65, cardiac disease, concomitant QTc-prolonging drugs). Dad has age &gt;65 + LAFB + bradycardia HR ~57. A baseline ECG before initiation is reasonable, even though the absolute risk is low.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="strength-row">
+  <span class="strength-label">Strength of evidence against retrial at this time:</span>
+  <span class="stars">★★★★</span>
+</div>
+<div class="strength-rationale">Convergent reasoning rather than a single decisive trial: timing relative to ketamine restart (handout #08 framing); RBD risk specifically documented for mirtazapine in parkinsonism (Onofrj 2003; McCarter 2015; Postuma 2013); activation-intolerance pattern that spans multiple agents; availability of better-evidenced alternatives (low-dose doxepin already uptitrating; DORAs as next step per AGS Beers alternatives). The pharmacological case for 7.5 mg being qualitatively different from 30 mg is real, but the family's prior literature review #11 weighed this exact question and concluded "off the table for now." Nothing in the new evidence changes that conclusion for the current moment.</div>
+
+<div class="section-label">What everyone agrees on</div>
+<div class="neutral-block">
+  <ul>
+    <li><strong>Mom's recall is accurate — mirtazapine did help with sleep last fall.</strong> That's the H1-mediated effect, and it's pharmacologically real. The question isn't whether mirtazapine can help sleep; it's whether the timing and risk profile are right for the current moment.</li>
+    <li><strong>Dr. R's posture of giving Dad "different options to choose between" is the right framing.</strong> This handout supports that conversation — it lays out the reasoning for why mirtazapine, while pharmacologically defensible at 7.5 mg, isn't the best option among the available choices right now.</li>
+    <li><strong>The doxepin uptitration to 10–12 mg HS is already the bridge strategy.</strong> That's the medication change in progress, and the right approach is to give it the chance to work alongside the ketamine restart before adding anything else.</li>
+    <li><strong>The IV ketamine restart is also a sleep intervention.</strong> Dad's February 2026 ketamine response improved sleep substantially. The 5/18 restart is expected to contribute meaningfully to sleep improvement over the first 1–2 sessions, which may reduce or eliminate the need for additional sleep agents.</li>
+    <li><strong>If the doxepin uptitration + ketamine course don't fully resolve sleep maintenance</strong>, the next-step conversation should be (a) DORA (dual orexin receptor antagonist) as the AGS-endorsed alternative, (b) low-dose trazodone PRN as a possible retrial, and only after those (c) mirtazapine retrial with the conditions outlined below.</li>
+    <li><strong>The weight/appetite benefit is real but better captured at 15 mg</strong>, which is the dose range where the agitation emerged for Dad. Pursuing mirtazapine for weight gain alone isn't a defensible reason in his profile — there are non-mirtazapine paths to appetite support (dietary, mealtime structure, addressing depression upstream).</li>
+  </ul>
+</div>
+
+<div class="section-label">Recommended next steps</div>
+<ol class="next-steps">
+  <li><strong>Continue doxepin uptitration to 10–12 mg HS as the current bridge strategy</strong> per handout #13. Don't add mirtazapine concurrently.</li>
+  <li><strong>At the next daily Rubin check-in</strong>, raise the mirtazapine history explicitly: prior trial Jul–Oct 2025 discontinued for agitation, family's prior literature review #11 conclusion "off the table for now," current concerns about timing relative to ketamine restart + RBD risk + activation-intolerance pattern + four-agent serotonergic stack. The framing: <em>"We want to flag concerns before pursuing the Remeron retrial. Can we revisit if doxepin + ketamine prove insufficient after 2–3 sessions, rather than adding it now?"</em></li>
+  <li><strong>Track sleep change in the first 1–2 IV ketamine sessions</strong> on 5/18 and beyond — ketamine's sleep improvement often appears within 24 hours of the first session in prior responders, and Dad's February responder profile suggests this is likely.</li>
+  <li><strong>If sleep maintenance remains the limiting symptom after the ketamine course stabilizes</strong> (2–3 sessions), raise the alternatives in order: (a) <strong>DORA</strong> (lemborexant 5 mg HS or daridorexant 25 mg HS) as the AGS-endorsed next step — but see handout #10 for the lemborexant-specific RBD/orexin concerns; (b) lower-dose trazodone retrial (25 mg PRN); (c) only then, mirtazapine retrial with the conditions in step 5.</li>
+  <li><strong>If mirtazapine is eventually pursued</strong>, the conditions should include: (a) <strong>neurology clearance given the RBD</strong>; (b) <strong>baseline ECG</strong> given LAFB + bradycardia; (c) <strong>start at 3.75 mg HS</strong> (half a 7.5 mg tablet) for 5–7 nights before considering 7.5 mg; (d) <strong>not concurrent with any other medication change</strong>; (e) <strong>strict monitoring</strong>: sleep diary nightly, brief anxiety check every 2–3 days, daytime sedation assessment (especially given driving), weight weekly, any motor symptoms or dream-enactment behavior; (f) <strong>clear stopping rules</strong>: any agitation, any change in dream-enactment frequency, any morning grogginess affecting driving → immediate discontinuation.</li>
+  <li><strong>Don't pursue mirtazapine for the weight/appetite benefit alone.</strong> The appetite gain is real but better captured at 15 mg — which is the dose range where the agitation emerged for Dad. Non-mirtazapine paths to appetite support (dietary structure, addressing depression upstream, endocrinology consult for the testosterone picture) are preferred.</li>
+</ol>
+
+<div class="bottom-line">
+  <span class="label">Bottom line</span>
+  Mom is right that mirtazapine helped Dad's sleep last fall — that's the H1 effect and it's pharmacologically real. The 7.5 mg dose proposal is pharmacologically defensible (the noradrenergic activation that produced the agitation at 30–45 mg is much less at this dose). But three Dad-specific factors make this the wrong moment to test the retrial: the timing relative to the IV ketamine restart and the doxepin uptitration already in progress; the RBD/REM-sleep concern documented specifically for mirtazapine in parkinsonian patients; and the availability of better-evidenced alternatives (continued doxepin titration + DORA as backup). The family's prior literature review #11 reached the same conclusion 4 weeks ago and nothing in the new evidence changes that. If sleep maintenance remains a problem after the ketamine course stabilizes, the conversation should revisit — with the conditions in step 5 above — but not now.
+</div>
+
+<div class="back-header">Key Studies &amp; Findings</div>
+<div class="back-subhead">Ranked by authority · Each citation summarized for how it applies to Dad's case</div>
+
+<div class="tier-header">Tier 0 — Family's Prior Analytical Work <span class="tier-stars">★★★★★</span></div>
+
+<div class="citation">
+  <div class="cite-title">Literature Review #11 — Late-Life Anxiety in TRD: Evidence-Based Alternatives to Olanzapine.</div>
+  <div class="cite-source">Adam Plunkett / family, 2026-04-20. Located in `Dad Health/literature_reviews/11_late_life_anxiety_TRD_alternatives.md`.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Explicit prior conclusion: "Low-dose retrial? Theoretically 7.5 mg qhs might capture only H1/5-HT2A effects without the noradrenergic rebound. But in a patient with a specific prior bad experience, this is low-priority. Only consider if all other options fail. <strong>Verdict: Off the table for now.</strong>" Named Dad's activation-intolerance pattern as the load-bearing clinical signal pointing away from mirtazapine.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The family worked this exact question 4 weeks ago. Nothing in the new evidence changes the conclusion for the current moment.</div>
+</div>
+
+<div class="tier-header">Tier 1 — Major Clinical Guidelines and Reviews <span class="tier-stars">★★★★★</span></div>
+
+<div class="citation">
+  <div class="cite-title">Steinman MA. Alternative Treatments to Selected Medications in the 2023 American Geriatrics Society Beers Criteria.</div>
+  <div class="cite-source">J Am Geriatr Soc 2025;73:2657–2677. Read <a href="https://doi.org/10.1111/jgs.19500" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Explicit statement: "insufficient evidence to recommend trazodone, mirtazapine, melatonin" for insomnia in older adults. Endorses low-dose doxepin (up to 6 mg) and dual orexin receptor antagonists as safer alternatives with evidence of effectiveness.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The AGS geriatric-specific consensus that mirtazapine isn't a preferred sleep aid in older adults. DORAs are the named alternative for the "next-step" question.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Morin CM, Buysse DJ. Management of Insomnia.</div>
+  <div class="cite-source">NEJM 2024;391:247–258. Read <a href="https://doi.org/10.1056/NEJMcp2305655" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Current NEJM clinical review. Identifies low-dose doxepin and DORAs as the two pharmacologic classes with the most favorable safety profile in older adults. Mirtazapine is not in the preferred set for insomnia.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Frames the available alternatives. The current path (doxepin uptitration) is already in the preferred set; DORAs are the next-step preferred option, not mirtazapine.</div>
+</div>
+
+<div class="tier-header">Tier 2 — Mirtazapine Pharmacology and Sleep Data <span class="tier-stars">★★★★</span></div>
+
+<div class="citation">
+  <div class="cite-title">Karsten J, Hagenauw LA et al. Low Doses of Mirtazapine or Quetiapine for Transient Insomnia: A Randomised, Double-Blind, Cross-Over, Placebo-Controlled Trial.</div>
+  <div class="cite-source">J Psychopharmacol 2017;31:327–337. Read <a href="https://doi.org/10.1177/0269881116681399" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>RCT in healthy male volunteers. Mirtazapine 7.5 mg significantly increased total sleep time by ~30 minutes, reduced awakenings by 35–40%, and specifically enhanced deep (slow-wave) sleep. Sleep benefit appeared on the first night.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The strongest published evidence that low-dose mirtazapine has a real sleep-enhancement effect — consistent with Mom's recall of sleep benefit last fall. But the study was in healthy volunteers, not patients with prior mirtazapine intolerance, so it doesn't directly speak to the retrial-after-agitation question.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">FDA Mirtazapine Label.</div>
+  <div class="cite-source">FDA prescribing information. Read <a href="https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?searchquery=mirtazapine" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>FDA label notes plasma levels are linearly related to dose (15–80 mg range). Explicitly lists SNRIs as drugs that increase serotonin syndrome risk when combined with mirtazapine. Notes elevated next-day sedation/cognitive impairment risk in elderly.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Anchors the serotonergic-stack concern (duloxetine + doxepin + mirtazapine = three standing serotonergic agents, plus trazodone available as PRN backup). Also frames the cumulative sedation concern with doxepin.</div>
+</div>
+
+<div class="tier-header">Tier 3 — Mirtazapine and REM/RBD <span class="tier-stars">★★★</span></div>
+
+<div class="citation">
+  <div class="cite-title">Onofrj M, Luciano AL et al. Mirtazapine Induces REM Sleep Behavior Disorder (RBD) in Parkinsonism.</div>
+  <div class="cite-source">Neurology 2003;60:113–115. Read <a href="https://doi.org/10.1212/01.wnl.0000042084.03066.c0" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Case series of four patients with parkinsonism who developed RBD shortly after mirtazapine initiation (at 15 mg), with resolution upon discontinuation. The specific mirtazapine-RBD association is the most concerning data point in patients with parkinsonian features.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Dad has formal RBD (G47.52) since 2017 and a history of drug-induced parkinsonism from aripiprazole. The Onofrj cases used 15 mg; whether 7.5 mg carries the same risk is not directly studied, but the mechanism isn't clearly dose-dependent. This is the central reason mirtazapine retrial should wait for neurology input.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">McCarter SJ, St Louis EK et al. Antidepressants Increase REM Sleep Muscle Tone in Patients With and Without REM Sleep Behavior Disorder.</div>
+  <div class="cite-source">Sleep 2015;38:907–917. Read <a href="https://doi.org/10.5665/sleep.4738" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Antidepressant-treated patients had elevated REM sleep without atonia (RSWA) compared to untreated controls, with effects particularly prominent in the anterior tibialis. The effect was present across antidepressant classes, including mirtazapine.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The broader class-level RBD signal for antidepressants. Even patients without clinical RBD show RSWA on polysomnography when on antidepressants. In Dad, who has formal RBD, the underlying REM-atonia mechanism is already compromised.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Postuma RB, Gagnon JF et al. Antidepressants and REM Sleep Behavior Disorder: Isolated Side Effect or Neurodegenerative Signal?</div>
+  <div class="cite-source">Sleep 2013;36:1579–1585. Read <a href="https://doi.org/10.5665/sleep.3102" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Patients with antidepressant-associated RBD still showed markers of prodromal neurodegeneration, suggesting antidepressants may unmask subclinical synucleinopathy rather than cause de novo RBD. This reframes antidepressant-RBD as a clinical signal worth taking seriously, not just a benign side effect.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Anchors the framing that the RBD/REM concerns with mirtazapine aren't abstract — they're connected to the broader picture the June neurology evaluation is examining. Worth letting neurology weigh in before pursuing.</div>
+</div>
+
+</body>
+</html>

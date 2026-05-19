@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Decision Aid — Cymbalta taper timing — 2026-05-14</title>
+<style>
+  @page { size: letter; margin: 0.55in 0.65in; }
+  :root {
+    --navy: #1a3a5c; --navy-dark: #0f2640;
+    --against-accent: #8b2c2c; --for-accent: #2c5e3f;
+    --text: #1f1f1f; --text-muted: #5a5a5a;
+    --rule: #c8c8c8; --rule-strong: #6a6a6a;
+    --tint: #f5f5f0; --tint-pro: #f0f4f8; --tint-con: #f9f2f0;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    font-family: "Charter", "Georgia", "Times New Roman", serif;
+    font-size: 9.75pt; line-height: 1.42; color: var(--text);
+    -webkit-font-smoothing: antialiased;
+  }
+  .doc-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    padding-bottom: 6pt; border-bottom: 1.5pt solid var(--navy); margin-bottom: 14pt;
+  }
+  .doc-header .title {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 600; font-size: 15pt; line-height: 1.2;
+    color: var(--navy-dark); letter-spacing: -0.01em;
+  }
+  .doc-header .meta {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 7.5pt; color: var(--text-muted); text-align: right;
+    letter-spacing: 0.03em; line-height: 1.5;
+  }
+  .section-label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 7.5pt; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.14em; color: var(--navy); margin: 14pt 0 5pt 0;
+  }
+  .section-label.first { margin-top: 0; }
+  .key-message {
+    border-left: 4pt solid var(--against-accent); background: var(--tint);
+    padding: 9pt 13pt; margin: 0 0 10pt 0;
+  }
+  .key-message p {
+    margin: 0;
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 10.5pt; line-height: 1.42; font-weight: 500; color: var(--text);
+  }
+  .context { font-size: 9.5pt; line-height: 1.5; color: var(--text); margin: 0 0 4pt 0; }
+  table.evidence {
+    width: 100%; border-collapse: collapse; margin: 4pt 0 8pt 0; table-layout: fixed;
+  }
+  table.evidence thead th {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 600; font-size: 8.25pt; padding: 6pt 9pt; text-align: left;
+    background: var(--navy); color: white; letter-spacing: 0.02em;
+  }
+  table.evidence thead th.pro { background: #4a6a8a; }
+  table.evidence thead th.con { background: var(--against-accent); }
+  table.evidence td {
+    padding: 6pt 9pt; vertical-align: top;
+    border-bottom: 0.5pt solid var(--rule);
+    font-size: 9pt; line-height: 1.4;
+  }
+  table.evidence td.pro { background: var(--tint-pro); }
+  table.evidence td.con { background: var(--tint-con); }
+  table.evidence tbody tr:last-child td { border-bottom: none; }
+  table.evidence td strong { color: var(--navy-dark); }
+  .strength-row {
+    display: flex; align-items: baseline; margin: 6pt 0 2pt 0; white-space: nowrap;
+  }
+  .strength-label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 8.5pt; font-weight: 600; color: var(--text);
+    margin-right: 10pt; white-space: nowrap;
+  }
+  .stars { color: var(--against-accent); letter-spacing: 0.12em; font-size: 11pt; white-space: nowrap; }
+  .strength-rationale {
+    font-size: 8.5pt; color: var(--text-muted); font-style: italic;
+    margin: 2pt 0 6pt 0; line-height: 1.4;
+  }
+  ol.next-steps {
+    margin: 4pt 0 8pt 0; padding-left: 18pt; font-size: 9.25pt; line-height: 1.4;
+  }
+  ol.next-steps li { margin-bottom: 4pt; padding-left: 3pt; }
+  ol.next-steps li::marker {
+    color: var(--navy); font-weight: 700;
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+  }
+  .bottom-line {
+    border-top: 1pt solid var(--rule-strong); padding-top: 6pt; margin-top: 10pt;
+    font-style: italic; font-size: 9pt; color: var(--text); line-height: 1.4;
+  }
+  .bottom-line .label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-style: normal; font-weight: 700; font-size: 7.5pt;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--navy); margin-right: 6pt;
+  }
+  .neutral-block {
+    background: #f3f3f1; border-left: 3pt solid #888;
+    padding: 9pt 14pt 6pt 14pt; margin: 4pt 0 8pt 0;
+  }
+  .neutral-block ul { list-style: none; padding: 0; margin: 0; }
+  .neutral-block li {
+    font-size: 9pt; line-height: 1.45; margin-bottom: 6pt;
+    padding-left: 14pt; position: relative;
+  }
+  .neutral-block li::before {
+    content: "•"; position: absolute; left: 0; color: #888; font-weight: bold;
+  }
+  .neutral-block li:last-child { margin-bottom: 0; }
+  .neutral-block strong { color: var(--navy-dark); }
+  .back-header {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 14pt; font-weight: 600; color: var(--navy-dark);
+    border-bottom: 1.5pt solid var(--navy); padding-bottom: 5pt;
+    margin-top: 18pt; margin-bottom: 4pt;
+  }
+  .citation, .tier-header { page-break-inside: avoid; }
+  .back-subhead {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 8pt; color: var(--text-muted); margin-bottom: 14pt; letter-spacing: 0.03em;
+  }
+  .tier-header {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 9pt; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.12em; color: var(--navy);
+    margin: 11pt 0 6pt 0; padding-bottom: 2pt; border-bottom: 0.5pt solid var(--rule);
+  }
+  .tier-header .tier-stars { float: right; color: var(--navy); font-size: 10pt; letter-spacing: 0.04em; }
+  .citation {
+    margin: 0 0 9pt 0; padding-left: 9pt; border-left: 2pt solid var(--rule);
+    font-size: 8.75pt; line-height: 1.4;
+  }
+  .citation .cite-title {
+    font-weight: 700; color: var(--navy-dark);
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif; font-size: 8.75pt;
+  }
+  .citation .cite-source { color: var(--text-muted); font-style: italic; font-size: 8.5pt; }
+  .citation .cite-finding, .citation .cite-apply { margin-top: 2pt; font-size: 8.5pt; }
+  .citation .label-inline {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 700; font-size: 7pt; text-transform: uppercase;
+    letter-spacing: 0.08em; color: var(--navy); margin-right: 4pt;
+  }
+  .citation .cite-link {
+    color: var(--navy); text-decoration: underline;
+    text-decoration-thickness: 0.4pt; text-underline-offset: 1.5pt;
+    font-style: normal; font-weight: 500; margin-left: 2pt;
+  }
+  .citation .cite-link:hover { color: var(--navy-dark); }
+</style>
+</head>
+<body>
+
+<div class="doc-header">
+  <div class="title">Should Dad start tapering Cymbalta on May 18 (concurrent with ketamine) — or after?</div>
+  <div class="meta">
+    Decision Aid · 2026-05-14<br>
+    For Dad, Mom, Dr. Rubin, the K Clinic<br>
+    psychiatrist, Julane &amp; the family team
+  </div>
+</div>
+
+<div class="section-label first">Recommendation</div>
+<div class="key-message">
+  <p><strong>After.</strong> Wait until ketamine response is established at 2–3 sessions (approximately 1.5 weeks under the twice-weekly IV protocol) before initiating any Cymbalta taper. Starting the taper concurrent with the May 18 ketamine restart is not supported by the published evidence and would compromise both the ketamine response assessment and Dad's tolerability. Julane's instinct that ketamine can support medication transitions is reasonable, but the evidence supporting that idea is benzodiazepine-specific — it doesn't extend to SNRIs like Cymbalta. The confirmation that the protocol is twice-weekly IV ketamine (rather than primarily sublingual lozenges) actually shortens the assessment window — the Singh 2016 RCT specifically demonstrated meaningful response under this dosing schedule — making the cost of waiting modest.</p>
+</div>
+
+<div class="section-label">Why this matters for Dad specifically</div>
+<p class="context">Dad's documented February 2026 dramatic ketamine response occurred on Cymbalta 60 mg + brexpiprazole 1 mg. The May 18 restart is essentially a re-creation of that condition (now with brexpiprazole stopped) — but with one key shift: the route will be <strong>twice-weekly IV ketamine</strong> with occasional at-home lozenges, rather than the primarily sublingual protocol of the February course. IV ketamine has 100% bioavailability (vs. ~25–30% for sublingual), larger acute effect sizes, and is the route with the strongest published maintenance RCTs (Singh 2016, Phillips 2019). This matters here because <em>response assessment is cleaner and faster with IV</em> — 2–3 sessions at twice-weekly dosing is approximately 1.5 weeks, with a more reliable signal than slower sublingual titration would provide. Tapering Cymbalta concurrent with the restart introduces multiple destabilizing variables at exactly the window where the family most needs that clean read. Cymbalta discontinuation symptoms (dizziness, nausea, brain zaps, anxiety, insomnia) peak at 1–2 weeks — directly overlapping the critical first 2–3 ketamine sessions. Layer this on top of Dad's still-open post-lorazepam rebound window (he finished his Ativan taper roughly a week ago after ~3 weeks of near-daily use; rebound resolution typically takes 1–2 weeks) and there's a real risk of three pharmacological transitions running simultaneously in a 76-year-old — exactly what the geriatric pharmacology literature consistently advises against. The cleaner, evidence-supported sequencing is: restart IV ketamine on the unchanged Cymbalta 60 mg, assess response over 2–3 sessions (1.5 weeks), then plan any antidepressant changes as a separate, monitored intervention with attribution intact.</p>
+
+<div class="section-label">The evidence</div>
+<table class="evidence">
+  <thead>
+    <tr>
+      <th class="pro" style="width: 50%;">Why deferring the taper is the evidence-supported approach</th>
+      <th class="con" style="width: 50%;">The case for concurrent taper — and why the evidence doesn't support it for Cymbalta</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="pro"><strong>Cymbalta discontinuation symptoms peak in the same window as the critical ketamine assessment.</strong> Duloxetine discontinuation syndrome typically peaks at 1–2 weeks after a dose reduction. Symptoms include dizziness, nausea, brain zaps (electric-shock-like sensations in the head), anxiety, irritability, insomnia, and emotional lability. Several of these symptoms overlap with both depressive symptoms and ketamine session side effects — meaning any clinical change during the first 2–3 sessions would be impossible to attribute cleanly to ketamine, withdrawal, or relapse.</td>
+      <td class="con"><strong>Julane's framing: ketamine can support antidepressant discontinuation.</strong> The clinical instinct is reasonable — ketamine has documented evidence of facilitating benzodiazepine discontinuation. In one 2023 cohort, 91% of TRD patients successfully discontinued all benzodiazepines during a 4-week ketamine course, with 64% remaining off them at 1 year. The mechanism: ketamine's antidepressant and anxiolytic effects can buffer some of the rebound symptoms that make medication withdrawal hard. The framing has real clinical merit — for benzodiazepines.</td>
+    </tr>
+    <tr>
+      <td class="pro"><strong>The twice-weekly IV protocol means the wait isn't long.</strong> The Singh 2016 RCT specifically used 0.5 mg/kg twice-weekly IV ketamine and demonstrated meaningful response over 15 days. 2–3 sessions at twice-weekly dosing is approximately 1.5 weeks — about half the wait that would be involved with slower sublingual titration. Phillips 2019 found cumulative effects of repeated IV infusions, with a median of 3 infusions to response. The cost of waiting before initiating a Cymbalta taper is small, and the assessment quality is high.</td>
+      <td class="con" style="background: #fbfbf8; color: #777;">—</td>
+    </tr>
+    <tr>
+      <td class="pro"><strong>No clinical trial has ever paired ketamine induction with a concurrent SNRI taper.</strong> The major ketamine and esketamine trials follow one of three designs: (a) wash patients off all antidepressants 2+ weeks before ketamine starts (then ketamine monotherapy); (b) maintain the existing oral antidepressant at a stable dose throughout the induction; or (c) cross-taper to a new oral antidepressant while starting ketamine. None of the published trials introduces an SNRI taper-to-nothing during the induction window. The absence of any trial protocol attempting this is itself informative — trial designers have consistently avoided this design.</td>
+      <td class="con"><strong>But the evidence is benzodiazepine-specific.</strong> The pharmacology of benzodiazepine withdrawal (GABAergic rebound, anxiety, seizure risk) is fundamentally different from SNRI discontinuation (serotonergic and noradrenergic dysregulation producing brain zaps, dizziness, paresthesias). There is no published evidence that ketamine reduces the severity or duration of SNRI or SSRI discontinuation symptoms specifically. Extrapolating from the benzodiazepine literature to SNRIs is not evidence-supported, even if the intuition is sensible.</td>
+    </tr>
+    <tr>
+      <td class="pro"><strong>Preserving the documented-response condition matters most for a prior responder.</strong> Dad had a dramatic ketamine response in February 2026 on Cymbalta + brexpiprazole. The closest the family can get to reproducing that condition now (with brexpiprazole already off) is keeping Cymbalta unchanged. Tapering Cymbalta concurrent with the restart introduces an additional variable that wasn't present during the documented response — changing the medication context in which the family knows ketamine worked.</td>
+      <td class="con"><strong>Concurrent taper hasn't been studied — but it also hasn't been shown to be unsafe.</strong> Some clinicians do use ketamine as a "soft landing" for various medication transitions in real-world practice, based on the same clinical instinct Julane is operating from. This is real practice-level experience, even if it doesn't appear in trial protocols. The honest version is: it's not evidence-supported, but it's also not been shown to be harmful — just unstudied.</td>
+    </tr>
+    <tr>
+      <td class="pro"><strong>The Del Casale 2025 large-cohort study (n=55,480) showed SNRI + ketamine outperforms SSRI + ketamine on mortality and relapse.</strong> The SNRI advantage was on hard outcomes: 5.3% mortality vs. 9.1%, 14.8% depression relapse vs. 21.2%. The authors hypothesized that the dual mechanism of SNRIs may synergize with ketamine's glutamatergic effects. This finding argues for keeping the SNRI in place during the ketamine restart period, not removing it.</td>
+      <td class="con"><strong>For Dad's RBD profile, eventually getting off the SNRI may be beneficial.</strong> There is real reason to think Dad's REM Sleep Behavior Disorder may be antidepressant-associated (frequency decreasing on long-term SSRIs/SNRIs is more consistent with that pattern than with idiopathic RBD). Removing the SNRI could plausibly reduce RBD episodes further. The question isn't whether to consider tapering — it's when. The evidence supports doing this as a separate, sequenced intervention later, not concurrent with the May 18 restart.</td>
+    </tr>
+    <tr>
+      <td class="pro"><strong>Layered transitions in a 76-year-old are a known geriatric-pharmacology hazard.</strong> Dad finished his lorazepam taper 6 days ago and is still in the typical 1–2 week post-benzodiazepine rebound window. Adding a Cymbalta taper concurrent with the ketamine restart would mean three overlapping pharmacological transitions in the same 2-week window: post-benzodiazepine rebound, SNRI discontinuation, ketamine induction. The geriatric literature consistently emphasizes sequential, not simultaneous, medication changes — to allow attribution of adverse effects and to minimize cumulative destabilization.</td>
+      <td class="con"><strong>Speed of medication transition is a clinical-priority question, not just an evidence question.</strong> If the family decides that getting Dad off serotonergic medications is a high priority — for instance, because of the RBD concerns or the prodromal Lewy-spectrum question — the speed of the transition may matter to them. The evidence-supported sequencing means a slightly slower path (taper starts at week 2–3 of ketamine, not at week 0), but this is a few weeks of delay in service of a cleaner clinical read. It is not an indefinite postponement.</td>
+    </tr>
+    <tr>
+      <td class="pro"><strong>The TRANSFORM-3 trial in adults ≥65 already showed attenuated ketamine response in this age group.</strong> Esketamine + new oral antidepressant did not significantly outperform placebo + oral antidepressant in this age range. The implication for Dad: late-life ketamine response is more conditional than younger-adult ketamine response, and the family should optimize every controllable variable in service of getting a clean response — which argues against introducing an unnecessary destabilization concurrent with the restart.</td>
+      <td class="con">&nbsp;</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="strength-row">
+  <span class="strength-label">Strength of evidence for deferring the taper until ketamine response is established:</span>
+  <span class="stars">★★★★★</span>
+</div>
+<div class="strength-rationale">Convergence across multiple lines of evidence: every major ketamine trial avoided concurrent SNRI taper; duloxetine discontinuation peaks exactly during the critical ketamine assessment window; the Del Casale 2025 large-cohort data favor SNRI continuation alongside ketamine; geriatric pharmacology consistently advises against layered transitions; and the documented-response condition is preserved by keeping Cymbalta at 60 mg.</div>
+
+<div class="section-label">What both approaches share</div>
+<div class="neutral-block">
+  <ul>
+    <li><strong>Both approaches accept that Cymbalta will likely come off eventually.</strong> The disagreement is about timing, not about whether to taper at all. Dad's RBD picture, the prodromal Lewy-spectrum questions, and the long-term plan all point to revisiting his antidepressant regimen — the question is just whether to do that concurrent with the May 18 restart or as a separate intervention 4–6 weeks later.</li>
+    <li><strong>Both approaches respect Julane's underlying clinical intuition.</strong> The idea that ketamine can support medication transitions is real and well-evidenced for benzodiazepines. The disagreement is whether that finding extends to SNRIs without published evidence to support the extension. Julane's view is defensible clinical extrapolation; the published evidence simply hasn't followed up on it for SNRIs specifically.</li>
+    <li><strong>A slow taper is preferable in either timing.</strong> If/when the taper is initiated — whether at May 18 or at week 3 — current geriatric guidance recommends reducing duloxetine by ~25% every 2–4 weeks, with close monitoring for discontinuation symptoms and depressive worsening. Hyperbolic tapering (slower-than-linear reductions, especially near the bottom of the dose range) may further reduce withdrawal severity.</li>
+    <li><strong>The neurology evaluation in June and the MMA recheck on August 6 are real decision points.</strong> Both could materially change the antidepressant strategy. Deferring the taper preserves the option to make this decision with more information.</li>
+  </ul>
+</div>
+
+<div class="section-label">Recommended next steps</div>
+<ol class="next-steps">
+  <li><strong>Restart sublingual ketamine on May 18 with Cymbalta 60 mg unchanged.</strong> Reproduce the February 2026 medication condition as closely as possible.</li>
+  <li><strong>Assess ketamine response over 2–3 sessions</strong> (approximately late May to early June). PHQ-9 or simple symptom diary will help track this.</li>
+  <li><strong>If ketamine response is re-established</strong> (≥50% reduction in depressive symptoms or clinically meaningful improvement), then plan a slow Cymbalta taper as a separate intervention: ~25% reductions every 2–4 weeks, with close monitoring for discontinuation symptoms (DESS criteria) and any depressive recurrence.</li>
+  <li><strong>If ketamine response is not re-established</strong>, hold Cymbalta and reassess the entire treatment plan with Dr. Rubin, the K Clinic psychiatrist, and Julane before introducing any additional medication changes.</li>
+  <li><strong>Share this analysis with Julane respectfully ahead of the May 18 restart.</strong> Her instinct about medication-transition support is real for benzodiazepines; the question is whether it generalizes to SNRIs without published evidence. A short conversation now is better than discovering the disagreement on May 18.</li>
+  <li><strong>Bring this analysis to the May 19 follow-up with Dr. Rubin</strong> and to the pending K Clinic psychiatrist call. The substantive question for both: do they agree on deferring the Cymbalta taper until after ketamine response is established?</li>
+</ol>
+
+<div class="bottom-line">
+  <span class="label">Bottom line</span>
+  Wait. Restart IV ketamine on Cymbalta 60 mg unchanged on May 18, assess response over 2–3 twice-weekly sessions (approximately 1.5 weeks), and then revisit the Cymbalta taper as a separate intervention with attribution intact. Julane's clinical instinct is well-meaning but the published evidence doesn't support it for SNRIs specifically — the supporting evidence (Garel 2023) is benzodiazepine-specific. The twice-weekly IV protocol means the cost of waiting is short, and the assessment quality is high.
+</div>
+
+<div class="back-header">Key Studies &amp; Findings</div>
+<div class="back-subhead">Ranked by authority · Each citation summarized for how it applies to Dad's case</div>
+
+<div class="tier-header">Tier 1 — Major Clinical Guidelines and Consensus <span class="tier-stars">★★★★★</span></div>
+
+<div class="citation">
+  <div class="cite-title">Kok RM, Reynolds CF. Management of Depression in Older Adults: A Review.</div>
+  <div class="cite-source">JAMA 2017;317:2114–2122. Read <a href="https://doi.org/10.1001/jama.2017.5706" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>JAMA review of depression management in older adults. Specifically advises a gradual antidepressant taper over at least 4 weeks, with monitoring for several months afterward. Notes that elderly patients may have greater sensitivity to discontinuation symptoms due to altered metabolism.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Authoritative geriatric-psychiatry guidance against rapid antidepressant transitions in elderly. Supports the sequenced approach (taper as a separate, slow intervention rather than concurrent with the ketamine restart).</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">McQuaid JR, Buelt A et al. VA/DoD 2022 MDD Guideline Synopsis.</div>
+  <div class="cite-source">Ann Intern Med 2022;175:1440–1451. Read <a href="https://doi.org/10.7326/M22-1603" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>VA/DoD guideline recommends ketamine/esketamine as augmentation to ongoing antidepressant therapy in patients who have failed several prior trials. Maintaining the oral antidepressant at a stable dose during ketamine treatment is the recommended standard practice.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Supports the standard practice of keeping the existing antidepressant stable during ketamine treatment, especially during induction. Argues against tapering concurrent with the May 18 restart.</div>
+</div>
+
+<div class="tier-header">Tier 2 — Major RCTs <span class="tier-stars">★★★★</span></div>
+
+<div class="citation">
+  <div class="cite-title">Daly EJ, Trivedi MH et al. Efficacy of Esketamine Nasal Spray Plus Oral Antidepressant Treatment for Relapse Prevention in Patients With Treatment-Resistant Depression (SUSTAIN-1).</div>
+  <div class="cite-source">JAMA Psychiatry 2019;76:893–903. Read <a href="https://doi.org/10.1001/jamapsychiatry.2019.1189" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>The landmark ketamine relapse-prevention trial. Patients on continued esketamine + oral antidepressant had 51% lower relapse than those on antidepressant alone. The oral antidepressant was maintained throughout — no protocol involved tapering it to nothing during ketamine treatment.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The strongest evidence base for ketamine maintenance keeps the oral antidepressant stable. No trial has paired ketamine induction with concurrent SNRI taper — the trial designers consistently avoid that design.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Janik A, Qiu X et al. Esketamine Monotherapy in Adults With Treatment-Resistant Depression.</div>
+  <div class="cite-source">JAMA Psychiatry 2025;82:877–887. Read <a href="https://doi.org/10.1001/jamapsychiatry.2025.1317" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>First placebo-controlled RCT of esketamine monotherapy (after 2+ week antidepressant-free period). Both 56 mg and 84 mg doses outperformed placebo at day 28. Notably, the trial design required a complete antidepressant washout BEFORE ketamine started — not a concurrent taper during induction. The FDA Spravato label has subsequently been updated to include monotherapy as an indication.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>If the eventual plan is to get Dad off SNRIs entirely, the published trial design supports doing this as a wash-then-restart sequence (taper completely, then begin ketamine fresh) — not as a concurrent taper during an active induction.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Singh JB, Fedgchin M et al. A Double-Blind, Randomized, Placebo-Controlled, Dose-Frequency Study of Intravenous Ketamine in Patients With Treatment-Resistant Depression.</div>
+  <div class="cite-source">Am J Psychiatry 2016;173:816–826. Read <a href="https://doi.org/10.1176/appi.ajp.2016.16010037" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>RCT (n=67) of IV ketamine 0.5 mg/kg twice weekly vs. three times weekly vs. placebo. Twice-weekly IV ketamine produced 69% response and 37.5% remission rates over 15 days, with durable antidepressant effects through the maintenance period.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Validates the twice-weekly IV protocol Dad will receive — and establishes that meaningful response can be assessed within ~15 days under this regimen. This is the basis for "wait 2–3 sessions" being a short and high-quality assessment window rather than an open-ended delay.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Phillips JL, Norris S et al. Single, Repeated, and Maintenance Ketamine Infusions for Treatment-Resistant Depression.</div>
+  <div class="cite-source">Am J Psychiatry 2019;176:401–409. Read <a href="https://doi.org/10.1176/appi.ajp.2018.18070834" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Repeated IV ketamine infusions showed cumulative antidepressant effects with a median of 3 infusions to response. Patients on scheduled maintenance had ~27% relapse vs. ~46% with variable protocols.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The "3 infusions to response" median means Dad's response read at 2–3 twice-weekly IV sessions is on solid evidence-based ground — and that maintaining the response requires the structured (not ad hoc) protocol he's planned to be on. Supports keeping the medication context stable through this assessment window.</div>
+</div>
+
+<div class="tier-header">Tier 3 — Systematic Reviews and Real-World Cohorts <span class="tier-stars">★★★</span></div>
+
+<div class="citation">
+  <div class="cite-title">Del Casale A et al. Esketamine Combined With SSRI or SNRI for Treatment-Resistant Depression.</div>
+  <div class="cite-source">JAMA Psychiatry 2025;82:810–817. Read <a href="https://doi.org/10.1001/jamapsychiatry.2025.0200" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Propensity-matched cohort, n=55,480. SNRI + esketamine had lower mortality (5.3% vs. 9.1%), lower hospitalization (0.1% vs. 0.2%), and lower depression relapse (14.8% vs. 21.2%) than SSRI + esketamine. The authors hypothesized that the dual mechanism of SNRIs may synergize with ketamine's glutamatergic effects.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Argues for keeping the SNRI in place during the ketamine restart period — not removing it. The mortality and relapse advantages are substantial. If the eventual decision is to taper anyway (for RBD or Lewy-spectrum reasons), this should be a separate, sequenced intervention, not concurrent with the May 18 restart.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Kalfas M, Tsapekos D et al. Incidence and Nature of Antidepressant Discontinuation Symptoms.</div>
+  <div class="cite-source">JAMA Psychiatry 2025;82:896–904. Read <a href="https://doi.org/10.1001/jamapsychiatry.2025.1362" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Meta-analysis of antidepressant discontinuation symptoms. Duloxetine produced approximately 1.6 additional symptoms on the standard discontinuation symptom scale at week 1 compared to placebo (standardized effect size 0.40). Most common symptoms: dizziness (~6% risk difference), nausea (~3%), plus headache, paresthesia, irritability, insomnia, anxiety, and hyperhidrosis. Peak symptoms typically at 1–2 weeks post-discontinuation.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Quantifies the discontinuation symptom burden Dad would face if Cymbalta is tapered concurrent with the ketamine restart. The peak symptom window (1–2 weeks post-taper-start) directly overlaps the critical first 2–3 ketamine sessions.</div>
+</div>
+
+<div class="tier-header">Tier 4 — Mechanism &amp; Risk-Side Trials <span class="tier-stars">★★</span></div>
+
+<div class="citation">
+  <div class="cite-title">Garel N et al. Intravenous Ketamine for Benzodiazepine Deprescription and Withdrawal Management in Treatment-Resistant Depression.</div>
+  <div class="cite-source">Neuropsychopharmacology 2023;48:1769–1777. Read <a href="https://doi.org/10.1038/s41386-023-01689-y" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>In a cohort of TRD patients undergoing ketamine treatment, 91% successfully discontinued all benzodiazepines during a 4-week ketamine course; 64% remained abstinent at 1-year follow-up.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>This is the evidence Julane's clinical instinct is drawing from — and it is real and well-documented. The critical caveat: the finding is benzodiazepine-specific. Benzodiazepine withdrawal involves GABAergic rebound (fundamentally different mechanism from SNRI discontinuation). No analogous study exists for SNRIs or SSRIs. Extending this evidence to Cymbalta would be reasonable clinical extrapolation but is not evidence-supported.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Andrashko V et al. The Antidepressant Effect of Ketamine Is Dampened by Concomitant Benzodiazepine Medication.</div>
+  <div class="cite-source">Front Psychiatry 2020;11:844. Read <a href="https://doi.org/10.3389/fpsyt.2020.00844" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Concurrent benzodiazepine use measurably reduces ketamine's antidepressant effect. Effect is dose-dependent and most pronounced within the immediate dosing window.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Validates the choice to complete the lorazepam taper before the ketamine restart. The principle (reduce concurrent variables that could attenuate or confound ketamine's effect) is the same principle that argues against introducing a new concurrent variable (SNRI taper) at the restart.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Ochs-Ross R, Daly EJ et al. Efficacy and Safety of Esketamine Nasal Spray Plus an Oral Antidepressant in Elderly Patients (TRANSFORM-3).</div>
+  <div class="cite-source">Am J Geriatr Psychiatry 2020;28:121–141. Read <a href="https://doi.org/10.1016/j.jagp.2019.10.008" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>The pivotal trial of esketamine + newly initiated oral antidepressant in adults ≥65 with TRD. Failed its primary endpoint — did not show significant superiority over placebo + oral antidepressant.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Late-life ketamine response is more conditional than younger-adult response. This argues for maximally optimizing every controllable variable (medication context, attribution clarity, family support, integration session quality) at the May 18 restart — and therefore against introducing an unnecessary destabilization with a concurrent SNRI taper.</div>
+</div>
+
+</body>
+</html>

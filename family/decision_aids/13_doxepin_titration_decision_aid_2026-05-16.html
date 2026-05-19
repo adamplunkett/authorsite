@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Decision Aid — Doxepin uptitration for the bridge — 2026-05-16</title>
+<style>
+  @page { size: letter; margin: 0.55in 0.65in; }
+  :root {
+    --navy: #1a3a5c; --navy-dark: #0f2640;
+    --against-accent: #8b2c2c; --for-accent: #2c5e3f;
+    --text: #1f1f1f; --text-muted: #5a5a5a;
+    --rule: #c8c8c8; --rule-strong: #6a6a6a;
+    --tint: #f3f6f3; --tint-pro: #eef3ee; --tint-con: #f7f4f0;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    font-family: "Charter", "Georgia", "Times New Roman", serif;
+    font-size: 9.75pt; line-height: 1.42; color: var(--text);
+    -webkit-font-smoothing: antialiased;
+  }
+  .doc-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    padding-bottom: 6pt; border-bottom: 1.5pt solid var(--navy); margin-bottom: 14pt;
+  }
+  .doc-header .title {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 600; font-size: 15pt; line-height: 1.2;
+    color: var(--navy-dark); letter-spacing: -0.01em;
+  }
+  .doc-header .meta {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 7.5pt; color: var(--text-muted); text-align: right;
+    letter-spacing: 0.03em; line-height: 1.5;
+  }
+  .section-label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 7.5pt; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.14em; color: var(--navy); margin: 14pt 0 5pt 0;
+  }
+  .section-label.first { margin-top: 0; }
+  .key-message {
+    border-left: 4pt solid var(--for-accent); background: var(--tint);
+    padding: 9pt 13pt; margin: 0 0 10pt 0;
+  }
+  .key-message p {
+    margin: 0;
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 10.5pt; line-height: 1.42; font-weight: 500; color: var(--text);
+  }
+  .context { font-size: 9.5pt; line-height: 1.5; color: var(--text); margin: 0 0 4pt 0; }
+  table.evidence {
+    width: 100%; border-collapse: collapse; margin: 4pt 0 8pt 0; table-layout: fixed;
+  }
+  table.evidence thead th {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 600; font-size: 8.25pt; padding: 6pt 9pt; text-align: left;
+    background: var(--navy); color: white; letter-spacing: 0.02em;
+  }
+  table.evidence thead th.pro { background: var(--for-accent); }
+  table.evidence thead th.con { background: #6a6a6a; }
+  table.evidence td {
+    padding: 6pt 9pt; vertical-align: top;
+    border-bottom: 0.5pt solid var(--rule);
+    font-size: 9pt; line-height: 1.4;
+  }
+  table.evidence td.pro { background: var(--tint-pro); }
+  table.evidence td.con { background: var(--tint-con); }
+  table.evidence tbody tr:last-child td { border-bottom: none; }
+  table.evidence td strong { color: var(--navy-dark); }
+  .strength-row {
+    display: flex; align-items: baseline; margin: 6pt 0 2pt 0; white-space: nowrap;
+  }
+  .strength-label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 8.5pt; font-weight: 600; color: var(--text);
+    margin-right: 10pt; white-space: nowrap;
+  }
+  .stars { color: var(--for-accent); letter-spacing: 0.12em; font-size: 11pt; white-space: nowrap; }
+  .strength-rationale {
+    font-size: 8.5pt; color: var(--text-muted); font-style: italic;
+    margin: 2pt 0 6pt 0; line-height: 1.4;
+  }
+  ol.next-steps {
+    margin: 4pt 0 8pt 0; padding-left: 18pt; font-size: 9.25pt; line-height: 1.4;
+  }
+  ol.next-steps li { margin-bottom: 4pt; padding-left: 3pt; }
+  ol.next-steps li::marker {
+    color: var(--navy); font-weight: 700;
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+  }
+  .bottom-line {
+    border-top: 1pt solid var(--rule-strong); padding-top: 6pt; margin-top: 10pt;
+    font-style: italic; font-size: 9pt; color: var(--text); line-height: 1.4;
+  }
+  .bottom-line .label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-style: normal; font-weight: 700; font-size: 7.5pt;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--navy); margin-right: 6pt;
+  }
+  .neutral-block {
+    background: #f3f3f1; border-left: 3pt solid #888;
+    padding: 9pt 14pt 6pt 14pt; margin: 4pt 0 8pt 0;
+  }
+  .neutral-block ul { list-style: none; padding: 0; margin: 0; }
+  .neutral-block li {
+    font-size: 9pt; line-height: 1.45; margin-bottom: 6pt;
+    padding-left: 14pt; position: relative;
+  }
+  .neutral-block li::before {
+    content: "•"; position: absolute; left: 0; color: #888; font-weight: bold;
+  }
+  .neutral-block li:last-child { margin-bottom: 0; }
+  .neutral-block strong { color: var(--navy-dark); }
+
+  table.dose-grid {
+    width: 100%; border-collapse: collapse; margin: 4pt 0 10pt 0; table-layout: fixed;
+  }
+  table.dose-grid thead th {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 600; font-size: 8pt; padding: 6pt 9pt; text-align: left;
+    background: var(--navy); color: white; letter-spacing: 0.02em;
+  }
+  table.dose-grid td {
+    padding: 6pt 9pt; vertical-align: top;
+    border-bottom: 0.5pt solid var(--rule);
+    font-size: 8.75pt; line-height: 1.38;
+  }
+  table.dose-grid tbody tr:last-child td { border-bottom: none; }
+  table.dose-grid td.dose {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 700; color: var(--navy-dark); font-size: 9pt; line-height: 1.32;
+  }
+  table.dose-grid td.rec {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 700; font-size: 7.75pt; text-transform: uppercase;
+    letter-spacing: 0.04em; line-height: 1.3;
+  }
+  tr.row-anchor td { background: #eaf2ea; }
+  tr.row-anchor td.rec { color: #2c5e3f; }
+  tr.row-bridge td { background: #f0f4ee; }
+  tr.row-bridge td.rec { color: #486b4d; }
+  tr.row-marginal td { background: #f1f1ee; }
+  tr.row-marginal td.rec { color: #6a6a6a; }
+  tr.row-avoid td { background: #f7eeed; }
+  tr.row-avoid td.rec { color: #8b2c2c; }
+
+  .back-header {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 14pt; font-weight: 600; color: var(--navy-dark);
+    border-bottom: 1.5pt solid var(--navy); padding-bottom: 5pt;
+    margin-top: 18pt; margin-bottom: 4pt;
+  }
+  .citation, .tier-header { page-break-inside: avoid; }
+  .back-subhead {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 8pt; color: var(--text-muted); margin-bottom: 14pt; letter-spacing: 0.03em;
+  }
+  .tier-header {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 9pt; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.12em; color: var(--navy);
+    margin: 11pt 0 6pt 0; padding-bottom: 2pt; border-bottom: 0.5pt solid var(--rule);
+  }
+  .tier-header .tier-stars { float: right; color: var(--navy); font-size: 10pt; letter-spacing: 0.04em; }
+  .citation {
+    margin: 0 0 9pt 0; padding-left: 9pt; border-left: 2pt solid var(--rule);
+    font-size: 8.75pt; line-height: 1.4;
+  }
+  .citation .cite-title {
+    font-weight: 700; color: var(--navy-dark);
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif; font-size: 8.75pt;
+  }
+  .citation .cite-source { color: var(--text-muted); font-style: italic; font-size: 8.5pt; }
+  .citation .cite-finding, .citation .cite-apply { margin-top: 2pt; font-size: 8.5pt; }
+  .citation .label-inline {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 700; font-size: 7pt; text-transform: uppercase;
+    letter-spacing: 0.08em; color: var(--navy); margin-right: 4pt;
+  }
+  .citation .cite-link {
+    color: var(--navy); text-decoration: underline;
+    text-decoration-thickness: 0.4pt; text-underline-offset: 1.5pt;
+    font-style: normal; font-weight: 500; margin-left: 2pt;
+  }
+  .citation .cite-link:hover { color: var(--navy-dark); }
+</style>
+</head>
+<body>
+
+<div class="doc-header">
+  <div class="title">Doxepin uptitration — what dose for the bridge?</div>
+  <div class="meta">
+    Decision Aid · 2026-05-16<br>
+    For Dad, Mom, Dr. R, Dr. Chilton (K Clinic),<br>
+    Julane &amp; the family team
+  </div>
+</div>
+
+<div class="section-label first">Recommendation</div>
+<div class="key-message">
+  <p><strong>Doxepin 10 mg HS is the right bridge dose</strong> through the May 18 IV ketamine restart and the following ~7 nights — incremental over 6 mg in receptor-occupancy terms, well within the cardiac safety margin, no expected ketamine interaction, and a defensibly safer choice than uptitrating trazodone given the prior trazodone reaction history. <strong>Don't go higher than 10 mg HS</strong> for the bridge — 15 mg is the marginal ceiling if 10 mg proves insufficient, and 25 mg crosses into qualitatively different cardiac and anticholinergic risk that needs ECG monitoring and cardiology input. <strong>Plan to step back to 6 mg HS</strong> once the ketamine response builds — this updates the prior "don't titrate above 6 mg" guidance in handout #07, but only for the bridge window; 6 mg remains the right ongoing anchor for the longer term.</p>
+</div>
+
+<div class="section-label">Why this matters for Dad specifically</div>
+<p class="context">Dr. R and Dr. Chilton have coordinated on a plan to uptitrate doxepin rather than add trazodone — a reasonable patient-specific call given Dad's prior trazodone reaction (tension + headache in 12/2025). The specific dose target hasn't been spelled out, and the OE evidence on doxepin's dose-response curve in his exact profile gives a clear answer: <strong>10 mg HS is the defensible bridge dose</strong>, with 15 mg as a marginal ceiling and 25 mg+ as a different risk category that warrants extra monitoring. Four facts ground this. <strong>First,</strong> doxepin's H1 receptor occupancy is essentially saturated by 6 mg — going higher doesn't buy more H1 blockade but does start engaging muscarinic (anticholinergic) and alpha-1 (orthostatic) receptors progressively. The 6 → 10 mg jump adds only ~3–5 percentage points of muscarinic occupancy, a modest gradient, not a clinical cliff. <strong>Second,</strong> the FDA QTc study for low-dose doxepin showed no measurable cardiac effect at doses up to 50 mg in healthy subjects — so 10 mg is well inside the cardiac safety margin even with his LAFB + bradycardia. <strong>Third,</strong> doxepin and ketamine use different metabolic pathways (CYP2D6/2C19 vs. CYP2B6/3A4), so no pharmacokinetic interaction is expected; the systematic review on ketamine pharmacodynamic interactions found that most conventional antidepressants combine safely with ketamine. <strong>Fourth,</strong> duloxetine is a moderate CYP2D6 inhibitor, so a 10 mg dose actually behaves more like ~13–17 mg in his system — worth knowing for monitoring but still well within a low-risk zone. The brief-bridge framing matters: the Beers concern about doxepin &gt;6 mg is primarily about <em>chronic</em> anticholinergic burden building up over weeks to months, not about a 5–7 night course. Plan to revisit at the 5/19 Rubin visit and to step back down to 6 mg as ketamine response builds.</p>
+
+<div class="section-label">Dose options ranked for the bridge</div>
+<table class="dose-grid">
+  <thead>
+    <tr>
+      <th style="width: 18%;">Dose level</th>
+      <th style="width: 18%;">Status for Dad</th>
+      <th style="width: 64%;">Reasoning in his specific profile</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="row-anchor">
+      <td class="dose">6 mg HS<br><span style="font-weight: 400; font-size: 8pt; color: #5a5a5a;">(current)</span></td>
+      <td class="rec">Long-term anchor</td>
+      <td>FDA-approved elderly maximum for insomnia. AGS Beers-acceptable. Highly H1-selective with negligible anticholinergic burden. The right ongoing dose after the bridge — but ~12 days at this dose hasn't fully resolved the 4 AM waking, which is why the brief uptitration is being considered.</td>
+    </tr>
+    <tr class="row-bridge">
+      <td class="dose">10 mg HS<br><span style="font-weight: 400; font-size: 8pt; color: #5a5a5a;">(bridge target)</span></td>
+      <td class="rec">Defensible bridge — recommended</td>
+      <td>Pharmacological gradient over 6 mg, not a cliff. Within the QTc-safe range demonstrated up to 50 mg. No ECG required at this dose. With the duloxetine CYP2D6 interaction, effective exposure is ~13–17 mg — still in low-risk territory. The brief-bridge framing (5–7 nights) limits cumulative anticholinergic exposure; nordoxepin (the active metabolite, half-life 31–51 hr) won't reach steady-state in that window. <strong>Monitoring:</strong> dry mouth, urinary symptoms (BPH-relevant), morning grogginess, any new confusion.</td>
+    </tr>
+    <tr class="row-marginal">
+      <td class="dose">15 mg HS</td>
+      <td class="rec">Marginal — only if 10 mg insufficient</td>
+      <td>Effective exposure with duloxetine ~20–25 mg. Anticholinergic effects become more likely. Would warrant closer clinical monitoring for urinary retention (BPH context, post-Aquablation ~8 weeks) and orthostatic symptoms. Only justified if 10 mg proves clearly inadequate after 3–4 nights and the sleep distress remains severe.</td>
+    </tr>
+    <tr class="row-avoid">
+      <td class="dose">25 mg HS or higher</td>
+      <td class="rec">Not recommended for bridge</td>
+      <td>Different risk category. Effective exposure with duloxetine ~35–45 mg. Anticholinergic and alpha-1 effects become clinically meaningful. Would require a baseline ECG given LAFB + bradycardia, plus monitoring for orthostatic hypotension and urinary function. Defensible only with cardiology awareness — not for a routine bridge. If chronic insomnia persists past the ketamine course, this dose could be reconsidered then, in that more deliberate framing.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="strength-row">
+  <span class="strength-label">Strength of evidence for the 10 mg HS bridge:</span>
+  <span class="stars">★★★★</span>
+</div>
+<div class="strength-rationale">FDA QTc safety data up to 50 mg in healthy subjects; published doxepin receptor-occupancy pharmacology (Richelson, Cusack); duloxetine PK interaction quantified (Knadler); systematic review of ketamine PD interactions (Veraart) shows no expected concern with conventional antidepressants. Two clinicians (Dr. R + Dr. Chilton) have coordinated on uptitration. Main remaining uncertainty: no direct trial of doxepin 10 mg HS as a bridge dose in this exact profile — the recommendation is built on receptor pharmacology + the safety margin in healthy subjects + the brief-duration framing rather than a head-to-head trial.</div>
+
+<div class="section-label">The pro/con case for uptitrating to 10 mg HS</div>
+<table class="evidence">
+  <thead>
+    <tr>
+      <th class="pro" style="width: 50%;">Why 10 mg HS for the bridge fits Dad's profile</th>
+      <th class="con" style="width: 50%;">Cautions and limits</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="pro"><strong>The H1-selectivity question is a gradient, not a cliff.</strong> At 3–6 mg, doxepin is highly H1-selective (~95% H1 occupancy, ~5% muscarinic). At 10 mg, H1 occupancy is already saturated but muscarinic occupancy rises only to ~5–10%. The Beers Criteria threshold at 6 mg is a regulatory and consensus-based cutoff (tied to the FDA-approved maximum for the insomnia indication), not a sharp pharmacological boundary. The 6 → 10 mg jump is small in receptor terms; the 10 → 25 mg jump is much larger.</td>
+      <td class="con"><strong>AGS Beers does flag doxepin &gt;6 mg as strongly anticholinergic.</strong> The threshold is a real boundary in the prescribing literature, even if the pharmacology is gradient-shaped. The reason it matters: Beers is designed around the cumulative population-level concern, not around individual brief-bridge use. For a 5–7 night course it's a real but modest gradient; for ongoing daily use above 6 mg it would be a much heavier consideration.</td>
+    </tr>
+    <tr>
+      <td class="pro"><strong>The cardiac safety margin is wide.</strong> The FDA QTc study during doxepin's development found no measurable cardiac effect at multiple daily doses up to 50 mg in healthy subjects. For Dad's LAFB + HR ~57 profile, 10 mg HS sits well inside that margin — no ECG required at this dose. ECG monitoring becomes more important at 25 mg+, especially given the conduction system disease.</td>
+      <td class="con"><strong>The CYP2D6 interaction with duloxetine matters.</strong> Duloxetine is a moderate CYP2D6 inhibitor; doxepin is a CYP2D6 substrate. At 10 mg nominal dose, effective exposure in his system is closer to 13–17 mg. This doesn't change the safety calculus at 10 mg, but it does mean the cumulative receptor occupancy is slightly higher than the nominal dose suggests. Anything worth monitoring would show up sooner at lower nominal doses than in a non-duloxetine patient.</td>
+    </tr>
+    <tr>
+      <td class="pro"><strong>No expected interaction with the 5/18 IV ketamine restart.</strong> Doxepin and ketamine use different metabolic pathways (CYP2D6/2C19 vs. CYP2B6/3A4). The systematic review on ketamine pharmacodynamic interactions (Veraart 2021) found that most conventional antidepressants can be combined with ketamine without compromising antidepressant efficacy. The H1-mediated sedation from doxepin and the NMDA-mediated dissociation of ketamine operate through independent pathways.</td>
+      <td class="con"><strong>Urinary retention is a real flag in his profile.</strong> The combination of BPH, ~8 weeks post-Aquablation (prostatic fossa still healing), and any anticholinergic load creates a meaningful single-event risk. At 10 mg HS, this risk is modest but worth knowing about — particularly if he reports difficulty initiating urination or a sense of incomplete emptying in the days after starting the bridge.</td>
+    </tr>
+    <tr>
+      <td class="pro"><strong>Doxepin uptitration is the defensibly safer move than uptitrating trazodone in his specific case.</strong> Trazodone is the most commonly prescribed off-label hypnotic, but its efficacy is weakly supported by controlled trials. More importantly, Dad had documented tension + headache on trazodone 50 mg in 12/2025, and trazodone + alfuzosin would create additive alpha-1 blockade and orthostatic risk. Dr. R's preference for doxepin uptitration over trazodone uptitration is patient-specific and reasonable.</td>
+      <td class="con"><strong>Driving the next morning.</strong> Doxepin's half-life is ~15 hours, so a 10 mg dose at 10 PM leaves ~50% on board at noon the next day. The 10 mg dose's residual sedative effect is mostly H1-mediated rather than anticholinergic, so cognitive impairment should be modest — but worth being extra careful the morning after the first 10 mg dose and not driving in the first 2–3 hours after waking.</td>
+    </tr>
+    <tr>
+      <td class="pro"><strong>The brief-bridge framing changes the risk-benefit math.</strong> The Beers concern about doxepin &gt;6 mg is primarily about chronic anticholinergic burden building up over weeks to months. For a 5–7 night course followed by a return to 6 mg, the cumulative exposure is a fraction of what Beers was designed to flag. Nordoxepin (active metabolite, half-life 31–51 hr) won't reach steady-state in that window. Brief uptitration in a clinical bridge is within the spirit of individualized prescribing the Beers panel endorses.</td>
+      <td class="con"><strong>The 6 → 10 mg jump might not be necessary.</strong> The 5/18 IV ketamine restart is the main intervention. In his February-responder profile, sleep improvement often appears within 24 hours of the first session and the early-morning-waking pattern tends to resolve within the first 1–2 sessions. There's a real chance the ketamine alone resolves the underlying sleep issue, making the doxepin uptitration moot. The brief-bridge case is "if 6 mg isn't enough through the bridge window, 10 mg is defensible" — not "10 mg is definitely needed."</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="section-label">What everyone agrees on</div>
+<div class="neutral-block">
+  <ul>
+    <li><strong>6 mg HS remains the right long-term anchor.</strong> The uptitration is a brief-bridge move tied to the ketamine restart window, not a permanent change. Plan to step back to 6 mg HS once ketamine response builds (likely after the first 2–3 sessions).</li>
+    <li><strong>Don't go higher than 10 mg HS for this bridge.</strong> 15 mg is a marginal ceiling if 10 mg clearly fails after 3–4 nights; 25 mg+ is a different risk category that needs ECG and cardiology input before any move. The bridge is for 5–7 nights, not for indefinite escalation.</li>
+    <li><strong>The IV ketamine restart is the main intervention.</strong> Doxepin uptitration is a supporting move to bridge into the ketamine course, not the treatment itself. Sleep improvement within 24 hours of the first IV session is a known signal of ketamine response — track it.</li>
+    <li><strong>Two clinicians have coordinated on uptitration.</strong> Dr. R (primary psychiatrist) and Dr. Chilton (K Clinic) have agreed. That coordination is valuable; the family input is on the dose specifics within their chosen direction (which is what this handout addresses), not on the underlying direction.</li>
+    <li><strong>Symptoms to monitor</strong> in the days after starting 10 mg HS: dry mouth, difficulty initiating urination, feeling unusually groggy in the morning, any new confusion or attention difficulty. None of these are likely at 10 mg in his profile, but worth knowing the relevant signals.</li>
+  </ul>
+</div>
+
+<div class="section-label">Recommended next steps</div>
+<ol class="next-steps">
+  <li><strong>Take doxepin 10 mg HS tonight (5/16) and tomorrow (5/17)</strong> — the bridge dose for the period before the IV ketamine restart.</li>
+  <li><strong>Continue 10 mg HS through the IV ketamine restart on 5/18</strong> and the following 2–3 nights.</li>
+  <li><strong>Do not titrate above 10 mg without ECG and cardiology input.</strong> 15 mg HS is the marginal ceiling for the bridge; 25 mg+ is a different decision that requires extra monitoring.</li>
+  <li><strong>Watch for the standard signals</strong>: dry mouth, difficulty initiating urination (call Dr. Chilton immediately if this happens — the alfuzosin + post-Aquablation context makes this a real flag), morning grogginess, any new confusion. None of these are expected at 10 mg, but knowing the signals matters.</li>
+  <li><strong>Drive carefully the morning after the first 10 mg dose</strong> — wait at least 2–3 hours after waking before driving on 5/17 and 5/18. Standard caution given the modest residual sedation.</li>
+  <li><strong>Track sleep change at the IV ketamine session</strong> on 5/18 — sleep improvement within 24 hours of the first IV is a known signal of ketamine response. If sleep improves substantially, the doxepin uptitration may become moot.</li>
+  <li><strong>At the 5/19 Rubin visit</strong>, discuss whether to maintain 10 mg HS through the ketamine course or step back to 6 mg as ketamine response builds. The goal is to return to 6 mg HS once the ketamine effect is anchored.</li>
+  <li><strong>Don't layer additional sedatives on top.</strong> No Benadryl/Unisom (see handout #14), no Z-drug, no benzo, no trazodone uptitration concurrent with the doxepin uptitration. The 10 mg HS bridge is meant to do this work cleanly.</li>
+</ol>
+
+<div class="bottom-line">
+  <span class="label">Bottom line</span>
+  Dr. R and Dr. Chilton's plan to raise doxepin is defensible, and 10 mg HS is the right dose for the bridge — incremental over 6 mg in receptor terms, well within the cardiac safety margin, no expected ketamine interaction, and a patient-specific better choice than trazodone uptitration given the prior trazodone reaction. Don't go above 10 mg for this bridge. Plan to step back to 6 mg HS as ketamine response builds — the uptitration is a 5–7 night bridge, not a permanent change. This refines the prior "do not titrate above 6 mg" guidance in handout #07 for the specific brief-bridge case, while preserving 6 mg as the right ongoing anchor.
+</div>
+
+<div class="back-header">Key Studies &amp; Findings</div>
+<div class="back-subhead">Ranked by authority · Each citation summarized for how it applies to Dad's case</div>
+
+<div class="tier-header">Tier 1 — Major Clinical Guidelines and Regulatory Sources <span class="tier-stars">★★★★★</span></div>
+
+<div class="citation">
+  <div class="cite-title">FDA Silenor (low-dose doxepin) Label.</div>
+  <div class="cite-source">FDA prescribing information. PMID-equivalent identifier <a href="https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?setid=2c46d762-c69f-4cb7-b517-a3f4daa3e23a" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>FDA prescribing information for low-dose doxepin. Documents the thorough QTc study: no measurable cardiac effect at multiple daily doses up to 50 mg in healthy subjects. Recommends monitoring TCA plasma levels when co-administered with CYP2D6 inhibitors. Adverse effects above 6 mg include anticholinergic effects (constipation, urinary retention), hypotension, and CNS effects.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The single most decision-relevant data point for the 10 mg HS bridge: cardiac safety is established in healthy subjects up to 50 mg, so the conduction concerns are clinically negligible at 10 mg even with his LAFB + bradycardia. The label's note on CYP2D6 inhibition anchors the duloxetine interaction context.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">American Geriatrics Society 2023 Updated AGS Beers Criteria for Potentially Inappropriate Medication Use in Older Adults.</div>
+  <div class="cite-source">J Am Geriatr Soc 2023;71:2052–2081. Read <a href="https://doi.org/10.1111/jgs.18372" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>The 2023 Beers Criteria classifies doxepin &gt;6 mg/day as having strong anticholinergic properties. Doxepin ≤6 mg/day is explicitly exempted from this classification because at those doses the drug acts as a selective H1 antagonist. The 6 mg threshold is a regulatory and consensus-based cutoff tied to the FDA-approved insomnia maximum, not a sharp pharmacological cliff.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Anchors the dose-ceiling principle. For a brief 5–7 night bridge at 10 mg, the gradient over 6 mg is modest. For chronic use above 6 mg, the Beers concern is substantially heavier. The threshold matters but the brief-bridge framing genuinely changes the risk-benefit math.</div>
+</div>
+
+<div class="tier-header">Tier 2 — Pharmacology and Pharmacokinetics <span class="tier-stars">★★★★</span></div>
+
+<div class="citation">
+  <div class="cite-title">Richelson E, Nelson A. Antagonism by Antidepressants of Neurotransmitter Receptors of Normal Human Brain in Vitro.</div>
+  <div class="cite-source">J Pharmacol Exp Ther 1984;230:94–102. Read <a href="https://pubmed.ncbi.nlm.nih.gov/6086881/" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Doxepin is one of the most potent H1 antihistamines known, with a Ki of ~0.24 nM at the human brain H1 receptor. Affinity for muscarinic receptors is orders of magnitude lower (Ki ~83 nM), and for alpha-1 adrenergic receptors lower still (Ki ~24 nM). The ~350-fold H1 selectivity ratio is the pharmacological basis for the low-dose insomnia indication.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The receptor-occupancy basis for "H1 occupancy is saturated by 6 mg; going higher progressively recruits muscarinic and alpha-1." The 6 → 10 mg jump adds only modest off-target binding; the 10 → 25 mg jump is qualitatively larger.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Knadler MP, Lobo E et al. Duloxetine: Clinical Pharmacokinetics and Drug Interactions.</div>
+  <div class="cite-source">Clin Pharmacokinet 2011;50:281–294. Read <a href="https://doi.org/10.2165/11539240-000000000-00000" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Duloxetine is a moderate CYP2D6 inhibitor. At 60 mg BID, co-administration with desipramine (a CYP2D6 substrate) increased desipramine AUC ~3-fold. At 60 mg once daily, the effect is smaller, estimated at ~1.5–2-fold increase in CYP2D6-substrate exposure. Doxepin is a CYP2D6 substrate with CYP2C19 as a backup pathway.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Quantifies the doxepin-duloxetine interaction in Dad's stack. A nominal 10 mg doxepin dose behaves pharmacokinetically more like 13–17 mg in his system. Doesn't change the safety calculus at 10 mg but does mean monitoring signals would appear at lower nominal doses than in a non-duloxetine patient.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Weber J, Siddiqui MA et al. Low-Dose Doxepin: In the Treatment of Insomnia.</div>
+  <div class="cite-source">CNS Drugs 2010;24:713–720. Read <a href="https://doi.org/10.2165/11200810-000000000-00000" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Pharmacology review documenting doxepin at 3–6 mg as essentially a pure H1 antihistamine — one of the most potent H1 antagonists known. The muscarinic, alpha-1, and reuptake-inhibiting effects that drive the side-effect burden at antidepressant doses are not meaningfully engaged at these doses. Parent half-life ~15 hours; nordoxepin (active metabolite) ~31 hours.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The pharmacology paper that explains why 6 mg is a sweet spot and how doses above it shift the receptor profile. Also relevant for the nordoxepin steady-state question — a 5–7 night course at 10 mg won't reach steady-state for nordoxepin (~7–14 days for that).</div>
+</div>
+
+<div class="tier-header">Tier 3 — Ketamine Interaction Evidence <span class="tier-stars">★★★</span></div>
+
+<div class="citation">
+  <div class="cite-title">Veraart JKE, Smith-Apeldoorn SY et al. Pharmacodynamic Interactions Between Ketamine and Psychiatric Medications Used in the Treatment of Depression: A Systematic Review.</div>
+  <div class="cite-source">Int J Neuropsychopharmacol 2021;24:808–831. Read <a href="https://doi.org/10.1093/ijnp/pyab039" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Systematic review of ketamine pharmacodynamic interactions. Benzodiazepines repeatedly reduced the duration of ketamine's antidepressant effect; lamotrigine may attenuate ketamine's effects. Most conventional antidepressants — including TCAs — can be combined with ketamine without compromising efficacy. Olanzapine had no effect on ketamine's acute psychotomimetic effects.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The evidence base for "no expected interaction between doxepin and ketamine." Doxepin at 10 mg HS, with primarily H1-mediated effects, should not interfere with ketamine's NMDA-mediated antidepressant mechanism. The two operate through independent pathways.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Scharf M, Rogowski R et al. Efficacy and Safety of Doxepin 1 mg, 3 mg, and 6 mg in Elderly Patients With Primary Insomnia.</div>
+  <div class="cite-source">J Clin Psychiatry 2008;69:1557–1564. Read <a href="https://doi.org/10.4088/jcp.v69n1005" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>RCT in adults ≥65 with primary insomnia. Doxepin at 1, 3, and 6 mg produced dose-related improvements in WASO, total sleep time, and sleep efficiency — including the final third of the night. Side-effect profile comparable to placebo at all three doses.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Establishes that 6 mg is efficacious for the specific final-third-of-night pattern Dad has. The fact that ~12 days at 6 mg hasn't fully resolved the 4 AM waking is the clinical reason the uptitration is being considered.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Steinman MA. Alternative Treatments to Selected Medications in the 2023 American Geriatrics Society Beers Criteria.</div>
+  <div class="cite-source">J Am Geriatr Soc 2025;73:2657–2677. Read <a href="https://doi.org/10.1111/jgs.19500" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>The companion alternatives document to the 2023 AGS Beers Criteria. Names low-dose doxepin (≤6 mg) as one of three "safer" pharmacologic options for insomnia in older adults, alongside DORAs and ramelteon. Notes the Beers criteria are designed for population-level safety, not individualized brief-duration dose-response nuance.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Supports 6 mg as the long-term anchor and frames the brief-bridge case for 10 mg as within the spirit of individualized prescribing. The Beers framework isn't meant to rule out short-duration uptitration in a clinical bridge — that's a legitimate use of clinical judgment within the constraints.</div>
+</div>
+
+</body>
+</html>

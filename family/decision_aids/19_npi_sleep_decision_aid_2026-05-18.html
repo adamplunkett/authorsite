@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Decision Aid — Non-pharmacologic sleep additions — 2026-05-18</title>
+<style>
+  @page { size: letter; margin: 0.55in 0.65in; }
+  :root {
+    --navy: #1a3a5c; --navy-dark: #0f2640;
+    --against-accent: #8b2c2c; --for-accent: #2c5e3f;
+    --tier-a: #2c5e3f; --tier-b: #5a7a4a; --tier-c: #6a6a6a; --tier-d: #4a6a8a;
+    --text: #1f1f1f; --text-muted: #5a5a5a;
+    --rule: #c8c8c8; --rule-strong: #6a6a6a;
+    --tint: #f5f3f0; --tint-a: #eef4ee; --tint-b: #f3f6ef; --tint-c: #f2f2f0; --tint-d: #f0f4f8;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    font-family: "Charter", "Georgia", "Times New Roman", serif;
+    font-size: 9.75pt; line-height: 1.42; color: var(--text);
+    -webkit-font-smoothing: antialiased;
+  }
+  .doc-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    padding-bottom: 6pt; border-bottom: 1.5pt solid var(--navy); margin-bottom: 14pt;
+  }
+  .doc-header .title {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 600; font-size: 15pt; line-height: 1.2;
+    color: var(--navy-dark); letter-spacing: -0.01em;
+  }
+  .doc-header .meta {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 7.5pt; color: var(--text-muted); text-align: right;
+    letter-spacing: 0.03em; line-height: 1.5;
+  }
+  .section-label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 7.5pt; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.14em; color: var(--navy); margin: 14pt 0 5pt 0;
+  }
+  .section-label.first { margin-top: 0; }
+  .key-message {
+    border-left: 4pt solid var(--for-accent); background: var(--tint);
+    padding: 9pt 13pt; margin: 0 0 10pt 0;
+  }
+  .key-message p {
+    margin: 0;
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 10.5pt; line-height: 1.42; font-weight: 500; color: var(--text);
+  }
+  .context { font-size: 9.5pt; line-height: 1.5; color: var(--text); margin: 0 0 4pt 0; }
+  table.tiers {
+    width: 100%; border-collapse: collapse; margin: 4pt 0 8pt 0; table-layout: fixed;
+  }
+  table.tiers thead th {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 600; font-size: 8.25pt; padding: 6pt 9pt; text-align: left;
+    background: var(--navy); color: white; letter-spacing: 0.02em;
+  }
+  table.tiers td {
+    padding: 6pt 9pt; vertical-align: top;
+    border-bottom: 0.5pt solid var(--rule);
+    font-size: 9pt; line-height: 1.4;
+  }
+  table.tiers td.tier-label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 700; font-size: 8pt; text-transform: uppercase;
+    letter-spacing: 0.08em; vertical-align: middle; text-align: center;
+    color: white;
+  }
+  table.tiers td.tier-a { background: var(--tier-a); }
+  table.tiers td.tier-b { background: var(--tier-b); }
+  table.tiers td.tier-c { background: var(--tier-c); }
+  table.tiers td.tier-d { background: var(--tier-d); }
+  table.tiers td.body-a { background: var(--tint-a); }
+  table.tiers td.body-b { background: var(--tint-b); }
+  table.tiers td.body-c { background: var(--tint-c); }
+  table.tiers td.body-d { background: var(--tint-d); }
+  table.tiers tbody tr:last-child td { border-bottom: none; }
+  table.tiers td strong { color: var(--navy-dark); }
+  .strength-row {
+    display: flex; align-items: baseline; margin: 6pt 0 2pt 0; white-space: nowrap;
+  }
+  .strength-label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 8.5pt; font-weight: 600; color: var(--text);
+    margin-right: 10pt; white-space: nowrap;
+  }
+  .stars { color: var(--for-accent); letter-spacing: 0.12em; font-size: 11pt; white-space: nowrap; }
+  .strength-rationale {
+    font-size: 8.5pt; color: var(--text-muted); font-style: italic;
+    margin: 2pt 0 6pt 0; line-height: 1.4;
+  }
+  ol.next-steps {
+    margin: 4pt 0 8pt 0; padding-left: 18pt; font-size: 9.25pt; line-height: 1.4;
+  }
+  ol.next-steps li { margin-bottom: 4pt; padding-left: 3pt; }
+  ol.next-steps li::marker {
+    color: var(--navy); font-weight: 700;
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+  }
+  .bottom-line {
+    border-top: 1pt solid var(--rule-strong); padding-top: 6pt; margin-top: 10pt;
+    font-style: italic; font-size: 9pt; color: var(--text); line-height: 1.4;
+  }
+  .bottom-line .label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-style: normal; font-weight: 700; font-size: 7.5pt;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--navy); margin-right: 6pt;
+  }
+  .neutral-block {
+    background: #f3f3f1; border-left: 3pt solid #888;
+    padding: 9pt 14pt 6pt 14pt; margin: 4pt 0 8pt 0;
+  }
+  .neutral-block ul { list-style: none; padding: 0; margin: 0; }
+  .neutral-block li {
+    font-size: 9pt; line-height: 1.45; margin-bottom: 6pt;
+    padding-left: 14pt; position: relative;
+  }
+  .neutral-block li::before {
+    content: "•"; position: absolute; left: 0; color: #888; font-weight: bold;
+  }
+  .neutral-block li:last-child { margin-bottom: 0; }
+  .neutral-block strong { color: var(--navy-dark); }
+  .back-header {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 14pt; font-weight: 600; color: var(--navy-dark);
+    border-bottom: 1.5pt solid var(--navy); padding-bottom: 5pt;
+    margin-top: 18pt; margin-bottom: 4pt;
+  }
+  .citation, .tier-header { page-break-inside: avoid; }
+  .back-subhead {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 8pt; color: var(--text-muted); margin-bottom: 14pt; letter-spacing: 0.03em;
+  }
+  .tier-header {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 9pt; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.12em; color: var(--navy);
+    margin: 11pt 0 6pt 0; padding-bottom: 2pt; border-bottom: 0.5pt solid var(--rule);
+  }
+  .tier-header .tier-stars { float: right; color: var(--navy); font-size: 10pt; letter-spacing: 0.04em; }
+  .citation {
+    margin: 0 0 9pt 0; padding-left: 9pt; border-left: 2pt solid var(--rule);
+    font-size: 8.75pt; line-height: 1.4;
+  }
+  .citation .cite-title {
+    font-weight: 700; color: var(--navy-dark);
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif; font-size: 8.75pt;
+  }
+  .citation .cite-source { color: var(--text-muted); font-style: italic; font-size: 8.5pt; }
+  .citation .cite-finding, .citation .cite-apply { margin-top: 2pt; font-size: 8.5pt; }
+  .citation .label-inline {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 700; font-size: 7pt; text-transform: uppercase;
+    letter-spacing: 0.08em; color: var(--navy); margin-right: 4pt;
+  }
+  .citation .cite-link {
+    color: var(--navy); text-decoration: underline;
+    text-decoration-thickness: 0.4pt; text-underline-offset: 1.5pt;
+    font-style: normal; font-weight: 500; margin-left: 2pt;
+  }
+  .citation .cite-link:hover { color: var(--navy-dark); }
+</style>
+</head>
+<body>
+
+<div class="doc-header">
+  <div class="title">Highest-yield non-pharmacologic sleep additions for Dad</div>
+  <div class="meta">
+    Decision Aid · 2026-05-18<br>
+    For Dad, Mom, Dr. R, Dr. Chilton (K Clinic),<br>
+    Julane &amp; the family team
+  </div>
+</div>
+
+<div class="section-label first">Recommendation</div>
+<div class="key-message">
+  <p><strong>Several things to start this week and two specialty referrals to initiate in parallel.</strong> The pharmacologic options are narrow given the activation-intolerance pattern, so the behavioral and environmental side of sleep management has to carry more weight than usual. The single highest-yield diagnostic step is an <strong>in-lab polysomnography with REM Sleep Behavior Disorder montage</strong> — Dad has never had a formal sleep study, 62% of patients with major depression have undiagnosed obstructive sleep apnea on PSG (Okada 2022), OSA can mimic and worsen RBD episodes, and one study would simultaneously characterize the RBD, screen for OSA, and assess for periodic limb movements. The single highest-yield ongoing intervention is <strong>CBT-I (Cognitive Behavioral Therapy for Insomnia)</strong> — gold standard for chronic insomnia in adults 70+, NNT = 3 for the full in-person package (Furukawa 2024 component meta-analysis). The right shape is <strong>parallel tracks</strong>: start a digital CBT-I program (Somryst, FDA-cleared/prescription-required; or Sleepio, free in many regions) this week as the on-ramp, and request a Behavioral Sleep Medicine (DBSM) specialist referral now so the in-person appointment is in the queue. Digital CBT-I has meaningful evidence in its own right (effect sizes 0.21–1.09 across outcomes; roughly 60–80% of in-person effect on ISI in head-to-head studies). When the in-person slot opens, transition; until then, digital does most of the work. <strong>This week's other low-effort, high-yield adds:</strong> move the caffeine cutoff from 3–4 PM to noon (or earlier — current timing is below the 8.8-hour pre-bed minimum from meta-analytic data, especially for elderly metabolism); full alcohol abstinence (the stacked rationale across meds, conditions, and Dad's own April 2024 abstinence-period N=1 makes the case stronger than the sleep evidence alone); finish the RBD bedroom-safety audit; start a 2-week sleep diary; bump biking from 2× to 3× per week and add a small resistance set (10–15 min, 2× per week — bodyweight squats, wall push-ups, banded rows) to move into the optimal exercise dose. <strong>What Dad is already doing well</strong> — bright light therapy, biking 2× per week, separate sleeping arrangement for RBD safety, melatonin 3 mg HS, and the careful Dr. Chilton-cleared doxepin/trazodone tuning — should stay in place. None of these adds replace what's on board; they layer on top of the current plan.</p>
+</div>
+
+<div class="section-label">Why this matters for Dad specifically</div>
+<p class="context">The activation-intolerance pattern across multiple psychiatric agents shifts the burden of sleep management toward behavioral and environmental interventions in a way it wouldn't for most patients. The recent overnight agitation episode (5/16–5/17) is a reminder that the pharmacologic levers are narrow, and that the family's ability to spot patterns and intervene early matters more than usual. The good news: the evidence base for non-pharmacologic sleep interventions in adults 70+ is actually strong — CBT-I has the largest effect size of any insomnia treatment in this age group, bright light therapy independently helps both sleep and depression, and the basic lifestyle adjustments (caffeine timing, alcohol limitation, exercise dose) have meta-analytic support specifically in older adults. The framing of this handout isn't "Dad needs to do all of this immediately" or "what's been done isn't enough" — Mom and Dad have already pulled multiple evidence-based interventions in (bright light therapy, biking, calming outdoor activities, separate sleep for RBD safety, audiobooks for rest). This handout layers on the next set of additions ranked by evidence and effort.</p>
+
+<div class="section-label">The landscape — ranked by evidence and timing</div>
+<table class="tiers">
+  <thead>
+    <tr>
+      <th style="width: 12%;">Tier</th>
+      <th style="width: 88%;">Intervention and how it applies to Dad</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="tier-label tier-a">A<br><span style="font-weight: 400; font-size: 7pt;">This week<br>high yield<br>low effort</span></td>
+      <td class="body-a">
+        <strong>Caffeine cutoff to noon (current: 3–4 PM; current intake 3–4 cups).</strong> The Gardiner 2023 meta-analysis recommended ≥8.8 hours pre-bed clearance for a standard cup of coffee — Dad's 3–4 PM cutoff gives ~6–8 hours, and elderly CYP1A2 metabolism is slower. Expected magnitude: ~20–45 minutes additional sleep + improved efficiency. Reducing total intake to 1–2 cups/day would compound the benefit. <em>This is the single highest-yield lifestyle change.</em><br><br>
+        <strong>Start digital CBT-I as the on-ramp while the in-person referral processes.</strong> Two options: <strong>Somryst</strong> (FDA-cleared, requires a prescription — ask Dr. R or Dr. Straka — typically 9 weeks, ~$899 list but often insurance-covered) or <strong>Sleepio</strong> (free in many regions via Big Health, 6 weeks). Digital CBT-I effect sizes are 0.21–1.09 across outcomes (roughly 60–80% of in-person effect on ISI in head-to-head studies — meaningful, not categorical). <em>Important RBD adaptation:</em> when the digital program reaches the "sleep restriction" component, hold the restriction conservative (floor at 5.5–6 hours rather than aggressive restriction) given the theoretical REM-rebound risk in RBD — or skip that one component until the in-person specialist can supervise it. The other components (stimulus control, cognitive restructuring, sleep hygiene, relaxation) don't need RBD-specific modification and produce most of the benefit anyway.<br><br>
+        <strong>Confirm and optimize the bright light therapy already in use.</strong> If Dad is already doing morning bright light, the high-yield checks are: (1) intensity ≥10,000 lux at the eyes (lower-intensity boxes are common); (2) 30 minutes; (3) within ~30 minutes of waking. The 2025 JAMA Psychiatry meta-analysis (Menegaz de Almeida) showed 40.7% vs. 23.5% remission for non-seasonal depression — meaningful for sleep AND mood simultaneously. Morning biking outdoors gives the same lux exposure plus the exercise dose; combining them is additive.<br><br>
+        <strong>Exercise bump from 2× to 3× per week, add a small resistance component.</strong> Per the Xiong 2025 network meta-analysis in older adults (62 RCTs), combined aerobic + resistance training was optimal at 660–990 METs·min/week with benefit from ~5 weeks — so starting earlier means crossing the benefit threshold earlier. Dad's biking 2× per week with Mom is already in the right zone; adding one more biking or walking day and a brief resistance set (bodyweight squats, wall push-ups, banded rows — 10–15 minutes, 2× per week) moves into the optimal dose. Morning timing aligns with the bright light exposure for additive circadian benefit. <em>Cardiac caveats:</em> LAFB and HR 49–53 are not contraindications to moderate exercise; gradual titration and orthostatic awareness are appropriate.<br><br>
+        <strong>Start a 2-week sleep diary.</strong> Low cost, immediately useful for the DBSM and movement-disorders evaluations. Bedtime, wake time, awakenings, naps, caffeine/alcohol, any RBD episode. Paper or simple app. Foundational for separating ketamine effects, medication effects, and NPI effects over the coming weeks.<br><br>
+        <strong>Nap management — short, early.</strong> ≤30 minutes, before 2 PM. The Souabni 2022 systematic review found brief early-afternoon naps don't impair nocturnal sleep in older adults; the Qin 2025 cohort found 30–90 minute naps associated with lower depression. Past 60 minutes or after 3 PM increases the risk of delaying sleep onset.<br><br>
+        <strong>Finish the RBD bedroom-safety audit per AASM/IRBDSG.</strong> Not a sleep-quality intervention — an injury-prevention one. Dad and Mom are already doing the load-bearing piece (separate beds). Remaining items per the consensus (Howell 2023; During 2025): bedside soft mat / lower mattress, padded sharp edges, remove anything throwable that could injure, window protection if near. Quick walk-through this week.<br><br>
+        <strong>Alcohol abstinence.</strong> Several converging lines of evidence make abstinence the indicated posture. <em>Sleep and RBD:</em> even ≤2 drinks suppress REM and fragment sleep (Gardiner 2025); AASM RBD guidance flags alcohol as a modifiable contributor to dream-enactment frequency via the REM-rebound mechanism. <em>Medication interactions:</em> duloxetine carries a hepatotoxicity warning with alcohol and increases bleeding risk; doxepin and trazodone produce additive CNS depression and TCA-class hepatotoxicity; tadalafil compounds hypotension on a baseline BP of 112/58; the just-completed lorazepam taper is at risk from a cross-tolerant depressant. <em>Underlying conditions:</em> alcohol is independently depressogenic; it raises falls risk on top of the existing gait/balance findings, LAFB, and bradycardia; it suppresses testosterone (already biochemically low); it worsens B12 status (relevant to the newly diagnosed methylmalonic acidemia). <em>Dad's own N=1:</em> per the clinical brief, his April 2024 voluntary-abstinence period coincided with the best functional state observed since early 2021.
+      </td>
+    </tr>
+    <tr>
+      <td class="tier-label tier-b">B<br><span style="font-weight: 400; font-size: 7pt;">Next 2–4 weeks<br>build on existing</span></td>
+      <td class="body-b">
+        <strong>Develop a "nocturnal awakening protocol" with Dr. R or the DBSM.</strong> The 5/16–5/17 event was a 2-hour prolonged awakening with agitation — a different beast from simple inability-to-sleep. The standard CBT-I "leave bed after 20 minutes" rule needs modification when arousal is the problem. A pre-planned sequence — try in-bed paced breathing 10–15 min, then move to a designated dim, quiet, low-stimulation area (audiobook, gentle reading), criteria for returning to bed — beats improvising in the moment. Worth developing once, then both Dad and Mom know the plan.<br><br>
+        <strong>Mindfulness practice as an adjunct.</strong> The Black 2015 MAPS RCT (JAMA Internal Medicine) showed mindfulness vs. sleep hygiene produced a large 0.89 effect size for sleep quality in older adults. Better positioned as an adjunct to CBT-I than a replacement, but useful for the hyperarousal piece specifically. 10–20 minutes daily; apps (Calm, Insight Timer) or in-person.
+      </td>
+    </tr>
+    <tr>
+      <td class="tier-label tier-c">C<br><span style="font-weight: 400; font-size: 7pt;">Specialty referrals<br>initiate now</span></td>
+      <td class="body-c">
+        <strong>In-lab polysomnography with REM Sleep Behavior Disorder montage.</strong> Highest-yield single diagnostic test in this picture. Coordinate with the U-M Movement Disorders evaluation already in motion. One study would simultaneously: (1) confirm and characterize the RBD with video-PSG (no formal PSG has been done since the 2017 G47.52 coding); (2) screen for obstructive sleep apnea, present in ~62% of MDD patients on PSG per Okada 2022 — and OSA can both mimic RBD and worsen depression/cognitive symptoms; (3) assess for periodic limb movement disorder; (4) provide baseline sleep architecture data; (5) inform whether clonazepam (a common RBD pharmacotherapy) is safe to consider — it's contraindicated in untreated OSA. <em>This is arguably the single most important sleep recommendation in this handout.</em><br><br>
+        <strong>Referral to Behavioral Sleep Medicine specialist (DBSM) for therapist-delivered CBT-I — running in parallel with the digital program above.</strong> Gold standard for chronic insomnia in adults 70+. NNT = 3 for the full in-person CBT-I package (Furukawa 2024); in-person delivery has iOR 1.83 (95% CI 1.19–2.81) vs. digital — meaningfully better, not categorically. Dad's profile — severe depression + comorbid RBD + multiple sleep disorders + activation-intolerance limiting pharma — places him squarely at level 3 of the AASM stepped-care model where individual therapist delivery is recommended. <em>Key adaptation:</em> sleep restriction needs to be implemented conservatively given the theoretical REM-rebound risk with RBD; the in-person specialist can supervise that component in a way a digital app can't. Lead time for appointment is the reason to refer now — the digital program above does most of the work in the meantime. Possible local options to ask Dr. R or Straka about: U-M Sleep Disorders Center, Henry Ford Sleep Lab.<br><br>
+        <strong>Optional: 1–2 weeks of actigraphy for circadian-phase characterization.</strong> Older adults with lifetime depression typically show phase advancement (Hoyos 2020); confirming or ruling that out would inform whether morning light timing needs adjustment. Lower priority than PSG and CBT-I but cheap and informative if the sleep medicine workup is being done anyway.
+      </td>
+    </tr>
+    <tr>
+      <td class="tier-label tier-d">D<br><span style="font-weight: 400; font-size: 7pt;">Already doing<br>maintain</span></td>
+      <td class="body-d">
+        <strong>Bright light therapy</strong> (already in use per family report — confirm parameters per Tier A).<br><br>
+        <strong>Melatonin 3 mg HS</strong> — prescribed since 10/2017 for RBD per AASM guidance, not generic insomnia. Standing.<br><br>
+        <strong>Separate sleeping arrangement with spouse</strong> — load-bearing RBD safety measure, already in place for years.<br><br>
+        <strong>Biking 2× per week with Mom at Hudson Mills</strong> — real evidence-based intervention; the family's "calming and outdoor things" framing this week is the right shape. Tier B suggests building from here, not replacing.<br><br>
+        <strong>Audiobooks for daytime rest</strong> — low-stimulation, doesn't disrupt sleep drive, supports the daytime nap framing if kept brief.<br><br>
+        <strong>The doxepin 6 mg / trazodone 50 mg PRN combination already cleared by Dr. Chilton</strong> — the operative pharmacologic stack for sleep maintenance. None of the NPI adds replace this; they layer on.
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="strength-row">
+  <span class="strength-label">Strength of the evidence base for these additions:</span>
+  <span class="stars">★★★★</span>
+</div>
+<div class="strength-rationale">CBT-I and bright light therapy have robust meta-analytic support specifically in adults 70+ and in depression-comorbid populations. The lifestyle adjustments (caffeine, alcohol, exercise, nap timing) have moderate-strength elderly-specific data. The PSG + RBD montage recommendation is supported by AASM clinical practice guideline (Howell 2023) and the high prior for undiagnosed OSA in MDD patients (Okada 2022). The bedroom-safety audit reflects expert consensus (AASM 2023; International RBD Study Group 2025). The weakest evidence is for the nocturnal-awakening-with-hyperarousal protocol, which is largely extrapolated from general CBT-I literature plus expert reasoning — but the recent 5/16–5/17 event makes it worth developing prospectively anyway.</div>
+
+<div class="section-label">What everyone agrees on</div>
+<div class="neutral-block">
+  <ul>
+    <li><strong>The family is already pulling several of the right levers.</strong> Bright light therapy, biking, separate-bed RBD safety, melatonin for RBD, audiobooks for rest, calming outdoor focus this week — all evidence-supported. The handout's framing is "next adds on top of what's working," not "what's been done isn't enough."</li>
+    <li><strong>The single most important diagnostic step is a formal sleep study with RBD montage.</strong> Eight and a half years after the RBD coding, no formal PSG has been done; OSA has never been ruled out; one study answers multiple questions. This should be coordinated with the U-M Movement Disorders evaluation rather than being a separate workup.</li>
+    <li><strong>CBT-I via a behavioral sleep medicine specialist is the gold-standard ongoing intervention.</strong> Lead time is real, so the referral should go out this week regardless of whether anything else changes.</li>
+    <li><strong>The activation-intolerance pattern makes NPIs more load-bearing than usual.</strong> When pharmacologic adds are constrained, the behavioral and environmental side has to do more of the work. The good news is the evidence base for these in adults 70+ is genuinely strong.</li>
+    <li><strong>The recent overnight agitation episode benefits from prospective planning more than reactive response.</strong> A "nocturnal awakening protocol" developed once and known to both Dad and Mom beats improvising in the middle of the night.</li>
+    <li><strong>None of these adds replace what's currently on board.</strong> The doxepin 6 mg HS, trazodone 50 mg PRN (Chilton-cleared), and melatonin 3 mg HS stay in place. NPIs layer on top.</li>
+  </ul>
+</div>
+
+<div class="section-label">Recommended next steps</div>
+<ol class="next-steps">
+  <li><strong>This week (Tier A, low-effort, high-yield — listed in rough order of expected efficacy):</strong> (1) move the caffeine cutoff from 3–4 PM to noon (or earlier — reducing to 1–2 cups/day if tolerable); (2) <strong>start digital CBT-I</strong> (Somryst — ask Dr. R or Dr. Straka for the Rx; or Sleepio); (3) confirm the bright light therapy parameters (≥10,000 lux at the eyes, 30 min, within ~30 min of waking); (4) bump biking from 2× to 3× per week and add a brief resistance set (10–15 min, 2× per week); (5) start a 2-week sleep diary; (6) nap management (≤30 min, before 2 PM); (7) complete the RBD bedroom-safety audit; (8) full alcohol abstinence.</li>
+  <li><strong>This week (Tier C, specialty referrals — lead time matters):</strong> ask Dr. Straka or Dr. R for (a) referral to U-M Sleep Disorders Center or equivalent for in-lab polysomnography with RBD montage, coordinated with the U-M Movement Disorders evaluation already in motion; (b) referral to a Behavioral Sleep Medicine specialist (DBSM) for in-person CBT-I — running in parallel with the digital program above, to transition into when the appointment opens.</li>
+  <li><strong>Next 2–4 weeks (Tier B, build on existing):</strong> develop the nocturnal awakening protocol with Dr. R or the DBSM specialist once that referral lands; consider starting a daily mindfulness practice (10–20 min) as an adjunct.</li>
+  <li><strong>Maintain (Tier D):</strong> bright light therapy, melatonin 3 mg HS, separate sleeping arrangement, doxepin 6 mg HS, trazodone 50 mg PRN (Chilton-cleared), biking with Mom, audiobooks for rest.</li>
+  <li><strong>Track over the next 1–2 ketamine sessions whether sleep improves directly.</strong> The February ketamine course produced notable sleep improvement; tomorrow's infusion and the next few sessions may reduce the symptom pressure on the sleep side substantially. NPI changes and ketamine effects will run in parallel — the sleep diary helps separate them.</li>
+  <li><strong>If the doxepin 6 mg HS alone proves insufficient over the next 1–2 weeks</strong> (after tomorrow's ketamine session and the NPI changes have had a chance), the standing trazodone 25–50 mg HS for a few nights is the lower-risk next pharmacologic step (already in operative plan; Chilton-cleared) before any new agent is added.</li>
+</ol>
+
+<div class="bottom-line">
+  <span class="label">Bottom line</span>
+  The non-pharmacologic side of Dad's sleep management can carry meaningful additional weight, and several of the highest-yield adds are low-effort and can start this week. The two referrals worth initiating right now are the in-lab PSG with RBD montage (highest-yield diagnostic — never been done, would clarify RBD characterization, OSA presence, and PLMD in one study) and the behavioral sleep medicine specialist for in-person CBT-I (gold standard for chronic insomnia in adults 70+, lead time is the reason to refer now). In parallel, digital CBT-I (Somryst or Sleepio) can start this week and does roughly 60–80% of the work while the in-person appointment is in the queue. The immediate lifestyle adds are caffeine cutoff to noon, full alcohol abstinence, RBD bedroom-safety audit completion, a 2-week sleep diary, and bumping biking from 2× to 3× per week with a small resistance set added. What's already on board — bright light therapy, biking with Mom, separate-bed RBD safety, melatonin, the Chilton-cleared doxepin/trazodone — should stay in place. The NPI changes layer on; they don't replace anything.
+</div>
+
+<div class="back-header">Key Studies &amp; Findings</div>
+<div class="back-subhead">Ranked by authority · Each citation summarized for how it applies to Dad's case</div>
+
+<div class="tier-header">Tier 0 — Family's Prior Analytical Work and Operative Plan <span class="tier-stars">★★★★★</span></div>
+
+<div class="citation">
+  <div class="cite-title">Clinical Brief — Operative Plan (5/4/2026).</div>
+  <div class="cite-source">Located in `Dad Health/provider_outreach/00_clinical_brief.md`.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Operative sleep plan: melatonin 3 mg HS standing (for RBD, since 10/2017); doxepin 6 mg HS for sleep maintenance; trazodone 50 mg PRN HS available; G47.52 RBD coded 10/31/2017 (8.5 years); F51.04 psychophysiological insomnia coded 12/16/2025; G47.9 sleep disorder coded 6/14/2024. No formal polysomnography in records.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>This handout's adds layer on top of the operative plan, not replace it. The PSG recommendation specifically reflects the 8-year gap since RBD coding without formal sleep-study characterization.</div>
+</div>
+
+<div class="tier-header">Tier 1 — CBT-I in Older Adults and Depression <span class="tier-stars">★★★★★</span></div>
+
+<div class="citation">
+  <div class="cite-title">Furukawa Y, Sakata M, Yamamoto R et al. Components and Delivery Formats of Cognitive Behavioral Therapy for Chronic Insomnia in Adults: A Systematic Review and Component Network Meta-Analysis.</div>
+  <div class="cite-source">JAMA Psychiatry 2024;81:357–365. Read <a href="https://doi.org/10.1001/jamapsychiatry.2023.5060" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Component network meta-analysis of 241 RCTs (31,452 participants). Full CBT-I package (cognitive restructuring + third-wave components + sleep restriction + stimulus control) delivered in-person had NNT = 3.0 (95% CI 2.3–4.3). In-person delivery was more efficacious than digital (iOR 1.83).</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The single strongest evidence base for therapist-delivered CBT-I as the first-line non-pharmacologic insomnia intervention. The in-person delivery preference is why a DBSM referral matters more than a digital app for Dad's complex case.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Sadler P, McLaren S, Klein B, Harvey J, Jenkins M. Cognitive Behavior Therapy for Older Adults With Insomnia and Depression: A Randomized Controlled Trial.</div>
+  <div class="cite-source">Sleep 2018;41(8). Read <a href="https://doi.org/10.1093/sleep/zsy104" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>RCT in older adults (mean age 75 ± 7) with comorbid insomnia and depression. Both standard CBT-I and CBT-I plus positive-mood strategies produced significantly greater reductions in insomnia and depression severity vs. psychoeducation control, maintained at 20-week follow-up.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The age-matched and comorbidity-matched evidence that CBT-I is effective in patients exactly like Dad. The depression-comorbid context doesn't reduce the efficacy.</div>
+</div>
+
+<div class="tier-header">Tier 2 — RBD Management and PSG Indications <span class="tier-stars">★★★★★</span></div>
+
+<div class="citation">
+  <div class="cite-title">Howell M, Avidan AY, Foldvary-Schaefer N et al. Management of REM Sleep Behavior Disorder: An American Academy of Sleep Medicine Clinical Practice Guideline.</div>
+  <div class="cite-source">J Clin Sleep Med 2023;19:759–768. Read <a href="https://doi.org/10.5664/jcsm.10424" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>AASM clinical practice guideline. Bedroom safety good-practice statement: remove weapons, pad sharp edges, place soft mat next to bed, lower mattress, separate sleeping, pillow barrier if sharing bed, window protection. Conditional recommendation for melatonin and clonazepam as pharmacotherapy. Recommends formal video-PSG for diagnostic confirmation.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The AASM-endorsed source for the bedroom safety audit and for the PSG recommendation. Dad has had melatonin since RBD diagnosis (consistent with guideline); the safety audit completion and the formal PSG are the missing pieces.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">During EH, Malkani R, Arnulf I et al. Symptomatic Treatment of REM Sleep Behavior Disorder (RBD): A Consensus From the International RBD Study Group — Treatment and Trials Working Group.</div>
+  <div class="cite-source">Sleep Med 2025;132:106554. Read <a href="https://doi.org/10.1016/j.sleep.2025.106554" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>International RBD Study Group consensus. Reinforces bedroom-safety measures regardless of current episode frequency (complex violent behaviors can occur unpredictably). Emphasizes systematic identification and modification of contributing factors (substances including alcohol).</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The current international consensus that safety measures shouldn't be relaxed because episodes are infrequent, and that alcohol limitation is part of standard RBD management.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Okada I, Miyata S, Iwamoto K et al. Prevalence of Obstructive Sleep Apnea as Assessed by Polysomnography in Psychiatric Patients With Sleep-Related Problems.</div>
+  <div class="cite-source">Sleep Breath 2022;26:1983–1991. Read <a href="https://doi.org/10.1007/s11325-022-02566-6" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>62% of patients with major depressive disorder undergoing PSG had OSA, with 62% of those having moderate-to-severe disease. Subjective symptoms and psychotropic use did not predict OSA presence.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The empirical basis for prioritizing formal PSG in Dad's profile. Even without classic OSA symptoms, the prior probability is high enough to warrant the study — and the standard symptom-based screening misses cases.</div>
+</div>
+
+<div class="tier-header">Tier 3 — Bright Light Therapy in Late-Life Depression <span class="tier-stars">★★★★</span></div>
+
+<div class="citation">
+  <div class="cite-title">Menegaz de Almeida A, Aquino de Moraes FC, Cavalcanti Souza ME et al. Bright Light Therapy for Nonseasonal Depressive Disorders: A Systematic Review and Meta-Analysis.</div>
+  <div class="cite-source">JAMA Psychiatry 2025;82:38–46. Read <a href="https://doi.org/10.1001/jamapsychiatry.2024.2871" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>11 RCTs, 858 patients. Non-seasonal depression remission 40.7% on BLT vs. 23.5% on control (OR 2.42; 95% CI 1.50–3.91; p &lt; 0.001). 10,000 lux × 30–60 min AM was the consistent dose.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The empirical basis for the bright light therapy add — meaningful effect on depression remission in non-seasonal MDD. If Dad is already doing this, the high-yield checks are intensity, duration, timing (per the Tier A row).</div>
+</div>
+
+<div class="tier-header">Tier 4 — Lifestyle Factors: Caffeine, Alcohol, Exercise, Naps <span class="tier-stars">★★★★</span></div>
+
+<div class="citation">
+  <div class="cite-title">Gardiner C, Weakley J, Burke LM et al. The Effect of Caffeine on Subsequent Sleep: A Systematic Review and Meta-Analysis.</div>
+  <div class="cite-source">Sleep Med Rev 2023;69:101764. Read <a href="https://doi.org/10.1016/j.smrv.2023.101764" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Caffeine reduced total sleep time by 45 minutes and sleep efficiency by 7%. Recommended cutoff of ≥8.8 hours before bedtime for a standard cup (~107 mg). Older adults more sensitive due to slower CYP1A2 metabolism.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Dad's 3–4 PM cutoff gives ~6–8 hours before a 10–11 PM bedtime, below the 8.8-hour minimum from this meta-analysis. Noon cutoff (or earlier) is the evidence-supported target. Reducing total intake to 1–2 cups compounds the benefit.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Xiong Z, Yuan Y, Qiu B et al. Optimal Exercise Type and Dose to Improve Sleep Quality in Older Adults: A Systematic Review and Network Meta-Analysis.</div>
+  <div class="cite-source">BMC Geriatrics 2025. Read <a href="https://doi.org/10.1186/s12877-025-06607-z" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Network meta-analysis of 62 RCTs (5,005 older adults). Combined aerobic + resistance training was optimal. Clinically meaningful improvements from ~5 weeks. Optimal dose: 660–990 METs·min/week over ≥15 weeks.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Dad's biking 2× per week is already in the right zone. Bumping to 3× per week and adding a small resistance component (10–15 min, 2× per week) moves into the optimal-dose range. LAFB + bradycardia HR 49–53 are not contraindications to moderate exercise.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Gardiner C, Weakley J, Burke LM et al. The Effect of Alcohol on Subsequent Sleep in Healthy Adults: A Systematic Review and Meta-Analysis.</div>
+  <div class="cite-source">Sleep Med Rev 2025;80:102030. Read <a href="https://doi.org/10.1016/j.smrv.2024.102030" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Even ≤2 standard drinks suppress REM sleep and cause second-half-of-night fragmentation with REM rebound. Dose-response relationship across studies.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Combined with the RBD context (REM rebound could intensify dream-enactment episodes), alcohol is one of the few modifiable factors with a plausible direct effect on the RBD-relevant sleep architecture. Elimination or strict limitation is the evidence-supported posture.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Souabni M, Souabni MJ, Hammouda O et al. Benefits and Risks of Napping in Older Adults: A Systematic Review.</div>
+  <div class="cite-source">Front Aging Neurosci 2022;14:1000707. Read <a href="https://doi.org/10.3389/fnagi.2022.1000707" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Brief naps (≤30 min) in early afternoon do not significantly impair nocturnal sleep in older adults. 24-hour total sleep time increases with naps. Naps &gt;60 min or after 3 PM increase risk of delayed sleep onset.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The afternoon couch-naps Mom has noted (per 5/17 email) are fine if kept short and early. The audiobook-during-rest pattern is consistent with this.</div>
+</div>
+
+<div class="tier-header">Tier 5 — Mindfulness in Older Adults with Sleep Disturbance <span class="tier-stars">★★★★</span></div>
+
+<div class="citation">
+  <div class="cite-title">Black DS, O'Reilly GA, Olmstead R, Breen EC, Irwin MR. Mindfulness Meditation and Improvement in Sleep Quality and Daytime Impairment Among Older Adults With Sleep Disturbances: A Randomized Clinical Trial.</div>
+  <div class="cite-source">JAMA Intern Med 2015;175:494–501. Read <a href="https://doi.org/10.1001/jamainternmed.2014.8081" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>RCT of 49 older adults (mean age 66) with moderate sleep disturbances. Mindfulness Awareness Practices vs. sleep hygiene education. MAPs produced a large effect size of 0.89 for sleep quality, with concurrent improvements in depression and fatigue.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The effect-size anchor for mindfulness as an adjunct to CBT-I in older adults — particularly useful for the hyperarousal component that drove the recent overnight agitation episode.</div>
+</div>
+
+</body>
+</html>
+</content>
+</invoke>

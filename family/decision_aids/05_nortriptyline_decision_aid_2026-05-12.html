@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Decision Aid — Nortriptyline switch — 2026-05-12</title>
+<style>
+  @page {
+    size: letter;
+    margin: 0.55in 0.65in;
+  }
+
+  :root {
+    --navy: #1a3a5c;
+    --navy-dark: #0f2640;
+    --against-accent: #8b2c2c;
+    --text: #1f1f1f;
+    --text-muted: #5a5a5a;
+    --rule: #c8c8c8;
+    --rule-strong: #6a6a6a;
+    --tint: #f5f5f0;
+    --tint-pro: #f0f4f8;
+    --tint-con: #f9f2f0;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    font-family: "Charter", "Georgia", "Times New Roman", serif;
+    font-size: 9.75pt;
+    line-height: 1.42;
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .doc-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-bottom: 6pt;
+    border-bottom: 1.5pt solid var(--navy);
+    margin-bottom: 14pt;
+  }
+
+  .doc-header .title {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 600;
+    font-size: 15pt;
+    line-height: 1.2;
+    color: var(--navy-dark);
+    letter-spacing: -0.01em;
+  }
+
+  .doc-header .meta {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 7.5pt;
+    color: var(--text-muted);
+    text-align: right;
+    letter-spacing: 0.03em;
+    line-height: 1.5;
+  }
+
+  .section-label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 7.5pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--navy);
+    margin: 14pt 0 5pt 0;
+  }
+
+  .section-label.first { margin-top: 0; }
+
+  .key-message {
+    border-left: 4pt solid var(--against-accent);
+    background: var(--tint);
+    padding: 9pt 13pt 9pt 13pt;
+    margin: 0 0 10pt 0;
+  }
+
+  .key-message p {
+    margin: 0;
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 10.5pt;
+    line-height: 1.42;
+    font-weight: 500;
+    color: var(--text);
+  }
+
+  .context {
+    font-size: 9.5pt;
+    line-height: 1.5;
+    color: var(--text);
+    margin: 0 0 4pt 0;
+  }
+
+  table.evidence {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 4pt 0 8pt 0;
+    table-layout: fixed;
+  }
+
+  table.evidence thead th {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 600;
+    font-size: 8.25pt;
+    padding: 6pt 9pt;
+    text-align: left;
+    background: var(--navy);
+    color: white;
+    letter-spacing: 0.02em;
+  }
+
+  table.evidence thead th.pro {
+    background: #4a6a8a;
+  }
+
+  table.evidence thead th.con {
+    background: var(--against-accent);
+  }
+
+  table.evidence td {
+    padding: 6pt 9pt;
+    vertical-align: top;
+    border-bottom: 0.5pt solid var(--rule);
+    font-size: 9pt;
+    line-height: 1.4;
+  }
+
+  table.evidence td.pro { background: var(--tint-pro); }
+  table.evidence td.con { background: var(--tint-con); }
+
+  table.evidence tbody tr:last-child td { border-bottom: none; }
+
+  table.evidence td strong {
+    color: var(--navy-dark);
+  }
+
+  .strength-row {
+    display: flex;
+    align-items: baseline;
+    margin: 6pt 0 2pt 0;
+    white-space: nowrap;
+  }
+
+  .strength-label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 8.5pt;
+    font-weight: 600;
+    color: var(--text);
+    margin-right: 10pt;
+    white-space: nowrap;
+  }
+
+  .stars {
+    color: var(--against-accent);
+    letter-spacing: 0.12em;
+    font-size: 11pt;
+    white-space: nowrap;
+  }
+
+  .strength-rationale {
+    font-size: 8.5pt;
+    color: var(--text-muted);
+    font-style: italic;
+    margin: 2pt 0 6pt 0;
+    line-height: 1.4;
+  }
+
+  ol.next-steps {
+    margin: 4pt 0 8pt 0;
+    padding-left: 18pt;
+    font-size: 9.25pt;
+    line-height: 1.4;
+  }
+
+  ol.next-steps li {
+    margin-bottom: 4pt;
+    padding-left: 3pt;
+  }
+
+  ol.next-steps li::marker {
+    color: var(--navy);
+    font-weight: 700;
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+  }
+
+  .bottom-line {
+    border-top: 1pt solid var(--rule-strong);
+    padding-top: 6pt;
+    margin-top: 10pt;
+    font-style: italic;
+    font-size: 9pt;
+    color: var(--text);
+    line-height: 1.4;
+  }
+
+  .bottom-line .label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 7.5pt;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--navy);
+    margin-right: 6pt;
+  }
+
+  .neutral-block {
+    background: #f3f3f1;
+    border-left: 3pt solid #888;
+    padding: 9pt 14pt 6pt 14pt;
+    margin: 4pt 0 8pt 0;
+  }
+
+  .neutral-block ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .neutral-block li {
+    font-size: 9pt;
+    line-height: 1.45;
+    margin-bottom: 6pt;
+    padding-left: 14pt;
+    position: relative;
+  }
+
+  .neutral-block li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #888;
+    font-weight: bold;
+  }
+
+  .neutral-block li:last-child { margin-bottom: 0; }
+  .neutral-block strong { color: var(--navy-dark); }
+
+  /* ============================================================
+     Citations section (flows continuously below bottom line)
+     ============================================================ */
+
+  .back-header {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 14pt;
+    font-weight: 600;
+    color: var(--navy-dark);
+    border-bottom: 1.5pt solid var(--navy);
+    padding-bottom: 5pt;
+    margin-top: 18pt;
+    margin-bottom: 4pt;
+  }
+
+  .citation,
+  .tier-header {
+    page-break-inside: avoid;
+  }
+
+  .back-subhead {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 8pt;
+    color: var(--text-muted);
+    margin-bottom: 14pt;
+    letter-spacing: 0.03em;
+  }
+
+  .tier-header {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 9pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--navy);
+    margin: 11pt 0 6pt 0;
+    padding-bottom: 2pt;
+    border-bottom: 0.5pt solid var(--rule);
+  }
+
+  .tier-header .tier-stars {
+    float: right;
+    color: var(--navy);
+    font-size: 10pt;
+    letter-spacing: 0.04em;
+  }
+
+  .citation {
+    margin: 0 0 9pt 0;
+    padding-left: 9pt;
+    border-left: 2pt solid var(--rule);
+    font-size: 8.75pt;
+    line-height: 1.4;
+  }
+
+  .citation .cite-title {
+    font-weight: 700;
+    color: var(--navy-dark);
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 8.75pt;
+  }
+
+  .citation .cite-source {
+    color: var(--text-muted);
+    font-style: italic;
+    font-size: 8.5pt;
+  }
+
+  .citation .cite-finding,
+  .citation .cite-apply {
+    margin-top: 2pt;
+    font-size: 8.5pt;
+  }
+
+  .citation .label-inline {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 700;
+    font-size: 7pt;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--navy);
+    margin-right: 4pt;
+  }
+
+  .citation .cite-link {
+    color: var(--navy);
+    text-decoration: underline;
+    text-decoration-thickness: 0.4pt;
+    text-underline-offset: 1.5pt;
+    font-style: normal;
+    font-weight: 500;
+    margin-left: 2pt;
+  }
+
+  .citation .cite-link:hover { color: var(--navy-dark); }
+</style>
+</head>
+<body>
+
+<div class="doc-header">
+  <div class="title">Should Dad switch from Cymbalta to Nortriptyline?</div>
+  <div class="meta">
+    Decision Aid · 2026-05-12<br>
+    For Dad, Mom, Dr. Rubin, the K Clinic<br>
+    psychiatrist, Julane &amp; the family team
+  </div>
+</div>
+
+<div class="section-label first">Recommendation</div>
+<div class="key-message">
+  <p>No. Switching from duloxetine (Cymbalta) to nortriptyline is <strong>not supported by the evidence</strong> in Dad's specific profile. A convergence of risks — pre-existing partial heart-block, 8.5-year REM Sleep Behavior Disorder with possible early Parkinson's-spectrum features, anticholinergic burden, high orthostatic-hypotension and fall risk, and a major drug interaction with duloxetine itself during any cross-over — makes nortriptyline a poor fit. The evidence-supported step is to continue duloxetine 60 mg unchanged through and after the ketamine restart and to defer any antidepressant switch decision until ketamine response has been assessed at 2–3 sessions.</p>
+</div>
+
+<div class="section-label">Why this matters for Dad specifically</div>
+<p class="context">Nortriptyline is being considered as a switch from Cymbalta (not as an add-on). Dr. Rubin mentioned that Dad's "cardiac functioning would need to be monitored" — this is because nortriptyline can slow heart electrical conduction, and Dad already has a partial heart-block (left anterior fascicular block, coded on his chart since May 2025) plus a resting heart rate of 57 (mild bradycardia). Beyond cardiac issues, nortriptyline carries multiple specific risks in Dad's neurological profile: his 8.5-year formally diagnosed REM Sleep Behavior Disorder, his prior antipsychotic-induced parkinsonism, his "somewhat robotic" gait observation, his brain fog coding, and the methylmalonic acidemia under treatment. The 2025 Lancet Neurology review on Lewy body disease therapeutics explicitly advises avoiding tricyclic antidepressants like nortriptyline in patients with Dad's kind of profile.</p>
+
+<div class="section-label">The evidence</div>
+<table class="evidence">
+  <thead>
+    <tr>
+      <th class="pro" style="width: 42%;">What might support trying nortriptyline</th>
+      <th class="con" style="width: 58%;">What argues against nortriptyline in Dad's profile</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="pro"><strong>Nortriptyline is on the evidence-supported list for hard-to-treat depression in older adults.</strong> In the landmark OPTIMUM trial (Lenze 2023, NEJM), patients who had already failed Step 1 medication strategies (aripiprazole or bupropion) were randomized to lithium augmentation or a switch to nortriptyline. Roughly 21.5% achieved remission with nortriptyline at Step 2.</td>
+      <td class="con"><strong>Cardiac conduction risk in Dad's specific profile.</strong> Nortriptyline has Class 1a antiarrhythmic (quinidine-like) effects: it can prolong electrical conduction time and slow conduction through the heart's bundle branches. Dad already has left anterior fascicular block (a partial block on the left side of his heart's electrical system) coded since May 2025, plus a baseline heart rate of 57 (bradycardia). The combination creates a meaningfully elevated risk of progression to more advanced heart block. The FDA label specifically warns patients with cardiovascular disease should receive nortriptyline "only under close supervision."</td>
+    </tr>
+    <tr>
+      <td class="pro"><strong>Nortriptyline has some documented anxiolytic effect.</strong> A study of post-stroke patients with both depression and generalized anxiety disorder found nortriptyline produced greater improvement on the anxiety rating scale than placebo, with anxiety symptoms actually improving earlier than depressive symptoms.</td>
+      <td class="con"><strong>Worsens REM sleep without atonia — concerning given Dad's 8.5-year RBD history.</strong> Tricyclic antidepressants, including nortriptyline, increase the amount of REM sleep without the normal muscle paralysis that prevents dream-enactment. This can trigger or exacerbate symptoms of REM Sleep Behavior Disorder — exactly the condition Dad has been formally diagnosed with since 2017. The American Academy of Sleep Medicine specifically identifies tricyclic antidepressants as agents to avoid in RBD patients.</td>
+    </tr>
+    <tr>
+      <td class="pro"><strong>Doesn't interfere with the planned August B12 follow-up testing.</strong> Nortriptyline doesn't disrupt the body's processing of vitamin B12 or folate, so the August 6 MMA recheck would remain cleanly interpretable.</td>
+      <td class="con"><strong>The 2025 Lancet Neurology review on Lewy body disease therapeutics specifically advises avoiding tricyclic antidepressants like nortriptyline.</strong> This is because Lewy body diseases involve loss of acetylcholine-producing brain cells, and anticholinergic medications (which tricyclics are) further deplete the already-stressed cholinergic system. Dad's profile (formal RBD, prior drug-induced parkinsonism, "robotic" gait, balance findings, autonomic features) raises the possibility of Lewy-spectrum prodromal disease enough that this guidance is directly relevant.</td>
+    </tr>
+    <tr>
+      <td class="pro" style="background: #fbfbf8; color: #777;">—</td>
+      <td class="con"><strong>Anticholinergic burden roughly 5× that of paroxetine.</strong> Nortriptyline is less anticholinergic than older tricyclics like amitriptyline, but still has clinically meaningful anticholinergic activity. Common effects include dry mouth, urinary retention, constipation, and — most concerning for Dad — cognitive worsening, confusion, and even hallucinations in older patients. Dad already has documented brain fog (R41.89) and constipation (K59.09); both would likely worsen.</td>
+    </tr>
+    <tr>
+      <td class="pro" style="background: #fbfbf8; color: #777;">—</td>
+      <td class="con"><strong>About 6× increased risk of orthostatic hypotension.</strong> A 2021 systematic review and meta-analysis found tricyclic antidepressants are among the highest-risk medications for sudden drops in blood pressure when standing — about a 6-fold increase compared to placebo. The risk is compounded for Dad by his concurrent tadalafil and Cialis (both vasodilators), his documented gait and balance findings, and his possible autonomic features. This is a fall-risk problem.</td>
+    </tr>
+    <tr>
+      <td class="pro" style="background: #fbfbf8; color: #777;">—</td>
+      <td class="con"><strong>Major drug interaction with duloxetine during any cross-over period.</strong> Duloxetine is a moderate inhibitor of the liver enzyme CYP2D6, which is the main enzyme that breaks down nortriptyline. If duloxetine and nortriptyline are present at the same time during a cross-taper, nortriptyline plasma levels can rise substantially — the FDA label notes that in poor metabolizers, levels can increase up to 8-fold. The duloxetine label explicitly warns that the combination should be approached with caution, with plasma TCA monitoring and dose reduction.</td>
+    </tr>
+    <tr>
+      <td class="pro" style="background: #fbfbf8; color: #777;">—</td>
+      <td class="con"><strong>Serotonin syndrome risk during the cross-over.</strong> Duloxetine and nortriptyline are both serotonergic agents. Both FDA labels warn about combining them, and serotonin syndrome (which can include agitation, fever, muscle rigidity, tremor) is a recognized risk during transitions.</td>
+    </tr>
+    <tr>
+      <td class="pro" style="background: #fbfbf8; color: #777;">—</td>
+      <td class="con"><strong>Risk of paradoxical anxiety and agitation early in treatment.</strong> The FDA label specifically notes that "if the drug is given to overactive or agitated patients, increased anxiety and agitation may occur." Anxiety is currently a prominent symptom for Dad, making this risk especially relevant.</td>
+    </tr>
+    <tr>
+      <td class="pro" style="background: #fbfbf8; color: #777;">—</td>
+      <td class="con"><strong>Would confound attribution during the ketamine restart.</strong> Initiating nortriptyline now would make it impossible to attribute clinical change (positive or negative) during the ketamine induction window to either intervention. Standard sequencing principles in late-life pharmacology favor changing one variable at a time.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="strength-row">
+  <span class="strength-label">Evidence strength against switching to nortriptyline:</span>
+  <span class="stars">★★★★★</span>
+</div>
+<div class="strength-rationale">Convergence of cardiac, neurological, anticholinergic, drug-interaction, and orthostatic-hypotension concerns — each independently meaningful, and several with specific guideline-level recommendations to avoid tricyclic antidepressants in patients with Dad's profile. Expected efficacy (~21% remission) is modest by comparison.</div>
+
+<div class="section-label">A note on the alternatives</div>
+<div class="neutral-block">
+  <ul>
+    <li><strong>Continuing duloxetine 60 mg is the evidence-supported near-term path.</strong> Dad had his February ketamine response on duloxetine. Population-level data (the 2025 Del Casale study, n=55,480) shows that the SNRI + ketamine combination has lower mortality and lower relapse than SSRI + ketamine — so the existing duloxetine background is, if anything, slightly favored for the ketamine restart.</li>
+    <li><strong>The Cymbalta-to-Lexapro switch question is a separate analysis.</strong> Lexapro (escitalopram) was Dad's long-term SSRI before duloxetine. Whether to return to it later, after the ketamine response is established, is a question better evaluated on its own terms once attribution is clean — and is being addressed in a separate review.</li>
+    <li><strong>Any antidepressant switch — to nortriptyline, Lexapro, or anything else — is best deferred until after ketamine response is read at 2–3 sessions.</strong> Making multiple medication changes during the same week as the ketamine restart creates an uninterpretable clinical picture.</li>
+  </ul>
+</div>
+
+<div class="section-label">Recommended next steps</div>
+<ol class="next-steps">
+  <li><strong>Continue duloxetine 60 mg unchanged</strong> through and after the May 18 ketamine restart.</li>
+  <li><strong>Do not initiate nortriptyline concurrent with the ketamine restart</strong> — the attribution confound, the drug interaction with duloxetine, and the cardiac and neurological risk profile all argue against this timing in any form.</li>
+  <li><strong>Bring this analysis to the K Clinic psychiatrist call</strong>, including the specific cardiac (LAFB, bradycardia) and neurological (RBD, possible prodromal Lewy-spectrum) concerns.</li>
+  <li><strong>If nortriptyline is ever pursued in the future</strong>, it would require: (a) cardiology clearance with baseline ECG, (b) plasma nortriptyline level monitoring, (c) ECG monitoring at each dose titration, (d) clear stopping triggers (QRS widening >25%, new heart block, symptomatic bradycardia), (e) separate decision from anything during the ketamine restart window, and (f) full review of the Lewy-spectrum concerns with neurology in the loop.</li>
+  <li><strong>Proceed with the May 18 ketamine restart as planned</strong> on the current duloxetine regimen. The ketamine handout covers this case in detail.</li>
+  <li><strong>Hold the Depakote question</strong> pending review per the Depakote handout.</li>
+</ol>
+
+<div class="bottom-line">
+  <span class="label">Bottom line</span>
+  Switching from Cymbalta to Nortriptyline is multiply contraindicated by Dad's specific profile — cardiac, neurological, anticholinergic, drug-interaction, and orthostatic axes all argue against it. Continue duloxetine through and after the ketamine restart, and defer any antidepressant switch decision until ketamine response has been assessed at 2–3 sessions.
+</div>
+
+<!-- =========================================================
+     CITATIONS (flows continuously)
+     ========================================================= -->
+
+<div class="back-header">Key Studies &amp; Findings</div>
+<div class="back-subhead">Ranked by authority · Each citation summarized for how it applies to Dad's case</div>
+
+<div class="tier-header">Tier 1 — Major Clinical Guidelines and Reviews <span class="tier-stars">★★★★★</span></div>
+
+<div class="citation">
+  <div class="cite-title">Kaila LV, Ikeda M, Sultana J et al. The Evolving Therapeutic Landscape of Dementia With Lewy Bodies.</div>
+  <div class="cite-source">Lancet Neurology 2025;24:1038–1052. Read <a href="https://doi.org/10.1016/S1474-4422(25)00323-0" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>The most current Lancet Neurology review on Lewy body disease therapeutics explicitly states that "if antidepressant medication is needed, drugs with anticholinergic effects, such as tricyclic antidepressants, should be avoided." The reasoning is that Lewy body diseases involve loss of acetylcholine-producing brain cells, and anticholinergic medications further stress this already-depleted system.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Dad's profile (formal RBD since 2017, prior antipsychotic-induced parkinsonism, balance findings, "robotic" gait, brain fog) is exactly the kind of clinical picture this review is addressing. Even before a definitive Lewy-spectrum diagnosis, the guideline-level recommendation is to avoid tricyclics like nortriptyline.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Howell M, Avidan AY et al. Management of REM Sleep Behavior Disorder: An American Academy of Sleep Medicine Clinical Practice Guideline.</div>
+  <div class="cite-source">J Clin Sleep Med 2023;19:759–768. Read <a href="https://doi.org/10.5664/jcsm.10424" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>For patients with RBD whose symptoms are exacerbated by antidepressants, AASM specifically identifies bupropion as a preferred alternative because of its "lower serotonergic profile." Tricyclic antidepressants are not recommended in RBD patients due to their effect on REM sleep architecture.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The dedicated sleep-medicine guideline for Dad's specific sleep diagnosis (G47.52, coded since 2017) effectively recommends against tricyclic antidepressants like nortriptyline.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Steffens DC. Treatment-Resistant Depression in Older Adults.</div>
+  <div class="cite-source">NEJM 2024;390:630–639. Read <a href="https://doi.org/10.1056/NEJMcp2305428" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>The current NEJM review of treatment-resistant depression in adults ≥65 mentions nortriptyline among options to "consider switching to in patients with no or minimal response," with the explicit caveat that "careful monitoring of blood levels and ECG is warranted." Notes the OPTIMUM Step 2 remission rate of approximately 21% for nortriptyline switch.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Nortriptyline is on the evidence-supported list for late-life TRD, but with monitoring requirements that are particularly demanding for Dad's profile (LAFB + bradycardia).</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Page RL, O'Bryant CL et al. Drugs That May Cause or Exacerbate Heart Failure: AHA Scientific Statement.</div>
+  <div class="cite-source">Circulation 2016;134:e32–e69. Read <a href="https://doi.org/10.1161/CIR.0000000000000426" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>American Heart Association scientific statement noting that tricyclic antidepressants affect AV conduction by prolonging conduction time in the His bundle and bundle branches, and that second- and third-degree heart block can develop. Patients with pre-existing conduction disease are at heightened risk.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The AHA's documented mechanism is exactly the concern in Dad's case — he already has a partial fascicular block (LAFB), and adding nortriptyline could progress that toward more complete heart block.</div>
+</div>
+
+<div class="tier-header">Tier 2 — Major RCTs <span class="tier-stars">★★★★</span></div>
+
+<div class="citation">
+  <div class="cite-title">Lenze EJ et al. Antidepressant Augmentation versus Switch in Treatment-Resistant Geriatric Depression (OPTIMUM).</div>
+  <div class="cite-source">NEJM 2023;388:1067–1079. Read <a href="https://doi.org/10.1056/NEJMoa2204462" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>The landmark trial of pharmacological strategies for treatment-resistant depression in adults ≥60. In Step 2 (after failing Step 1), 21.5% achieved remission on a switch to nortriptyline, vs. 18.9% with lithium augmentation. Step 1 strategies (aripiprazole augmentation, bupropion augmentation) had higher remission rates (~28%) than Step 2 options.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>This is the strongest evidence base for nortriptyline in late-life TRD. The Step 2 efficacy is modest. Dad has already failed several Step 1-equivalent strategies through prior trials, so OPTIMUM's most relevant data for him is the Step 2 ~21% remission — meaningful but not high.</div>
+</div>
+
+<div class="tier-header">Tier 3 — Systematic Reviews and Large Cohorts <span class="tier-stars">★★★</span></div>
+
+<div class="citation">
+  <div class="cite-title">Bhanu C et al. Drug-Induced Orthostatic Hypotension: A Systematic Review and Meta-Analysis of Randomised Controlled Trials.</div>
+  <div class="cite-source">PLoS Med 2021;18:e1003821. Read <a href="https://doi.org/10.1371/journal.pmed.1003821" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Systematic review and meta-analysis. Tricyclic antidepressants were associated with about a 6-fold increased odds of orthostatic hypotension (sudden drop in blood pressure when standing) compared to placebo — among the highest-risk medication classes studied.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Dad has documented gait and balance abnormalities, takes vasodilators (tadalafil + Cialis daily), and may have autonomic features. A 6-fold increase in orthostatic-hypotension risk translates to a substantial increase in fall risk in his profile.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Postuma RB et al. Antidepressants and REM Sleep Behavior Disorder: Isolated Side Effect or Neurodegenerative Signal?</div>
+  <div class="cite-source">Sleep 2013;36:1579–1585. Read <a href="https://doi.org/10.5665/sleep.3102" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Prospective cohort study of 100 patients with PSG-confirmed RBD. Antidepressants — particularly serotonergic agents — can trigger or worsen RBD symptoms, and patients with antidepressant-associated RBD show neurodegenerative markers (subtle parkinsonism, autonomic dysfunction, cognitive features) of comparable severity to those without antidepressants, though with somewhat lower 5-year conversion rates to overt disease.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Adding nortriptyline (which is serotonergic and pro-REM-without-atonia) to a patient with 8.5 years of formal RBD diagnosis is exactly the kind of intervention the published RBD literature flags as concerning.</div>
+</div>
+
+<div class="tier-header">Tier 4 — Mechanistic and Risk-Side Trials <span class="tier-stars">★★</span></div>
+
+<div class="citation">
+  <div class="cite-title">Dietch JT, Fine M. The Effect of Nortriptyline in Elderly Patients With Cardiac Conduction Disease.</div>
+  <div class="cite-source">J Clin Psychiatry 1990;51:65–67. Read <a href="https://pubmed.ncbi.nlm.nih.gov/2298033/" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Small study (n=10) of elderly patients with cardiac conduction abnormalities treated with therapeutic nortriptyline. No clinically significant adverse cardiac changes were observed in patients with first-degree AV block or hemiblock (which includes LAFB). However, the authors specifically note that patients with bundle-branch block and bifascicular block are at greater risk.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>This is the most relevant safety data: Dad's LAFB (unifascicular block) is in the lower-risk category per this study, but the patient population was small and didn't include patients with concurrent bradycardia. The 1990 study supports that nortriptyline is not absolutely contraindicated but does require monitoring.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Pollock BG, Mulsant BH et al. Serum Anticholinergicity in Elderly Depressed Patients Treated With Paroxetine or Nortriptyline.</div>
+  <div class="cite-source">Am J Psychiatry 1998;155:1110–1112. Read <a href="https://doi.org/10.1176/ajp.155.8.1110" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Comparative study in elderly depressed patients. Nortriptyline at therapeutic plasma concentrations produced approximately 5 times the measurable serum anticholinergic activity of paroxetine.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Quantifies the anticholinergic-burden concern. Even at therapeutic doses, nortriptyline adds substantial anticholinergic load — a particular concern in possible Lewy-spectrum disease and in someone with documented brain fog and constipation already.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Knadler MP et al. Duloxetine: Clinical Pharmacokinetics and Drug Interactions.</div>
+  <div class="cite-source">Clin Pharmacokinet 2011;50:281–294. Read <a href="https://doi.org/10.2165/11539240-000000000-00000" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Duloxetine is a moderate inhibitor of the liver enzyme CYP2D6, which is the main pathway for nortriptyline metabolism. In CYP2D6 poor metabolizers or in patients on CYP2D6 inhibitors, nortriptyline plasma levels can rise substantially — up to 8-fold per the FDA label.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Any cross-taper between duloxetine and nortriptyline (the standard switching approach) creates a window of overlap where nortriptyline plasma levels could rise unpredictably, increasing all the dose-dependent risks (cardiac, anticholinergic, orthostatic).</div>
+</div>
+
+<div class="tier-header">Tier 5 — Specific Studies <span class="tier-stars">★</span></div>
+
+<div class="citation">
+  <div class="cite-title">Kimura M et al. Treatment of Poststroke Generalized Anxiety Disorder Comorbid With Poststroke Depression: Merged Analysis of Nortriptyline Trials.</div>
+  <div class="cite-source">Am J Geriatr Psychiatry 2003;11:320–327.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Merged analysis of post-stroke depression trials. Nortriptyline produced greater improvement on the Hamilton Anxiety Scale than placebo, with anxiety improving earlier than depression. The study population was poststroke patients, not general elderly with TRD.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The strongest published anxiolytic signal for nortriptyline is in a population that doesn't match Dad's. Nortriptyline's anxiolytic effect in general TRD is inconsistent, and the FDA label warns of paradoxical agitation in some patients.</div>
+</div>
+
+</body>
+</html>

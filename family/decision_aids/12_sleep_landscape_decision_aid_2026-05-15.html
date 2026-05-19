@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Decision Aid — Sleep aid landscape — 2026-05-15</title>
+<style>
+  @page { size: letter; margin: 0.55in 0.65in; }
+  :root {
+    --navy: #1a3a5c; --navy-dark: #0f2640;
+    --against-accent: #8b2c2c; --for-accent: #2c5e3f;
+    --text: #1f1f1f; --text-muted: #5a5a5a;
+    --rule: #c8c8c8; --rule-strong: #6a6a6a;
+    --tint: #f3f6f3;
+    --tint-recommend: #eaf2ea;
+    --tint-keep: #f0f4ee;
+    --tint-defer: #f1f1ee;
+    --tint-avoid: #f7eeed;
+    --label-recommend: #2c5e3f;
+    --label-keep: #486b4d;
+    --label-defer: #6a6a6a;
+    --label-avoid: #8b2c2c;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    font-family: "Charter", "Georgia", "Times New Roman", serif;
+    font-size: 9.75pt; line-height: 1.42; color: var(--text);
+    -webkit-font-smoothing: antialiased;
+  }
+  .doc-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    padding-bottom: 6pt; border-bottom: 1.5pt solid var(--navy); margin-bottom: 14pt;
+  }
+  .doc-header .title {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 600; font-size: 15pt; line-height: 1.2;
+    color: var(--navy-dark); letter-spacing: -0.01em;
+  }
+  .doc-header .meta {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 7.5pt; color: var(--text-muted); text-align: right;
+    letter-spacing: 0.03em; line-height: 1.5;
+  }
+  .section-label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 7.5pt; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.14em; color: var(--navy); margin: 14pt 0 5pt 0;
+  }
+  .section-label.first { margin-top: 0; }
+  .key-message {
+    border-left: 4pt solid var(--for-accent); background: var(--tint);
+    padding: 9pt 13pt; margin: 0 0 10pt 0;
+  }
+  .key-message p {
+    margin: 0;
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 10.5pt; line-height: 1.42; font-weight: 500; color: var(--text);
+  }
+  .context { font-size: 9.5pt; line-height: 1.5; color: var(--text); margin: 0 0 4pt 0; }
+
+  table.landscape {
+    width: 100%; border-collapse: collapse; margin: 4pt 0 8pt 0; table-layout: fixed;
+  }
+  table.landscape thead th {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 600; font-size: 8pt; padding: 6pt 9pt; text-align: left;
+    background: var(--navy); color: white; letter-spacing: 0.02em;
+  }
+  table.landscape td {
+    padding: 6pt 9pt; vertical-align: top;
+    border-bottom: 0.5pt solid var(--rule);
+    font-size: 8.75pt; line-height: 1.38;
+  }
+  table.landscape tbody tr:last-child td { border-bottom: none; }
+  table.landscape td.agent {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 600; color: var(--navy-dark); font-size: 8.5pt; line-height: 1.32;
+  }
+  table.landscape td.rec {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 700; font-size: 7.75pt; text-transform: uppercase;
+    letter-spacing: 0.04em; line-height: 1.3;
+  }
+  tr.row-recommend td { background: var(--tint-recommend); }
+  tr.row-recommend td.rec { color: var(--label-recommend); }
+  tr.row-keep td { background: var(--tint-keep); }
+  tr.row-keep td.rec { color: var(--label-keep); }
+  tr.row-defer td { background: var(--tint-defer); }
+  tr.row-defer td.rec { color: var(--label-defer); }
+  tr.row-avoid td { background: var(--tint-avoid); }
+  tr.row-avoid td.rec { color: var(--label-avoid); }
+
+  .strength-row {
+    display: flex; align-items: baseline; margin: 6pt 0 2pt 0; white-space: nowrap;
+  }
+  .strength-label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 8.5pt; font-weight: 600; color: var(--text);
+    margin-right: 10pt; white-space: nowrap;
+  }
+  .stars { color: var(--for-accent); letter-spacing: 0.12em; font-size: 11pt; white-space: nowrap; }
+  .strength-rationale {
+    font-size: 8.5pt; color: var(--text-muted); font-style: italic;
+    margin: 2pt 0 6pt 0; line-height: 1.4;
+  }
+
+  .question-block {
+    background: #f6f5ee; border-left: 3pt solid var(--navy);
+    padding: 9pt 14pt 6pt 14pt; margin: 4pt 0 8pt 0;
+  }
+  .question-block .q {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 9.25pt; font-weight: 700; color: var(--navy-dark);
+    margin: 0 0 4pt 0;
+  }
+  .question-block .a {
+    font-size: 9pt; line-height: 1.46; margin: 0 0 4pt 0;
+  }
+  .question-block .a strong { color: var(--navy-dark); }
+
+  ol.next-steps {
+    margin: 4pt 0 8pt 0; padding-left: 18pt; font-size: 9.25pt; line-height: 1.4;
+  }
+  ol.next-steps li { margin-bottom: 4pt; padding-left: 3pt; }
+  ol.next-steps li::marker {
+    color: var(--navy); font-weight: 700;
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+  }
+  .bottom-line {
+    border-top: 1pt solid var(--rule-strong); padding-top: 6pt; margin-top: 10pt;
+    font-style: italic; font-size: 9pt; color: var(--text); line-height: 1.4;
+  }
+  .bottom-line .label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-style: normal; font-weight: 700; font-size: 7.5pt;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--navy); margin-right: 6pt;
+  }
+  .neutral-block {
+    background: #f3f3f1; border-left: 3pt solid #888;
+    padding: 9pt 14pt 6pt 14pt; margin: 4pt 0 8pt 0;
+  }
+  .neutral-block ul { list-style: none; padding: 0; margin: 0; }
+  .neutral-block li {
+    font-size: 9pt; line-height: 1.45; margin-bottom: 6pt;
+    padding-left: 14pt; position: relative;
+  }
+  .neutral-block li::before {
+    content: "•"; position: absolute; left: 0; color: #888; font-weight: bold;
+  }
+  .neutral-block li:last-child { margin-bottom: 0; }
+  .neutral-block strong { color: var(--navy-dark); }
+  .back-header {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 14pt; font-weight: 600; color: var(--navy-dark);
+    border-bottom: 1.5pt solid var(--navy); padding-bottom: 5pt;
+    margin-top: 18pt; margin-bottom: 4pt;
+  }
+  .citation, .tier-header { page-break-inside: avoid; }
+  .back-subhead {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 8pt; color: var(--text-muted); margin-bottom: 14pt; letter-spacing: 0.03em;
+  }
+  .tier-header {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 9pt; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.12em; color: var(--navy);
+    margin: 11pt 0 6pt 0; padding-bottom: 2pt; border-bottom: 0.5pt solid var(--rule);
+  }
+  .tier-header .tier-stars { float: right; color: var(--navy); font-size: 10pt; letter-spacing: 0.04em; }
+  .citation {
+    margin: 0 0 9pt 0; padding-left: 9pt; border-left: 2pt solid var(--rule);
+    font-size: 8.75pt; line-height: 1.4;
+  }
+  .citation .cite-title {
+    font-weight: 700; color: var(--navy-dark);
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif; font-size: 8.75pt;
+  }
+  .citation .cite-source { color: var(--text-muted); font-style: italic; font-size: 8.5pt; }
+  .citation .cite-finding, .citation .cite-apply { margin-top: 2pt; font-size: 8.5pt; }
+  .citation .label-inline {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 700; font-size: 7pt; text-transform: uppercase;
+    letter-spacing: 0.08em; color: var(--navy); margin-right: 4pt;
+  }
+  .citation .cite-link {
+    color: var(--navy); text-decoration: underline;
+    text-decoration-thickness: 0.4pt; text-underline-offset: 1.5pt;
+    font-style: normal; font-weight: 500; margin-left: 2pt;
+  }
+  .citation .cite-link:hover { color: var(--navy-dark); }
+</style>
+</head>
+<body>
+
+<div class="doc-header">
+  <div class="title">The sleep aid landscape — what makes sense for Dad in the next 1–3 months</div>
+  <div class="meta">
+    Decision Aid · 2026-05-15<br>
+    For Dad, Mom, Dr. Rubin, the K Clinic<br>
+    psychiatrist, Julane &amp; the family team
+  </div>
+</div>
+
+<div class="section-label first">Recommendation</div>
+<div class="key-message">
+  <p><strong>Doxepin 6 mg HS + melatonin 3–5 mg HS is the right ongoing sleep anchor</strong> for Dad through the IV ketamine course and up to the June neurology evaluation. Begin <strong>CBT-I (digital is fine) and morning bright-light therapy</strong> now as non-pharmacologic complements — they're first-line per major guidelines and the highest-yield interventions Dad isn't yet using. Keep trazodone 50 mg PRN as a rescue, but don't uptitrate it ongoing. <strong>Defer DORAs (Dayvigo, Belsomra, Quviviq) until after the June neurology evaluation</strong> clarifies the Lewy-spectrum question; if pursued later, daridorexant (Quviviq) is the most defensible DORA in his profile. Three categories are firmly off the table for him: <strong>OTC antihistamines (ZZZquil, Benadryl, Unisom)</strong> are Beers-list inappropriate; <strong>Z-drugs (Ambien, Lunesta)</strong> carry unacceptable fall and parasomnia risk; <strong>Klonopin and other benzodiazepines</strong> are not a good fit given his recently completed Ativan taper, ongoing driving, and the geriatric prescribing guidelines.</p>
+</div>
+
+<div class="section-label">Why this matters for Dad specifically</div>
+<p class="context">Dad's question on 5/15 — "what else is out there?" — deserves a real answer that takes both his medical profile and his intuitions seriously. He's a 76-year-old with severe TRD, formal RBD (G47.52, episodes roughly every few months with decreasing trajectory), a neurology workup pending in June, brain fog (R41.89), left anterior fascicular block with bradycardia, BPH on alfuzosin, and a recently completed Ativan taper. He drives. He recently came off olanzapine. He's about to restart IV ketamine on 5/18 and has a pending antidepressant decision (see handout #09). The sleep aid landscape that's defensible for an average 76-year-old narrows further in his profile — most of the "common" options (OTC antihistamines, Z-drugs, mirtazapine, clonazepam) carry specific concerns that move them off-list. What remains is a smaller but coherent shortlist that addresses his actual sleep complaint (early-morning waking at 4 AM with anxiety) without compromising any of the other axes. Dad's intuition that "most sleep aids are antihistamines" is partly right and worth taking seriously — see the dedicated section below.</p>
+
+<div class="section-label">The landscape — agents ranked for Dad's 1–3 month horizon</div>
+<table class="landscape">
+  <thead>
+    <tr>
+      <th style="width: 22%;">Agent or intervention</th>
+      <th style="width: 15%;">Status for Dad</th>
+      <th style="width: 63%;">Reasoning in his specific profile</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="row-recommend">
+      <td class="agent">Doxepin 6 mg HS<br><span style="font-weight: 400; font-size: 8pt; color: #5a5a5a;">(Silenor low-dose)</span></td>
+      <td class="rec">Anchor — continue</td>
+      <td>At 3–6 mg, doxepin is highly H1-selective with negligible anticholinergic activity — ~775× more potent at H1 than diphenhydramine, so a tiny dose achieves H1 blockade without the muscarinic burden that makes OTC antihistamines dangerous in his profile. FDA-approved for elderly sleep maintenance; AGS Beers-acceptable at ≤6 mg/day (flagged as strongly anticholinergic above 6 mg). Trial evidence (Scharf 2008) shows efficacy specifically for the final third of the night, which is Dad's exact complaint. Has been at therapeutic dose only ~10 days — full benefit may continue to build over the next 2–4 weeks. <em>Don't titrate above 6 mg.</em></td>
+    </tr>
+    <tr class="row-recommend">
+      <td class="agent">Melatonin 3–5 mg HS<br><span style="font-weight: 400; font-size: 8pt; color: #5a5a5a;">USP-verified, ER if available</span></td>
+      <td class="rec">Add now</td>
+      <td>Dual purpose: insomnia + RBD prophylaxis. AASM 2023 conditionally recommends immediate-release melatonin for both isolated and secondary RBD (start 3 mg, titrate in 3 mg increments up to 15 mg), explicitly preferred over clonazepam in elderly with neurodegenerative disease. Negligible drug-interaction risk in his stack. Mechanism (MT1/MT2 receptor agonism, circadian) is complementary to doxepin's H1 mechanism, not redundant. OTC formulations vary in content vs. label — USP Verified Mark is the relevant quality check.</td>
+    </tr>
+    <tr class="row-recommend">
+      <td class="agent">CBT-I + morning bright light therapy</td>
+      <td class="rec">Begin now</td>
+      <td>CBT-I is first-line per AGS Beers alternatives, ACP, and AASM. Recent meta-analyses (Furukawa 2024, n=19 trials, 4,808 participants) show CBT-I produces depression response OR 2.28 + insomnia remission OR 3.57 in comorbid MDD — depression improvement extends beyond sleep. Digital CBT-I (apps like Insomnia Coach, SleepEZ) lowers the barrier; modified emphasis on stimulus control and cognitive restructuring over aggressive sleep restriction is appropriate during the current depressive episode, with fuller implementation as ketamine response builds. Morning bright light (10,000 lux, 20–30 min on waking) directly targets the 4 AM awakening pattern (circadian phase advance) and has independent antidepressant benefit.</td>
+    </tr>
+    <tr class="row-keep">
+      <td class="agent">Trazodone 50 mg PRN HS</td>
+      <td class="rec">Keep — don't escalate</td>
+      <td>Already in stack as PRN rescue, and that's the right ongoing pattern. AGS Beers alternatives note "insufficient evidence to recommend trazodone for insomnia in older adults" — keep as rescue but don't make it a daily ongoing agent. (One exception: handout #11 recommends a brief 75 mg HS course for the three bridge nights before the 5/18 ketamine restart, then returning to 50 mg PRN. That short-window uptitration is defensible.) Chronic uptitration to 100–150 mg brings orthostatic (relevant with alfuzosin), priapism (relevant with tadalafil), and cardiac conduction (relevant with LAFB + bradycardia) concerns that don't justify the modest sleep-maintenance benefit.</td>
+    </tr>
+    <tr class="row-defer">
+      <td class="agent">DORAs — lemborexant (Dayvigo), suvorexant (Belsomra), daridorexant (Quviviq)</td>
+      <td class="rec">Defer — revisit after June neurology</td>
+      <td>DORAs are an evidence-supported modern class and one of three options favored for older adults by geriatric prescribing guidelines. But the orexin system is connected to the questions the June neurology evaluation is examining (Raheel 2024), and DORAs increase REM sleep duration — a mechanistic question worth resolving with neurology input before starting one. The 2025 FAERS analysis (McIntyre) shows no meaningful depression-signal differential between the three; FDA labels recommend against combining DORAs with other insomnia drugs (which doxepin + melatonin would form). If pursued after the June evaluation, daridorexant (Quviviq) is the most defensible — shortest half-life (~8 hr), less REM augmentation, less next-day sedation than lemborexant. See handout #10 for the specific lemborexant decision.</td>
+    </tr>
+    <tr class="row-defer">
+      <td class="agent">Ramelteon 8 mg HS</td>
+      <td class="rec">Low yield</td>
+      <td>FDA-approved for sleep-onset insomnia, not sleep maintenance. Dad's primary complaint is 4 AM waking, not sleep onset. On top of doxepin + melatonin, incremental benefit is likely clinically negligible. The cost and prescription effort don't pay off — and the melatonin titration above achieves a similar mechanism more flexibly.</td>
+    </tr>
+    <tr class="row-defer">
+      <td class="agent">Mirtazapine 7.5 mg HS</td>
+      <td class="rec">Defer — antidepressant-dependent</td>
+      <td>The MIRAGE trial (Nguyen 2025, n=adults ≥65) supports mirtazapine 7.5 mg for elderly insomnia (ISI change −6.5 vs. placebo −2.9). Mirtazapine is also potentially attractive as a dual-purpose addition if the antidepressant strategy moves to escitalopram (could augment the SSRI while replacing doxepin). <em>However,</em> Dad's prior mirtazapine trial (12/2025) produced agitation — a recognized paradoxical reaction. Whether the agitation was dose-related is unclear; a retrial would require very low starting dose and close monitoring. Defer the decision until the antidepressant question is settled (see handout #09).</td>
+    </tr>
+    <tr class="row-avoid">
+      <td class="agent">Z-drugs — zolpidem (Ambien), eszopiclone (Lunesta), zaleplon (Sonata)</td>
+      <td class="rec">Avoid for ongoing use</td>
+      <td>AGS Beers explicit "avoid" in older adults. Approximately triples hip-fracture risk (zolpidem HR 3.11, comparable to diazepam). In dementia populations, fracture HR 1.40 and hip fracture HR 1.59 across the class. Documented parasomnia exacerbation (sleepwalking, sleep-eating, sleep-driving) — particularly concerning in a patient with formal RBD where the REM-atonia mechanism is already abnormal. Eszopiclone has FDA approval for sleep maintenance (unlike zolpidem IR), but the class-level safety concerns don't disappear at the lower dose. The Lewy-body dementia consensus says Z-drugs "could be considered for short-term treatment of insomnia… with the caveat of negative effects on cognition, daytime sleepiness, and increased risk of fractures and falls" — i.e., a backup option at best, not first-line.</td>
+    </tr>
+    <tr class="row-avoid">
+      <td class="agent">Clonazepam (Klonopin) and other benzodiazepines</td>
+      <td class="rec">Off the table</td>
+      <td>Three converging reasons: (1) the recently completed Ativan taper is worth protecting — restarting a benzodiazepine, including klonopin, would mean repeating that work later, and klonopin's long half-life (30–40 hr) would make a future taper harder than the recent one; (2) the same long half-life means measurable next-day cognitive and motor effects — a real safety consideration for a 76-year-old who continues to drive; (3) geriatric prescribing guidelines flag clonazepam as not appropriate at his age. AASM 2023 supports clonazepam for RBD generally but specifically notes age sensitivity and prefers melatonin in older adults whose broader neurologic picture is under evaluation — which is the situation here. Reserve any clonazepam conversation for a worst-case RBD escalation, and even then start with non-benzodiazepine options.</td>
+    </tr>
+    <tr class="row-avoid">
+      <td class="agent">OTC antihistamines — ZZZquil and Benadryl (diphenhydramine), Unisom (doxylamine), also prescription hydroxyzine</td>
+      <td class="rec">Avoid entirely</td>
+      <td>AGS Beers explicit "avoid" in older adults due to strong anticholinergic properties. Multiple converging concerns in Dad's specific profile: (a) anticholinergics worsen brain fog (R41.89) acutely and accelerate cognitive decline cumulatively; (b) anticholinergics work against the cholinergic system, which is exactly what the pending neurology workup is helping evaluate — so these drugs would work against the goals of that evaluation; (c) urinary retention risk on top of his alfuzosin for BPH; (d) fall and delirium risk; (e) tolerance develops fast, so even short-term relief degrades. ZZZquil Pure Zzzs (melatonin-only, not diphenhydramine) is structurally fine but USP-verified melatonin is preferable for consistent dosing. The GSA workgroup notes that ~50% of older adults using OTC sleep aids are unaware of these risks.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="strength-row">
+  <span class="strength-label">Strength of evidence for the recommended landscape:</span>
+  <span class="stars">★★★★</span>
+</div>
+<div class="strength-rationale">The "avoid" recommendations are anchored in strong, convergent evidence (AGS Beers, AASM RBD guideline, geriatric specialty consensus, multiple meta-analyses) and unambiguous patient-specific factors (the recently completed Ativan taper, the pending neurology workup, brain fog, ongoing driving). The "anchor + add" recommendations (doxepin 6 mg + melatonin + CBT-I + light therapy) are individually well-supported by guidelines but their combined effect for Dad's exact profile isn't directly trialed. The "defer" recommendations (DORAs, mirtazapine) reflect timing rather than agent-level rejection — the underlying evidence for these classes is real, but Dad's June neurology evaluation and pending antidepressant decision change when, not whether, to consider them.</div>
+
+<div class="section-label">Dad's question, answered</div>
+<div class="question-block">
+  <p class="q">"Aren't most sleep aids just some version of antihistamine?"</p>
+  <p class="a">Dad's instinct is partly right. <strong>Most OTC sleep aids</strong> (ZZZquil, Benadryl, Unisom) <strong>are first-generation antihistamines</strong> — diphenhydramine or doxylamine — and they work primarily by blocking H1 histamine receptors. He's also right to be skeptical of them: their sedation comes from blocking <em>both</em> H1 receptors <em>and</em> muscarinic (M1) receptors, which is what causes the anticholinergic burden that makes them inappropriate for older adults.</p>
+  <p class="a"><strong>But not all sleep antihistamines are the same.</strong> Doxepin at 3–6 mg is <em>also</em> an antihistamine, but a highly selective one: it's ~775× more potent at the H1 receptor than diphenhydramine, so a tiny dose (6 mg vs. ZZZquil's 50 mg of diphenhydramine) achieves H1 blockade without engaging the muscarinic receptors that cause the cognitive, urinary, and fall side effects. The difference between the right kind and the wrong kind of antihistamine matters more than the category label.</p>
+  <p class="a"><strong>And there are entirely non-antihistamine sleep mechanisms</strong> too. Melatonin and ramelteon work on circadian (MT1/MT2) receptors. The DORA class (Dayvigo, Belsomra, Quviviq) blocks orexin/hypocretin — a wake-promoting peptide system completely separate from histamine. Z-drugs and benzodiazepines work on GABA-A receptors. So Dad's "most sleep aids are antihistamines" generalization is true for the over-the-counter aisle, but the prescription landscape has genuinely different pharmacology — including the H1-selective version (doxepin 6 mg) that's already part of his regimen.</p>
+</div>
+
+<div class="section-label">What everyone agrees on (shared ground)</div>
+<div class="neutral-block">
+  <ul>
+    <li><strong>Sleep is foundational.</strong> Julane's framing on this is correct — nighttime hyperarousal and 4 AM awakening with dread are real symptoms that need addressing. The disagreement among providers and within the literature is about <em>which</em> agent and on <em>what</em> timeline, not whether sleep matters.</li>
+    <li><strong>The IV ketamine restart is itself a sleep intervention.</strong> Published evidence (Rodrigues 2022, Boesjes 2026) supports that ketamine improves sleep architecture in TRD responders — including the early-morning-waking pattern specifically. Sleep improvement within 24 hours of the first IV session is a known predictor of overall antidepressant response and is worth tracking from session #1.</li>
+    <li><strong>Behavioral and environmental factors deserve as much weight as pharmacology.</strong> Consistent wake time, morning bright light, cool dark room, no caffeine after noon, and explicit cognitive work on not catastrophizing about each night's sleep all matter materially. For a semi-retired psychologist, CBT-I principles may be unusually accessible.</li>
+    <li><strong>The June neurology evaluation reshapes the picture.</strong> If the evaluation is reassuring on the broader questions it's examining, the DORA class becomes a defensible "next step" if doxepin + melatonin proves insufficient. If the evaluation characterizes the picture more specifically, melatonin remains the primary RBD agent, DORAs require careful risk-benefit discussion, and rivastigmine (a cholinesterase inhibitor) may enter the conversation for both cognition and RBD. Either way, the answer is clearer after June than now.</li>
+    <li><strong>If ketamine produces dramatic mood response</strong> (as in February), sleep may improve substantially as a downstream effect — potentially allowing simplification of the sleep regimen rather than expansion. Don't over-medicate against a problem the upstream treatment may resolve.</li>
+  </ul>
+</div>
+
+<div class="section-label">Recommended next steps</div>
+<ol class="next-steps">
+  <li><strong>Continue doxepin 6 mg HS as the sleep anchor</strong> through the ketamine course and to the June neurology evaluation. Don't titrate above 6 mg.</li>
+  <li><strong>Add (or titrate) melatonin to 3–5 mg HS</strong>, USP-verified product, extended-release if available. Start tonight; review effect over the next 1–2 weeks.</li>
+  <li><strong>Begin CBT-I now</strong> — digital options (Insomnia Coach app from VA, free; or SleepEZ) lower the barrier. Focus on stimulus control and cognitive restructuring while depression is active; layer in sleep restriction as ketamine response builds.</li>
+  <li><strong>Add morning bright light therapy</strong> — 10,000 lux for 20–30 minutes on waking, or 15–20 minutes of outdoor light in the first hour up. Directly targets the 4 AM pattern.</li>
+  <li><strong>Keep trazodone 50 mg PRN as ongoing rescue.</strong> Don't make it daily ongoing (rescue use only). The short bridge uptitration to 75 mg HS for the three nights before 5/18 is the one acceptable exception (see handout #11); after the bridge, back to 50 mg PRN.</li>
+  <li><strong>Don't introduce</strong> ZZZquil, Benadryl, Unisom, hydroxyzine, zolpidem (Ambien), eszopiclone (Lunesta), or any benzodiazepine — including klonopin. Mirtazapine deferred pending the antidepressant decision.</li>
+  <li><strong>Track sleep change at every ketamine session</strong> — sleep improvement within 24 hours of the first session is a known signal of broader antidepressant response (Wang 2021, Rodrigues 2022).</li>
+  <li><strong>Revisit the DORA question after June neurology.</strong> If Lewy-spectrum is ruled out and sleep maintenance is still a problem after the ketamine course, daridorexant (Quviviq) is the most defensible DORA in Dad's profile and the next-step conversation belongs with the K Clinic psychiatrist or sleep medicine.</li>
+</ol>
+
+<div class="bottom-line">
+  <span class="label">Bottom line</span>
+  The sleep aid landscape for Dad is narrower than the OTC and TV-ad picture suggests — most of the "common" options carry profile-specific concerns that move them off-list. What's left is a coherent shortlist: doxepin 6 mg as anchor, melatonin 3–5 mg as complementary add, CBT-I and morning bright light as non-pharmacologic adjuncts, trazodone 50 mg as rescue only, and the IV ketamine course itself as the main upstream intervention. DORAs (especially daridorexant) are deferred-but-defensible after June neurology if needed. The ZZZquil/Benadryl/Unisom/klonopin/Ambien category is firmly off the table — not because of generic geriatric caution, but because of converging Dad-specific factors that make each one a worse-than-baseline trade.
+</div>
+
+<div class="back-header">Key Studies &amp; Findings</div>
+<div class="back-subhead">Ranked by authority · Each citation summarized for how it applies to Dad's case</div>
+
+<div class="tier-header">Tier 1 — Major Clinical Guidelines <span class="tier-stars">★★★★★</span></div>
+
+<div class="citation">
+  <div class="cite-title">Arnold MJ. Beers Criteria for Inappropriate Medication Use in Older Adults: Update From the American Geriatrics Society.</div>
+  <div class="cite-source">Am Fam Physician 2024;109:374–375. Read <a href="https://pubmed.ncbi.nlm.nih.gov/38648761/" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>The 2023 AGS Beers Criteria explicitly list first-generation antihistamines (diphenhydramine, doxylamine, hydroxyzine), benzodiazepines (including clonazepam), and Z-drugs (zolpidem, eszopiclone, zaleplon) as "avoid" in older adults. Doxepin &gt; 6 mg/day is flagged as strongly anticholinergic; doxepin ≤ 6 mg/day is acceptable.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The authoritative geriatric prescribing reference. Anchors the rejection of the entire OTC antihistamine category, klonopin, and Z-drugs. Also anchors the doxepin dose ceiling at 6 mg.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Steinman MA. Alternative Treatments to Selected Medications in the 2023 American Geriatrics Society Beers Criteria.</div>
+  <div class="cite-source">J Am Geriatr Soc 2025;73:2657–2677. Read <a href="https://doi.org/10.1111/jgs.19500" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>The companion alternatives document to the 2023 AGS Beers Criteria. Names three "safer" pharmacologic options for insomnia in older adults: low-dose doxepin (≤6 mg), DORAs (suvorexant, lemborexant, daridorexant), and ramelteon. Notes "insufficient evidence to recommend mirtazapine" or trazodone for insomnia in older adults. CBT-I is recommended first-line.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The geriatric specialty consensus on what should replace the medications it tells you to avoid. Confirms doxepin 6 mg as anchor, supports the DORA-as-future-option framing, supports CBT-I as first-line, and explicitly cautions against mirtazapine and trazodone as long-term insomnia agents.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Howell M, Avidan AY et al. Management of REM Sleep Behavior Disorder: AASM Clinical Practice Guideline.</div>
+  <div class="cite-source">J Clin Sleep Med 2023;19:759–768. Read <a href="https://doi.org/10.5664/jcsm.10424" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Conditional recommendation for immediate-release melatonin (start 3 mg, titrate in 3 mg increments up to 15 mg) for both isolated and secondary RBD. Melatonin is preferred over clonazepam in older patients and those with neurodegenerative disease due to its benign side-effect profile. Clonazepam carries daytime sleepiness, dizziness, cognitive impairment, and postural instability concerns in elderly.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Anchors the melatonin 3–5 mg recommendation and the rejection of clonazepam in Dad's exact profile. The dedicated RBD guideline itself prefers melatonin in his age and disease context.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Morin CM, Buysse DJ. Management of Insomnia.</div>
+  <div class="cite-source">NEJM 2024;391:247–258. Read <a href="https://doi.org/10.1056/NEJMcp2305655" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Current NEJM clinical review. Identifies low-dose doxepin and orexin antagonists as the two pharmacologic classes with the most favorable safety profile in older adults. CBT-I is first-line; pharmacotherapy is augmentation. Z-drugs and benzodiazepines carry meaningful fall and cognitive risks.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Frames the doxepin anchor + CBT-I primacy that the recommendations rest on, and confirms that the most-asked-about alternatives (Z-drugs, OTC antihistamines) are not in the preferred set for older adults.</div>
+</div>
+
+<div class="tier-header">Tier 2 — Major RCTs and Mechanism <span class="tier-stars">★★★★</span></div>
+
+<div class="citation">
+  <div class="cite-title">Scharf M, Rogowski R et al. Efficacy and Safety of Doxepin 1 mg, 3 mg, and 6 mg in Elderly Patients With Primary Insomnia.</div>
+  <div class="cite-source">J Clin Psychiatry 2008;69:1557–1564. Read <a href="https://doi.org/10.4088/jcp.v69n1005" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Doxepin 1, 3, and 6 mg in adults ≥65 with primary insomnia produced dose-related improvements in wake time after sleep onset, total sleep time, and sleep efficiency — including the final third of the night. Side-effect profile comparable to placebo at all three doses.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The trial that established efficacy of low-dose doxepin for Dad's specific complaint (early-morning awakening). The "all thirds of the night" finding is directly relevant.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Nguyen PV, Dang-Vu TT et al. Mirtazapine for Chronic Insomnia in Older Adults: A Randomised Double-Blind Placebo-Controlled Trial — the MIRAGE Study.</div>
+  <div class="cite-source">Age and Ageing 2025;54:afaf050. Read <a href="https://doi.org/10.1093/ageing/afaf050" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Mirtazapine 7.5 mg in adults ≥65 with chronic insomnia significantly reduced ISI scores (mean change −6.5 vs. −2.9 placebo, p=0.003) with improvements in WASO, total sleep time, and sleep efficiency. Mirtazapine has potent H1 antagonism but low anticholinergic equivalence.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Supports mirtazapine 7.5 mg as a theoretically attractive option — but Dad's prior agitation reaction (12/2025) is decisive against retrial at this time. Worth revisiting only if the antidepressant strategy specifically calls for it.</div>
+</div>
+
+<div class="tier-header">Tier 3 — Systematic Reviews and Patient-Specific Context <span class="tier-stars">★★★</span></div>
+
+<div class="citation">
+  <div class="cite-title">Raheel K, See QR et al. Orexin and Sleep Disturbances in Alpha-Synucleinopathies: A Systematic Review.</div>
+  <div class="cite-source">Current Neurology and Neuroscience Reports 2024;24:389–412. Read <a href="https://doi.org/10.1007/s11910-024-01359-6" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Systematic review of the orexin system in alpha-synucleinopathies (Parkinson's, Lewy body dementia, multiple system atrophy). In RBD and early PD, orexin levels may be adaptively increased, declining in later disease stages. The orexin system is actively involved in synucleinopathy pathophysiology rather than passively affected.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The specific mechanistic question about DORAs given the neurology picture under evaluation. Pharmacologically blocking the orexin system in this context is unstudied; the underlying biology raises questions about effects on the broader neurological trajectory that are better answered with neurology input first. This is why DORAs should wait until after the June evaluation.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">McIntyre RS, Wong S et al. Association Between Dual Orexin Receptor Antagonists and Suicidality: FAERS Analysis.</div>
+  <div class="cite-source">Expert Opinion on Drug Safety 2025;24:753–757. Read <a href="https://doi.org/10.1080/14740338.2024.2361300" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>2025 FDA Adverse Event Reporting System analysis of the three DORAs. No significantly increased reporting odds for suicidal ideation, depression, or suicide attempts for any of the three DORAs vs. trazodone. All three carry identical FDA-label warnings for worsening depression.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Counters the "lemborexant is cleanest on depression" framing — the three DORAs don't differ meaningfully on the depression-signal axis, so the agent choice (if a DORA is pursued later) turns on pharmacokinetics and REM effect, not depression risk. Daridorexant's shorter half-life and lower REM augmentation make it more defensible in Dad's profile.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Albert SM, Roth T et al. Sleep Health and Appropriate Use of OTC Sleep Aids in Older Adults — Recommendations of a Gerontological Society of America Workgroup.</div>
+  <div class="cite-source">The Gerontologist 2017;57:163–170. Read <a href="https://doi.org/10.1093/geront/gnv139" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Over 50% of older adults using OTC sleep aids are taking diphenhydramine or doxylamine, and most are unaware of the safety risks. The GSA workgroup explicitly recommends against these products in older adults due to anticholinergic burden, fall risk, and cognitive concerns. ZZZquil and Unisom SleepTabs are the most common OTC offenders.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Directly answers Dad's ZZZquil question. The geriatric specialty society guidance is unambiguous — these products are inappropriate for his age and profile.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Richardson K, Savva GM et al. Non-Benzodiazepine Hypnotic Use for Sleep Disturbance in People Aged Over 55 Years Living With Dementia: A Series of Cohort Studies.</div>
+  <div class="cite-source">Health Technology Assessment 2021;25:1–202. Read <a href="https://doi.org/10.3310/hta25010" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Z-drug use in adults ≥55 with dementia is associated with dose-dependent increases in fracture risk (HR 1.40) and hip fracture (HR 1.59). Risks rise sharply with chronic use.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The most relevant population-cohort evidence for Z-drug risks in Dad's age and profile. Anchors the "avoid for ongoing use" recommendation for Ambien, Lunesta, and Sonata.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Furukawa Y, Nagaoka D et al. Cognitive Behavioral Therapy for Insomnia to Treat Major Depressive Disorder With Comorbid Insomnia: A Systematic Review and Meta-Analysis.</div>
+  <div class="cite-source">J Affect Disord 2024;367:359–366. Read <a href="https://doi.org/10.1016/j.jad.2024.09.017" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Meta-analysis of 19 trials (4,808 participants) of CBT-I in patients with comorbid MDD. Depression response OR 2.28; insomnia remission OR 3.57. Depression improvement extended beyond the sleep domain.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The evidence base supporting CBT-I as a non-pharmacologic intervention with dual benefit for both Dad's insomnia and his depression — important because the same intervention is doing work on two axes that are otherwise being treated with separate medications.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Maruani J, Reynaud E et al. Efficacy of Melatonin and Ramelteon for the Acute and Long-Term Management of Insomnia Disorder in Adults: A Systematic Review and Meta-Analysis.</div>
+  <div class="cite-source">J Sleep Res 2023;32:e13939. Read <a href="https://doi.org/10.1111/jsr.13939" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Melatonin produces modest but consistent improvements in sleep latency (~7 min reduction) and total sleep time (~8 min increase) vs. placebo. Effect size is largest in older adults. Safety profile is excellent. Ramelteon's effects are predominantly on sleep onset, not maintenance.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The melatonin uptitration to 3–5 mg is anchored here — modest effect size individually but favorable safety profile and additive value on top of doxepin. Also explains why ramelteon is low-yield in Dad's profile (his complaint is maintenance, not onset).</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Rodrigues NB et al. Do Sleep Changes Mediate the Anti-Depressive and Anti-Suicidal Response of Intravenous Ketamine in Treatment-Resistant Depression?</div>
+  <div class="cite-source">J Sleep Res 2022;31:e13400. Read <a href="https://doi.org/10.1111/jsr.13400" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Study of 323 patients with TRD receiving IV ketamine. Improvement in early-morning waking was a significant mediator of both the antidepressant and anti-suicidal effects of ketamine — each one-point improvement in total sleep score associated with ~3.3× higher odds of treatment response.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The IV ketamine restart on 5/18 is itself a sleep intervention — and one that targets Dad's exact complaint pattern. A major reason to keep the sleep regimen lean and not over-engineer pharmacologic intervention against a problem the upstream treatment may resolve.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Pottie K, Thompson W et al. Deprescribing Benzodiazepine Receptor Agonists: Evidence-Based Clinical Practice Guideline.</div>
+  <div class="cite-source">Can Fam Physician 2018;64:339–351. Read <a href="https://pubmed.ncbi.nlm.nih.gov/29760253/" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>The Bruyère Research Institute clinical practice guideline for tapering benzodiazepine receptor agonists in adults ≥65. Recommends gradual taper after &gt;4 weeks of use and emphasizes consolidating taper gains. Notes that restarting a benzodiazepine after a successful taper — particularly a longer-acting agent — typically produces a harder taper trajectory the second time, which is why preserving completed tapers is preferred over restart-and-retaper cycles.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The reasoning for keeping klonopin and other benzodiazepines off the table for Dad. The recently completed Ativan taper is worth protecting; restarting any benzo would mean repeating that taper work later with a harder trajectory.</div>
+</div>
+
+</body>
+</html>

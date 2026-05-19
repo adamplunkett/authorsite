@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Decision Aid — Sleep relief for the next 2–3 nights — 2026-05-15</title>
+<style>
+  @page { size: letter; margin: 0.55in 0.65in; }
+  :root {
+    --navy: #1a3a5c; --navy-dark: #0f2640;
+    --against-accent: #8b2c2c; --for-accent: #2c5e3f;
+    --text: #1f1f1f; --text-muted: #5a5a5a;
+    --rule: #c8c8c8; --rule-strong: #6a6a6a;
+    --tint: #f3f6f3; --tint-pro: #eef3ee; --tint-con: #f7f4f0;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    font-family: "Charter", "Georgia", "Times New Roman", serif;
+    font-size: 9.75pt; line-height: 1.42; color: var(--text);
+    -webkit-font-smoothing: antialiased;
+  }
+  .doc-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    padding-bottom: 6pt; border-bottom: 1.5pt solid var(--navy); margin-bottom: 14pt;
+  }
+  .doc-header .title {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 600; font-size: 15pt; line-height: 1.2;
+    color: var(--navy-dark); letter-spacing: -0.01em;
+  }
+  .doc-header .meta {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 7.5pt; color: var(--text-muted); text-align: right;
+    letter-spacing: 0.03em; line-height: 1.5;
+  }
+  .section-label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 7.5pt; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.14em; color: var(--navy); margin: 14pt 0 5pt 0;
+  }
+  .section-label.first { margin-top: 0; }
+  .key-message {
+    border-left: 4pt solid var(--for-accent); background: var(--tint);
+    padding: 9pt 13pt; margin: 0 0 10pt 0;
+  }
+  .key-message p {
+    margin: 0;
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 10.5pt; line-height: 1.42; font-weight: 500; color: var(--text);
+  }
+  .context { font-size: 9.5pt; line-height: 1.5; color: var(--text); margin: 0 0 4pt 0; }
+  table.evidence {
+    width: 100%; border-collapse: collapse; margin: 4pt 0 8pt 0; table-layout: fixed;
+  }
+  table.evidence thead th {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 600; font-size: 8.25pt; padding: 6pt 9pt; text-align: left;
+    background: var(--navy); color: white; letter-spacing: 0.02em;
+  }
+  table.evidence thead th.pro { background: var(--for-accent); }
+  table.evidence thead th.con { background: var(--against-accent); }
+  table.evidence td {
+    padding: 6pt 9pt; vertical-align: top;
+    border-bottom: 0.5pt solid var(--rule);
+    font-size: 9pt; line-height: 1.4;
+  }
+  table.evidence td.pro { background: var(--tint-pro); }
+  table.evidence td.con { background: var(--tint-con); }
+  table.evidence tbody tr:last-child td { border-bottom: none; }
+  table.evidence td strong { color: var(--navy-dark); }
+  .strength-row {
+    display: flex; align-items: baseline; margin: 6pt 0 2pt 0; white-space: nowrap;
+  }
+  .strength-label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 8.5pt; font-weight: 600; color: var(--text);
+    margin-right: 10pt; white-space: nowrap;
+  }
+  .stars { color: var(--for-accent); letter-spacing: 0.12em; font-size: 11pt; white-space: nowrap; }
+  .strength-rationale {
+    font-size: 8.5pt; color: var(--text-muted); font-style: italic;
+    margin: 2pt 0 6pt 0; line-height: 1.4;
+  }
+  ol.next-steps {
+    margin: 4pt 0 8pt 0; padding-left: 18pt; font-size: 9.25pt; line-height: 1.4;
+  }
+  ol.next-steps li { margin-bottom: 4pt; padding-left: 3pt; }
+  ol.next-steps li::marker {
+    color: var(--navy); font-weight: 700;
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+  }
+  .bottom-line {
+    border-top: 1pt solid var(--rule-strong); padding-top: 6pt; margin-top: 10pt;
+    font-style: italic; font-size: 9pt; color: var(--text); line-height: 1.4;
+  }
+  .bottom-line .label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-style: normal; font-weight: 700; font-size: 7.5pt;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--navy); margin-right: 6pt;
+  }
+  .neutral-block {
+    background: #f3f3f1; border-left: 3pt solid #888;
+    padding: 9pt 14pt 6pt 14pt; margin: 4pt 0 8pt 0;
+  }
+  .neutral-block ul { list-style: none; padding: 0; margin: 0; }
+  .neutral-block li {
+    font-size: 9pt; line-height: 1.45; margin-bottom: 6pt;
+    padding-left: 14pt; position: relative;
+  }
+  .neutral-block li::before {
+    content: "•"; position: absolute; left: 0; color: #888; font-weight: bold;
+  }
+  .neutral-block li:last-child { margin-bottom: 0; }
+  .neutral-block strong { color: var(--navy-dark); }
+  .back-header {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 14pt; font-weight: 600; color: var(--navy-dark);
+    border-bottom: 1.5pt solid var(--navy); padding-bottom: 5pt;
+    margin-top: 18pt; margin-bottom: 4pt;
+  }
+  .citation, .tier-header { page-break-inside: avoid; }
+  .back-subhead {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 8pt; color: var(--text-muted); margin-bottom: 14pt; letter-spacing: 0.03em;
+  }
+  .tier-header {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 9pt; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.12em; color: var(--navy);
+    margin: 11pt 0 6pt 0; padding-bottom: 2pt; border-bottom: 0.5pt solid var(--rule);
+  }
+  .tier-header .tier-stars { float: right; color: var(--navy); font-size: 10pt; letter-spacing: 0.04em; }
+  .citation {
+    margin: 0 0 9pt 0; padding-left: 9pt; border-left: 2pt solid var(--rule);
+    font-size: 8.75pt; line-height: 1.4;
+  }
+  .citation .cite-title {
+    font-weight: 700; color: var(--navy-dark);
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif; font-size: 8.75pt;
+  }
+  .citation .cite-source { color: var(--text-muted); font-style: italic; font-size: 8.5pt; }
+  .citation .cite-finding, .citation .cite-apply { margin-top: 2pt; font-size: 8.5pt; }
+  .citation .label-inline {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 700; font-size: 7pt; text-transform: uppercase;
+    letter-spacing: 0.08em; color: var(--navy); margin-right: 4pt;
+  }
+  .citation .cite-link {
+    color: var(--navy); text-decoration: underline;
+    text-decoration-thickness: 0.4pt; text-underline-offset: 1.5pt;
+    font-style: normal; font-weight: 500; margin-left: 2pt;
+  }
+  .citation .cite-link:hover { color: var(--navy-dark); }
+</style>
+</head>
+<body>
+
+<div class="doc-header">
+  <div class="title">Sleep relief for the next 2–3 nights — what to do, what to avoid</div>
+  <div class="meta">
+    Decision Aid · 2026-05-15<br>
+    For Dad, Mom, Dr. Rubin, the K Clinic<br>
+    psychiatrist, Julane &amp; the family team
+  </div>
+</div>
+
+<div class="section-label first">Recommendation</div>
+<div class="key-message">
+  <p>For the next 2–3 nights before the May 18 IV ketamine restart, the strongest move is to <strong>optimize within Dad's existing stack</strong> rather than add a new agent. Specifically: take trazodone <strong>at 75 mg HS each of the three bridge nights</strong> (a temporary uptitration from the usual 50 mg PRN — return to PRN dosing after the bridge), titrate melatonin from <strong>3 → 5 mg HS</strong> (USP-verified, extended-release if available), continue doxepin 6 mg HS unchanged, and tighten sleep hygiene. <strong>Don't add ZZZquil, Benadryl, or Unisom</strong> — these are explicitly contraindicated in Dad's profile. <strong>Don't add klonopin</strong> — given the recent Ativan taper, ongoing driving, and klonopin's long half-life, it's not the right fit. <strong>Don't add zolpidem (Ambien) or eszopiclone (Lunesta)</strong> — fall risk and parasomnia exacerbation are real in his profile. The ketamine restart on 5/18 is itself a sleep intervention — in Dad's February-responder profile, sleep typically improves within the first 1–2 IV sessions.</p>
+</div>
+
+<div class="section-label">Why this matters for Dad specifically</div>
+<p class="context">Dad called 5/15 asking for "a day or two of relief" — a real and important request after weeks of severe early-morning waking. But the question turns on three clinical facts about the next 72 hours: (1) any new sleep agent introduced now will have its effects entangled with the IV ketamine restart on 5/18 — the family loses the ability to attribute what's working; (2) most candidate agents carry next-day cognitive or motor effects that are amplified by his age and ongoing driving; (3) the obvious "fast" options (klonopin or restarting Ativan) would undo the gains of the recently completed Ativan taper. The right strategy for these 3 nights is to push as much benefit as possible from agents already in his stack at known-safe doses, tighten the non-pharmacologic factors, and steer clear of the OTC and prescription options that aren't right for his profile. The broader 1–3 month sleep landscape question is addressed in companion handout #12.</p>
+
+<div class="section-label">The evidence</div>
+<table class="evidence">
+  <thead>
+    <tr>
+      <th class="pro" style="width: 50%;">What to do for the next 2–3 nights</th>
+      <th class="con" style="width: 50%;">What NOT to add</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="pro"><strong>Take trazodone 75 mg HS each of the three bridge nights (5/15, 5/16, 5/17) — a temporary uptitration from the usual 50 mg PRN.</strong> A modest dose jump that's incremental, not a category change. It stays well below the antidepressant range (150–400 mg), keeps the serotonergic burden manageable on top of duloxetine, and stays at the lower end of the QT-relevant dose curve for his LAFB + bradycardia profile. Taking it consistently across the three bridge nights (rather than as-needed) creates more reliable sleep architecture for that short window. After the bridge, return to the 50 mg PRN pattern (see handout #12 for the ongoing landscape).</td>
+      <td class="con"><strong>ZZZquil (diphenhydramine), Benadryl, Unisom (doxylamine) — even a single dose.</strong> Both are on the AGS Beers Criteria list as "avoid" in older adults. They are strongly anticholinergic, would worsen brain fog acutely, work against the cholinergic system the pending neurology workup is helping evaluate, carry urinary retention risk on top of his alfuzosin for BPH, and elevate fall risk. Tolerance also develops fast, so even 2–3 nights of relief degrades quickly.</td>
+    </tr>
+    <tr>
+      <td class="pro"><strong>Titrate melatonin from 3 mg to 5 mg HS, USP-verified product.</strong> Negligible drug-interaction risk in his stack. Melatonin acts on MT1/MT2 receptors (circadian and sleep-promoting), a mechanism complementary to doxepin's H1 antagonism — so it's not pharmacologically redundant. AASM 2023 supports immediate-release melatonin for RBD (dosing 3 mg titrated up to 15 mg). Older adults have endogenous melatonin decline, so titrating upward has a clinical rationale beyond placebo effect. If a verified extended-release formulation is available, it's preferred for the sleep-maintenance picture.</td>
+      <td class="con"><strong>Klonopin (clonazepam) — even at 0.25 mg HS.</strong> Not the right fit. The Ativan taper was recently completed and that progress is worth protecting — reintroducing a benzodiazepine, including a longer-acting one like klonopin, would mean redoing that work later, and klonopin's long half-life would make a future taper trajectory harder than the recent one. The same 30–40 hour half-life also means measurable next-day cognitive and motor effects, which is a real safety consideration for an ongoing driver in his age group. Geriatric prescribing guidelines (AGS Beers) flag it as not appropriate at his age. The AASM RBD guideline itself prefers melatonin over clonazepam in older adults whose broader neurologic picture is being evaluated, which is the situation here.</td>
+    </tr>
+    <tr>
+      <td class="pro"><strong>Continue doxepin 6 mg HS unchanged.</strong> Don't titrate even briefly. The AGS Beers Criteria explicitly flag doxepin &gt;6 mg/day as having strong anticholinergic properties — at 3–6 mg the drug is highly H1-selective and clean; at 10 mg it starts engaging muscarinic, alpha-1, and serotonin reuptake systems. The 6 mg dose already provides near-maximal H1 occupancy, so the uptitration buys minimal sleep benefit at meaningful side-effect cost.</td>
+      <td class="con"><strong>Zolpidem (Ambien), eszopiclone (Lunesta), zaleplon.</strong> The Z-drug class roughly triples hip-fracture risk in older adults. Parasomnia exacerbation — including sleepwalking and complex sleep behaviors — is well-documented and is a specific concern in a patient with formal RBD where the REM-atonia mechanism is already abnormal. Even 2–3 nights carry non-trivial risk of a fall, a complex sleep event, or a cognitive event. Eszopiclone has FDA approval for sleep maintenance, but the class-level safety concerns don't disappear at the lower dose.</td>
+    </tr>
+    <tr>
+      <td class="pro"><strong>Strict sleep hygiene for the three bridge nights.</strong> Consistent wake time (set an alarm even if he wakes earlier — getting up at the same hour anchors circadian rhythm). No screens after 8 PM. Cool, dark room. No caffeine after noon. No daytime napping (preserves sleep pressure for the night). Avoid catastrophizing about each night's sleep — the anxiety about not sleeping is a recognized driver of waking. Behavioral discipline is the single highest-yield intervention available in the next 72 hours.</td>
+      <td class="con"><strong>Hydroxyzine 25–50 mg PRN.</strong> Beers-listed first-generation antihistamine with substantial anticholinergic burden. Cumulative load adds to Dad's brain fog and may interact unfavorably with his possible Lewy prodrome. Sleep benefit is not superior to trazodone at the doses commonly used.</td>
+    </tr>
+    <tr>
+      <td class="pro"><strong>Morning bright light exposure.</strong> 15–20 minutes of outdoor light in the first hour after waking helps reset circadian phase. For someone whose specific complaint is 4 AM waking — a pattern often associated with circadian phase advance in older adults and depression — this is a directly targeted intervention with no side effects.</td>
+      <td class="con"><strong>Mirtazapine 7.5 mg trial.</strong> Dad's prior mirtazapine trial (12/2025) caused agitation — a recognized paradoxical reaction. Adding it 3 days before the ketamine restart muddies the antidepressant decision and confounds the ketamine attribution. The MIRAGE trial supports mirtazapine 7.5 mg for elderly insomnia generally, but Dad's specific prior reaction is decisive. Defer until the antidepressant strategy is settled (see handout #09).</td>
+    </tr>
+    <tr>
+      <td class="pro"><strong>The 5/18 IV ketamine restart is itself a sleep intervention.</strong> In TRD responders — and Dad's February response qualifies him — sleep improvement appears within 24 hours of the first IV session, and the early-morning-waking pattern specifically tends to resolve within the first 1–2 sessions. The Rodrigues 2022 study found that improvement in early-morning waking was a significant mediator of ketamine's antidepressant effect. Watch for it.</td>
+      <td class="con"><strong>Restarting Ativan, even at 0.5 mg HS.</strong> Would undo the gains of the recently completed taper. The same reasoning that puts klonopin off the table applies more directly here. The current baseline of being off all benzodiazepines is worth preserving through the bridge.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="strength-row">
+  <span class="strength-label">Strength of evidence for this bridge strategy:</span>
+  <span class="stars">★★★★</span>
+</div>
+<div class="strength-rationale">The "do" recommendations (trazodone uptitration + melatonin titration) have moderate evidence individually; their combined effect for a 2–3 night bridge in Dad's exact profile isn't directly trialed. The "don't" recommendations are anchored in strong guidelines (AGS Beers, AASM RBD), the recently completed Ativan taper, and unambiguous mechanism (anticholinergic burden given the pending neurology workup). The asymmetry is intentional: the strongest evidence is for what to avoid, and the "do" side is a defensible default within that constraint.</div>
+
+<div class="section-label">A defensible alternative: standing pat</div>
+<div class="neutral-block">
+  <ul>
+    <li><strong>The "no changes" interpretation is also defensible.</strong> Doxepin 6 mg has only been at therapeutic dose for ~10 days, and sleep-maintenance response to doxepin continues to build over 2–4 weeks. The partial benefit Dad reports may still be improving. If the family prefers to leave the stack entirely unchanged for the next 3 nights — keep trazodone 50 mg PRN as before, leave melatonin at 3 mg — that's a reasonable choice too. The uptitrations above are a modest optimization, not a necessity.</li>
+    <li><strong>The ketamine restart is the main event.</strong> Anything done in the next 72 hours is a bridge, not a treatment. The IV restart on 5/18 is the intervention that's likely to move the picture — the 2–3 nights before it should be managed conservatively, not optimized aggressively.</li>
+    <li><strong>Behavioral and environmental factors deserve as much attention as pharmacology.</strong> Consistent wake time, morning light, room temperature, and not catastrophizing about each night's sleep all matter materially. A 76-year-old's sleep architecture responds to behavioral discipline at least as readily as to medication adjustments — especially in the short window of a 3-night bridge.</li>
+    <li><strong>Dad's instinct about antihistamines is mostly right — but doxepin 6 mg is the right kind of antihistamine.</strong> Most OTC sleep aids (ZZZquil, Benadryl, Unisom) are antihistamines, and Dad is right to be skeptical of them. Doxepin at 3–6 mg is also an antihistamine — but a highly H1-selective one with negligible anticholinergic burden, ~775× more potent at H1 than diphenhydramine. The difference between the right kind and the wrong kind matters more than the category.</li>
+  </ul>
+</div>
+
+<div class="section-label">Recommended next steps</div>
+<ol class="next-steps">
+  <li><strong>Start trazodone 75 mg HS tonight (5/15)</strong> and continue 5/16 + 5/17. Take consistently at the same hour each night. <strong>After 5/17, return to the 50 mg PRN pattern</strong> as before — the bridge is a short-window uptitration, not a permanent change.</li>
+  <li><strong>Titrate melatonin from 3 mg to 5 mg HS tonight.</strong> Confirm USP-verified product (look for the USP Verified Mark on the bottle); if currently using a non-USP brand, consider switching for consistent dosing.</li>
+  <li><strong>Continue doxepin 6 mg HS unchanged.</strong></li>
+  <li><strong>Don't introduce any new sleep agent</strong> — no ZZZquil, no Benadryl, no Unisom, no klonopin, no Ambien, no Lunesta, no hydroxyzine, no mirtazapine. If Dad goes to CVS, skip the sleep aisle entirely.</li>
+  <li><strong>Do not restart Ativan</strong> — even half a 0.5 mg tablet. The taper gains are worth protecting through the bridge.</li>
+  <li><strong>Sleep hygiene reset</strong>: consistent wake time (alarm at the same hour), 15–20 minutes of outdoor morning light, no caffeine after noon, cool dark room, no screens after 8 PM, no daytime naps.</li>
+  <li><strong>At the 5/18 IV ketamine session</strong>, note any change in overnight sleep in the 24 hours after the infusion — this is a known signal of ketamine response and worth tracking.</li>
+  <li><strong>At the 5/19 Rubin visit</strong>, review the bridge strategy and discuss the broader 1–3 month sleep landscape (see companion handout #12).</li>
+</ol>
+
+<div class="bottom-line">
+  <span class="label">Bottom line</span>
+  Dad's instinct to want relief is right and validated. The right move for the next 2–3 nights is to push trazodone slightly higher (75 mg HS for these three nights, then back to 50 mg PRN) and melatonin slightly higher within his existing stack — not to add a new agent that will entangle with the ketamine restart, undo the recent Ativan taper, or expose him to anticholinergic OTC sleep aids that aren't appropriate for his profile. The ketamine restart on 5/18 is the main intervention; the 3 bridge nights should be managed conservatively, not aggressively.
+</div>
+
+<div class="back-header">Key Studies &amp; Findings</div>
+<div class="back-subhead">Ranked by authority · Each citation summarized for how it applies to Dad's case</div>
+
+<div class="tier-header">Tier 1 — Major Clinical Guidelines <span class="tier-stars">★★★★★</span></div>
+
+<div class="citation">
+  <div class="cite-title">Arnold MJ. Beers Criteria for Inappropriate Medication Use in Older Adults: Update From the American Geriatrics Society.</div>
+  <div class="cite-source">Am Fam Physician 2024;109:374–375. Read <a href="https://pubmed.ncbi.nlm.nih.gov/38648761/" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>The 2023 AGS Beers Criteria explicitly list first-generation antihistamines (diphenhydramine, doxylamine, hydroxyzine) as "avoid" in older adults due to strong anticholinergic properties. Benzodiazepines (including clonazepam) and Z-drugs (zolpidem, eszopiclone) are also "avoid" categories due to fall and cognitive risks. Doxepin &gt; 6 mg/day is flagged as having strong anticholinergic properties; doxepin ≤ 6 mg/day is acceptable.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The authoritative geriatric prescribing reference. Anchors the rejection of ZZZquil/Benadryl/Unisom, hydroxyzine, klonopin, and Z-drugs. Also anchors the "don't titrate doxepin above 6 mg" recommendation.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Howell M, Avidan AY et al. Management of REM Sleep Behavior Disorder: AASM Clinical Practice Guideline.</div>
+  <div class="cite-source">J Clin Sleep Med 2023;19:759–768. Read <a href="https://doi.org/10.5664/jcsm.10424" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Conditional recommendation for immediate-release melatonin (starting 3 mg, titrating in 3 mg increments up to 15 mg) for isolated and secondary RBD. Notes that melatonin is preferred over clonazepam in older patients and those with neurodegenerative disease because it is "only mildly sedating" with reduced risk of confusion, morning drowsiness, and falls.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The melatonin uptitration recommendation is directly anchored here. Also anchors the broader rejection of clonazepam in Dad's profile — the dedicated RBD guideline itself recommends melatonin over clonazepam in his exact age and disease context.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Morin CM, Buysse DJ. Management of Insomnia.</div>
+  <div class="cite-source">NEJM 2024;391:247–258. Read <a href="https://doi.org/10.1056/NEJMcp2305655" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Current NEJM clinical review of insomnia. Identifies low-dose doxepin (3–6 mg) and orexin antagonists as the two pharmacologic classes with the most favorable safety profile in older adults. Z-drugs and benzodiazepines carry meaningful fall and cognitive risks. Recommends CBT-I as first-line treatment with pharmacotherapy as augmentation.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Supports continuing doxepin 6 mg as the anchor and confirms that the alternatives the family is being asked about (ZZZquil, klonopin, Ambien) are not in the recommended set for older adults with Dad's profile.</div>
+</div>
+
+<div class="tier-header">Tier 2 — Major RCTs and Mechanism <span class="tier-stars">★★★★</span></div>
+
+<div class="citation">
+  <div class="cite-title">Scharf M, Rogowski R et al. Efficacy and Safety of Doxepin 1 mg, 3 mg, and 6 mg in Elderly Patients With Primary Insomnia.</div>
+  <div class="cite-source">J Clin Psychiatry 2008;69:1557–1564. Read <a href="https://doi.org/10.4088/jcp.v69n1005" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Randomized double-blind placebo-controlled crossover trial in adults ≥65 with primary insomnia. Doxepin at 1, 3, and 6 mg all produced dose-related improvements in wake time after sleep onset, total sleep time, and sleep efficiency — including during the final third of the night (the early-morning awakening period). Side-effect profile was comparable to placebo.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The trial establishing efficacy of low-dose doxepin for the exact sleep pattern Dad has (early-morning awakening). Confirms 6 mg as the right anchor dose; the lack of meaningful side-effect signal up to 6 mg supports the dose ceiling.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Maruani J, Reynaud E et al. Efficacy of Melatonin and Ramelteon for the Acute and Long-Term Management of Insomnia Disorder in Adults: A Systematic Review and Meta-Analysis.</div>
+  <div class="cite-source">J Sleep Res 2023;32:e13939. Read <a href="https://doi.org/10.1111/jsr.13939" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Meta-analysis of melatonin and ramelteon trials. Melatonin produces modest but consistent improvements in sleep latency (~7 minute reduction) and total sleep time (~8 minute increase) vs. placebo. Safety profile is excellent. Effect size is largest in older adults, where endogenous melatonin decline is more pronounced.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The melatonin uptitration from 3 → 5 mg is anchored in this evidence base — modest individual effect but favorable safety profile, and the additive effect on doxepin is mechanistically rational (different receptor systems).</div>
+</div>
+
+<div class="tier-header">Tier 3 — Systematic Reviews and Patient-Specific Context <span class="tier-stars">★★★</span></div>
+
+<div class="citation">
+  <div class="cite-title">Rodrigues NB et al. Do Sleep Changes Mediate the Anti-Depressive and Anti-Suicidal Response of Intravenous Ketamine in Treatment-Resistant Depression?</div>
+  <div class="cite-source">J Sleep Res 2022;31:e13400. Read <a href="https://doi.org/10.1111/jsr.13400" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Study of 323 patients with TRD receiving IV ketamine. Improvement in early-morning waking was a significant mediator of both the antidepressant and anti-suicidal effects of ketamine — each one-point improvement in total sleep score was associated with ~3.3× higher odds of treatment response.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The 5/18 IV ketamine restart is expected to specifically address Dad's 4 AM awakening pattern. This is a major reason not to add a new sleep agent during the bridge — the ketamine itself is the most likely intervention to actually move the sleep picture.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Albert SM, Roth T et al. Sleep Health and Appropriate Use of OTC Sleep Aids in Older Adults — Recommendations of a Gerontological Society of America Workgroup.</div>
+  <div class="cite-source">The Gerontologist 2017;57:163–170. Read <a href="https://doi.org/10.1093/geront/gnv139" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Over 50% of older adults using OTC sleep aids are taking diphenhydramine or doxylamine, and most are unaware of the safety risks. The Gerontological Society of America workgroup explicitly recommends against these products in older adults due to anticholinergic burden, fall risk, and cognitive concerns. ZZZquil and Unisom SleepTabs are the most common OTC offenders.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Directly addresses Dad's question about ZZZquil. The geriatric specialty society guidance is unambiguous — these products are inappropriate for his age and profile, with the additional concerns of his possible Lewy prodrome and brain fog amplifying the standard caution.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Pottie K, Thompson W et al. Deprescribing Benzodiazepine Receptor Agonists: Evidence-Based Clinical Practice Guideline.</div>
+  <div class="cite-source">Can Fam Physician 2018;64:339–351. Read <a href="https://pubmed.ncbi.nlm.nih.gov/29760253/" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>The Bruyère Research Institute clinical practice guideline for tapering benzodiazepine receptor agonists in adults ≥65. Recommends gradual taper after &gt;4 weeks of use and emphasizes consolidating taper gains. Notes that after a successful taper, restarting a benzodiazepine — particularly a longer-acting agent — typically produces a harder taper trajectory the second time, which is why preserving completed tapers is preferred over restart-and-retaper cycles.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The reasoning for keeping klonopin and other benzodiazepines off the table for the bridge. The recently completed Ativan taper is worth protecting; restarting a benzodiazepine — even a longer-acting one — would mean repeating that taper work later with a harder trajectory.</div>
+</div>
+
+</body>
+</html>

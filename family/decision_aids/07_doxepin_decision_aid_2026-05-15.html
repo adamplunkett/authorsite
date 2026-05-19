@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Decision Aid — Doxepin 6 mg HS — 2026-05-15</title>
+<style>
+  @page {
+    size: letter;
+    margin: 0.55in 0.65in;
+  }
+
+  :root {
+    --navy: #1a3a5c;
+    --navy-dark: #0f2640;
+    --against-accent: #8b2c2c;
+    --for-accent: #2c5e3f;
+    --text: #1f1f1f;
+    --text-muted: #5a5a5a;
+    --rule: #c8c8c8;
+    --rule-strong: #6a6a6a;
+    --tint: #f3f6f3;
+    --tint-pro: #eef3ee;
+    --tint-con: #f7f4f0;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0; padding: 0;
+    font-family: "Charter", "Georgia", "Times New Roman", serif;
+    font-size: 9.75pt; line-height: 1.42; color: var(--text);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .doc-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    padding-bottom: 6pt; border-bottom: 1.5pt solid var(--navy); margin-bottom: 14pt;
+  }
+  .doc-header .title {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 600; font-size: 15pt; line-height: 1.2;
+    color: var(--navy-dark); letter-spacing: -0.01em;
+  }
+  .doc-header .meta {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 7.5pt; color: var(--text-muted); text-align: right;
+    letter-spacing: 0.03em; line-height: 1.5;
+  }
+
+  .section-label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 7.5pt; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.14em; color: var(--navy); margin: 14pt 0 5pt 0;
+  }
+  .section-label.first { margin-top: 0; }
+
+  .key-message {
+    border-left: 4pt solid var(--for-accent); background: var(--tint);
+    padding: 9pt 13pt; margin: 0 0 10pt 0;
+  }
+  .key-message p {
+    margin: 0;
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 10.5pt; line-height: 1.42; font-weight: 500; color: var(--text);
+  }
+
+  .context { font-size: 9.5pt; line-height: 1.5; color: var(--text); margin: 0 0 4pt 0; }
+
+  table.evidence {
+    width: 100%; border-collapse: collapse; margin: 4pt 0 8pt 0; table-layout: fixed;
+  }
+  table.evidence thead th {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 600; font-size: 8.25pt; padding: 6pt 9pt; text-align: left;
+    background: var(--navy); color: white; letter-spacing: 0.02em;
+  }
+  table.evidence thead th.pro { background: var(--for-accent); }
+  table.evidence thead th.con { background: #6a6a6a; }
+  table.evidence td {
+    padding: 6pt 9pt; vertical-align: top;
+    border-bottom: 0.5pt solid var(--rule);
+    font-size: 9pt; line-height: 1.4;
+  }
+  table.evidence td.pro { background: var(--tint-pro); }
+  table.evidence td.con { background: var(--tint-con); }
+  table.evidence tbody tr:last-child td { border-bottom: none; }
+  table.evidence td strong { color: var(--navy-dark); }
+
+  .strength-row {
+    display: flex; align-items: baseline; margin: 6pt 0 2pt 0; white-space: nowrap;
+  }
+  .strength-label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 8.5pt; font-weight: 600; color: var(--text);
+    margin-right: 10pt; white-space: nowrap;
+  }
+  .stars { color: var(--for-accent); letter-spacing: 0.12em; font-size: 11pt; white-space: nowrap; }
+  .strength-rationale {
+    font-size: 8.5pt; color: var(--text-muted); font-style: italic;
+    margin: 2pt 0 6pt 0; line-height: 1.4;
+  }
+
+  ol.next-steps {
+    margin: 4pt 0 8pt 0; padding-left: 18pt; font-size: 9.25pt; line-height: 1.4;
+  }
+  ol.next-steps li { margin-bottom: 4pt; padding-left: 3pt; }
+  ol.next-steps li::marker {
+    color: var(--navy); font-weight: 700;
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+  }
+
+  .bottom-line {
+    border-top: 1pt solid var(--rule-strong); padding-top: 6pt; margin-top: 10pt;
+    font-style: italic; font-size: 9pt; color: var(--text); line-height: 1.4;
+  }
+  .bottom-line .label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-style: normal; font-weight: 700; font-size: 7.5pt;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--navy); margin-right: 6pt;
+  }
+
+  .neutral-block {
+    background: #f3f3f1; border-left: 3pt solid #888;
+    padding: 9pt 14pt 6pt 14pt; margin: 4pt 0 8pt 0;
+  }
+  .neutral-block ul { list-style: none; padding: 0; margin: 0; }
+  .neutral-block li {
+    font-size: 9pt; line-height: 1.45; margin-bottom: 6pt;
+    padding-left: 14pt; position: relative;
+  }
+  .neutral-block li::before {
+    content: "•"; position: absolute; left: 0; color: #888; font-weight: bold;
+  }
+  .neutral-block li:last-child { margin-bottom: 0; }
+  .neutral-block strong { color: var(--navy-dark); }
+
+  .back-header {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 14pt; font-weight: 600; color: var(--navy-dark);
+    border-bottom: 1.5pt solid var(--navy); padding-bottom: 5pt;
+    margin-top: 18pt; margin-bottom: 4pt;
+  }
+  .citation, .tier-header { page-break-inside: avoid; }
+  .back-subhead {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 8pt; color: var(--text-muted); margin-bottom: 14pt; letter-spacing: 0.03em;
+  }
+  .tier-header {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 9pt; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.12em; color: var(--navy);
+    margin: 11pt 0 6pt 0; padding-bottom: 2pt; border-bottom: 0.5pt solid var(--rule);
+  }
+  .tier-header .tier-stars { float: right; color: var(--navy); font-size: 10pt; letter-spacing: 0.04em; }
+  .citation {
+    margin: 0 0 9pt 0; padding-left: 9pt; border-left: 2pt solid var(--rule);
+    font-size: 8.75pt; line-height: 1.4;
+  }
+  .citation .cite-title {
+    font-weight: 700; color: var(--navy-dark);
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif; font-size: 8.75pt;
+  }
+  .citation .cite-source { color: var(--text-muted); font-style: italic; font-size: 8.5pt; }
+  .citation .cite-finding, .citation .cite-apply { margin-top: 2pt; font-size: 8.5pt; }
+  .citation .label-inline {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 700; font-size: 7pt; text-transform: uppercase;
+    letter-spacing: 0.08em; color: var(--navy); margin-right: 4pt;
+  }
+  .citation .cite-link {
+    color: var(--navy); text-decoration: underline;
+    text-decoration-thickness: 0.4pt; text-underline-offset: 1.5pt;
+    font-style: normal; font-weight: 500; margin-left: 2pt;
+  }
+  .citation .cite-link:hover { color: var(--navy-dark); }
+</style>
+</head>
+<body>
+
+<div class="doc-header">
+  <div class="title">Should Dad continue doxepin at 6 mg?</div>
+  <div class="meta">
+    Decision Aid · 2026-05-15 (updated)<br>
+    For Dad, Mom, Dr. Rubin, the K Clinic<br>
+    psychiatrist, Julane &amp; the family team
+  </div>
+</div>
+
+<div class="section-label first">Recommendation</div>
+<div class="key-message">
+  <p>Yes — continue doxepin at 6 mg HS through the ketamine restart and the post-benzo-rebound window. <strong>Do not titrate above 6 mg.</strong> At 3–6 mg, doxepin is highly selective for the sleep-promoting H1 receptor with negligible side-effect burden; above 6 mg, it crosses into broader tricyclic-antidepressant territory (anticholinergic, cardiac conduction, REM-suppressive effects) that would be unsafe in Dad's specific profile. The 4 AM awakening pattern is most likely a combination of (a) post-benzo-rebound resolving on its own over the next 1–2 weeks and (b) depressive terminal insomnia that the ketamine restart should address directly.</p>
+</div>
+
+<div class="section-label">Why this matters for Dad specifically</div>
+<p class="context">Dad started doxepin 3 mg HS on 5/4/2026 and titrated to 6 mg about a week later. He self-reports improvement in falling asleep but persistent waking around 4 AM, and on 5/15 asked directly about alternatives — including ZZZquil and lemborexant. The clinical question is whether to continue at 6 mg, titrate higher, switch to a different agent, or augment. The answer turns on two facts about doxepin's pharmacology and three facts about Dad's specific situation. <strong>Pharmacology:</strong> doxepin at 3–6 mg is essentially a pure H1 antihistamine for sleep maintenance — one of the most potent H1 antagonists known, with minimal anticholinergic, alpha-1, or noradrenergic activity at this dose. Above 10 mg it transitions into broader tricyclic pharmacology with the side-effect burden that comes with that class. In effect, doxepin 6 mg is already the H1 antihistamine option that Dad's instinct about sleep aids (his observation that "most sleep aids that come out are some version of antihistamine") points toward — but in its most age-appropriate, low-burden form. <strong>Dad's situation:</strong> (1) he's only been at 6 mg for about a week — partial response after one week is exactly what would be expected; (2) the post-lorazepam rebound window (current Ativan status unclear and needs urgent clarification) may still be contributing to early-morning waking; (3) the IV ketamine restart on 5/18 has documented evidence of specifically improving early-morning awakening within the first 1–2 weeks of induction in prior responders. The recommended approach is hold-and-observe, not escalate or switch. Companion handouts: see #10 on the specific question of switching to lemborexant; a broader sleep-aids-landscape handout is in progress.</p>
+
+<div class="section-label">The evidence</div>
+<table class="evidence">
+  <thead>
+    <tr>
+      <th class="pro" style="width: 50%;">Why doxepin 6 mg fits Dad's profile</th>
+      <th class="con" style="width: 50%;">Cautions and limits</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="pro"><strong>6 mg is the FDA-approved maximum dose of doxepin for insomnia in older adults.</strong> The low-dose insomnia formulation (Silenor) is approved for sleep maintenance specifically; the FDA label recommends a starting dose of 3 mg in patients ≥65 with the option to increase to 6 mg if clinically needed.</td>
+      <td class="con"><strong>Do not titrate above 6 mg.</strong> Above the 3–6 mg H1-selective range, doxepin progressively engages muscarinic (anticholinergic), alpha-1 (orthostatic), and serotonin/norepinephrine reuptake systems. By 25 mg it is a full tricyclic antidepressant with the cardiac conduction, anticholinergic burden, and REM-suppressive effects that come with that class — all of which would be problematic in Dad's specific profile (LAFB, the neurology workup pending in June, formal RBD, constipation, brain fog).</td>
+    </tr>
+    <tr>
+      <td class="pro"><strong>Doxepin specifically improves sleep maintenance in older adults — including the final third of the night.</strong> The Scharf 2008 crossover trial in adults ≥65 with primary insomnia found that doxepin 3 and 6 mg both significantly improved wake-time-after-sleep-onset, total sleep time, and sleep efficiency. Sleep efficiency improvement was significant during all thirds of the night, including the final third — which corresponds to the early-morning awakening period that's Dad's specific concern. The AASM 2017 chronic insomnia guideline gives doxepin a recommendation for sleep maintenance.</td>
+      <td class="con"><strong>Partial response at one week is normal.</strong> Dad has only been at 6 mg for about a week. Sleep-maintenance response to doxepin often improves over the first 2–4 weeks, especially as concurrent factors (like the post-benzo-rebound) resolve. Premature escalation risks treating a partially-resolving picture rather than waiting for the full benefit to emerge.</td>
+    </tr>
+    <tr>
+      <td class="pro"><strong>At 6 mg, the anticholinergic burden is negligible.</strong> The 2025 Lancet Neurology review on dementia with Lewy bodies specifically warns against anticholinergic medications (especially tricyclic antidepressants) in patients whose neurologic picture is under evaluation in this direction — but this guidance is directed at antidepressant-dose TCAs, not the ultra-low H1-selective formulation. Doxepin at 3–6 mg contributes a fraction of the anticholinergic burden of a single dose of over-the-counter diphenhydramine. The FDA low-dose label does not list anticholinergic effects among observed adverse reactions at 3–6 mg.</td>
+      <td class="con"><strong>Doxepin is metabolized via the CYP2D6 enzyme system, and duloxetine is a moderate CYP2D6 inhibitor.</strong> This interaction means Dad's effective doxepin exposure at 6 mg may be modestly higher than expected — possibly equivalent to 8–10 mg in someone not on duloxetine. This is still well within the safety margin at the H1-selective range, but is another reason not to titrate above 6 mg (the interaction effect would compound at higher doses).</td>
+    </tr>
+    <tr>
+      <td class="pro"><strong>At 6 mg, the cardiac conduction risk is clinically insignificant.</strong> The tricyclic-class cardiac effects (QRS widening, QTc prolongation, conduction slowing) are dose-dependent and emerge at antidepressant doses (≥25 mg). At 3–6 mg, the FDA does not require baseline or follow-up ECG monitoring, and the low-dose label does not list cardiac conduction effects among observed adverse reactions. Dad's LAFB (partial heart-block) and bradycardia (HR 57) are well within the safety margin at the current dose.</td>
+      <td class="con"><strong>At 6 mg, the effect on REM sleep architecture and RBD is expected to be minimal.</strong> Higher-dose tricyclic antidepressants increase REM sleep without atonia and can worsen RBD. At the H1-selective 3–6 mg dose, the serotonergic/noradrenergic mechanisms that drive these effects are not meaningfully engaged. Per Dad's 5/15 self-report, his most recent dream-enactment episode was around February 2026, with historical frequency roughly once every few months and a patient-reported decreasing trajectory — a clinically quiet RBD profile that further lowers the prior on doxepin 6 mg causing trouble on this axis. The mechanistic safety case rests on dose, not RBD activity level; the lower episode frequency is a separate piece of reassurance.</td>
+    </tr>
+    <tr>
+      <td class="pro"><strong>The May 18 ketamine restart has documented evidence of improving early-morning awakening — exactly the pattern Dad has.</strong> A 2022 study of 323 patients with TRD found that improvement in early-morning waking was a significant mediator of ketamine's antidepressant effect (each one-point improvement in total sleep score was associated with about 3.3 times higher odds of treatment response). A 2026 systematic review of 26 studies confirmed favorable effects on sleep quality. In a documented prior dramatic responder, the restart is likely to address terminal insomnia within the first 1–2 weeks.</td>
+      <td class="con">&nbsp;</td>
+    </tr>
+    <tr>
+      <td class="pro"><strong>The post-Ativan adjustment window may still be contributing to the 4 AM pattern.</strong> The recently completed Ativan taper followed ~3 weeks of near-daily use; for short-acting benzodiazepines, sleep adjustments after taper typically peak at days 1–4 and resolve over 1–2 weeks. Some of the residual early-morning awakening is likely to improve on its own as the picture settles — without any medication change.</td>
+      <td class="con">&nbsp;</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="strength-row">
+  <span class="strength-label">Strength of evidence supporting "continue at 6 mg, do not titrate":</span>
+  <span class="stars">★★★★★</span>
+</div>
+<div class="strength-rationale">FDA-approved dose for the exact indication; AASM guideline support; established H1-selective mechanism at this dose; no cardiac, anticholinergic, or RBD-relevant risk at 6 mg; three convergent reasons to expect continued improvement without dose escalation (residual benzodiazepine rebound resolving, ketamine restart imminent, doxepin response curve still rising at one week).</div>
+
+<div class="section-label">If 6 mg proves insufficient after 2–3 ketamine sessions</div>
+<div class="neutral-block">
+  <ul>
+    <li><strong>The first and lowest-risk move is extended-release melatonin titration.</strong> Dad is already on melatonin 3 mg HS (dosed against his REM Sleep Behavior Disorder diagnosis). Titrating to 5 mg or moving to an extended-release formulation has a favorable safety profile, is consistent with the RBD indication, and is supported by both the 2025 Lancet Neurology Lewy body review and the AASM RBD guideline.</li>
+    <li><strong>Dual orexin receptor antagonists (suvorexant, lemborexant, daridorexant)</strong> are FDA-approved for sleep maintenance and could be considered — but require caution given Dad's RBD diagnosis. Orexin antagonists increase REM sleep, and case reports document cataplexy-like episodes via REM-intrusion mechanisms. Use should be under sleep-medicine guidance with close RBD monitoring, not as a routine next step.</li>
+    <li><strong>Low-dose mirtazapine retrial at 3.75 mg</strong> (half a 7.5 mg tablet) is theoretically attractive given recent RCT support (MIRAGE 2025, DREAMING 2025) — but Dad's prior trial was stopped for agitation. Whether the agitation was dose-related is unclear, so a retrial would require very low starting dose and close monitoring.</li>
+    <li><strong>Trazodone has weak evidence and a prior adverse reaction</strong> in Dad (single trial 12/2025 produced tension and headache). The AGS Beers alternatives document notes insufficient evidence to recommend trazodone for insomnia in older adults. Low priority.</li>
+    <li><strong>Behavioral interventions</strong> (sleep restriction, stimulus control, CBT-I) have evidence in late-life insomnia but are difficult to implement during an active severe depressive episode. Worth revisiting later in the course.</li>
+  </ul>
+</div>
+
+<div class="section-label">Recommended next steps</div>
+<ol class="next-steps">
+  <li><strong>Continue doxepin 6 mg HS unchanged</strong> through the 5/18 ketamine restart and the following 2–3 ketamine sessions (approximately through late May / early June).</li>
+  <li><strong>Do not titrate above 6 mg</strong> at this time. The 6 mg dose is the FDA elderly maximum for insomnia, and above 6 mg the drug loses its H1-selective profile.</li>
+  <li><strong>Confirm where Dad is now on the Ativan taper.</strong> The 5/14 integration note and the family understanding describe slightly different pictures. The 4 AM pattern is partly diagnostic on this question, and the answer matters for both the ketamine restart and any decision to add or change sleep agents.</li>
+  <li><strong>Watch for the ketamine sleep effect</strong> in the first 1–3 sessions. Early-morning waking improvement after the first session can be a useful clinical signal of overall ketamine response (per Wang 2021).</li>
+  <li><strong>Reassess sleep maintenance after 2–3 ketamine sessions</strong>, at which point: if the 4 AM pattern has resolved (likely), continue current regimen; if it persists, the next-step options are listed in the section above, in order of preference.</li>
+  <li><strong>If new symptoms emerge</strong> on doxepin (excessive daytime sedation, urinary retention, falls, cognitive shift) — pause and notify Dr. Rubin or the K Clinic psychiatrist.</li>
+  <li><strong>For the question of whether to switch to lemborexant or try ZZZquil/Benadryl/Unisom</strong>: see companion handout #10 (lemborexant) and the forthcoming sleep-aids-landscape handout. The short version: ZZZquil/Benadryl (diphenhydramine) and Unisom (doxylamine) are on the AGS Beers list as inappropriate in older adults due to anticholinergic burden — particularly relevant given Dad's brain fog (R41.89), the pending neurology workup, and parkinsonism history. Doxepin 6 mg is the age-appropriate H1 antihistamine in his profile.</li>
+</ol>
+
+<div class="bottom-line">
+  <span class="label">Bottom line</span>
+  Doxepin 6 mg is the right dose for Dad: FDA-approved for elderly sleep maintenance, well-evidenced for the specific final-third-of-night problem he has, and at a dose where the side-effect burden that would otherwise be a concern in his profile is essentially negligible. Stay the course through the ketamine restart and the post-rebound window; revisit only if the 4 AM pattern persists past 2–3 ketamine sessions.
+</div>
+
+<div class="back-header">Key Studies &amp; Findings</div>
+<div class="back-subhead">Ranked by authority · Each citation summarized for how it applies to Dad's case</div>
+
+<div class="tier-header">Tier 1 — Major Clinical Guidelines and Reviews <span class="tier-stars">★★★★★</span></div>
+
+<div class="citation">
+  <div class="cite-title">Sateia MJ, Buysse DJ et al. Clinical Practice Guideline for the Pharmacologic Treatment of Chronic Insomnia in Adults: AASM Clinical Practice Guideline.</div>
+  <div class="cite-source">J Clin Sleep Med 2017;13:307–349. Read <a href="https://doi.org/10.5664/jcsm.6470" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>The American Academy of Sleep Medicine guideline gives a conditional recommendation for doxepin in chronic sleep maintenance insomnia. Meta-analysis findings: doxepin 3 mg and 6 mg both produced clinically significant improvements in wake time after sleep onset (~22–23 min reduction vs. placebo), total sleep time, and sleep efficiency.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The authoritative sleep-medicine guideline supports doxepin specifically for Dad's clinical pattern — sleep maintenance insomnia — at the dose he's currently on.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Morin CM, Buysse DJ. Management of Insomnia.</div>
+  <div class="cite-source">NEJM 2024;391:247–258. Read <a href="https://doi.org/10.1056/NEJMcp2305655" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Current NEJM review of insomnia management. Identifies doxepin as one of two pharmacologic agents (alongside orexin receptor antagonists) with the most favorable safety profile in older adults. Notes orexin antagonists produce less cognitive impairment than benzodiazepine receptor agonists.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Places doxepin among the preferred sleep-maintenance pharmacotherapy options for older adults; supports the current treatment choice.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Kaila LV, Ikeda M et al. The Evolving Therapeutic Landscape of Dementia With Lewy Bodies.</div>
+  <div class="cite-source">Lancet Neurology 2025;24:1038–1052. Read <a href="https://doi.org/10.1016/S1474-4422(25)00323-0" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Notes that anticholinergic medications (especially tricyclic antidepressants at therapeutic doses) should be avoided in this neurologic context due to cholinergic-system vulnerability. Recommendation is directed at antidepressant-dose TCAs, not the ultra-low H1-selective sleep formulation of doxepin.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>This is the key reason for the dose ceiling at 6 mg. At 3–6 mg, the anticholinergic concern doesn't apply; at ≥25 mg it does. Doxepin 6 mg fits the profile; doxepin 25–150 mg would not.</div>
+</div>
+
+<div class="tier-header">Tier 2 — Major RCTs <span class="tier-stars">★★★★</span></div>
+
+<div class="citation">
+  <div class="cite-title">Scharf M, Rogowski R et al. Efficacy and Safety of Doxepin 1 mg, 3 mg, and 6 mg in Elderly Patients With Primary Insomnia.</div>
+  <div class="cite-source">J Clin Psychiatry 2008;69:1557–1564. Read <a href="https://doi.org/10.4088/jcp.v69n1005" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Randomized double-blind placebo-controlled crossover trial in adults ≥65 with primary insomnia. Doxepin at 1 mg, 3 mg, and 6 mg all produced dose-related improvements in wake time after sleep onset, total sleep time, and sleep efficiency. Sleep efficiency was significantly improved during all thirds of the night, including the final third — corresponding to early-morning awakening.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Directly relevant: this is the trial that established efficacy of low-dose doxepin for the specific sleep pattern Dad has (early-morning awakening). The "all thirds of the night" finding is the strongest single piece of evidence that 6 mg should help with 4 AM waking specifically.</div>
+</div>
+
+<div class="tier-header">Tier 3 — Systematic Reviews and Real-World Cohorts <span class="tier-stars">★★★</span></div>
+
+<div class="citation">
+  <div class="cite-title">Weber J, Siddiqui MA et al. Low-Dose Doxepin: In the Treatment of Insomnia.</div>
+  <div class="cite-source">CNS Drugs 2010;24:713–720. Read <a href="https://doi.org/10.2165/11200810-000000000-00000" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Pharmacology review documenting that doxepin at 3–6 mg is essentially a pure H1 antihistamine — one of the most potent H1 antagonists known. At this dose, the muscarinic, alpha-1, and reuptake-inhibiting effects that drive the side-effect burden at antidepressant doses are not meaningfully engaged. Half-life ~15.3 hours (parent compound), ~31 hours (active metabolite) supports overnight sleep maintenance.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The pharmacology paper that explains why 6 mg is the sweet spot and why higher doses are categorically different drugs in side-effect terms. This is the basis for the "do not titrate" recommendation.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Rodrigues NB et al. Do Sleep Changes Mediate the Anti-Depressive and Anti-Suicidal Response of Intravenous Ketamine in Treatment-Resistant Depression?</div>
+  <div class="cite-source">J Sleep Res 2022;31:e13400. Read <a href="https://doi.org/10.1111/jsr.13400" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Study of 323 patients with TRD receiving IV ketamine. Improvement in early-morning waking was a significant mediator of both the antidepressant and the anti-suicidal effects of ketamine. Each one-point improvement in total sleep score was associated with about 3.3 times higher odds of achieving response/remission.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The 5/18 ketamine restart is expected to specifically address Dad's 4 AM awakening pattern. This is a major reason to hold the doxepin dose steady and wait — the ketamine itself is likely to do most of the remaining work.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Boesjes R, Oosterveld C et al. Effects of Ketamine on Sleep and Circadian Rhythmicity in Major Depressive Disorder and Bipolar Disorder: A Systematic Review.</div>
+  <div class="cite-source">J Affect Disord 2026;409:121915. Read <a href="https://doi.org/10.1016/j.jad.2026.121915" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Systematic review of 26 studies (1,694 patients). Ketamine is associated with favorable effects on subjective sleep quality in TRD. Baseline sleep disturbances and early sleep improvements may predict overall antidepressant response.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The most current pooled evidence that ketamine improves sleep in TRD patients. Adds confidence that the May 18 restart is the right next intervention for the sleep pattern.</div>
+</div>
+
+<div class="tier-header">Tier 4 — Mechanism &amp; Risk-side Trials <span class="tier-stars">★★</span></div>
+
+<div class="citation">
+  <div class="cite-title">Wang M et al. Sleep Improvement Is Associated With the Antidepressant Efficacy of Repeated-Dose Ketamine and Serum BDNF Levels: A Post-Hoc Analysis.</div>
+  <div class="cite-source">Pharmacol Rep 2021;73:594–603. Read <a href="https://doi.org/10.1007/s43440-020-00203-1" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Post-hoc analysis of 127 patients receiving repeated-dose ketamine. Sleep improvement within 24 hours of the first ketamine infusion predicted the overall antidepressant response across the course.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The first ketamine session on 5/18 should provide an early signal on whether the broader response will follow — and one specific thing for Mom and Julane to track is whether Dad's overnight sleep changes within 24 hours.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Robertson S, Peacock EE et al. Benzodiazepine Use Disorder: Common Questions and Answers.</div>
+  <div class="cite-source">Am Fam Physician 2023;108:260–266. Read <a href="https://pubmed.ncbi.nlm.nih.gov/37725524/" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>For short-acting benzodiazepines like lorazepam, rebound insomnia and anxiety typically peak at days 1–4 after discontinuation and resolve over the following 1–2 weeks. Distinguishing rebound from underlying symptom recurrence is often clinically difficult; rebound symptoms generally improve day-over-day.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Dad is at day 6 of the typical 1–2 week post-lorazepam rebound resolution window. A meaningful portion of the residual 4 AM awakening is expected to improve naturally over the next 7–10 days as rebound clears — without any medication change.</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Decision Aid — Anxiety management for Dad — 2026-05-16</title>
+<style>
+  @page { size: letter; margin: 0.55in 0.65in; }
+  :root {
+    --navy: #1a3a5c; --navy-dark: #0f2640;
+    --against-accent: #8b2c2c; --for-accent: #2c5e3f;
+    --text: #1f1f1f; --text-muted: #5a5a5a;
+    --rule: #c8c8c8; --rule-strong: #6a6a6a;
+    --tint: #f3f6f3;
+    --tint-recommend: #eaf2ea;
+    --tint-keep: #f0f4ee;
+    --tint-defer: #f1f1ee;
+    --tint-avoid: #f7eeed;
+    --label-recommend: #2c5e3f;
+    --label-keep: #486b4d;
+    --label-defer: #6a6a6a;
+    --label-avoid: #8b2c2c;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    font-family: "Charter", "Georgia", "Times New Roman", serif;
+    font-size: 9.75pt; line-height: 1.42; color: var(--text);
+    -webkit-font-smoothing: antialiased;
+  }
+  .doc-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    padding-bottom: 6pt; border-bottom: 1.5pt solid var(--navy); margin-bottom: 14pt;
+  }
+  .doc-header .title {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 600; font-size: 15pt; line-height: 1.2;
+    color: var(--navy-dark); letter-spacing: -0.01em;
+  }
+  .doc-header .meta {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 7.5pt; color: var(--text-muted); text-align: right;
+    letter-spacing: 0.03em; line-height: 1.5;
+  }
+  .section-label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 7.5pt; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.14em; color: var(--navy); margin: 14pt 0 5pt 0;
+  }
+  .section-label.first { margin-top: 0; }
+  .key-message {
+    border-left: 4pt solid var(--for-accent); background: var(--tint);
+    padding: 9pt 13pt; margin: 0 0 10pt 0;
+  }
+  .key-message p {
+    margin: 0;
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 10.5pt; line-height: 1.42; font-weight: 500; color: var(--text);
+  }
+  .context { font-size: 9.5pt; line-height: 1.5; color: var(--text); margin: 0 0 4pt 0; }
+
+  table.landscape {
+    width: 100%; border-collapse: collapse; margin: 4pt 0 8pt 0; table-layout: fixed;
+  }
+  table.landscape thead th {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 600; font-size: 8pt; padding: 6pt 9pt; text-align: left;
+    background: var(--navy); color: white; letter-spacing: 0.02em;
+  }
+  table.landscape td {
+    padding: 6pt 9pt; vertical-align: top;
+    border-bottom: 0.5pt solid var(--rule);
+    font-size: 8.75pt; line-height: 1.38;
+  }
+  table.landscape tbody tr:last-child td { border-bottom: none; }
+  table.landscape td.agent {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 600; color: var(--navy-dark); font-size: 8.5pt; line-height: 1.32;
+  }
+  table.landscape td.rec {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 700; font-size: 7.75pt; text-transform: uppercase;
+    letter-spacing: 0.04em; line-height: 1.3;
+  }
+  tr.row-recommend td { background: var(--tint-recommend); }
+  tr.row-recommend td.rec { color: var(--label-recommend); }
+  tr.row-keep td { background: var(--tint-keep); }
+  tr.row-keep td.rec { color: var(--label-keep); }
+  tr.row-defer td { background: var(--tint-defer); }
+  tr.row-defer td.rec { color: var(--label-defer); }
+  tr.row-avoid td { background: var(--tint-avoid); }
+  tr.row-avoid td.rec { color: var(--label-avoid); }
+
+  .strength-row {
+    display: flex; align-items: baseline; margin: 6pt 0 2pt 0; white-space: nowrap;
+  }
+  .strength-label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 8.5pt; font-weight: 600; color: var(--text);
+    margin-right: 10pt; white-space: nowrap;
+  }
+  .stars { color: var(--for-accent); letter-spacing: 0.12em; font-size: 11pt; white-space: nowrap; }
+  .strength-rationale {
+    font-size: 8.5pt; color: var(--text-muted); font-style: italic;
+    margin: 2pt 0 6pt 0; line-height: 1.4;
+  }
+  ol.next-steps {
+    margin: 4pt 0 8pt 0; padding-left: 18pt; font-size: 9.25pt; line-height: 1.4;
+  }
+  ol.next-steps li { margin-bottom: 4pt; padding-left: 3pt; }
+  ol.next-steps li::marker {
+    color: var(--navy); font-weight: 700;
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+  }
+  .bottom-line {
+    border-top: 1pt solid var(--rule-strong); padding-top: 6pt; margin-top: 10pt;
+    font-style: italic; font-size: 9pt; color: var(--text); line-height: 1.4;
+  }
+  .bottom-line .label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-style: normal; font-weight: 700; font-size: 7.5pt;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--navy); margin-right: 6pt;
+  }
+  .neutral-block {
+    background: #f3f3f1; border-left: 3pt solid #888;
+    padding: 9pt 14pt 6pt 14pt; margin: 4pt 0 8pt 0;
+  }
+  .neutral-block ul { list-style: none; padding: 0; margin: 0; }
+  .neutral-block li {
+    font-size: 9pt; line-height: 1.45; margin-bottom: 6pt;
+    padding-left: 14pt; position: relative;
+  }
+  .neutral-block li::before {
+    content: "•"; position: absolute; left: 0; color: #888; font-weight: bold;
+  }
+  .neutral-block li:last-child { margin-bottom: 0; }
+  .neutral-block strong { color: var(--navy-dark); }
+  .back-header {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 14pt; font-weight: 600; color: var(--navy-dark);
+    border-bottom: 1.5pt solid var(--navy); padding-bottom: 5pt;
+    margin-top: 18pt; margin-bottom: 4pt;
+  }
+  .citation, .tier-header { page-break-inside: avoid; }
+  .back-subhead {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 8pt; color: var(--text-muted); margin-bottom: 14pt; letter-spacing: 0.03em;
+  }
+  .tier-header {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 9pt; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.12em; color: var(--navy);
+    margin: 11pt 0 6pt 0; padding-bottom: 2pt; border-bottom: 0.5pt solid var(--rule);
+  }
+  .tier-header .tier-stars { float: right; color: var(--navy); font-size: 10pt; letter-spacing: 0.04em; }
+  .citation {
+    margin: 0 0 9pt 0; padding-left: 9pt; border-left: 2pt solid var(--rule);
+    font-size: 8.75pt; line-height: 1.4;
+  }
+  .citation .cite-title {
+    font-weight: 700; color: var(--navy-dark);
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif; font-size: 8.75pt;
+  }
+  .citation .cite-source { color: var(--text-muted); font-style: italic; font-size: 8.5pt; }
+  .citation .cite-finding, .citation .cite-apply { margin-top: 2pt; font-size: 8.5pt; }
+  .citation .label-inline {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 700; font-size: 7pt; text-transform: uppercase;
+    letter-spacing: 0.08em; color: var(--navy); margin-right: 4pt;
+  }
+  .citation .cite-link {
+    color: var(--navy); text-decoration: underline;
+    text-decoration-thickness: 0.4pt; text-underline-offset: 1.5pt;
+    font-style: normal; font-weight: 500; margin-left: 2pt;
+  }
+  .citation .cite-link:hover { color: var(--navy-dark); }
+</style>
+</head>
+<body>
+
+<div class="doc-header">
+  <div class="title">Anxiety management for Dad — tonic options first, PRN second</div>
+  <div class="meta">
+    Decision Aid · 2026-05-16 (revised)<br>
+    For Dad, Mom, Dr. R, Dr. Chilton (K Clinic),<br>
+    Julane &amp; the family team
+  </div>
+</div>
+
+<div class="section-label first">Recommendation</div>
+<div class="key-message">
+  <p><strong>The highest-priority move isn't a PRN agent — it's adding buspirone 5 mg BID titrated to 15–30 mg/day for ongoing (tonic) anxiety coverage.</strong> The family's prior literature review (#11, prepared 4/20) ranked buspirone as the best fit for Dad's documented activation-intolerance pattern — minimal adrenergic/serotonergic burst, no sedation, no fall risk, no anticholinergic load. Dad currently has no dedicated tonic anxiolytic in his stack (olanzapine, Rexulti, and lorazepam are all off; duloxetine 60 mg is doing most of the antidepressant + anxiety work alone). <strong>Raise buspirone with Dr. R at the 5/19 visit as the priority anxiety conversation</strong>; also consider whether duloxetine could be optimized from 60 to 90 mg/day. For PRN breakthrough anxiety as a separate (and secondary) question: gabapentin 100 mg PRN remains defensible (timed at least 24 hours from ketamine sessions), but the 4/23 Rubin call already considered gabapentin and parked it pending neurology input — worth re-raising in light of the current picture. <strong>Hydroxyzine is ruled out</strong> per the family's prior analysis. <strong>Propranolol is not the right fit</strong> for his cardiac profile. <strong>Benzodiazepines remain off the table</strong> to protect the completed lorazepam taper.</p>
+</div>
+
+<div class="section-label">Why this matters for Dad specifically</div>
+<p class="context">Anxiety is a real and prominent symptom — not a peripheral concern. The family already analyzed the precise question of "what should replace the anxiolytic role olanzapine was playing" in literature review #11 ("Late-Life Anxiety in TRD: Evidence-Based Alternatives to Olanzapine," 4/20). The current handout takes that analysis as its starting point and updates it for the current moment — when olanzapine, Rexulti, lithium, and lorazepam are all off, when duloxetine 60 mg + the doxepin/melatonin sleep stack is the entire current pharmacology, and when the IV ketamine restart is two days away. <strong>The key clinical signal from lit review #11 is Dad's documented activation-intolerance pattern:</strong> high-dose escitalopram poorly tolerated, aripiprazole failed at even 1 mg, mirtazapine produced agitation, olanzapine showed "agitation before benefit," brexpiprazole self-discontinued for balance. This pattern is uncommon and clinically informative — it points toward agents with minimal adrenergic/serotonergic burst (buspirone is the cleanest fit) and away from agents that involve adrenergic activation, partial D2 agonism, or substantial anticholinergic load. The 4/23 Rubin call already weighed several PRN options (clonazepam, gabapentin, buspirone, lower-dose trazodone) and parked most pending neurology input — that parking decision is six weeks old now, and the picture has clarified (olanzapine and lithium are off, lorazepam taper is complete, ketamine restart is imminent). Buspirone is the move that hasn't yet been pulled and was ranked highest in the family's prior analysis.</p>
+
+<div class="section-label">The landscape — agents ranked for Dad</div>
+<table class="landscape">
+  <thead>
+    <tr>
+      <th style="width: 22%;">Option</th>
+      <th style="width: 17%;">Status for Dad</th>
+      <th style="width: 61%;">Reasoning in his specific profile</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr class="row-recommend">
+      <td class="agent">Buspirone 5 mg BID → 15–30 mg/day divided<br><span style="font-weight: 400; font-size: 8pt; color: #5a5a5a;">(scheduled, not PRN)</span></td>
+      <td class="rec">Priority add — raise at 5/19 visit</td>
+      <td>The family's prior literature review (#11) ranked buspirone as the best fit for Dad's activation-intolerance pattern. Partial 5-HT1A agonist — non-sedating, non-activating (no adrenergic burst), no fall/fracture signal, no anticholinergic burden, no dependence potential, no respiratory depression. Geriatric evidence: Robinson 1988 (no dose adjustment needed in ≥65); Böhm 1990 (significant improvement vs. placebo in anxious elderly); Mokhber 2010 RCT (comparable to sertraline at 8 weeks, <em>superior</em> at weeks 2 and 4). Mild theoretical serotonin-syndrome signal with duloxetine, but standard practice combines them with low starting dose and slow titration; STAR*D used this combination without serotonin-syndrome events. <strong>Onset takes 2–4 weeks</strong> — so it isn't a same-night answer to acute anxiety, but it is the right standing addition.</td>
+    </tr>
+    <tr class="row-recommend">
+      <td class="agent">Non-pharmacologic + duloxetine optimization (60 → 90 mg/day if needed)</td>
+      <td class="rec">First-line, parallel</td>
+      <td>The 2025 Lancet Psychiatry meta-analysis of pharmacologic treatment of anxiety in older adults found antidepressants have the strongest evidence base — SSRIs and SNRIs first-line. Duloxetine is specifically recommended by the AGS Beers alternatives for GAD in older adults. The FDA label flat-effects at 60 mg for GAD, but real-world practice often titrates to 90–120 mg for partial responders; Dad tolerates duloxetine well, so dose optimization is the lowest-risk move available. Non-pharm complement: paced breathing (4-7-8, box breathing), brief CBT-based anxiety management (Dad as a psychologist may find these particularly accessible), structured daily routines. Modified geriatric CBT is well-described and has moderate effect size (g ≈ 0.55, Hendriks 2016 meta-analysis).</td>
+    </tr>
+    <tr class="row-recommend">
+      <td class="agent">IV ketamine course (restarted 5/18)</td>
+      <td class="rec">Parallel anxiety intervention</td>
+      <td>The 5/18 IV ketamine restart is itself an anxiety intervention, not just a depression one. McIntyre 2020 review documents ketamine's effectiveness on anxiety, irritability, and agitation in MDD/bipolar populations, often in the same 24-hour-to-1-week window as the antidepressant response. Dad's February 2026 sublingual ketamine response was dramatic; the IV restart is expected to contribute meaningfully to anxiety reduction as part of the broader response. The PRN-anxiety question may become substantially less pressing within 1–2 IV sessions.</td>
+    </tr>
+    <tr class="row-keep">
+      <td class="agent">Trazodone 25 mg PRN<br><span style="font-weight: 400; font-size: 8pt; color: #5a5a5a;">(half the dose that caused his prior reaction)</span></td>
+      <td class="rec">Possible cautious lower-dose retrial</td>
+      <td>Dad had tension + headache on trazodone 50 mg in 12/2025; the 4/23 Rubin call noted a quarter-pill PRN remained available as a sleep/anxiety option. Trazodone's adverse effects are generally dose-dependent, so a 25 mg trial may be tolerated where 50 mg was not. No anticholinergic burden; minimal QT risk at this dose; no ketamine interaction. The CVS prescription is still active (last fill 4/23/2026), so this is something the prescribing team has explicitly kept available rather than discontinued. Worth discussing with Dr. R as a possible PRN tool — particularly if buspirone takes the predicted 2–4 weeks to take effect.</td>
+    </tr>
+    <tr class="row-defer">
+      <td class="agent">Gabapentin 100 mg PRN<br><span style="font-weight: 400; font-size: 8pt; color: #5a5a5a;">(non-driving days, ≥24h from ketamine sessions)</span></td>
+      <td class="rec">Defensible PRN backup — held by Dr. R pending neurology</td>
+      <td>If a PRN pharmacologic option is needed beyond the tonic agents, gabapentin remains the most defensible single option in Dad's profile — no anticholinergic burden, no QT concern, no pharmacokinetic interaction with ketamine, and his prior reactions to sedating agents (mirtazapine, trazodone) are mechanism-specific in ways that don't predict gabapentin response. <strong>However</strong>: the 4/23 Rubin call already considered gabapentin and parked it explicitly "pending neurology input or further review" (clinical brief, 4/23 differential). Family review #11 ranked gabapentinoid #3 (behind buspirone and the lorazepam bridge) and flagged Medicare-cohort fall/fracture signal, observational dementia signal, and renal-clearance considerations. The lorazepam-bridge option is no longer available (taper protected), so gabapentin moves up the PRN-specific list — but worth re-raising with Dr. R rather than starting unilaterally. <strong>One real precondition</strong>: time any PRN dose at least 24 hours away from an IV ketamine infusion (gabapentin reduces presynaptic glutamate release; ketamine's mechanism depends on a downstream glutamate surge). Pregabalin has stronger geriatric RCT evidence (Montgomery 2008, n=273, age 65+) but the same class concerns; either could be raised.</td>
+    </tr>
+    <tr class="row-avoid">
+      <td class="agent">Hydroxyzine 25 mg PRN<br><span style="font-weight: 400; font-size: 8pt; color: #5a5a5a;">(Vistaril / Atarax)</span></td>
+      <td class="rec">Ruled out per lit review #11</td>
+      <td>Family lit review #11 explicit non-recommendation: "Beers Criteria violation, anticholinergic burden overlaps with the exact concern that motivated the olanzapine taper." Replacing one Beers-listed sedating agent (olanzapine) with another (hydroxyzine) defeats the purpose of the deprescribing the family worked through this spring. Meaningfully less anticholinergic than diphenhydramine (Orzechowski 2005 in vivo comparison), but still in the "avoid" category for Dad's exact profile — particularly given the neurology workup pending in June. The FDA label's QT prolongation warning specifically flags bradyarrhythmias as a risk factor; Dad's HR ~57 + LAFB puts him in that category. Not the right move when buspirone is available.</td>
+    </tr>
+    <tr class="row-avoid">
+      <td class="agent">Propranolol 10–20 mg PRN<br><span style="font-weight: 400; font-size: 8pt; color: #5a5a5a;">(beta-blocker for somatic anxiety)</span></td>
+      <td class="rec">Not the right fit — cardiac profile</td>
+      <td>Sometimes offered for performance or somatic anxiety, but Dad's baseline HR of ~57 already meets the sinus bradycardia threshold the propranolol FDA label flags as a contraindication. The AHA scientific statement on drug-induced arrhythmias advises against sinus/AV-node-inhibiting drugs in patients with pre-existing conduction system dysfunction (he has LAFB). Removing from consideration. Lit review #11 framed propranolol as "niche role for situational social-anxiety episodes" only — a narrower scope than ongoing PRN use, and even that narrow use is hard to justify with his cardiac profile.</td>
+    </tr>
+    <tr class="row-avoid">
+      <td class="agent">Benzodiazepines (Klonopin, restart Ativan)</td>
+      <td class="rec">Off the table (per handouts #11, #12)</td>
+      <td>Already addressed in the sleep handouts and in family conversations. The recently completed Ativan taper is worth protecting; reintroducing a benzodiazepine, including a longer-acting one like klonopin, would mean repeating that taper work later with a harder trajectory. AGS Beers and AASM 2023 both caution against benzodiazepines for anxiety in his age group. Driving compounds the issue. Reserve for a worst-case scenario, with non-benzodiazepine options exhausted first.</td>
+    </tr>
+    <tr class="row-avoid">
+      <td class="agent">OTC antihistamines (Benadryl, Unisom)</td>
+      <td class="rec">Avoid (per handout #14)</td>
+      <td>Even for anxiety relief rather than sleep, the diphenhydramine/doxylamine class is the wrong tool for Dad — same Beers "avoid" status, same anticholinergic burden, same driving impairment concerns. See handout #14 for the full case.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="strength-row">
+  <span class="strength-label">Strength of evidence on the recommended landscape:</span>
+  <span class="stars">★★★★</span>
+</div>
+<div class="strength-rationale">The buspirone-first recommendation is anchored in: (a) the family's prior literature review #11 with the explicit activation-intolerance reasoning, (b) RCT evidence in elderly populations (Robinson 1988, Böhm 1990, Mokhber 2010), and (c) the AGS Beers alternatives document naming buspirone for GAD in older adults. The duloxetine optimization is anchored in the AGS alternatives and the Neil-Sztramko 2025 Lancet Psychiatry meta-analysis. The propranolol contraindication is unambiguous given the bradycardia. The hydroxyzine ruled-out status follows lit review #11's specific reasoning about anticholinergic overlap with the olanzapine-deprescribing rationale. The gabapentin position carries some uncertainty — defensible as a PRN backup but with the family's prior reservations explicit. Where evidence is sparse: direct head-to-head trials in this exact patient profile don't exist; the rankings rest on the family's prior synthesis + safety-side reasoning + the activation-intolerance pattern as the load-bearing clinical signal.</div>
+
+<div class="section-label">What everyone agrees on</div>
+<div class="neutral-block">
+  <ul>
+    <li><strong>The anxiety is a real symptom and deserves real attention.</strong> The question is the right tool, not whether to treat it.</li>
+    <li><strong>Duloxetine 60 mg is the evidence-based foundation</strong>, and any new agent (tonic or PRN) sits on top of that foundation; nothing replaces it for now.</li>
+    <li><strong>The IV ketamine restart on 5/18 is also an anxiety intervention.</strong> McIntyre 2020 documents ketamine's effectiveness on anxiety in addition to depression; the PRN question may become substantially less pressing within 1–2 sessions.</li>
+    <li><strong>Non-pharmacologic structure has real impact.</strong> Paced breathing, brief CBT-based work, consistent daily routines, and morning light all measurably reduce the felt intensity of anxiety. For Dad as a psychologist, these may be unusually accessible levers.</li>
+    <li><strong>The activation-intolerance pattern is the load-bearing clinical signal</strong> for picking among the alternatives. It's what makes buspirone (5-HT1A partial agonist, no adrenergic burst) the cleanest fit and what disqualifies higher-activation alternatives that a clinician might reach for.</li>
+    <li><strong>The 5/19 Rubin visit is the right venue for this conversation</strong>, not a family-only decision. The handout's job is to support that visit with the family's prior analytical work in hand.</li>
+  </ul>
+</div>
+
+<div class="section-label">Recommended next steps</div>
+<ol class="next-steps">
+  <li><strong>Continue duloxetine 60 mg daily as prescribed.</strong> The anxiety foundation is the existing antidepressant — anything else sits on top of it.</li>
+  <li><strong>Begin non-pharmacologic structure now</strong>: paced breathing protocols (4-7-8 or box breathing) practiced daily, brief CBT-based work where useful, consistent wake/sleep/meal/light routines. These are zero-risk and additive.</li>
+  <li><strong>Track anxiety change at the IV ketamine restart on 5/18</strong> and the first 1–2 sessions. Ketamine's anxiety-reduction effect often appears in the same window as the antidepressant effect.</li>
+  <li><strong>At the 5/19 Rubin visit, raise buspirone as the priority anxiety move.</strong> Reference: lit review #11 ranks it as the best fit for Dad's activation-intolerance pattern; the dose plan is 5 mg BID, titrating to 15–30 mg/day divided over ~3 weeks. Also consider: duloxetine optimization from 60 to 90 mg/day for the anxiety indication.</li>
+  <li><strong>If a PRN agent is needed</strong> (especially during the 2–4 week buspirone onset window): the options to raise with Dr. R are (a) trazodone 25 mg PRN as a lower-dose retrial of an agent already in the stack as PRN, (b) gabapentin 100 mg PRN with explicit ketamine timing (≥24h from infusion) and driving restrictions. Don't accept hydroxyzine (ruled out per lit review #11), propranolol (cardiac), or benzodiazepines (taper protection).</li>
+  <li><strong>Don't introduce</strong> ZZZquil/Benadryl/Unisom for anxiety relief — same Beers issues as for sleep (handout #14).</li>
+  <li><strong>If hydroxyzine is offered at the visit despite the prior analysis</strong>, ask the prescribing clinician to engage with lit review #11's specific reasoning about anticholinergic overlap with the olanzapine-deprescribing rationale, and ask why buspirone wouldn't fit better as the family's prior first-line.</li>
+</ol>
+
+<div class="bottom-line">
+  <span class="label">Bottom line</span>
+  The highest-priority anxiety move isn't a PRN — it's adding buspirone for tonic anxiety coverage, per the family's prior literature review #11. Dad currently has no dedicated tonic anxiolytic in his stack now that olanzapine, Rexulti, and lorazepam are all off; buspirone is the cleanest fit for his activation-intolerance pattern and was the family's first-ranked option six weeks ago. Raise it at the 5/19 Rubin visit. For PRN breakthrough as a secondary question, trazodone 25 mg or gabapentin 100 mg PRN are the defensible options to discuss; hydroxyzine, propranolol, and benzodiazepines are off the list for converging Dad-specific reasons. The IV ketamine course will also contribute to anxiety reduction in parallel.
+</div>
+
+<div class="back-header">Key Studies &amp; Findings</div>
+<div class="back-subhead">Ranked by authority · Each citation summarized for how it applies to Dad's case</div>
+
+<div class="tier-header">Tier 0 — Family's Prior Analytical Work <span class="tier-stars">★★★★★</span></div>
+
+<div class="citation">
+  <div class="cite-title">Literature Review #11 — Late-Life Anxiety in TRD: Evidence-Based Alternatives to Olanzapine.</div>
+  <div class="cite-source">Adam Plunkett / family, 2026-04-20. Located in `Dad Health/literature_reviews/11_late_life_anxiety_TRD_alternatives.md`.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Ranked analysis of olanzapine-replacement options for Dad specifically. Top recommendations: (1) optimize duloxetine to 90–120 mg/day, (2) buspirone 5 mg BID titrated to 15–30 mg/day divided, (3) low-dose pregabalin (with caution), (4) ketamine return/intensification, (5) CBT, (6) short lorazepam bridge during taper. Hydroxyzine, propranolol-as-general-anxiolytic, and mirtazapine retrial all explicitly disrecommended. Activation-intolerance pattern named as the load-bearing clinical signal.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>This handout's primary anchor. The buspirone-first recommendation, the hydroxyzine ruled-out status, and the activation-intolerance framing all come from this review. The current handout updates the prior analysis for the present moment (olanzapine + lithium + Rexulti + lorazepam all off; ketamine restart imminent).</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Clinical Brief — James Plunkett, 76yo male.</div>
+  <div class="cite-source">Adam Plunkett / family, last updated 2026-05-04. Located in `Dad Health/provider_outreach/00_clinical_brief.md`.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>The canonical current-state document. Documents the 4/23 Rubin call differential which "considered and held pending neurology input or further review" — among other agents — clonazepam (long half-life and Beers position), gabapentin (fall-risk signal in elderly), buspirone (patient recalls a possible prior trial that predates the pharmacy records currently in hand), and trazodone (prior trial 12/2025 produced tension/headache; quarter-pill PRN remains available).</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The 4/23 differential is the reason gabapentin is framed in this handout as "held pending neurology input" rather than as a fresh recommendation — Dr. Rubin already weighed it and parked it. Worth re-raising six weeks later given the picture has clarified. The note about buspirone's "possible prior trial that predates the pharmacy records" is worth following up with Mom — if there was a prior buspirone trial, the family should know the dose and tolerance before re-proposing.</div>
+</div>
+
+<div class="tier-header">Tier 1 — Major Clinical Guidelines and Systematic Reviews <span class="tier-stars">★★★★★</span></div>
+
+<div class="citation">
+  <div class="cite-title">Neil-Sztramko SE, Levy A et al. Pharmacological Treatment of Anxiety in Older Adults: A Systematic Review and Meta-Analysis.</div>
+  <div class="cite-source">Lancet Psychiatry 2025;12:421–432. Read <a href="https://doi.org/10.1016/S2215-0366(25)00100-2" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>2025 systematic review and meta-analysis of 19 RCTs of pharmacological treatment of anxiety in adults ≥65. Antidepressants (SSRIs and SNRIs) have the strongest evidence base as first-line. No RCT evidence supports hydroxyzine specifically in geriatric anxiety populations. Trazodone also lacks RCT support for anxiety even though it is commonly prescribed.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Anchors the "optimize what's already there" recommendation. Dad's duloxetine is in the strongest-evidence class for his age group; adding a PRN with weak evidence (hydroxyzine, trazodone for anxiety) is a secondary move at best.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Steinman MA. Alternative Treatments to Selected Medications in the 2023 American Geriatrics Society Beers Criteria.</div>
+  <div class="cite-source">J Am Geriatr Soc 2025;73:2657–2677. Read <a href="https://doi.org/10.1111/jgs.19500" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>The companion alternatives document. For GAD in older adults: recommended options are escitalopram, sertraline, duloxetine, <strong>buspirone</strong>, and pregabalin. First-generation antihistamines (including hydroxyzine) are explicitly under "Avoid." Non-pharmacologic strategies are recommended first-line.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The geriatric specialty consensus. Buspirone is on the recommended list for GAD in older adults; duloxetine (already in Dad's stack) is too. Hydroxyzine is on the avoid list, anxiety indication included.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">American Geriatrics Society 2023 Updated AGS Beers Criteria for Potentially Inappropriate Medication Use in Older Adults.</div>
+  <div class="cite-source">J Am Geriatr Soc 2023;71:2052–2081. Read <a href="https://doi.org/10.1111/jgs.18372" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Hydroxyzine on the "avoid" list as a first-generation antihistamine with strong anticholinergic properties, uniformly across indications. Benzodiazepines on the avoid list. Z-drugs on the avoid list. The recommendation does not carve out short-term or PRN use.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The authoritative geriatric prescribing reference. Anchors the ruled-out status of hydroxyzine and the off-the-table status of benzodiazepines.</div>
+</div>
+
+<div class="tier-header">Tier 2 — Buspirone Evidence in the Elderly <span class="tier-stars">★★★★</span></div>
+
+<div class="citation">
+  <div class="cite-title">Mokhber N, Azarpazhooh MR et al. Comparison of Sertraline, Venlafaxine and Buspirone in the Treatment of Generalized Anxiety Disorder in Elderly Patients.</div>
+  <div class="cite-source">Psychiatry Clin Neurosci 2010;64:128–133. Read <a href="https://doi.org/10.1111/j.1440-1819.2009.02055.x" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>RCT in elderly GAD (n=60). Buspirone comparable to sertraline at 8 weeks; <strong>superior to sertraline at weeks 2 and 4</strong> (p&lt;0.001) — suggesting faster onset in the elderly than in the general population.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The strongest geriatric-specific buspirone RCT. The faster-onset finding partially mitigates the standard concern that buspirone takes 2–4 weeks to work — in elderly patients specifically, meaningful effect may appear by week 2.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Robinson D, Napoliello MJ, Schenk J. The Safety and Usefulness of Buspirone as an Anxiolytic Drug in Elderly Versus Young Patients.</div>
+  <div class="cite-source">Clin Ther 1988;10:740–746. Read <a href="https://pubmed.ncbi.nlm.nih.gov/3219687/" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Large multicenter comparator trial. Buspirone relieved moderate-to-severe anxiety equivalently in elderly (≥65) and younger patients; no dose adjustment needed; side-effect profiles did not differ by age.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Establishes that buspirone doesn't carry the elderly-specific tolerability concerns that complicate many other anxiolytics in this age group. Same dose, same effect, same side-effect profile — meaningful in a patient who has had bad reactions to several agents on his stack.</div>
+</div>
+
+<div class="tier-header">Tier 3 — Ketamine and PRN Backup Evidence <span class="tier-stars">★★★</span></div>
+
+<div class="citation">
+  <div class="cite-title">McIntyre RS, Lipsitz O et al. The Effectiveness of Ketamine on Anxiety, Irritability, and Agitation: Implications for Treating Mixed Features in Adults With Major Depressive or Bipolar Disorder.</div>
+  <div class="cite-source">Bipolar Disord 2020;22:831–840. Read <a href="https://doi.org/10.1111/bdi.12941" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Review of ketamine's effects on anxiety, irritability, and agitation. Ketamine is effective for anxiety symptoms in MDD/bipolar populations, particularly mixed-features presentations. Anxiety reduction often appears in the same window as the antidepressant response (24 hours to 1 week of the first infusion).</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The 5/18 IV ketamine restart is an anxiety intervention as well as an antidepressant one. The PRN-anxiety question may become substantially less pressing within 1–2 sessions, and the tonic-anxiety case for buspirone should be evaluated in that context.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Hong JSW, Atkinson LZ et al. Gabapentin and Pregabalin in Bipolar Disorder, Anxiety States, and Insomnia: Systematic Review, Meta-Analysis, and Rationale.</div>
+  <div class="cite-source">Mol Psychiatry 2022;27:1339–1349. Read <a href="https://doi.org/10.1038/s41380-021-01386-6" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Meta-analysis of gabapentinoids in anxiety states. Gabapentin shows anxiolytic effect (SMD −0.92 vs. placebo in preoperative anxiety; smaller but positive effects in other anxiety contexts). Main side-effect concerns are sedation, dizziness, and falls.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The evidence base for gabapentin as a defensible PRN option in Dad's profile — anticholinergic-free, QT-neutral, ketamine-compatible. The position behind buspirone reflects lit review #11's ranking, not a class-level rejection of gabapentin.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Montgomery S, Chatamra K et al. Efficacy and Safety of Pregabalin in Elderly People With Generalised Anxiety Disorder.</div>
+  <div class="cite-source">Br J Psychiatry 2008;193:389–394. Read <a href="https://pubmed.ncbi.nlm.nih.gov/18978320/" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>8-week double-blind RCT, 273 patients mean age 72 with DSM-IV GAD and HAM-A ≥20. Pregabalin 150–600 mg/day significantly superior to placebo on both psychic and somatic anxiety subscales, with onset by week 2. The single strongest geriatric RCT for any anxiolytic in late-life GAD.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>If a gabapentinoid is pursued (after buspirone or as a parallel PRN), pregabalin has stronger RCT evidence than gabapentin in this exact age group and indication. The class-level concerns (falls, cognitive effects, renal clearance) apply to both, but the evidence base is stronger for pregabalin.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">FDA Propranolol Hydrochloride Label.</div>
+  <div class="cite-source">FDA prescribing information. Read <a href="https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?searchquery=propranolol" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>The propranolol label lists "sinus bradycardia and greater than first-degree block" as a contraindication. Standard threshold for sinus bradycardia is HR &lt; 60 bpm.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Direct evidence that propranolol isn't the right fit for Dad. His baseline HR ~57 meets the sinus bradycardia threshold; layering a beta-blocker on top, even at 10–20 mg PRN, would risk symptomatic bradycardia.</div>
+</div>
+
+</body>
+</html>

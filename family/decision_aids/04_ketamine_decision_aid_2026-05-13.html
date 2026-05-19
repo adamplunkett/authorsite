@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Decision Aid — Ketamine restart for Dad — 2026-05-12</title>
+<style>
+  @page {
+    size: letter;
+    margin: 0.55in 0.65in;
+  }
+
+  :root {
+    --navy: #1a3a5c;
+    --navy-dark: #0f2640;
+    --against-accent: #8b2c2c;
+    --for-accent: #2c5e3f;
+    --text: #1f1f1f;
+    --text-muted: #5a5a5a;
+    --rule: #c8c8c8;
+    --rule-strong: #6a6a6a;
+    --tint: #f3f6f3;
+    --tint-pro: #eef3ee;
+    --tint-con: #f7f4f0;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    font-family: "Charter", "Georgia", "Times New Roman", serif;
+    font-size: 9.75pt;
+    line-height: 1.42;
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .doc-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-bottom: 6pt;
+    border-bottom: 1.5pt solid var(--navy);
+    margin-bottom: 14pt;
+  }
+
+  .doc-header .title {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 600;
+    font-size: 15pt;
+    line-height: 1.2;
+    color: var(--navy-dark);
+    letter-spacing: -0.01em;
+  }
+
+  .doc-header .meta {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 7.5pt;
+    color: var(--text-muted);
+    text-align: right;
+    letter-spacing: 0.03em;
+    line-height: 1.5;
+  }
+
+  .section-label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 7.5pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--navy);
+    margin: 14pt 0 5pt 0;
+  }
+
+  .section-label.first { margin-top: 0; }
+
+  .key-message {
+    border-left: 4pt solid var(--for-accent);
+    background: var(--tint);
+    padding: 9pt 13pt 9pt 13pt;
+    margin: 0 0 10pt 0;
+  }
+
+  .key-message p {
+    margin: 0;
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 10.5pt;
+    line-height: 1.42;
+    font-weight: 500;
+    color: var(--text);
+  }
+
+  .context {
+    font-size: 9.5pt;
+    line-height: 1.5;
+    color: var(--text);
+    margin: 0 0 4pt 0;
+  }
+
+  table.evidence {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 4pt 0 8pt 0;
+    table-layout: fixed;
+  }
+
+  table.evidence thead th {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 600;
+    font-size: 8.25pt;
+    padding: 6pt 9pt;
+    text-align: left;
+    background: var(--navy);
+    color: white;
+    letter-spacing: 0.02em;
+  }
+
+  table.evidence thead th.pro {
+    background: var(--for-accent);
+  }
+
+  table.evidence thead th.con {
+    background: #6a6a6a;
+  }
+
+  table.evidence td {
+    padding: 6pt 9pt;
+    vertical-align: top;
+    border-bottom: 0.5pt solid var(--rule);
+    font-size: 9pt;
+    line-height: 1.4;
+  }
+
+  table.evidence td.pro { background: var(--tint-pro); }
+  table.evidence td.con { background: var(--tint-con); }
+
+  table.evidence tbody tr:last-child td { border-bottom: none; }
+
+  table.evidence td strong {
+    color: var(--navy-dark);
+  }
+
+  .strength-row {
+    display: flex;
+    align-items: baseline;
+    margin: 6pt 0 2pt 0;
+    white-space: nowrap;
+  }
+
+  .strength-label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 8.5pt;
+    font-weight: 600;
+    color: var(--text);
+    margin-right: 10pt;
+    white-space: nowrap;
+  }
+
+  .stars {
+    color: var(--for-accent);
+    letter-spacing: 0.12em;
+    font-size: 11pt;
+    white-space: nowrap;
+  }
+
+  .strength-rationale {
+    font-size: 8.5pt;
+    color: var(--text-muted);
+    font-style: italic;
+    margin: 2pt 0 6pt 0;
+    line-height: 1.4;
+  }
+
+  ol.next-steps {
+    margin: 4pt 0 8pt 0;
+    padding-left: 18pt;
+    font-size: 9.25pt;
+    line-height: 1.4;
+  }
+
+  ol.next-steps li {
+    margin-bottom: 4pt;
+    padding-left: 3pt;
+  }
+
+  ol.next-steps li::marker {
+    color: var(--navy);
+    font-weight: 700;
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+  }
+
+  .bottom-line {
+    border-top: 1pt solid var(--rule-strong);
+    padding-top: 6pt;
+    margin-top: 10pt;
+    font-style: italic;
+    font-size: 9pt;
+    color: var(--text);
+    line-height: 1.4;
+  }
+
+  .bottom-line .label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 7.5pt;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--navy);
+    margin-right: 6pt;
+  }
+
+  .neutral-block {
+    background: #f3f3f1;
+    border-left: 3pt solid #888;
+    padding: 9pt 14pt 6pt 14pt;
+    margin: 4pt 0 8pt 0;
+  }
+
+  .neutral-block ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .neutral-block li {
+    font-size: 9pt;
+    line-height: 1.45;
+    margin-bottom: 6pt;
+    padding-left: 14pt;
+    position: relative;
+  }
+
+  .neutral-block li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #888;
+    font-weight: bold;
+  }
+
+  .neutral-block li:last-child { margin-bottom: 0; }
+  .neutral-block strong { color: var(--navy-dark); }
+
+  /* ============================================================
+     Citations section (flows continuously below bottom line)
+     ============================================================ */
+
+  .back-header {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 14pt;
+    font-weight: 600;
+    color: var(--navy-dark);
+    border-bottom: 1.5pt solid var(--navy);
+    padding-bottom: 5pt;
+    margin-top: 18pt;
+    margin-bottom: 4pt;
+  }
+
+  .citation,
+  .tier-header {
+    page-break-inside: avoid;
+  }
+
+  .back-subhead {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 8pt;
+    color: var(--text-muted);
+    margin-bottom: 14pt;
+    letter-spacing: 0.03em;
+  }
+
+  .tier-header {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 9pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--navy);
+    margin: 11pt 0 6pt 0;
+    padding-bottom: 2pt;
+    border-bottom: 0.5pt solid var(--rule);
+  }
+
+  .tier-header .tier-stars {
+    float: right;
+    color: var(--navy);
+    font-size: 10pt;
+    letter-spacing: 0.04em;
+  }
+
+  .citation {
+    margin: 0 0 9pt 0;
+    padding-left: 9pt;
+    border-left: 2pt solid var(--rule);
+    font-size: 8.75pt;
+    line-height: 1.4;
+  }
+
+  .citation .cite-title {
+    font-weight: 700;
+    color: var(--navy-dark);
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 8.75pt;
+  }
+
+  .citation .cite-source {
+    color: var(--text-muted);
+    font-style: italic;
+    font-size: 8.5pt;
+  }
+
+  .citation .cite-finding,
+  .citation .cite-apply {
+    margin-top: 2pt;
+    font-size: 8.5pt;
+  }
+
+  .citation .label-inline {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 700;
+    font-size: 7pt;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--navy);
+    margin-right: 4pt;
+  }
+
+  .citation .cite-link {
+    color: var(--navy);
+    text-decoration: underline;
+    text-decoration-thickness: 0.4pt;
+    text-underline-offset: 1.5pt;
+    font-style: normal;
+    font-weight: 500;
+    margin-left: 2pt;
+  }
+
+  .citation .cite-link:hover { color: var(--navy-dark); }
+</style>
+</head>
+<body>
+
+<div class="doc-header">
+  <div class="title">Why ketamine restart is the right next step for both Dad's depression and his anxiety</div>
+  <div class="meta">
+    Decision Aid · 2026-05-12<br>
+    For Dad, Mom, Dr. Rubin, the K Clinic<br>
+    psychiatrist, Julane &amp; the family team
+  </div>
+</div>
+
+<div class="section-label first">Recommendation</div>
+<div class="key-message">
+  <p>Sublingual ketamine restart on May 18 at Royal Oak — with structured maintenance and integration support — is the strongest evidence-supported near-term intervention for Dad. <strong>It targets both his severe depression and his anxiety symptoms in a single intervention</strong>, including the anxiety that prompted the Depakote prescription. It works faster, more safely, and more specifically to his neurological profile than ECT or any of the recently proposed medication changes. ECT remains available as escalation if needed.</p>
+</div>
+
+<div class="section-label">Why this matters for Dad specifically</div>
+<p class="context">In February 2026, Dad had a dramatic response to a 4-week sublingual ketamine induction course on a similar medication background — an n-of-1 result that is the single strongest predictor of how he'll respond to restart. His current severe episode (PHQ-9 = 24, with prominent anxiety) emerged after he self-paused ketamine ahead of his March prostate procedure; the relapse pattern is consistent with the well-documented need for ongoing ketamine maintenance. He is now 3 days off lorazepam (favorable for ketamine response), still on duloxetine (also favorable — the SNRI background pairs better with ketamine than an SSRI per the 55,000-patient Del Casale 2025 study), with the restart scheduled for May 18 at Royal Oak with integration support from Julane and a wider supplementary team.</p>
+
+<div class="section-label">The evidence</div>
+<table class="evidence">
+  <thead>
+    <tr>
+      <th class="pro" style="width: 55%;">Why ketamine fits Dad's profile</th>
+      <th class="con" style="width: 45%;">Honest cautions about ketamine</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="pro"><strong>Dad's documented prior response is the strongest single predictor.</strong> In February 2026 on essentially the same medication background, he had a dramatic 4-week induction-course response. In adults restarting ketamine after relapse-from-self-discontinuation (Dad's exact situation), prior response is well-documented as the strongest individual predictor of re-response.</td>
+      <td class="con"><strong>Sublingual ketamine has thinner published evidence than IV ketamine or intranasal esketamine.</strong> Most clinical-outcome data is from IV or intranasal use. Dad's own February response and a large 2022 study of at-home sublingual ketamine (n=1,247) support the sublingual route, but the broader evidence base is younger.</td>
+    </tr>
+    <tr>
+      <td class="pro"><strong>Ketamine treats anxiety as well as depression — in essentially equal measure.</strong> A large 2022 study of at-home sublingual ketamine (n=1,247) found 62.9% of patients improved by ≥50% on the standard anxiety scale (GAD-7) and 62.8% improved on the standard depression scale (PHQ-9). Effect sizes were nearly identical. This is the single most important fact for Dad: his anxiety symptoms — the indication for which Depakote was prescribed — would be addressed by ketamine alone.</td>
+      <td class="con"><strong>Requires ongoing maintenance, not a one-time fix.</strong> The February relapse after Dad self-paused ketamine illustrates this. Sustained response depends on continued dosing, typically every 1–4 weeks initially, then tapering as tolerated. The plan from day one should include maintenance scheduling.</td>
+    </tr>
+    <tr>
+      <td class="pro"><strong>For ketamine, anxiety predicts a BETTER response — the opposite of ECT.</strong> A Canadian study of TRD patients with prominent anxiety found those patients had <em>greater</em> depression improvement on ketamine than non-anxious patients. By contrast, ECT studies (Laszcz 2025; Huang 2019) show that high anxiety predicts <em>worse</em> ECT outcomes, and that anxiety improves less than depression during an ECT course.</td>
+      <td class="con"><strong>One large trial of esketamine (an intranasal cousin of ketamine) in adults ≥65 (TRANSFORM-3) did not show benefit over placebo.</strong> Three reasons this doesn't apply to Dad: (1) that trial was intranasal esketamine, not sublingual racemic ketamine; (2) it was a population-level trial in unselected patients, not a re-induction in a documented prior responder; (3) Dad's own February response overrides the population-level signal.</td>
+    </tr>
+    <tr>
+      <td class="pro"><strong>Fast onset for both targets.</strong> Anxiolytic effects appear within hours of dosing in adult trials. Antidepressant effects in a prior responder typically emerge within days. Dad's February response was visible early in the induction course. By contrast, ECT requires 5–7 sessions (~2 weeks) for antidepressant response, and the anxiolytic effect is incomplete.</td>
+      <td class="con"><strong>Brief dissociation during sessions is expected.</strong> The temporary altered-perception experience during dosing is part of how the medication works and is not harmful. Integration sessions with Julane within 24 hours help process the experience and improve durability.</td>
+    </tr>
+    <tr>
+      <td class="pro"><strong>Ketamine specifically improves early-morning awakening — the exact sleep pattern Dad has.</strong> A 2022 study of 323 patients with treatment-resistant depression found that improvement in early-morning waking was a significant mediator of both the antidepressant and anti-suicidal effects of ketamine (each one-point improvement in total sleep score was associated with about 3.3 times higher odds of treatment response). A 2026 systematic review of 26 studies (n=1,694) confirmed favorable effects on sleep quality in TRD, and a separate 2021 analysis showed that sleep improvement within 24 hours of the first ketamine infusion predicts the overall antidepressant response. Dad's current 4 AM awakening pattern is exactly the kind of symptom ketamine has documented evidence of helping — typically within the first 1–2 weeks of restart in a prior responder.</td>
+      <td class="con">&nbsp;</td>
+    </tr>
+    <tr>
+      <td class="pro"><strong>No general anesthesia required.</strong> Dad is ~8 weeks post-Aquablation under general anesthesia, with his depressive worsening tracking that procedure (a pattern consistent with post-anesthesia cognitive effects in older adults). ECT would require 6–12 additional brief general anesthesia exposures over several weeks; ketamine requires none.</td>
+      <td class="con"><strong>Cost and insurance coverage vary.</strong> Sublingual ketamine at clinics is often not fully covered. Worth verifying with Royal Oak the per-session cost and any insurance pathway before maintenance scheduling.</td>
+    </tr>
+    <tr>
+      <td class="pro"><strong>Doesn't muddy the June neurology evaluation.</strong> Ketamine's effects are transient (hours, not days or weeks). ECT, by contrast, would produce post-ECT memory and possible motor changes that would make the neurology evaluation for possible Parkinson's-spectrum features uninterpretable.</td>
+      <td class="con"><strong>Long-term cumulative safety considerations exist</strong> for very extended maintenance (over many months to years), primarily rare urinary symptoms. Standard monitoring at maintenance clinics addresses this.</td>
+    </tr>
+    <tr>
+      <td class="pro"><strong>Doesn't disrupt the August B12 follow-up testing.</strong> The August 6 MMA recheck (to see whether Dad's newly initiated B12 supplementation is working) stays cleanly interpretable. Adding ECT — or Depakote — would make those results impossible to read.</td>
+      <td class="con"><strong>Patient's subjective experience during sessions matters.</strong> Going into sessions in a calmer, more stable state improves the experience. Worth maintaining the recent calmer days through May 18.</td>
+    </tr>
+    <tr>
+      <td class="pro"><strong>Cardiovascularly favorable in bradycardia.</strong> Sublingual ketamine produces a modest heart-rate increase (about +4 beats per minute) — actually favorable in a patient with HR 57 at the May 11 visit. ECT under general anesthesia produces large swings (initial slowing of the heart, then a surge), which carry more risk in someone with Dad's baseline bradycardia and possible autonomic features.</td>
+      <td class="con">&nbsp;</td>
+    </tr>
+    <tr>
+      <td class="pro"><strong>Cognitive outcomes in older adults are stable or improved.</strong> A 2025 systematic review of ketamine in adults ≥60 (13 studies, 757 patients) found cognitive outcomes were mostly stable or improved on ketamine. By contrast, ECT in older adults consistently produces measurable short-term memory effects (anterograde amnesia 2–4 weeks; retrograde amnesia weeks to months, sometimes longer).</td>
+      <td class="con">&nbsp;</td>
+    </tr>
+    <tr>
+      <td class="pro"><strong>Could obviate the Depakote prescription.</strong> Since ketamine addresses both depression and anxiety in a single intervention, the indication for which Depakote was prescribed (anxiety) may be fully covered by ketamine — removing the need for a separate anxiety medication with the risks documented in the Depakote handout.</td>
+      <td class="con">&nbsp;</td>
+    </tr>
+    <tr>
+      <td class="pro"><strong>Maintenance produces cumulative, building anxiolytic effect.</strong> A 3-month maintenance ketamine study found progressively decreasing anxiety scores at each pre-dose check-in — meaning the anxiolytic benefit accumulates over the maintenance period, not just acutely at each session.</td>
+      <td class="con">&nbsp;</td>
+    </tr>
+    <tr>
+      <td class="pro"><strong>Integration sessions improve durability.</strong> Concurrent psychotherapy is associated with a 28% reduction in relapse risk during ketamine maintenance (Smith-Apeldoorn 2022). Julane provides integration sessions within 24 hours of each treatment; supplementary support from Oliver's coach and other practitioners can broaden the integration container.</td>
+      <td class="con">&nbsp;</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="strength-row">
+  <span class="strength-label">Strength of evidence supporting this recommendation:</span>
+  <span class="stars">★★★★★</span>
+</div>
+<div class="strength-rationale">Documented n-of-1 prior dramatic response, large published evidence for sublingual ketamine in both depression and anxiety, clean comparative advantage over ECT in Dad's specific profile (avoiding general anesthesia, cognitive cumulative effects, hemodynamic swings, neurology workup confounds), and the dose-response data supporting maintenance with integration. The case is strong on essentially every clinically relevant dimension.</div>
+
+<div class="section-label">About the alternatives</div>
+<div class="neutral-block">
+  <ul>
+    <li><strong>ECT is not eliminated — it's held in reserve.</strong> If ketamine restart doesn't deliver meaningful improvement by sessions 3–4 (roughly the first 2 weeks), ECT remains a fully available escalation option. The reason to lead with ketamine rather than ECT: in Dad's specific profile, ECT carries cumulative cognitive risks, requires repeated general anesthesia within the perioperative cognitive-recovery window from his March procedure, would muddy the June neurology evaluation, and addresses anxiety less effectively than ketamine. None of those reasons applies to ketamine.</li>
+    <li><strong>Depakote and Lamictal are addressed in separate handouts.</strong> Neither is well-matched to a short-term anxiety target in Dad's neurological profile (formal REM Sleep Behavior Disorder since 2017, possible prodromal Parkinson's-spectrum features, methylmalonic acidemia under treatment, autonomic findings). Ketamine restart obviates the need for either drug if it delivers as expected.</li>
+    <li><strong>If ketamine maintenance proves insufficient as the sole intervention</strong>, additional augmentation strategies can be discussed with the K Clinic psychiatrist. Each of the available add-on options has its own profile of risks and benefits in Dad's specific neurological situation and should be evaluated individually rather than treated as a clean default.</li>
+  </ul>
+</div>
+
+<div class="section-label">Recommended next steps</div>
+<ol class="next-steps">
+  <li><strong>Proceed with the May 18 Royal Oak restart as planned.</strong> Call Royal Oak this week to check for cancellation slots in case an earlier opening becomes available.</li>
+  <li><strong>Confirm Julane integration sessions within 24 hours</strong> of each treatment. Discuss with her whether home-lozenge bridging makes sense if any logistical gaps appear.</li>
+  <li><strong>Establish the maintenance schedule from day one</strong> with Royal Oak and Julane. Initial pattern is typically weekly to biweekly for the first 4–8 weeks, then tapering to monthly as tolerated.</li>
+  <li><strong>Continue duloxetine 60 mg unchanged through and beyond the restart.</strong> Continuing this SNRI is supported by population-level data showing better outcomes with ketamine + SNRI than ketamine + SSRI.</li>
+  <li><strong>Continue B12 1000 mcg daily.</strong> Maintain the August 6 MMA recheck without confounders.</li>
+  <li><strong>Hold Depakote pending review</strong> per the Depakote handout. The K Clinic psychiatrist's input is the next step on whether to taper off it.</li>
+  <li><strong>Keep a simple symptom diary</strong> for the first 2–3 weeks tracking mood, anxiety, sleep, and any motor symptoms — so Julane and Dr. Rubin can clearly assess response and any side effects.</li>
+  <li><strong>If response is insufficient by sessions 3–4</strong>, revisit with the K Clinic psychiatrist, Julane, and the family — at that point ECT or additional augmentation becomes the conversation, not before.</li>
+</ol>
+
+<div class="bottom-line">
+  <span class="label">Bottom line</span>
+  Ketamine restart with structured maintenance and integration support is the single intervention best matched to Dad's current state — it addresses both his depression and his anxiety, works faster than the alternatives, and avoids the specific risks (general anesthesia, cognitive cumulative effects, neurology workup confounds, B12-window confounds) that complicate every other near-term option in his profile. ECT remains in reserve if needed, but starting there would mean accepting risks that ketamine simply doesn't carry.
+</div>
+
+<!-- =========================================================
+     CITATIONS (flows continuously)
+     ========================================================= -->
+
+<div class="back-header">Key Studies &amp; Findings</div>
+<div class="back-subhead">Ranked by authority · Each citation summarized for how it applies to Dad's case</div>
+
+<div class="tier-header">Tier 1 — Major Clinical Guidelines and Consensus <span class="tier-stars">★★★★★</span></div>
+
+<div class="citation">
+  <div class="cite-title">Steffens DC. Treatment-Resistant Depression in Older Adults.</div>
+  <div class="cite-source">NEJM 2024;390:630–639. Read <a href="https://doi.org/10.1056/NEJMcp2305428" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>The current NEJM review of treatment-resistant depression in adults ≥65 lists esketamine and ECT among the evidence-supported strategies for older adults with hard-to-treat depression. Notes that one intranasal esketamine trial in adults ≥65 failed its primary endpoint, but that real-world data and IV ketamine evidence remain supportive.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The authoritative late-life TRD summary places ketamine among the evidence-supported next-step strategies. Dad's documented prior dramatic response overrides population-level non-superiority signals.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">McQuaid JR, Buelt A et al. VA/DoD 2022 MDD Guideline Synopsis.</div>
+  <div class="cite-source">Ann Intern Med 2022;175:1440–1451. Read <a href="https://doi.org/10.7326/M22-1603" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Recommends ketamine or esketamine for patients who have not responded to several adequate medication trials, and recommends ECT for multiple prior treatment failures or need for rapid improvement. Does not specify a sequencing preference between ketamine and ECT.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Both interventions are supported by guidelines. The sequencing choice is left to clinical judgment based on the individual patient's profile.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Sanacora G et al. A Consensus Statement on the Use of Ketamine in the Treatment of Mood Disorders.</div>
+  <div class="cite-source">JAMA Psychiatry 2017;74:399–405. Read <a href="https://doi.org/10.1001/jamapsychiatry.2017.0080" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>American Psychiatric Association-affiliated consensus document on ketamine for mood disorders. Supports use in treatment-resistant depression with structured clinical monitoring.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Foundational consensus that establishes ketamine's legitimacy as an evidence-based TRD intervention.</div>
+</div>
+
+<div class="tier-header">Tier 2 — Major RCTs <span class="tier-stars">★★★★</span></div>
+
+<div class="citation">
+  <div class="cite-title">Anand A, Mathew SJ et al. Ketamine versus ECT for Nonpsychotic Treatment-Resistant Major Depression (ELEKT-D).</div>
+  <div class="cite-source">NEJM 2023;388:2315–2325. Read <a href="https://doi.org/10.1056/NEJMoa2302399" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>n=403, the largest direct head-to-head trial of ketamine vs. ECT in nonpsychotic treatment-resistant depression. Ketamine was non-inferior to ECT, with numerically higher response rates (55.4% vs. 41.2%). Substantial cognitive advantage for ketamine: delayed-recall T-score change −0.9 (ketamine) vs. −9.7 (ECT).</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The most directly relevant comparative trial. Establishes that for outpatient nonpsychotic TRD (Dad's category), ketamine is at least as effective as ECT with much less cognitive impact.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Hull TD et al. At-Home, Sublingual Ketamine Telehealth Is a Safe and Effective Treatment for Moderate to Severe Anxiety and Depression.</div>
+  <div class="cite-source">J Affect Disord 2022;314:59–67. Read <a href="https://doi.org/10.1016/j.jad.2022.07.004" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Large prospective open-label trial of at-home sublingual ketamine in 1,247 patients with moderate-to-severe anxiety and depression. <strong>62.9% achieved ≥50% improvement on the standard anxiety scale (GAD-7); 62.8% achieved the same on the standard depression scale (PHQ-9).</strong> Effect sizes for both were nearly identical. This is the largest direct evidence that sublingual ketamine helps anxiety and depression in essentially equal measure.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The strongest single piece of evidence that ketamine can address both Dad's depression and his anxiety as a unified treatment — obviating the need for a separate anxiety-targeted medication like Depakote.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Glue P et al. Effects of Ketamine in Patients With Treatment-Refractory Generalized Anxiety and Social Anxiety Disorders.</div>
+  <div class="cite-source">J Psychopharmacol 2017;31:1302–1305. Read <a href="https://doi.org/10.1177/0269881117705089" class="cite-link">here</a>; and the 2020 double-blind replication, J Psychopharmacol 2020;34:267–272. Read <a href="https://doi.org/10.1177/0269881119874457" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Ascending-dose study of ketamine in treatment-refractory generalized anxiety disorder and social anxiety disorder. Anxiety reductions occurred within 1 hour of dosing and persisted up to 7 days. 10 of 12 patients responded at therapeutic doses. The 2020 study replicated these findings in a double-blind controlled design.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Direct evidence that ketamine's anxiolytic effect is real and rapid, even in patients whose anxiety has not responded to standard treatments. Relevant to Dad given his current prominent anxiety.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Phillips JL et al. Single, Repeated, and Maintenance Ketamine Infusions for Treatment-Resistant Depression.</div>
+  <div class="cite-source">Am J Psychiatry 2019;176:401–409. Read <a href="https://doi.org/10.1176/appi.ajp.2018.18070834" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Repeated ketamine infusions show cumulative antidepressant effects with a median of 3 infusions to response. Patients on scheduled maintenance had substantially lower relapse rates (~27%) than those without maintenance (~46%).</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Confirms the value of building maintenance into the plan from day one — exactly what Royal Oak's protocol does. The relapse data parallel Dad's February relapse after self-discontinuation.</div>
+</div>
+
+<div class="tier-header">Tier 3 — Systematic Reviews and Large Cohorts <span class="tier-stars">★★★</span></div>
+
+<div class="citation">
+  <div class="cite-title">Smith-Apeldoorn SY et al. Maintenance Ketamine Treatment for Depression: A Systematic Review.</div>
+  <div class="cite-source">Lancet Psychiatry 2022;9:907–921. Read <a href="https://doi.org/10.1016/S2215-0366(22)00317-0" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>73–77% of patients who respond initially maintain that response at 6 months with structured maintenance dosing. Regular maintenance schedules are associated with lower relapse rates (27%) than variable protocols (46%). Concurrent psychotherapy is associated with a 28% reduction in relapse risk (HR 0.72).</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Anchors realistic expectations for Dad's maintenance trajectory and directly supports the integration-team approach (Julane plus supplementary practitioners) as a relapse-reduction strategy.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Masdrakis VG et al. Ketamine/Esketamine Pharmacotherapy for Treatment of Anxiety Disorders and Anxiety Symptoms in Depression: Systematic Review.</div>
+  <div class="cite-source">J Psychopharmacol 2025. Read <a href="https://doi.org/10.1177/02698811251389583" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Comprehensive systematic review of 78 studies on ketamine and esketamine for anxiety disorders and anxiety symptoms in depression. Confirms ketamine is associated with anxiety reduction across both contexts. Notes that sublingual formulation produces somewhat slower onset than IV but with fewer side effects.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The most current authoritative review of ketamine's anxiolytic evidence. Confirms the broad picture: ketamine is an effective anxiolytic across multiple delivery routes, including the sublingual route Dad will receive.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Sukhdeo R et al. Ketamine and Esketamine for Late-Life Depression: A Systematic Review.</div>
+  <div class="cite-source">Am J Geriatr Psychiatry 2025. Read <a href="https://doi.org/10.1016/j.jagp.2025.08.001" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Systematic review of 13 studies (757 adults ≥60) of ketamine and esketamine in late-life depression. Cognitive outcomes were mostly stable or improved. Adverse events were generally mild to moderate.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Direct evidence that ketamine is well-tolerated in Dad's age group, with cognitive safety that contrasts favorably with ECT.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Hietamies TM et al. The Effects of Ketamine on Symptoms of Depression and Anxiety in Real-World Care Settings (KIT analysis).</div>
+  <div class="cite-source">J Affect Disord 2023;335:484–492. Read <a href="https://doi.org/10.1016/j.jad.2023.04.141" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Large real-world community-care study, n=2,758. After ketamine induction, patients showed substantial reductions in both anxiety and depression scores (effect sizes: Cohen's d −1.17 for anxiety, −1.56 for depression). During up to 1 year of maintenance, symptom changes were minimal — suggesting durable effects.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Second large-scale dataset confirming ketamine's parallel effects on anxiety and depression, and the durability of those effects with maintenance.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Rodrigues NB et al. Do Sleep Changes Mediate the Anti-Depressive and Anti-Suicidal Response of Intravenous Ketamine in Treatment-Resistant Depression?</div>
+  <div class="cite-source">J Sleep Res 2022;31:e13400. Read <a href="https://doi.org/10.1111/jsr.13400" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Study of 323 patients with treatment-resistant depression receiving IV ketamine. Improvement in early-morning waking was a significant partial mediator of both the antidepressant and the anti-suicidal effects of ketamine. Each one-point improvement in total sleep score was associated with about 3.3 times higher odds of achieving treatment response/remission.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Direct evidence that ketamine specifically helps with early-morning waking — the symptom pattern Dad currently has, and one that has been a particular target for medication discussion. Dad's documented prior dramatic ketamine response means the May 18 restart is the evidence-supported intervention for this exact symptom.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Boesjes R, Oosterveld C et al. Effects of Ketamine on Sleep and Circadian Rhythmicity in Major Depressive Disorder and Bipolar Disorder: A Systematic Review.</div>
+  <div class="cite-source">J Affect Disord 2026;409:121915. Read <a href="https://doi.org/10.1016/j.jad.2026.121915" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Systematic review of 26 studies (1,694 patients). Ketamine is associated with favorable effects on subjective sleep quality in TRD. Baseline sleep disturbances and early sleep improvements may predict overall antidepressant response.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The most current pooled evidence that ketamine improves sleep specifically in TRD patients. Adds to the case that Dad's sleep disturbance is itself an indicator that ketamine may help — and that early sleep improvement after the restart may signal a broader response.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Wang M et al. Sleep Improvement Is Associated With the Antidepressant Efficacy of Repeated-Dose Ketamine and Serum BDNF Levels: A Post-Hoc Analysis.</div>
+  <div class="cite-source">Pharmacol Rep 2021;73:594–603. Read <a href="https://doi.org/10.1007/s43440-020-00203-1" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Post-hoc analysis of 127 patients receiving repeated-dose ketamine. Sleep improvement within 24 hours of the first ketamine infusion predicted the overall antidepressant response across the course.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Suggests early sleep change after the May 18 restart will be a useful clinical signal of whether ketamine is working — a concrete thing for Mom, Dad, and Julane to track in the first week.</div>
+</div>
+
+<div class="tier-header">Tier 4 — Mechanistic, Comparative, and Risk-Side <span class="tier-stars">★★</span></div>
+
+<div class="citation">
+  <div class="cite-title">McIntyre RS et al. The Effectiveness of Intravenous Ketamine in Adults With TRD and Bipolar Disorder Presenting With Prominent Anxiety.</div>
+  <div class="cite-source">J Psychopharmacol 2021;35:128–136. Read <a href="https://doi.org/10.1177/0269881120954048" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Canadian Rapid Treatment Center of Excellence study of ketamine in TRD with prominent anxious-distress features. Patients with high anxiety showed <em>greater</em> depression improvement than non-anxious patients, alongside significant anxiety reduction. This is the opposite pattern from ECT.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Dad's prominent anxiety in the current episode is, by this data, a positive predictor of ketamine response — not a complicating factor.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Laszcz J et al. A Retrospective Analysis of the Impact of ECT on Anxiety Symptoms in TRD.</div>
+  <div class="cite-source">J ECT 2025. Read <a href="https://doi.org/10.1097/YCT.0000000000001113" class="cite-link">here</a>; and Huang CJ et al. The Relationship Between Depression and Anxiety Symptoms During Acute ECT. Int J Neuropsychopharmacol 2019;22:609–615. Read <a href="https://doi.org/10.1093/ijnp/pyz038" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>In TRD patients undergoing ECT, anxiety improved less than depression during the course, and high baseline anxiety predicted worse antidepressant response to ECT. Anxiety reduction during ECT was incomplete and slower than depression reduction.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The mirror image of the ketamine-anxiety pattern. In a patient like Dad with prominent anxiety as a current symptom, this is a meaningful comparative signal favoring ketamine over ECT for both the anxiety target and the depression target.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Del Casale A et al. Esketamine Combined With SSRI or SNRI for Treatment-Resistant Depression.</div>
+  <div class="cite-source">JAMA Psychiatry 2025;82:810–817. Read <a href="https://doi.org/10.1001/jamapsychiatry.2025.0200" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Propensity-matched cohort, n=55,480. SNRI + esketamine had lower mortality (5.3% vs. 9.1%) and lower depression relapse (14.8% vs. 21.2%) than SSRI + esketamine.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Population-level evidence supporting Dad's continuing duloxetine (an SNRI) through the ketamine restart, rather than switching to escitalopram (an SSRI) concurrently.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Vankawala J et al. Meta-Analysis: Hemodynamic Responses to Sub-Anesthetic Doses of Ketamine.</div>
+  <div class="cite-source">Front Psychiatry 2021;12:549080. Read <a href="https://doi.org/10.3389/fpsyt.2021.549080" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Meta-analysis of 2,252 ketamine treatments in psychiatric patients. Modest, transient increases in blood pressure (+12.6 mmHg systolic, +8.5 mmHg diastolic) and heart rate (+4.1 bpm). No serious cardiac adverse events. Age did not significantly affect these changes.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The modest heart-rate increase from ketamine is actually favorable in Dad's bradycardia (HR 57 at the May 11 visit). ECT under general anesthesia produces much larger hemodynamic swings, which carry more risk in bradycardic patients with possible autonomic features.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Andrashko V et al. The Antidepressant Effect of Ketamine Is Dampened by Concomitant Benzodiazepine Medication.</div>
+  <div class="cite-source">Front Psychiatry 2020;11:844. Read <a href="https://doi.org/10.3389/fpsyt.2020.00844" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Concurrent benzodiazepine use measurably reduces ketamine's antidepressant effect. The effect is most pronounced at higher doses and within the immediate dosing window.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Validates the recently-completed lorazepam taper. Dad being 3 days off lorazepam by May 11 — and presumably further out by May 18 — optimizes the conditions for ketamine response.</div>
+</div>
+
+<div class="tier-header">Tier 5 — Smaller Studies and Specific Findings <span class="tier-stars">★</span></div>
+
+<div class="citation">
+  <div class="cite-title">Truppman Lattie D et al. Anxiolytic Effects of Acute and Maintenance Ketamine.</div>
+  <div class="cite-source">J Psychopharmacol 2021;35:137–141. Read <a href="https://doi.org/10.1177/0269881120953991" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Study of acute and maintenance ketamine (1 mg/kg subcutaneous, once or twice weekly). Over 3 months of maintenance, pre-dose anxiety scores showed a progressive decrease — meaning the anxiolytic effect accumulates over time rather than just acting acutely at each session.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Direct evidence that ketamine maintenance produces cumulative anxiety benefit, not just episode-level relief. Relevant to Dad's medium- and long-term anxiety trajectory if maintenance is sustained.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Garel N et al. Intravenous Ketamine for Benzodiazepine Deprescription and Withdrawal Management.</div>
+  <div class="cite-source">Neuropsychopharmacology 2023;48:1769–1777. Read <a href="https://doi.org/10.1038/s41386-023-01689-y" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>In a cohort of TRD patients undergoing ketamine treatment, 91% successfully discontinued all benzodiazepines during a 4-week ketamine course; 64% remained abstinent at 1-year follow-up.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Suggests ketamine can be additionally helpful for staying off lorazepam long-term — a useful supporting effect given Dad's recent completed taper.</div>
+</div>
+
+</body>
+</html>

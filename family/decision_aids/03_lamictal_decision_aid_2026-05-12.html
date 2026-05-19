@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Decision Aid — Lamictal vs Depakote — 2026-05-12</title>
+<style>
+  @page {
+    size: letter;
+    margin: 0.55in 0.65in;
+  }
+
+  :root {
+    --navy: #1a3a5c;
+    --navy-dark: #0f2640;
+    --against-accent: #8b2c2c;
+    --text: #1f1f1f;
+    --text-muted: #5a5a5a;
+    --rule: #c8c8c8;
+    --rule-strong: #6a6a6a;
+    --tint: #f5f5f0;
+    --tint-pro: #f0f4f8;
+    --tint-con: #f9f2f0;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    font-family: "Charter", "Georgia", "Times New Roman", serif;
+    font-size: 9.75pt;
+    line-height: 1.42;
+    color: var(--text);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .doc-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-bottom: 6pt;
+    border-bottom: 1.5pt solid var(--navy);
+    margin-bottom: 14pt;
+  }
+
+  .doc-header .title {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 600;
+    font-size: 15pt;
+    line-height: 1.2;
+    color: var(--navy-dark);
+    letter-spacing: -0.01em;
+  }
+
+  .doc-header .meta {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 7.5pt;
+    color: var(--text-muted);
+    text-align: right;
+    letter-spacing: 0.03em;
+    line-height: 1.5;
+  }
+
+  .section-label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 7.5pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--navy);
+    margin: 14pt 0 5pt 0;
+  }
+
+  .section-label.first { margin-top: 0; }
+
+  .key-message {
+    border-left: 4pt solid var(--against-accent);
+    background: var(--tint);
+    padding: 9pt 13pt 9pt 13pt;
+    margin: 0 0 10pt 0;
+  }
+
+  .key-message p {
+    margin: 0;
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 10.5pt;
+    line-height: 1.42;
+    font-weight: 500;
+    color: var(--text);
+  }
+
+  .context {
+    font-size: 9.5pt;
+    line-height: 1.5;
+    color: var(--text);
+    margin: 0 0 4pt 0;
+  }
+
+  table.evidence {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 4pt 0 8pt 0;
+    table-layout: fixed;
+  }
+
+  table.evidence thead th {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 600;
+    font-size: 8.25pt;
+    padding: 6pt 9pt;
+    text-align: left;
+    background: var(--navy);
+    color: white;
+    letter-spacing: 0.02em;
+  }
+
+  table.evidence thead th.pro {
+    background: #4a6a8a;
+  }
+
+  table.evidence thead th.con {
+    background: var(--against-accent);
+  }
+
+  table.evidence td {
+    padding: 6pt 9pt;
+    vertical-align: top;
+    border-bottom: 0.5pt solid var(--rule);
+    font-size: 9pt;
+    line-height: 1.4;
+  }
+
+  table.evidence td.pro { background: var(--tint-pro); }
+  table.evidence td.con { background: var(--tint-con); }
+
+  table.evidence tbody tr:last-child td { border-bottom: none; }
+
+  table.evidence td strong {
+    color: var(--navy-dark);
+  }
+
+  .strength-row {
+    display: flex;
+    align-items: baseline;
+    margin: 6pt 0 2pt 0;
+    white-space: nowrap;
+  }
+
+  .strength-label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 8.5pt;
+    font-weight: 600;
+    color: var(--text);
+    margin-right: 10pt;
+    white-space: nowrap;
+  }
+
+  .stars {
+    color: var(--against-accent);
+    letter-spacing: 0.12em;
+    font-size: 11pt;
+    white-space: nowrap;
+  }
+
+  .strength-rationale {
+    font-size: 8.5pt;
+    color: var(--text-muted);
+    font-style: italic;
+    margin: 2pt 0 6pt 0;
+    line-height: 1.4;
+  }
+
+  ol.next-steps {
+    margin: 4pt 0 8pt 0;
+    padding-left: 18pt;
+    font-size: 9.25pt;
+    line-height: 1.4;
+  }
+
+  ol.next-steps li {
+    margin-bottom: 4pt;
+    padding-left: 3pt;
+  }
+
+  ol.next-steps li::marker {
+    color: var(--navy);
+    font-weight: 700;
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+  }
+
+  .bottom-line {
+    border-top: 1pt solid var(--rule-strong);
+    padding-top: 6pt;
+    margin-top: 10pt;
+    font-style: italic;
+    font-size: 9pt;
+    color: var(--text);
+    line-height: 1.4;
+  }
+
+  .bottom-line .label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 7.5pt;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--navy);
+    margin-right: 6pt;
+  }
+
+  /* ---------- Neutral / "shared" section ---------- */
+  .neutral-block {
+    background: #f3f3f1;
+    border-left: 3pt solid #888;
+    padding: 9pt 14pt 6pt 14pt;
+    margin: 4pt 0 8pt 0;
+  }
+
+  .neutral-block ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .neutral-block li {
+    font-size: 9pt;
+    line-height: 1.45;
+    margin-bottom: 6pt;
+    padding-left: 14pt;
+    position: relative;
+  }
+
+  .neutral-block li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #888;
+    font-weight: bold;
+  }
+
+  .neutral-block li:last-child { margin-bottom: 0; }
+  .neutral-block strong { color: var(--navy-dark); }
+
+  /* ============================================================
+     Citations section (flows continuously below bottom line)
+     ============================================================ */
+
+  .back-header {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 14pt;
+    font-weight: 600;
+    color: var(--navy-dark);
+    border-bottom: 1.5pt solid var(--navy);
+    padding-bottom: 5pt;
+    margin-top: 18pt;
+    margin-bottom: 4pt;
+  }
+
+  .citation,
+  .tier-header {
+    page-break-inside: avoid;
+  }
+
+  .back-subhead {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 8pt;
+    color: var(--text-muted);
+    margin-bottom: 14pt;
+    letter-spacing: 0.03em;
+  }
+
+  .tier-header {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 9pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--navy);
+    margin: 11pt 0 6pt 0;
+    padding-bottom: 2pt;
+    border-bottom: 0.5pt solid var(--rule);
+  }
+
+  .tier-header .tier-stars {
+    float: right;
+    color: var(--navy);
+    font-size: 10pt;
+    letter-spacing: 0.04em;
+  }
+
+  .citation {
+    margin: 0 0 9pt 0;
+    padding-left: 9pt;
+    border-left: 2pt solid var(--rule);
+    font-size: 8.75pt;
+    line-height: 1.4;
+  }
+
+  .citation .cite-title {
+    font-weight: 700;
+    color: var(--navy-dark);
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 8.75pt;
+  }
+
+  .citation .cite-source {
+    color: var(--text-muted);
+    font-style: italic;
+    font-size: 8.5pt;
+  }
+
+  .citation .cite-finding,
+  .citation .cite-apply {
+    margin-top: 2pt;
+    font-size: 8.5pt;
+  }
+
+  .citation .label-inline {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 700;
+    font-size: 7pt;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--navy);
+    margin-right: 4pt;
+  }
+
+  .citation .cite-link {
+    color: var(--navy);
+    text-decoration: underline;
+    text-decoration-thickness: 0.4pt;
+    text-underline-offset: 1.5pt;
+    font-style: normal;
+    font-weight: 500;
+    margin-left: 2pt;
+  }
+
+  .citation .cite-link:hover { color: var(--navy-dark); }
+</style>
+</head>
+<body>
+
+<div class="doc-header">
+  <div class="title">Should Dad take Lamictal instead of Depakote?</div>
+  <div class="meta">
+    Decision Aid · 2026-05-12<br>
+    For Dad, Mom, Dr. Rubin, the K Clinic<br>
+    psychiatrist, Julane &amp; the family team
+  </div>
+</div>
+
+<div class="section-label first">Recommendation</div>
+<div class="key-message">
+  <p>Lamictal is meaningfully safer than Depakote in Dad's specific profile on the dimensions that matter most (movement, brain volume, B12-axis). But Dr. Rubin's Depakote is being prescribed specifically for <strong>anxiety</strong> — and for anxiety in older adults with Dad's neurological profile, neither drug has strong evidence, and several limitations apply equally to both. The most evidence-supported step is deferring both drugs until after Dad's ketamine response has been assessed at 2–3 sessions, with the K Clinic psychiatrist consulted on what anxiety treatments are appropriate for Dad's specific profile.</p>
+</div>
+
+<div class="section-label">Why this matters for Dad specifically</div>
+<p class="context">Dad's profile makes the comparison between Depakote and Lamictal genuinely consequential: he has formal REM Sleep Behavior Disorder on his chart since 2017 (8.5 years), prior Parkinson's-like side effects from low-dose aripiprazole in 2025, self-discontinued brexpiprazole for balance issues in March 2026, balance impairment coded 9 months before any recent medication changes, "somewhat robotic" gait noted on his April 14 PCP exam, brain fog coded multiple times in April and May, just-diagnosed methylmalonic acidemia with active B12 supplementation, and an active neurology referral specifically to rule out Parkinson's. Depakote's documented risks (movement side effects, brain shrinkage in cognitively vulnerable older adults, B12-axis disruption) align with these vulnerabilities; Lamictal does not. The indication being targeted (anxiety, per Mom's clarification) further weakens the case for either drug, because evidence for both in late-life anxiety is essentially absent — and better-evidenced anxiety treatments exist for older adults with this kind of neurological profile.</p>
+
+<div class="section-label">The evidence</div>
+<table class="evidence">
+  <thead>
+    <tr>
+      <th class="pro" style="width: 50%;">How Lamictal is safer than Depakote in Dad's profile</th>
+      <th class="con" style="width: 50%;">Lamictal-specific concerns to weigh</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="pro"><strong>No insidious Parkinson's-like syndrome.</strong> Depakote has a well-documented pattern of causing slowly developing Parkinson's-like symptoms (tremor, stiffness, slowed movement) — often combined with subtle cognitive decline that can mimic dementia. Lamictal does not have this profile.</td>
+      <td class="con"><strong>FDA-labeled warning for worsening Parkinson's symptoms in patients with pre-existing PD.</strong> A 1997 trial (Shinotoh et al.) gave Lamictal to 12 patients with Parkinson's disease; 9 didn't finish the study because of side effects, including <strong>3 with hallucinations</strong> and <strong>4 with worsening of Parkinson's-like symptoms</strong>. Dad doesn't have a Parkinson's diagnosis, but the active neurology referral exists precisely to evaluate whether something like that is present — making this signal worth taking seriously.</td>
+    </tr>
+    <tr>
+      <td class="pro"><strong>No brain-shrinkage signal.</strong> The 2011 trial (Tariot et al.) that found accelerated brain volume loss in older adults given roughly the same Depakote dose Dad is prescribed has no equivalent for Lamictal. Lamictal is generally regarded as "cognitively friendly" in older adults.</td>
+      <td class="con"><strong>Lamictal increases the amount of time spent in REM sleep.</strong> Because Dad has formally diagnosed REM Sleep Behavior Disorder (a condition where the muscle paralysis that normally accompanies REM sleep is incomplete, so people act out their dreams), more REM time could theoretically mean a longer window for dream-enactment episodes. A single case report described a patient on Lamictal whose RBD didn't worsen during treatment but flared when the drug was abruptly stopped — so the picture is mixed, not clearly harmful.</td>
+    </tr>
+    <tr>
+      <td class="pro"><strong>Doesn't disrupt the B12 / folate axis.</strong> Dad's August 6 blood test (to check whether his B12 supplementation is working) would not be confounded by Lamictal the way it would by Depakote.</td>
+      <td class="con"><strong>Theoretical concern about blunting ketamine, but real-world data is reassuring.</strong> Lamictal reduces release of a brain chemical called glutamate, and ketamine works partly by causing a brief glutamate surge — so in theory they could work against each other. Brain imaging in healthy volunteers supports this concern in principle. But the strongest real-world clinical data has not shown it play out: a 2025 Yale study of 347 patients (57 on Lamictal during ketamine treatment) found no difference in depression outcomes; a smaller 2023 Mayo Clinic study found the same. <strong>Caveat:</strong> both studies used intravenous or intranasal ketamine — Dad's planned treatment is sublingual (under the tongue), which has not been studied with Lamictal.</td>
+    </tr>
+    <tr>
+      <td class="pro"><strong>Doesn't muddy the neurology evaluation.</strong> Lamictal does not produce the same Parkinson's-like side effect pattern that would confuse Dad's June neurology evaluation the way Depakote would.</td>
+      <td class="con"><strong>Rare but serious skin reaction.</strong> Lamictal can cause Stevens-Johnson syndrome, a life-threatening skin reaction, in about 1 in 2,500 patients — which is why it requires a mandatory slow start over 5–6 weeks. The risk is highest in the first month and increases if the drug is started too quickly.</td>
+    </tr>
+    <tr>
+      <td class="pro"><strong>Better survival in patients with both epilepsy and dementia.</strong> A 2026 Swedish population study of nearly 6,000 patients found that those given Lamictal for seizures had <strong>lower death rates</strong>, while those given Depakote had the highest death rates of any seizure medication studied. Dad does not have dementia, but the data are relevant if a Parkinson's-spectrum diagnosis emerges.</td>
+      <td class="con"><strong>Common side effects that could compound existing issues.</strong> Dizziness, balance problems, and headache are documented side effects of Lamictal in older adults. In a patient with already-documented balance impairment and gait findings, these are worth watching.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="section-label">What's true of both drugs (shared limitations)</div>
+<div class="neutral-block">
+  <ul>
+    <li><strong>Neither drug can deliver short-term anxiety relief.</strong> Lamictal requires a mandatory 5–6 week slow start (25 mg/day for 2 weeks, then 50 mg/day for 2 more, then 100 mg/day or higher) to prevent the Stevens-Johnson skin reaction, and studies in depression typically measured benefit at 8–10 weeks at full dose. Depakote at the prescribed 250 mg/day is below the dose at which any benefit has been documented for any approved use (typical doses are 750–2,500 mg/day), and even at therapeutic doses takes 4–8 weeks to act. Both drugs are essentially medium-term medications, not short-term agitation treatments.</li>
+    <li><strong>Neither drug has been tested in older adults with hard-to-treat depression or anxiety.</strong> No randomized placebo-controlled trial has tested either drug in adults over 65 with these conditions, at any dose. The landmark trial of add-on treatments in older adults with hard-to-treat depression (OPTIMUM, NEJM 2023) included aripiprazole, bupropion, lithium, and nortriptyline — but neither Depakote nor Lamictal.</li>
+    <li><strong>Neither drug is recommended by major clinical guidelines as a first-line add-on for hard-to-treat depression.</strong> The American Psychiatric Association, Canada's CANMAT, the UK's NICE, the Maudsley Hospital prescribing guide, the geriatric psychiatry association (AAGP), and the U.S. Department of Veterans Affairs all omit both drugs from their first-line recommendations. (Lamictal sometimes appears as "at best second-line"; Depakote is absent entirely.)</li>
+    <li><strong>For anxiety specifically — which is the actual indication being targeted — the evidence for both is even thinner.</strong> Depakote has a single small trial in young-to-middle-aged men with generalized anxiety (never replicated), and a 2024 meta-analysis of valproate's anxiety effects across all studies was not statistically significant. Lamictal has essentially no published evidence supporting use for anxiety. Any continued anxiety treatment in Dad's specific profile (formal RBD, possible prodromal Parkinson's-spectrum features, MMA-confirmed functional B12 deficiency, autonomic findings) should be discussed with the K Clinic psychiatrist with attention to his particular neurological vulnerabilities — not just to the anxiety indication alone.</li>
+  </ul>
+</div>
+
+<div class="strength-row">
+  <span class="strength-label">Strength of evidence supporting this recommendation:</span>
+  <span class="stars">★★★★★</span>
+</div>
+<div class="strength-rationale">Lamictal's safety advantage over Depakote on movement, brain-volume, and B12-axis dimensions is well-established. Both drugs lacking strong evidence in older adults for either depression or anxiety is also well-established. The combination supports the conclusion that Lamictal is the safer of the two if a mood stabilizer is used at all, but that neither drug is well-matched to the anxiety indication being targeted, and that better-evidenced anxiety options exist.</div>
+
+<div class="section-label">Recommended next steps</div>
+<ol class="next-steps">
+  <li><strong>Bring this question to the K Clinic psychiatrist when she calls</strong> — including the fact that the indication being targeted is anxiety, and asking what evidence-supported anxiety treatments are appropriate for an older adult with Dad's specific neurological profile (formal RBD, possible prodromal Parkinson's-spectrum features, MMA-confirmed functional B12 deficiency, autonomic findings).</li>
+  <li><strong>If a mood stabilizer is going to be used eventually, Lamictal is the safer of the two</strong> — but the timing should be after Dad's ketamine response is read at 2–3 sessions, not concurrent with the restart, and ideally after the June neurology evaluation rules out (or rules in) prodromal Parkinson's-spectrum disease.</li>
+  <li><strong>Hold Depakote at the current 250 mg/day dose pending review.</strong> Do not allow titration to a higher dose.</li>
+  <li><strong>Proceed with sublingual ketamine restart May 18 as planned.</strong> Assess response over 2–3 sessions before introducing additional medications.</li>
+  <li><strong>Continue B12 1000 mcg daily.</strong> Protect the August 6 MMA recheck from confounders.</li>
+  <li><strong>If new symptoms emerge on either drug</strong> — movement changes, sedation, cognitive shift, rash, dizziness — stop and notify Dr. Rubin and the neurology team.</li>
+</ol>
+
+<div class="bottom-line">
+  <span class="label">Bottom line</span>
+  Lamictal is meaningfully safer than Depakote in Dad's profile on movement, brain-volume, and B12-axis dimensions. But the indication being targeted is anxiety, and neither drug has strong evidence for treating anxiety in older adults — and several shared limitations make both poor matches for what's currently being asked. The honest answer to "is Lamictal any better?" is yes on safety vs. Depakote, but neither drug is the right tool for this job. The most evidence-supported step is deferring both, asking the K Clinic psychiatrist about anxiety treatments appropriate for an older adult with Dad's specific neurological profile, and letting ketamine response and the neurology evaluation play out before any new mood-stabilizer decision.
+</div>
+
+<!-- =========================================================
+     CITATIONS (flows continuously)
+     ========================================================= -->
+
+<div class="back-header">Key Studies &amp; Findings</div>
+<div class="back-subhead">Ranked by authority · Each citation summarized for how it applies to Dad's case</div>
+
+<div class="tier-header">Tier 1 — Major Clinical Guidelines <span class="tier-stars">★★★★★</span></div>
+
+<div class="citation">
+  <div class="cite-title">Steffens DC. Treatment-Resistant Depression in Older Adults.</div>
+  <div class="cite-source">NEJM 2024;390:630–639. Read <a href="https://doi.org/10.1056/NEJMcp2305428" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>The current NEJM review of treatment-resistant depression in adults ≥65 lists aripiprazole, bupropion, lithium, triiodothyronine, nortriptyline, MAOIs, esketamine, ECT, and TMS as recommended next-step strategies. Lamictal is not mentioned.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The most current authoritative summary of late-life treatment-resistant depression does not endorse Lamictal as an add-on treatment — though notably it also doesn't endorse Depakote, which underscores that neither drug is in the recommended first-line set.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Taylor RW et al. Pharmacological Augmentation in Unipolar Depression: A Guide to the Guidelines.</div>
+  <div class="cite-source">Int J Neuropsychopharmacol 2020;23:587–625. Read <a href="https://doi.org/10.1093/ijnp/pyaa033" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Systematic review of 10 major depression guidelines. Lithium and atypical antipsychotics (like aripiprazole) were recommended by all 10. Lamictal was not universally recommended by any of the 10, though some guidelines mention it as a possible second-line option.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Across guideline frameworks worldwide, Lamictal has marginal but not consistent endorsement as an add-on treatment for treatment-resistant depression — better than Depakote's complete absence, but not first-line.</div>
+</div>
+
+<div class="tier-header">Tier 2 — Major RCTs <span class="tier-stars">★★★★</span></div>
+
+<div class="citation">
+  <div class="cite-title">Barbee JG et al. A Double-Blind Placebo-Controlled Trial of Lamotrigine as an Antidepressant Augmentation Agent in Treatment-Refractory Unipolar Depression.</div>
+  <div class="cite-source">J Clin Psychiatry 2011;72:1405–1412. Read <a href="https://doi.org/10.4088/JCP.09m05355gre" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>The largest Western randomized placebo-controlled trial of Lamictal as add-on therapy for treatment-resistant depression. n=96. The primary endpoint was not met — Lamictal was not statistically better than placebo overall. Post-hoc analyses suggested some benefit in the most severely depressed patients.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The strongest Western evidence base for Lamictal in treatment-resistant depression failed its main test. This is a real evidence gap, even when comparing to Depakote (which has no equivalent placebo-controlled trial at all).</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Shinotoh H et al. Lamotrigine Trial in Idiopathic Parkinsonism: A Double-Blind, Placebo-Controlled, Crossover Study.</div>
+  <div class="cite-source">Neurology 1997;48:1282–1285. Read <a href="https://doi.org/10.1212/wnl.48.5.1282" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Small double-blind crossover trial of Lamictal in 12 patients with idiopathic Parkinson's disease. 9 of 12 patients did not complete the study due to adverse effects: 2 with movement-related side effects (dyskinesia), 3 with hallucinations, and 4 with worsening of Parkinson's symptoms. The drug provided no symptomatic benefit.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>This is the basis of the FDA-labeled signal for "exacerbation of Parkinsonian symptoms in patients with pre-existing Parkinson's disease." Dad does not have a confirmed Parkinson's diagnosis, but the active neurology referral exists precisely to evaluate whether something like that is present — so this trial's findings are directly relevant if Lamictal is being considered.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Lenze EJ et al. Antidepressant Augmentation versus Switch in Treatment-Resistant Geriatric Depression (OPTIMUM).</div>
+  <div class="cite-source">NEJM 2023;388:1067–1079. Read <a href="https://doi.org/10.1056/NEJMoa2204462" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>The landmark trial of add-on and switch strategies for treatment-resistant depression in adults ≥60. Tested aripiprazole, bupropion, lithium, and nortriptyline. Lamictal was not included as an option worth testing.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The most authoritative recent trial in the population most relevant to Dad did not consider Lamictal a candidate worth evaluating, suggesting it is not viewed as a leading option for this clinical situation.</div>
+</div>
+
+<div class="tier-header">Tier 3 — Meta-analyses &amp; Systematic Reviews <span class="tier-stars">★★★</span></div>
+
+<div class="citation">
+  <div class="cite-title">Goh KK et al. Lamotrigine Augmentation in Treatment-Resistant Unipolar Depression: A Comprehensive Meta-Analysis.</div>
+  <div class="cite-source">J Psychopharmacol 2019;33:700–713. Read <a href="https://doi.org/10.1177/0269881119844199" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Meta-analysis of 8 randomized trials (n=677). Overall pooled result favored Lamictal — but the positive effect was driven by six Chinese studies; the two non-Chinese RCTs were not statistically significant. The authors characterized Lamictal as "at best only second-line augmentation."</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The most-cited meta-analysis supporting Lamictal in treatment-resistant depression has important limitations and explicitly does not recommend Lamictal as a first choice.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Arnone D et al. Efficacy of Lamotrigine in the Treatment of Unipolar and Bipolar Depression: Meta-Analysis.</div>
+  <div class="cite-source">Pharmaceuticals 2025;18:1590. Read <a href="https://doi.org/10.3390/ph18101590" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>The most recent meta-analysis, including previously unpublished trials. Concluded that Lamictal was not superior to placebo in unipolar depression — either as monotherapy or as an add-on.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The most up-to-date pooled evidence does not support Lamictal as an effective add-on for unipolar depression. This weakens the case for Lamictal even before considering Dad's specific profile.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Veraart JKE, Smith-Apeldoorn SY et al. Pharmacodynamic Interactions Between Ketamine and Psychiatric Medications.</div>
+  <div class="cite-source">Int J Neuropsychopharmacol 2021;24:808–831. Read <a href="https://doi.org/10.1093/ijnp/pyab039" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Systematic review of how psychiatric medications interact with ketamine. Concluded that benzodiazepines and "probably lamotrigine" reduce ketamine's antidepressant effect. The lamotrigine conclusion was based on 2 of 5 studies showing attenuation in research settings.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The theoretical concern about Lamictal blunting ketamine is real and reflected in the published systematic-review literature. This is the concern that real-world studies (below) have tested.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Santucci MC et al. Lamotrigine Is Not Associated With Differential Clinical Outcomes in a Real-World Sample of Patients With Unipolar Depression Receiving Ketamine or Esketamine.</div>
+  <div class="cite-source">Psychopharmacology 2025. Read <a href="https://doi.org/10.1007/s00213-025-06896-7" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Yale real-world study, n=347 patients receiving ketamine or esketamine for unipolar depression, including 57 patients on Lamictal at an average dose of 210 mg/day. Found no clinical evidence of attenuation: depression outcome scores (MADRS, QIDS) were the same in patients on Lamictal as in those not on Lamictal, even after adjusting for multiple confounders.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The strongest available real-world clinical evidence suggests the theoretical concern about Lamictal blunting ketamine does not translate to actual treatment outcomes — though this study used IV ketamine and intranasal esketamine, not the sublingual route Dad will be using.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Joseph B et al. Efficacy of Ketamine With and Without Lamotrigine in Treatment-Resistant Depression.</div>
+  <div class="cite-source">Pharmaceuticals 2023;16:1164. Read <a href="https://doi.org/10.3390/ph16081164" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Smaller Mayo Clinic preliminary report (n=13 on Lamictal). Found no significant differences in response or remission rates between patients receiving ketamine with vs. without Lamictal. A trend toward less dissociation (the brief altered-perception experience during ketamine sessions) with Lamictal, particularly with IV ketamine.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>A second real-world dataset corroborating the Yale finding, though with the same caveat: not sublingual ketamine.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Zelano J et al. Differences in Survival Associated With the First Antiseizure Medication in People With Dementia and Epilepsy.</div>
+  <div class="cite-source">Neurology 2026;106:e214929. Read <a href="https://doi.org/10.1212/WNL.0000000000214929" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Swedish population-wide cohort study, n=5,764 patients with both epilepsy and dementia. Depakote was associated with the highest death rates (34% increased risk of dying compared to other seizure medications), while Lamictal was associated with the lowest death rates (16% reduced risk).</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Dad does not have dementia, but if a Parkinson's-spectrum diagnosis emerges from the neurology evaluation, this is the most relevant comparative survival data on the two drugs in a cognitively vulnerable older population.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Postuma RB et al. Antidepressants and REM Sleep Behavior Disorder: Isolated Side Effect or Neurodegenerative Signal?</div>
+  <div class="cite-source">Sleep 2013;36:1579–1585. Read <a href="https://doi.org/10.5665/sleep.3102" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Prospective cohort study of 100 patients with REM Sleep Behavior Disorder confirmed by sleep study. Patients whose RBD was associated with antidepressant use had a substantially lower 5-year rate of progression to a Parkinson's-spectrum neurodegenerative diagnosis (22%) than patients whose RBD was unrelated to medications (59%).</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Dad has been on antidepressants intermittently for years alongside his 8.5-year formal RBD diagnosis. This data suggests the antidepressant association may be partially protective against the highest published conversion rates — but his other findings (drug-induced parkinsonism, balance changes, robotic gait, brain fog) raise the concern back up substantially regardless of the antidepressant context.</div>
+</div>
+
+<div class="tier-header">Tier 4 — Mechanistic / Brain Imaging Studies <span class="tier-stars">★★</span></div>
+
+<div class="citation">
+  <div class="cite-title">Meiering MS et al. Functional Activity and Connectivity Signatures of Ketamine and Lamotrigine During Negative Emotional Processing.</div>
+  <div class="cite-source">Transl Psychiatry 2024;14:436. Read <a href="https://doi.org/10.1038/s41398-024-03120-6" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Brain imaging study in healthy volunteers. Lamictal pretreatment blocked the brain connectivity changes produced by ketamine, and abolished the sustained (24-hour) effects on the brain network associated with depression response.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>This is the strongest mechanistic evidence behind the theoretical concern that Lamictal could blunt ketamine's effect. It establishes that the interaction is real at the brain-imaging level, even though the clinical-outcome data above does not show it translating to depression outcomes.</div>
+</div>
+
+<div class="tier-header">Tier 5 — Smaller Studies &amp; Tolerability Data <span class="tier-stars">★</span></div>
+
+<div class="citation">
+  <div class="cite-title">Aulakh JS et al. Tolerability and Effectiveness of Lamotrigine in Complex Elderly Patients.</div>
+  <div class="cite-source">J Geriatr Psychiatry Neurol 2005;18:8–11. Read <a href="https://doi.org/10.1177/0891988704271762" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Small retrospective case series (n=20) in elderly nursing home patients with agitated or aggressive behaviors. 19 of 20 tolerated Lamictal; 18 of 20 showed modest improvement. This was uncontrolled and hypothesis-generating.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The strongest available evidence specifically for Lamictal in elderly patients is a 20-patient uncontrolled study. This is illustrative of how thin the late-life evidence base is for Lamictal.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Economou NT et al. Lamotrigine Withdrawal May Worsen RBD Symptoms.</div>
+  <div class="cite-source">The Neurologist 2011;17:279–281. Read <a href="https://doi.org/10.1097/NRL.0b013e31822c3e5d" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Single case report of a 68-year-old man with pre-existing REM Sleep Behavior Disorder who was started on Lamictal for suspected epilepsy. During 3 months of Lamictal treatment, there were no appreciable changes in RBD symptoms — but abrupt discontinuation of Lamictal severely worsened the RBD, with dreams becoming more vivid and frightening nearly nightly. Symptoms gradually subsided over 2 months after stopping.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>This is the only published report directly addressing Lamictal in a patient with formally diagnosed RBD. It suggests Lamictal may have a modest stabilizing effect on RBD during treatment, but that abrupt withdrawal can cause significant rebound. The signal is weak (single case) and points in two directions.</div>
+</div>
+
+</body>
+</html>

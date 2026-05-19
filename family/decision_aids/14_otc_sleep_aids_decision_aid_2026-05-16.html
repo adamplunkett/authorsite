@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Decision Aid — OTC sleep aids in Dad's profile — 2026-05-16</title>
+<style>
+  @page { size: letter; margin: 0.55in 0.65in; }
+  :root {
+    --navy: #1a3a5c; --navy-dark: #0f2640;
+    --against-accent: #8b2c2c; --for-accent: #2c5e3f;
+    --text: #1f1f1f; --text-muted: #5a5a5a;
+    --rule: #c8c8c8; --rule-strong: #6a6a6a;
+    --tint: #f5f3f0; --tint-pro: #eef3ee; --tint-con: #f7eeed;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    font-family: "Charter", "Georgia", "Times New Roman", serif;
+    font-size: 9.75pt; line-height: 1.42; color: var(--text);
+    -webkit-font-smoothing: antialiased;
+  }
+  .doc-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    padding-bottom: 6pt; border-bottom: 1.5pt solid var(--navy); margin-bottom: 14pt;
+  }
+  .doc-header .title {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 600; font-size: 15pt; line-height: 1.2;
+    color: var(--navy-dark); letter-spacing: -0.01em;
+  }
+  .doc-header .meta {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 7.5pt; color: var(--text-muted); text-align: right;
+    letter-spacing: 0.03em; line-height: 1.5;
+  }
+  .section-label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 7.5pt; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.14em; color: var(--navy); margin: 14pt 0 5pt 0;
+  }
+  .section-label.first { margin-top: 0; }
+  .key-message {
+    border-left: 4pt solid var(--against-accent); background: var(--tint);
+    padding: 9pt 13pt; margin: 0 0 10pt 0;
+  }
+  .key-message p {
+    margin: 0;
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 10.5pt; line-height: 1.42; font-weight: 500; color: var(--text);
+  }
+  .context { font-size: 9.5pt; line-height: 1.5; color: var(--text); margin: 0 0 4pt 0; }
+  table.evidence {
+    width: 100%; border-collapse: collapse; margin: 4pt 0 8pt 0; table-layout: fixed;
+  }
+  table.evidence thead th {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 600; font-size: 8.25pt; padding: 6pt 9pt; text-align: left;
+    background: var(--navy); color: white; letter-spacing: 0.02em;
+  }
+  table.evidence thead th.pro { background: var(--for-accent); }
+  table.evidence thead th.con { background: var(--against-accent); }
+  table.evidence td {
+    padding: 6pt 9pt; vertical-align: top;
+    border-bottom: 0.5pt solid var(--rule);
+    font-size: 9pt; line-height: 1.4;
+  }
+  table.evidence td.pro { background: var(--tint-pro); }
+  table.evidence td.con { background: var(--tint-con); }
+  table.evidence tbody tr:last-child td { border-bottom: none; }
+  table.evidence td strong { color: var(--navy-dark); }
+  .strength-row {
+    display: flex; align-items: baseline; margin: 6pt 0 2pt 0; white-space: nowrap;
+  }
+  .strength-label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 8.5pt; font-weight: 600; color: var(--text);
+    margin-right: 10pt; white-space: nowrap;
+  }
+  .stars { color: var(--against-accent); letter-spacing: 0.12em; font-size: 11pt; white-space: nowrap; }
+  .strength-rationale {
+    font-size: 8.5pt; color: var(--text-muted); font-style: italic;
+    margin: 2pt 0 6pt 0; line-height: 1.4;
+  }
+  ol.next-steps {
+    margin: 4pt 0 8pt 0; padding-left: 18pt; font-size: 9.25pt; line-height: 1.4;
+  }
+  ol.next-steps li { margin-bottom: 4pt; padding-left: 3pt; }
+  ol.next-steps li::marker {
+    color: var(--navy); font-weight: 700;
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+  }
+  .bottom-line {
+    border-top: 1pt solid var(--rule-strong); padding-top: 6pt; margin-top: 10pt;
+    font-style: italic; font-size: 9pt; color: var(--text); line-height: 1.4;
+  }
+  .bottom-line .label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-style: normal; font-weight: 700; font-size: 7.5pt;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--navy); margin-right: 6pt;
+  }
+  .neutral-block {
+    background: #f3f3f1; border-left: 3pt solid #888;
+    padding: 9pt 14pt 6pt 14pt; margin: 4pt 0 8pt 0;
+  }
+  .neutral-block ul { list-style: none; padding: 0; margin: 0; }
+  .neutral-block li {
+    font-size: 9pt; line-height: 1.45; margin-bottom: 6pt;
+    padding-left: 14pt; position: relative;
+  }
+  .neutral-block li::before {
+    content: "•"; position: absolute; left: 0; color: #888; font-weight: bold;
+  }
+  .neutral-block li:last-child { margin-bottom: 0; }
+  .neutral-block strong { color: var(--navy-dark); }
+  .back-header {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 14pt; font-weight: 600; color: var(--navy-dark);
+    border-bottom: 1.5pt solid var(--navy); padding-bottom: 5pt;
+    margin-top: 18pt; margin-bottom: 4pt;
+  }
+  .citation, .tier-header { page-break-inside: avoid; }
+  .back-subhead {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 8pt; color: var(--text-muted); margin-bottom: 14pt; letter-spacing: 0.03em;
+  }
+  .tier-header {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 9pt; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.12em; color: var(--navy);
+    margin: 11pt 0 6pt 0; padding-bottom: 2pt; border-bottom: 0.5pt solid var(--rule);
+  }
+  .tier-header .tier-stars { float: right; color: var(--navy); font-size: 10pt; letter-spacing: 0.04em; }
+  .citation {
+    margin: 0 0 9pt 0; padding-left: 9pt; border-left: 2pt solid var(--rule);
+    font-size: 8.75pt; line-height: 1.4;
+  }
+  .citation .cite-title {
+    font-weight: 700; color: var(--navy-dark);
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif; font-size: 8.75pt;
+  }
+  .citation .cite-source { color: var(--text-muted); font-style: italic; font-size: 8.5pt; }
+  .citation .cite-finding, .citation .cite-apply { margin-top: 2pt; font-size: 8.5pt; }
+  .citation .label-inline {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 700; font-size: 7pt; text-transform: uppercase;
+    letter-spacing: 0.08em; color: var(--navy); margin-right: 4pt;
+  }
+  .citation .cite-link {
+    color: var(--navy); text-decoration: underline;
+    text-decoration-thickness: 0.4pt; text-underline-offset: 1.5pt;
+    font-style: normal; font-weight: 500; margin-left: 2pt;
+  }
+  .citation .cite-link:hover { color: var(--navy-dark); }
+</style>
+</head>
+<body>
+
+<div class="doc-header">
+  <div class="title">Over-the-counter sleep aids — what to use, what to avoid</div>
+  <div class="meta">
+    Decision Aid · 2026-05-16<br>
+    For Dad, Mom, Dr. R, Dr. Chilton (K Clinic),<br>
+    Julane &amp; the family team
+  </div>
+</div>
+
+<div class="section-label first">Recommendation</div>
+<div class="key-message">
+  <p>For Dad's specific profile, <strong>melatonin titration from 3 mg to 5 mg HS is the one OTC change that's safely defensible</strong> — either as standard USP-verified melatonin or as the melatonin-only ZZZquil "Pure Zzzs" line (these are the same molecule). <strong>Don't use Benadryl, Unisom, regular ZZZquil, Tylenol PM, or Advil PM</strong> — these are first-generation antihistamines (diphenhydramine or doxylamine), and they carry meaningful risks in his profile that aren't justified even for a single dose: acute confusion, falls, difficulty urinating (BPH + alfuzosin context), and next-day driving impairment that lasts longer in older adults than in younger ones. For acute sleep distress, the right call is the K Clinic on-call line or Dr. Chilton — not the OTC aisle. Sleep maintenance specifically belongs on the 5/19 Rubin visit agenda.</p>
+</div>
+
+<div class="section-label">Why this matters for Dad specifically</div>
+<p class="context">Dad's intuition that "most sleep aids are antihistamines" is mostly right about the OTC shelf — Benadryl, regular ZZZquil, Unisom, Tylenol PM, Advil PM all use diphenhydramine or doxylamine, which are first-generation antihistamines that work by blocking H1 histamine receptors. But these drugs also block muscarinic (anticholinergic) receptors, which is where the trouble starts in older adults. In his specific profile, the muscarinic blockade is particularly worth avoiding for four reasons: <strong>(1) brain fog (R41.89) plus the pending June neurology evaluation</strong> means any acute cognitive event in the coming weeks would be hard to attribute correctly — a new symptom could be blamed on the underlying picture rather than on an OTC; <strong>(2) BPH on alfuzosin, ~8 weeks post-Aquablation</strong>, makes acute urinary retention a real possibility with anticholinergic exposure (the prostatic fossa is still healing); <strong>(3) he drives independently</strong>, and a randomized driving-simulator trial found diphenhydramine 50 mg impairs driving performance more than a blood alcohol of 0.10% — and the elderly half-life of 9–13.5 hours means the effect persists well into the next day; <strong>(4) the 5/18 IV ketamine session</strong> is 36–48 hours away, and any residual sedation, confusion, or anticholinergic effect would muddy the post-session attribution. By contrast, melatonin works through entirely different receptors (MT1/MT2, circadian), has no anticholinergic burden, and is already AASM-recommended for his RBD — uptitrating from 3 mg to 5 mg HS is a safe DIY move. The ZZZquil brand has two completely different product lines: the original (diphenhydramine, avoid) and "Pure Zzzs" (melatonin only, acceptable) — these are pharmacologically unrelated despite sharing the brand name. Always read the active ingredient on the box.</p>
+
+<div class="section-label">The evidence</div>
+<table class="evidence">
+  <thead>
+    <tr>
+      <th class="pro" style="width: 50%;">OTC options that are safely defensible</th>
+      <th class="con" style="width: 50%;">OTC options to avoid entirely</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="pro"><strong>Melatonin 5 mg HS — USP-verified.</strong> The single safe OTC uptitration in Dad's profile. Mechanism is completely different from the antihistamines (acts on MT1/MT2 circadian receptors, no anticholinergic burden, no fall risk, no driving impairment, no urinary retention risk). AASM 2023 conditionally recommends immediate-release melatonin for RBD (start 3 mg, titrate in 3 mg increments up to 15 mg) — explicitly preferred over clonazepam in older adults with neurology workups underway. Older adults have endogenous melatonin decline, so titrating upward has a clinical rationale beyond placebo. The "USP Verified Mark" on the bottle is the quality check that matters (OTC melatonin content varies widely from label without it).</td>
+      <td class="con"><strong>Benadryl, regular ZZZquil (diphenhydramine 25–50 mg).</strong> AGS Beers explicit "avoid" in older adults. The most-studied first-generation antihistamine; sets the reference standard for anticholinergic burden (Anticholinergic Cognitive Burden score = 3, the highest tier). A single 25–50 mg dose would jump Dad's cumulative ACB score from ~1–2 to ~4–5; a cumulative ACB ≥3 is associated with clinically meaningful cognitive impairment and increased adverse event risk in older adults — not exclusively cumulative, but partly acute. Plus the specific concerns: urinary retention with BPH/alfuzosin, driving impairment greater than 0.10% BAC, half-life 9–13.5 hours in elderly (residual effects well into next day).</td>
+    </tr>
+    <tr>
+      <td class="pro"><strong>ZZZquil "Pure Zzzs" (melatonin only).</strong> Despite sharing the ZZZquil brand with the diphenhydramine product, "Pure Zzzs" is a melatonin-only gummy formulation — pharmacologically equivalent to standard melatonin, just in a different delivery format. No anticholinergic burden, no antihistamine concerns. Dose varies by product (typically 1–2 mg per gummy) — if substituting for the 3 mg tablet he's already taking, check the box for the actual melatonin content. The USP Verified Mark is less commonly available for gummy formulations than tablets, so a standard USP-verified melatonin tablet remains the higher-quality option.</td>
+      <td class="con"><strong>Unisom SleepTabs (doxylamine 25 mg).</strong> Pharmacologically equivalent to diphenhydramine — also a first-generation antihistamine with strong anticholinergic properties, listed on the AGS Beers Criteria alongside diphenhydramine as "avoid" in older adults. Same risks as Benadryl, not a safer alternative. (Note: Unisom "SleepMelts" and "SleepGels" formulations vary — some are doxylamine, some are diphenhydramine. Always read the active ingredient on the box. Neither is appropriate for Dad's profile.)</td>
+    </tr>
+    <tr>
+      <td class="pro"><strong>Magnesium glycinate 200–400 mg HS.</strong> Optional addition with a modest sleep-quality evidence base in older adults. Low risk in his profile (no interaction with his current stack, no anticholinergic burden, no falls/driving concerns). Not transformative but a safe DIY adjunct if the family wants another lever to pull. Glycinate is the gentler form (lower GI side effects than other magnesium salts).</td>
+      <td class="con"><strong>Tylenol PM, Advil PM, and similar "PM" formulations.</strong> The "PM" suffix on these brands means they contain diphenhydramine 25 mg added to the analgesic. Same first-generation antihistamine concerns as Benadryl. The OTC pain reliever component itself is generally acceptable in his profile (acetaminophen or ibuprofen), but the diphenhydramine addition makes the "PM" version inappropriate. If a nighttime pain reliever is needed, take the plain (non-PM) version separately.</td>
+    </tr>
+    <tr>
+      <td class="pro" style="background: #fbfbf8; color: #777;">—</td>
+      <td class="con"><strong>"Sleep" formulations with antihistamines under other brand names.</strong> Many store-brand and generic OTC sleep aids use diphenhydramine or doxylamine as the active ingredient. Brand recognition isn't the safety signal — the active ingredient on the back of the box is. Anything with "diphenhydramine," "doxylamine," or "first-generation antihistamine" as the active ingredient should be avoided.</td>
+    </tr>
+    <tr>
+      <td class="pro" style="background: #fbfbf8; color: #777;">—</td>
+      <td class="con"><strong>Herbal sleep aids with sedating ingredients</strong> (valerian, kava, hops in high concentrations). Evidence base is weak; concern is unpredictable interactions with his current stack and the possibility of additive sedation that compounds the existing meds. Not a high-risk category like the antihistamines, but not worth adding without prescribing-clinician input either.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="strength-row">
+  <span class="strength-label">Strength of evidence on these recommendations:</span>
+  <span class="stars">★★★★★</span>
+</div>
+<div class="strength-rationale">The "avoid" recommendations are anchored in strong, convergent evidence (AGS Beers explicit "avoid"; NEJM driving-simulator trial; Cochrane evidence on anticholinergic + alpha-blocker urinary retention; Gerontological Society of America explicit guidance; published anticholinergic burden scoring). The melatonin recommendation is anchored in AASM 2023 RBD guidance and the Marupuru meta-analysis in older adults. The convergence across multiple independent guideline bodies and the specific Dad-profile reasoning (BPH + alfuzosin urinary retention; driving; pending neurology workup; ketamine timing) makes this one of the more decisively-evidenced recommendations in the handout series.</div>
+
+<div class="section-label">What everyone agrees on</div>
+<div class="neutral-block">
+  <ul>
+    <li><strong>Acute sleep distress is real and the impulse to help is understandable.</strong> Watching someone you love suffer with severe insomnia and depression is hard. The question isn't whether to act on that impulse — it's where to direct it.</li>
+    <li><strong>The right response to acute distress is a call to the prescribing clinicians, not an OTC product.</strong> Dr. Chilton (K Clinic) or whoever is on-call for the ketamine program is the appropriate point of contact for sleep crises in the bridge window. They can make adjustments within the existing regimen that no OTC can match for safety and attribution clarity.</li>
+    <li><strong>Telling the doctors what's been taken matters as much as the pharmacology.</strong> If anything goes wrong in the days around the ketamine restart — a fall, an episode of confusion, urinary retention — and an OTC isn't disclosed, the clinicians will be debugging the wrong picture. The event could be misattributed to ketamine, to depression, to the methylmalonic acidemia, or to the underlying neurology questions, potentially leading to inappropriate changes in the treatment plan.</li>
+    <li><strong>Dad's antihistamine intuition is right, but the right antihistamine for him is the one he's already taking.</strong> Doxepin 6 mg HS is highly H1-selective (~775× more potent at H1 than diphenhydramine) without the muscarinic burden that makes OTC antihistamines problematic in older adults. The first-generation OTCs aren't just "more of the same" as doxepin — they're a categorically different drug class on the side-effect axis.</li>
+    <li><strong>The 5/19 Rubin visit is the venue for sleep-maintenance optimization.</strong> If sleep maintenance is still a problem after the bridge (with doxepin at 10 mg HS per handout #13 and the ketamine restart underway), that's the conversation for the in-person follow-up — not a DIY OTC decision.</li>
+  </ul>
+</div>
+
+<div class="section-label">Recommended next steps</div>
+<ol class="next-steps">
+  <li><strong>Don't add Benadryl, Unisom, regular ZZZquil, Tylenol PM, or Advil PM</strong> — even a single dose. Read the active ingredient on any OTC sleep aid before considering it: anything with diphenhydramine or doxylamine is on the avoid list.</li>
+  <li><strong>If considering ZZZquil specifically</strong>, confirm it's the "Pure Zzzs" melatonin-only line — these gummies are acceptable. The original ZZZquil (with diphenhydramine 50 mg) is not.</li>
+  <li><strong>Melatonin uptitration from 3 mg to 5 mg HS is the one safely defensible OTC change.</strong> USP-verified product preferred (look for the USP Verified Mark on the bottle). This can be done at home without clinician input.</li>
+  <li><strong>For acute sleep distress in the bridge window</strong>, call Dr. Chilton (K Clinic) or the on-call line for the ketamine program — not the OTC aisle. The clinicians can make adjustments within the prescribed regimen that no OTC can safely match.</li>
+  <li><strong>Raise the sleep maintenance issue (4 AM waking with anxiety) at the 5/19 Rubin visit</strong> — this is the right venue for considering further adjustments beyond the current bridge (doxepin 10 mg HS per handout #13 + melatonin 5 mg HS + the IV ketamine course).</li>
+  <li><strong>Be transparent with the prescribing team about anything that's been taken</strong>, including OTC. The disclosure issue matters as much as the pharmacology — if something does happen, the clinicians need complete information to debug correctly.</li>
+  <li><strong>Sleep hygiene reset for the bridge</strong>: consistent wake time (alarm even if waking earlier), 15–20 min morning outdoor light, no caffeine after noon, cool dark room, no screens after 8 PM, no daytime naps. Behavioral discipline is the highest-yield non-pharmacologic lever available in any short bridge window.</li>
+</ol>
+
+<div class="bottom-line">
+  <span class="label">Bottom line</span>
+  The OTC sleep aid category that worked in earlier decades — Benadryl, Unisom, Tylenol PM, regular ZZZquil — is contraindicated for Dad given his age, profile, current stack, and the imminent ketamine session. The single safely defensible OTC change is melatonin titration from 3 mg to 5 mg HS, available either as a standard USP-verified supplement or as ZZZquil "Pure Zzzs" (melatonin only, despite the shared brand name). Anything else — anything with diphenhydramine or doxylamine on the active-ingredient label — should be left on the shelf. Acute distress is a phone call to Dr. Chilton, not a trip to the OTC aisle.
+</div>
+
+<div class="back-header">Key Studies &amp; Findings</div>
+<div class="back-subhead">Ranked by authority · Each citation summarized for how it applies to Dad's case</div>
+
+<div class="tier-header">Tier 1 — Major Clinical Guidelines <span class="tier-stars">★★★★★</span></div>
+
+<div class="citation">
+  <div class="cite-title">American Geriatrics Society 2023 Updated AGS Beers Criteria for Potentially Inappropriate Medication Use in Older Adults.</div>
+  <div class="cite-source">J Am Geriatr Soc 2023;71:2052–2081. Read <a href="https://doi.org/10.1111/jgs.18372" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>The 2023 AGS Beers Criteria classifies all first-generation antihistamines (diphenhydramine, doxylamine, hydroxyzine, chlorpheniramine) as "avoid" in adults ≥65 years due to strong anticholinergic properties. Evidence base includes increased risk of confusion, dry mouth, constipation, urinary retention, falls, and delirium. The recommendation applies regardless of duration — no carve-out for short-term or PRN use.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The authoritative geriatric prescribing reference. Anchors the rejection of the entire diphenhydramine/doxylamine OTC category in Dad's profile, including single-dose use. The "no short-term carve-out" point is important — these aren't restrictions only for chronic use.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Steinman MA. Alternative Treatments to Selected Medications in the 2023 American Geriatrics Society Beers Criteria.</div>
+  <div class="cite-source">J Am Geriatr Soc 2025;73:2657–2677. Read <a href="https://doi.org/10.1111/jgs.19500" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>The companion alternatives document. For insomnia in older adults, safer pharmacologic options named are low-dose doxepin (3–6 mg), DORAs (suvorexant, lemborexant, daridorexant), and ramelteon. First-generation antihistamines are explicitly listed under "avoid."</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Confirms that the right answer to "what should we use instead of Benadryl" is not another OTC — it's the prescription category Dad is already in (low-dose doxepin) plus the melatonin/circadian additions in his profile.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Howell M, Avidan AY et al. Management of REM Sleep Behavior Disorder: AASM Clinical Practice Guideline.</div>
+  <div class="cite-source">J Clin Sleep Med 2023;19:759–768. Read <a href="https://doi.org/10.5664/jcsm.10424" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Conditional recommendation for immediate-release melatonin (start 3 mg, titrate in 3 mg increments up to 15 mg) for both isolated and secondary RBD. Melatonin is preferred over clonazepam in older patients and those whose broader neurologic picture is under evaluation because of its benign side-effect profile.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The melatonin uptitration recommendation (3 → 5 mg HS) is directly anchored here. The dedicated RBD guideline itself supports this exact change — meaning the family's instinct to "add something" for sleep has a safe and evidence-based answer that's already on the AASM list for Dad's profile.</div>
+</div>
+
+<div class="tier-header">Tier 2 — Specific Risk Evidence <span class="tier-stars">★★★★</span></div>
+
+<div class="citation">
+  <div class="cite-title">Simons FER. Advances in H1-Antihistamines.</div>
+  <div class="cite-source">NEJM 2004;351:2203–2217. Read <a href="https://doi.org/10.1056/NEJMra033121" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>NEJM review of H1-antihistamines. A randomized placebo-controlled driving-simulator trial found a single 50 mg dose of diphenhydramine impaired driving performance more than a blood alcohol of 0.10%. The review notes that taking a first-generation antihistamine at bedtime "may result in a hangover (impaired cognitive and psychomotor performance with or without perceptible sedation) the following morning," and that "patients do not necessarily become tolerant of the adverse effects." The use of these drugs is "a particular concern in the treatment of elderly persons and anyone with obvious or subclinical cognitive impairment."</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The single most decision-relevant evidence on the driving question. Dad drives independently. A single Benadryl dose at HS would impair his driving the next morning more than legal-limit alcohol intoxication does — a concrete safety hazard, not an abstract one.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">FDA Diphenhydramine Hydrochloride Label.</div>
+  <div class="cite-source">FDA prescribing information. Read <a href="https://dailymed.nlm.nih.gov/dailymed/lookup.cfm?searchquery=diphenhydramine" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>The FDA label warns that diphenhydramine should be used with "considerable caution" in patients with symptomatic prostatic hypertrophy or bladder-neck obstruction due to muscarinic antagonism reducing detrusor contractility, which can precipitate acute urinary retention. Also warns elderly patients against "engaging in activities requiring mental alertness such as driving a car," and notes elderly are "most likely to cause dizziness, sedation, and hypotension."</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The BPH + alfuzosin + post-Aquablation context makes the urinary retention warning specifically applicable in his profile. Acute urinary retention in this setting would mean an ER visit, catheterization, and potential infection — a disproportionately disruptive event 36 hours before a ketamine session.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Kay GG. The Effects of Antihistamines on Cognition and Performance.</div>
+  <div class="cite-source">J Allergy Clin Immunol 2000;105(6 Pt 2):S622–S627. Read <a href="https://doi.org/10.1067/mai.2000.106153" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Review of cognitive and performance effects of first-generation antihistamines. Diphenhydramine causes acute deficits in divided attention, working memory, vigilance, and processing speed even in healthy younger adults. In elderly patients, the effects are more pronounced and longer-lasting due to reduced hepatic clearance (effective half-life 9–13.5 hours vs. 4–8 hours in younger adults).</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Quantifies the cognitive concern. For a 76-year-old with documented brain fog (R41.89), a single dose's residual cognitive effect would persist 12+ hours and would be hard to distinguish from baseline symptoms — a particular problem with the June neurology evaluation pending.</div>
+</div>
+
+<div class="tier-header">Tier 3 — Population and Pharmacology Evidence <span class="tier-stars">★★★</span></div>
+
+<div class="citation">
+  <div class="cite-title">Badre N, Geier E. Anticholinergic Equivalence in Psychotropic Medications: A Guide for Psychiatrists.</div>
+  <div class="cite-source">J Clin Psychopharmacol 2025. Read <a href="https://doi.org/10.1097/JCP.0000000000002073" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Practical anticholinergic equivalence scoring for psychiatric medications. Diphenhydramine is the reference standard (AE = 1.0 per mg-equivalent; ACB score = 3, highest tier). A cumulative ACB ≥3 is associated with clinically meaningful cognitive impairment and increased adverse event risk in older adults. Effects are partly acute (delirium, confusion) and partly cumulative (cognitive decline).</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Anchors the cumulative-burden argument. Dad's current stack has a cumulative ACB of ~1–2 (low). A single 25–50 mg Benadryl dose would push it to 4–5 — into the clinically meaningful impairment range. This is partly acute risk, not just chronic accumulation, which is why even single-dose use matters.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Marupuru S, Arku D et al. Use of Melatonin and/or Ramelteon for the Treatment of Insomnia in Older Adults: A Systematic Review and Meta-Analysis.</div>
+  <div class="cite-source">J Clin Med 2022;11:5138. Read <a href="https://doi.org/10.3390/jcm11175138" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Meta-analysis of melatonin and ramelteon trials in older adults. Melatonin produces modest but consistent improvements in sleep latency and total sleep time, with excellent safety profile in adults ≥55. No anticholinergic burden, no fall risk, no cognitive impairment, no driving impairment.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Supports the melatonin uptitration to 5 mg HS as the safe DIY change. The mechanism (MT1/MT2 circadian receptors) is completely different from the antihistamine class — they're not "more of the same" but a fundamentally different category that doesn't carry the OTC antihistamine concerns.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Albert SM, Roth T et al. Sleep Health and Appropriate Use of OTC Sleep Aids in Older Adults — Recommendations of a Gerontological Society of America Workgroup.</div>
+  <div class="cite-source">The Gerontologist 2017;57:163–170. Read <a href="https://doi.org/10.1093/geront/gnv139" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Over 50% of older adults using OTC sleep aids take diphenhydramine or doxylamine, and most are unaware of the safety risks. The Gerontological Society of America workgroup explicitly recommends against these products in older adults. ZZZquil and Unisom SleepTabs are the most common OTC offenders.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The geriatric specialty society guidance is unambiguous — these are not appropriate for adults Dad's age, regardless of how acute the sleep distress feels. The "most are unaware" framing is also relevant: the awareness gap is exactly why a handout like this one is needed.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Lehnbom EC, Berbakov ME et al. Elevating Safe Use of Over-the-Counter Medications in Older Adults: A Narrative Review.</div>
+  <div class="cite-source">Drugs &amp; Aging 2023;40:621–632. Read <a href="https://doi.org/10.1007/s40266-023-01041-5" class="cite-link">here</a>.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Review of OTC medication safety in older adults. Undisclosed OTC use is a common and underappreciated source of adverse events. When OTC products are added to a complex prescription regimen without prescriber awareness, adverse events are frequently misattributed to underlying disease or to prescribed medications, leading to inappropriate treatment changes.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The disclosure point. If any sedating OTC were added in the days around the ketamine restart and an adverse event followed, the clinicians would have no way to attribute correctly. The transparency-with-the-prescribing-team principle isn't a formality — it's a clinical safety mechanism.</div>
+</div>
+
+</body>
+</html>
