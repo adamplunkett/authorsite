@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Decision Aid — Bupropion augmentation — 2026-05-19</title>
+<style>
+  @page { size: letter; margin: 0.55in 0.65in; }
+  :root {
+    --navy: #1a3a5c; --navy-dark: #0f2640;
+    --against-accent: #8b2c2c; --for-accent: #2c5e3f;
+    --text: #1f1f1f; --text-muted: #5a5a5a;
+    --rule: #c8c8c8; --rule-strong: #6a6a6a;
+    --tint: #f5f3f0; --tint-pro: #f0f4f8; --tint-con: #f9f2f0; --tint-neutral: #f3f3f1;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    font-family: "Charter", "Georgia", "Times New Roman", serif;
+    font-size: 9.75pt; line-height: 1.42; color: var(--text);
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--navy); text-decoration: underline; text-decoration-thickness: 0.4pt; text-underline-offset: 1.5pt; }
+  .doc-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    padding-bottom: 6pt; border-bottom: 1.5pt solid var(--navy); margin-bottom: 14pt;
+  }
+  .doc-header .title {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 600; font-size: 15pt; line-height: 1.2;
+    color: var(--navy-dark); letter-spacing: -0.01em;
+  }
+  .doc-header .meta {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 7.5pt; color: var(--text-muted); text-align: right;
+    letter-spacing: 0.03em; line-height: 1.5;
+  }
+  .section-label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 7.5pt; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.14em; color: var(--navy); margin: 14pt 0 5pt 0;
+  }
+  .section-label.first { margin-top: 0; }
+  .key-message {
+    border-left: 4pt solid #b8862c; background: var(--tint);
+    padding: 9pt 13pt; margin: 0 0 10pt 0;
+  }
+  .key-message p {
+    margin: 0;
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 10.5pt; line-height: 1.42; font-weight: 500; color: var(--text);
+  }
+  .context { font-size: 9.5pt; line-height: 1.5; color: var(--text); margin: 0 0 6pt 0; }
+  .context strong { color: var(--navy-dark); }
+  table.evidence {
+    width: 100%; border-collapse: collapse; margin: 4pt 0 8pt 0; table-layout: fixed;
+  }
+  table.evidence thead th {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 600; font-size: 8.25pt; padding: 6pt 9pt; text-align: left;
+    background: var(--navy); color: white; letter-spacing: 0.02em;
+  }
+  table.evidence thead th.pro { background: #4a6a8a; }
+  table.evidence thead th.con { background: var(--against-accent); }
+  table.evidence td {
+    padding: 6pt 9pt; vertical-align: top;
+    border-bottom: 0.5pt solid var(--rule);
+    font-size: 9pt; line-height: 1.4;
+  }
+  table.evidence td.pro { background: var(--tint-pro); }
+  table.evidence td.con { background: var(--tint-con); }
+  table.evidence tbody tr:last-child td { border-bottom: none; }
+  table.evidence td strong { color: var(--navy-dark); }
+  ol.next-steps {
+    margin: 4pt 0 8pt 0; padding-left: 18pt; font-size: 9.25pt; line-height: 1.42;
+  }
+  ol.next-steps li { margin-bottom: 5pt; padding-left: 3pt; }
+  ol.next-steps li::marker {
+    color: var(--navy); font-weight: 700;
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+  }
+  ol.next-steps strong { color: var(--navy-dark); }
+  ol.next-steps ul { padding-left: 20pt; margin-top: 4pt; }
+  .neutral-block {
+    background: #f3f3f1; border-left: 3pt solid #888;
+    padding: 9pt 14pt 6pt 14pt; margin: 4pt 0 8pt 0;
+  }
+  .neutral-block ul { list-style: none; padding: 0; margin: 0; }
+  .neutral-block li {
+    font-size: 9pt; line-height: 1.45; margin-bottom: 6pt;
+    padding-left: 14pt; position: relative;
+  }
+  .neutral-block li::before {
+    content: "•"; position: absolute; left: 0; color: #888; font-weight: bold;
+  }
+  .neutral-block li:last-child { margin-bottom: 0; }
+  .neutral-block strong { color: var(--navy-dark); }
+  .bottom-line {
+    border-top: 1pt solid var(--rule-strong); padding-top: 6pt; margin-top: 10pt;
+    font-style: italic; font-size: 9pt; color: var(--text); line-height: 1.4;
+  }
+  .bottom-line .label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-style: normal; font-weight: 700; font-size: 7.5pt;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--navy); margin-right: 6pt;
+  }
+</style>
+</head>
+<body>
+
+<div class="doc-header">
+  <div class="title">Should bupropion (Wellbutrin) augmentation be on the table as an alternative to switching antidepressants or adding Depakote?</div>
+  <div class="meta">
+    Decision Aid · 2026-05-19<br>
+    For Dad, Mom, Dr. R, Dr. Chilton, Julane &amp; the family team<br>
+    Hosted at <a href="https://adamplunkettauthor.com/family">adamplunkettauthor.com/family</a>
+  </div>
+</div>
+
+<div class="section-label first">Recommendation</div>
+<div class="key-message">
+  <p><strong>Bupropion XL 150 mg augmentation of duloxetine is the strongest "do more than ketamine" alternative on the table — defensible as a cautious trial, sequenced 2–3 weeks before the June 8 ketamine restart, with explicit fall-risk monitoring as the load-bearing caveat.</strong> Bupropion has never been on board for Dad and was explicitly excluded by the family's prior literature review #11 (4/20/2026) on the reasoning that "adrenergic and high-serotonergic mechanisms are poorly tolerated." OpenEvidence #14 (5/19) judged that exclusion "too broad" — bupropion has no meaningful serotonergic activity, and mirtazapine's α2 antagonism (which produced Dad's agitation at 45 mg) is a phasic disinhibitory mechanism pharmacologically distinct from bupropion's tonic norepinephrine reuptake inhibition. OPTIMUM (Lenze 2023, n=619, age ≥60) found bupropion augmentation produced 28.2% remission, comparable to aripiprazole augmentation (28.9%) and substantially superior to switching to bupropion (19.3%). The cardiac profile is favorable for Dad's bradycardia and LAFB. Bupropion + ketamine is compatible — Cook & Halaris 2022 proposed adjunctive dopaminergic enhancement may improve esketamine response durability. <strong>Two real cautions:</strong> (a) bupropion augmentation had the highest fall rate of any OPTIMUM arm (0.55/patient/10 weeks; RR 0.59 vs aripiprazole augmentation, P=0.02) — additive on Dad's existing fall-risk factors; (b) Dad's multi-agent activation intolerance pattern does not directly predict bupropion intolerance (mechanism is distinct) but the breadth of prior intolerance is itself a clinical caution. <strong>Position vs the current proposals: bupropion augmentation is a stronger evidence-based call than divalproex (no contest), and a more defensible "do more" move than the Cymbalta → Lexapro switch — adds to duloxetine rather than removing it, preserving the documented Feb 2026 responder background.</strong></p>
+</div>
+
+<div class="section-label">Why this matters for Dad specifically</div>
+<p class="context">Bupropion has been considered and held in Dad's clinical brief and discussed in the Gabe consult talking points, but never started. The family's prior literature review #11 (4/20/2026) ruled it out on activation-intolerance grounds. OpenEvidence #14 specifically tested that exclusion against the bupropion-augmentation evidence base, including OPTIMUM, and concluded the family's reasoning was pharmacologically too broad. With Dr. R proposing a Cymbalta → Lexapro switch and possibly adding divalproex, bupropion enters as a third option: rather than switching the antidepressant or adding a mood stabilizer with serious parkinsonism risk in Dad's profile, augment the existing duloxetine with a mechanistically distinct agent that has direct OPTIMUM evidence in geriatric TRD. The apathy/abulia framing from the Gabe consult — preserved on-demand function, impaired self-initiation, appetite-interoception dissociation — is the phenotype bupropion's dopaminergic activity theoretically targets, though clinical-trial evidence for apathy-predominant depression specifically is mixed.</p>
+
+<div class="section-label">The evidence</div>
+<table class="evidence">
+  <thead>
+    <tr>
+      <th class="pro" style="width: 50%;">What supports a cautious bupropion-augmentation trial</th>
+      <th class="con" style="width: 50%;">What argues for caution — in Dad's specific profile</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="pro"><strong>OPTIMUM bupropion augmentation: 28.2% remission, comparable to aripiprazole (28.9%) and superior to switch (19.3%).</strong> The largest pragmatic RCT in the target population (n=619, age ≥60). Bupropion augmentation outperformed switching to bupropion by a meaningful margin. A 2025 risk-benefit decision analysis preferred bupropion augmentation over aripiprazole augmentation in adults under 85 because of aripiprazole's long-term metabolic and TD risks.</td>
+      <td class="con"><strong>Highest fall rate of any OPTIMUM arm — 0.55/patient/10 weeks.</strong> RR 0.59 vs aripiprazole augmentation (P=0.02). "Included many injurious falls." Dad has multiple additive fall-risk factors: gait/balance findings under evaluation, tadalafil contributing to orthostasis potential, bradycardia (HR 49–53), age >70. The OPTIMUM fall rate in the general ≥60 population would likely be higher in Dad's specific profile.</td>
+    </tr>
+    <tr>
+      <td class="pro"><strong>Mechanism is genuinely distinct from every prior intolerance.</strong> No D2 blockade (vs aripiprazole/brexpiprazole/olanzapine); no direct D2 agonism (vs pramipexole); tonic NRI not phasic α2 antagonism (vs mirtazapine); no overlap with lithium mechanism. Bupropion does <em>not</em> cause drug-induced parkinsonism — it inhibits the dopamine transporter, increasing synaptic dopamine, which is the opposite direction of D2 antagonism that caused Dad's pseudoparkinsonism on aripiprazole/olanzapine.</td>
+      <td class="con"><strong>Breadth of intolerance is its own signal.</strong> Mechanism distinctness suggests bupropion intolerance is not directly predicted by prior intolerances, but the breadth across mechanistically distinct agents (D2 antagonists, D2 agonist, α2 antagonist, lithium) raises the question of general CNS sensitivity. The OE response notes this is an unanswered clinical question — no case series or cohort data exist on bupropion tolerability in multi-agent activation-intolerant patients.</td>
+    </tr>
+    <tr>
+      <td class="pro"><strong>Adds to duloxetine rather than switching — preserves the documented Feb 2026 responder background.</strong> Unlike the Cymbalta → Lexapro switch, bupropion augmentation keeps duloxetine on board. This preserves the pharmacological context for the documented dramatic ketamine response from February. OPTIMUM data is clear: augmentation > switching in geriatric TRD.</td>
+      <td class="con"><strong>OPTIMUM moderator data: augmentation advantage diminishes after ≥3 prior trials.</strong> Dad has had far more than three prior antidepressant trials. The 28% remission rate from OPTIMUM may overstate the likely response in Dad's specific multi-failure profile. The clinical evidence is still favorable, but the trial average is probably an upper bound.</td>
+    </tr>
+    <tr>
+      <td class="pro"><strong>Cardiac profile is favorable.</strong> Bupropion does not slow heart rate, does not significantly affect cardiac conduction at therapeutic doses, and does not prolong QTc. Modest BP elevation is actually favorable given Dad's baseline BP 112/58. Better cardiac profile than lithium (which can worsen bradycardia and conduction) and comparable to or better than aripiprazole (which can cause orthostatic hypotension).</td>
+      <td class="con"><strong>Bidirectional CYP2D6 interaction with duloxetine.</strong> Duloxetine is a moderate CYP2D6 inhibitor; bupropion is itself a strong CYP2D6 inhibitor via metabolites. Mutual inhibition. Modest effect on bupropion parent compound; could increase bupropion metabolites and modestly increase duloxetine exposure. Manageable but warrants conservative dosing — start at 150 mg XL and hold for ≥4 weeks before any uptitration.</td>
+    </tr>
+    <tr>
+      <td class="pro"><strong>Bupropion + ketamine is compatible and may be synergistic.</strong> Cook & Halaris 2022 specifically proposed adjunctive dopaminergic enhancement (including bupropion) may improve durability of esketamine response through co-localization of NMDA and dopamine receptors and dopamine-induced AMPAR phosphorylation. AXS-05 (dextromethorphan/bupropion) is FDA-approved for MDD, providing indirect support. No attenuation signal in any published data.</td>
+      <td class="con"><strong>No published RCT on bupropion + ketamine specifically.</strong> The mechanistic rationale is favorable; the empirical data are absent. The combination is reasonable on priors but not validated.</td>
+    </tr>
+    <tr>
+      <td class="pro"><strong>Theoretical fit for apathy/abulia-predominant depression.</strong> Dad's phenotype — preserved on-demand function, impaired self-initiation, appetite-interoception dissociation — is what bupropion's dopaminergic activity is theoretically designed to address. In Parkinson's disease, SSRIs have been reported to worsen apathy while bupropion has been reported to improve motivation. Goetz 1984: bupropion mildly improved parkinsonism in 50% of 20 PD patients (consistent with its pro-dopaminergic mechanism).</td>
+      <td class="con"><strong>Apathy trial evidence is actually mixed.</strong> Maier 2020 RCT (n=108, mean age 75) tested bupropion vs placebo for apathy in Alzheimer's disease (excluding clinically depressed patients) — <em>no</em> significant improvement; placebo numerically better. The negative result may not transfer to apathy in the context of depression (which is Dad's picture), but the trial-level evidence for the specific apathy phenotype is weak. The strong evidence is for bupropion augmentation of depression generally, not for apathy-targeted use specifically.</td>
+    </tr>
+    <tr>
+      <td class="pro"><strong>Family lit review #11's exclusion was "too broad" per OE.</strong> Bupropion has no meaningful serotonergic activity (so "high-serotonergic mechanisms poorly tolerated" doesn't apply). Mirtazapine's α2 antagonism is a phasic disinhibitory mechanism producing a noradrenergic surge — pharmacologically distinct from bupropion's tonic reuptake inhibition. The prior framing conflated mechanistically distinct noradrenergic pathways.</td>
+      <td class="con"><strong>Bupropion activation profile is real at higher doses.</strong> SR 300 mg/day: insomnia 11%, agitation 3%, anxiety 5%, tremor 6%. Dose-dependent. At 150 mg XL starting dose, rates are expected to be lower, but specific 150 mg-only data in adults 70+ are sparse. The FDA notes greater sensitivity in some older individuals cannot be ruled out.</td>
+    </tr>
+    <tr>
+      <td class="pro" style="background: #fbfbf8; color: #777;">—</td>
+      <td class="con"><strong>Seizure threshold consideration.</strong> Bupropion lowers seizure threshold. Risk at SR 300 mg/day is ~0.1% (1/1000). At 150 mg XL, risk is at the lowest end of the dose-response curve. Dad has no seizure history, no eating disorder, no recent alcohol use — none of the major risk-increasing factors. Recent lorazepam taper was gradual, so the abrupt-benzo-discontinuation seizure-threshold concern is minimal. Net: real but small consideration at the proposed dose.</li>
+    </tr>
+  </tbody>
+</table>
+
+<div class="section-label">Position vs the other proposals on the table</div>
+<div class="neutral-block">
+  <ul>
+    <li><strong>Bupropion augmentation vs divalproex (Depakote):</strong> No contest. Divalproex has no RCT evidence in unipolar TRD augmentation and carries serious drug-induced parkinsonism risk in Dad's highest-risk Arnaldi profile. Bupropion augmentation has direct OPTIMUM evidence (28.2% remission) and a mechanistically pro-dopaminergic profile that does not produce parkinsonism. <strong>If "add an oral agent" is the framing, bupropion is the much stronger choice.</strong></li>
+    <li><strong>Bupropion augmentation vs Cymbalta → Lexapro switch:</strong> Bupropion augmentation adds to duloxetine; the switch removes it. OPTIMUM directly addresses this: augmentation (28.2%) > switch (19.3%). Bupropion preserves the documented Feb 2026 responder background; the switch loses it. <strong>If "do more than ketamine" pressure remains, bupropion augmentation is the more defensible operationalization than the Lexapro switch.</strong></li>
+    <li><strong>Bupropion augmentation vs continued duloxetine monotherapy + ketamine + NPI:</strong> The "do nothing more" baseline. Duloxetine alone + ketamine + NPI is the strongest pure evidence-based position — preserves everything that's working, runs the documented-responder protocol cleanly, lets the ketamine signal be read. Bupropion augmentation adds OPTIMUM-evidenced response potential but at the cost of fall-risk monitoring burden and CYP2D6 dose-management. <strong>Reasonable second-line if response to the first 2–3 ketamine sessions is partial.</strong></li>
+    <li><strong>Bupropion switch vs bupropion augmentation:</strong> OPTIMUM directly: augmentation (28.2%) substantially outperformed switch (19.3%). Augmentation is the right form if bupropion is on the table at all. Switching to bupropion as monotherapy moves to the worst-performing OPTIMUM arm.</li>
+  </ul>
+</div>
+
+<div class="section-label">Recommended next steps</div>
+<ol class="next-steps">
+  <li><strong>Raise bupropion augmentation with Rubin tomorrow as the third option</strong> alongside the Cymbalta-switch and Depakote questions: <em>"If the goal is to add something beyond ketamine, OPTIMUM data favor bupropion augmentation over divalproex and over switching antidepressants. It preserves the duloxetine background and has a better cardiac and parkinsonism-risk profile."</em> Surface lit review #11's prior exclusion as something OE #14 specifically tested and concluded was too broad.</li>
+  <li><strong>If bupropion augmentation is pursued, the recommended structure is:</strong>
+    <ul>
+      <li><strong>Bupropion XL 150 mg AM</strong>, starting ~2–3 weeks before the June 8 ketamine restart (or after the first 2–3 sessions if Julane's sequencing logic carries).</li>
+      <li><strong>Hold at 150 mg for ≥4 weeks</strong> before any uptitration, given the CYP2D6 bidirectional interaction with duloxetine and Dad's age.</li>
+      <li><strong>Do not exceed 300 mg/day</strong> given the duloxetine interaction.</li>
+      <li><strong>Week 1 check-in</strong> (phone or in-person): insomnia, agitation, anxiety, tremor, restlessness, gait changes, balance, orthostatic symptoms.</li>
+      <li><strong>Week 2 in-person visit:</strong> focused gait/balance assessment, orthostatic vitals, PHQ-9.</li>
+      <li><strong>Discontinuation triggers:</strong> new-onset tremor, worsening gait/balance, akathisia/restlessness, agitation, persistent insomnia unresponsive to timing adjustment, any fall, seizure.</li>
+      <li><strong>Monitor BP at each visit.</strong> Modest BP elevation expected and favorable given baseline 112/58.</li>
+    </ul>
+  </li>
+  <li><strong>If bupropion augmentation is declined</strong>, the alternative "do more" path is the Cymbalta → Lexapro switch with the sequencing/cross-titration safeguards in <a href="06_cymbalta_lexapro_decision_aid_2026-05-13.html">handout #06</a>. Divalproex remains hard to defend in Dad's profile regardless — see <a href="01_depakote_decision_aid_2026-05-13.html">handout #01</a>.</li>
+  <li><strong>NPI work and weekly Julane sessions proceed regardless</strong> — see <a href="19_npi_sleep_decision_aid_2026-05-18.html">handout #19</a>. These are not displaced by the augmentation decision.</li>
+</ol>
+
+<div class="bottom-line">
+  <span class="label">Bottom line</span>
+  Bupropion XL 150 mg augmentation of duloxetine is a defensible third path between the Cymbalta → Lexapro switch and adding Depakote. It preserves the documented Feb 2026 responder background, has direct OPTIMUM evidence (28.2% remission), mechanism distinctly different from every prior intolerance, favorable cardiac profile for Dad's bradycardia, and is compatible with — possibly synergistic with — ketamine. The load-bearing caveat is fall risk, which is real and additive on Dad's existing fall-risk factors. The family's prior lit review #11 exclusion on activation-intolerance grounds was specifically tested against the OE #14 evidence base and judged "too broad." If "do more than ketamine" pressure remains, bupropion augmentation is the strongest evidence-based form of that pressure. If the answer is "no, run on duloxetine + ketamine alone," that's also defensible and preserves the most variables.
+</div>
+
+</body>
+</html>
+</content>
+</invoke>

@@ -2,529 +2,209 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Decision Aid — Cymbalta to Lexapro switch — 2026-05-13</title>
+<title>Decision Aid — Cymbalta → Lexapro switch — revised 2026-05-19</title>
 <style>
-  @page {
-    size: letter;
-    margin: 0.55in 0.65in;
-  }
-
+  @page { size: letter; margin: 0.55in 0.65in; }
   :root {
-    --navy: #1a3a5c;
-    --navy-dark: #0f2640;
-    --against-accent: #8b2c2c;
-    --text: #1f1f1f;
-    --text-muted: #5a5a5a;
-    --rule: #c8c8c8;
-    --rule-strong: #6a6a6a;
-    --tint: #f5f5f0;
-    --tint-pro: #f0f4f8;
-    --tint-con: #f9f2f0;
+    --navy: #1a3a5c; --navy-dark: #0f2640;
+    --against-accent: #8b2c2c; --for-accent: #2c5e3f;
+    --text: #1f1f1f; --text-muted: #5a5a5a;
+    --rule: #c8c8c8; --rule-strong: #6a6a6a;
+    --tint: #f5f3f0; --tint-pro: #f0f4f8; --tint-con: #f9f2f0; --tint-neutral: #f3f3f1;
   }
-
   * { box-sizing: border-box; }
-
   html, body {
-    margin: 0;
-    padding: 0;
+    margin: 0; padding: 0;
     font-family: "Charter", "Georgia", "Times New Roman", serif;
-    font-size: 9.75pt;
-    line-height: 1.42;
-    color: var(--text);
+    font-size: 9.75pt; line-height: 1.42; color: var(--text);
     -webkit-font-smoothing: antialiased;
   }
-
+  a { color: var(--navy); text-decoration: underline; text-decoration-thickness: 0.4pt; text-underline-offset: 1.5pt; }
   .doc-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    padding-bottom: 6pt;
-    border-bottom: 1.5pt solid var(--navy);
-    margin-bottom: 14pt;
+    display: flex; justify-content: space-between; align-items: flex-end;
+    padding-bottom: 6pt; border-bottom: 1.5pt solid var(--navy); margin-bottom: 14pt;
   }
-
   .doc-header .title {
     font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
-    font-weight: 600;
-    font-size: 15pt;
-    line-height: 1.2;
-    color: var(--navy-dark);
-    letter-spacing: -0.01em;
+    font-weight: 600; font-size: 15pt; line-height: 1.2;
+    color: var(--navy-dark); letter-spacing: -0.01em;
   }
-
   .doc-header .meta {
     font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
-    font-size: 7.5pt;
-    color: var(--text-muted);
-    text-align: right;
-    letter-spacing: 0.03em;
-    line-height: 1.5;
+    font-size: 7.5pt; color: var(--text-muted); text-align: right;
+    letter-spacing: 0.03em; line-height: 1.5;
   }
-
   .section-label {
     font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
-    font-size: 7.5pt;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
-    color: var(--navy);
-    margin: 14pt 0 5pt 0;
+    font-size: 7.5pt; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.14em; color: var(--navy); margin: 14pt 0 5pt 0;
   }
-
   .section-label.first { margin-top: 0; }
-
   .key-message {
-    border-left: 4pt solid var(--against-accent);
-    background: var(--tint);
-    padding: 9pt 13pt 9pt 13pt;
-    margin: 0 0 10pt 0;
+    border-left: 4pt solid #b8862c; background: var(--tint);
+    padding: 9pt 13pt; margin: 0 0 10pt 0;
   }
-
   .key-message p {
     margin: 0;
     font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
-    font-size: 10.5pt;
-    line-height: 1.42;
-    font-weight: 500;
-    color: var(--text);
+    font-size: 10.5pt; line-height: 1.42; font-weight: 500; color: var(--text);
   }
-
-  .context {
-    font-size: 9.5pt;
-    line-height: 1.5;
-    color: var(--text);
-    margin: 0 0 4pt 0;
-  }
-
+  .context { font-size: 9.5pt; line-height: 1.5; color: var(--text); margin: 0 0 6pt 0; }
+  .context strong { color: var(--navy-dark); }
   table.evidence {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 4pt 0 8pt 0;
-    table-layout: fixed;
+    width: 100%; border-collapse: collapse; margin: 4pt 0 8pt 0; table-layout: fixed;
   }
-
   table.evidence thead th {
     font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
-    font-weight: 600;
-    font-size: 8.25pt;
-    padding: 6pt 9pt;
-    text-align: left;
-    background: var(--navy);
-    color: white;
-    letter-spacing: 0.02em;
+    font-weight: 600; font-size: 8.25pt; padding: 6pt 9pt; text-align: left;
+    background: var(--navy); color: white; letter-spacing: 0.02em;
   }
-
-  table.evidence thead th.pro {
-    background: #4a6a8a;
-  }
-
-  table.evidence thead th.con {
-    background: var(--against-accent);
-  }
-
+  table.evidence thead th.pro { background: #4a6a8a; }
+  table.evidence thead th.con { background: var(--against-accent); }
   table.evidence td {
-    padding: 6pt 9pt;
-    vertical-align: top;
+    padding: 6pt 9pt; vertical-align: top;
     border-bottom: 0.5pt solid var(--rule);
-    font-size: 9pt;
-    line-height: 1.4;
+    font-size: 9pt; line-height: 1.4;
   }
-
   table.evidence td.pro { background: var(--tint-pro); }
   table.evidence td.con { background: var(--tint-con); }
-
   table.evidence tbody tr:last-child td { border-bottom: none; }
-
-  table.evidence td strong {
-    color: var(--navy-dark);
-  }
-
-  .strength-row {
-    display: flex;
-    align-items: baseline;
-    margin: 6pt 0 2pt 0;
-    white-space: nowrap;
-  }
-
-  .strength-label {
-    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
-    font-size: 8.5pt;
-    font-weight: 600;
-    color: var(--text);
-    margin-right: 10pt;
-    white-space: nowrap;
-  }
-
-  .stars {
-    color: var(--against-accent);
-    letter-spacing: 0.12em;
-    font-size: 11pt;
-    white-space: nowrap;
-  }
-
-  .strength-rationale {
-    font-size: 8.5pt;
-    color: var(--text-muted);
-    font-style: italic;
-    margin: 2pt 0 6pt 0;
-    line-height: 1.4;
-  }
-
+  table.evidence td strong { color: var(--navy-dark); }
   ol.next-steps {
-    margin: 4pt 0 8pt 0;
-    padding-left: 18pt;
-    font-size: 9.25pt;
-    line-height: 1.4;
+    margin: 4pt 0 8pt 0; padding-left: 18pt; font-size: 9.25pt; line-height: 1.42;
   }
-
-  ol.next-steps li {
-    margin-bottom: 4pt;
-    padding-left: 3pt;
-  }
-
+  ol.next-steps li { margin-bottom: 5pt; padding-left: 3pt; }
   ol.next-steps li::marker {
-    color: var(--navy);
-    font-weight: 700;
+    color: var(--navy); font-weight: 700;
     font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
   }
-
-  .bottom-line {
-    border-top: 1pt solid var(--rule-strong);
-    padding-top: 6pt;
-    margin-top: 10pt;
-    font-style: italic;
-    font-size: 9pt;
-    color: var(--text);
-    line-height: 1.4;
-  }
-
-  .bottom-line .label {
-    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 7.5pt;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--navy);
-    margin-right: 6pt;
-  }
-
+  ol.next-steps strong { color: var(--navy-dark); }
+  ol.next-steps ul { padding-left: 20pt; margin-top: 4pt; }
+  ol.next-steps ul li { margin-bottom: 3pt; }
   .neutral-block {
-    background: #f3f3f1;
-    border-left: 3pt solid #888;
-    padding: 9pt 14pt 6pt 14pt;
-    margin: 4pt 0 8pt 0;
+    background: #f3f3f1; border-left: 3pt solid #888;
+    padding: 9pt 14pt 6pt 14pt; margin: 4pt 0 8pt 0;
   }
-
-  .neutral-block ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
+  .neutral-block ul { list-style: none; padding: 0; margin: 0; }
   .neutral-block li {
-    font-size: 9pt;
-    line-height: 1.45;
-    margin-bottom: 6pt;
-    padding-left: 14pt;
-    position: relative;
+    font-size: 9pt; line-height: 1.45; margin-bottom: 6pt;
+    padding-left: 14pt; position: relative;
   }
-
   .neutral-block li::before {
-    content: "•";
-    position: absolute;
-    left: 0;
-    color: #888;
-    font-weight: bold;
+    content: "•"; position: absolute; left: 0; color: #888; font-weight: bold;
   }
-
   .neutral-block li:last-child { margin-bottom: 0; }
   .neutral-block strong { color: var(--navy-dark); }
-
-  /* ============================================================
-     Citations section (flows continuously below bottom line)
-     ============================================================ */
-
-  .back-header {
+  .bottom-line {
+    border-top: 1pt solid var(--rule-strong); padding-top: 6pt; margin-top: 10pt;
+    font-style: italic; font-size: 9pt; color: var(--text); line-height: 1.4;
+  }
+  .bottom-line .label {
     font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
-    font-size: 14pt;
-    font-weight: 600;
-    color: var(--navy-dark);
-    border-bottom: 1.5pt solid var(--navy);
-    padding-bottom: 5pt;
-    margin-top: 18pt;
-    margin-bottom: 4pt;
+    font-style: normal; font-weight: 700; font-size: 7.5pt;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--navy); margin-right: 6pt;
   }
-
-  .citation,
-  .tier-header {
-    page-break-inside: avoid;
-  }
-
-  .back-subhead {
-    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
-    font-size: 8pt;
-    color: var(--text-muted);
-    margin-bottom: 14pt;
-    letter-spacing: 0.03em;
-  }
-
-  .tier-header {
-    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
-    font-size: 9pt;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--navy);
-    margin: 11pt 0 6pt 0;
-    padding-bottom: 2pt;
-    border-bottom: 0.5pt solid var(--rule);
-  }
-
-  .tier-header .tier-stars {
-    float: right;
-    color: var(--navy);
-    font-size: 10pt;
-    letter-spacing: 0.04em;
-  }
-
-  .citation {
-    margin: 0 0 9pt 0;
-    padding-left: 9pt;
-    border-left: 2pt solid var(--rule);
-    font-size: 8.75pt;
-    line-height: 1.4;
-  }
-
-  .citation .cite-title {
-    font-weight: 700;
-    color: var(--navy-dark);
-    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
-    font-size: 8.75pt;
-  }
-
-  .citation .cite-source {
-    color: var(--text-muted);
-    font-style: italic;
-    font-size: 8.5pt;
-  }
-
-  .citation .cite-finding,
-  .citation .cite-apply {
-    margin-top: 2pt;
-    font-size: 8.5pt;
-  }
-
-  .citation .label-inline {
-    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
-    font-weight: 700;
-    font-size: 7pt;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--navy);
-    margin-right: 4pt;
-  }
-
-  .citation .cite-link {
-    color: var(--navy);
-    text-decoration: underline;
-    text-decoration-thickness: 0.4pt;
-    text-underline-offset: 1.5pt;
-    font-style: normal;
-    font-weight: 500;
-    margin-left: 2pt;
-  }
-
-  .citation .cite-link:hover { color: var(--navy-dark); }
 </style>
 </head>
 <body>
 
 <div class="doc-header">
-  <div class="title">Should Dad switch from Cymbalta back to Lexapro — and when?</div>
+  <div class="title">Should Dad switch from Cymbalta (duloxetine) to Lexapro (escitalopram) ahead of the June 8 ketamine restart?</div>
   <div class="meta">
-    Decision Aid · 2026-05-13<br>
-    For Dad, Mom, Dr. Rubin, the K Clinic<br>
-    psychiatrist, Julane &amp; the family team
+    Decision Aid · originally 2026-05-13 · revised 2026-05-19<br>
+    For Dad, Mom, Dr. R, Dr. Chilton, Julane &amp; the family team<br>
+    Hosted at <a href="https://adamplunkettauthor.com/family">adamplunkettauthor.com/family</a>
   </div>
 </div>
 
 <div class="section-label first">Recommendation</div>
 <div class="key-message">
-  <p>Probably not — and <strong>certainly not right now.</strong> The case for switching from Cymbalta (an SNRI) back to Lexapro (an SSRI) is more nuanced than it first appears, and the updated evidence has tilted further <em>against</em> it in Dad's specific profile — particularly because of cardiac safety differences (Dad's partial heart-block and slow resting heart rate matter here), elderly-efficacy data favoring Cymbalta, and the documented ketamine response that occurred on the current regimen. Continue duloxetine 60 mg unchanged through the ketamine restart, defer any switch decision until after the August MMA recheck and the neurology evaluation, and revisit only if a specific clinical reason emerges.</p>
+  <p><strong>The switch direction is defensible given Dad's decades-long prior-responder history on Lexapro. The load-bearing question is the timing relative to the June 8 ketamine restart.</strong> Two pieces of the medical case for the switch are real: Dad functioned well on Lexapro at 10–20 mg for many years before the recent severe phase, and there's some chance the SNRI noradrenergic component of duloxetine is contributing to current anxiety/agitation. Two pieces of the case against are also real: Lexapro previously failed at high doses (30–50 mg) when the depression escalated in 9–10/2025, and a 3-week cross-titration before the ketamine restart layers two pharmacological transitions in the same window — duloxetine withdrawal-related anxiety and Lexapro start activation risk would both land before any benefit window (4–8 weeks for SSRI anxiolytic effect). <strong>The recommended ask of Dr. Rubin tomorrow is sequencing: run the first 2–3 ketamine sessions on the existing duloxetine background, then revisit the switch with response data in hand.</strong> Julane's preferred sequencing pointed the same direction. If pre-ketamine timing isn't winnable, the next-best medical structure is a gradual cross-titration (≥1 week of overlap at duloxetine 30 mg, then 20 mg, then off), capping Lexapro at 5–10 mg (the historical effective range, not the previously-failed high-dose range), and defining explicit symptoms that would trigger reversal (akathisia, persistent agitation, new motor symptom in the first 2 weeks).</p>
 </div>
 
 <div class="section-label">Why this matters for Dad specifically</div>
-<p class="context">Dr. Rubin proposed switching Dad back to Lexapro, in part because anxiety has become a central symptom (Lexapro is sometimes thought of as a more anxiety-targeted medication). The instinct is reasonable, but the actual evidence is mixed. Dad's documented dramatic response to ketamine in February 2026 was on Cymbalta — population-level data (55,000-patient comparison published in JAMA Psychiatry 2025) shows SNRI + ketamine outperforms SSRI + ketamine on mortality and relapse, so the existing regimen is, if anything, slightly favored for the upcoming May 18 ketamine restart. Dad also has a partial heart-block (left anterior fascicular block, coded since May 2025) and a resting heart rate of 57. Lexapro has known QTc-prolonging effects at the FDA-recommended elderly dose of 10 mg/day — about 1 in 5 patients over 65 reach potentially pro-arrhythmic blood levels even at that dose. Cymbalta has no equivalent signal. Layered on this: the active B12 supplementation (with the 8/6 MMA recheck) and the June neurology evaluation could materially change the antidepressant strategy on their own — so deferring is a meaningful, defensible move, not just stalling.</p>
+<p class="context">Dr. Chilton has pushed the A2 ketamine start to June 8 specifically to allow time for a Cymbalta → Lexapro switch first, on the stated reasoning that she considers starting ketamine on Cymbalta riskier than on Lexapro. Dr. Rubin appears poised to operationalize the switch. Dad's documented February 2026 IV ketamine response was on a duloxetine + brexpiprazole background — duloxetine is the established responder context. Dad also has decades of pre-severe-phase functioning on Lexapro at 10–20 mg; lit review #11 (4/20/2026) noted "poor response to high-dose escitalopram (30–50 mg)" when the depression escalated, which is what prompted the duloxetine switch in 9/2025. The medical question is whether re-trial of Lexapro at lower doses works at the current severity. The timing question is whether the 3-week cross-titration window is the right place to do this experiment, given it overlaps with the ketamine restart.</p>
 
 <div class="section-label">The evidence</div>
 <table class="evidence">
   <thead>
     <tr>
-      <th class="pro" style="width: 50%;">What might support switching to Lexapro</th>
-      <th class="con" style="width: 50%;">What argues against switching — or against switching now</th>
+      <th class="pro" style="width: 47%;">What supports the switch (especially with the right sequencing)</th>
+      <th class="con" style="width: 53%;">What argues against pre-ketamine timing — in Dad's specific profile</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td class="pro"><strong>SSRIs may have a modest anxiolytic advantage over SNRIs in older adults.</strong> A 2025 Lancet Psychiatry meta-analysis (19 trials, 2,336 older adults) found SSRIs produced a meaningfully larger reduction in anxiety symptom scores than SNRIs (standardized effect size −1.84 vs. −0.46). The advantage was in symptom intensity, however — there was <em>no significant difference</em> between SSRIs and SNRIs in overall response or remission rates. The trials also showed wide variation, and the effect can't be attributed to any single SSRI like Lexapro specifically.</td>
-      <td class="con"><strong>Dad's documented February ketamine response happened on Cymbalta.</strong> The single strongest predictor of how well his upcoming ketamine restart will work is what condition his medications were in during the February response. Switching away from Cymbalta means stepping away from the documented-response condition — and the JAMA Psychiatry 2025 study of 55,480 patients found that SNRI + ketamine combinations had <em>lower mortality (5.3% vs. 9.1%) and lower depression relapse (14.8% vs. 21.2%)</em> than SSRI + ketamine combinations.</td>
+      <td class="pro"><strong>Dad has decades of strong functioning on Lexapro at 10–20 mg.</strong> This is real prior-responder data — meaningful N=1 evidence that aggregate trial estimates don't capture. Patient-level prior response is one of the strongest predictors of re-response when an agent is re-trialed after a gap.</td>
+      <td class="con"><strong>Lexapro previously failed at high doses (30–50 mg) when the depression escalated.</strong> Lit review #11 documented "poor response to high-dose escitalopram (30–50 mg)" — exactly the context (severe depression) that's relevant now. Re-trial at low doses might work, but the responder evidence is from a less-severe Dad on lower doses, not the current severity profile. The high-dose failure is the closest comparator.</td>
     </tr>
     <tr>
-      <td class="pro"><strong>Dad has years of prior tolerability with Lexapro.</strong> Before switching to Cymbalta in November 2025, Dad had been on escitalopram (Lexapro) for several years and tolerated it. Prior tolerability is a useful clinical predictor of tolerability on a return trial. Whether it predicts <em>efficacy</em> is a different and less-supported question, since "tolerated for years" doesn't necessarily mean "achieved remission."</td>
-      <td class="con"><strong>Cymbalta is one of the few antidepressants with proven superiority over placebo for older adults; Lexapro is not.</strong> A 2015 network meta-analysis of older adults compared antidepressants for late-life depression. Cymbalta (along with sertraline and paroxetine) significantly outperformed placebo for response. Lexapro did <em>not</em> reach statistical significance for response over placebo in this analysis. The evidence base for Lexapro in late-life depression specifically is weaker than its reputation suggests.</td>
+      <td class="pro"><strong>SNRI noradrenergic activity may contribute to current anxiety/agitation.</strong> Duloxetine's NE reuptake inhibition can produce or exacerbate anxiety in some patients. Dad's prominent anxiety component (including the 5/18 session distress and the recent body-shaking episodes) is at least partly compatible with this mechanism. Pure SSRI may be more comfortable.</td>
+      <td class="con"><strong>Documented Feb 2026 ketamine response was on duloxetine.</strong> Removing duloxetine removes the established pharmacological context for the only intervention that has demonstrably worked at this severity. Del Casale 2025 (n=55,480) found SNRI + esketamine outperformed SSRI + esketamine on mortality (5.3% vs 9.1%), hospitalization, and relapse. Both lines argue for preserving the SNRI background at least until the ketamine response is re-established.</td>
     </tr>
     <tr>
-      <td class="pro"><strong>Some patients tolerate SSRIs better than SNRIs.</strong> SNRIs can produce more dizziness, blood pressure changes, and sympathetic-nervous-system effects than SSRIs in some patients. If Dad were having specific Cymbalta-attributable side effects, that would be a real reason to switch. To our knowledge, no such Cymbalta-specific side effects have been clearly identified.</td>
-      <td class="con"><strong>Significant cardiac safety concern with Lexapro in Dad's specific profile.</strong> Lexapro has a documented dose-dependent QTc-prolonging effect (the QTc is a measure of heart electrical recovery time; longer QTc means higher risk of dangerous heart rhythms). A 2023 study of 19,742 patients found that <strong>about 20% of patients over 65 reach potentially pro-arrhythmic blood levels at just 10 mg/day</strong> — the FDA-recommended elderly maximum — due to age-related slower drug clearance. Dad has both partial heart-block (LAFB, coded since May 2025) and resting bradycardia (HR 57 at the May 11 visit), which amplifies these risks. A 2025 FDA Adverse Event Reporting System analysis found <strong>Lexapro has signals for QTc prolongation, atrial fibrillation, and ventricular arrhythmia; Cymbalta has none.</strong></td>
+      <td class="pro"><strong>Lexapro is well-tolerated in elderly and broadly safe.</strong> A long-standing, well-characterized agent. If the switch doesn't work, it's reversible. The downside isn't catastrophic — Dad has functioned on this drug class for decades. Cardiac profile is favorable for his bradycardia + LAFB.</td>
+      <td class="con"><strong>Duloxetine discontinuation syndrome is non-trivial.</strong> A 2025 JAMA Psychiatry meta-analysis: 1.61 additional symptoms on DESS scale at week 1, peaks 36–96 hours, can persist 2–6 weeks. Acute anxiety, paresthesias, "brain zaps," nausea, agitation, insomnia. In an elderly patient with prominent anxiety, the withdrawal symptoms would be indistinguishable from worsening depression and would confound the ketamine response read at the most important moment.</td>
     </tr>
     <tr>
-      <td class="pro" style="background: #fbfbf8; color: #777;">—</td>
-      <td class="con"><strong>SSRIs cause more postural hypotension (sudden drop in blood pressure when standing) in the first month than other antidepressants.</strong> A 2025 UK primary-care study found SSRIs had the highest postural-hypotension rate during the first 28 days of treatment (rate 4.22x baseline) — higher than tricyclics (2.12x). Given Dad's gait abnormality, balance findings, and possible autonomic features, this would add fall risk during the switch window.</td>
-    </tr>
-    <tr>
-      <td class="pro" style="background: #fbfbf8; color: #777;">—</td>
-      <td class="con"><strong>Switching to Lexapro would not address Dad's RBD.</strong> Both SSRIs and SNRIs are serotonergic antidepressants, and both classes increase REM sleep without atonia (the muscle paralysis whose absence defines RBD). A 2016 study found this side effect occurred in about 12% of users of either class — with <em>no significant difference</em> between SSRIs and SNRIs. If RBD management is a priority, switching from one serotonergic agent to another doesn't help; that would require a different class of medication entirely.</td>
+      <td class="pro"><strong>NPI + Julane weekly + ketamine carry the main therapeutic load anyway.</strong> Even if the Lexapro switch is neutral (~40–50% probability) or modestly negative (~25–35%), the family's energy is better spent on the non-pharmacologic side than fighting the AD direction. The switch is not the load-bearing decision.</td>
+      <td class="con"><strong>Lexapro start activation in older adults overlaps with the ketamine restart.</strong> Per the OE response, prior history of drug-induced akathisia/EPS is a documented predisposing factor for SSRI activation (Lane 1998). The AMSP surveillance program identified escitalopram as the most frequently implicated SSRI in EPS case reports. Dad's activation-intolerance pattern across multiple agents puts him in the elevated-risk category. The activation window is 1–4 weeks — landing right on the ketamine restart.</td>
     </tr>
     <tr>
       <td class="pro" style="background: #fbfbf8; color: #777;">—</td>
-      <td class="con"><strong>Parkinson's-disease-specific guidelines recommend Cymbalta, not Lexapro.</strong> Given Dad's pending neurology evaluation for possible Parkinson's-spectrum features, the Parkinson's UK depression guidelines for patients with PD-related dementia specifically name duloxetine, mirtazapine, venlafaxine, and sertraline. Escitalopram is not specifically named. If a Lewy-spectrum diagnosis emerges in June, Cymbalta would likely remain on the recommended list and Lexapro would not.</td>
+      <td class="con"><strong>SSRI anxiolytic effect takes 4–8 weeks.</strong> Even if Lexapro is the right destination, the benefit window doesn't land until well after the ketamine sessions. The "less acutely anxious before the next session" goal Chilton stated isn't actually achievable by the switch in the available time.</td>
     </tr>
     <tr>
       <td class="pro" style="background: #fbfbf8; color: #777;">—</td>
-      <td class="con"><strong>Making multiple medication changes during the ketamine restart window would muddle attribution.</strong> If anything changes (better or worse) during the May 18–early June window, it should be cleanly attributable to ketamine, not to a simultaneous Cymbalta-stop / Lexapro-start that creates withdrawal effects, start-up effects, and uncertain interactions all at the same time.</td>
-    </tr>
-    <tr>
-      <td class="pro" style="background: #fbfbf8; color: #777;">—</td>
-      <td class="con"><strong>B12 supplementation timing argues for waiting.</strong> Dad just started B12 1,000 mcg daily, with the MMA recheck planned for August 6. Functional B12 deficiency can independently contribute to mood, cognitive, and gait symptoms — and supplementation can produce meaningful improvement over 1–3 months. If his symptoms improve by August, it weakens the case for switching antidepressants at all. Switching now would obscure whether B12 repletion is helping.</td>
+      <td class="con"><strong>Julane's preferred sequencing.</strong> Run the first 1–2 ketamine sessions on the existing stack, observe response, revisit any antidepressant switch with that data in hand. The most conservative version of the same proposal — doesn't introduce two pharmacological changes in the same window; preserves the duloxetine background the documented response was on; gives the most clinical information per unit risk.</td>
     </tr>
   </tbody>
 </table>
 
-<div class="strength-row">
-  <span class="strength-label">Strength of evidence against switching now:</span>
-  <span class="stars">★★★★★</span>
-</div>
-<div class="strength-rationale">The case against switching <em>now</em> is strong on every axis (preserving the documented-response condition, cardiac safety in LAFB + bradycardia, elderly-efficacy data, multi-variable attribution). The case against switching <em>at all</em> is also genuine but more dependent on how the June neurology evaluation, August MMA recheck, and ketamine response play out. The cleanest read: hold the switch until those data points are in.</div>
-
-<div class="section-label">What's true regardless of the decision</div>
+<div class="section-label">Honest probability read</div>
 <div class="neutral-block">
   <ul>
-    <li><strong>Both Lexapro and Cymbalta affect REM sleep in similar ways.</strong> Switching from one to the other will not change Dad's RBD picture. If RBD management ever becomes a priority, that would require a different class of medication — a conversation for neurology and the K Clinic psychiatrist after the June evaluation.</li>
-    <li><strong>Any antidepressant switch is best done as a separate, monitored intervention</strong> — not concurrent with the ketamine restart, the Depakote question, or any other simultaneous changes. A clean attribution window is more important than the speed of any single decision.</li>
-    <li><strong>If a switch is ever pursued</strong>, the standard approach in late-life patients is a cross-taper over 2–4 weeks (reducing Cymbalta in 30 mg steps while introducing Lexapro at 5 mg, then 10 mg), with baseline ECG and QTc measurement, dose cap at 10 mg/day, sodium monitoring at 2–4 weeks, and orthostatic blood pressure checks.</li>
-    <li><strong>The August 6 MMA recheck and the June neurology evaluation are natural decision points.</strong> Both could materially change the right antidepressant strategy. Acting before those data are in means making a decision that might need to be reversed later.</li>
+    <li><strong>~20–30% the switch helps</strong> — real prior-responder status finds Dad again on Lexapro at lower doses (10–20 mg).</li>
+    <li><strong>~40–50% the switch is neutral</strong> — Dad's depression at this severity doesn't respond meaningfully to either AD as the load-bearing intervention; ketamine and NPIs carry the work.</li>
+    <li><strong>~25–35% the switch makes the June window harder</strong> — duloxetine withdrawal anxiety + Lexapro start activation overlap with the ketamine restart, with loss of duloxetine background that backed the documented response.</li>
+  </ul>
+</div>
+
+<div class="section-label">What everyone agrees on</div>
+<div class="neutral-block">
+  <ul>
+    <li><strong>Lexapro is on the table — the disagreement is about timing.</strong> Dad's long historical responder status is real; the debate is whether to do the switch before or after the ketamine sessions.</li>
+    <li><strong>Julane's sequencing (first sessions on duloxetine, then revisit) is the conservative form of the same proposal.</strong> Not a fundamentally different plan — just a different order.</li>
+    <li><strong>The documented Feb 2026 responder background is duloxetine.</strong> Preserving it through the first sessions costs little and protects the highest-value variable on the table.</li>
+    <li><strong>The bupropion-augmentation option is a third path</strong> if "do more than ketamine" pressure remains — see <a href="21_bupropion_augmentation_decision_aid_2026-05-19.html">handout #21</a>. Adds rather than switches; mechanistically distinct from prior intolerances; OPTIMUM data favors augmentation over switching.</li>
+    <li><strong>NPI work doesn't depend on the AD decision.</strong> Caffeine, bright light, exercise, alcohol abstinence, digital CBT-I, weekly Julane — all proceed regardless.</li>
   </ul>
 </div>
 
 <div class="section-label">Recommended next steps</div>
 <ol class="next-steps">
-  <li><strong>Continue duloxetine 60 mg unchanged</strong> through and after the May 18 ketamine restart. This preserves the medication condition under which Dad's documented February response occurred.</li>
-  <li><strong>Defer any Cymbalta → Lexapro switch decision until after both the August 6 MMA recheck and the June neurology evaluation.</strong> At that point, with B12-response data and a clearer picture of any underlying neurological condition, the question can be revisited with much better information.</li>
-  <li><strong>Bring this analysis to the K Clinic psychiatrist call</strong> when she contacts the family, and to the May 19 follow-up with Dr. Rubin. Both clinicians' input will be valuable on whether to revisit the switch later.</li>
-  <li><strong>If duloxetine-specific side effects emerge</strong> (clear orthostatic symptoms, worsening constipation attributable to duloxetine rather than other factors), that would be a real signal to consider an earlier switch — but as a separate, monitored intervention, not concurrent with ketamine.</li>
-  <li><strong>If a switch is eventually pursued</strong>, it should include: baseline ECG with QTc measurement, dose cap at 10 mg/day (FDA elderly maximum), serum sodium check at 2–4 weeks (hyponatremia risk on SSRIs in elderly is real), orthostatic blood pressure checks, and a 2–4-week cross-taper protocol.</li>
-  <li><strong>Hold Depakote pending review</strong>, per the Depakote handout.</li>
+  <li><strong>Tomorrow's Rubin call (5/20, 11 AM):</strong> open with the sequencing request — <em>"Could we run the first 2–3 ketamine sessions on duloxetine to preserve the Feb 2026 responder background, and revisit the switch with response data at the mid-June check-in? Julane suggested the same sequencing."</em> This is the strongest medical position and concedes the direction (Lexapro is on the table) while protecting the most valuable variable.</li>
+  <li><strong>If sequencing isn't winnable</strong>, accept the switch but ask for:
+    <ul>
+      <li><strong>Gradual cross-titration</strong> — duloxetine 30 mg for ≥1 week of overlap, then 20 mg for another week, then off; minimizes the withdrawal-anxiety window.</li>
+      <li><strong>Lexapro dose cap at 5–10 mg.</strong> The historical effective range. Don't push to the high doses (30–50 mg) where Dad previously did poorly.</li>
+      <li><strong>Explicit reversal triggers defined upfront</strong>: akathisia, persistent agitation, new motor symptom in the first 2 weeks, any fall, worsening depression in the first 4 weeks.</li>
+      <li><strong>Plan to assess at ~3 weeks vs ~8 weeks</strong> on whether the switch is helping; budget for the long-arm benefit window not landing until well after the ketamine sessions.</li>
+    </ul>
+  </li>
+  <li><strong>Bupropion augmentation as a third path</strong> if "do more" pressure remains: instead of switching from duloxetine to Lexapro, consider adding bupropion XL 150 mg to duloxetine. Per <a href="21_bupropion_augmentation_decision_aid_2026-05-19.html">handout #21</a>, this has stronger OPTIMUM evidence than switching and preserves the documented responder background. Fall risk is the load-bearing caveat.</li>
+  <li><strong>Decline the doxepin and trazodone removal pieces of the proposal regardless of the AD decision.</strong> Lemborexant can be added (Julane-endorsed) as a sleep-maintenance addition without removing what's working. If Dad wants to come off doxepin specifically, the doxepin → lemborexant swap is seamless per <a href="10_lemborexant_decision_aid_2026-05-15.html">handout #10</a>; trazodone PRN stays.</li>
+  <li><strong>NPI work proceeds in parallel</strong> regardless of the AD decision. See <a href="19_npi_sleep_decision_aid_2026-05-18.html">handout #19</a>.</li>
+  <li><strong>Weekly Julane sessions through the gap to June 8</strong> are the strongest non-pharmacologic lever on the "felt alone" dimension that distinguished 5/18 from February.</li>
 </ol>
 
 <div class="bottom-line">
   <span class="label">Bottom line</span>
-  The case for switching from Cymbalta to Lexapro is modest. The case against switching now is strong on multiple axes — cardiac safety in Dad's specific profile, elderly-efficacy data favoring Cymbalta, preservation of the documented ketamine-response condition, and the unfolding B12 and neurology evaluations that may change the picture. Continue Cymbalta through the ketamine restart, and defer the switch question to August at the earliest.
-</div>
-
-<!-- =========================================================
-     CITATIONS (flows continuously)
-     ========================================================= -->
-
-<div class="back-header">Key Studies &amp; Findings</div>
-<div class="back-subhead">Ranked by authority · Each citation summarized for how it applies to Dad's case</div>
-
-<div class="tier-header">Tier 1 — Major Clinical Guidelines and Reviews <span class="tier-stars">★★★★★</span></div>
-
-<div class="citation">
-  <div class="cite-title">Steffens DC. Treatment-Resistant Depression in Older Adults.</div>
-  <div class="cite-source">NEJM 2024;390:630–639. Read <a href="https://doi.org/10.1056/NEJMcp2305428" class="cite-link">here</a>.</div>
-  <div class="cite-finding"><span class="label-inline">Key finding</span>The current NEJM review of treatment-resistant depression in adults ≥65 notes that "switching from one antidepressant class to another is an approach that is common clinical practice" but cautions that "there is little evidence to support it." Outlines the typical switching protocol but doesn't address the ketamine-restart context.</div>
-  <div class="cite-apply"><span class="label-inline">How it applies</span>The authoritative late-life TRD reference acknowledges the limits of the evidence for class-switching. This puts a brake on the assumption that switching from Cymbalta to Lexapro will reliably help.</div>
-</div>
-
-<div class="citation">
-  <div class="cite-title">Kaila LV, Ikeda M, Sultana J et al. The Evolving Therapeutic Landscape of Dementia With Lewy Bodies.</div>
-  <div class="cite-source">Lancet Neurology 2025;24:1038–1052. Read <a href="https://doi.org/10.1016/S1474-4422(25)00323-0" class="cite-link">here</a>.</div>
-  <div class="cite-finding"><span class="label-inline">Key finding</span>The most current Lancet Neurology review on Lewy body disease therapeutics, including discussion of antidepressant selection. Parkinson's UK depression guidelines (cited within) specifically name duloxetine, mirtazapine, venlafaxine, and sertraline as appropriate antidepressants in PD-related dementia. Escitalopram is not specifically named.</div>
-  <div class="cite-apply"><span class="label-inline">How it applies</span>If the June neurology evaluation confirms a Parkinson's-spectrum diagnosis, duloxetine is one of the agents specifically recommended for the resulting picture, while escitalopram is not. Staying on duloxetine preserves alignment with this guidance.</div>
-</div>
-
-<div class="tier-header">Tier 2 — Major RCTs and Meta-analyses <span class="tier-stars">★★★★</span></div>
-
-<div class="citation">
-  <div class="cite-title">Neil-Sztramko SE, Levy A et al. Pharmacological Treatment of Anxiety in Older Adults: A Systematic Review and Meta-Analysis.</div>
-  <div class="cite-source">Lancet Psychiatry 2025;12:421–432. Read <a href="https://doi.org/10.1016/S2215-0366(25)00100-2" class="cite-link">here</a>.</div>
-  <div class="cite-finding"><span class="label-inline">Key finding</span>Meta-analysis of 19 RCTs, 2,336 older adults. SSRIs produced larger reductions in anxiety symptom scores than SNRIs (standardized effect sizes −1.84 vs. −0.46). However, there was no significant difference between the two classes in overall response or remission rates. Considerable variation across SSRI studies (heterogeneity 74%).</div>
-  <div class="cite-apply"><span class="label-inline">How it applies</span>This is the strongest evidence supporting Dr. Rubin's anxiety-based rationale for switching. The advantage is real but modest, only in symptom-intensity measures and not in response/remission, and can't be attributed specifically to escitalopram (Lexapro).</div>
-</div>
-
-<div class="citation">
-  <div class="cite-title">Thorlund K, Druyts E et al. Comparative Efficacy and Safety of Selective Serotonin Reuptake Inhibitors and Serotonin-Norepinephrine Reuptake Inhibitors in Older Adults: A Network Meta-Analysis.</div>
-  <div class="cite-source">J Am Geriatr Soc 2015;63:1002–1009. Read <a href="https://doi.org/10.1111/jgs.13395" class="cite-link">here</a>.</div>
-  <div class="cite-finding"><span class="label-inline">Key finding</span>Network meta-analysis of antidepressants in adults ≥60. Duloxetine (Cymbalta), sertraline, and paroxetine each significantly outperformed placebo for response. Escitalopram (Lexapro) did <strong>not</strong> reach statistical significance for response over placebo in this older-adult population. Duloxetine had the highest response rate (relative risk 1.62 vs. placebo) but also the highest dizziness risk (relative risk 3.18).</div>
-  <div class="cite-apply"><span class="label-inline">How it applies</span>The single most important comparative-efficacy finding for late-life patients: duloxetine has a stronger evidence signal than escitalopram in this age group. Switching from a medication that has shown evidence of working in older adults to one that hasn't is not an obvious improvement.</div>
-</div>
-
-<div class="citation">
-  <div class="cite-title">Del Casale A et al. Esketamine Combined With SSRI or SNRI for Treatment-Resistant Depression.</div>
-  <div class="cite-source">JAMA Psychiatry 2025;82:810–817. Read <a href="https://doi.org/10.1001/jamapsychiatry.2025.0200" class="cite-link">here</a>.</div>
-  <div class="cite-finding"><span class="label-inline">Key finding</span>Propensity-matched cohort, n=55,480. SNRI + esketamine had lower mortality (5.3% vs. 9.1%), lower hospitalization (0.1% vs. 0.2%), and lower depression relapse (14.8% vs. 21.2%) than SSRI + esketamine. The mean age in the study was about 46, however; no specific subgroup analysis for adults ≥65 was reported.</div>
-  <div class="cite-apply"><span class="label-inline">How it applies</span>Population-level evidence supports continuing Cymbalta (an SNRI) through the ketamine restart, rather than switching to Lexapro (an SSRI). The age-specific applicability is uncertain, but the headline finding is the strongest argument for SNRI continuation alongside ketamine.</div>
-</div>
-
-<div class="tier-header">Tier 3 — Pharmacovigilance and Large Cohorts <span class="tier-stars">★★★</span></div>
-
-<div class="citation">
-  <div class="cite-title">Faraj P, Størset E et al. Pro-Arrhythmic Effect of Escitalopram and Citalopram at Serum Concentrations Commonly Observed in Older Patients.</div>
-  <div class="cite-source">EBioMedicine 2023;95:104779. Read <a href="https://doi.org/10.1016/j.ebiom.2023.104779" class="cite-link">here</a>.</div>
-  <div class="cite-finding"><span class="label-inline">Key finding</span>Study of 19,742 patients receiving escitalopram. Approximately 20% of patients over 65 were predicted to reach potentially pro-arrhythmic blood concentrations of escitalopram at just 10 mg/day — the FDA-recommended elderly maximum — due to age-related slower drug clearance.</div>
-  <div class="cite-apply"><span class="label-inline">How it applies</span>This is the most decision-relevant cardiac finding. Even at the safest recommended dose, Dad has roughly a 1-in-5 chance of being at problematic blood levels. Combined with his pre-existing left anterior fascicular block and resting bradycardia (HR 57), this is a meaningful risk.</div>
-</div>
-
-<div class="citation">
-  <div class="cite-title">Cao S, Huang Z et al. Arrhythmic Events Pertinent With Antidepressants: A Bayesian Disproportional Analysis Mining the FDA Adverse Event Reporting System Database.</div>
-  <div class="cite-source">Front Psychiatry 2025;16:1637471. Read <a href="https://doi.org/10.3389/fpsyt.2025.1637471" class="cite-link">here</a>.</div>
-  <div class="cite-finding"><span class="label-inline">Key finding</span>Pharmacovigilance analysis of the FDA Adverse Event Reporting System. Escitalopram showed elevated signals for QTc prolongation / torsades de pointes (ROR 1.72), atrial fibrillation (ROR 1.34), and ventricular arrhythmia (ROR 1.51). Duloxetine and venlafaxine showed no pharmacovigilance signal for any arrhythmia.</div>
-  <div class="cite-apply"><span class="label-inline">How it applies</span>Direct comparative arrhythmia data: Cymbalta has a clean signal; Lexapro has multiple. In a patient with Dad's cardiac profile, this favors maintaining Cymbalta.</div>
-</div>
-
-<div class="citation">
-  <div class="cite-title">Bhanu C, Walters K et al. Antidepressants and Risk of Postural Hypotension: A Self-Controlled Case Series Study in UK Primary Care.</div>
-  <div class="cite-source">Br J Gen Pract 2025;75:e484–e490. Read <a href="https://doi.org/10.3399/BJGP.2024.0429" class="cite-link">here</a>.</div>
-  <div class="cite-finding"><span class="label-inline">Key finding</span>UK primary-care study of postural hypotension (sudden blood pressure drop on standing) in patients on antidepressants. SSRIs had the highest rate during the first 28 days of treatment (incidence rate ratio 4.22 vs. baseline), higher than tricyclic antidepressants (2.12) and SNRIs.</div>
-  <div class="cite-apply"><span class="label-inline">How it applies</span>If a switch to Lexapro were initiated, Dad would face a particular early-window risk of standing blood-pressure drops — relevant given his existing balance abnormality, gait findings, and concurrent vasodilator medications.</div>
-</div>
-
-<div class="tier-header">Tier 4 — Mechanistic and REM Sleep Data <span class="tier-stars">★★</span></div>
-
-<div class="citation">
-  <div class="cite-title">Lee K, Baron K et al. The Prevalence and Characteristics of REM Sleep Without Atonia (RSWA) in Patients Taking Antidepressants.</div>
-  <div class="cite-source">J Clin Sleep Med 2016;12:351–355. Read <a href="https://doi.org/10.5664/jcsm.5582" class="cite-link">here</a>.</div>
-  <div class="cite-finding"><span class="label-inline">Key finding</span>About 12% of users of SSRIs or SNRIs had REM sleep without the normal muscle paralysis that prevents dream-enactment behaviors — the electrophysiologic finding that underlies REM Sleep Behavior Disorder. The effect was similar in both classes; there was no significant difference between SSRIs and SNRIs.</div>
-  <div class="cite-apply"><span class="label-inline">How it applies</span>Switching from Cymbalta (SNRI) to Lexapro (SSRI) does not address Dad's 8.5-year RBD. If RBD management becomes a priority, both classes would need to be reconsidered together — not switched between.</div>
-</div>
-
-<div class="citation">
-  <div class="cite-title">Postuma RB, Gagnon JF et al. Antidepressants and REM Sleep Behavior Disorder: Isolated Side Effect or Neurodegenerative Signal?</div>
-  <div class="cite-source">Sleep 2013;36:1579–1585. Read <a href="https://doi.org/10.5665/sleep.3102" class="cite-link">here</a>.</div>
-  <div class="cite-finding"><span class="label-inline">Key finding</span>Prospective cohort study of 100 patients with PSG-confirmed RBD. Patients with antidepressant-associated RBD had similar neurodegenerative markers (subtle parkinsonism, autonomic dysfunction, mild cognitive features) compared to those without antidepressants — but a lower 5-year conversion rate to overt disease (22% vs. 59%).</div>
-  <div class="cite-apply"><span class="label-inline">How it applies</span>Dad's long antidepressant history may have contributed to his RBD presentation, but the conversion risk in antidepressant-associated RBD is still meaningful. Switching from one serotonergic agent to another doesn't change this picture.</div>
-</div>
-
-<div class="tier-header">Tier 5 — Specific Studies <span class="tier-stars">★</span></div>
-
-<div class="citation">
-  <div class="cite-title">Daly EJ, Turkoz I et al. The Effect of Esketamine in Patients With Treatment-Resistant Depression With and Without Comorbid Anxiety Symptoms or Disorder.</div>
-  <div class="cite-source">Depress Anxiety 2021;38:1120–1130. Read <a href="https://doi.org/10.1002/da.23193" class="cite-link">here</a>.</div>
-  <div class="cite-finding"><span class="label-inline">Key finding</span>Post-hoc analysis of TRANSFORM-2 trial of esketamine plus oral antidepressant in treatment-resistant depression. Esketamine's antidepressant efficacy was maintained regardless of comorbid anxiety (no significant treatment-by-anxiety interaction, p = 0.371).</div>
-  <div class="cite-apply"><span class="label-inline">How it applies</span>The presence of anxiety does not change ketamine's antidepressant efficacy. This supports the broader argument that the ketamine restart itself will address both depression and anxiety in Dad's profile, regardless of which background antidepressant he's on.</div>
+  The switch direction is defensible — Dad's decades of good functioning on Lexapro at 10–20 mg is real prior-responder data. The OE evidence against the switch is real but is mostly about the previously-failed-high-dose context, the documented duloxetine + ketamine responder background, and the timing/window concerns. The recommended ask of Rubin tomorrow is sequencing rather than direction: first 2–3 ketamine sessions on duloxetine, revisit the switch with response data in hand. If sequencing isn't winnable, gradual cross-titration with a Lexapro dose cap at 5–10 mg and explicit reversal triggers is the next-best medical structure.
 </div>
 
 </body>
 </html>
+</content>
+</invoke>
