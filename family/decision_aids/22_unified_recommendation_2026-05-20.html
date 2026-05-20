@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Unified recommendation for Dad's Rubin call — 2026-05-20</title>
+<style>
+  @page { size: letter; margin: 0.5in 0.55in; }
+  :root {
+    --navy: #1a3a5c; --navy-dark: #0f2640;
+    --green: #2c5e3f; --green-bg: #e8f0ea; --green-border: #5a8a6a;
+    --amber: #8a6a2c; --amber-bg: #f5efdf; --amber-border: #c8a86e;
+    --red: #8b2c2c; --red-bg: #f4e6e6; --red-border: #c87878;
+    --text: #1f1f1f; --text-muted: #5a5a5a;
+    --rule: #c8c8c8; --rule-strong: #6a6a6a;
+    --tint: #f5f3f0; --tint-neutral: #f3f3f1;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    font-family: "Charter", "Georgia", "Times New Roman", serif;
+    font-size: 10pt; line-height: 1.42; color: var(--text);
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--navy); text-decoration: underline; text-decoration-thickness: 0.4pt; text-underline-offset: 1.5pt; }
+
+  .doc-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    padding-bottom: 8pt; border-bottom: 1.5pt solid var(--navy); margin-bottom: 16pt;
+  }
+  .doc-header .title {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 700; font-size: 17pt; line-height: 1.15;
+    color: var(--navy-dark); letter-spacing: -0.015em;
+  }
+  .doc-header .subtitle {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 500; font-size: 9.5pt; color: var(--text-muted);
+    margin-top: 3pt;
+  }
+  .doc-header .meta {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 7.5pt; color: var(--text-muted); text-align: right;
+    letter-spacing: 0.03em; line-height: 1.5;
+  }
+
+  .page-purpose {
+    background: var(--tint); padding: 8pt 12pt; border-radius: 4pt;
+    font-size: 9pt; line-height: 1.45; color: var(--text);
+    margin-bottom: 14pt;
+  }
+  .page-purpose strong { color: var(--navy-dark); }
+
+  .section-label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 7.5pt; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.16em; color: var(--navy); margin: 16pt 0 6pt 0;
+  }
+  .section-label.first { margin-top: 0; }
+
+  .hero-recommendation {
+    border: 2pt solid var(--green-border); background: var(--green-bg);
+    padding: 14pt 18pt; margin: 0 0 14pt 0; border-radius: 4pt;
+  }
+  .hero-recommendation .hero-label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 700; font-size: 8.5pt; text-transform: uppercase;
+    letter-spacing: 0.14em; color: var(--green); margin-bottom: 4pt;
+  }
+  .hero-recommendation .hero-title {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 700; font-size: 14pt; line-height: 1.2;
+    color: var(--navy-dark); margin-bottom: 8pt;
+  }
+  .hero-recommendation .hero-body {
+    font-size: 9.75pt; line-height: 1.5; color: var(--text);
+  }
+  .hero-recommendation .hero-body strong { color: var(--navy-dark); }
+
+  table.compare {
+    width: 100%; border-collapse: collapse; margin: 6pt 0 10pt 0;
+    table-layout: fixed; font-size: 8.5pt;
+  }
+  table.compare thead th {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 700; font-size: 8pt; padding: 8pt 9pt; text-align: left;
+    background: var(--navy); color: white; letter-spacing: 0.02em;
+    border-bottom: 2pt solid var(--navy-dark);
+  }
+  table.compare thead th.preferred {
+    background: var(--green); border-bottom-color: #1f4a30;
+  }
+  table.compare thead th.proposed {
+    background: var(--red); border-bottom-color: #6a2222;
+  }
+  table.compare thead th.axis-col {
+    background: #4a5a6a; border-bottom-color: #2a3a4a;
+  }
+  table.compare td {
+    padding: 6pt 9pt; vertical-align: top;
+    border-bottom: 0.5pt solid var(--rule);
+    font-size: 8.5pt; line-height: 1.35;
+  }
+  table.compare td.axis {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 600; color: var(--text);
+    background: #f7f7f5;
+  }
+  table.compare td.preferred-cell { background: var(--green-bg); }
+  table.compare td.proposed-cell { background: var(--red-bg); }
+  table.compare td.proposed-cell strong { color: var(--red); }
+  table.compare td.preferred-cell strong { color: var(--green); }
+  table.compare tbody tr:last-child td { border-bottom: none; }
+  table.compare .check { color: var(--green); font-weight: 700; font-size: 11pt; }
+  table.compare .x { color: var(--red); font-weight: 700; font-size: 11pt; }
+
+  .tier-grid {
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 9pt;
+    margin: 6pt 0 10pt 0;
+  }
+  .tier-card {
+    border-radius: 4pt; padding: 9pt 11pt;
+    font-size: 8.75pt; line-height: 1.4;
+  }
+  .tier-card.tier1 {
+    background: var(--green-bg); border: 1.5pt solid var(--green-border);
+  }
+  .tier-card.tier2 {
+    background: var(--amber-bg); border: 1.5pt solid var(--amber-border);
+  }
+  .tier-card.tier3 {
+    background: var(--red-bg); border: 1.5pt solid var(--red-border);
+  }
+  .tier-card .tier-label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 700; font-size: 7.5pt; text-transform: uppercase;
+    letter-spacing: 0.12em; margin-bottom: 3pt;
+  }
+  .tier-card.tier1 .tier-label { color: var(--green); }
+  .tier-card.tier2 .tier-label { color: var(--amber); }
+  .tier-card.tier3 .tier-label { color: var(--red); }
+  .tier-card .tier-title {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 700; font-size: 9.5pt; color: var(--navy-dark);
+    margin-bottom: 4pt; line-height: 1.2;
+  }
+  .tier-card .tier-body { color: var(--text); }
+  .tier-card .tier-body strong { color: var(--navy-dark); }
+
+  .speech-block {
+    background: white; border: 1pt solid var(--rule-strong);
+    border-left: 4pt solid var(--navy); padding: 10pt 14pt;
+    margin: 6pt 0 10pt 0;
+    font-family: "Charter", "Georgia", serif;
+    font-style: italic; font-size: 9.5pt; line-height: 1.5;
+    color: var(--text);
+  }
+  .speech-block .speech-label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-style: normal; font-weight: 700; font-size: 7.5pt;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--navy); margin-bottom: 5pt;
+  }
+
+  .why-list { margin: 4pt 0 8pt 0; padding-left: 18pt; font-size: 9.5pt; line-height: 1.5; }
+  .why-list li { margin-bottom: 5pt; padding-left: 3pt; }
+  .why-list li::marker { color: var(--green); font-weight: 700; }
+  .why-list strong { color: var(--navy-dark); }
+
+  ol.next-steps, ol.numbered {
+    margin: 4pt 0 8pt 0; padding-left: 18pt; font-size: 9.5pt; line-height: 1.45;
+  }
+  ol.next-steps li, ol.numbered li { margin-bottom: 5pt; padding-left: 3pt; }
+  ol.next-steps li::marker {
+    color: var(--navy); font-weight: 700;
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+  }
+  ol.next-steps strong, ol.numbered strong { color: var(--navy-dark); }
+
+  ul.bulleted {
+    margin: 4pt 0 8pt 0; padding-left: 18pt; font-size: 9.5pt; line-height: 1.45;
+  }
+  ul.bulleted li { margin-bottom: 4pt; }
+  ul.bulleted strong { color: var(--navy-dark); }
+
+  .neutral-block {
+    background: var(--tint-neutral); border-left: 3pt solid #888;
+    padding: 9pt 14pt 6pt 14pt; margin: 4pt 0 10pt 0;
+  }
+  .neutral-block ul { list-style: none; padding: 0; margin: 0; }
+  .neutral-block li {
+    font-size: 9.25pt; line-height: 1.45; margin-bottom: 6pt;
+    padding-left: 12pt; position: relative;
+  }
+  .neutral-block li::before {
+    content: "•"; position: absolute; left: 0; color: #888; font-weight: bold;
+  }
+  .neutral-block li:last-child { margin-bottom: 0; }
+  .neutral-block strong { color: var(--navy-dark); }
+
+  .page-break { page-break-before: always; }
+
+  .context { font-size: 9.5pt; line-height: 1.5; color: var(--text); margin: 0 0 8pt 0; }
+  .context strong { color: var(--navy-dark); }
+
+  .footer-note {
+    margin-top: 10pt; padding-top: 8pt; border-top: 1pt solid var(--rule);
+    font-size: 8pt; color: var(--text-muted); line-height: 1.45;
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+  }
+
+  h2.page-heading {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 700; font-size: 13pt; color: var(--navy-dark);
+    margin: 0 0 10pt 0; padding-bottom: 5pt; border-bottom: 1pt solid var(--rule-strong);
+    letter-spacing: -0.01em;
+  }
+
+  .citation { page-break-inside: avoid; }
+  .citation {
+    margin: 0 0 9pt 0; padding-left: 9pt; border-left: 2pt solid var(--rule);
+    font-size: 8.5pt; line-height: 1.4;
+  }
+  .citation .cite-title {
+    font-weight: 700; color: var(--navy-dark);
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif; font-size: 8.5pt;
+  }
+  .citation .cite-source { color: var(--text-muted); font-style: italic; font-size: 8.25pt; }
+  .citation .cite-finding { margin-top: 2pt; font-size: 8.25pt; }
+  .citation .label-inline {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 700; font-size: 6.75pt; text-transform: uppercase;
+    letter-spacing: 0.08em; color: var(--navy); margin-right: 4pt;
+  }
+</style>
+</head>
+<body>
+
+<!-- ================================================ -->
+<!-- PAGE 1: EXECUTIVE SUMMARY / ACTIONABLE TAKEAWAY -->
+<!-- ================================================ -->
+
+<div class="doc-header">
+  <div>
+    <div class="title">A unified medication recommendation</div>
+    <div class="subtitle">Dad's call with Dr. Rubin · 2026-05-20</div>
+  </div>
+  <div class="meta">
+    For Dad, Mom, Dr. Rubin,<br>
+    Dr. Chilton, Julane, family team<br>
+    Hosted at adamplunkettauthor.com/family
+  </div>
+</div>
+
+<div class="page-purpose">
+  <strong>What this document is for.</strong> A single-page summary on this front sheet that captures the family's preferred medication configuration, the alternatives if it can't be agreed to, and the 30-second case Dad can make. Subsequent pages develop the reasoning in more depth: the evidence base, the fallback paths, operational details (dosing, monitoring, reversal triggers), and key studies. Family members can read just page 1 if pressed for time; Dr. Rubin can read pages 1–2 and have what he needs.
+</div>
+
+<div class="hero-recommendation">
+  <div class="hero-label">Family-preferred configuration</div>
+  <div class="hero-title">Cymbalta + Wellbutrin XL 150 mg + Lemborexant 5 mg HS</div>
+  <div class="hero-body">
+    <strong>Continue duloxetine (Cymbalta) 60 mg.</strong> Add bupropion XL 150 mg AM as augmentation. Switch sleep stack: doxepin off, <strong>lemborexant 5 mg HS</strong> in its place (Julane-endorsed). Keep trazodone PRN and melatonin 3 mg HS. This configuration addresses Dr. Chilton's "do more than ketamine" goal through augmentation rather than switching antidepressants — preserving the documented February 2026 ketamine-responder background, minimizing concurrent changes in the 3-week pre-restart window, and aligning with the strongest evidence the family has found across the geriatric TRD, prodromal-synucleinopathy, and concurrent-change-management literatures.
+  </div>
+</div>
+
+<div class="section-label first">Comparison vs the currently proposed package</div>
+
+<table class="compare">
+  <thead>
+    <tr>
+      <th class="axis-col" style="width: 30%;">Clinical axis</th>
+      <th class="preferred" style="width: 35%;">Family-preferred:<br>Cymbalta + Wellbutrin + Lemborexant</th>
+      <th class="proposed" style="width: 35%;">Currently proposed:<br>Lexapro + Depakote + Lemborexant</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="axis">Preserves documented Feb 2026 ketamine-responder background</td>
+      <td class="preferred-cell"><span class="check">✓</span> <strong>Yes</strong> — Cymbalta is part of the platform that produced the dramatic Feb response</td>
+      <td class="proposed-cell"><span class="x">✗</span> <strong>No</strong> — removes Cymbalta from the platform</td>
+    </tr>
+    <tr>
+      <td class="axis">Concurrent pharmacological changes in 3-week pre-restart window</td>
+      <td class="preferred-cell"><strong>1 new agent + 1 sleep substitution</strong> (bupropion add; doxepin → lemborexant)</td>
+      <td class="proposed-cell"><strong>2 new agents + 1 substitution</strong> (Lexapro + Depakote starts; doxepin → lemborexant)</td>
+    </tr>
+    <tr>
+      <td class="axis">Withdrawal-related anxiety overlapping ketamine restart</td>
+      <td class="preferred-cell"><span class="check">✓</span> <strong>None</strong> — Cymbalta continues</td>
+      <td class="proposed-cell"><span class="x">✗</span> <strong>Yes</strong> — Cymbalta discontinuation syndrome peaks 36–96 hrs, persists 2–6 weeks</td>
+    </tr>
+    <tr>
+      <td class="axis">AASM-aligned for formal RBD (avoid SSRI initiation)</td>
+      <td class="preferred-cell"><span class="check">✓</span> <strong>Yes</strong> — no SSRI start</td>
+      <td class="proposed-cell"><span class="x">✗</span> <strong>No</strong> — SSRIs can induce/exacerbate RBD per AASM guidance</td>
+    </tr>
+    <tr>
+      <td class="axis">Drug-induced parkinsonism risk in highest-risk synucleinopathy profile</td>
+      <td class="preferred-cell"><strong>Low</strong> — bupropion is pro-dopaminergic; no D2 antagonism</td>
+      <td class="proposed-cell"><strong>Substantial</strong> — valproate can unmask subclinical PD (UK Biobank data); dose-independent DIP signal</td>
+    </tr>
+    <tr>
+      <td class="axis">Confounds pending U-M Movement Disorders evaluation</td>
+      <td class="preferred-cell"><strong>Minimal</strong> — bupropion side effects don't overlap with prodromal-synucleinopathy signs</td>
+      <td class="proposed-cell"><strong>Substantial</strong> — valproate side effects (tremor, gait, cognition) overlap with the findings being assessed</td>
+    </tr>
+    <tr>
+      <td class="axis">Cardiac fit for LAFB + bradycardia (HR 49–53) + BP 112/58</td>
+      <td class="preferred-cell"><strong>Favorable</strong> — bupropion doesn't slow HR; modest BP rise from low baseline is positive</td>
+      <td class="proposed-cell"><strong>Mixed</strong> — escitalopram has dose-dependent QT effect; QT correction unreliable at low HR</td>
+    </tr>
+    <tr>
+      <td class="axis">Compound activation risk in patient's intolerance pattern</td>
+      <td class="preferred-cell"><strong>Lower</strong> — single new agent (bupropion's first 1–2 weeks)</td>
+      <td class="proposed-cell"><strong>Higher</strong> — Cymbalta withdrawal + Lexapro start activation + Depakote concurrent</td>
+    </tr>
+    <tr>
+      <td class="axis">Concurrent CNS-active agents vs AGS Beers / ASCP guidance</td>
+      <td class="preferred-cell"><strong>Within published guidance</strong> — 1–2 changes; below Beers ≥3-CNS-agent threshold</td>
+      <td class="proposed-cell"><strong>Exceeds published guidance</strong> — 3+ concurrent CNS-active changes; flagged by Beers</td>
+    </tr>
+    <tr>
+      <td class="axis">Evidence base for augmentation strategy in geriatric unipolar TRD</td>
+      <td class="preferred-cell"><strong>OPTIMUM RCT</strong> — bupropion augmentation 28.2% remission in adults ≥60</td>
+      <td class="proposed-cell"><strong>None</strong> — divalproex has no RCT evidence for unipolar TRD augmentation at any age</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="section-label">Three-tier ask for Dr. Rubin (in order of family preference)</div>
+
+<div class="tier-grid">
+  <div class="tier-card tier1">
+    <div class="tier-label">Tier 1 — primary ask</div>
+    <div class="tier-title">Cymbalta + Wellbutrin + Lemborexant</div>
+    <div class="tier-body">Continue Cymbalta. Add bupropion XL 150 mg AM. Doxepin → lemborexant 5 mg HS substitution. Trazodone PRN + melatonin maintained. <strong>Addresses Chilton's "do more" goal through augmentation</strong>; preserves Feb 2026 responder background; minimizes concurrent changes.</div>
+  </div>
+  <div class="tier-card tier2">
+    <div class="tier-label">Tier 2 — fallback if Cymbalta switch is non-negotiable</div>
+    <div class="tier-title">Lexapro + Wellbutrin + Lemborexant</div>
+    <div class="tier-body">Accept Cymbalta → Lexapro switch <strong>only if bupropion replaces Depakote</strong> in the augmentation slot. Lemborexant unchanged. Cross-titration over 6–8 weeks (not 3). CYP2C19 genotyping ordered before Lexapro dose is set.</div>
+  </div>
+  <div class="tier-card tier3">
+    <div class="tier-label">Tier 3 — only if both above fail</div>
+    <div class="tier-title">Lexapro + bupropion-not-depakote, sequenced</div>
+    <div class="tier-body">If Dr. R commits to Lexapro and a same-window augmentation, <strong>at minimum substitute bupropion for Depakote</strong> in the augmentation slot, and defer the bupropion start until after the first 2–3 ketamine sessions. Lemborexant for sleep.</div>
+  </div>
+</div>
+
+<div class="section-label">The 30-second case Dad can make</div>
+
+<div class="speech-block">
+  <div class="speech-label">For Dad to read or paraphrase</div>
+  Dr. R, I want to address Dr. Chilton's concern about doing more than ketamine alone, but I'm worried about layering two pharmacological changes in the same three-week window as the ketamine restart. <strong>What about adding bupropion to my Cymbalta instead of switching antidepressants?</strong> The OPTIMUM trial in older adults showed bupropion augmentation works comparably to aripiprazole augmentation — and adding to a stable background avoids the discontinuation and start-up overlap that worries me about doing the Lexapro switch right before the ketamine restart. My February response was on Cymbalta, and I'd like to protect that platform. If we have to switch, then I'd ask we use bupropion in the augmentation slot instead of Depakote, and slow the cross-titration to six to eight weeks.
+</div>
+
+<div class="footer-note">
+  Page 1 of 6. Subsequent pages: why this configuration is the best-evidenced choice (p. 2), the fallback positions in more detail (p. 3), operational details — dosing, monitoring, reversal triggers (p. 4), key studies (p. 5–6).
+</div>
+
+<!-- ================================================ -->
+<!-- PAGE 2: WHY THIS IS THE BEST-EVIDENCED CHOICE -->
+<!-- ================================================ -->
+
+<div class="page-break"></div>
+
+<h2 class="page-heading">Why Cymbalta + Wellbutrin + Lemborexant is the strongest evidence-based configuration</h2>
+
+<p class="context">Four OpenEvidence consultations completed over the past three days (#15b on lower-dose Lexapro re-trial; #16 on Lexapro + Wellbutrin combination; #17 head-to-head bupropion vs divalproex; #18 on concurrent medication changes in the ketamine window) converge on the same conclusion: <strong>preserving the duloxetine background and adding bupropion as augmentation is the highest-evidence configuration</strong> across every axis evaluated. Each of these consultations is summarized in the daily update handout (#20); their key findings are integrated below.</p>
+
+<div class="section-label first">The evidence picture, condensed</div>
+
+<ul class="why-list">
+  <li><strong>Documented February 2026 ketamine response was on Cymbalta + brexpiprazole.</strong> Dad's own N=1 prior responder data is the single strongest predictor of ketamine re-response. Removing Cymbalta removes the antidepressant platform that backed the documented response. This is the most important single fact for the operative decision.</li>
+  <li><strong>Del Casale 2025 (JAMA Psychiatry, n=55,480, propensity-matched):</strong> SNRI + esketamine outperformed SSRI + esketamine on mortality (5.3% vs 9.1%), hospitalization, and depression relapse (14.8% vs 21.2%). Mechanism favors SNRI synergy with ketamine (norepinephrine neuron firing is part of ketamine's mechanism). The single largest dataset on this specific question, and it points against the switch direction.</li>
+  <li><strong>OPTIMUM 2023 (NEJM, n=619 adults ≥60):</strong> Bupropion augmentation produced 28.2% remission — comparable to aripiprazole augmentation (28.9%), superior to switching antidepressants (19.3%). This is the direct evidence for the augmentation strategy in geriatric TRD. Divalproex has no comparable evidence and is not in any major guideline for unipolar TRD augmentation.</li>
+  <li><strong>Bupropion vs divalproex on every axis for Dad's specific profile</strong> (per OE #17 head-to-head): bupropion 7.5/10, divalproex 2.5/10. Bupropion wins on TRD efficacy evidence, drug-induced parkinsonism risk, neurology-eval confounding, ketamine compatibility, cognitive effects, and apathy phenotype fit. Bupropion's only weaker axis (fall risk) is dose-dependent and mitigated at 150 mg in patients without significant prior fall history.</li>
+  <li><strong>ASCP 2026 Deprescribing Consensus:</strong> 100% expert agreement on "only one psychiatric medication change at a time, whenever feasible." <strong>AGS Beers Criteria:</strong> flags ≥3 concurrent CNS-active agents as potentially inappropriate. The proposed Lexapro + Depakote + Lemborexant package would reach or exceed that threshold; Cymbalta + Wellbutrin + Lemborexant stays within it.</li>
+  <li><strong>AASM RBD management guidance (Howell 2023):</strong> SSRIs can induce or exacerbate RBD; bupropion is among the antidepressants with lower serotonergic profile and is the recommended consideration in RBD patients who need an antidepressant. Dad has formal RBD since 10/2017 — 8.5 years. The Lexapro switch is the wrong direction relative to AASM-aligned management; bupropion augmentation is the right direction.</li>
+  <li><strong>Holper 2020 reanalysis with age as a covariate:</strong> No antidepressant provides balanced benefit (efficacy exceeding adverse events) in patients aged 70+. Population-level finding that argues against investing energy in switching antidepressants in this age group when no AD switch is likely to be the load-bearing intervention. Ketamine is the load-bearing intervention; bupropion augmentation is the supportive add.</li>
+  <li><strong>Lemborexant for sleep (per OE #13):</strong> Night-1 effective in adults ≥55 (WASO reduction of 33 min at 5 mg, 42 min at 10 mg vs placebo on nights 1–2); seamless single-night substitution from doxepin; no rebound insomnia or withdrawal on discontinuation. Julane has endorsed lemborexant specifically as the sleep-maintenance addition. This component of the proposed package is well-supported in both family-preferred and currently-proposed configurations.</li>
+</ul>
+
+<div class="section-label">Addressing Dr. Chilton's stated concern directly</div>
+
+<p class="context">Dr. Chilton's reasoning for the Lexapro switch was that ketamine paired with an SSRI is safer than ketamine paired with an SNRI, and that Dad needs to be less acutely anxious before the next session. <strong>Both pieces of that reasoning are addressable without switching antidepressants:</strong></p>
+
+<ul class="bulleted">
+  <li><strong>On SSRI-safer-than-SNRI for ketamine background:</strong> Del Casale 2025's 55,480-patient propensity-matched dataset points the opposite direction. SNRI + ketamine outperformed SSRI + ketamine on every major outcome. The biology supports SNRI synergy with ketamine (NE neuron firing is integral to ketamine's mechanism). If the operative concern is ketamine compatibility, Cymbalta is the better-evidenced background, not the agent to switch away from.</li>
+  <li><strong>On reducing acute anxiety before the next session:</strong> SSRI anxiolytic effect takes 4–8 weeks to manifest. The Lexapro switch in the next 3 weeks cannot achieve the acute-anxiety reduction Dr. Chilton wants — even with an ideal cross-titration. By contrast, bupropion's effect on apathy and energy can be detectable within 1–2 weeks; and integration work with Julane in the 3-week window is the most evidence-supported acute-anxiety lever. The right answer to "reduce acute anxiety before next session" is set/setting work + behavioral preparation + (potentially) single-dose pre-session lorazepam, not an SSRI switch.</li>
+</ul>
+
+<div class="footer-note">Page 2 of 6.</div>
+
+<!-- ================================================ -->
+<!-- PAGE 3: THE FALLBACK POSITIONS -->
+<!-- ================================================ -->
+
+<div class="page-break"></div>
+
+<h2 class="page-heading">If Tier 1 isn't agreed: the fallback positions</h2>
+
+<p class="context">The family-preferred configuration (Tier 1) is the strongest evidence-based ask, but if Dr. Rubin is committed to switching antidepressants, the fallback positions below preserve as much of the evidence-supported structure as possible while accommodating the constraint.</p>
+
+<div class="section-label first">Tier 2 — Lexapro + Wellbutrin + Lemborexant</div>
+
+<p class="context">If the Cymbalta → Lexapro switch is non-negotiable, the single most important substitution to fight for is <strong>bupropion in the augmentation slot in place of divalproex</strong>. OPTIMUM data, drug-induced-parkinsonism considerations, neurology-eval confounding, ketamine compatibility, and apathy-phenotype fit all favor bupropion overwhelmingly (per OE #17, 7.5/10 vs 2.5/10).</p>
+
+<ul class="bulleted">
+  <li><strong>Cross-titration over 6–8 weeks, not 3.</strong> The 3-week timeline overlapping the ketamine restart is the operative concern. Published cross-titration principles in elderly anxiety-predominant TRD support 6–8 weeks minimum.</li>
+  <li><strong>CYP2C19 genotyping ordered before any Lexapro dose decision.</strong> Dad's historical effective dose was 30 mg (per 4/21 audit) — well above the FDA geriatric cap of 10 mg. If Dad is a CYP2C19 ultrarapid metabolizer, that explains the historical need for a supratherapeutic dose and would inform whether to consider a higher restart dose with cardiac monitoring (per Jang 2025).</li>
+  <li><strong>Single-night doxepin → lemborexant substitution.</strong> Per OE #13, both produce first-night WASO effects; seamless transition expected.</li>
+  <li><strong>Bupropion XL 150 mg AM as augmentation</strong>, started 2–3 weeks before the June 8 ketamine restart or after the first 2–3 ketamine sessions per Tier 3 sequencing.</li>
+</ul>
+
+<div class="section-label">Tier 3 — Lexapro + bupropion + lemborexant with deferred bupropion start</div>
+
+<p class="context">If Dr. Rubin insists on the full Lexapro + augmentation + sleep restructuring all happening at once, the most defensible damage-control configuration is:</p>
+
+<ul class="bulleted">
+  <li><strong>Lexapro switch and lemborexant substitution start now</strong> (cross-titrated over 6–8 weeks).</li>
+  <li><strong>Bupropion XL 150 mg added after the first 2–3 ketamine sessions</strong> — preserves clean attribution for the ketamine response read; lets the SSRI switch settle before another new agent is layered on.</li>
+  <li><strong>Bupropion replaces divalproex in the augmentation slot</strong> regardless of timing. This substitution is the single most evidence-supported piece of the family's preferences and should be the non-negotiable on the augmentation question.</li>
+  <li><strong>CYP2C19 genotyping</strong> before Lexapro dose is set.</li>
+  <li><strong>Trazodone PRN maintained</strong>; melatonin 3 mg HS continues.</li>
+</ul>
+
+<div class="section-label">What should never be on the table</div>
+
+<div class="neutral-block">
+  <ul>
+    <li><strong>Divalproex without a clearly stated indication.</strong> No RCT evidence for unipolar TRD augmentation at any age; not in any major guideline for this indication; documented drug-induced parkinsonism risk that is particularly hazardous in Dad's highest-risk Arnaldi profile; raises doxepin levels 2.2× via UGT inhibition; possible ketamine response attenuation per Xu 2015. See <a href="01_depakote_decision_aid_2026-05-19.html">handout #01</a>.</li>
+    <li><strong>Lexapro at >10 mg without CYP2C19 genotyping first.</strong> Geriatric cap is 10 mg. If exceeding the cap is contemplated based on Dad's historical 30 mg need, pharmacogenomic data should inform the decision; QT-prolongation is dose-dependent and Dad's LAFB + bradycardia warrants caution.</li>
+    <li><strong>Removing trazodone PRN.</strong> Used infrequently; Chilton-cleared; serves no purpose to remove.</li>
+    <li><strong>A 3-week cross-titration in the pre-ketamine window.</strong> Published principles in elderly anxiety-predominant TRD support 6–8 weeks. The current proposed timeline lands the duloxetine-withdrawal-anxiety window and the Lexapro-start-activation window directly on the ketamine restart.</li>
+  </ul>
+</div>
+
+<div class="footer-note">Page 3 of 6.</div>
+
+<!-- ================================================ -->
+<!-- PAGE 4: OPERATIONAL DETAILS -->
+<!-- ================================================ -->
+
+<div class="page-break"></div>
+
+<h2 class="page-heading">Operational details — dosing, monitoring, reversal triggers</h2>
+
+<div class="section-label first">If Tier 1 (Cymbalta + Wellbutrin + Lemborexant) is agreed</div>
+
+<ol class="numbered">
+  <li><strong>Cymbalta 60 mg daily — continue unchanged.</strong></li>
+  <li><strong>Bupropion XL 150 mg AM</strong>, starting now (or up to 2–3 weeks before the June 8 ketamine restart). <strong>Hold at 150 mg for at least 4 weeks</strong> before any consideration of uptitration, given the CYP2D6 interaction with duloxetine (mutual modest elevation of each other's levels). Do not exceed 300 mg/day given the interaction.</li>
+  <li><strong>Doxepin 6 mg HS off → lemborexant 5 mg HS</strong>, single-night substitution. Per OE #13, no expected gap in sleep coverage. If 5 mg is tolerated and benefit incomplete, escalate to 10 mg at the 7–10 day reassessment.</li>
+  <li><strong>Trazodone 50 mg HS PRN</strong> — continue, used as needed.</li>
+  <li><strong>Melatonin 3 mg HS</strong> — continue (prescribed for RBD since 2017).</li>
+  <li><strong>Baseline ECG before bupropion start.</strong> Repeat ECG at 1–2 weeks if any cardiac symptoms emerge.</li>
+  <li><strong>Weekly check-ins for first 4 weeks:</strong> phone or in-person with Mom or Dad, focused on gait/balance, orthostatic vitals (lying-to-standing BP), agitation/insomnia, any fall or near-fall, mood ratings (PHQ-9 baseline + at week 4).</li>
+</ol>
+
+<div class="section-label">Reversal triggers (pre-committed, agreed on the call)</div>
+
+<p class="context">These should be stated explicitly to Dr. Rubin on the call so they're on the record and the family doesn't have to argue them later. Any of these in the first 4 weeks of bupropion start prompts stopping bupropion and reassessing:</p>
+
+<ul class="bulleted">
+  <li>Any new tremor, rigidity, or gait deterioration (treat as possible drug-induced movement effect)</li>
+  <li>Akathisia, persistent restlessness, or agitation that doesn't resolve in 48 hours of dose-holding</li>
+  <li>Any fall, including without injury</li>
+  <li>Persistent insomnia not responsive to taking the bupropion earlier in the day</li>
+  <li>Hypertensive surge or BP elevation above 140/90</li>
+  <li>Seizure or seizure-like activity</li>
+  <li>PHQ-9 increase ≥5 points from pre-bupropion baseline</li>
+  <li>Any psychotic symptom, severe anxiety attack, or cognitive deterioration beyond baseline</li>
+</ul>
+
+<div class="section-label">Sleep-substitution-specific monitoring</div>
+
+<ul class="bulleted">
+  <li><strong>Night 1 self-report:</strong> sleep onset latency, awakenings, morning state, any dream content</li>
+  <li><strong>Week 1 check:</strong> morning grogginess (relevant for driving), any new dream-enactment episodes, any sleep paralysis or hypnagogic phenomena, balance/falls. The DORA-class FDA-labeled signals (sleep paralysis 1.3–1.6%, hypnagogic hallucinations 0.1–0.7%, nightmares 0.9–2.2%) are uncommon but real</li>
+  <li><strong>Discontinuation trigger for lemborexant:</strong> any new RBD episode (or increase in frequency), any sleep paralysis or hypnagogic hallucination, any fall, persistent morning grogginess affecting daytime function</li>
+</ul>
+
+<div class="section-label">Things to ask Dr. Rubin to put in writing after the call</div>
+
+<ol class="numbered">
+  <li>The agreed medication plan (whichever tier is accepted)</li>
+  <li>The indication for any new agent (especially if divalproex remains on the table — what is it treating?)</li>
+  <li>The specific reversal triggers and what to do if any occur</li>
+  <li>The dose, frequency, and titration plan</li>
+  <li>Whether CYP2C19 genotyping will be ordered</li>
+  <li>The schedule for the next check-in</li>
+  <li>Whether anything in the proposal coordinates with Dr. Chilton's clinic protocol or Dr. Straka's PCP plan</li>
+</ol>
+
+<div class="section-label">Pre-session anxiolysis protocol (for the June 8 ketamine session)</div>
+
+<p class="context">Separate question for Dr. Chilton or the A2 clinic team — the family should ask about pre-session anxiolysis given how the May 18 Royal Oak session unfolded. Reasonable options to inquire about include single-dose pre-session lorazepam (0.5 mg, taken at the clinic; pharmacologically distinct from a standing regimen), in-room provider presence, set/setting continuity with Julane present, and pre-session integration work in the days before the infusion.</p>
+
+<div class="footer-note">Page 4 of 6.</div>
+
+<!-- ================================================ -->
+<!-- PAGE 5-6: KEY STUDIES -->
+<!-- ================================================ -->
+
+<div class="page-break"></div>
+
+<h2 class="page-heading">Key studies supporting the recommendation</h2>
+
+<p class="context">The references below anchor the specific evidence claims in the comparison table and the synthesis. Each citation summarized for how it applies to Dad's case.</p>
+
+<div class="section-label first">Augmentation evidence in geriatric TRD</div>
+
+<div class="citation">
+  <div class="cite-title">Lenze EJ, Mulsant BH, Roose SP et al. Antidepressant Augmentation versus Switch in Treatment-Resistant Geriatric Depression (OPTIMUM).</div>
+  <div class="cite-source">N Engl J Med 2023;388:1067–1079.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>RCT of 619 adults ≥60 with TRD. Bupropion augmentation: 28.2% remission. Aripiprazole augmentation: 28.9% (comparable). Switching to bupropion: 19.3% (worst arm). Falls higher in bupropion augmentation (0.55/patient/10 weeks) vs aripiprazole (0.33).</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Kim HK et al. Moderators of Antidepressant Augmentation Versus Switch in the OPTIMUM RCT.</div>
+  <div class="cite-source">Br J Psychiatry 2025.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Augmentation was superior to switching specifically in patients with fewer than three prior adequate antidepressant trials (moderation coefficient b = −1.6, p = 0.033). In patients with many prior trials, the augmentation advantage attenuates. Relevant for Dad's history of many prior agents.</div>
+</div>
+
+<div class="section-label">Ketamine background and SNRI vs SSRI pairing</div>
+
+<div class="citation">
+  <div class="cite-title">Del Casale A et al. Esketamine Combined With SSRI or SNRI for Treatment-Resistant Depression.</div>
+  <div class="cite-source">JAMA Psychiatry 2025;82:810–817.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Propensity-matched cohort, n=55,480. SNRI + esketamine outperformed SSRI + esketamine on 5-year mortality (5.3% vs 9.1%), hospitalization, and relapse (14.8% vs 21.2%). The single largest dataset on this specific question; argues for preserving the SNRI background through ketamine.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Phillips JL et al. Single, Repeated, and Maintenance Ketamine Infusions for TRD.</div>
+  <div class="cite-source">Am J Psychiatry 2019;176:401–409.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>~46% relapse without maintenance vs ~27% with scheduled maintenance. Documents importance of stable background medication for assessing ketamine response and planning maintenance.</div>
+</div>
+
+<div class="section-label">Drug-induced parkinsonism risk with divalproex</div>
+
+<div class="citation">
+  <div class="cite-title">Brugger F, Bhatia KP, Besag FM. Valproate-Associated Parkinsonism: A Critical Review.</div>
+  <div class="cite-source">CNS Drugs 2016;30:527–540.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Prevalence 1.4–75% depending on assessment; dose-independent (occurs at therapeutic and subtherapeutic levels); insidious onset; recovery often prolonged and sometimes incomplete. 116 published cases reviewed.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Belete D et al. Association Between Antiepileptic Drugs and Incident Parkinson Disease.</div>
+  <div class="cite-source">JAMA Neurology 2023;80:183–187.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>UK Biobank nested case-control (1,433 PD cases, 8,598 controls). Sodium valproate robustly associated with incident PD; persisted after adjusting for epilepsy and after excluding prescriptions within 5 years of PD diagnosis. Supports unmasking-of-subclinical-disease mechanism.</div>
+</div>
+
+<div class="section-label">REM Sleep Behavior Disorder and antidepressant choice</div>
+
+<div class="citation">
+  <div class="cite-title">Howell M et al. Management of REM Sleep Behavior Disorder: AASM Clinical Practice Guideline.</div>
+  <div class="cite-source">J Clin Sleep Med 2023;19:759–768.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>SSRIs can induce or exacerbate RBD. Bupropion is among the antidepressants with lower serotonergic profile and is the AASM consideration when an antidepressant is needed in RBD patients. Directly relevant to Dad's 8.5-year formal RBD.</div>
+</div>
+
+<div class="section-label">Polypharmacy / concurrent medication changes</div>
+
+<div class="citation">
+  <div class="cite-title">Goldberg JF et al. Recommendations for the Deprescribing of Psychotropic Medications (ASCP Consensus).</div>
+  <div class="cite-source">JAMA Network Open 2026;9:e260043.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>100% expert agreement (95% CI 93–100%): "Only one deprescribing change at a time, whenever feasible." Directly speaks to the concurrent-change concern in the currently proposed package.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">AGS Beers Criteria 2023 (companion update 2024).</div>
+  <div class="cite-source">AGS / J Am Geriatr Soc.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Flags ≥3 concurrent CNS-active agents as potentially inappropriate in older adults. The proposed Lexapro + Depakote + Lemborexant + ketamine package reaches or exceeds that threshold.</div>
+</div>
+
+<div class="section-label">Lemborexant and sleep architecture</div>
+
+<div class="citation">
+  <div class="cite-title">Rosenberg R et al. Comparison of Lemborexant With Placebo and Zolpidem (SUNRISE-1).</div>
+  <div class="cite-source">JAMA Network Open 2019;2:e1918254.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>RCT, n=1,006 adults ≥55 with insomnia. Lemborexant 5 mg reduced WASO by 33 min vs placebo on nights 1–2; 10 mg by 42 min. Second-half-of-night WASO advantage over zolpidem ER present from night 1. No tolerance over 12 months in SUNRISE-2.</div>
+</div>
+
+<div class="section-label">Late-life antidepressant net benefit</div>
+
+<div class="citation">
+  <div class="cite-title">Holper L. Optimal Doses of Antidepressants in Dependence on Age (Bayesian network meta-analysis).</div>
+  <div class="cite-source">EClinicalMedicine 2020;18:100219.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>No antidepressant provided balanced benefit (efficacy exceeding adverse events) in patients aged 70 and over, because adverse events exceed efficacy at all doses in this age group. Argues against investing energy in switching antidepressants in this population.</div>
+</div>
+
+<div class="footer-note">Page 5 of 6.</div>
+
+<div class="page-break"></div>
+
+<h2 class="page-heading">Family analytical background (Tier 0 — family's prior work)</h2>
+
+<p class="context">The recommendations on the front page are anchored in the family's broader analytical effort over the past 4–5 weeks. The following internal documents inform and corroborate the unified recommendation:</p>
+
+<div class="citation">
+  <div class="cite-title">Clinical Brief (5/4/2026).</div>
+  <div class="cite-source">Located in <code>Dad Health/provider_outreach/00_clinical_brief.md</code>.</div>
+  <div class="cite-finding"><span class="label-inline">Used for</span>Documented activation-intolerance pattern across aripiprazole, mirtazapine, brexpiprazole, olanzapine, pramipexole, lithium; medication chronology including February 2026 ketamine response on duloxetine + brexpiprazole background; pending U-M Movement Disorders and Cognitive Disorders evaluations; cardiac and laboratory baseline data.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Audit (4/21/2026).</div>
+  <div class="cite-source">Located in <code>Dad Health/audit_2026-04-21.MD</code>.</div>
+  <div class="cite-finding"><span class="label-inline">Used for</span>Historical Lexapro dose data — "decades on Lexapro (mostly 30 mg); dose above standard for many years." This anchors the dose-history reframe in the OE #15b corrective and informs the CYP2C19 question.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Daily update (5/19/2026, revised 5/20).</div>
+  <div class="cite-source">Handout #20.</div>
+  <div class="cite-finding"><span class="label-inline">Used for</span>Integration of OE #10–#18 responses and the operational recommendations on tomorrow's call. Cross-references all the constituent handouts.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Handout #21 — Bupropion augmentation (5/19/2026).</div>
+  <div class="cite-source">Decision aids folder.</div>
+  <div class="cite-finding"><span class="label-inline">Used for</span>Full evidence review of bupropion augmentation in this profile — OPTIMUM data, mechanism distinctness from prior intolerances, cardiac profile, ketamine compatibility, fall-risk caveat, sequencing.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Handout #01 — Depakote (revised 5/19/2026).</div>
+  <div class="cite-source">Decision aids folder.</div>
+  <div class="cite-finding"><span class="label-inline">Used for</span>The full case against divalproex: no RCT evidence in unipolar TRD; valproate-associated parkinsonism risk in Dad's highest-risk profile; doxepin interaction; possible ketamine attenuation; cognitive decline signal.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Handout #10 — Lemborexant (revised 5/19/2026).</div>
+  <div class="cite-source">Decision aids folder.</div>
+  <div class="cite-finding"><span class="label-inline">Used for</span>Night-1 effectiveness; seamless doxepin substitution; no rebound or withdrawal on discontinuation; pharmacokinetic compatibility with current stack; Julane endorsement.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">OpenEvidence queries #10, #11, #12, #13, #14, #15, #15b, #16, #17, #18 (5/19–5/20/2026).</div>
+  <div class="cite-source"><code>Dad Health/openevidence_queries/</code>.</div>
+  <div class="cite-finding"><span class="label-inline">Used for</span>Eight focused OE consultations covering: SSRI vs SNRI as ketamine background (#10); divalproex in late-life TRD (#11); RBD episode frequency trajectory (#12); lemborexant onset speed (#13); bupropion augmentation in this profile (#14); lower-dose SSRI re-trial (#15); corrected lower-dose SSRI re-trial after dose-history correction (#15b); Lexapro + Wellbutrin combination (#16); bupropion vs divalproex head-to-head (#17); concurrent medication changes in the ketamine window (#18). The unified recommendation on page 1 is the convergent conclusion across all of these consultations.</div>
+</div>
+
+<div class="section-label">A note for family readers</div>
+
+<p class="context">If you've read only page 1 of this handout, that's enough. The pages that follow develop the reasoning so the recommendation is verifiable rather than asserted — for Dr. Rubin, for any consulting clinicians the family chooses to share this with, and for our own record. The unified recommendation is the family's best synthesis of the evidence as of 5/20/2026; it will be revised as new information comes in (the Rubin call tomorrow, any provider follow-ups, the U-M Movement Disorders evaluation in June, the CYP2C19 result if obtained).</p>
+
+<p class="context">The single thing this handout is asking for in tomorrow's call: <strong>preserve the Cymbalta background that supported the documented February 2026 ketamine response, address the "do more" goal through bupropion augmentation rather than antidepressant switching, and substitute lemborexant for doxepin if doxepin is coming off.</strong></p>
+
+<div class="footer-note">Page 6 of 6. Last updated 2026-05-20.</div>
+
+</body>
+</html>
+</content>
+</invoke>
