@@ -2,12 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Handout for the U-M ECT consultation — 2026-05-20</title>
+<title>Handout for the U-M ECT consultation — revised 2026-05-20</title>
 <style>
   @page { size: letter; margin: 0.5in 0.55in; }
   :root {
     --navy: #1a3a5c; --navy-dark: #0f2640;
     --green: #2c5e3f; --green-bg: #e8f0ea; --green-border: #5a8a6a;
+    --blue-bg: #eef2f8; --blue-border: #6a8aaa;
     --amber: #8a6a2c; --amber-bg: #f5efdf; --amber-border: #c8a86e;
     --red: #8b2c2c; --red-bg: #f4e6e6; --red-border: #c87878;
     --text: #1f1f1f; --text-muted: #5a5a5a;
@@ -57,45 +58,50 @@
   }
   .section-label.first { margin-top: 0; }
 
-  .hero-block {
-    border: 2pt solid var(--navy); border-radius: 4pt;
-    padding: 13pt 16pt; margin: 0 0 14pt 0;
-    background: #fbfaf7;
-  }
-  .hero-block .hero-label {
-    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
-    font-weight: 700; font-size: 8.5pt; text-transform: uppercase;
-    letter-spacing: 0.14em; color: var(--navy); margin-bottom: 5pt;
-  }
-  .hero-block .hero-title {
-    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
-    font-weight: 700; font-size: 13pt; line-height: 1.2;
-    color: var(--navy-dark); margin-bottom: 8pt;
-  }
-  .hero-block .hero-body {
-    font-size: 9.75pt; line-height: 1.5; color: var(--text);
-  }
-  .hero-block .hero-body strong { color: var(--navy-dark); }
-
   .key-bullet-block {
-    border-left: 4pt solid var(--green); background: var(--green-bg);
+    border-left: 4pt solid var(--navy); background: var(--blue-bg);
     padding: 11pt 16pt; margin: 0 0 12pt 0; border-radius: 0 4pt 4pt 0;
   }
-  .key-bullet-block.concerns {
-    border-left-color: var(--amber); background: var(--amber-bg);
+  .key-bullet-block.questions {
+    border-left-color: var(--navy); background: var(--blue-bg);
   }
   .key-bullet-block .block-label {
     font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
     font-weight: 700; font-size: 8pt; text-transform: uppercase;
-    letter-spacing: 0.12em; margin-bottom: 7pt; color: var(--green);
+    letter-spacing: 0.12em; margin-bottom: 7pt; color: var(--navy);
   }
-  .key-bullet-block.concerns .block-label { color: var(--amber); }
   .key-bullet-block ul { margin: 0; padding-left: 18pt; }
   .key-bullet-block li {
     font-size: 9.75pt; line-height: 1.45; margin-bottom: 7pt;
   }
   .key-bullet-block li:last-child { margin-bottom: 0; }
   .key-bullet-block li strong { color: var(--navy-dark); }
+
+  .balance-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 10pt;
+    margin: 6pt 0 10pt 0;
+  }
+  .balance-card {
+    border-radius: 4pt; padding: 10pt 13pt;
+    font-size: 9pt; line-height: 1.45;
+  }
+  .balance-card.favors-ect {
+    background: var(--green-bg); border: 1.5pt solid var(--green-border);
+  }
+  .balance-card.against-ect {
+    background: var(--amber-bg); border: 1.5pt solid var(--amber-border);
+  }
+  .balance-card .balance-label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 700; font-size: 7.5pt; text-transform: uppercase;
+    letter-spacing: 0.12em; margin-bottom: 4pt;
+  }
+  .balance-card.favors-ect .balance-label { color: var(--green); }
+  .balance-card.against-ect .balance-label { color: var(--amber); }
+  .balance-card ul { margin: 0; padding-left: 14pt; }
+  .balance-card li { margin-bottom: 5pt; }
+  .balance-card li:last-child { margin-bottom: 0; }
+  .balance-card strong { color: var(--navy-dark); }
 
   .speech-block {
     background: white; border: 1pt solid var(--rule-strong);
@@ -177,6 +183,31 @@
     font-weight: 700; font-size: 6.75pt; text-transform: uppercase;
     letter-spacing: 0.08em; color: var(--navy); margin-right: 4pt;
   }
+
+  table.compare {
+    width: 100%; border-collapse: collapse; margin: 6pt 0 10pt 0;
+    table-layout: fixed; font-size: 8.5pt;
+  }
+  table.compare thead th {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 700; font-size: 8pt; padding: 7pt 9pt; text-align: left;
+    background: var(--navy); color: white; letter-spacing: 0.02em;
+  }
+  table.compare thead th.axis-col {
+    background: #4a5a6a;
+  }
+  table.compare td {
+    padding: 6pt 9pt; vertical-align: top;
+    border-bottom: 0.5pt solid var(--rule);
+    font-size: 8.5pt; line-height: 1.35;
+  }
+  table.compare td.axis {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 600; color: var(--text);
+    background: #f7f7f5;
+  }
+  table.compare tbody tr:last-child td { border-bottom: none; }
+  table.compare td strong { color: var(--navy-dark); }
 </style>
 </head>
 <body>
@@ -188,7 +219,7 @@
 <div class="doc-header">
   <div>
     <div class="title">For the U-M ECT consultation</div>
-    <div class="subtitle">Things to share with the clinic, and concerns to raise before starting · 2026-05-20</div>
+    <div class="subtitle">Dad's clinical context + questions for the team · revised 2026-05-20</div>
   </div>
   <div class="meta">
     For Dad, Mom, Leah, David,<br>
@@ -198,209 +229,245 @@
 </div>
 
 <div class="page-purpose">
-  <strong>What this document is for.</strong> A one-page set of bullets for Dad and Mom to bring into the U-M ECT consultation tomorrow. The top two boxes are the actionable summary — things to share with the U-M clinicians, and concerns to raise before starting ECT. The pages that follow develop the reasoning, the published evidence (including the more permissive Morikawa 2024 ECT-in-Lewy-spectrum data that Adam's earlier framing did not fully reflect), and a recommended question to put to the U-M ECT team. <strong>The handout is not arguing against ECT in principle — it's arguing for completing the diagnostic workup that's already in motion before committing to it.</strong>
+  <strong>What this document is for.</strong> A one-page brief that gives Dad and Mom the clinical context to share with the U-M ECT team and the questions worth discussing. <strong>The handout is not arguing against ECT.</strong> The published evidence on ECT in patients like Dad is actually reasonably favorable (Morikawa 2024 in confirmed Lewy-spectrum disease: 96% improvement, no cognitive worsening). The handout's job is to make sure the U-M team has the relevant context and that the family is informed about the genuine tradeoffs — so the right decision can be made by Dad and the clinical team together, not pushed in either direction by the family.
 </div>
 
 <div class="key-bullet-block">
-  <div class="block-label">Things to share with the U-M ECT clinic</div>
+  <div class="block-label">Dad's clinical context to share with the U-M ECT team</div>
   <ul>
-    <li><strong>The March 2026 general anesthesia and the decline that followed.</strong> Dad had general anesthesia for an Aquablation BPH procedure on 3/18/2026. Within ~1 week of recovery, he noticed depression returning. By 4/8 family observed new motor and expression changes. At 4/14 PCP visit, gait abnormality, decreased appetite, and unintentional weight loss were coded for the first time. Eight weeks later, he has not returned to his pre-procedure baseline. The temporal correlation is striking and consistent with documented post-anesthesia cognitive effects in older adults — though we cannot prove the anesthesia caused the decline.</li>
-    <li><strong>Prodromal-synucleinopathy markers that predate the March GA.</strong> Formal REM Sleep Behavior Disorder since 10/2017 (8.5 years). Balance problem coded 7/2025 — 9 months before the March procedure. Chronic constipation. Peripheral neuropathy on chart since 2018. Appetite-interoception dissociation (no spontaneous hunger registration) for 1–2 years. Per the Arnaldi 2021 phenoconversion scoring, this constellation places Dad in the highest-risk stratum for near-term progression to Parkinson's-spectrum or Lewy-body disease.</li>
-    <li><strong>The pending U-M Movement Disorders evaluation includes DAT-SPECT.</strong> Results will materially change ECT risk-benefit and monitoring plan — the published safety data for ECT in Lewy-spectrum disease (Morikawa 2024) comes from patients with confirmed abnormal DAT-SPECT, and a negative scan would substantially attenuate the prodromal-synucleinopathy concern. We are asking whether ECT can wait until this evaluation is complete.</li>
-    <li><strong>Dad is a documented IV-ketamine responder.</strong> February 2026: dramatic ~4-week response on duloxetine + brexpiprazole background. The Ann Arbor ketamine clinic has him scheduled to restart on June 8. He has not yet completed a full ketamine course at A2.</li>
-    <li><strong>Documented activation-intolerance pattern</strong> across six prior psychotropic agents in 2025 (aripiprazole, mirtazapine, brexpiprazole, olanzapine, pramipexole, lithium) — consistent with the neuroleptic-sensitivity pattern seen in Lewy-spectrum disease, though not specific to it.</li>
-    <li><strong>Cardiac profile:</strong> Left anterior fascicular block + sinus bradycardia (HR 49–53) + BP 112/58 — relevant for ECT-induced bradycardia and asystole risk.</li>
+    <li><strong>Severe TRD (PHQ-9 = 24), worst episode in 40 years.</strong> Currently on duloxetine 60 mg, doxepin 6 mg HS, trazodone 50 mg PRN, melatonin 3 mg HS. Activation-intolerance pattern across six prior 2025 psychotropics (aripiprazole, mirtazapine, brexpiprazole, olanzapine, pramipexole, lithium). Lorazepam taper recently completed.</li>
+    <li><strong>February 2026 IV ketamine course produced a dramatic ~4-week response</strong> on duloxetine + brexpiprazole. Dad is a documented IV-ketamine responder. A2 ketamine clinic has him scheduled to restart June 8 — though the May 18 first session at Royal Oak was difficult and Dad's appetite for another ketamine session is uncertain.</li>
+    <li><strong>March 2026 Aquablation BPH procedure under general anesthesia</strong> (3/18) was followed by depression return ~1–2 weeks later, new motor and expression changes by 4/8, and gait abnormality + decreased appetite + unintentional weight loss coded at the 4/14 PCP visit. The temporal correlation is suggestive but not definitively post-operative delirium or POCD; depression relapse and ketamine cessation overlap the same window.</li>
+    <li><strong>Prodromal-synucleinopathy markers (some predating the March GA).</strong> Formal REM Sleep Behavior Disorder (G47.52) since 10/2017 (8.5 years). Balance problem coded 7/2025 — 9 months before the March procedure. Chronic constipation. Peripheral neuropathy on chart since 2018. Appetite-interoception dissociation for 1–2 years.</li>
+    <li><strong>U-M Movement Disorders evaluation pending</strong>, including DAT-SPECT. Results would meaningfully inform ECT technique and monitoring — Morikawa 2024's favorable ECT-in-Lewy-spectrum data came from patients with confirmed abnormal DAT-SPECT.</li>
+    <li><strong>Cardiac:</strong> Left anterior fascicular block + sinus bradycardia (HR 49–53), BP 112/58, QTcF 401 (5/19/2025 EKG). Relevant for ECT-induced bradycardia/asystole risk.</li>
   </ul>
 </div>
 
-<div class="key-bullet-block concerns">
-  <div class="block-label">Concerns to raise before starting ECT</div>
+<div class="key-bullet-block questions">
+  <div class="block-label">Questions worth discussing with the U-M team</div>
   <ul>
-    <li><strong>Defer until the U-M Movement Disorders evaluation is complete.</strong> DAT-SPECT, structured motor exam, and formal cognitive baseline (MoCA at minimum) would each materially change the ECT decision, the technique selection, and the monitoring plan. The published literature does not mandate neurology clearance before ECT — but it also does not address what to do when the workup is already underway and the patient has a viable bridge treatment available.</li>
-    <li><strong>The IV ketamine course at A2 should be the bridge during the workup interval.</strong> Dad is a confirmed responder. Ketamine does not require general anesthesia. The June 8 restart is already scheduled. The published evidence (ELEKT-D, Anand 2023 NEJM) shows ketamine is non-inferior to ECT for nonpsychotic TRD with a meaningful cognitive-safety advantage (8.8-point delayed-recall advantage at end of treatment).</li>
-    <li><strong>The cumulative general anesthesia exposure question.</strong> An induction ECT course typically involves 6–12 brief GA exposures; maintenance ECT adds another 20–40 over a year. The published literature on cumulative GA exposure and cognitive decline in elderly adults (Schulte 2018 Mayo Clinic; Pennings 2025 MAAS cohort; Linassi 2022 OR 9.74 for executive function impairment) supports a dose-response relationship. ECT-anesthesia is briefer than surgical GA and uses TIVA, which lowers per-exposure risk — but the cumulative burden over a full induction + maintenance course is not negligible, particularly in a brain that has already shown a difficult post-GA recovery.</li>
-    <li><strong>Acuity does not currently meet the published threshold for ECT urgency.</strong> Standard indications for proceeding with ECT despite incomplete workup (per APA / Espinoza & Kellner 2022 NEJM / Unützer 2012 JAMA) are active suicidality, catatonia, psychotic features, food refusal, or life-threatening medical complications of depression. Dad's depression is severe (PHQ-9 = 24), but he is not currently in any of those scenarios. The Steffens 2024 NEJM review of TRD in older adults explicitly lists screening for coexisting cognitive impairment as part of TRD assessment — not a reason to skip evaluation.</li>
-    <li><strong>If ECT does proceed, the technique should be optimized for the profile.</strong> Right unilateral ultrabrief pulse (minimizes cognitive side effects and bradycardia risk). Propofol-based anesthesia (lower inflammatory profile, faster cognitive recovery vs barbiturates in elderly). Pre-ECT formal cognitive baseline (MoCA + Trail Making B) with serial monitoring every 3–4 sessions. Cardiology clearance with glycopyrrolate availability for ECT-induced bradycardia. Low threshold to discontinue if new motor or cognitive findings or delirium emerge.</li>
-    <li><strong>The activation-intolerance pattern is itself information.</strong> Multiple prior psychotropic agents poorly tolerated in 2025 — consistent with the neuroleptic sensitivity pattern seen in DLB / prodromal DLB. Worth flagging to the ECT team as a sensitivity signal that may extend to perioperative agents (propofol vs methohexital choice; succinylcholine considerations).</li>
+    <li><strong>What is the team's reading of ECT-vs-another-ketamine-course for Dad specifically,</strong> given his February response, the difficulty of the May 18 session, and his current preferences? Both are reasonable choices; the family wants to understand the team's perspective on the relative merits.</li>
+    <li><strong>What technique would the team plan?</strong> Right unilateral ultrabrief pulse minimizes cognitive side effects and bradycardia risk per Stewart 2011. Propofol-based anesthesia (vs methohexital) has a lower inflammatory profile and faster cognitive recovery in elderly per Pang 2021. Worth confirming the plan upfront.</li>
+    <li><strong>Should ECT wait for the pending DAT-SPECT result?</strong> If abnormal, that confirms Dad in the Morikawa 2024 patient population with documented favorable ECT outcomes, and would inform technique. If normal, the prodromal-synucleinopathy concern attenuates. The result is likely available within 1–3 weeks.</li>
+    <li><strong>What does the team see as the realistic response and durability expectations</strong> in Dad's specific profile? Late-life severe TRD response rates with ECT are 60–70% per Kellner PRIDE; Morikawa 2024 showed 96% improvement in Lewy-spectrum patients but 23.8% recurrence at 12 months. What does the team expect for Dad, and what's the maintenance plan if he responds?</li>
+    <li><strong>What's the plan for cognitive baseline and serial monitoring?</strong> Pre-ECT MoCA and Trail Making B baseline, with serial monitoring every 3–4 sessions, is the standard of care. Dad has documented brain fog and pending cognitive evaluation — establishing baseline before any ECT-related decline is critical.</li>
+    <li><strong>How does the team think about the March anesthesia history?</strong> The temporal correlation between Dad's Aquablation GA and the subsequent decline raised concerns about a possible vulnerability signal. The team's read on whether this should affect ECT technique, monitoring intensity, or timing would be useful.</li>
   </ul>
 </div>
 
-<div class="section-label">The single question to put to the U-M ECT team</div>
+<div class="section-label">A question Dad or Mom might put to the team to open the conversation</div>
 
 <div class="speech-block">
-  <div class="speech-label">For Dad or Mom to ask, in their own words</div>
-  Given that Dad's U-M Movement Disorders evaluation including DAT-SPECT is already underway, that he had a difficult post-anesthesia course after his March procedure, and that he is a documented IV-ketamine responder with an A2 restart scheduled June 8 — is it clinically reasonable to defer ECT until the neurology workup is complete and the ketamine course has been fairly tested? If you think ECT should proceed before then, what specific clinical findings or symptoms would justify that urgency?
+  <div class="speech-label">For Dad or Mom — in their own words</div>
+  Dr. R and Dr. Auchincloss have both recommended ECT, and we're trying to understand whether it's the right next step for Dad specifically. We know the literature on ECT in Lewy-spectrum patients is actually pretty favorable (Morikawa 2024). The questions we have are about timing relative to the pending DAT-SPECT and Movement Disorders workup, about technique, and about how the team thinks about the alternative of completing the IV ketamine course at A2 first. What's your recommendation?
 </div>
 
 <div class="footer-note">
-  Page 1 of 4. Subsequent pages: evidence synthesis and how the published literature applies to Dad specifically (p. 2), what the published evidence says about ECT in Lewy-spectrum disease and post-GA-recovery patients (p. 3), key studies and how to follow up after the consultation (p. 4).
+  Page 1 of 4. Subsequent pages: the honest balance on ECT for Dad's profile (p. 2), direct comparison with another ketamine course (p. 3), key studies + post-consultation follow-up questions (p. 4).
 </div>
 
 <!-- ================================================ -->
-<!-- PAGE 2: EVIDENCE SYNTHESIS -->
+<!-- PAGE 2: THE HONEST BALANCE -->
 <!-- ================================================ -->
 
 <div class="page-break"></div>
 
-<h2 class="page-heading">What the published evidence supports about ECT in Dad's specific profile</h2>
+<h2 class="page-heading">The honest balance on ECT for Dad's profile</h2>
 
-<p class="context">The 5/20 OpenEvidence consultation (#19) on cumulative GA exposure risk in this patient was more nuanced than the family's earlier framing. It does not support a "do not do ECT" position. It supports a "complete the diagnostic workup first, use the right technique, complete the ketamine bridge before committing" position. The reasoning, condensed:</p>
+<p class="context">A revised reading of the published evidence (per OE consultation #19, 5/20). The earlier draft of this handout overstated the case against ECT; this revision is more balanced. ECT is a reasonable option for Dad, with both meaningful upsides and real but manageable downsides.</p>
 
-<div class="section-label first">ECT in Lewy-spectrum disease is actually safer than we'd been treating it</div>
+<div class="balance-grid">
+  <div class="balance-card favors-ect">
+    <div class="balance-label">What favors ECT in Dad's profile</div>
+    <ul>
+      <li><strong>Robust late-life severe TRD evidence:</strong> Kellner PRIDE 2016 (n=240, age ≥60, right unilateral ultrabrief pulse + venlafaxine) showed <strong>61.7% remission</strong> at end of acute course. Late-life ECT response rates: 60–70%.</li>
+      <li><strong>Specifically in Lewy-spectrum disease:</strong> Morikawa 2024 (n=25 confirmed DLB / prodromal DLB with abnormal DAT-SPECT) showed <strong>96% at least some improvement, 60% remarkable improvement</strong>. Parkinsonism actually improved with ECT. No cognitive worsening. This is the most directly applicable safety data for Dad.</li>
+      <li><strong>Takamiya 2021</strong> meta-analysis of ECT in Parkinson's disease (14 studies, n=129): improved both motor and non-motor symptoms without cognitive worsening. No documented cases of ECT precipitating motor decline in prodromal-synucleinopathy.</li>
+      <li><strong>Fast onset:</strong> response typically detectable within 1–2 weeks. Faster than starting any new oral antidepressant.</li>
+      <li><strong>Cognitive cost is largely transient in responders.</strong> ELEKT-D showed 8.8-point delayed-recall decrement at end of treatment, but Kumpf 2025 secondary analysis showed differences resolved among responders at 1-, 3-, and 6-month follow-up.</li>
+      <li><strong>If Dad doesn't feel up for another ketamine session</strong>, ECT is a legitimate alternative — not a last resort, just a different treatment with its own evidence base.</li>
+    </ul>
+  </div>
+
+  <div class="balance-card against-ect">
+    <div class="balance-label">What argues for caution or for ketamine-first</div>
+    <ul>
+      <li><strong>ELEKT-D 2023</strong> (n=403): ketamine non-inferior to ECT for nonpsychotic TRD with significant cognitive-safety advantage during the treatment course. If Dad is open to another ketamine attempt, this argues for trying that first.</li>
+      <li><strong>Documented prior ketamine response</strong> (Feb 2026, ~4-week dramatic response). N=1 prior response is the single strongest predictor of re-response. The May 18 Royal Oak session was difficult but is not a fairly-tested ketamine course at A2.</li>
+      <li><strong>GA exposure considerations.</strong> Per-ECT-session GA is brief (~5–10 min TIVA) and lower per-exposure risk than the March 90-min surgical GA. Cumulative across induction (6–12 sessions) is modest. Maintenance ECT (20–40 sessions/year if pursued) is where cumulative-dose concerns become meaningful — though this only arises if induction is successful.</li>
+      <li><strong>The March 2026 post-GA recovery has been imperfect.</strong> Whether the deterioration was POD/POCD or depression relapse + life situational + ketamine cessation is genuinely unclear. Either interpretation suggests some elevated vulnerability — but the magnitude is uncertain.</li>
+      <li><strong>The pending DAT-SPECT</strong> would materially refine the picture. If abnormal, it confirms Dad in the Morikawa 2024 cohort (good ECT outcomes). If normal, the prodromal-synucleinopathy concern attenuates. Worth a few weeks' wait if clinically feasible.</li>
+      <li><strong>Acuity does not currently meet the published threshold</strong> for ECT urgency (suicidality, catatonia, psychosis, food refusal). This doesn't argue against ECT — it argues that the family has time to do the workup and decision-making properly rather than under emergency pressure.</li>
+    </ul>
+  </div>
+</div>
+
+<div class="section-label">How severe are the GA exposures, really?</div>
+
+<p class="context">A more precise read than the earlier version of this handout offered:</p>
 
 <ul class="bulleted">
-  <li><strong>Morikawa 2024</strong> is the most directly relevant safety study: retrospective analysis of ECT in 25 patients with confirmed DLB (n=12) or prodromal DLB/MCI-LB (n=13), all with abnormal DAT-SPECT and MIBG scintigraphy. 96% showed at least minimal improvement; 60% showed remarkable improvement. Parkinsonism actually improved with ECT (mean Hoehn-Yahr stage 1.8). Adverse events: delirium in 24%, amnesia in 4% — all temporary. <strong>No exacerbation of cognitive function before vs after ECT.</strong> The authors did caution that ECT should be performed with caution in patients with severe cognitive impairment or severe brain atrophy.</li>
-  <li><strong>Kobayashi 2026</strong> (n=40 LBD patients vs 57 controls): ECT well-tolerated with no serious adverse events; transient amnesia the most common side effect. Short-term efficacy in LBD comparable to schizophrenia, though lower than primary affective disorders. 2-year psychiatric readmission rate highest in LBD (61.5%) — durability is a real concern.</li>
-  <li><strong>Takamiya 2021</strong> (systematic review/meta-analysis of ECT in Parkinson's, 14 studies, n=129): ECT significantly improved both motor and non-motor symptoms <em>without worsening cognitive functioning</em>.</li>
-  <li><strong>No published cases document ECT precipitating motor deterioration in prodromal-synucleinopathy patients.</strong> The available evidence suggests ECT may actually transiently improve parkinsonism, particularly at lower Hoehn-Yahr stages.</li>
-</ul>
-
-<div class="section-label">But the cumulative GA exposure literature is real and applies here</div>
-
-<ul class="bulleted">
-  <li><strong>Schulte 2018 (Mayo Clinic Study of Aging, n=1,819, age ≥50):</strong> A single new GA+surgery exposure was associated with an additional 0.2 SD cognitive decline over 5 years beyond normal aging — driven by memory and executive function. The authors specifically noted this "small cognitive decline could be meaningful for individuals with already low baseline cognition."</li>
-  <li><strong>Pennings 2025 (MAAS cohort, n=1,823, 12-year follow-up):</strong> Cumulative total time under GA independently and negatively affected executive functioning, selective attention, and information processing speed. The dose-response runs on cumulative anesthesia minutes, not just exposure count.</li>
-  <li><strong>Linassi 2022:</strong> Aging × prior GA exposure produces OR 9.74 for executive function impairment in older patients with at least one prior GA.</li>
-  <li><strong>ECT-GA is briefer than surgical GA</strong> (~5–10 minutes per session, TIVA only, no surgical inflammation). Per-exposure risk is likely lower than surgical GA. But the cumulative effect of 20–40 brief exposures over an induction + maintenance course in a vulnerable brain is not characterized.</li>
-</ul>
-
-<div class="section-label">Acute deterioration after a single GA exposure is a meaningful signal</div>
-
-<ul class="bulleted">
-  <li><strong>Kunicki 2023 (SAGES cohort, n=560, 6-year follow-up):</strong> Postoperative delirium associated with a 40% acceleration in the slope of cognitive decline out to 72 months — approximating the trajectory seen in patients diagnosed with Alzheimer's within 5 years. The conceptual framework: <em>"the development of delirium signals underlying brain vulnerability."</em></li>
-  <li><strong>Kim 2018 (prospective, age 71.7 ± 4.7, spinal surgery):</strong> RBD was a significant independent predictor of postoperative delirium (OR 1.45). The authors explicitly hypothesized that "underlying alpha synucleinopathy may correlate with postoperative delirium." Dad has formal RBD of 8.5 years duration.</li>
-  <li><strong>The temporal pattern in Dad's case</strong> (onset ~1–2 weeks post-GA, progressive over 5–8 weeks, not fully resolved at 8+ weeks) is consistent with either POCD or GA-triggered acceleration of prodromal neurodegeneration. Either interpretation argues for caution with additional GA exposures.</li>
-  <li><strong>No published study directly examines whether patients who declined after one GA are at higher risk on subsequent exposures.</strong> This is a critical evidence gap. But the conceptual framework strongly implies elevated risk.</li>
+  <li><strong>Per ECT session:</strong> ~5–10 minutes of total intravenous anesthesia (propofol or methohexital + succinylcholine for muscle relaxation). No volatile inhalation agents, no surgical inflammation, no blood loss, no post-op opioids. <strong>Per-exposure cognitive risk is materially lower than what a 60–90 minute surgical GA (like the March Aquablation) represents.</strong> Not zero — but not in the same magnitude.</li>
+  <li><strong>Cumulative across an induction course (6–12 sessions):</strong> Total GA time ~30–120 minutes across 3–4 weeks. The MAAS cohort's cumulative-time signal applies but at the lower end of the dose-response. The acute cognitive cost during the course (ELEKT-D's 8.8-point delayed-recall decrement) largely <strong>resolves in responders by 1 month</strong>.</li>
+  <li><strong>Cumulative across induction + a year of maintenance:</strong> 20–40 brief GA exposures total. This is the actually-concerning cumulative dose, but it only arises if Dad responds and is committed to maintenance. Maintenance frequency can be adjusted; many patients taper to monthly or less; some don't need maintenance at all. This is a downstream question, not a present-decision question.</li>
+  <li><strong>The Dad-specific risk multiplier:</strong> Kim 2018 found RBD as POD predictor (OR 1.45) in elderly surgical patients. Dad's prodromal-synucleinopathy profile theoretically raises POD risk. But Morikawa 2024 — the population that overlaps Dad's profile most — found 24% transient delirium rate and no serious AEs across the full course. The Dad-specific multiplier is real but not large.</li>
 </ul>
 
 <div class="footer-note">Page 2 of 4.</div>
 
 <!-- ================================================ -->
-<!-- PAGE 3: KETAMINE BRIDGE + ECT SEQUENCING -->
+<!-- PAGE 3: ECT vs KETAMINE FOR DAD -->
 <!-- ================================================ -->
 
 <div class="page-break"></div>
 
-<h2 class="page-heading">Why the ketamine bridge + neurology workup should come first</h2>
+<h2 class="page-heading">ECT vs another ketamine course — comparing honestly for Dad</h2>
 
-<div class="section-label first">The comparative-effectiveness case</div>
+<p class="context">This is the actual decision the family is helping Dad weigh. Both are legitimate evidence-supported choices for severe late-life TRD. The right answer depends substantially on Dad's preferences and the specifics of his profile.</p>
 
-<ul class="bulleted">
-  <li><strong>ELEKT-D (Anand 2023, NEJM, n=403):</strong> Ketamine non-inferior to ECT for nonpsychotic TRD. Response 55.4% (ketamine) vs 41.2% (ECT) — numerically favoring ketamine, statistically non-inferior. Delayed-recall T-score change: <strong>−0.9 with ketamine vs −9.7 with ECT</strong> at end of treatment — substantial cognitive-safety advantage for ketamine.</li>
-  <li><strong>Kumpf 2025 (ELEKT-D secondary analysis):</strong> ECT recipients performed significantly worse on all cognitive tasks at end of treatment; differences resolved among responders at 1-, 3-, and 6-month follow-up. The cognitive cost is transient in responders, but real during and immediately after the treatment course.</li>
-  <li><strong>Menon 2023 meta-analysis</strong> explicitly recommended "a trial of ketamine before a trial of ECT for patients with MDE."</li>
-  <li><strong>Dad's documented responder status</strong> means the prior probability of ketamine working again is meaningfully elevated relative to a ketamine-naive patient. February 2026: dramatic ~4-week response. The single Royal Oak session 5/18 was difficult, but is not a fairly-tested ketamine course.</li>
-</ul>
+<table class="compare">
+  <thead>
+    <tr>
+      <th class="axis-col" style="width: 25%;">Dimension</th>
+      <th style="width: 37.5%;">ECT at U-M</th>
+      <th style="width: 37.5%;">Another IV ketamine course at A2 (June 8)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="axis">Response rate in Dad's profile</td>
+      <td><strong>60–70%</strong> in late-life severe TRD per PRIDE; <strong>96% any improvement, 60% remarkable</strong> in Lewy-spectrum per Morikawa 2024</td>
+      <td><strong>~50%</strong> in elderly TRD (TRANSFORM-3 esketamine ≥65 was negative; IV ketamine elderly evidence sparser); but Dad's documented prior dramatic response elevates this substantially</td>
+    </tr>
+    <tr>
+      <td class="axis">Onset of effect</td>
+      <td><strong>1–2 weeks</strong> typical for ECT in TRD</td>
+      <td><strong>Within days to first week</strong> typical for IV ketamine in prior responders</td>
+    </tr>
+    <tr>
+      <td class="axis">Cognitive cost during treatment</td>
+      <td>Real but typically transient — 8.8-point delayed-recall decrement (ELEKT-D), resolves by 1 month in responders</td>
+      <td>Minimal — 0.9-point decrement on same measure (ELEKT-D)</td>
+    </tr>
+    <tr>
+      <td class="axis">GA exposure</td>
+      <td>6–12 brief TIVA exposures over the induction course; 20–40 over a year if maintenance is needed</td>
+      <td>None — subanesthetic dosing, no GA</td>
+    </tr>
+    <tr>
+      <td class="axis">Patient experience</td>
+      <td>Brief sedation, generally not remembered. Less of the dissociative experience Dad found difficult on 5/18.</td>
+      <td>Dissociative experience during the infusion; the 5/18 Royal Oak session was hard. Could be different at A2 with Julane present, but cannot be guaranteed.</td>
+    </tr>
+    <tr>
+      <td class="axis">Durability</td>
+      <td>Maintenance often required; 23.8% recurrence at 12 months in Lewy-spectrum (Morikawa); 61.5% psychiatric readmission at 2 years (Kobayashi 2026 LBD)</td>
+      <td>Maintenance also required; ~46% relapse without scheduled maintenance (Phillips 2019); ~27% with structured maintenance</td>
+    </tr>
+    <tr>
+      <td class="axis">Patient willingness</td>
+      <td>Dad has not actively resisted ECT; both Rubin and Auchincloss recommend it</td>
+      <td>Dad found the 5/18 session difficult; current willingness to repeat is uncertain</td>
+    </tr>
+    <tr>
+      <td class="axis">Setup and logistics</td>
+      <td>U-M ECT program; established workflow; standard scheduling</td>
+      <td>A2 clinic with Julane; June 8 scheduled; new setting Dad hasn't yet been to</td>
+    </tr>
+  </tbody>
+</table>
 
-<div class="section-label">The urgency question — does Dad meet the threshold for bypassing the workup?</div>
-
-<ul class="bulleted">
-  <li><strong>Published thresholds for ECT urgency</strong> (per APA / Espinoza & Kellner 2022 NEJM / Unützer 2012 JAMA): active suicidality, catatonia, psychotic features, refusal to eat, life-threatening medical complications of depression.</li>
-  <li><strong>Dad does not currently meet these.</strong> Severe TRD (PHQ-9 = 24) with significant distress, but not suicidal, not catatonic, not psychotic, eating with support, no acute medical complications.</li>
-  <li><strong>What would shift the urgency calculus:</strong> emergence of suicidal ideation, food refusal, catatonic features, rapid functional decline. If any of these emerge, the urgency threshold for ECT would be met regardless of the pending neurology workup, and proceeding would be appropriate with enhanced monitoring.</li>
-</ul>
-
-<div class="section-label">What "completing the workup" actually means in this case</div>
-
-<ol class="numbered">
-  <li><strong>DAT-SPECT.</strong> The most informative single test. If abnormal: confirms Dad in the Morikawa 2024 patient population for whom ECT safety data exists; strengthens the case for minimizing cumulative GA; informs ECT technique (right unilateral ultrabrief preferred). If normal: substantially attenuates the prodromal-synucleinopathy concern and shifts the risk-benefit more favorably toward ECT.</li>
-  <li><strong>Structured motor exam (UPDRS or equivalent).</strong> Establishes baseline for monitoring during any ECT course.</li>
-  <li><strong>Formal cognitive baseline (MoCA + Trail Making Test B at minimum).</strong> Pre-ECT cognitive assessment is the standard of care; serial monitoring during the course depends on having a baseline.</li>
-  <li><strong>Brain imaging if not already done.</strong> Brain atrophy assessment matters because the Morikawa 2024 cautions specifically named severe brain atrophy as a relative contraindication.</li>
-</ol>
-
-<div class="section-label">If ECT does proceed, what to ask for</div>
+<div class="section-label">A decision frame that may help</div>
 
 <div class="neutral-block">
   <ul>
-    <li><strong>Right unilateral ultrabrief pulse</strong> electrode placement — minimizes cognitive side effects and bradycardia risk per Stewart 2011.</li>
-    <li><strong>Propofol-based anesthesia</strong> — lower inflammatory profile (IL-6, TNF-α) and faster cognitive recovery vs methohexital/barbiturate in elderly per Pang 2021.</li>
-    <li><strong>Pre-ECT cardiology clearance</strong> given LAFB + bradycardia; glycopyrrolate availability for ECT-induced bradycardia.</li>
-    <li><strong>Processed EEG monitoring</strong> during anesthesia to avoid excessive anesthetic depth.</li>
-    <li><strong>Serial cognitive monitoring every 3–4 sessions</strong> with the same instruments used at baseline.</li>
-    <li><strong>Low threshold to discontinue</strong> if new motor or cognitive findings or delirium emerge between sessions.</li>
-    <li><strong>Explicit conversation about maintenance ECT timing and total exposure plan</strong> upfront — not after induction is complete.</li>
+    <li><strong>If Dad actively wants to try ECT</strong> (or feels more able to face it than another ketamine session): the evidence supports proceeding, with attention to technique (right unilateral ultrabrief pulse, propofol-based anesthesia, cognitive baseline and monitoring). The Morikawa 2024 data is reassuring for his profile.</li>
+    <li><strong>If Dad is open to either path:</strong> the published evidence and his prior responder status modestly favor completing the A2 ketamine course first, with ECT held as the next step if the ketamine course doesn't produce a sustained response. The reasoning is the cognitive-safety advantage in ELEKT-D and the no-GA-required nature of ketamine, not any catastrophic-risk concern about ECT.</li>
+    <li><strong>If Dad actively wants to defer ECT</strong> and try ketamine: the A2 restart on June 8 is the active path; the U-M ECT team can be a held-in-reserve resource if ketamine doesn't work.</li>
+    <li><strong>What probably shouldn't drive the decision:</strong> family preference, the desire to "do something" after the difficult 5/18 session, or unstated assumptions about which treatment is the "real" intervention. Both ECT and ketamine are real interventions with real evidence; the question is which fits Dad's preferences and situation best.</li>
   </ul>
 </div>
+
+<div class="section-label">A consideration that may matter regardless of which path is chosen</div>
+
+<p class="context"><strong>Completing the DAT-SPECT and the U-M Movement Disorders evaluation in the next few weeks would meaningfully refine the picture either way:</strong> if Dad ends up doing ECT, abnormal DAT-SPECT confirms him in the Morikawa cohort (favorable outcomes) and informs technique; if Dad ends up doing ketamine, the same workup informs the depakote question and the longer-term treatment trajectory. The workup is not an obstacle to either treatment path — it's information that improves whichever path is chosen. Whether ECT can wait the 1–3 weeks for the DAT-SPECT result is a reasonable thing to ask the U-M team.</p>
 
 <div class="footer-note">Page 3 of 4.</div>
 
 <!-- ================================================ -->
-<!-- PAGE 4: KEY STUDIES -->
+<!-- PAGE 4: KEY STUDIES + FOLLOW-UP -->
 <!-- ================================================ -->
 
 <div class="page-break"></div>
 
-<h2 class="page-heading">Key studies supporting the position</h2>
+<h2 class="page-heading">Key studies + post-consultation follow-up</h2>
 
-<div class="section-label first">ECT in Lewy-spectrum disease — the more permissive evidence</div>
+<div class="section-label first">ECT in Lewy-spectrum and Parkinson's disease — favorable signal</div>
 
 <div class="citation">
-  <div class="cite-title">Morikawa F, Kobayashi R, Murayama T et al. Evaluating Electroconvulsive Therapy for Dementia With Lewy Bodies, Including the Prodromal Stage.</div>
+  <div class="cite-title">Morikawa F, Kobayashi R, Murayama T et al. Evaluating ECT for Dementia With Lewy Bodies, Including the Prodromal Stage.</div>
   <div class="cite-source">Int J Geriatr Psychiatry 2024;39:e70020.</div>
-  <div class="cite-finding"><span class="label-inline">Key finding</span>Retrospective ECT analysis in 25 DLB / prodromal DLB / MCI-LB patients (all with abnormal DAT-SPECT). 96% at least minimal improvement; 60% remarkable improvement. Parkinsonism improved with ECT. No cognitive deterioration. Cautions about severe brain atrophy. This is the most permissive published data point on ECT in this patient population.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Retrospective ECT analysis in 25 DLB / prodromal DLB / MCI-LB patients (all with abnormal DAT-SPECT and MIBG). 96% at least minimal improvement; 60% remarkable improvement. Parkinsonism improved with ECT (mean Hoehn-Yahr 1.8). Adverse events: 24% transient delirium, 4% transient amnesia; no serious AEs. <strong>No cognitive worsening</strong> before vs after ECT. Most directly applicable safety data for Dad's profile.</div>
 </div>
 
 <div class="citation">
-  <div class="cite-title">Takamiya A et al. Electroconvulsive Therapy for Parkinson's Disease: Systematic Review and Meta-Analysis.</div>
-  <div class="cite-source">Movement Disorders 2021;36:50–58.</div>
-  <div class="cite-finding"><span class="label-inline">Key finding</span>14 studies, n=129 PD patients. ECT significantly improved both motor and non-motor symptoms without worsening cognitive functioning.</div>
+  <div class="cite-title">Takamiya A et al. ECT for Parkinson's Disease: Systematic Review and Meta-Analysis.</div>
+  <div class="cite-source">Mov Disord 2021;36:50–58.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>14 studies, n=129 PD patients. ECT significantly improved both motor and non-motor symptoms without worsening cognitive functioning. No documented cases of ECT precipitating motor decline.</div>
 </div>
 
-<div class="section-label">Ketamine non-inferior to ECT with cognitive advantage</div>
+<div class="citation">
+  <div class="cite-title">Kellner CH et al. Right Unilateral Ultrabrief Pulse ECT in Geriatric Depression (PRIDE Phase 1).</div>
+  <div class="cite-source">Am J Psychiatry 2016;173:1101–1109.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>n=240, age ≥60. RUL-UBP ECT plus venlafaxine: 61.7% remission in geriatric depression. Establishes ECT's real efficacy in late-life TRD with the technique that minimizes cognitive side effects.</div>
+</div>
+
+<div class="section-label">Ketamine comparison + cognitive safety</div>
 
 <div class="citation">
   <div class="cite-title">Anand A et al. Ketamine vs ECT for Nonpsychotic Treatment-Resistant Major Depression (ELEKT-D).</div>
   <div class="cite-source">N Engl J Med 2023;388:2315–2325.</div>
-  <div class="cite-finding"><span class="label-inline">Key finding</span>n=403 nonpsychotic TRD outpatients. Ketamine non-inferior to ECT on response (55.4% vs 41.2%). Delayed-recall T-score change −0.9 (ketamine) vs −9.7 (ECT) — substantial cognitive-safety advantage for ketamine.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>n=403. Ketamine non-inferior to ECT on response (55.4% vs 41.2%). Delayed-recall T-score change: −0.9 (ketamine) vs −9.7 (ECT) at end of treatment — meaningful cognitive-safety advantage for ketamine during the treatment course.</div>
 </div>
 
-<div class="section-label">Cumulative GA exposure and cognitive trajectory</div>
+<div class="citation">
+  <div class="cite-title">Kumpf KT et al. Cognitive Effects of Repeated IV Ketamine and ECT in TRD (ELEKT-D Secondary Analysis).</div>
+  <div class="cite-source">J Clin Psychiatry 2025.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>ECT cognitive cost largely transient — differences between groups resolved among responders at 1-, 3-, and 6-month follow-up. The cognitive concern is during the treatment course, not durable in responders.</div>
+</div>
+
+<div class="section-label">General anesthesia exposure considerations</div>
 
 <div class="citation">
-  <div class="cite-title">Schulte PJ et al. Association Between Anaesthesia and Surgery and Long-Term Cognitive Trajectories in Older Adults (Mayo Clinic Study of Aging).</div>
+  <div class="cite-title">Schulte PJ et al. Anaesthesia, Surgery, and Long-Term Cognitive Trajectories (Mayo Clinic Study of Aging).</div>
   <div class="cite-source">Br J Anaesth 2018;121:398–405.</div>
-  <div class="cite-finding"><span class="label-inline">Key finding</span>n=1,819 adults ≥50. Single new GA+surgery exposure → additional 0.2 SD cognitive decline over 5 years beyond normal aging. Magnified in patients with already-low baseline cognition.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>n=1,819 adults ≥50. Single new GA+surgery exposure → 0.2 SD additional cognitive decline over 5 years. Real but modest signal; applies most strongly to longer surgical GA, less cleanly to brief ECT-anesthesia.</div>
 </div>
 
 <div class="citation">
-  <div class="cite-title">Pennings CH et al. Anaesthesia as a Risk Factor for Long-Term Cognitive Decline (MAAS Cohort).</div>
-  <div class="cite-source">Eur J Anaesthesiol 2025;42:468–477.</div>
-  <div class="cite-finding"><span class="label-inline">Key finding</span>n=1,823, 12-year follow-up. Cumulative total time under GA independently and negatively affected executive functioning, selective attention, and information processing speed. Dose-response on cumulative anesthesia minutes.</div>
-</div>
-
-<div class="citation">
-  <div class="cite-title">Linassi F et al. Influence of Previous General Anesthesia on Cognitive Impairment.</div>
-  <div class="cite-source">Front Hum Neurosci 2022;16:810046.</div>
-  <div class="cite-finding"><span class="label-inline">Key finding</span>Aging × prior GA exposure OR 9.74 for executive function impairment in older patients with at least one prior GA.</div>
-</div>
-
-<div class="section-label">Acute post-GA decline as a vulnerability signal</div>
-
-<div class="citation">
-  <div class="cite-title">Kunicki ZJ et al. Six-Year Cognitive Trajectory in Older Adults Following Major Surgery and Delirium (SAGES Cohort).</div>
+  <div class="cite-title">Kunicki ZJ et al. Six-Year Cognitive Trajectory After Major Surgery and Delirium (SAGES).</div>
   <div class="cite-source">JAMA Intern Med 2023;183:442–450.</div>
-  <div class="cite-finding"><span class="label-inline">Key finding</span>n=560, 6-year follow-up. Postoperative delirium associated with 40% acceleration in cognitive decline slope — approximating the trajectory of patients diagnosed with Alzheimer's within 5 years. "Delirium signals underlying brain vulnerability."</div>
-</div>
-
-<div class="citation">
-  <div class="cite-title">Kim KH et al. Parkinson's Disease-Related Non-Motor Features as Risk Factors for Post-Operative Delirium in Spinal Surgery.</div>
-  <div class="cite-source">PLoS One 2018;13:e0195749.</div>
-  <div class="cite-finding"><span class="label-inline">Key finding</span>Prospective study, n=104 elderly. RBD was significant independent predictor of postoperative delirium (OR 1.45). Authors hypothesized "underlying alpha synucleinopathy may correlate with postoperative delirium."</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Postoperative delirium associated with 40% accelerated cognitive decline slope. "Delirium signals underlying brain vulnerability." The framework is conceptually important even if Dad's March course was not formally delirium.</div>
 </div>
 
 <div class="section-label">After the U-M consultation — what to capture in writing</div>
 
 <ol class="numbered">
-  <li>What did the U-M ECT team recommend, and what did they say about waiting for the neurology workup?</li>
-  <li>If they recommended proceeding, what was their stated indication? What specific clinical findings would they reverse on?</li>
-  <li>What electrode placement, pulse width, and anesthesia protocol would they use?</li>
-  <li>What's their plan for cognitive baseline and serial monitoring?</li>
-  <li>What's their position on coordination with the U-M Movement Disorders team and the A2 ketamine clinic?</li>
-  <li>If ECT is going to proceed, when, and what's the maintenance plan?</li>
+  <li>What did the U-M team recommend, and what was their reasoning?</li>
+  <li>If ECT was recommended, what's the planned electrode placement and pulse width, anesthesia agent, and schedule?</li>
+  <li>What's the pre-ECT cognitive baseline plan and the serial monitoring schedule?</li>
+  <li>What's the team's position on waiting for DAT-SPECT results vs proceeding now?</li>
+  <li>What would constitute a reason to stop ECT mid-course?</li>
+  <li>What's the maintenance plan if Dad responds, and how does the team think about cumulative GA exposure over time?</li>
+  <li>How does the team think about coordinating with Dr. R, Dr. Chilton, Julane, and the U-M Movement Disorders team going forward?</li>
 </ol>
 
-<div class="footer-note">Page 4 of 4. Last updated 2026-05-20.</div>
+<div class="section-label">A note on the family role</div>
+
+<p class="context">The family's role in this decision is to make sure Dad has the relevant information and that the U-M team has the relevant context — not to push toward a particular outcome. ECT is a reasonable treatment for Dad's severity and profile. Another ketamine course is also a reasonable treatment. The right answer depends on Dad's preferences, his appetite for each modality given recent experiences, the team's clinical judgment, and the eventual results of the workup. The family's job is to support whichever path Dad and the team choose — and to ensure the chosen path is executed with appropriate technique, monitoring, and follow-through.</p>
+
+<div class="footer-note">Page 4 of 4. Last updated 2026-05-20 (revised to a more balanced framing).</div>
 
 </body>
 </html>
