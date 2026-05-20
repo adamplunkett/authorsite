@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Decision Aid — Divalproex (Depakote) — updated 2026-05-19</title>
+<style>
+  @page { size: letter; margin: 0.55in 0.65in; }
+  :root {
+    --navy: #1a3a5c; --navy-dark: #0f2640;
+    --against-accent: #8b2c2c; --for-accent: #2c5e3f;
+    --text: #1f1f1f; --text-muted: #5a5a5a;
+    --rule: #c8c8c8; --rule-strong: #6a6a6a;
+    --tint: #f5f3f0; --tint-pro: #f0f4f8; --tint-con: #f9f2f0; --tint-neutral: #f3f3f1;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    font-family: "Charter", "Georgia", "Times New Roman", serif;
+    font-size: 9.75pt; line-height: 1.42; color: var(--text);
+  }
+  a { color: var(--navy); text-decoration: underline; text-decoration-thickness: 0.4pt; text-underline-offset: 1.5pt; }
+  .doc-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    padding-bottom: 6pt; border-bottom: 1.5pt solid var(--navy); margin-bottom: 14pt;
+  }
+  .doc-header .title {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 600; font-size: 15pt; line-height: 1.2;
+    color: var(--navy-dark); letter-spacing: -0.01em;
+  }
+  .doc-header .meta {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 7.5pt; color: var(--text-muted); text-align: right;
+    letter-spacing: 0.03em; line-height: 1.5;
+  }
+  .section-label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 7.5pt; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.14em; color: var(--navy); margin: 14pt 0 5pt 0;
+  }
+  .section-label.first { margin-top: 0; }
+  .key-message {
+    border-left: 4pt solid var(--against-accent); background: var(--tint);
+    padding: 9pt 13pt; margin: 0 0 10pt 0;
+  }
+  .key-message p {
+    margin: 0;
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 10.5pt; line-height: 1.42; font-weight: 500; color: var(--text);
+  }
+  .context { font-size: 9.5pt; line-height: 1.5; color: var(--text); margin: 0 0 6pt 0; }
+  .context strong { color: var(--navy-dark); }
+  table.evidence {
+    width: 100%; border-collapse: collapse; margin: 4pt 0 8pt 0; table-layout: fixed;
+  }
+  table.evidence thead th {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 600; font-size: 8.25pt; padding: 6pt 9pt; text-align: left;
+    background: var(--navy); color: white; letter-spacing: 0.02em;
+  }
+  table.evidence thead th.pro { background: #4a6a8a; }
+  table.evidence thead th.con { background: var(--against-accent); }
+  table.evidence td {
+    padding: 6pt 9pt; vertical-align: top;
+    border-bottom: 0.5pt solid var(--rule);
+    font-size: 9pt; line-height: 1.4;
+  }
+  table.evidence td.pro { background: var(--tint-pro); }
+  table.evidence td.con { background: var(--tint-con); }
+  table.evidence tbody tr:last-child td { border-bottom: none; }
+  table.evidence td strong { color: var(--navy-dark); }
+  ol.next-steps {
+    margin: 4pt 0 8pt 0; padding-left: 18pt; font-size: 9.25pt; line-height: 1.42;
+  }
+  ol.next-steps li { margin-bottom: 5pt; padding-left: 3pt; }
+  ol.next-steps li::marker {
+    color: var(--navy); font-weight: 700;
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+  }
+  ol.next-steps strong { color: var(--navy-dark); }
+  ol.next-steps ul { padding-left: 20pt; margin-top: 4pt; }
+  .neutral-block {
+    background: var(--tint-neutral); border-left: 3pt solid #888;
+    padding: 9pt 14pt 6pt 14pt; margin: 4pt 0 8pt 0;
+  }
+  .neutral-block ul { list-style: none; padding: 0; margin: 0; }
+  .neutral-block li {
+    font-size: 9pt; line-height: 1.45; margin-bottom: 6pt;
+    padding-left: 14pt; position: relative;
+  }
+  .neutral-block li::before {
+    content: "•"; position: absolute; left: 0; color: #888; font-weight: bold;
+  }
+  .neutral-block li:last-child { margin-bottom: 0; }
+  .neutral-block strong { color: var(--navy-dark); }
+  .strength-row {
+    display: flex; align-items: baseline; margin: 6pt 0 2pt 0; white-space: nowrap;
+  }
+  .strength-label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 8.5pt; font-weight: 600; color: var(--text);
+    margin-right: 10pt; white-space: nowrap;
+  }
+  .stars { color: var(--against-accent); letter-spacing: 0.12em; font-size: 11pt; white-space: nowrap; }
+  .strength-rationale {
+    font-size: 8.5pt; color: var(--text-muted); font-style: italic;
+    margin: 2pt 0 6pt 0; line-height: 1.4;
+  }
+  .bottom-line {
+    border-top: 1pt solid var(--rule-strong); padding-top: 6pt; margin-top: 10pt;
+    font-style: italic; font-size: 9pt; color: var(--text); line-height: 1.4;
+  }
+  .bottom-line .label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-style: normal; font-weight: 700; font-size: 7.5pt;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--navy); margin-right: 6pt;
+  }
+</style>
+</head>
+<body>
+
+<div class="doc-header">
+  <div class="title">Should Dad start divalproex (Depakote)?</div>
+  <div class="meta">
+    Decision Aid · originally 2026-05-13 · thoroughly revised 2026-05-19<br>
+    For Dad, Mom, Dr. R, Dr. Chilton, Julane &amp; the family team<br>
+    Hosted at <a href="https://adamplunkettauthor.com/family">adamplunkettauthor.com/family</a>
+  </div>
+</div>
+
+<div class="section-label first">Recommendation</div>
+<div class="key-message">
+  <p><strong>Defer divalproex. The 5/19 OpenEvidence consultation (#11) reinforces and extends the original 5/13 case against: no published RCT evidence for unipolar TRD augmentation, not in any major guideline for this indication, ranked at or near the bottom of OE's geriatric TRD augmentation hierarchy, and a documented drug-induced parkinsonism signal that is particularly dangerous in Dad's specific prodromal-synucleinopathy profile (UK Biobank data show persistent valproate–PD association even after excluding prescriptions within 5 years of diagnosis, suggesting valproate can <em>unmask</em> subclinical disease).</strong> Chilton's role in raising divalproex is ambiguous (recommended? or simply noted on chart?) and should be clarified in writing before any move. If "do more than ketamine" pressure persists, <a href="21_bupropion_augmentation_decision_aid_2026-05-19.html">bupropion augmentation (handout #21)</a> is a substantially stronger evidence-based alternative — direct OPTIMUM evidence (28.2% remission), no parkinsonism risk, more favorable cardiac and interaction profile, and preserves the duloxetine background that backed Dad's documented February 2026 ketamine response. If divalproex is nonetheless pursued, the absolute family-side requirement is a formal monitoring protocol (motor, cognitive, ammonia/CBC/LFT) with explicit discontinuation triggers known to all family members upfront so any new symptom is surfaced rather than minimized.</p>
+</div>
+
+<div class="section-label">Why this matters for Dad specifically</div>
+<p class="context"><strong>Current context (5/19):</strong> Dr. Chilton noted divalproex on Dad's chart during their consultation; Dad isn't entirely clear whether she "recommended" it or simply mentioned it; Mom recalls Dad saying she did recommend it. Dr. Rubin may operationalize. The 5/18 IV ketamine session at Royal Oak was difficult; Royal Oak is now off the table; the A2 ketamine restart is scheduled for June 8. Dad's documented dramatic February 2026 ketamine response was IV on a duloxetine + brexpiprazole background. The pending U-M Movement Disorders evaluation will be confounded if any new motor or cognitive finding emerges during a divalproex trial. <strong>Indication for divalproex has not been clearly stated.</strong> Possible framings: mood stabilization in TRD with prominent anxiety; augmentation of antidepressant response; sleep maintenance (early-morning anxious awakening was the prior 5/13 framing); agitation management. None of these have a defensible evidence base specific to divalproex in unipolar TRD.</p>
+
+<p class="context"><strong>Profile factors that compound the risk:</strong> formal REM sleep behavior disorder (G47.52) since 10/2017 (~8.5 years); documented pseudoparkinsonism on aripiprazole (≤2 mg) summer 2025; self-discontinued brexpiprazole March 2026 for balance issues; balance impairment (R26.89) coded 7/2025; "somewhat robotic" gait on 4/14/2026 PCP exam; brain fog (R41.89) coded; just-diagnosed methylmalonic acidemia (E71.120) with active B12 supplementation; severe depressive episode (PHQ-9 = 24); lorazepam taper recently completed; biochemical hypogonadism; LAFB + sinus bradycardia (HR 49–53). The OE #11 framing of Dad's combined criteria places him in the highest-risk Arnaldi 2021 phenoconversion stratum (HR 5.71 with age >70 + constipation + putaminal dopaminergic dysfunction; two of three already met clinically, with DAT-SPECT pending).</p>
+
+<div class="section-label">The evidence (revised 2026-05-19 with OE #11 findings)</div>
+<table class="evidence">
+  <thead>
+    <tr>
+      <th class="pro" style="width: 47%;">What might support starting Depakote</th>
+      <th class="con" style="width: 53%;">What argues against — in Dad's specific profile</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="pro"><strong>Single small open-label study</strong> (Ghabrash 2016, n=14, ages 19–59, no control group) showed some MADRS improvement when divalproex was added to AD. This is the only published study suggesting a unipolar TRD augmentation benefit. Does not apply to Dad's age group or dose; no controlled trial replication.</td>
+      <td class="con"><strong>No RCT evidence for divalproex augmentation in unipolar TRD</strong> at any age. OE #11 confirms: not in any major guideline for this indication (APA, NICE, CANMAT, Maudsley, AAGP, VA/DoD). The Schaff 1993 retrospective (n=63) reclassified 12 of the "unipolar" patients as covert cyclers — meaning even the favorable old data is partially bipolar.</td>
+    </tr>
+    <tr>
+      <td class="pro"><strong>Widely prescribed off-label at low doses,</strong> generally short-term tolerated in adults without specific neurological vulnerabilities. Weak evidence: signals only that the drug isn't acutely toxic at this exposure level. Does not address benefit for unipolar TRD or transfer to Dad's specific profile.</td>
+      <td class="con"><strong>OPTIMUM hierarchy excludes divalproex.</strong> The largest pragmatic geriatric TRD augmentation RCT (Lenze 2023, n=619) ranked aripiprazole augmentation (28.9% remission), bupropion augmentation (28.2%), and lithium augmentation step 2 (18.9%). Divalproex was not in any comparative arm. OE #11: "Divalproex is not mentioned in any major guideline or review for unipolar TRD augmentation in older adults."</td>
+    </tr>
+    <tr>
+      <td class="pro" style="background: #fbfbf8; color: #777;">—</td>
+      <td class="con"><strong>Subtherapeutic dose doesn't protect against parkinsonism.</strong> Brugger 2016 critical review of 116 published cases of valproate-induced parkinsonism: in 113 of 116, plasma concentrations were at or below the therapeutic range when parkinsonism emerged. Dose-independent risk.</td>
+    </tr>
+    <tr>
+      <td class="pro" style="background: #fbfbf8; color: #777;">—</td>
+      <td class="con"><strong>UK Biobank data: valproate can <em>unmask</em> subclinical Parkinson's.</strong> Belete 2023 (1,433 PD cases, 8,598 controls) — sodium valproate was robustly associated with incident PD, association persisted after adjusting for epilepsy and after excluding prescriptions within 5 years of PD diagnosis. The temporal gap matters: it suggests valproate accelerates or unmasks neurodegeneration rather than merely co-occurring with PD.</td>
+    </tr>
+    <tr>
+      <td class="pro" style="background: #fbfbf8; color: #777;">—</td>
+      <td class="con"><strong>Time to onset of valproate parkinsonism is insidious.</strong> Mean 75.7 months in one series, but shorter latencies reported. Recovery after discontinuation is often prolonged (mean 4.5 months, range days to 2 years) and sometimes incomplete. Some patients who appeared to improve later developed idiopathic PD — consistent with unmasking rather than purely drug-induced.</td>
+    </tr>
+    <tr>
+      <td class="pro" style="background: #fbfbf8; color: #777;">—</td>
+      <td class="con"><strong>Dad's profile is the highest-risk stratum for unmasking.</strong> Per Arnaldi 2021, age >70 + constipation + putaminal dopaminergic dysfunction = HR 5.71 combined for phenoconversion. Dad has two of three criteria already (DAT-SPECT pending). Introducing a drug known to unmask subclinical dopaminergic degeneration in this profile carries qualitatively different risk than in a general elderly population.</td>
+    </tr>
+    <tr>
+      <td class="pro" style="background: #fbfbf8; color: #777;">—</td>
+      <td class="con"><strong>Brain volume / cognitive risk.</strong> Tariot 2011 trial in older adults with early Alzheimer's at ~250 mg/day: faster brain volume loss on MRI, worse MMSE over 12 months than placebo. Alsukhni 2023 review documents reversible cognitive decline mimicking dementia (mean latency ~6.87 years; most cases had parkinsonian features; all recovered on discontinuation). In a patient already reporting brain fog and cognitive concerns, drug-attributed cognitive change would be difficult to distinguish from disease progression.</td>
+    </tr>
+    <tr>
+      <td class="pro" style="background: #fbfbf8; color: #777;">—</td>
+      <td class="con"><strong>Confounds the pending U-M Movement Disorders evaluation.</strong> Any new motor or cognitive finding during a divalproex trial cannot be cleanly attributed — drug effect vs disease progression are indistinguishable. The neurology workup is specifically designed to characterize the prodromal-synucleinopathy question; divalproex would compromise it.</td>
+    </tr>
+    <tr>
+      <td class="pro" style="background: #fbfbf8; color: #777;">—</td>
+      <td class="con"><strong>Confounds the B12 / methylmalonic acidemia follow-up.</strong> Divalproex disrupts folate and B12 processing. Dad's MMA recheck on the 8/6/2026 follow-up would be uninterpretable on a divalproex background.</td>
+    </tr>
+    <tr>
+      <td class="pro" style="background: #fbfbf8; color: #777;">—</td>
+      <td class="con"><strong>Possible attenuation of ketamine response.</strong> Xu 2015 (n=36, bipolar): patients on valproate maintenance showed smaller ketamine antidepressant effect size (d = 0.79) than lithium-maintained patients (d = 2.27); not statistically significant in the small sample but directionally concerning. Mechanism: valproate's GABAergic enhancement could theoretically dampen ketamine's glutamatergic mechanism. Relevant given the upcoming June 8 IV ketamine restart.</td>
+    </tr>
+    <tr>
+      <td class="pro" style="background: #fbfbf8; color: #777;">—</td>
+      <td class="con"><strong>Significant interaction with doxepin.</strong> Unterecker 2014: valproate increases doxepin + N-doxepin serum levels 2.2× via UGT inhibition (p &lt; 0.001). Clinically relevant given Dad's current doxepin 6 mg HS.</td>
+    </tr>
+    <tr>
+      <td class="pro" style="background: #fbfbf8; color: #777;">—</td>
+      <td class="con"><strong>Activation-intolerance pattern.</strong> Dad has documented adverse responses to six prior agents across mechanistically distinct pathways (aripiprazole, mirtazapine, brexpiprazole, olanzapine, pramipexole, lithium). OE #11 noted that while divalproex operates through a distinct mechanism (GABA enhancement, HDAC inhibition, sodium channel), the breadth of prior intolerance is itself an independent clinical caution.</td>
+    </tr>
+    <tr>
+      <td class="pro" style="background: #fbfbf8; color: #777;">—</td>
+      <td class="con"><strong>Cochrane review of valproate for agitation in dementia (including Lewy body):</strong> no more effective than placebo and associated with more adverse effects including falls, gait disturbances, sedation, and tremor (Baillon 2018).</td>
+    </tr>
+    <tr>
+      <td class="pro" style="background: #fbfbf8; color: #777;">—</td>
+      <td class="con"><strong>Bupropion augmentation is the much stronger alternative</strong> if "do more than ketamine" pressure persists. Direct OPTIMUM evidence (28.2% remission), mechanistically pro-dopaminergic (does not produce parkinsonism), favorable cardiac profile, compatible with ketamine. See <a href="21_bupropion_augmentation_decision_aid_2026-05-19.html">handout #21</a>.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="strength-row">
+  <span class="strength-label">Evidence strength against starting Depakote:</span>
+  <span class="stars">★★★★★</span>
+</div>
+<div class="strength-rationale">Convergence of guideline absence, no RCT support for unipolar TRD, mechanistic parkinsonism-unmasking signal directly relevant to Dad's highest-risk profile, multiple confounders for the active workup (neurology, MMA, ketamine response), interaction with current doxepin, and the existence of a substantially stronger evidence-based alternative (bupropion augmentation).</div>
+
+<div class="section-label">What everyone agrees on</div>
+<div class="neutral-block">
+  <ul>
+    <li><strong>Indication has not been clearly stated.</strong> Until Chilton or Rubin specifies what the divalproex is treating, the conversation can't reach an evidence-based answer. Email Chilton to clarify: <em>"Did you recommend divalproex, or note it on the chart? If recommended, for what indication?"</em></li>
+    <li><strong>If divalproex is somehow operationalized despite the evidence, family-side surveillance is non-negotiable.</strong> Mom and Dad need to be set up to surface any new motor or cognitive symptom early, not minimize it. The OE concern about diagnostic confounding only matters if symptoms are reported promptly.</li>
+    <li><strong>Bupropion augmentation is the substantially stronger alternative</strong> if augmentation beyond ketamine is desired. Adds to duloxetine rather than introducing parkinsonism risk; OPTIMUM-evidenced; favorable cardiac profile. See <a href="21_bupropion_augmentation_decision_aid_2026-05-19.html">handout #21</a>.</li>
+    <li><strong>The IV ketamine course at A2 starting June 8 is the highest-yield intervention on the table.</strong> Dad's documented dramatic Feb 2026 IV response is the strongest single predictor. Maintain duloxetine through the restart per <a href="06_cymbalta_lexapro_decision_aid_2026-05-19.html">handout #06</a>; preserve the documented responder background.</li>
+    <li><strong>NPI work proceeds in parallel</strong> regardless of the divalproex decision — see <a href="19_npi_sleep_decision_aid_2026-05-18.html">handout #19</a>.</li>
+  </ul>
+</div>
+
+<div class="section-label">Recommended next steps</div>
+<ol class="next-steps">
+  <li><strong>Email Chilton</strong> to clarify whether divalproex was recommended or simply noted on chart. Request in writing.</li>
+  <li><strong>At tomorrow's 11 AM Rubin call (5/20):</strong> ask for the specific indication for divalproex. Surface the OE #11 findings — no RCT evidence for unipolar TRD augmentation; not in any major guideline; parkinsonism unmasking signal in Arnaldi-high-risk profile. Propose bupropion XL 150 mg as the stronger alternative if augmentation is the goal.</li>
+  <li><strong>Hold divalproex pending stated indication and family discussion.</strong> Even if Rubin proceeds, do not titrate beyond the current dose without resolving the open clinical questions.</li>
+  <li><strong>If divalproex is pursued despite the evidence,</strong> a full monitoring protocol is essential:
+    <ul>
+      <li><strong>Baseline labs:</strong> CBC with differential, comprehensive metabolic panel, LFTs, ammonia, valproate level baseline.</li>
+      <li><strong>Repeat at 2 weeks, 1 month, 3 months,</strong> then every 6 months. Ammonia level whenever mental status changes.</li>
+      <li><strong>Structured motor exam (UPDRS-III or equivalent) at each visit.</strong></li>
+      <li><strong>Cognitive screening (MoCA) every 3 months.</strong></li>
+      <li><strong>Discontinuation triggers known to all family members upfront:</strong> any new tremor, rigidity, bradykinesia, gait change, cognitive worsening beyond baseline, unexplained lethargy or confusion (check ammonia immediately), platelets &lt; 100, LFTs &gt; 3× ULN, any fall.</li>
+    </ul>
+  </li>
+  <li><strong>Family / Julane / Gabe consultation</strong> before any further decision on mood-stabilizer addition. Julane in particular as the integration provider with continuous longitudinal observation.</li>
+  <li><strong>Continue B12 1000 mcg daily as prescribed</strong>, and protect the 8/6/2026 MMA recheck from any divalproex confounder.</li>
+  <li><strong>Proceed with IV ketamine restart June 8 as planned</strong> on the existing duloxetine background; assess response over 2–3 sessions before any additional medication change. If augmentation is still desired at that point, bupropion XL 150 mg per handout #21.</li>
+</ol>
+
+<div class="bottom-line">
+  <span class="label">Bottom line</span>
+  Defer divalproex. The 5/19 OpenEvidence consultation confirmed and extended the original 5/13 case against: no RCT evidence base for unipolar TRD augmentation, ranked at or near the bottom of the OPTIMUM-evidenced geriatric augmentation hierarchy, and a documented parkinsonism-unmasking signal that is particularly dangerous in Dad's highest-risk Arnaldi profile. Chilton's role in raising the drug is ambiguous and should be clarified in writing. If "do more than ketamine" pressure persists, bupropion XL 150 mg augmentation of duloxetine is the substantially stronger evidence-based alternative — see <a href="21_bupropion_augmentation_decision_aid_2026-05-19.html">handout #21</a>. If divalproex is somehow pursued despite the evidence, the family-side surveillance protocol with explicit discontinuation triggers is non-negotiable.
+</div>
+
+</body>
+</html>
+</content>
+</invoke>

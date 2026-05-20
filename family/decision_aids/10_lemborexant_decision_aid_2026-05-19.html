@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Decision Aid — Lemborexant — updated 2026-05-19</title>
+<style>
+  @page { size: letter; margin: 0.55in 0.65in; }
+  :root {
+    --navy: #1a3a5c; --navy-dark: #0f2640;
+    --against-accent: #8b2c2c; --for-accent: #2c5e3f;
+    --text: #1f1f1f; --text-muted: #5a5a5a;
+    --rule: #c8c8c8; --rule-strong: #6a6a6a;
+    --tint: #f5f3f0; --tint-pro: #f0f4f8; --tint-con: #f9f2f0; --tint-neutral: #f3f3f1;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    font-family: "Charter", "Georgia", "Times New Roman", serif;
+    font-size: 9.75pt; line-height: 1.42; color: var(--text);
+  }
+  a { color: var(--navy); text-decoration: underline; text-decoration-thickness: 0.4pt; text-underline-offset: 1.5pt; }
+  .doc-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    padding-bottom: 6pt; border-bottom: 1.5pt solid var(--navy); margin-bottom: 14pt;
+  }
+  .doc-header .title {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 600; font-size: 15pt; line-height: 1.2;
+    color: var(--navy-dark); letter-spacing: -0.01em;
+  }
+  .doc-header .meta {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 7.5pt; color: var(--text-muted); text-align: right;
+    letter-spacing: 0.03em; line-height: 1.5;
+  }
+  .section-label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 7.5pt; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.14em; color: var(--navy); margin: 14pt 0 5pt 0;
+  }
+  .section-label.first { margin-top: 0; }
+  .key-message {
+    border-left: 4pt solid var(--for-accent); background: var(--tint);
+    padding: 9pt 13pt; margin: 0 0 10pt 0;
+  }
+  .key-message p {
+    margin: 0;
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 10.5pt; line-height: 1.42; font-weight: 500; color: var(--text);
+  }
+  .context { font-size: 9.5pt; line-height: 1.5; color: var(--text); margin: 0 0 6pt 0; }
+  .context strong { color: var(--navy-dark); }
+  table.evidence {
+    width: 100%; border-collapse: collapse; margin: 4pt 0 8pt 0; table-layout: fixed;
+  }
+  table.evidence thead th {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 600; font-size: 8.25pt; padding: 6pt 9pt; text-align: left;
+    background: var(--navy); color: white; letter-spacing: 0.02em;
+  }
+  table.evidence thead th.pro { background: #4a6a8a; }
+  table.evidence thead th.con { background: var(--against-accent); }
+  table.evidence td {
+    padding: 6pt 9pt; vertical-align: top;
+    border-bottom: 0.5pt solid var(--rule);
+    font-size: 9pt; line-height: 1.4;
+  }
+  table.evidence td.pro { background: var(--tint-pro); }
+  table.evidence td.con { background: var(--tint-con); }
+  table.evidence tbody tr:last-child td { border-bottom: none; }
+  table.evidence td strong { color: var(--navy-dark); }
+  ol.next-steps {
+    margin: 4pt 0 8pt 0; padding-left: 18pt; font-size: 9.25pt; line-height: 1.42;
+  }
+  ol.next-steps li { margin-bottom: 5pt; padding-left: 3pt; }
+  ol.next-steps li::marker {
+    color: var(--navy); font-weight: 700;
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+  }
+  ol.next-steps strong { color: var(--navy-dark); }
+  .neutral-block {
+    background: var(--tint-neutral); border-left: 3pt solid #888;
+    padding: 9pt 14pt 6pt 14pt; margin: 4pt 0 8pt 0;
+  }
+  .neutral-block ul { list-style: none; padding: 0; margin: 0; }
+  .neutral-block li {
+    font-size: 9pt; line-height: 1.45; margin-bottom: 6pt;
+    padding-left: 14pt; position: relative;
+  }
+  .neutral-block li::before {
+    content: "•"; position: absolute; left: 0; color: #888; font-weight: bold;
+  }
+  .neutral-block li:last-child { margin-bottom: 0; }
+  .neutral-block strong { color: var(--navy-dark); }
+  .bottom-line {
+    border-top: 1pt solid var(--rule-strong); padding-top: 6pt; margin-top: 10pt;
+    font-style: italic; font-size: 9pt; color: var(--text); line-height: 1.4;
+  }
+  .bottom-line .label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-style: normal; font-weight: 700; font-size: 7.5pt;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--navy); margin-right: 6pt;
+  }
+</style>
+</head>
+<body>
+
+<div class="doc-header">
+  <div class="title">Should Dad start lemborexant (Dayvigo) for sleep?</div>
+  <div class="meta">
+    Decision Aid · originally 2026-05-15 · thoroughly revised 2026-05-19<br>
+    For Dad, Mom, Dr. R, Dr. Chilton, Julane &amp; the family team<br>
+    Hosted at <a href="https://adamplunkettauthor.com/family">adamplunkettauthor.com/family</a>
+  </div>
+</div>
+
+<div class="section-label first">Recommendation (revised 5/19)</div>
+<div class="key-message">
+  <p><strong>Lemborexant 5 mg HS is defensible — either as a seamless substitute for doxepin if doxepin is coming off, or as an addition for sleep-maintenance support if it stays.</strong> The 5/19 OpenEvidence consultation (#13) substantially flipped the original 5/15 against-position. The two strongest new findings: (1) lemborexant is <strong>night-1 effective</strong> in adults ≥55 — WASO reduction of 33 min (5 mg) and 42 min (10 mg) vs placebo on nights 1–2 in SUNRISE-1; second-half-of-night WASO benefit present from night 1, no accumulation period required; (2) the doxepin → lemborexant transition can be done <strong>seamlessly on a single night</strong> — both produce first-night WASO effects, no expected gap. <strong>No rebound insomnia, no withdrawal</strong> — can be stopped abruptly if it doesn't work or produces adverse effects, which makes the trial genuinely low-risk and reversible. PK interactions with duloxetine and low-dose doxepin are not significant (CYP3A4-metabolized; no inhibition from Dad's stack). The original 5/15 cautions are softer than first stated: RBD-specific clinical data is absent, but the mouse-tauopathy DORA-12 data actually point toward reduced dream-enactment (opposite the original concern); the FDA "don't combine with other hypnotics" guidance is regulatory caution rather than a strong PK signal at these doses; the REM-augmentation effect could theoretically increase RBD-episode opportunity but has not been demonstrated clinically. <strong>Operative position:</strong> if Rubin's proposal involves removing doxepin, lemborexant 5 mg HS is a defensible substitute. If doxepin stays, lemborexant can be added if sleep maintenance is the limiting symptom. Either way, melatonin 3 mg HS and trazodone PRN continue. Start at 5 mg HS; reassess at 7–10 days; escalate to 10 mg only if 5 mg is tolerated and benefit incomplete. Julane endorses the addition.</p>
+</div>
+
+<div class="section-label">Why this matters for Dad specifically</div>
+<p class="context"><strong>Current context (5/19):</strong> Dad had a difficult IV ketamine session at Royal Oak 5/18; Royal Oak is now off the table; A2 ketamine restart scheduled June 8. Dr. Rubin's proposed restructuring includes removing doxepin and trazodone and adding lemborexant. Julane has endorsed lemborexant as the DORA-class sleep-maintenance addition; she did not endorse the removal of doxepin/trazodone. Dad has formal RBD (G47.52, since 10/2017, 8.5 years), now with decreased episode frequency over the past year (most recent ~February 2026). Current sleep stack: doxepin 6 mg HS, trazodone 50 mg HS PRN, melatonin 3 mg HS. Recent sleep pattern: ~6.5 hours total, one nocturia trip, no dream recall, wakes unrested, cannot nap.</p>
+
+<p class="context"><strong>Position framing:</strong> the question is no longer "should Dad start lemborexant" (the 5/15 framing was no) — it is "should lemborexant be added alongside the existing stack, or substituted for doxepin if doxepin is coming off, or both held until after the ketamine response is read." OE #13 supports the first two; the third remains defensible if the family wants to minimize variables through the June 8 restart.</p>
+
+<div class="section-label">The evidence (revised 2026-05-19 with OE #13 findings)</div>
+<table class="evidence">
+  <thead>
+    <tr>
+      <th class="pro" style="width: 50%;">What supports lemborexant in this profile</th>
+      <th class="con" style="width: 50%;">What still warrants caution</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="pro"><strong>Night-1 effective in adults ≥55.</strong> SUNRISE-1 (Rosenberg 2019, n=1,006, median age 63, 45% ≥65 years): on nights 1–2, lemborexant 5 mg reduced LPS by ~17 min and WASO by ~33 min vs placebo; 10 mg reduced LPS by ~20 min and WASO by ~42 min. Sustained through 12 months in SUNRISE-2 with no tolerance. <strong>Steady-state efficacy is essentially night 1</strong> — no accumulation needed.</td>
+      <td class="con"><strong>RBD-specific clinical data: absent.</strong> SUNRISE trials excluded patients with significant parasomnias. The mouse-tauopathy DORA-12 data (Kam 2023) showed reduced dream-enactment behaviors — opposite direction of the original concern, but not human RBD data. Theoretical concern: lemborexant modestly increases REM sleep duration (a class effect of DORAs); more REM time could theoretically produce more episode opportunity, though this hasn't been demonstrated.</td>
+    </tr>
+    <tr>
+      <td class="pro"><strong>Second-half-of-night WASO benefit present from night 1.</strong> Distinguishing feature vs zolpidem ER. This is exactly the pattern Dad reports (waking unrested, can't return to sleep, early-morning awakening). Lemborexant 5 mg superior to zolpidem ER on second-half WASO by ~6.5 min on nights 1–2 and 10 mg superior by ~13.1 min.</td>
+      <td class="con"><strong>FDA-labeled narcolepsy-spectrum signals.</strong> Sleep paralysis 1.3% (5 mg) and 1.6% (10 mg) vs 0% placebo; hypnagogic hallucinations 0.1% (5 mg) and 0.7% (10 mg) vs 0% placebo; abnormal dreams/nightmares 0.9% (5 mg) and 2.2% (10 mg) vs 0.9% placebo; cataplexy-like leg weakness reported. These are uncommon but real; mechanism is REM-related and worth flagging in a patient with formal RBD even if mechanistically distinct from dream enactment.</td>
+    </tr>
+    <tr>
+      <td class="pro"><strong>Doxepin → lemborexant substitution is seamless.</strong> Both produce first-night WASO effects; lemborexant's night-1 effect size at least matches doxepin 6 mg. Single-night transition expected to maintain sleep-maintenance benefit. If Rubin's proposal includes removing doxepin, this substitution is operationally defensible without an interim gap.</td>
+      <td class="con"><strong>Removing doxepin is itself a separate question.</strong> The OE response on doxepin substitution doesn't endorse removing doxepin — it only addresses what happens if doxepin is being removed. If doxepin is working and is well-tolerated, the conservative move is to keep it and add lemborexant on top (Julane's recommendation). The doxepin-removal piece of Rubin's proposal still requires its own justification.</td>
+    </tr>
+    <tr>
+      <td class="pro"><strong>No rebound insomnia, no withdrawal.</strong> Lemborexant can be stopped abruptly with no rebound insomnia or withdrawal symptoms in either the 1-month or 12-month trials (per FDA label and SUNRISE-2 extension). This is the load-bearing point for the "low-risk reversible trial" framing — if it doesn't work or produces adverse effects, the trial is over the next morning.</td>
+      <td class="con"><strong>FDA "don't combine with other hypnotics" label.</strong> Regulatory caution rather than a specific PK warning. At low doses with no significant PK interaction expected, the practical concern is additive sedation if combined with doxepin 6 mg HS. Morning grogginess should be tracked carefully; if Dad still drives independently, fall and driving-impairment monitoring matters.</td>
+    </tr>
+    <tr>
+      <td class="pro"><strong>No significant PK interaction with current stack.</strong> Lemborexant is CYP3A4-metabolized. Duloxetine is not a CYP3A4 inhibitor (it's a CYP1A2 + CYP2D6 substrate; moderate CYP2D6 inhibitor). Doxepin at 6 mg is unlikely to meaningfully inhibit CYP3A4. Combination is pharmacologically manageable.</td>
+      <td class="con"><strong>Orexin-system involvement in synucleinopathies is the deeper theoretical question.</strong> Raheel 2024 review documents adaptive changes in orexin levels in early prodromal synucleinopathy. Lemborexant pharmacologically blocks both OX1R and OX2R. Whether this disrupts a compensatory adaptation or is benign is genuinely unknown. The U-M Movement Disorders evaluation in June would benefit from a stable baseline; introducing orexin antagonism before that evaluation is a small but real consideration.</td>
+    </tr>
+    <tr>
+      <td class="pro"><strong>Cardiac profile favorable for Dad.</strong> Lemborexant does not prolong QTc at doses up to 5× max recommended. Safe for bradycardia + LAFB. No meaningful effect on heart rate or conduction.</td>
+      <td class="con"><strong>Dose escalation timing.</strong> If 5 mg HS is partially effective, the typical practice is to wait 7–10 days before considering 10 mg. The 10 mg dose has marginally larger effect on WASO (~8 min additional on nights 1–2) but carries higher rates of somnolence (9.6% vs 6.9%) and slightly higher sleep paralysis (1.6% vs 1.3%). For Dad with bradycardia, the 5 mg starting dose is prudent.</td>
+    </tr>
+    <tr>
+      <td class="pro"><strong>Compatible with ketamine.</strong> No published interaction either direction. Orexin antagonism operates through lateral hypothalamic pathways, mechanistically distinct from ketamine's glutamatergic mechanism. Improved sleep itself may support ketamine response (sleep disruption is associated with poorer antidepressant outcomes generally).</td>
+      <td class="con" style="background: #fbfbf8; color: #777;">—</td>
+    </tr>
+    <tr>
+      <td class="pro"><strong>Julane endorses lemborexant.</strong> The integration provider with continuous longitudinal observation of Dad has specifically endorsed lemborexant as the appropriate sleep-maintenance addition. Her endorsement is structurally informative — she has the cleanest perspective on what's working in the broader integration of Dad's care.</td>
+      <td class="con" style="background: #fbfbf8; color: #777;">—</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="section-label">What everyone agrees on</div>
+<div class="neutral-block">
+  <ul>
+    <li><strong>Julane's endorsement of lemborexant carries weight.</strong> Of the three providers active in Dad's care, Julane has the cleanest structural position and the most continuous observation. Her recommendation should be honored as the operative sleep-medication addition if one is added.</li>
+    <li><strong>The original 5/15 against-position was right about timing and wrong about the specifics.</strong> The 5/15 reading correctly identified that the 5/18 Royal Oak session shouldn't have multiple concurrent medication changes layered into the same window. It was wrong on the night-1 efficacy question and on the doxepin-substitution feasibility. The OE #13 evidence resolved both.</li>
+    <li><strong>Lemborexant as <em>addition</em> to the current stack is the lowest-risk operationalization.</strong> Doxepin 6 mg HS continues; melatonin 3 mg HS continues; trazodone 50 mg HS PRN continues; add lemborexant 5 mg HS for sleep maintenance. The redundancy is fine and reversible.</li>
+    <li><strong>Lemborexant as <em>substitute</em> for doxepin is defensible</strong> if doxepin is coming off for reasons independent of the lemborexant addition. The transition is seamless (night 1).</li>
+    <li><strong>Removing trazodone PRN serves no purpose.</strong> Trazodone is used infrequently as a PRN rescue and is Chilton-cleared. Keep it.</li>
+    <li><strong>NPI work proceeds in parallel</strong> — see <a href="19_npi_sleep_decision_aid_2026-05-18.html">handout #19</a>. Caffeine cutoff (1 cup AM already in place); bright light therapy; exercise to 3×/week; alcohol abstinence; digital CBT-I.</li>
+  </ul>
+</div>
+
+<div class="section-label">Recommended next steps</div>
+<ol class="next-steps">
+  <li><strong>At tomorrow's 11 AM Rubin call (5/20):</strong> separate the lemborexant question from the doxepin-removal question. Lemborexant addition is reasonable (Julane-endorsed, OE-supported, low-risk reversible). Doxepin removal is its own question and should not be coupled to the lemborexant decision.</li>
+  <li><strong>If Rubin pushes the substitution framing</strong> (remove doxepin, add lemborexant): the swap can be done seamlessly per OE #13. Start lemborexant 5 mg HS the same night doxepin stops; no expected gap. But ask: <em>"What's the reason to remove doxepin specifically? It's AGS-Beers-endorsed, Chilton-cleared, Dad-tolerated, and providing meaningful sleep-maintenance support."</em></li>
+  <li><strong>If Rubin agrees to add-not-substitute:</strong> doxepin 6 mg HS continues; lemborexant 5 mg HS added. Track morning grogginess given additive sedation; if grogginess emerges, consider doxepin 3 mg or stopping doxepin then.</li>
+  <li><strong>If the family prefers to minimize variables through the June 8 ketamine restart:</strong> defer lemborexant until after the first 2–3 ketamine sessions. Lemborexant can start anytime; the OE-night-1 effectiveness means a delayed start doesn't lose anything.</li>
+  <li><strong>Once started, the monitoring plan:</strong>
+    <ul>
+      <li><strong>Night-1 self-report:</strong> sleep onset, awakenings, morning state, dream content.</li>
+      <li><strong>Week-1 check:</strong> morning grogginess (driving safety!), any dream-enactment changes, any sleep paralysis or hypnagogic phenomena, balance/falls.</li>
+      <li><strong>Discontinuation triggers:</strong> any new RBD episodes or increase in frequency, sleep paralysis or hypnagogic hallucinations, any fall, persistent morning grogginess affecting daytime function.</li>
+      <li><strong>Dose escalation only at 7–10 days if 5 mg tolerated and benefit incomplete.</strong></li>
+    </ul>
+  </li>
+  <li><strong>Reassess sleep architecture at the June PSG with RBD montage</strong> — see <a href="19_npi_sleep_decision_aid_2026-05-18.html">handout #19</a>. The formal sleep study would clarify whether lemborexant is changing REM architecture or RWA in a way that matters.</li>
+</ol>
+
+<div class="bottom-line">
+  <span class="label">Bottom line</span>
+  Lemborexant 5 mg HS is defensible in Dad's profile, either as a substitute for doxepin (if doxepin is coming off) or as an addition (the lower-risk operationalization, also Julane-endorsed). The 5/19 OpenEvidence consultation flipped the original 5/15 against-position: night-1 effective, doxepin-substitution seamless, no rebound or withdrawal, no significant PK interaction with the current stack, compatible with ketamine. The RBD-specific concerns are theoretical and softer than first stated. The remaining open question is sequencing relative to the June 8 ketamine restart — adding lemborexant now or deferring until after the first sessions are both defensible. Removing trazodone PRN serves no purpose. Removing doxepin is its own separate question requiring its own justification.
+</div>
+
+</body>
+</html>
+</content>
+</invoke>
