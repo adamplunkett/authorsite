@@ -55,14 +55,16 @@
     font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
     font-size: 8pt; font-weight: 700; text-transform: uppercase;
     letter-spacing: 0.16em; color: var(--navy); margin: 14pt 0 8pt 0;
+    page-break-after: avoid;
   }
   .section-label.first { margin-top: 0; }
 
   .key-bullet-block {
     border-left: 4pt solid var(--navy); background: var(--blue-bg);
     padding: 11pt 16pt; margin: 0 0 12pt 0; border-radius: 0 4pt 4pt 0;
-    page-break-inside: avoid;
   }
+  .key-bullet-block li { page-break-inside: avoid; }
+  .key-bullet-block .block-label { page-break-after: avoid; }
   .key-bullet-block .block-label {
     font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
     font-weight: 700; font-size: 8pt; text-transform: uppercase;
@@ -78,12 +80,13 @@
   .balance-grid {
     display: grid; grid-template-columns: 1fr 1fr; gap: 10pt;
     margin: 6pt 0 10pt 0;
-    page-break-inside: avoid;
   }
   .balance-card {
     border-radius: 4pt; padding: 10pt 13pt;
     font-size: 9pt; line-height: 1.45;
   }
+  .balance-card li { page-break-inside: avoid; }
+  .balance-card .balance-label { page-break-after: avoid; }
   .balance-card.favors-ect {
     background: var(--green-bg); border: 1.5pt solid var(--green-border);
   }
