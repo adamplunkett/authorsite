@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Handout for the U-M ECT consultation — revised 2026-05-20</title>
+<title>Handout for the U-M ECT consultation — 2026-05-20</title>
 <style>
   @page { size: letter; margin: 0.5in 0.55in; }
   :root {
@@ -61,9 +61,7 @@
   .key-bullet-block {
     border-left: 4pt solid var(--navy); background: var(--blue-bg);
     padding: 11pt 16pt; margin: 0 0 12pt 0; border-radius: 0 4pt 4pt 0;
-  }
-  .key-bullet-block.questions {
-    border-left-color: var(--navy); background: var(--blue-bg);
+    page-break-inside: avoid;
   }
   .key-bullet-block .block-label {
     font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
@@ -80,6 +78,7 @@
   .balance-grid {
     display: grid; grid-template-columns: 1fr 1fr; gap: 10pt;
     margin: 6pt 0 10pt 0;
+    page-break-inside: avoid;
   }
   .balance-card {
     border-radius: 4pt; padding: 10pt 13pt;
@@ -110,6 +109,7 @@
     font-family: "Charter", "Georgia", serif;
     font-style: italic; font-size: 9.5pt; line-height: 1.5;
     color: var(--text);
+    page-break-inside: avoid;
   }
   .speech-block .speech-label {
     font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
@@ -137,6 +137,7 @@
   .neutral-block {
     background: var(--tint-neutral); border-left: 3pt solid #888;
     padding: 9pt 14pt 6pt 14pt; margin: 4pt 0 10pt 0;
+    page-break-inside: avoid;
   }
   .neutral-block ul { list-style: none; padding: 0; margin: 0; }
   .neutral-block li {
@@ -149,22 +150,15 @@
   .neutral-block li:last-child { margin-bottom: 0; }
   .neutral-block strong { color: var(--navy-dark); }
 
-  .page-break { page-break-before: always; }
-
   .context { font-size: 9.5pt; line-height: 1.5; color: var(--text); margin: 0 0 8pt 0; }
   .context strong { color: var(--navy-dark); }
-
-  .footer-note {
-    margin-top: 12pt; padding-top: 8pt; border-top: 1pt solid var(--rule);
-    font-size: 8pt; color: var(--text-muted); line-height: 1.45;
-    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
-  }
 
   h2.page-heading {
     font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
     font-weight: 700; font-size: 13pt; color: var(--navy-dark);
-    margin: 0 0 10pt 0; padding-bottom: 5pt; border-bottom: 1pt solid var(--rule-strong);
+    margin: 18pt 0 10pt 0; padding-bottom: 5pt; border-bottom: 1pt solid var(--rule-strong);
     letter-spacing: -0.01em;
+    page-break-after: avoid;
   }
 
   .citation { page-break-inside: avoid; }
@@ -187,6 +181,7 @@
   table.compare {
     width: 100%; border-collapse: collapse; margin: 6pt 0 10pt 0;
     table-layout: fixed; font-size: 8.5pt;
+    page-break-inside: avoid;
   }
   table.compare thead th {
     font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
@@ -212,14 +207,10 @@
 </head>
 <body>
 
-<!-- ================================================ -->
-<!-- PAGE 1: ACTIONABLE TAKEAWAY -->
-<!-- ================================================ -->
-
 <div class="doc-header">
   <div>
     <div class="title">For the U-M ECT consultation</div>
-    <div class="subtitle">Dad's clinical context + questions for the team · revised 2026-05-20</div>
+    <div class="subtitle">Dad's clinical context + questions for the team · 2026-05-20</div>
   </div>
   <div class="meta">
     For Dad, Mom, Leah, David,<br>
@@ -229,7 +220,7 @@
 </div>
 
 <div class="page-purpose">
-  <strong>What this document is for.</strong> A one-page brief that gives Dad and Mom the clinical context to share with the U-M ECT team and the questions worth discussing. <strong>The handout is not arguing against ECT.</strong> The published evidence on ECT in patients like Dad is actually reasonably favorable (Morikawa 2024 in confirmed Lewy-spectrum disease: 96% improvement, no cognitive worsening). The handout's job is to make sure the U-M team has the relevant context and that the family is informed about the genuine tradeoffs — so the right decision can be made by Dad and the clinical team together, not pushed in either direction by the family.
+  <strong>What this document is for.</strong> A brief to help Dad and Mom go into the U-M ECT consultation informed. ECT is a reasonable option for Dad's profile — the published evidence on ECT in patients with prodromal Lewy-spectrum disease is actually reasonably favorable (Morikawa 2024: 96% improvement, no cognitive worsening). The handout's job is to make sure the U-M team has the relevant clinical context, that the family is informed about the genuine tradeoffs between ECT and another IV ketamine course, and that whichever decision Dad and the team reach is made deliberately rather than by default.
 </div>
 
 <div class="key-bullet-block">
@@ -244,11 +235,11 @@
   </ul>
 </div>
 
-<div class="key-bullet-block questions">
+<div class="key-bullet-block">
   <div class="block-label">Questions worth discussing with the U-M team</div>
   <ul>
     <li><strong>What is the team's reading of ECT-vs-another-ketamine-course for Dad specifically,</strong> given his February response, the difficulty of the May 18 session, and his current preferences? Both are reasonable choices; the family wants to understand the team's perspective on the relative merits.</li>
-    <li><strong>What technique would the team plan?</strong> Right unilateral ultrabrief pulse minimizes cognitive side effects and bradycardia risk per Stewart 2011. Propofol-based anesthesia (vs methohexital) has a lower inflammatory profile and faster cognitive recovery in elderly per Pang 2021. Worth confirming the plan upfront.</li>
+    <li><strong>What technique would the team plan?</strong> Right unilateral ultrabrief pulse minimizes cognitive side effects and bradycardia risk. Propofol-based anesthesia has a lower inflammatory profile and faster cognitive recovery in elderly than methohexital. Worth confirming the plan upfront.</li>
     <li><strong>Should ECT wait for the pending DAT-SPECT result?</strong> If abnormal, that confirms Dad in the Morikawa 2024 patient population with documented favorable ECT outcomes, and would inform technique. If normal, the prodromal-synucleinopathy concern attenuates. The result is likely available within 1–3 weeks.</li>
     <li><strong>What does the team see as the realistic response and durability expectations</strong> in Dad's specific profile? Late-life severe TRD response rates with ECT are 60–70% per Kellner PRIDE; Morikawa 2024 showed 96% improvement in Lewy-spectrum patients but 23.8% recurrence at 12 months. What does the team expect for Dad, and what's the maintenance plan if he responds?</li>
     <li><strong>What's the plan for cognitive baseline and serial monitoring?</strong> Pre-ECT MoCA and Trail Making B baseline, with serial monitoring every 3–4 sessions, is the standard of care. Dad has documented brain fog and pending cognitive evaluation — establishing baseline before any ECT-related decline is critical.</li>
@@ -263,30 +254,20 @@
   Dr. R and Dr. Auchincloss have both recommended ECT, and we're trying to understand whether it's the right next step for Dad specifically. We know the literature on ECT in Lewy-spectrum patients is actually pretty favorable (Morikawa 2024). The questions we have are about timing relative to the pending DAT-SPECT and Movement Disorders workup, about technique, and about how the team thinks about the alternative of completing the IV ketamine course at A2 first. What's your recommendation?
 </div>
 
-<div class="footer-note">
-  Page 1 of 4. Subsequent pages: the honest balance on ECT for Dad's profile (p. 2), direct comparison with another ketamine course (p. 3), key studies + post-consultation follow-up questions (p. 4).
-</div>
-
-<!-- ================================================ -->
-<!-- PAGE 2: THE HONEST BALANCE -->
-<!-- ================================================ -->
-
-<div class="page-break"></div>
-
 <h2 class="page-heading">The honest balance on ECT for Dad's profile</h2>
 
-<p class="context">A revised reading of the published evidence (per OE consultation #19, 5/20). The earlier draft of this handout overstated the case against ECT; this revision is more balanced. ECT is a reasonable option for Dad, with both meaningful upsides and real but manageable downsides.</p>
+<p class="context">ECT is a reasonable option for Dad, with both meaningful upsides and real but manageable downsides. Both ECT and another IV ketamine course are evidence-supported choices; the right answer depends substantially on Dad's preferences, his realistic appetite for each modality, and what the U-M Movement Disorders workup ultimately shows.</p>
 
 <div class="balance-grid">
   <div class="balance-card favors-ect">
     <div class="balance-label">What favors ECT in Dad's profile</div>
     <ul>
-      <li><strong>Robust late-life severe TRD evidence:</strong> Kellner PRIDE 2016 (n=240, age ≥60, right unilateral ultrabrief pulse + venlafaxine) showed <strong>61.7% remission</strong> at end of acute course. Late-life ECT response rates: 60–70%.</li>
+      <li><strong>Robust late-life severe TRD evidence:</strong> Kellner PRIDE 2016 (n=240, age ≥60, right unilateral ultrabrief pulse + venlafaxine) showed <strong>61.7% remission</strong> at end of acute course. Late-life ECT response rates run 60–70%.</li>
       <li><strong>Specifically in Lewy-spectrum disease:</strong> Morikawa 2024 (n=25 confirmed DLB / prodromal DLB with abnormal DAT-SPECT) showed <strong>96% at least some improvement, 60% remarkable improvement</strong>. Parkinsonism actually improved with ECT. No cognitive worsening. This is the most directly applicable safety data for Dad.</li>
       <li><strong>Takamiya 2021</strong> meta-analysis of ECT in Parkinson's disease (14 studies, n=129): improved both motor and non-motor symptoms without cognitive worsening. No documented cases of ECT precipitating motor decline in prodromal-synucleinopathy.</li>
       <li><strong>Fast onset:</strong> response typically detectable within 1–2 weeks. Faster than starting any new oral antidepressant.</li>
-      <li><strong>Cognitive cost is largely transient in responders.</strong> ELEKT-D showed 8.8-point delayed-recall decrement at end of treatment, but Kumpf 2025 secondary analysis showed differences resolved among responders at 1-, 3-, and 6-month follow-up.</li>
-      <li><strong>If Dad doesn't feel up for another ketamine session</strong>, ECT is a legitimate alternative — not a last resort, just a different treatment with its own evidence base.</li>
+      <li><strong>Cognitive cost is largely transient in responders.</strong> ELEKT-D showed an 8.8-point delayed-recall decrement at end of treatment, but Kumpf 2025 secondary analysis showed differences resolved among responders at 1-, 3-, and 6-month follow-up.</li>
+      <li><strong>If Dad doesn't feel up for another ketamine session</strong>, ECT is a legitimate alternative — not a last resort, just a different treatment with its own evidence base. The brief sedation experience may be more tolerable for him than another dissociative ketamine session after the difficult May 18.</li>
     </ul>
   </div>
 
@@ -305,26 +286,16 @@
 
 <div class="section-label">How severe are the GA exposures, really?</div>
 
-<p class="context">A more precise read than the earlier version of this handout offered:</p>
-
 <ul class="bulleted">
-  <li><strong>Per ECT session:</strong> ~5–10 minutes of total intravenous anesthesia (propofol or methohexital + succinylcholine for muscle relaxation). No volatile inhalation agents, no surgical inflammation, no blood loss, no post-op opioids. <strong>Per-exposure cognitive risk is materially lower than what a 60–90 minute surgical GA (like the March Aquablation) represents.</strong> Not zero — but not in the same magnitude.</li>
+  <li><strong>Per ECT session:</strong> ~5–10 minutes of total intravenous anesthesia (propofol or methohexital + succinylcholine for muscle relaxation). No volatile inhalation agents, no surgical inflammation, no blood loss, no post-op opioids. <strong>Per-exposure cognitive risk is materially lower than a 60–90 minute surgical GA</strong> like Dad's March Aquablation. Not zero — but not in the same magnitude.</li>
   <li><strong>Cumulative across an induction course (6–12 sessions):</strong> Total GA time ~30–120 minutes across 3–4 weeks. The MAAS cohort's cumulative-time signal applies but at the lower end of the dose-response. The acute cognitive cost during the course (ELEKT-D's 8.8-point delayed-recall decrement) largely <strong>resolves in responders by 1 month</strong>.</li>
-  <li><strong>Cumulative across induction + a year of maintenance:</strong> 20–40 brief GA exposures total. This is the actually-concerning cumulative dose, but it only arises if Dad responds and is committed to maintenance. Maintenance frequency can be adjusted; many patients taper to monthly or less; some don't need maintenance at all. This is a downstream question, not a present-decision question.</li>
+  <li><strong>Cumulative across induction + a year of maintenance:</strong> 20–40 brief GA exposures total. This is the more concerning cumulative dose, but it only arises if Dad responds and is committed to maintenance. Maintenance frequency can be adjusted; many patients taper to monthly or less; some don't need maintenance at all. This is a downstream question, not a present-decision question.</li>
   <li><strong>The Dad-specific risk multiplier:</strong> Kim 2018 found RBD as POD predictor (OR 1.45) in elderly surgical patients. Dad's prodromal-synucleinopathy profile theoretically raises POD risk. But Morikawa 2024 — the population that overlaps Dad's profile most — found 24% transient delirium rate and no serious AEs across the full course. The Dad-specific multiplier is real but not large.</li>
 </ul>
 
-<div class="footer-note">Page 2 of 4.</div>
-
-<!-- ================================================ -->
-<!-- PAGE 3: ECT vs KETAMINE FOR DAD -->
-<!-- ================================================ -->
-
-<div class="page-break"></div>
-
 <h2 class="page-heading">ECT vs another ketamine course — comparing honestly for Dad</h2>
 
-<p class="context">This is the actual decision the family is helping Dad weigh. Both are legitimate evidence-supported choices for severe late-life TRD. The right answer depends substantially on Dad's preferences and the specifics of his profile.</p>
+<p class="context">The actual decision the family is helping Dad weigh. Both are legitimate evidence-supported choices for severe late-life TRD.</p>
 
 <table class="compare">
   <thead>
@@ -338,7 +309,7 @@
     <tr>
       <td class="axis">Response rate in Dad's profile</td>
       <td><strong>60–70%</strong> in late-life severe TRD per PRIDE; <strong>96% any improvement, 60% remarkable</strong> in Lewy-spectrum per Morikawa 2024</td>
-      <td><strong>~50%</strong> in elderly TRD (TRANSFORM-3 esketamine ≥65 was negative; IV ketamine elderly evidence sparser); but Dad's documented prior dramatic response elevates this substantially</td>
+      <td><strong>~50%</strong> in elderly TRD generally (TRANSFORM-3 esketamine ≥65 was negative; IV ketamine elderly evidence sparser); but Dad's documented prior dramatic response elevates this substantially</td>
     </tr>
     <tr>
       <td class="axis">Onset of effect</td>
@@ -391,24 +362,16 @@
 
 <div class="section-label">A consideration that may matter regardless of which path is chosen</div>
 
-<p class="context"><strong>Completing the DAT-SPECT and the U-M Movement Disorders evaluation in the next few weeks would meaningfully refine the picture either way:</strong> if Dad ends up doing ECT, abnormal DAT-SPECT confirms him in the Morikawa cohort (favorable outcomes) and informs technique; if Dad ends up doing ketamine, the same workup informs the depakote question and the longer-term treatment trajectory. The workup is not an obstacle to either treatment path — it's information that improves whichever path is chosen. Whether ECT can wait the 1–3 weeks for the DAT-SPECT result is a reasonable thing to ask the U-M team.</p>
+<p class="context"><strong>Completing the DAT-SPECT and the U-M Movement Disorders evaluation in the next few weeks would meaningfully refine the picture either way.</strong> If Dad ends up doing ECT, abnormal DAT-SPECT confirms him in the Morikawa cohort (favorable outcomes) and informs technique; if Dad ends up doing ketamine, the same workup informs the broader treatment trajectory. The workup is not an obstacle to either treatment path — it's information that improves whichever path is chosen. Whether ECT can wait the 1–3 weeks for the DAT-SPECT result is a reasonable thing to ask the U-M team.</p>
 
-<div class="footer-note">Page 3 of 4.</div>
-
-<!-- ================================================ -->
-<!-- PAGE 4: KEY STUDIES + FOLLOW-UP -->
-<!-- ================================================ -->
-
-<div class="page-break"></div>
-
-<h2 class="page-heading">Key studies + post-consultation follow-up</h2>
+<h2 class="page-heading">Key studies</h2>
 
 <div class="section-label first">ECT in Lewy-spectrum and Parkinson's disease — favorable signal</div>
 
 <div class="citation">
   <div class="cite-title">Morikawa F, Kobayashi R, Murayama T et al. Evaluating ECT for Dementia With Lewy Bodies, Including the Prodromal Stage.</div>
   <div class="cite-source">Int J Geriatr Psychiatry 2024;39:e70020.</div>
-  <div class="cite-finding"><span class="label-inline">Key finding</span>Retrospective ECT analysis in 25 DLB / prodromal DLB / MCI-LB patients (all with abnormal DAT-SPECT and MIBG). 96% at least minimal improvement; 60% remarkable improvement. Parkinsonism improved with ECT (mean Hoehn-Yahr 1.8). Adverse events: 24% transient delirium, 4% transient amnesia; no serious AEs. <strong>No cognitive worsening</strong> before vs after ECT. Most directly applicable safety data for Dad's profile.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Retrospective ECT analysis in 25 DLB / prodromal DLB / MCI-LB patients (all with abnormal DAT-SPECT and MIBG). 96% at least minimal improvement; 60% remarkable improvement. Parkinsonism improved with ECT (mean Hoehn-Yahr 1.8). Adverse events: 24% transient delirium, 4% transient amnesia; no serious AEs. No cognitive worsening before vs after ECT. Most directly applicable safety data for Dad's profile.</div>
 </div>
 
 <div class="citation">
@@ -448,7 +411,7 @@
 <div class="citation">
   <div class="cite-title">Kunicki ZJ et al. Six-Year Cognitive Trajectory After Major Surgery and Delirium (SAGES).</div>
   <div class="cite-source">JAMA Intern Med 2023;183:442–450.</div>
-  <div class="cite-finding"><span class="label-inline">Key finding</span>Postoperative delirium associated with 40% accelerated cognitive decline slope. "Delirium signals underlying brain vulnerability." The framework is conceptually important even if Dad's March course was not formally delirium.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Postoperative delirium associated with 40% accelerated cognitive decline slope. "Delirium signals underlying brain vulnerability." The framework is conceptually important even if Dad's March course was not formally diagnosed as delirium.</div>
 </div>
 
 <div class="section-label">After the U-M consultation — what to capture in writing</div>
@@ -466,8 +429,6 @@
 <div class="section-label">A note on the family role</div>
 
 <p class="context">The family's role in this decision is to make sure Dad has the relevant information and that the U-M team has the relevant context — not to push toward a particular outcome. ECT is a reasonable treatment for Dad's severity and profile. Another ketamine course is also a reasonable treatment. The right answer depends on Dad's preferences, his appetite for each modality given recent experiences, the team's clinical judgment, and the eventual results of the workup. The family's job is to support whichever path Dad and the team choose — and to ensure the chosen path is executed with appropriate technique, monitoring, and follow-through.</p>
-
-<div class="footer-note">Page 4 of 4. Last updated 2026-05-20 (revised to a more balanced framing).</div>
 
 </body>
 </html>
