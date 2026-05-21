@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Sleep regimen for tonight — 2026-05-21</title>
+<title>Sleep regimen — old stack vs new — 2026-05-21</title>
 <style>
   @page { size: letter; margin: 0.5in 0.55in; }
   :root {
@@ -75,10 +75,10 @@
     border-radius: 4pt; padding: 10pt 13pt;
     font-size: 9pt; line-height: 1.45;
   }
-  .balance-card.option-a {
+  .balance-card.option-new {
     background: var(--green-bg); border: 1.5pt solid var(--green-border);
   }
-  .balance-card.option-f {
+  .balance-card.option-old {
     background: var(--blue-bg); border: 1.5pt solid var(--blue-border);
   }
   .balance-card .balance-label {
@@ -86,8 +86,8 @@
     font-weight: 700; font-size: 8pt; text-transform: uppercase;
     letter-spacing: 0.12em; margin-bottom: 6pt;
   }
-  .balance-card.option-a .balance-label { color: var(--green); }
-  .balance-card.option-f .balance-label { color: var(--navy); }
+  .balance-card.option-new .balance-label { color: var(--green); }
+  .balance-card.option-old .balance-label { color: var(--navy); }
   .balance-card .option-regimen {
     font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
     font-weight: 700; font-size: 9.5pt; color: var(--navy-dark); margin-bottom: 6pt;
@@ -156,22 +156,6 @@
   .ok-stack-block li:last-child { margin-bottom: 0; }
   .ok-stack-block li strong { color: var(--green); }
 
-  .speech-block {
-    background: white; border: 1pt solid var(--rule-strong);
-    border-left: 4pt solid var(--navy); padding: 10pt 14pt;
-    margin: 6pt 0 12pt 0;
-    font-family: "Charter", "Georgia", serif;
-    font-style: italic; font-size: 9.5pt; line-height: 1.5;
-    color: var(--text);
-    page-break-inside: avoid;
-  }
-  .speech-block .speech-label {
-    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
-    font-style: normal; font-weight: 700; font-size: 7.5pt;
-    text-transform: uppercase; letter-spacing: 0.12em;
-    color: var(--navy); margin-bottom: 5pt;
-  }
-
   .neutral-block {
     background: var(--tint-neutral); border-left: 3pt solid #888;
     padding: 9pt 14pt 6pt 14pt; margin: 4pt 0 10pt 0;
@@ -187,6 +171,22 @@
   }
   .neutral-block li:last-child { margin-bottom: 0; }
   .neutral-block strong { color: var(--navy-dark); }
+
+  .speech-block {
+    background: white; border: 1pt solid var(--rule-strong);
+    border-left: 4pt solid var(--navy); padding: 10pt 14pt;
+    margin: 6pt 0 12pt 0;
+    font-family: "Charter", "Georgia", serif;
+    font-style: italic; font-size: 9.5pt; line-height: 1.5;
+    color: var(--text);
+    page-break-inside: avoid;
+  }
+  .speech-block .speech-label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-style: normal; font-weight: 700; font-size: 7.5pt;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--navy); margin-bottom: 5pt;
+  }
 
   ul.bulleted {
     margin: 4pt 0 10pt 0; padding-left: 18pt; font-size: 9.5pt; line-height: 1.45;
@@ -225,8 +225,8 @@
 
 <div class="doc-header">
   <div>
-    <div class="title">Sleep regimen for tonight</div>
-    <div class="subtitle">Honest pros and cons of the two real options + clear stacking rules · 2026-05-21</div>
+    <div class="title">Sleep regimen — old stack vs. new</div>
+    <div class="subtitle">A medium-term choice, honestly framed, with clear stacking rules · 2026-05-21</div>
   </div>
   <div class="meta">
     For Dad, Mom, Leah, David,<br>
@@ -235,123 +235,149 @@
 </div>
 
 <div class="page-purpose">
-  <strong>What this is for.</strong> Tonight's sleep regimen decision, honestly framed. After reviewing the published evidence on each candidate regimen for Dad's specific profile, two options are roughly equivalent in evidence-supported terms — Option A (start lemborexant tonight) and Option F (use trazodone tonight, start lemborexant tomorrow). This isn't a case where one is obviously right and the other obviously wrong. Each has tradeoffs, and the choice depends on Dad's pre-bed anxiety state, the family's appetite for a less-predictable outcome, and the rescue plan if sleep doesn't come. This handout lays out the two options, the rescue plan for each, and the clear "do not combine" rules so the choice is made deliberately rather than by drift.
+  <strong>What this is for.</strong> The actual decision Dad and Mom are weighing on sleep — not just for tonight but for the medium-term window before ECT starts at U-M. The two real candidates are <strong>lemborexant 5 mg + melatonin 10 mg</strong> (the new agent Julane recommends) and <strong>doxepin 6 mg + trazodone 50 mg + melatonin 10 mg</strong> (the prior stack Dad was on, which produced 5.5–6 hours of "okay not great" sleep). Each is defensible. The choice depends on how the family weighs known-tolerated-but-unspectacular against untried-but-with-real-evidence-and-a-better-medium-term-profile. This handout lays out both honestly, plus the clear "do not combine" stacking rules so the choice is made deliberately rather than by drift.
 </div>
 
 <div class="key-bullet-block">
-  <div class="block-label">Dad's current med stack — these continue regardless of which option is chosen</div>
+  <div class="block-label">Background that holds across either choice</div>
   <ul>
-    <li><strong>Cymbalta 60 mg daily</strong> — taken in the morning. Taper is paused; Dad is back at 60 mg as of 5/21.</li>
-    <li><strong>Depakote 125 mg twice daily</strong> — morning and evening dose. Day 1 today. Will be reviewed with U-M when Maxner consults.</li>
-    <li><strong>Melatonin 10 mg HS</strong> — continues with either sleep regimen.</li>
-    <li><strong>Lorazepam (Ativan) PRN</strong> — available per Maxner clearance for acute anxiety. Family preference is to use sparingly given habit-formation concerns; not part of the planned sleep regimen tonight.</li>
+    <li><strong>Cymbalta 60 mg daily</strong> — taken in the morning. Taper is paused; Dad is back at 60 mg as of 5/21 after the difficult overnight 5/20.</li>
+    <li><strong>Depakote status TBD</strong> — being discussed; not yet confirmed as part of the medium-term regimen. This handout treats Depakote as a separate decision and does not fold it into the sleep regimen question.</li>
+    <li><strong>Melatonin 10 mg HS</strong> — continues with either sleep regimen. Negligible risk; modest evidence; no interactions.</li>
+    <li><strong>Lorazepam (Ativan) PRN</strong> — available per Maxner clearance. Family preference is to avoid scheduled use given habit-formation concerns; a single PRN dose for an acute episode is acceptable.</li>
+    <li><strong>ECT at U-M</strong> is 2–4 weeks out. The medium-term window for the sleep regimen is approximately the next 2–4 weeks until ECT starts and then through the ECT course.</li>
   </ul>
 </div>
 
-<div class="section-label">The two real options for tonight</div>
+<div class="section-label">The two real options</div>
 
-<p class="context">Both are defensible. Read the pros and cons together and pick the one that fits Dad's state at bedtime.</p>
+<p class="context">Both are defensible. The honest read is that this is closer to a coin flip than a clear winner. Read the pros and cons together and pick the one that better fits Dad's preferences, the medium-term trajectory, and the U-M Movement Disorders evaluation that's pending.</p>
 
 <div class="balance-grid">
-  <div class="balance-card option-a">
-    <div class="balance-label">Option A — Start lemborexant tonight</div>
+  <div class="balance-card option-new">
+    <div class="balance-label">Option A — The new stack (Julane's recommendation)</div>
     <div class="option-regimen">Lemborexant 5 mg HS + melatonin 10 mg HS</div>
 
     <div class="pro-con-label">Pros</div>
     <ul>
-      <li><strong>Real first-night PSG efficacy in elderly</strong> per SUNRISE-1 (Rosenberg 2019, JAMA Network Open): improved sleep onset and sleep maintenance on nights 1–2 vs. placebo and zolpidem.</li>
-      <li><strong>17-hour half-life</strong> means the drug is still working at 2 AM — built-in sleep-maintenance, not a "wears off" agent. Reduces WASO in the second half of the night.</li>
-      <li><strong>No dependence risk</strong>, no anticholinergic burden, no withdrawal pattern. Lowest abuse-potential profile of any insomnia agent per FAERS data.</li>
-      <li><strong>Introduces the long-term regimen on schedule</strong> — the agent Julane recommends and U-M will likely continue. No delay.</li>
-      <li><strong>SELENADE 2025 evidence</strong>: improved both insomnia and depressive symptoms in patients with comorbid depression.</li>
+      <li><strong>Real evidence base in elderly insomnia.</strong> SUNRISE-1 (Rosenberg 2019, JAMA Network Open) showed improved sleep onset and sleep maintenance in adults ≥55 vs. placebo and zolpidem. SUNRISE-2 confirmed durable effect over 12 months.</li>
+      <li><strong>17-hour half-life provides built-in sleep maintenance.</strong> The drug is still working at 2 AM — reduces wake-after-sleep-onset (WASO) in the second half of the night, which is precisely where Dad's prior stack underperformed (waking unrested).</li>
+      <li><strong>SELENADE 2025 evidence in comorbid depression:</strong> improved both insomnia and depressive symptoms over 12 weeks, with HAM-D-17 decreasing by 5–6 points. Directly applicable to Dad's profile.</li>
+      <li><strong>No anticholinergic burden</strong> — important given Dad's prodromal Lewy-spectrum markers (formal RBD 8.5 years, gait abnormality, constipation). Doxepin's burden is small at 6 mg but isn't zero, and cumulative exposure matters over months.</li>
+      <li><strong>No dependence risk, no withdrawal pattern.</strong> Lowest abuse-potential profile of any insomnia agent per FAERS data — lower than trazodone and doxepin.</li>
+      <li><strong>Single-agent simplicity.</strong> One sleep agent + melatonin is easier to track, attribute, and adjust than three concurrent agents.</li>
     </ul>
 
     <div class="pro-con-label">Cons</div>
     <ul>
-      <li><strong>New agent under acute anxiety</strong> — uncertainty itself may add to bedtime anxiety. First-night efficacy is established in trials but not in patients with severe pre-bedtime anxiety states specifically.</li>
-      <li><strong>Not anxiolytic per se</strong> — lemborexant blocks the wake signal but does not directly reduce anxiety. If Dad's anxiety is high enough at bedtime, it could overwhelm the orexin blockade.</li>
-      <li><strong>Nocebo risk if framed poorly</strong> — if Dad expects it not to work, that expectation becomes self-fulfilling. Pre-bed framing matters more than usual.</li>
-      <li><strong>Theoretical RBD consideration</strong> — lemborexant increases REM sleep, which could theoretically increase RBD episode frequency. No clinical data confirms this; the bed should be safe regardless (no nearby hard edges or hazards).</li>
+      <li><strong>Untried by Dad.</strong> No personal data on whether it works for him. First-night and first-week efficacy in trials doesn't guarantee his individual response.</li>
+      <li><strong>Cost.</strong> ~$300/month not covered by insurance. Family has dismissed this as a barrier; flagging for completeness.</li>
+      <li><strong>Not anxiolytic per se.</strong> Lemborexant blocks the wake signal but does not directly reduce anxiety. If Dad goes to bed anxious, the orexin blockade alone may not be enough to override it.</li>
+      <li><strong>Theoretical RBD consideration.</strong> Lemborexant increases REM sleep, which could in theory increase dream-enactment frequency. No clinical evidence this has materialized in any patient cohort; bed safety (no nearby hard edges) is a reasonable precaution.</li>
+      <li><strong>Nocebo risk under acute anxiety.</strong> Starting a new agent at a fragile moment carries some risk that a poor first night gets catastrophized into "doesn't work" before the agent has been fairly tested.</li>
     </ul>
   </div>
 
-  <div class="balance-card option-f">
-    <div class="balance-label">Option F — Defer lemborexant one night</div>
-    <div class="option-regimen">Trazodone 50 mg HS + melatonin 10 mg HS tonight; start lemborexant tomorrow night</div>
+  <div class="balance-card option-old">
+    <div class="balance-label">Option B — The old stack</div>
+    <div class="option-regimen">Doxepin 6 mg HS + trazodone 50 mg HS + melatonin 10 mg HS</div>
 
     <div class="pro-con-label">Pros</div>
     <ul>
-      <li><strong>Known-tolerated.</strong> Dad has taken trazodone 50 mg before. Lower-variance outcome.</li>
-      <li><strong>Predictable.</strong> Even if the prior sleep on doxepin + trazodone was "okay not great," that's a known floor — not the open question lemborexant would be tonight.</li>
-      <li><strong>Avoids first-night-failure nocebo</strong> on the long-term agent. If lemborexant doesn't work well tonight under acute anxiety, Dad may catastrophize that into "lemborexant doesn't work for me" and resist subsequent nights.</li>
-      <li><strong>No dependence risk.</strong> Trazodone has very low abuse potential per FAERS data.</li>
+      <li><strong>Known-tolerated by Dad.</strong> Personal data: 5.5–6 hours of sleep, no serious adverse effects, no overnight emergencies. The known floor is meaningful in a fragile moment.</li>
+      <li><strong>Both components have AGS-Beers-endorsed elderly indications.</strong> Low-dose doxepin (3–6 mg) is one of the few hypnotics specifically recommended in the 2023 Beers companion as a safer alternative; trazodone 50 mg is widely used at this dose even though formal evidence is weaker.</li>
+      <li><strong>Doxepin 6 mg has FDA approval specifically for insomnia.</strong> At this dose it's primarily a selective H1 antihistamine; the anticholinergic, serotonergic, and noradrenergic effects that drive antidepressant-dose doxepin's side-effect profile are minimal at 6 mg.</li>
+      <li><strong>Trazodone adds sleep-onset coverage</strong> via 5-HT2A/alpha-1/H1 antagonism; doxepin adds sleep-maintenance coverage. The combination addresses both halves of the night.</li>
+      <li><strong>No new variable.</strong> Choosing this preserves the family's ability to attribute any changes in Dad's state to Cymbalta, Depakote (if it ends up on board), or other factors — without lemborexant as an additional confound.</li>
+      <li><strong>Lower nocebo risk.</strong> Dad knows this regimen; the anxiety around "will the new thing work" doesn't apply.</li>
     </ul>
 
     <div class="pro-con-label">Cons</div>
     <ul>
-      <li><strong>Trazodone monotherapy evidence is weak.</strong> AGS Beers Criteria companion document explicitly states "insufficient evidence to recommend trazodone" in older adults. VA/DoD found no objective sleep improvement vs. placebo.</li>
-      <li><strong>Prior sleep on this stack was "okay not great"</strong> — about 5.5–6 hours total, no dream recall, wakes unrested. The known floor isn't a robust floor.</li>
-      <li><strong>Delays the long-term regimen one night</strong> — the rationale ("tomorrow will be calmer") is speculative. Nothing concrete changes between tonight and tomorrow except that tonight will have happened.</li>
-      <li><strong>Doesn't solve the underlying question</strong> — Dad still has to start lemborexant on a future night under uncertain conditions; the question is just deferred.</li>
+      <li><strong>"Okay not great" is the realistic ceiling.</strong> 5.5–6 hours, no dream recall, wakes unrested, can't nap during the day. The known floor isn't a robust one; this regimen has not produced the sleep Dad actually needs.</li>
+      <li><strong>Anticholinergic burden over time.</strong> Doxepin at 6 mg is at the low end of the dose-response curve, but it isn't zero. Over months, cumulative anticholinergic exposure is the wrong direction in a patient with formal RBD + gait abnormality + constipation (prodromal Lewy-spectrum markers). Acute risk for one night or one week is negligible; the medium-term direction matters.</li>
+      <li><strong>Dad attributed "agitation" to doxepin.</strong> The published literature has no documented paradoxical-agitation pattern at 6 mg, so this is most likely attribution error or coincidence — but Dad's subjective experience is itself a clinical fact that affects adherence.</li>
+      <li><strong>Doesn't advance the long-term regimen.</strong> U-M will eventually want a sleep stack going into ECT and beyond; doxepin will likely come off at some point given the prodromal markers. Choosing this now defers that transition.</li>
+      <li><strong>Three concurrent sleep agents (counting melatonin) is more attribution-noisy</strong> than one. If anything changes in Dad's state — better or worse — it's harder to know which agent is responsible.</li>
     </ul>
   </div>
 </div>
 
-<h2 class="page-heading">The 2 AM problem — rescue plan for each option</h2>
-
-<p class="context">The most important practical question is what happens if Dad wakes at 2 AM and can't get back to sleep. The rescue plan looks slightly different for each option.</p>
+<h2 class="page-heading">How they compare at a glance</h2>
 
 <table class="regimen">
   <thead>
     <tr>
-      <th style="width: 25%;">Scenario</th>
-      <th style="width: 37.5%;">If Option A (lemborexant)</th>
-      <th style="width: 37.5%;">If Option F (trazodone)</th>
+      <th style="width: 22%;">Dimension</th>
+      <th style="width: 39%;">Option A — Lemborexant + melatonin</th>
+      <th style="width: 39%;">Option B — Doxepin + trazodone + melatonin</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td class="axis">Wakes at 2 AM, mild anxiety</td>
-      <td><strong>Stay in bed.</strong> The lemborexant is still working (17-hr half-life). Give it 20 minutes of calm before considering anything else. Most likely Dad falls back asleep.</td>
-      <td><strong>Stay in bed.</strong> Trazodone's effect is fading by 2 AM (shorter half-life) but stimulus control still applies. Give it 20 minutes.</td>
+      <td class="axis">Personal data for Dad</td>
+      <td>None yet — untried</td>
+      <td>5.5–6 hrs sleep, no dream recall, wakes unrested, no serious AEs</td>
     </tr>
     <tr>
-      <td class="axis">Wakes at 2 AM, can't return to sleep after 20 min</td>
-      <td><strong>Get out of bed</strong> per CBT-I stimulus control. Dim-lit room, non-stimulating activity (no screens), return when sleepy. No additional medication.</td>
-      <td><strong>Get out of bed</strong> per CBT-I stimulus control. Same approach.</td>
+      <td class="axis">Trial evidence in elderly</td>
+      <td>Robust — SUNRISE-1, SUNRISE-2, SELENADE 2025 (depression comorbidity)</td>
+      <td>Doxepin 6 mg: robust (FDA-approved for insomnia, multiple RCTs). Trazodone 50 mg: weak (AGS Beers companion: "insufficient evidence")</td>
     </tr>
     <tr>
-      <td class="axis">Truly cannot sleep at all, high anxiety, ≥5 hours of bedtime remaining</td>
-      <td><strong>Trazodone 25 mg PRN</strong> at bedside as a last-resort rescue. Pre-discuss with Dad. ≥5 hours of bedtime remaining is the threshold to avoid next-day sedation.</td>
-      <td><strong>No additional sleep medication</strong> — already on trazodone 50 mg. Doubling up isn't appropriate. Accept the night and reassess in the AM.</td>
+      <td class="axis">Sleep maintenance (2 AM problem)</td>
+      <td>17-hr half-life — drug still active overnight</td>
+      <td>Doxepin's primary benefit is sleep maintenance; combination covers both halves</td>
     </tr>
     <tr>
-      <td class="axis">High anxiety pre-bed before the planned regimen</td>
-      <td><strong>Lorazepam 0.5 mg PRN</strong> can be used as a single dose if family/Dad accept it. Family preference is to avoid; non-pharmacologic strategies first (slow breathing, reassurance, gentle activity).</td>
-      <td><strong>Lorazepam 0.5 mg PRN</strong> same option. Same family preference. Same non-pharmacologic first.</td>
+      <td class="axis">Anticholinergic burden</td>
+      <td>None</td>
+      <td>Modest (doxepin); concerning over months in prodromal Lewy-spectrum</td>
     </tr>
     <tr>
-      <td class="axis">Multiple awakenings, escalating anxiety</td>
-      <td><strong>Accept the night.</strong> Don't escalate medications mid-night. Track what happened. Reassess in the morning.</td>
-      <td><strong>Accept the night.</strong> Same approach.</td>
+      <td class="axis">Dependence risk</td>
+      <td>None — FAERS lowest of any insomnia agent</td>
+      <td>None — both have very low abuse potential</td>
+    </tr>
+    <tr>
+      <td class="axis">Anxiolytic effect</td>
+      <td>None directly — blocks wake signal but not anxiety</td>
+      <td>Modest — doxepin's antihistamine effect calms; trazodone's 5-HT2A/alpha-1 antagonism is mildly anxiolytic</td>
+    </tr>
+    <tr>
+      <td class="axis">Cost (Dad-side)</td>
+      <td>~$300/month not covered</td>
+      <td>Both generic; trivial cost</td>
+    </tr>
+    <tr>
+      <td class="axis">Number of agents</td>
+      <td>1 (+ melatonin)</td>
+      <td>2 (+ melatonin)</td>
+    </tr>
+    <tr>
+      <td class="axis">Medium-term direction</td>
+      <td>The agent Julane recommends and U-M will likely continue through ECT</td>
+      <td>Anticholinergic-loaded; U-M will likely want to transition off doxepin at some point</td>
+    </tr>
+    <tr>
+      <td class="axis">First-night risk</td>
+      <td>Moderate — untried; nocebo risk if framed poorly</td>
+      <td>Low — known-tolerated; predictable</td>
     </tr>
   </tbody>
 </table>
 
-<div class="section-label">A note on the rescue logic</div>
-
-<p class="context">The Ativan PRN is in the medicine cabinet and U-M has cleared it. The family preference is to avoid it where reasonably possible — single emergency use isn't a habit but routine use establishes one. A single 0.5 mg dose tonight if truly needed is not a catastrophe; it is one dose used appropriately. The goal is to make tonight's regimen work without needing the Ativan, not to refuse it on principle if it's the only thing that gets Dad to sleep.</p>
-
-<h2 class="page-heading">Clear stacking rules — what NOT to combine tonight</h2>
+<h2 class="page-heading">Clear stacking rules — what NOT to combine</h2>
 
 <div class="stacking-block">
   <div class="block-label">DO NOT — these combinations are not the plan and should not be drifted into</div>
   <ul>
-    <li><strong>DO NOT take lemborexant AND trazodone the same night.</strong> They are alternatives, not stack-mates. Stacking two sedating agents with different mechanisms adds risk (orthostatic hypotension, falls, additive sedation) without an evidence base for the combo and makes attribution impossible if anything goes wrong.</li>
-    <li><strong>DO NOT add doxepin back tonight.</strong> Whether or not the "agitation" Dad attributed to doxepin was a real effect, doxepin is off the regimen now. Adding it back tonight would muddy the assessment of any other agent and adds anticholinergic load — which is the wrong direction in someone with prodromal Lewy-spectrum markers.</li>
-    <li><strong>DO NOT take a second sleep aid mid-night.</strong> If the planned regimen doesn't work and Dad wakes at 12 or 1 AM, do not stack a different sleep aid on top. The only mid-night option is trazodone 25 mg PRN (Option A rescue, ≥5 hours remaining) — and only if it's truly needed and pre-planned at bedside.</li>
+    <li><strong>DO NOT take lemborexant AND trazodone the same night.</strong> They are alternatives, not stack-mates. If choosing Option A, both doxepin and trazodone are off the regimen. If choosing Option B, lemborexant is off. Stacking two sedating agents with different mechanisms adds risk (orthostatic hypotension, falls, additive sedation) without an evidence base for the combo.</li>
+    <li><strong>DO NOT take lemborexant AND doxepin the same night.</strong> Same logic — Option A is lemborexant only (+ melatonin). Adding doxepin reintroduces anticholinergic load and undermines the rationale for switching.</li>
+    <li><strong>DO NOT take only one of doxepin or trazodone (Option B is the pair).</strong> Trazodone monotherapy has weak evidence in elderly (AGS Beers: "insufficient evidence"). Doxepin monotherapy at 6 mg works on sleep maintenance but is light on sleep onset. The Option B value is the combination; don't degrade it by dropping one component.</li>
+    <li><strong>DO NOT fold Depakote into the sleep regimen question.</strong> Depakote is a separate decision being discussed for acute anxiety. Whether it goes on board, at what dose, and for how long is a question for the U-M conversation. Treating Depakote as part of the sleep stack confuses two independent questions.</li>
     <li><strong>DO NOT take Ativan as a scheduled nightly dose.</strong> One emergency use is fine; nightly use establishes a dependence pattern that becomes hard to undo. If Ativan ends up being needed multiple nights in a row, that's a signal to escalate to U-M faster, not to add it to the routine.</li>
-    <li><strong>DO NOT skip the Depakote evening dose to "reduce sedation load."</strong> Depakote 125 mg PM is Dr. Rubin's prescribed schedule and is too low a dose to be doing significant sedation work. Skipping it disrupts the planned schedule without clinical benefit.</li>
+    <li><strong>DO NOT stack a second sleep aid mid-night.</strong> If the chosen regimen doesn't work and Dad wakes at 12 or 1 AM, do not pile on a different sleep aid. Stimulus control + acceptance is the right response, not pharmacologic escalation in the middle of the night.</li>
     <li><strong>DO NOT skip the Cymbalta morning dose to "reduce serotonergic load."</strong> The taper is paused. Dad is at 60 mg by design. Skipping a dose restarts the destabilization the pause is meant to prevent.</li>
   </ul>
 </div>
@@ -359,47 +385,49 @@
 <div class="ok-stack-block">
   <div class="block-label">DO — these combinations are the plan and are evidence-supported</div>
   <ul>
-    <li><strong>DO take Cymbalta 60 mg AM and Depakote 125 mg morning + evening</strong> per Rubin's schedule. These are separate from the sleep regimen and continue regardless.</li>
-    <li><strong>DO take melatonin 10 mg HS</strong> with either Option A or Option F. Negligible interactions, low risk, modest sleep-onset support.</li>
-    <li><strong>DO have the rescue agent at bedside</strong> (trazodone 25 mg for Option A; nothing additional for Option F beyond the night's plan). Knowing it's there reduces anticipatory anxiety.</li>
-    <li><strong>DO write down what happened tomorrow morning</strong> — onset to sleep, awakenings, total time, how Dad felt on waking. Future regimen decisions depend on this data.</li>
+    <li><strong>DO take Cymbalta 60 mg AM</strong> per the paused-taper schedule. Sleep regimen is separate.</li>
+    <li><strong>DO take melatonin 10 mg HS</strong> with either Option A or Option B. Negligible interactions; modest sleep-onset support.</li>
+    <li><strong>DO commit to one regimen for a fair trial window.</strong> Option A needs 3–4 nights minimum to evaluate; Option B already has Dad's prior data. Switching mid-week defeats the assessment.</li>
+    <li><strong>DO use Ativan PRN as a single-dose rescue if truly needed</strong> — once. Note the dose, time, and effect. Don't escalate to scheduled use without escalating to U-M.</li>
+    <li><strong>DO track sleep nightly in writing</strong> — onset, awakenings, total time, subjective quality, AM mood. The data is what informs the next decision.</li>
+    <li><strong>DO treat Depakote, the Cymbalta taper, and the sleep regimen as three independent questions</strong> — each gets discussed with U-M on its own merits.</li>
   </ul>
 </div>
 
-<h2 class="page-heading">Pre-bed framing for Dad</h2>
+<h2 class="page-heading">Tonight specifically</h2>
+
+<p class="context">Tonight is the first night of whichever option is chosen. If Option A, it's the first lemborexant trial. If Option B, Dad goes back to a known stack. Either way, the framing for Dad pre-bed matters more than usual, given the acute anxiety state today.</p>
 
 <div class="speech-block">
-  <div class="speech-label">For Mom to Dad — in their own words (Option A version)</div>
-  This is the new medication Julane recommended. It works differently from doxepin and trazodone — instead of making you sleepy, it turns down the wake signal. It lasts the whole night, so if you wake up at 2 AM, the medicine is still working — give it a few minutes to do its job. We're trying this for the first time tonight, so it may take a few nights to know how well it works for you. We have a backup plan if you really can't sleep. One night doesn't tell us much; we'll know more after three or four nights.
+  <div class="speech-label">For Mom to Dad — if Option A is chosen</div>
+  This is the medication Julane recommended. It works differently from doxepin and trazodone — instead of making you sleepy, it turns down the wake signal. It lasts the whole night, so if you wake up at 2 AM, the medicine is still working — give it a few minutes. We're trying it for the first time tonight, so it may take a few nights to know how well it works for you. One night doesn't tell us much; we'll know more after three or four. If you really can't sleep, we have Ativan as a one-time backup.
 </div>
 
 <div class="speech-block">
-  <div class="speech-label">For Mom to Dad — in their own words (Option F version)</div>
-  Tonight we're using trazodone, which you've taken before, because we want a familiar agent on a hard day. Tomorrow we'll start the new medication Julane recommended under calmer conditions. This is a bridge night, not a step backward.
+  <div class="speech-label">For Mom to Dad — if Option B is chosen</div>
+  We're going back to the regimen you were on before — doxepin, trazodone, melatonin. You know how this feels and we know it gives you a decent night's sleep. We're not committing to it long-term — when U-M gets involved we'll revisit. Tonight is about familiarity and not adding a new variable on a hard day.
 </div>
 
-<div class="section-label">Why the framing matters</div>
-
-<p class="context">Insomnia is perpetuated by anticipatory anxiety about sleep. The published CBT-I evidence shows that the cognitive frame around the sleep agent affects the outcome almost as much as the pharmacology does — especially for a first-night trial of a new medication. The single most important thing Mom or whoever helps Dad to bed tonight can do is set the expectation that imperfect is fine, that the medication is on board, and that there's a plan if it doesn't work. The plan-existing matters; the rescue itself is rarely needed when the plan is clear.</p>
-
-<h2 class="page-heading">How we'll know what to do tomorrow night</h2>
+<h2 class="page-heading">How we'll know what to do over the next 1–2 weeks</h2>
 
 <div class="neutral-block">
   <ul>
-    <li><strong>Track tonight in writing</strong> — when Dad took the regimen, when he fell asleep, any awakenings (time + duration), what he did during awakenings, how he felt waking up, and what (if anything) he took as rescue.</li>
-    <li><strong>If Option A worked tonight (or worked partially):</strong> continue lemborexant tomorrow. The 3–4 night evaluation window is the standard for assessing a new sleep agent; one good or partial night isn't conclusive, but it's encouraging.</li>
-    <li><strong>If Option A didn't work tonight and Dad is distressed:</strong> consider Option F-equivalent tomorrow (trazodone 50 mg) and try lemborexant again on a calmer day later in the week. Don't give up on lemborexant after one night.</li>
-    <li><strong>If Option F was chosen tonight:</strong> start lemborexant tomorrow regardless of how tonight went. The deferral was for tonight specifically, not an open-ended delay.</li>
-    <li><strong>If anything new appeared</strong> — dream enactment / RBD episode escalation, paradoxical agitation, GI symptoms, new motor symptoms — note it. Lemborexant + RBD is theoretical; the question of whether it changes anything for Dad needs his actual data.</li>
-    <li><strong>If Ativan was used:</strong> note the dose, time, and how much it helped. One dose is fine; the question is whether it gets used again.</li>
+    <li><strong>Whichever option is chosen, give it a fair trial window</strong> — 3–4 nights minimum for Option A; Dad already has data on Option B so 1–2 nights is enough to confirm it's still consistent with his prior experience.</li>
+    <li><strong>What "working" looks like:</strong> ≥6 hours of total sleep, falls asleep within ~30 min, no more than 1–2 awakenings of ≤20 min each, wakes feeling at least somewhat rested, no new daytime symptoms (worse anxiety, motor changes, cognitive cloudiness beyond baseline).</li>
+    <li><strong>What "not working" looks like:</strong> ≤5 hours total, multiple long awakenings, AM anxiety spike, new daytime symptoms.</li>
+    <li><strong>If Option A is chosen and works:</strong> stay on it. Bring it to the Maxner conversation as the medium-term sleep stack going into ECT.</li>
+    <li><strong>If Option A is chosen and doesn't work after 3–4 nights:</strong> revert to Option B; flag for Maxner that lemborexant didn't deliver. Don't abandon lemborexant after one bad night.</li>
+    <li><strong>If Option B is chosen:</strong> the question revisits with U-M during the Maxner conversation. The case for transitioning to lemborexant pre-ECT is on the table; the family hasn't ruled it out.</li>
+    <li><strong>If anything new appears</strong> — dream enactment / RBD escalation, new motor symptoms, paradoxical agitation, GI changes — note it. These observations feed the Movement Disorders evaluation.</li>
+    <li><strong>If Ativan is used:</strong> note the dose, time, and how much it helped. One night is fine; multiple nights in a row is a signal to escalate to U-M, not to extend the pattern.</li>
   </ul>
 </div>
 
 <h2 class="page-heading">Bottom line</h2>
 
-<p class="context"><strong>Option A is the slightly stronger evidence-based call</strong> for a patient who can be framed well and whose anxiety is manageable at bedtime — the new agent has real first-night PSG data, the 17-hour half-life provides built-in sleep maintenance, and it advances the long-term regimen. <strong>Option F is the lower-variance call</strong> for a patient whose pre-bed anxiety is high enough that introducing a new agent risks a self-fulfilling failure. Neither is wrong. Mom is the best-positioned to read Dad's state at bedtime and make the call.</p>
+<p class="context">This is closer to a coin flip than a clear winner. <strong>Option A</strong> has the better medium-term direction — real evidence in elderly, no anticholinergic burden, single-agent simplicity, the agent U-M and Julane will likely want. <strong>Option B</strong> has the better short-term predictability — known-tolerated, no nocebo risk, modest anxiolytic effect from the antihistamine + 5-HT2A antagonism. Dad and Mom are the right people to make this call. The job of this handout is to ensure the call is deliberate, that whichever option is chosen gets a fair trial, and that the family doesn't drift into a regimen no one chose — by stacking lemborexant on top of doxepin + trazodone, by adding Depakote without a separate conversation about it, or by escalating Ativan into nightly use without anyone noticing.</p>
 
-<p class="context">Whichever option is chosen, the stacking rules above are not negotiable: no combining lemborexant + trazodone tonight, no adding doxepin back, no escalating Ativan to scheduled use, no mid-night stacking. The clear rules are how the family avoids drifting into a regimen no one chose deliberately.</p>
+<p class="context">The medium-term frame matters because ECT is 2–4 weeks out. Whichever stack is on board going into Maxner's intake conversation becomes the starting point for U-M's plan. That's worth choosing on purpose rather than by accumulation.</p>
 
 </body>
 </html>
