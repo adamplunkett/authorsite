@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Sleep regimen for tonight — 2026-05-21</title>
+<style>
+  @page { size: letter; margin: 0.5in 0.55in; }
+  :root {
+    --navy: #1a3a5c; --navy-dark: #0f2640;
+    --green: #2c5e3f; --green-bg: #e8f0ea; --green-border: #5a8a6a;
+    --blue-bg: #eef2f8; --blue-border: #6a8aaa;
+    --amber: #8a6a2c; --amber-bg: #f5efdf; --amber-border: #c8a86e;
+    --red: #8b2c2c; --red-bg: #f4e6e6; --red-border: #c87878;
+    --text: #1f1f1f; --text-muted: #5a5a5a;
+    --rule: #c8c8c8; --rule-strong: #6a6a6a;
+    --tint: #f5f3f0; --tint-neutral: #f3f3f1;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    font-family: "Charter", "Georgia", "Times New Roman", serif;
+    font-size: 10pt; line-height: 1.42; color: var(--text);
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--navy); text-decoration: underline; text-decoration-thickness: 0.4pt; text-underline-offset: 1.5pt; }
+
+  .doc-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    padding-bottom: 8pt; border-bottom: 1.5pt solid var(--navy); margin-bottom: 16pt;
+  }
+  .doc-header .title {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 700; font-size: 17pt; line-height: 1.15;
+    color: var(--navy-dark); letter-spacing: -0.015em;
+  }
+  .doc-header .subtitle {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 500; font-size: 9.5pt; color: var(--text-muted);
+    margin-top: 3pt;
+  }
+  .doc-header .meta {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 7.5pt; color: var(--text-muted); text-align: right;
+    letter-spacing: 0.03em; line-height: 1.5;
+  }
+
+  .page-purpose {
+    background: var(--tint); padding: 9pt 13pt; border-radius: 4pt;
+    font-size: 9.5pt; line-height: 1.45; color: var(--text);
+    margin-bottom: 14pt;
+  }
+  .page-purpose strong { color: var(--navy-dark); }
+
+  .section-label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 8pt; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.16em; color: var(--navy); margin: 14pt 0 8pt 0;
+    page-break-after: avoid;
+  }
+  .section-label.first { margin-top: 0; }
+
+  h2.page-heading {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 700; font-size: 13pt; color: var(--navy-dark);
+    margin: 18pt 0 10pt 0; padding-bottom: 5pt; border-bottom: 1pt solid var(--rule-strong);
+    letter-spacing: -0.01em;
+    page-break-after: avoid;
+  }
+
+  .balance-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 10pt;
+    margin: 6pt 0 10pt 0;
+  }
+  .balance-card {
+    border-radius: 4pt; padding: 10pt 13pt;
+    font-size: 9pt; line-height: 1.45;
+  }
+  .balance-card.option-a {
+    background: var(--green-bg); border: 1.5pt solid var(--green-border);
+  }
+  .balance-card.option-f {
+    background: var(--blue-bg); border: 1.5pt solid var(--blue-border);
+  }
+  .balance-card .balance-label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 700; font-size: 8pt; text-transform: uppercase;
+    letter-spacing: 0.12em; margin-bottom: 6pt;
+  }
+  .balance-card.option-a .balance-label { color: var(--green); }
+  .balance-card.option-f .balance-label { color: var(--navy); }
+  .balance-card .option-regimen {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 700; font-size: 9.5pt; color: var(--navy-dark); margin-bottom: 6pt;
+  }
+  .balance-card .pro-con-label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 700; font-size: 7.5pt; text-transform: uppercase;
+    letter-spacing: 0.1em; color: var(--text-muted); margin: 7pt 0 3pt 0;
+  }
+  .balance-card ul { margin: 0; padding-left: 14pt; }
+  .balance-card li { margin-bottom: 5pt; page-break-inside: avoid; }
+  .balance-card li:last-child { margin-bottom: 0; }
+  .balance-card strong { color: var(--navy-dark); }
+
+  .key-bullet-block {
+    border-left: 4pt solid var(--navy); background: var(--blue-bg);
+    padding: 11pt 16pt; margin: 0 0 12pt 0; border-radius: 0 4pt 4pt 0;
+  }
+  .key-bullet-block li { page-break-inside: avoid; }
+  .key-bullet-block .block-label { page-break-after: avoid; }
+  .key-bullet-block .block-label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 700; font-size: 8pt; text-transform: uppercase;
+    letter-spacing: 0.12em; margin-bottom: 7pt; color: var(--navy);
+  }
+  .key-bullet-block ul { margin: 0; padding-left: 18pt; }
+  .key-bullet-block li {
+    font-size: 9.75pt; line-height: 1.45; margin-bottom: 7pt;
+  }
+  .key-bullet-block li:last-child { margin-bottom: 0; }
+  .key-bullet-block li strong { color: var(--navy-dark); }
+
+  .stacking-block {
+    background: var(--red-bg); border: 1.5pt solid var(--red-border);
+    padding: 11pt 16pt; margin: 6pt 0 12pt 0; border-radius: 4pt;
+    page-break-inside: avoid;
+  }
+  .stacking-block .block-label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 700; font-size: 8pt; text-transform: uppercase;
+    letter-spacing: 0.12em; margin-bottom: 7pt; color: var(--red);
+    page-break-after: avoid;
+  }
+  .stacking-block ul { margin: 0; padding-left: 18pt; }
+  .stacking-block li {
+    font-size: 9.5pt; line-height: 1.45; margin-bottom: 6pt; page-break-inside: avoid;
+  }
+  .stacking-block li:last-child { margin-bottom: 0; }
+  .stacking-block li strong { color: var(--red); }
+
+  .ok-stack-block {
+    background: var(--green-bg); border: 1.5pt solid var(--green-border);
+    padding: 11pt 16pt; margin: 6pt 0 12pt 0; border-radius: 4pt;
+    page-break-inside: avoid;
+  }
+  .ok-stack-block .block-label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 700; font-size: 8pt; text-transform: uppercase;
+    letter-spacing: 0.12em; margin-bottom: 7pt; color: var(--green);
+    page-break-after: avoid;
+  }
+  .ok-stack-block ul { margin: 0; padding-left: 18pt; }
+  .ok-stack-block li {
+    font-size: 9.5pt; line-height: 1.45; margin-bottom: 6pt; page-break-inside: avoid;
+  }
+  .ok-stack-block li:last-child { margin-bottom: 0; }
+  .ok-stack-block li strong { color: var(--green); }
+
+  .speech-block {
+    background: white; border: 1pt solid var(--rule-strong);
+    border-left: 4pt solid var(--navy); padding: 10pt 14pt;
+    margin: 6pt 0 12pt 0;
+    font-family: "Charter", "Georgia", serif;
+    font-style: italic; font-size: 9.5pt; line-height: 1.5;
+    color: var(--text);
+    page-break-inside: avoid;
+  }
+  .speech-block .speech-label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-style: normal; font-weight: 700; font-size: 7.5pt;
+    text-transform: uppercase; letter-spacing: 0.12em;
+    color: var(--navy); margin-bottom: 5pt;
+  }
+
+  .neutral-block {
+    background: var(--tint-neutral); border-left: 3pt solid #888;
+    padding: 9pt 14pt 6pt 14pt; margin: 4pt 0 10pt 0;
+    page-break-inside: avoid;
+  }
+  .neutral-block ul { list-style: none; padding: 0; margin: 0; }
+  .neutral-block li {
+    font-size: 9.25pt; line-height: 1.45; margin-bottom: 6pt;
+    padding-left: 12pt; position: relative;
+  }
+  .neutral-block li::before {
+    content: "•"; position: absolute; left: 0; color: #888; font-weight: bold;
+  }
+  .neutral-block li:last-child { margin-bottom: 0; }
+  .neutral-block strong { color: var(--navy-dark); }
+
+  ul.bulleted {
+    margin: 4pt 0 10pt 0; padding-left: 18pt; font-size: 9.5pt; line-height: 1.45;
+  }
+  ul.bulleted li { margin-bottom: 5pt; page-break-inside: avoid; }
+  ul.bulleted strong { color: var(--navy-dark); }
+
+  .context { font-size: 9.5pt; line-height: 1.5; color: var(--text); margin: 0 0 8pt 0; }
+  .context strong { color: var(--navy-dark); }
+
+  table.regimen {
+    width: 100%; border-collapse: collapse; margin: 6pt 0 10pt 0;
+    table-layout: fixed; font-size: 9pt;
+    page-break-inside: avoid;
+  }
+  table.regimen thead th {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 700; font-size: 8pt; padding: 7pt 9pt; text-align: left;
+    background: var(--navy); color: white; letter-spacing: 0.02em;
+  }
+  table.regimen td {
+    padding: 6pt 9pt; vertical-align: top;
+    border-bottom: 0.5pt solid var(--rule);
+    font-size: 9pt; line-height: 1.4;
+  }
+  table.regimen td.axis {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 600; color: var(--text);
+    background: #f7f7f5;
+  }
+  table.regimen tbody tr:last-child td { border-bottom: none; }
+  table.regimen td strong { color: var(--navy-dark); }
+</style>
+</head>
+<body>
+
+<div class="doc-header">
+  <div>
+    <div class="title">Sleep regimen for tonight</div>
+    <div class="subtitle">Honest pros and cons of the two real options + clear stacking rules · 2026-05-21</div>
+  </div>
+  <div class="meta">
+    For Dad, Mom, Leah, David,<br>
+    Debbi, family team
+  </div>
+</div>
+
+<div class="page-purpose">
+  <strong>What this is for.</strong> Tonight's sleep regimen decision, honestly framed. After reviewing the published evidence on each candidate regimen for Dad's specific profile, two options are roughly equivalent in evidence-supported terms — Option A (start lemborexant tonight) and Option F (use trazodone tonight, start lemborexant tomorrow). This isn't a case where one is obviously right and the other obviously wrong. Each has tradeoffs, and the choice depends on Dad's pre-bed anxiety state, the family's appetite for a less-predictable outcome, and the rescue plan if sleep doesn't come. This handout lays out the two options, the rescue plan for each, and the clear "do not combine" rules so the choice is made deliberately rather than by drift.
+</div>
+
+<div class="key-bullet-block">
+  <div class="block-label">Dad's current med stack — these continue regardless of which option is chosen</div>
+  <ul>
+    <li><strong>Cymbalta 60 mg daily</strong> — taken in the morning. Taper is paused; Dad is back at 60 mg as of 5/21.</li>
+    <li><strong>Depakote 125 mg twice daily</strong> — morning and evening dose. Day 1 today. Will be reviewed with U-M when Maxner consults.</li>
+    <li><strong>Melatonin 10 mg HS</strong> — continues with either sleep regimen.</li>
+    <li><strong>Lorazepam (Ativan) PRN</strong> — available per Maxner clearance for acute anxiety. Family preference is to use sparingly given habit-formation concerns; not part of the planned sleep regimen tonight.</li>
+  </ul>
+</div>
+
+<div class="section-label">The two real options for tonight</div>
+
+<p class="context">Both are defensible. Read the pros and cons together and pick the one that fits Dad's state at bedtime.</p>
+
+<div class="balance-grid">
+  <div class="balance-card option-a">
+    <div class="balance-label">Option A — Start lemborexant tonight</div>
+    <div class="option-regimen">Lemborexant 5 mg HS + melatonin 10 mg HS</div>
+
+    <div class="pro-con-label">Pros</div>
+    <ul>
+      <li><strong>Real first-night PSG efficacy in elderly</strong> per SUNRISE-1 (Rosenberg 2019, JAMA Network Open): improved sleep onset and sleep maintenance on nights 1–2 vs. placebo and zolpidem.</li>
+      <li><strong>17-hour half-life</strong> means the drug is still working at 2 AM — built-in sleep-maintenance, not a "wears off" agent. Reduces WASO in the second half of the night.</li>
+      <li><strong>No dependence risk</strong>, no anticholinergic burden, no withdrawal pattern. Lowest abuse-potential profile of any insomnia agent per FAERS data.</li>
+      <li><strong>Introduces the long-term regimen on schedule</strong> — the agent Julane recommends and U-M will likely continue. No delay.</li>
+      <li><strong>SELENADE 2025 evidence</strong>: improved both insomnia and depressive symptoms in patients with comorbid depression.</li>
+    </ul>
+
+    <div class="pro-con-label">Cons</div>
+    <ul>
+      <li><strong>New agent under acute anxiety</strong> — uncertainty itself may add to bedtime anxiety. First-night efficacy is established in trials but not in patients with severe pre-bedtime anxiety states specifically.</li>
+      <li><strong>Not anxiolytic per se</strong> — lemborexant blocks the wake signal but does not directly reduce anxiety. If Dad's anxiety is high enough at bedtime, it could overwhelm the orexin blockade.</li>
+      <li><strong>Nocebo risk if framed poorly</strong> — if Dad expects it not to work, that expectation becomes self-fulfilling. Pre-bed framing matters more than usual.</li>
+      <li><strong>Theoretical RBD consideration</strong> — lemborexant increases REM sleep, which could theoretically increase RBD episode frequency. No clinical data confirms this; the bed should be safe regardless (no nearby hard edges or hazards).</li>
+    </ul>
+  </div>
+
+  <div class="balance-card option-f">
+    <div class="balance-label">Option F — Defer lemborexant one night</div>
+    <div class="option-regimen">Trazodone 50 mg HS + melatonin 10 mg HS tonight; start lemborexant tomorrow night</div>
+
+    <div class="pro-con-label">Pros</div>
+    <ul>
+      <li><strong>Known-tolerated.</strong> Dad has taken trazodone 50 mg before. Lower-variance outcome.</li>
+      <li><strong>Predictable.</strong> Even if the prior sleep on doxepin + trazodone was "okay not great," that's a known floor — not the open question lemborexant would be tonight.</li>
+      <li><strong>Avoids first-night-failure nocebo</strong> on the long-term agent. If lemborexant doesn't work well tonight under acute anxiety, Dad may catastrophize that into "lemborexant doesn't work for me" and resist subsequent nights.</li>
+      <li><strong>No dependence risk.</strong> Trazodone has very low abuse potential per FAERS data.</li>
+    </ul>
+
+    <div class="pro-con-label">Cons</div>
+    <ul>
+      <li><strong>Trazodone monotherapy evidence is weak.</strong> AGS Beers Criteria companion document explicitly states "insufficient evidence to recommend trazodone" in older adults. VA/DoD found no objective sleep improvement vs. placebo.</li>
+      <li><strong>Prior sleep on this stack was "okay not great"</strong> — about 5.5–6 hours total, no dream recall, wakes unrested. The known floor isn't a robust floor.</li>
+      <li><strong>Delays the long-term regimen one night</strong> — the rationale ("tomorrow will be calmer") is speculative. Nothing concrete changes between tonight and tomorrow except that tonight will have happened.</li>
+      <li><strong>Doesn't solve the underlying question</strong> — Dad still has to start lemborexant on a future night under uncertain conditions; the question is just deferred.</li>
+    </ul>
+  </div>
+</div>
+
+<h2 class="page-heading">The 2 AM problem — rescue plan for each option</h2>
+
+<p class="context">The most important practical question is what happens if Dad wakes at 2 AM and can't get back to sleep. The rescue plan looks slightly different for each option.</p>
+
+<table class="regimen">
+  <thead>
+    <tr>
+      <th style="width: 25%;">Scenario</th>
+      <th style="width: 37.5%;">If Option A (lemborexant)</th>
+      <th style="width: 37.5%;">If Option F (trazodone)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td class="axis">Wakes at 2 AM, mild anxiety</td>
+      <td><strong>Stay in bed.</strong> The lemborexant is still working (17-hr half-life). Give it 20 minutes of calm before considering anything else. Most likely Dad falls back asleep.</td>
+      <td><strong>Stay in bed.</strong> Trazodone's effect is fading by 2 AM (shorter half-life) but stimulus control still applies. Give it 20 minutes.</td>
+    </tr>
+    <tr>
+      <td class="axis">Wakes at 2 AM, can't return to sleep after 20 min</td>
+      <td><strong>Get out of bed</strong> per CBT-I stimulus control. Dim-lit room, non-stimulating activity (no screens), return when sleepy. No additional medication.</td>
+      <td><strong>Get out of bed</strong> per CBT-I stimulus control. Same approach.</td>
+    </tr>
+    <tr>
+      <td class="axis">Truly cannot sleep at all, high anxiety, ≥5 hours of bedtime remaining</td>
+      <td><strong>Trazodone 25 mg PRN</strong> at bedside as a last-resort rescue. Pre-discuss with Dad. ≥5 hours of bedtime remaining is the threshold to avoid next-day sedation.</td>
+      <td><strong>No additional sleep medication</strong> — already on trazodone 50 mg. Doubling up isn't appropriate. Accept the night and reassess in the AM.</td>
+    </tr>
+    <tr>
+      <td class="axis">High anxiety pre-bed before the planned regimen</td>
+      <td><strong>Lorazepam 0.5 mg PRN</strong> can be used as a single dose if family/Dad accept it. Family preference is to avoid; non-pharmacologic strategies first (slow breathing, reassurance, gentle activity).</td>
+      <td><strong>Lorazepam 0.5 mg PRN</strong> same option. Same family preference. Same non-pharmacologic first.</td>
+    </tr>
+    <tr>
+      <td class="axis">Multiple awakenings, escalating anxiety</td>
+      <td><strong>Accept the night.</strong> Don't escalate medications mid-night. Track what happened. Reassess in the morning.</td>
+      <td><strong>Accept the night.</strong> Same approach.</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="section-label">A note on the rescue logic</div>
+
+<p class="context">The Ativan PRN is in the medicine cabinet and U-M has cleared it. The family preference is to avoid it where reasonably possible — single emergency use isn't a habit but routine use establishes one. A single 0.5 mg dose tonight if truly needed is not a catastrophe; it is one dose used appropriately. The goal is to make tonight's regimen work without needing the Ativan, not to refuse it on principle if it's the only thing that gets Dad to sleep.</p>
+
+<h2 class="page-heading">Clear stacking rules — what NOT to combine tonight</h2>
+
+<div class="stacking-block">
+  <div class="block-label">DO NOT — these combinations are not the plan and should not be drifted into</div>
+  <ul>
+    <li><strong>DO NOT take lemborexant AND trazodone the same night.</strong> They are alternatives, not stack-mates. Stacking two sedating agents with different mechanisms adds risk (orthostatic hypotension, falls, additive sedation) without an evidence base for the combo and makes attribution impossible if anything goes wrong.</li>
+    <li><strong>DO NOT add doxepin back tonight.</strong> Whether or not the "agitation" Dad attributed to doxepin was a real effect, doxepin is off the regimen now. Adding it back tonight would muddy the assessment of any other agent and adds anticholinergic load — which is the wrong direction in someone with prodromal Lewy-spectrum markers.</li>
+    <li><strong>DO NOT take a second sleep aid mid-night.</strong> If the planned regimen doesn't work and Dad wakes at 12 or 1 AM, do not stack a different sleep aid on top. The only mid-night option is trazodone 25 mg PRN (Option A rescue, ≥5 hours remaining) — and only if it's truly needed and pre-planned at bedside.</li>
+    <li><strong>DO NOT take Ativan as a scheduled nightly dose.</strong> One emergency use is fine; nightly use establishes a dependence pattern that becomes hard to undo. If Ativan ends up being needed multiple nights in a row, that's a signal to escalate to U-M faster, not to add it to the routine.</li>
+    <li><strong>DO NOT skip the Depakote evening dose to "reduce sedation load."</strong> Depakote 125 mg PM is Dr. Rubin's prescribed schedule and is too low a dose to be doing significant sedation work. Skipping it disrupts the planned schedule without clinical benefit.</li>
+    <li><strong>DO NOT skip the Cymbalta morning dose to "reduce serotonergic load."</strong> The taper is paused. Dad is at 60 mg by design. Skipping a dose restarts the destabilization the pause is meant to prevent.</li>
+  </ul>
+</div>
+
+<div class="ok-stack-block">
+  <div class="block-label">DO — these combinations are the plan and are evidence-supported</div>
+  <ul>
+    <li><strong>DO take Cymbalta 60 mg AM and Depakote 125 mg morning + evening</strong> per Rubin's schedule. These are separate from the sleep regimen and continue regardless.</li>
+    <li><strong>DO take melatonin 10 mg HS</strong> with either Option A or Option F. Negligible interactions, low risk, modest sleep-onset support.</li>
+    <li><strong>DO have the rescue agent at bedside</strong> (trazodone 25 mg for Option A; nothing additional for Option F beyond the night's plan). Knowing it's there reduces anticipatory anxiety.</li>
+    <li><strong>DO write down what happened tomorrow morning</strong> — onset to sleep, awakenings, total time, how Dad felt on waking. Future regimen decisions depend on this data.</li>
+  </ul>
+</div>
+
+<h2 class="page-heading">Pre-bed framing for Dad</h2>
+
+<div class="speech-block">
+  <div class="speech-label">For Mom to Dad — in their own words (Option A version)</div>
+  This is the new medication Julane recommended. It works differently from doxepin and trazodone — instead of making you sleepy, it turns down the wake signal. It lasts the whole night, so if you wake up at 2 AM, the medicine is still working — give it a few minutes to do its job. We're trying this for the first time tonight, so it may take a few nights to know how well it works for you. We have a backup plan if you really can't sleep. One night doesn't tell us much; we'll know more after three or four nights.
+</div>
+
+<div class="speech-block">
+  <div class="speech-label">For Mom to Dad — in their own words (Option F version)</div>
+  Tonight we're using trazodone, which you've taken before, because we want a familiar agent on a hard day. Tomorrow we'll start the new medication Julane recommended under calmer conditions. This is a bridge night, not a step backward.
+</div>
+
+<div class="section-label">Why the framing matters</div>
+
+<p class="context">Insomnia is perpetuated by anticipatory anxiety about sleep. The published CBT-I evidence shows that the cognitive frame around the sleep agent affects the outcome almost as much as the pharmacology does — especially for a first-night trial of a new medication. The single most important thing Mom or whoever helps Dad to bed tonight can do is set the expectation that imperfect is fine, that the medication is on board, and that there's a plan if it doesn't work. The plan-existing matters; the rescue itself is rarely needed when the plan is clear.</p>
+
+<h2 class="page-heading">How we'll know what to do tomorrow night</h2>
+
+<div class="neutral-block">
+  <ul>
+    <li><strong>Track tonight in writing</strong> — when Dad took the regimen, when he fell asleep, any awakenings (time + duration), what he did during awakenings, how he felt waking up, and what (if anything) he took as rescue.</li>
+    <li><strong>If Option A worked tonight (or worked partially):</strong> continue lemborexant tomorrow. The 3–4 night evaluation window is the standard for assessing a new sleep agent; one good or partial night isn't conclusive, but it's encouraging.</li>
+    <li><strong>If Option A didn't work tonight and Dad is distressed:</strong> consider Option F-equivalent tomorrow (trazodone 50 mg) and try lemborexant again on a calmer day later in the week. Don't give up on lemborexant after one night.</li>
+    <li><strong>If Option F was chosen tonight:</strong> start lemborexant tomorrow regardless of how tonight went. The deferral was for tonight specifically, not an open-ended delay.</li>
+    <li><strong>If anything new appeared</strong> — dream enactment / RBD episode escalation, paradoxical agitation, GI symptoms, new motor symptoms — note it. Lemborexant + RBD is theoretical; the question of whether it changes anything for Dad needs his actual data.</li>
+    <li><strong>If Ativan was used:</strong> note the dose, time, and how much it helped. One dose is fine; the question is whether it gets used again.</li>
+  </ul>
+</div>
+
+<h2 class="page-heading">Bottom line</h2>
+
+<p class="context"><strong>Option A is the slightly stronger evidence-based call</strong> for a patient who can be framed well and whose anxiety is manageable at bedtime — the new agent has real first-night PSG data, the 17-hour half-life provides built-in sleep maintenance, and it advances the long-term regimen. <strong>Option F is the lower-variance call</strong> for a patient whose pre-bed anxiety is high enough that introducing a new agent risks a self-fulfilling failure. Neither is wrong. Mom is the best-positioned to read Dad's state at bedtime and make the call.</p>
+
+<p class="context">Whichever option is chosen, the stacking rules above are not negotiable: no combining lemborexant + trazodone tonight, no adding doxepin back, no escalating Ativan to scheduled use, no mid-night stacking. The clear rules are how the family avoids drifting into a regimen no one chose deliberately.</p>
+
+</body>
+</html>
