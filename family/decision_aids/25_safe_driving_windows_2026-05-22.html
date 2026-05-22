@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Safe driving windows — 2026-05-22</title>
+<style>
+  @page { size: letter; margin: 0.5in 0.55in; }
+  :root {
+    --navy: #1a3a5c; --navy-dark: #0f2640;
+    --green: #2c5e3f; --green-bg: #e8f0ea; --green-border: #5a8a6a; --green-bar: #5a8a6a;
+    --blue-bg: #eef2f8; --blue-border: #6a8aaa;
+    --amber: #8a6a2c; --amber-bg: #f5efdf; --amber-border: #c8a86e; --amber-bar: #d4a857;
+    --red: #8b2c2c; --red-bg: #f4e6e6; --red-border: #c87878; --red-bar: #b8514f;
+    --text: #1f1f1f; --text-muted: #5a5a5a;
+    --rule: #c8c8c8; --rule-strong: #6a6a6a;
+    --tint: #f5f3f0; --tint-neutral: #f3f3f1;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    font-family: "Charter", "Georgia", "Times New Roman", serif;
+    font-size: 10pt; line-height: 1.42; color: var(--text);
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--navy); text-decoration: underline; }
+
+  .doc-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    padding-bottom: 8pt; border-bottom: 1.5pt solid var(--navy); margin-bottom: 14pt;
+  }
+  .doc-header .title {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 700; font-size: 18pt; line-height: 1.15;
+    color: var(--navy-dark); letter-spacing: -0.015em;
+  }
+  .doc-header .subtitle {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 500; font-size: 9.5pt; color: var(--text-muted);
+    margin-top: 3pt;
+  }
+  .doc-header .meta {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 7.5pt; color: var(--text-muted); text-align: right;
+    letter-spacing: 0.03em; line-height: 1.5;
+  }
+
+  .key-principle {
+    background: var(--red-bg); border: 2pt solid var(--red-border);
+    border-radius: 5pt; padding: 12pt 16pt; margin-bottom: 16pt;
+    page-break-inside: avoid;
+  }
+  .key-principle .principle-label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 700; font-size: 9pt; text-transform: uppercase;
+    letter-spacing: 0.14em; color: var(--red); margin-bottom: 7pt;
+  }
+  .key-principle .principle-text {
+    font-size: 11pt; line-height: 1.5; color: var(--text);
+  }
+  .key-principle .principle-text strong { color: var(--red); }
+
+  .quick-ref {
+    background: var(--tint); border-radius: 5pt;
+    padding: 12pt 16pt; margin-bottom: 14pt;
+    page-break-inside: avoid;
+  }
+  .quick-ref .qr-label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 700; font-size: 8pt; text-transform: uppercase;
+    letter-spacing: 0.14em; color: var(--navy); margin-bottom: 9pt;
+  }
+  table.quick-table {
+    width: 100%; border-collapse: collapse; font-size: 9pt;
+  }
+  table.quick-table th {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 700; font-size: 8pt; padding: 6pt 8pt; text-align: left;
+    background: var(--navy); color: white; letter-spacing: 0.02em;
+  }
+  table.quick-table td {
+    padding: 7pt 8pt; vertical-align: middle;
+    border-bottom: 0.5pt solid var(--rule);
+    font-size: 9.5pt; line-height: 1.4;
+  }
+  table.quick-table tbody tr:last-child td { border-bottom: none; }
+  table.quick-table td.scenario-cell {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 600; background: #f7f7f5;
+  }
+  table.quick-table td.window-cell {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 700; font-size: 10.5pt; color: var(--red); text-align: center;
+  }
+
+  h2.page-heading {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 700; font-size: 13pt; color: var(--navy-dark);
+    margin: 16pt 0 9pt 0; padding-bottom: 5pt; border-bottom: 1pt solid var(--rule-strong);
+    letter-spacing: -0.01em;
+    page-break-after: avoid;
+  }
+
+  .scenario-card {
+    border: 1pt solid var(--rule);
+    border-left: 4pt solid var(--navy);
+    border-radius: 0 4pt 4pt 0;
+    padding: 12pt 16pt; margin-bottom: 12pt;
+    page-break-inside: avoid;
+    background: white;
+  }
+  .scenario-card.scenario-a { border-left-color: var(--green-border); background: #fbfdfb; }
+  .scenario-card.scenario-b { border-left-color: var(--amber-border); background: #fdfbf6; }
+  .scenario-card.scenario-c { border-left-color: var(--red-border); background: #fdf8f8; }
+  .scenario-card.scenario-d { border-left-color: #8b2c8b; background: #faf6fa; }
+
+  .scenario-header {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 4pt; padding-bottom: 5pt;
+    border-bottom: 0.5pt solid var(--rule);
+  }
+  .scenario-title {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 700; font-size: 11pt; color: var(--navy-dark);
+  }
+  .scenario-window {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 700; font-size: 10pt; color: var(--red);
+    text-transform: uppercase; letter-spacing: 0.08em;
+  }
+
+  .scenario-regimen {
+    font-size: 9pt; color: var(--text-muted); margin-bottom: 9pt;
+    font-style: italic;
+  }
+
+  /* Timeline visualization */
+  .timeline-container {
+    margin: 8pt 0 6pt 0;
+  }
+  .timeline-bar {
+    display: flex; height: 22pt; border-radius: 3pt; overflow: hidden;
+    border: 0.5pt solid var(--rule-strong);
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 7.5pt; font-weight: 700; color: white;
+    letter-spacing: 0.04em;
+  }
+  .band {
+    display: flex; align-items: center; justify-content: center;
+    padding: 0 6pt; text-align: center;
+    text-shadow: 0 0.5pt 1pt rgba(0,0,0,0.2);
+    white-space: nowrap; overflow: hidden;
+  }
+  .band-red { background: var(--red-bar); }
+  .band-amber { background: var(--amber-bar); color: #4a3a14; text-shadow: none; }
+  .band-green { background: var(--green-bar); }
+
+  .timeline-labels {
+    display: flex; margin-top: 3pt;
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 7pt; color: var(--text-muted);
+    letter-spacing: 0.02em;
+  }
+  .timeline-labels .label {
+    flex: 1; text-align: left; padding-left: 1pt;
+  }
+  .timeline-labels .label.end {
+    text-align: right; padding-right: 1pt;
+  }
+
+  .scenario-detail {
+    margin-top: 6pt; font-size: 9pt; line-height: 1.45;
+  }
+  .scenario-detail strong { color: var(--navy-dark); }
+
+  .multiplier-block {
+    background: #faf6fa; border: 1.5pt solid #8b2c8b;
+    border-radius: 5pt; padding: 11pt 16pt; margin: 8pt 0 14pt 0;
+    page-break-inside: avoid;
+  }
+  .multiplier-block .ml-label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 700; font-size: 8pt; text-transform: uppercase;
+    letter-spacing: 0.14em; color: #8b2c8b; margin-bottom: 6pt;
+  }
+  .multiplier-block p {
+    margin: 0 0 6pt 0; font-size: 9.5pt; line-height: 1.45;
+  }
+  .multiplier-block p:last-child { margin-bottom: 0; }
+  .multiplier-block strong { color: #8b2c8b; }
+
+  .pre-drive-block {
+    background: var(--green-bg); border: 1.5pt solid var(--green-border);
+    border-radius: 5pt; padding: 12pt 16pt; margin: 8pt 0 12pt 0;
+    page-break-inside: avoid;
+  }
+  .pre-drive-block .pd-label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 700; font-size: 8pt; text-transform: uppercase;
+    letter-spacing: 0.14em; color: var(--green); margin-bottom: 8pt;
+  }
+  .pre-drive-block ol {
+    margin: 0; padding-left: 18pt; font-size: 9.5pt; line-height: 1.5;
+  }
+  .pre-drive-block li { margin-bottom: 5pt; }
+  .pre-drive-block li:last-child { margin-bottom: 0; }
+  .pre-drive-block strong { color: var(--green); }
+
+  .bottom-note {
+    font-size: 8pt; color: var(--text-muted); line-height: 1.4;
+    margin-top: 14pt; padding-top: 8pt; border-top: 0.5pt solid var(--rule);
+    font-style: italic;
+  }
+
+  .legend {
+    display: flex; gap: 14pt; margin: 4pt 0 12pt 0;
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 8pt; color: var(--text-muted);
+    align-items: center;
+  }
+  .legend-item { display: flex; align-items: center; gap: 5pt; }
+  .legend-swatch {
+    width: 11pt; height: 11pt; border-radius: 2pt;
+    border: 0.5pt solid var(--rule-strong);
+  }
+  .legend-swatch.red { background: var(--red-bar); }
+  .legend-swatch.amber { background: var(--amber-bar); }
+  .legend-swatch.green { background: var(--green-bar); }
+</style>
+</head>
+<body>
+
+<div class="doc-header">
+  <div>
+    <div class="title">When is it safe for Dad to drive?</div>
+    <div class="subtitle">Driving windows after Ativan, Dayvigo, and combinations · 2026-05-22</div>
+  </div>
+  <div class="meta">
+    For Dad, Mom, Leah, David,<br>
+    Debbi, family team
+  </div>
+</div>
+
+<div class="key-principle">
+  <div class="principle-label">The single most important thing on this page</div>
+  <div class="principle-text">
+    <strong>How Dad feels is not a reliable signal of whether he's safe to drive.</strong> Pomara 2015 showed that elderly patients on low-dose lorazepam — even 0.25 mg — had measurable psychomotor impairment <em>without subjectively feeling impaired</em>. "I feel fine" is not the test. The clock is the test, and on doses that span the day, family-observed steadiness and reaction time are the test.
+  </div>
+</div>
+
+<div class="quick-ref">
+  <div class="qr-label">Quick reference — minimum no-drive windows after a dose</div>
+  <table class="quick-table">
+    <thead>
+      <tr>
+        <th style="width: 55%;">Scenario</th>
+        <th style="width: 22%;">Minimum no-drive</th>
+        <th style="width: 23%;">Safer window</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="scenario-cell">Dayvigo (lemborexant) 5 mg at bedtime, no Ativan</td>
+        <td class="window-cell">~8 hours</td>
+        <td class="window-cell">Until 10 AM</td>
+      </tr>
+      <tr>
+        <td class="scenario-cell">Ativan 0.5 mg, alone</td>
+        <td class="window-cell">12 hours</td>
+        <td class="window-cell">24 hours</td>
+      </tr>
+      <tr>
+        <td class="scenario-cell">Ativan 1 mg, alone (the morning rescue dose)</td>
+        <td class="window-cell">24 hours</td>
+        <td class="window-cell">48 hours</td>
+      </tr>
+      <tr>
+        <td class="scenario-cell">Ativan + Dayvigo same evening</td>
+        <td class="window-cell">14 hours</td>
+        <td class="window-cell">Skip next-day driving</td>
+      </tr>
+      <tr>
+        <td class="scenario-cell">Any of the above + Depakote (if started)</td>
+        <td class="window-cell">Double the window</td>
+        <td class="window-cell">Skip driving day-of</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<h2 class="page-heading">Scenario timelines</h2>
+
+<div class="legend">
+  <div class="legend-item"><span class="legend-swatch red"></span><span><strong>No drive</strong> — drug at peak / clinically meaningful levels</span></div>
+  <div class="legend-item"><span class="legend-swatch amber"></span><span><strong>Caution</strong> — family check required</span></div>
+  <div class="legend-item"><span class="legend-swatch green"></span><span><strong>Cleared</strong> — drug below impairment threshold</span></div>
+</div>
+
+<div class="scenario-card scenario-a">
+  <div class="scenario-header">
+    <div class="scenario-title">Scenario 1 — Dayvigo at bedtime only (the routine sleep stack)</div>
+    <div class="scenario-window">8 hr minimum</div>
+  </div>
+  <div class="scenario-regimen">Lemborexant 5 mg HS taken at 10 PM. No Ativan.</div>
+  <div class="timeline-container">
+    <div class="timeline-bar">
+      <div class="band band-red" style="flex: 8;">No drive</div>
+      <div class="band band-amber" style="flex: 4;">Family check</div>
+      <div class="band band-green" style="flex: 12;">Cleared</div>
+    </div>
+    <div class="timeline-labels">
+      <span class="label">10 PM dose</span>
+      <span class="label" style="text-align: center;">6 AM</span>
+      <span class="label" style="text-align: center;">10 AM</span>
+      <span class="label end">10 PM</span>
+    </div>
+  </div>
+  <div class="scenario-detail">
+    Lemborexant's half-life is ~17 hours but the SUNRISE driving studies in working-age adults found minimal impairment the morning after a 5 mg dose. For Dad, given prodromal Lewy-spectrum markers and gait abnormality, <strong>prefer not to drive before 10 AM</strong> the morning after a bedtime dose. Family-observed steadiness check before driving is the floor.
+  </div>
+</div>
+
+<div class="scenario-card scenario-b">
+  <div class="scenario-header">
+    <div class="scenario-title">Scenario 2 — Ativan 0.5 mg, used during the day</div>
+    <div class="scenario-window">12 hr minimum, 24 hr safer</div>
+  </div>
+  <div class="scenario-regimen">Lorazepam 0.5 mg taken at noon. No other CNS-depressant additions today.</div>
+  <div class="timeline-container">
+    <div class="timeline-bar">
+      <div class="band band-red" style="flex: 12;">No drive</div>
+      <div class="band band-amber" style="flex: 12;">Family check</div>
+      <div class="band band-green" style="flex: 4;">Cleared</div>
+    </div>
+    <div class="timeline-labels">
+      <span class="label">noon dose</span>
+      <span class="label" style="text-align: center;">midnight</span>
+      <span class="label" style="text-align: center;">noon next day</span>
+      <span class="label end">+4 hr</span>
+    </div>
+  </div>
+  <div class="scenario-detail">
+    A 0.5 mg dose produces measurable psychomotor impairment for at least 12 hours in elderly patients per Pomara 2015. <strong>Don't drive on the same calendar day as a 0.5 mg dose.</strong> The next morning, if Dad needs to drive, a family member should check steadiness, gait, and reaction time first.
+  </div>
+</div>
+
+<div class="scenario-card scenario-c">
+  <div class="scenario-header">
+    <div class="scenario-title">Scenario 3 — Ativan 1 mg (the morning-rescue size dose)</div>
+    <div class="scenario-window">24 hr minimum, 48 hr safer</div>
+  </div>
+  <div class="scenario-regimen">Lorazepam 1 mg taken at 7 AM, e.g., to abort an acute anxiety episode like the one on 5/21 morning.</div>
+  <div class="timeline-container">
+    <div class="timeline-bar">
+      <div class="band band-red" style="flex: 24;">No drive</div>
+      <div class="band band-amber" style="flex: 24;">Family check</div>
+      <div class="band band-green" style="flex: 4;">Cleared</div>
+    </div>
+    <div class="timeline-labels">
+      <span class="label">7 AM dose</span>
+      <span class="label" style="text-align: center;">+24 hr</span>
+      <span class="label" style="text-align: center;">+48 hr</span>
+      <span class="label end"></span>
+    </div>
+  </div>
+  <div class="scenario-detail">
+    The 1 mg dose used on 5/21 morning is twice the half-life-clearance burden of the 0.5 mg scenario. The FDA injectable label specifies 24–48 hours no-driving after a 1 mg dose; Seppälä 1976 found measurable impairment at 12+ hours from a 2.5 mg dose in young healthy volunteers. For Dad, <strong>plan for two no-drive days</strong> after any 1 mg dose. If Dad needs to drive on day 2, family check first.
+  </div>
+</div>
+
+<div class="scenario-card scenario-d">
+  <div class="scenario-header">
+    <div class="scenario-title">Scenario 4 — Ativan in the evening + Dayvigo at bedtime</div>
+    <div class="scenario-window">14 hr min; skip next-day driving</div>
+  </div>
+  <div class="scenario-regimen">Lorazepam 0.5 mg at 9 PM (pre-bed anxiety rescue) + lemborexant 5 mg at 10 PM. Additive CNS depression overnight.</div>
+  <div class="timeline-container">
+    <div class="timeline-bar">
+      <div class="band band-red" style="flex: 14;">No drive</div>
+      <div class="band band-amber" style="flex: 6;">Family check</div>
+      <div class="band band-green" style="flex: 4;">Cleared</div>
+    </div>
+    <div class="timeline-labels">
+      <span class="label">9 PM dose</span>
+      <span class="label" style="text-align: center;">11 AM next day</span>
+      <span class="label" style="text-align: center;">5 PM</span>
+      <span class="label end"></span>
+    </div>
+  </div>
+  <div class="scenario-detail">
+    Both agents on board together produce additive CNS depression. The lemborexant FDA label specifically warns of increased daytime impairment when combined with benzodiazepines, especially in elderly patients. <strong>Default to no driving the next day at all</strong>; if Dad must drive, push it to late afternoon and require a family steadiness check.
+  </div>
+</div>
+
+<div class="multiplier-block">
+  <div class="ml-label">If Depakote (divalproex) gets started — read this carefully</div>
+  <p>Valproate <strong>doubles Ativan's effective blood level</strong> by slowing its clearance by ~40%. The FDA label mandates reducing the Ativan dose by 50% when valproate is on board, because a 0.5 mg dose becomes pharmacokinetically equivalent to a 1 mg dose.</p>
+  <p><strong>If Depakote ends up on board, double every window above.</strong> A 0.5 mg Ativan dose now requires the 24-hour window. A 1 mg Ativan dose requires 48 hours minimum. The Dayvigo + Ativan combination becomes a clear "no driving day-of" call.</p>
+</div>
+
+<h2 class="page-heading">Family check before driving — the steadiness test</h2>
+
+<div class="pre-drive-block">
+  <div class="pd-label">If Dad is in any "amber / family check" window above, run through these before he drives</div>
+  <ol>
+    <li><strong>Stand from a seated position without using arms for push-off.</strong> Slowed? Off-balance? Don't drive yet.</li>
+    <li><strong>Walk 20 feet in a straight line, turn, walk back.</strong> Watch for hesitation, drift, or shortened steps relative to his baseline.</li>
+    <li><strong>Stand still with feet together, eyes closed, for 10 seconds.</strong> Sway? Step-out for balance? Don't drive.</li>
+    <li><strong>Brief reaction-time check:</strong> drop a pen, ask Dad to catch it. Or stand at arm's length and ask him to tap your hand as soon as you raise it. Slowed reaction relative to baseline? Don't drive.</li>
+    <li><strong>Quick conversation:</strong> ask Dad to tell you the date, his next appointment, and what he had for breakfast. Word-finding hesitation, confusion, or unusual flatness of voice? Don't drive.</li>
+    <li><strong>Ask Dad how he feels.</strong> If he says "fine" but any of items 1–5 looked off, the assessment is "don't drive," not "fine." Pomara 2015: subjective feel is unreliable.</li>
+  </ol>
+</div>
+
+<h2 class="page-heading">Other points worth knowing</h2>
+
+<ul style="margin: 4pt 0 10pt 0; padding-left: 18pt; font-size: 9.5pt; line-height: 1.45;">
+  <li><strong>Alcohol changes everything.</strong> Even one drink within the no-drive window or the family-check window above resets the timer to "no drive day-of." Lemborexant + alcohol is specifically warned against on the FDA label.</li>
+  <li><strong>Time of dose matters.</strong> A morning Ativan dose extends the no-drive window through the entire day; a bedtime dose mostly burns through overnight. If Ativan is needed, prefer evening dosing when possible — but don't game timing to enable driving.</li>
+  <li><strong>Cumulative use changes the calculus.</strong> The windows above are for occasional PRN use. If Ativan use becomes near-daily, the windows extend further and family steadiness checks become the operative tool day-to-day.</li>
+  <li><strong>The bigger picture.</strong> If Dad's medication regimen is producing frequent no-drive days that limit his independence, that's information worth bringing to the U-M conversation. The goal isn't to maximize the windows — it's to get to a stable regimen where the driving question isn't a daily problem.</li>
+</ul>
+
+<div class="bottom-note">
+  This handout reflects published guidance (FDA labels for oral and injectable lorazepam, Pomara 2015 elderly psychomotor study, Seppälä 1976 driving impairment study, lemborexant FDA label, Hemmelgarn 1997 elderly crash-risk cohort) interpreted for Dad's specific profile (age 76, sinus bradycardia, prodromal Lewy-spectrum markers including gait abnormality and balance problems, concurrent duloxetine and possible divalproex). Numbers are conservative defaults; U-M and Dr. Maxner may give specific updated guidance once they take over psychiatric care.
+</div>
+
+</body>
+</html>
