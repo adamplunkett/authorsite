@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Comprehensive Clinical Brief — James Plunkett — 2026-05-23</title>
+<style>
+  @page { size: letter; margin: 0.5in 0.55in; }
+  :root {
+    --navy: #1a3a5c; --navy-dark: #0f2640;
+    --green: #2c5e3f; --green-bg: #e8f0ea; --green-border: #5a8a6a;
+    --blue-bg: #eef2f8; --blue-border: #6a8aaa;
+    --amber: #8a6a2c; --amber-bg: #f5efdf; --amber-border: #c8a86e;
+    --red: #8b2c2c; --red-bg: #f4e6e6; --red-border: #c87878;
+    --purple: #6a2c8b; --purple-bg: #f3eaf5; --purple-border: #b07acc;
+    --text: #1f1f1f; --text-muted: #5a5a5a;
+    --rule: #c8c8c8; --rule-strong: #6a6a6a;
+    --tint: #f5f3f0; --tint-neutral: #f3f3f1;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    font-family: "Charter", "Georgia", "Times New Roman", serif;
+    font-size: 9.75pt; line-height: 1.42; color: var(--text);
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--navy); text-decoration: underline; }
+
+  .doc-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    padding-bottom: 8pt; border-bottom: 1.5pt solid var(--navy); margin-bottom: 14pt;
+  }
+  .doc-header .title {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 700; font-size: 18pt; line-height: 1.15;
+    color: var(--navy-dark); letter-spacing: -0.015em;
+  }
+  .doc-header .subtitle {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 500; font-size: 9.5pt; color: var(--text-muted);
+    margin-top: 3pt;
+  }
+  .doc-header .meta {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 7.5pt; color: var(--text-muted); text-align: right;
+    letter-spacing: 0.03em; line-height: 1.5;
+  }
+
+  .critical-alert {
+    background: var(--red-bg); border: 2pt solid var(--red-border);
+    border-radius: 5pt; padding: 12pt 16pt; margin-bottom: 14pt;
+    page-break-inside: avoid;
+  }
+  .critical-alert .alert-label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 700; font-size: 9pt; text-transform: uppercase;
+    letter-spacing: 0.14em; color: var(--red); margin-bottom: 8pt;
+  }
+  .critical-alert ul { margin: 0; padding-left: 16pt; }
+  .critical-alert li { font-size: 9.5pt; line-height: 1.45; margin-bottom: 6pt; }
+  .critical-alert li:last-child { margin-bottom: 0; }
+  .critical-alert strong { color: var(--red); }
+
+  .exec-summary {
+    background: var(--tint); padding: 11pt 14pt; border-radius: 4pt;
+    font-size: 9.75pt; line-height: 1.5;
+    margin-bottom: 14pt;
+    page-break-inside: avoid;
+  }
+  .exec-summary strong { color: var(--navy-dark); }
+
+  h2.page-heading {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 700; font-size: 13pt; color: var(--navy-dark);
+    margin: 18pt 0 10pt 0; padding-bottom: 5pt; border-bottom: 1pt solid var(--rule-strong);
+    letter-spacing: -0.01em;
+    page-break-after: avoid;
+  }
+
+  h3.subsection {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 700; font-size: 10.5pt; color: var(--navy-dark);
+    margin: 10pt 0 6pt 0;
+    page-break-after: avoid;
+  }
+
+  .section-label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 8pt; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.16em; color: var(--navy); margin: 12pt 0 6pt 0;
+    page-break-after: avoid;
+  }
+
+  table.data {
+    width: 100%; border-collapse: collapse; margin: 4pt 0 10pt 0;
+    font-size: 9pt;
+    page-break-inside: auto;
+  }
+  table.data thead th {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 700; font-size: 8pt; padding: 6pt 8pt; text-align: left;
+    background: var(--navy); color: white; letter-spacing: 0.02em;
+  }
+  table.data td {
+    padding: 6pt 8pt; vertical-align: top;
+    border-bottom: 0.5pt solid var(--rule);
+    font-size: 9pt; line-height: 1.4;
+    page-break-inside: avoid;
+  }
+  table.data tr { page-break-inside: avoid; }
+  table.data td.first {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 600; color: var(--text);
+    background: #f7f7f5;
+  }
+  table.data tbody tr:last-child td { border-bottom: 0.5pt solid var(--rule); }
+  table.data td strong { color: var(--navy-dark); }
+
+  .timeline {
+    margin: 4pt 0 10pt 0; padding-left: 0; list-style: none;
+  }
+  .timeline li {
+    font-size: 9pt; line-height: 1.4; margin-bottom: 5pt;
+    padding-left: 70pt; position: relative;
+    page-break-inside: avoid;
+  }
+  .timeline li .date {
+    position: absolute; left: 0; width: 65pt;
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 700; font-size: 8.5pt; color: var(--navy);
+    text-align: right; padding-right: 8pt;
+  }
+  .timeline li.acute .date { color: var(--red); }
+  .timeline li strong { color: var(--navy-dark); }
+
+  .uncertainty-block {
+    border-left: 4pt solid var(--amber-border); background: var(--amber-bg);
+    padding: 10pt 14pt; margin: 6pt 0 10pt 0;
+    border-radius: 0 4pt 4pt 0;
+    page-break-inside: avoid;
+  }
+  .uncertainty-block .ub-label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 700; font-size: 9pt; color: var(--amber);
+    margin-bottom: 5pt;
+  }
+  .uncertainty-block p {
+    margin: 0 0 5pt 0; font-size: 9pt; line-height: 1.45;
+  }
+  .uncertainty-block p:last-child { margin-bottom: 0; }
+  .uncertainty-block strong { color: var(--navy-dark); }
+
+  .info-block {
+    border-left: 3pt solid var(--rule-strong); background: var(--tint-neutral);
+    padding: 9pt 13pt; margin: 4pt 0 10pt 0;
+    page-break-inside: avoid;
+  }
+  .info-block p {
+    margin: 0 0 5pt 0; font-size: 9pt; line-height: 1.45;
+  }
+  .info-block p:last-child { margin-bottom: 0; }
+  .info-block strong { color: var(--navy-dark); }
+
+  ul.bulleted {
+    margin: 4pt 0 8pt 0; padding-left: 16pt; font-size: 9pt; line-height: 1.45;
+  }
+  ul.bulleted li { margin-bottom: 4pt; page-break-inside: avoid; }
+  ul.bulleted strong { color: var(--navy-dark); }
+
+  .context { font-size: 9.25pt; line-height: 1.5; color: var(--text); margin: 0 0 8pt 0; }
+  .context strong { color: var(--navy-dark); }
+
+  .footer-note {
+    font-size: 8pt; color: var(--text-muted); font-style: italic;
+    margin-top: 14pt; padding-top: 8pt; border-top: 0.5pt solid var(--rule);
+  }
+
+  /* Glossary table specific */
+  table.glossary {
+    width: 100%; border-collapse: collapse; margin: 4pt 0 10pt 0;
+    font-size: 8.5pt;
+    page-break-inside: auto;
+  }
+  table.glossary thead th {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 700; font-size: 7.5pt; padding: 5pt 6pt; text-align: left;
+    background: var(--navy); color: white; letter-spacing: 0.02em;
+  }
+  table.glossary td {
+    padding: 5pt 6pt; vertical-align: top;
+    border-bottom: 0.5pt solid var(--rule);
+    font-size: 8.5pt; line-height: 1.35;
+    page-break-inside: avoid;
+  }
+  table.glossary tr { page-break-inside: avoid; }
+  table.glossary td.agent {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 700; color: var(--navy-dark);
+    background: #f7f7f5;
+    width: 22%;
+  }
+  table.glossary td.dates { width: 18%; }
+  table.glossary td.dose { width: 15%; }
+  table.glossary td.outcome { width: 45%; }
+  table.glossary tr.current td.agent { color: var(--green); }
+  table.glossary tr.proposed td.agent { color: var(--amber); }
+  table.glossary tr.discontinued td.agent { color: var(--text-muted); }
+</style>
+</head>
+<body>
+
+<div class="doc-header">
+  <div>
+    <div class="title">Comprehensive Clinical Brief</div>
+    <div class="subtitle">James Plunkett, 76 yo male · Updated 2026-05-23 (supersedes 2026-05-04)</div>
+  </div>
+  <div class="meta">
+    Source of truth for treating providers,<br>
+    U-M ECT intake, ER reference,<br>
+    family team
+  </div>
+</div>
+
+<div class="critical-alert">
+  <div class="alert-label">Critical alerts for treating providers — read first</div>
+  <ul>
+    <li><strong>PRODROMAL LEWY-SPECTRUM PICTURE.</strong> Formal REM Sleep Behavior Disorder (G47.52) 8.5 years; gait abnormality (R26.9 coded 4/14/2026); balance problem (R26.89 coded 7/15/2025); chronic constipation; peripheral neuropathy (G62.9) since 2018. U-M Movement Disorders evaluation pending including DAT-SPECT. <strong>Avoid high-D2-affinity neuroleptics (haloperidol, olanzapine, risperidone) — Lancet Neurology 2025 DLB landscape recommends categorical avoidance given neuroleptic sensitivity risk (~50% of confirmed DLB patients).</strong></li>
+    <li><strong>DOCUMENTED ACTIVATION-INTOLERANCE PATTERN</strong> across multiple antipsychotic and adjunct agents in 2025–2026: aripiprazole (parkinsonian features), mirtazapine (agitation), brexpiprazole (balance issues; patient self-discontinued), pramipexole (physical symptoms within days), olanzapine (near-panic-attack rebound on discontinuation), lithium (discontinued by prescriber). Cross-class intolerance pattern is itself a clinical signal — more consistent with neurobiological substrate (prodromal-Lewy-spectrum) than with conventional pharmacological treatment resistance.</li>
+    <li><strong>14+ DISTINCT PSYCHIATRIC AGENTS IN 12 MONTHS</strong> with brief trial durations and predominantly side-effect-driven discontinuations. Pattern more consistent with iatrogenic polypharmacy churn than with simple bad luck across many trials.</li>
+    <li><strong>ECT PLANNED AT U-M (DR. NICHOLAS MAXNER)</strong> — start window 2–4 weeks from 5/21. The family is asking U-M to inherit medication management. Bridge management is the current active question.</li>
+    <li><strong>ACUTE PRESENTATION 5/23:</strong> multi-day sleep crisis (&lt;3 hours/night × several days); new shaking of legs and feet onset 5/17 after doxepin titration to 12 mg; acute anxiety; family caregiver burnout. <strong>Family is considering ER but Dad is declining. Holiday weekend coverage is by Dr. L (covering for Dr. Rubin).</strong></li>
+    <li><strong>ALLERGY:</strong> Ambien (zolpidem) — reaction "anxiety," Active on EMR.</li>
+    <li><strong>CARDIAC:</strong> Left anterior fascicular block + sinus bradycardia (HR 49–53); BP 112/58; QTcF 401 (5/19/2025 EKG); borderline 1° AV block. Caution with bradycardic / hypotensive / QT-prolonging agents.</li>
+  </ul>
+</div>
+
+<h2 class="page-heading">Executive summary</h2>
+
+<div class="exec-summary">
+  <strong>James Plunkett is a 76-year-old male with a 45-year history of recurrent major depressive disorder, now in a severe treatment-resistant episode (PHQ-9 = 24, worst in 40 years).</strong> The clinical picture is layered: (1) genuine severe TRD with documented partial response to IV ketamine in February 2026; (2) a prodromal Lewy-spectrum disease workup pending at U-M Movement Disorders, evidenced by formal RBD (8.5 years), gait/balance findings, autonomic features, and a multi-class activation-intolerance pattern that is more parsimoniously explained by neurobiological substrate than by conventional pharmacological treatment resistance; (3) a 14-agents-in-12-months psychiatric medication trajectory marked by short trial durations and side-effect-driven discontinuations, raising concerns about iatrogenic polypharmacy on top of the underlying illness. <strong>Family and patient have agreed to pursue ECT at U-M (Dr. Maxner)</strong> as the next active step, with start window 2–4 weeks out. The current acute presentation (sleep crisis, motor symptoms, family caregiver burnout) is driving questions about ECT acceleration, bridge medication management, and whether ER/hospitalization is warranted.
+</div>
+
+<h2 class="page-heading">Current acute presentation (2026-05-23)</h2>
+
+<table class="data">
+  <thead><tr><th style="width: 22%;">Domain</th><th>State</th></tr></thead>
+  <tbody>
+    <tr><td class="first">Sleep</td><td><strong>&lt;3 hours/night for several days.</strong> Lemborexant 5 mg HS tried 5/22 night (taken as half-tablet + half-tablet ≈ 5 mg total dose); ineffective. Doxepin + trazodone discontinued ~5/21. No effective sleep regimen currently.</td></tr>
+    <tr><td class="first">Motor</td><td><strong>Shaking/jerky movements of legs and feet.</strong> First acutely noted 5/17, morning after doxepin titration to 12 mg HS (no other med change that night). Persistent at some level since 5/17. Worsening with sleep deprivation. Whether shaking predates 5/17 in milder form is uncertain (Mom unable to confirm). 5/23 AM episode required Mom to physically hold Dad. Distribution and pattern (rest vs. action) — pending family observation.</td></tr>
+    <tr><td class="first">Affective</td><td>Acute anxiety; intermittent reported despair. Suicidal ideation has not been reported in recent assessment. Last documented PHQ-9 = 24, GAD-7 not recently retested.</td></tr>
+    <tr><td class="first">Cognitive</td><td>Documented "brain fog" (R41.89). Spotty short-term memory in recent calls; less impaired than San Francisco period earlier. Pending U-M Cognitive Disorders Program evaluation.</td></tr>
+    <tr><td class="first">Autonomic</td><td>One nocturia trip per night (down from prior pattern). Eats with appetite support; doesn't register hunger spontaneously. Continued unintentional weight loss (R63.4 coded 4/14/2026). Constipation managed with Metamucil + MiraLax.</td></tr>
+    <tr><td class="first">Caregiver state</td><td>Wife Marcy primary in-home caregiver — exhausted, sleep-deprived, expressing "can't go through this again." Adult children debating early weekend travel for support. Sister-in-law Debbi arrives 5/26.</td></tr>
+  </tbody>
+</table>
+
+<h2 class="page-heading">Current medications (2026-05-23)</h2>
+
+<table class="data">
+  <thead><tr><th style="width: 22%;">Medication</th><th style="width: 18%;">Dose/timing</th><th>Status / notes</th></tr></thead>
+  <tbody>
+    <tr><td class="first">Duloxetine (Cymbalta)</td><td>60 mg AM</td><td>Active. Steady state since 11/2025. Two 1-day taper attempts at 40 mg (5/12 and 5/21 mornings), each reversed within 24 hours. <strong>Recommendation: hold at 60 mg through ECT</strong> per published evidence (PRIDE study + Pluijms 2021 meta-analysis support SNRI continuation through ECT).</td></tr>
+    <tr><td class="first">Lorazepam (Ativan)</td><td>1 mg PRN</td><td>Active PRN. Used 5/22 (afternoon) and 5/23 (8 AM). Family concern: trajectory toward daily use. Originally taken daily 1 mg midday late April through ~5/4; tapered; now PRN.</td></tr>
+    <tr><td class="first">Melatonin</td><td>10 mg HS</td><td>Active. Prescribed for RBD since 10/31/2017 — same day as G47.52 diagnosis (not for generic insomnia).</td></tr>
+    <tr><td class="first">Lemborexant (Dayvigo)</td><td>5 mg HS (failed first trial)</td><td>Prescribed; tried 5/22 night at sub-therapeutic dose (half + half tablet). Ineffective for sleep. Re-trial at full dose pending decision.</td></tr>
+    <tr><td class="first">Tadalafil</td><td>5 mg daily / 20 mg PRN</td><td>BPH / ED. No psychiatric interactions of concern.</td></tr>
+    <tr><td class="first">Rosuvastatin</td><td>20 mg</td><td>On PCP active list; recent CVS fill pattern uncertain.</td></tr>
+    <tr><td class="first">Metamucil / MiraLax</td><td>per label</td><td>Constipation. OTC.</td></tr>
+    <tr><td class="first">B12 supplementation</td><td>per regimen</td><td>For methylmalonic acidemia (MMA 0.46 H, B12 408).</td></tr>
+  </tbody>
+</table>
+
+<h2 class="page-heading">Recently stopped (past ~4 weeks)</h2>
+
+<table class="data">
+  <thead><tr><th style="width: 22%;">Medication</th><th style="width: 22%;">Stopped</th><th>Reason</th></tr></thead>
+  <tbody>
+    <tr><td class="first">Doxepin (Silenor)</td><td>~5/21</td><td>Discontinued as part of sleep-stack transition to lemborexant. <strong>Note: doxepin titration to 12 mg HS on 5/16 coincided with first acute shaking onset 5/17.</strong> Nordoxepin (active metabolite) has 31-hour half-life and accumulates over consecutive nights — residual nordoxepin likely still on board for several days post-discontinuation.</td></tr>
+    <tr><td class="first">Trazodone</td><td>~5/21</td><td>Discontinued as part of sleep-stack transition to lemborexant.</td></tr>
+    <tr><td class="first">Olanzapine (Zyprexa)</td><td>4/21/2026</td><td>Discontinued by Dr. Rubin via phone call. ~12 days on board (~6 days at 5 mg/day). Near-panic-attack rebound on first full day off.</td></tr>
+    <tr><td class="first">Lithium</td><td>4/21/2026</td><td>Discontinued by Dr. Rubin same call. ~18 days on board at 150 mg. Tremors prior to discontinuation; resolved post-discontinuation.</td></tr>
+    <tr><td class="first">Pramipexole</td><td>~3/26–28</td><td>Discontinued by Dr. Rubin within days of start due to physical symptoms.</td></tr>
+    <tr><td class="first">Brexpiprazole (Rexulti)</td><td>~mid-March 2026</td><td>Self-discontinued — patient-stated reason: balance issues.</td></tr>
+  </tbody>
+</table>
+
+<h2 class="page-heading">Proposed / under discussion (not yet on board)</h2>
+
+<table class="data">
+  <thead><tr><th style="width: 22%;">Medication</th><th>Proposed by / when</th><th>Status / family read</th></tr></thead>
+  <tbody>
+    <tr><td class="first">Quetiapine (Seroquel)</td><td>Dr. L (covering psychiatrist) — 5/23</td><td>Proposed 25 mg HS for sleep bridge. <strong>Concerns:</strong> prior failed single trial 11/2025; prodromal Lewy-spectrum sensitivity profile; activation-intolerance pattern across antipsychotics. If pursued: start at 12.5 mg, monitor motor symptoms.</td></tr>
+    <tr><td class="first">Olanzapine (Zyprexa)</td><td>Dr. L — 5/23 (second-line if Seroquel fails)</td><td><strong>Family pushing back hard.</strong> Already discontinued 4/21 for activation-intolerance; higher D2 affinity than quetiapine; Lancet 2025 categorical avoidance in DLB-spectrum. Should not proceed without explicit U-M input.</td></tr>
+    <tr><td class="first">Cymbalta → Lexapro switch</td><td>Drs. Rubin + Chilton — 5/19 (pre-Royal Oak crisis)</td><td>Stated rationale: reduce pre-ketamine anxiety. <strong>Family deferring per evidence that SNRI can be continued through ECT and that SSRI initiation does not reliably reduce anxiety in 2–4 weeks (often increases it).</strong></td></tr>
+    <tr><td class="first">Divalproex (Depakote)</td><td>Drs. Rubin + Chilton — early-mid May (unclear if recommended or just noted)</td><td>Proposed 125 mg BID titrate to TID for anxiety augmentation. <strong>Family deferring</strong> — weak evidence for VPA as anxiolytic in unipolar TRD; drug-induced parkinsonism signal in elderly is concerning in prodromal-Lewy-spectrum profile; would confound the Movement Disorders evaluation.</td></tr>
+  </tbody>
+</table>
+
+<h2 class="page-heading">Critical clinical timeline</h2>
+
+<h3 class="subsection">Background (2017–2024)</h3>
+
+<ul class="timeline">
+  <li><span class="date">10/31/2017</span>Formal REM Sleep Behavior Disorder (G47.52) diagnosed. Melatonin 3 mg started same day for RBD.</li>
+  <li><span class="date">11/26/2018</span>Peripheral neuropathy (G62.9) added to PCP problem list.</li>
+  <li><span class="date">2020</span>Possible patient-attributed acute worsening following atorvastatin switch (untested hypothesis).</li>
+  <li><span class="date">2023-12-05</span>PCP annual wellness. Full neurologic exam <strong>normal, nonfocal</strong>. Motor strength normal upper and lower; sensory intact. No gait findings.</li>
+  <li><span class="date">2024-12-10</span>PCP annual wellness. "Starting TMS treatment in addition to Lexapro." Mood disorder (F39) coded. HR 49 (bradycardia); BP 112/58.</li>
+</ul>
+
+<h3 class="subsection">Treatment-resistance trajectory (April 2025 – April 2026)</h3>
+
+<ul class="timeline">
+  <li><span class="date">04/2025</span>Aripiprazole 2 mg augmentation trial begins.</li>
+  <li><span class="date">05/19/2025</span>Recurrent depression (F33.9) coded. EKG: LAFB, PR 214, QRS 120, QTc 401, HR 50. PCP note: "Doing better on Abilify, QT shorter than in 2017."</li>
+  <li><span class="date">07/15/2025</span>Balance problem (R26.89) coded. CT head: stable. First IHA Neurology referral. PCP note: gait "essentially normal though somewhat hesitant... some word finding problems."</li>
+  <li><span class="date">07/17/2025</span>Finasteride 5 mg started (BPH). Single fill. Labeled depression/SI warning.</li>
+  <li><span class="date">07–10/2025</span>Mirtazapine trial (30→45→30 mg). Stopped for agitation.</li>
+  <li><span class="date">09/09/2025</span>Constipation (K59.09) coded. Lorazepam 0.5 mg first dispensed. PHQ-9 = 21 (Severe); GAD-7 = 16 (Severe). SI "Not at all."</li>
+  <li><span class="date">10/05/2025</span>Escitalopram course ends after ~long-running use.</li>
+  <li><span class="date">09/30–11/3/2025</span>Duloxetine started 20 mg, titrated to 60 mg by 11/3.</li>
+  <li><span class="date">11/03/2025</span>Quetiapine 50 mg single fill — brief failed trial. Reason for discontinuation not documented.</li>
+  <li><span class="date">11/04/2025</span>Drug-drug interaction (Z78.9) coded — "please call your psychiatrist." Specific agents not in available records.</li>
+  <li><span class="date">12/01/2025</span>Brexpiprazole started 0.5 mg → 1 mg by 1/5/2026.</li>
+  <li><span class="date">12/17/2025</span>Trazodone 50 mg single fill — tension/headache; quarter-pill PRN remained available.</li>
+  <li><span class="date">02/2026</span>Marin County ketamine course (sublingual): dramatic ~4-week response. Cognition, mood, physical activity all improved.</li>
+  <li><span class="date">03/2026 early</span>Depression returning pre-procedure; ketamine paused.</li>
+  <li><span class="date">03/2026 mid</span>Patient self-discontinued brexpiprazole — stated reason: balance issues.</li>
+  <li><span class="date">03/18/2026</span>Aquablation procedure under general anesthesia.</li>
+  <li><span class="date">03/24/2026</span>Pramipexole 0.125 mg dispensed; discontinued within days for physical symptoms.</li>
+  <li><span class="date">04/03/2026</span>Lithium 150 mg started.</li>
+  <li><span class="date">04/08/2026</span>Family-noted physical symptoms.</li>
+  <li><span class="date">04/09/2026</span>Olanzapine 2.5 mg started; increased to 5 mg PM of 4/14.</li>
+  <li><span class="date">04/14/2026</span>PCP visit. Gait "essentially normal though somewhat robotic." R26.9 + R63.0 + R63.4 coded. New IHA Neurology referral ("Rule out Parkinson's"). PCP recommended ECT consideration. Labs drawn.</li>
+  <li><span class="date">04/17–19/2026</span>Wedding weekend. Cognitive lapses; somewhat halting gait; quieter voice; some balance unsteadiness; possible tremor reported by others; reduced facial expressiveness.</li>
+  <li><span class="date">04/21/2026 PM</span>Dr. Rubin phone call: discontinue lithium AND olanzapine.</li>
+  <li><span class="date">04/22/2026</span>First full day off both. Reported near-panic-attack rebound.</li>
+  <li><span class="date">04/23/2026</span>Resolved plan: maintain duloxetine 60 mg; restart ketamine with maintenance from day one; ECT contingent backup; lorazepam as time-limited bridge.</li>
+</ul>
+
+<h3 class="subsection">Recent acute course (May 2026)</h3>
+
+<ul class="timeline">
+  <li><span class="date">05/04/2026</span>Updates: Lorazepam now 1 mg daily midday as bridge per Drs. Rubin + Peltzman. ZZZQuil being used recently — family agreed to stop. Alfuzosin confirmed discontinued post-prostate-procedure. PCP visit: testosterone panel returned — free T 3.6 (L), bioavailable T 82 (L), SHBG 70.1 (high-normal) — biochemical hypogonadism. Doxepin 6 mg HS proposed and started around this date.</li>
+  <li><span class="date">05/05/2026</span>Ann Arbor ketamine clinic restart originally targeted (later pushed to 5/18).</li>
+  <li class="acute"><span class="date">05/12/2026</span>First Cymbalta taper attempt — 40 mg morning dose. <strong>1 day only.</strong></li>
+  <li><span class="date">05/13/2026</span>Returned to 60 mg morning after psychiatrist consult. Family discussed postponing further tapering until after ketamine.</li>
+  <li><span class="date">05/14/2026</span>Julane (ketamine integration therapist) shares preferred sequencing — would prefer running first ketamine sessions on existing stack before any Cymbalta changes. Dad reports RBD episodes now once every ~2 months, less frequent than 2017–18.</li>
+  <li><span class="date">05/15/2026</span>Sleep aid discussion. Dad asks about Dayvigo and other options.</li>
+  <li><span class="date">05/16/2026</span>Plan to titrate doxepin to 12 mg; consider Remeron as alternative. Productive call with Dr. Rubin; Rubin willing to coordinate with Dr. Chilton; willing to give Dad options. <strong>Doxepin titrated to 12 mg HS this night.</strong></li>
+  <li class="acute"><span class="date">05/17/2026</span><strong>First acute body movements / shaking noted</strong> — morning after doxepin 12 mg first dose. Other meds unchanged.</li>
+  <li class="acute"><span class="date">05/18/2026</span>Royal Oak ketamine session. Difficult/dissociative — "convulsive" per Mom; Dad described as "going to Africa" / runaway train. Shaking present during session. Post-session: more coherent than Mom had seen him in ages, but Dad did not feel better. Mom used word "retraumatizing."</li>
+  <li><span class="date">05/19/2026</span>Crash continues. Calls with Julane. Drs. Chilton + Rubin propose Cymbalta → Lexapro switch ahead of next ketamine session; depakote mentioned by Chilton (unclear if recommended).</li>
+  <li class="acute"><span class="date">05/21/2026 AM</span>Second Cymbalta taper attempt — 40 mg morning dose (per Mom's 5/23 consolidated recall; contemporaneous documentation places dose earlier the night before). Acute anxiety crisis through 5/21 day–night; lorazepam 1 mg used to stabilize. Covering provider (Rubin proxy) directed return to 60 mg.</li>
+  <li><span class="date">05/21/2026</span>Family + Dad agree on ECT at U-M as the active path. Mom meets with Dr. Maxwell, Director of ECT, U-M. Callback from Dr. Maxner requested. ECT start window 2–4 weeks. Doxepin and trazodone discontinued. Lemborexant 5 mg HS planned to start.</li>
+  <li><span class="date">05/22/2026 AM</span>Returned to 60 mg Cymbalta. Sleep regimen transition continues.</li>
+  <li class="acute"><span class="date">05/22/2026 PM</span>Shaking episode.</li>
+  <li class="acute"><span class="date">05/22/2026 night</span>Lemborexant tried for first time — taken as half-tablet + half-tablet later in the night (~5 mg total). Did not produce sleep.</li>
+  <li class="acute"><span class="date">05/23/2026 AM</span>Intense shaking of legs and feet — Mom physically holding Dad. Ativan 1 mg taken at ~8 AM. Mom calls Sharon Auchincloss (family psychiatrist friend) and drafts script for Dr. L (covering for Dr. Rubin). Plan proposed: Seroquel 25 mg HS as sole sleep therapy; possible escalation to Zyprexa if ineffective. Doctor-to-doctor call to U-M ECT requested to accelerate. Family debating ER.</li>
+</ul>
+
+<h2 class="page-heading">The shaking — what we know so far</h2>
+
+<div class="info-block">
+  <p><strong>First acutely noted:</strong> 5/17/2026 morning. The only medication change the prior night (5/16) was doxepin titration from 6 mg to 12 mg HS. No other psychiatric medication change.</p>
+  <p><strong>Persistence since 5/17:</strong> "Some of this shaking evident ever since then" per Mom (5/23 clarification).</p>
+  <p><strong>Whether shaking predates 5/17:</strong> Uncertain. Mom: "As to whether it was there earlier (in addition to general anxiety and ruminations), I don't know." Possible mild background not previously noted.</p>
+  <p><strong>Acute exacerbations:</strong> 5/18 Royal Oak ketamine session; 5/22 PM; 5/23 AM. Tracks with sleep deprivation, acute anxiety, and Cymbalta taper-and-reversal events.</p>
+  <p><strong>Distribution and pattern:</strong> Pending family observation. Adam (5/23) asked Mom to characterize — legs only? Hands as well? Rest vs. action?</p>
+</div>
+
+<h3 class="subsection">Differential — in rough order of weight</h3>
+
+<ol style="margin: 0; padding-left: 18pt; font-size: 9pt; line-height: 1.45;">
+  <li style="margin-bottom: 5pt;"><strong>Doxepin 12 mg-related (and ongoing nordoxepin)</strong> — temporally most proximate. Doxepin at 12 mg moves from pure-H1 territory (3–6 mg) toward anticholinergic and 5-HT2A effects; in an elderly patient with prodromal Lewy-spectrum vulnerability, this could plausibly produce or unmask myoclonic/jerky movements. Nordoxepin's 31-hour half-life means residual effects persist for ~5 days post-discontinuation. Doxepin discontinued ~5/21; nordoxepin likely meaningfully present through ~5/26.</li>
+  <li style="margin-bottom: 5pt;"><strong>Prodromal Lewy-spectrum motor symptoms unmasked by doxepin</strong> — Dad's underlying vulnerability (formal RBD 8.5 years, gait abnormality, balance findings) provides a substrate that pharmacological insults can unmask. PLMD (periodic limb movement disorder) is common in prodromal synucleinopathy.</li>
+  <li style="margin-bottom: 5pt;"><strong>SNRI-related (Cymbalta steady state or taper effects)</strong> — SSRIs/SNRIs are documented to exacerbate RLS/PLMD. Taper attempts on 5/12 and 5/21 may have produced acute withdrawal contributions; Cymbalta steady state may baseline-worsen any underlying motor signal.</li>
+  <li style="margin-bottom: 5pt;"><strong>Sleep-deprivation myoclonus</strong> — extreme sleep deprivation independently produces jerky movements.</li>
+  <li style="margin-bottom: 5pt;"><strong>Residual drug-induced parkinsonism / motor signal</strong> — from recent olanzapine, brexpiprazole, lithium, pramipexole exposures (March–April). These can take weeks to months to fully resolve.</li>
+  <li style="margin-bottom: 5pt;"><strong>Acute anxiety tremor</strong> — possible but typically more diffuse than focal leg/foot jerks.</li>
+</ol>
+
+<h2 class="page-heading">Cymbalta taper history — two attempts</h2>
+
+<table class="data">
+  <thead><tr><th style="width: 14%;">Date</th><th style="width: 14%;">Dose</th><th>Outcome</th></tr></thead>
+  <tbody>
+    <tr><td class="first">5/12/2026 AM</td><td>40 mg (from 60)</td><td>One-dose-only attempt. Returned to 60 mg the next morning after psychiatrist consult. Family discussed postponing further tapering until after ketamine.</td></tr>
+    <tr><td class="first">5/21/2026 AM</td><td>40 mg (from 60)</td><td>Second one-dose attempt per Rubin's prescribed schedule. Acute anxiety overnight 5/21→5/22 AM; lorazepam 1 mg used to stabilize; covering provider directed return to 60 mg.</td></tr>
+  </tbody>
+</table>
+
+<p class="context"><strong>Net status:</strong> 60 mg morning dosing maintained except for two single-dose attempts at 40 mg, each reversed within 24 hours. Currently steady-state at 60 mg AM since 5/22.</p>
+
+<p class="context"><strong>Family-preferred go-forward plan (consistent with PRIDE study + Pluijms 2021 meta-analysis):</strong> hold at 60 mg through ECT initiation; let U-M manage taper during or after ECT response when patient is under closer monitoring and ECT itself is providing antidepressant effect.</p>
+
+<h2 class="page-heading">Load-bearing clinical uncertainties</h2>
+
+<div class="uncertainty-block">
+  <div class="ub-label">1. What is causing the shaking?</div>
+  <p>Differential above. The single highest-leverage diagnostic question. <strong>Implications:</strong> if proximate cause is doxepin/nordoxepin, time off doxepin should resolve over ~5 days post-discontinuation; if it's prodromal-Lewy-spectrum unmasking, the question becomes U-M Movement Disorders'; if it's sleep deprivation, resolving sleep is the treatment.</p>
+</div>
+
+<div class="uncertainty-block">
+  <div class="ub-label">2. Whether Seroquel is the right bridge agent</div>
+  <p>Quetiapine has the lowest D2 affinity of atypicals and is the only antipsychotic generally considered usable in confirmed DLB. <strong>But:</strong> Dad already failed a single trial 11/2025 with reason undocumented; his activation-intolerance pattern includes multiple antipsychotics; the proposed escalation to Zyprexa if Seroquel fails is the wrong direction given his profile. If Seroquel proceeds, dose entry at 12.5 mg and explicit motor-symptom monitoring are warranted.</p>
+</div>
+
+<div class="uncertainty-block">
+  <div class="ub-label">3. ER decision — holiday weekend risk-benefit</div>
+  <p><strong>Arguments to go:</strong> acute sleep crisis can escalate; parenteral options for monitored stabilization; psychiatric admission could accelerate ECT; Mom is exhausted. <strong>Arguments against:</strong> ER physicians may default to haloperidol or olanzapine (categorically contraindicated in Dad's profile); Dad's complex history hard to communicate quickly; involuntary admission criteria not currently met. <strong>If ER is pursued, advance briefing of ER physician on neuroleptic-sensitivity profile is critical.</strong></p>
+</div>
+
+<div class="uncertainty-block">
+  <div class="ub-label">4. ECT acceleration timing</div>
+  <p>U-M ECT start window 2–4 weeks from 5/21. Doctor-to-doctor call from covering psychiatrist citing acute deterioration is reasonable and was on the 5/23 plan. Whether U-M can accommodate sooner-than-3-weeks is the practical question.</p>
+</div>
+
+<div class="uncertainty-block">
+  <div class="ub-label">5. Lorazepam trajectory</div>
+  <p>1 mg used 5/22 PM and 5/23 AM. Daily-use trajectory is the concern. Dad has prior completed lorazepam taper (was on 1 mg daily late April through ~5/4). Re-induction may be faster than first-time use. Family preference: avoid scheduled use; U-M to inherit the lorazepam management question post-ECT.</p>
+</div>
+
+<div class="uncertainty-block">
+  <div class="ub-label">6. Sleep regimen for the bridge window</div>
+  <p>Dayvigo at full 5 mg dose hasn't been fairly tested (5/22 trial was half + half = sub-therapeutic). Options to consider: full-dose Dayvigo 5–10 mg HS; return to doxepin + trazodone if pre-shaking sleep was acceptable; clonazepam 0.25–0.5 mg HS (single-mechanism: addresses RBD + sleep + anxiety, but introduces another benzodiazepine); gabapentin or pregabalin (non-neuroleptic, can address anxiety + sleep + possible RLS).</p>
+</div>
+
+<div class="uncertainty-block">
+  <div class="ub-label">7. The Cymbalta-vs-Lexapro question medium-term</div>
+  <p>Chilton/Rubin's stated rationale (reduce pre-ketamine anxiety) is at odds with the actual pharmacology of SSRI initiation in weeks 2–4 (often increases anxiety; jitteriness syndrome incidence 20–30% in elderly). PRIDE study + Pluijms 2021 support continuing SNRI through ECT. Most parsimonious plan: hold at 60 mg through ECT; let U-M decide post-response.</p>
+</div>
+
+<h2 class="page-heading">Active workup and pending consults</h2>
+
+<table class="data">
+  <thead><tr><th style="width: 35%;">Consult/program</th><th>Status</th></tr></thead>
+  <tbody>
+    <tr><td class="first">U-M ECT (Dr. Nicholas Maxner)</td><td><strong>Active path.</strong> 5/21 consultation with Dr. Maxwell (Director). Maxner callback expected early next week. Start window 2–4 weeks. Family asking U-M to inherit medication management.</td></tr>
+    <tr><td class="first">U-M Movement Disorders Program</td><td><strong>Active referral.</strong> DAT-SPECT pending. Load-bearing for the shaking and prodromal Lewy-spectrum questions.</td></tr>
+    <tr><td class="first">U-M Cognitive Disorders Program (Heidebrink/Paulson)</td><td>Referral planned via PCP. Parallel cognitive-workup track.</td></tr>
+    <tr><td class="first">IHA Neurology</td><td>Appointment 06/16/2026 — general neurology (movement-disorder subspecialty routed to U-M).</td></tr>
+    <tr><td class="first">PCP (Dr. Eric Straka, PIM Ann Arbor)</td><td>Active. 5/11 visit completed. Periodic touch.</td></tr>
+    <tr><td class="first">Endocrinology</td><td>Pending — biochemical hypogonadism from 5/4 labs. Referral discussed but not yet placed.</td></tr>
+    <tr><td class="first">Geriatric medicine consult</td><td>Pending referral via PCP. IHA Comprehensive Geriatric Primary Care; alternative U-M Turner Geriatric Clinic.</td></tr>
+    <tr><td class="first">Consulting psychiatrist (Dr. Gabe Peltzman)</td><td>Periodic consult. Scope: medication review and second opinion.</td></tr>
+    <tr><td class="first">Ketamine therapist (Julane)</td><td>Active; provides integration sessions when ketamine is used.</td></tr>
+    <tr><td class="first">Ketamine clinic (A2 Ann Arbor)</td><td>Contingent. 6/8 restart was scheduled; now likely deferred given ECT direction.</td></tr>
+    <tr><td class="first">Outpatient psychiatry (Dr. Rubin)</td><td>Transitioning. Currently covered by Dr. L for the holiday weekend. Long-term: psychiatric management transitioning to U-M.</td></tr>
+    <tr><td class="first">Family-physician psychiatrist (Sharon Auchincloss)</td><td>Informal family advisor. Not in care chain. Consulted by Mom on 5/23.</td></tr>
+  </tbody>
+</table>
+
+<h2 class="page-heading">Recent labs and imaging</h2>
+
+<table class="data">
+  <thead><tr><th style="width: 22%;">Date / test</th><th>Findings</th></tr></thead>
+  <tbody>
+    <tr><td class="first">05/04/2026 — Testosterone panel</td><td>Total T 304 ng/dL (borderline, ref 175–781); <strong>free T 3.6 (L)</strong> (ref 4.9–19.0); <strong>bioavailable T 82 (L)</strong> (ref 115–447); SHBG 70.1 (high-normal); albumin 4.2 (WNL). <em>Biochemical hypogonadism.</em> Picture: elevated SHBG sequestering testosterone such that total T appears in-range while bioactive fractions are low.</td></tr>
+    <tr><td class="first">04/14/2026 — CMP</td><td>Na 141, K 4.1, Cl 105, CO2 25, BUN 21 (H), Cr 1.00, glucose 108, Ca 9.0, AST 32, ALT 24, ALP 39 (L), Tbil 0.6. eGFR 78.</td></tr>
+    <tr><td class="first">04/14/2026 — CBC</td><td>WBC 6.8, Hgb 14.3, Hct 42.8, Plt 213, RBC 4.66, MCV 91.8, RDW 12.6.</td></tr>
+    <tr><td class="first">04/14/2026 — Other</td><td>TSH 1.05 (WNL); B12 408; HbA1c 5.7 (pre-diabetes).</td></tr>
+    <tr><td class="first">04/15/2026 — Dr. Rubin order</td><td>Lithium level, BUN/Cr, TSH, calcium. Reported normal verbally on 4/21; numerical values pending.</td></tr>
+    <tr><td class="first">07/15/2025 — CT head WO contrast</td><td>"Stable" — for balance/NPH workup.</td></tr>
+    <tr><td class="first">05/19/2025 — EKG</td><td>HR 50, PR 214 (borderline 1° AV block), QRS 120, QTc 401, LAFB. Asymptomatic.</td></tr>
+    <tr><td class="first">PHQ-9 / GAD-7</td><td>09/09/2025: PHQ-9 21 (Severe), GAD-7 16 (Severe), SI "Not at all." 12/16/2025: PHQ-9 17 (Moderately Severe), GAD-7 7 (Mild), SI "Not at all." Current (Adam's clinical estimate): PHQ-9 ≈ 24.</td></tr>
+  </tbody>
+</table>
+
+<h2 class="page-heading">Open questions being clarified</h2>
+
+<ul class="bulleted">
+  <li><strong>Distribution and pattern of the shaking</strong> — legs only? Hands also? Rest vs. action? Pending Mom's observation 5/23.</li>
+  <li><strong>Why the 11/2025 quetiapine trial failed</strong> — relevant to current Seroquel proposal. No documented reason in available records.</li>
+  <li><strong>Specifics of 11/04/2025 drug-drug interaction note (Z78.9)</strong> — which agents.</li>
+  <li><strong>Lithium level numerical value</strong> from 4/15/2026 — verbally reported normal; written value still pending.</li>
+  <li><strong>Peripheral neuropathy (G62.9, 2018)</strong> — clinical findings and current monitoring status.</li>
+  <li><strong>Pre-2024 atorvastatin → rosuvastatin switch date</strong> — pharmacy records suggest mid-late 2024.</li>
+  <li><strong>Prior-PCP records (Dr. Babe, Dr. Oberdoerster)</strong> — pending records request.</li>
+  <li><strong>December 2024 TMS course outcome</strong> — response, durability, discontinuation reason — pending records.</li>
+  <li><strong>U-M ECT acceleration response</strong> — pending doctor-to-doctor call.</li>
+  <li><strong>Dad's willingness to accept ER or voluntary admission</strong> if recommended.</li>
+  <li><strong>Whether Adult children Leah/David travel this weekend</strong> for caregiver support.</li>
+</ul>
+
+<h2 class="page-heading">Family situation and care coordination</h2>
+
+<ul class="bulleted">
+  <li><strong>Son Adam Plunkett</strong> — primary point of contact for care coordination; manages clinical communication and research synthesis.</li>
+  <li><strong>Wife Marcy Plunkett</strong> — primary in-home caregiver; generally present at appointments; currently sleep-deprived and expressing "can't go through this again."</li>
+  <li><strong>Daughter Leah Plunkett</strong> — coordinates remotely; considering travel this weekend.</li>
+  <li><strong>Son David Plunkett</strong> — coordinates remotely; considering travel this weekend.</li>
+  <li><strong>Sister-in-law Debbi</strong> — arriving 5/26/2026 for one week.</li>
+  <li><strong>Friend/informal advisor Sharon Auchincloss</strong> — psychiatrist (cancer-patient focus); consulted by Mom; not in formal care chain.</li>
+  <li><strong>Family-history relevant items:</strong> Brother Tom (living) — dementia diagnosis early 70s; longstanding alcohol use; depression. Sister Judy (deceased) — dementia around age 68; alcohol history; depression. Sister Kathy (living, no dementia). Depression and social anxiety run in family.</li>
+</ul>
+
+<h2 class="page-heading">Allergies and critical contraindications</h2>
+
+<ul class="bulleted">
+  <li><strong>Ambien (zolpidem)</strong> — reaction "anxiety," Active on EMR.</li>
+  <li><strong>Avoid high-D2-affinity neuroleptics</strong> — haloperidol, olanzapine, risperidone — prodromal Lewy-spectrum sensitivity risk per Lancet Neurology 2025 categorical guidance. Quetiapine at low dose (≤25 mg) is the conditionally-acceptable atypical if antipsychotic is necessary.</li>
+  <li><strong>Activation-intolerance pattern</strong> — caution with any new psychoactive agent; multiple prior failures across structurally different classes.</li>
+  <li><strong>Cardiac caution</strong> — sinus bradycardia (HR 49–53), borderline 1° AV block, BP 112/58. Avoid agents with strong bradycardic, hypotensive, or QT-prolonging effects.</li>
+  <li><strong>Fall risk</strong> — gait abnormality + balance problem + peripheral neuropathy + hypotension/bradycardia + CNS-depressant stack (Cymbalta + lorazepam + lemborexant ± others). Conservative ambulation and supervision in any inpatient setting.</li>
+</ul>
+
+<h2 class="page-heading">Pharmacological glossary — agents tried, timing, reactions</h2>
+
+<p class="context">Comprehensive record of every psychiatric agent and major non-psychiatric agent of relevance encountered in the past 12+ months. Status legend: <strong style="color: var(--green);">CURRENT</strong> / <strong style="color: var(--amber);">PROPOSED</strong> / <strong style="color: var(--text-muted);">DISCONTINUED</strong>.</p>
+
+<table class="glossary">
+  <thead>
+    <tr><th>Agent</th><th>Dates</th><th>Dose</th><th>Outcome / reaction</th></tr>
+  </thead>
+  <tbody>
+
+    <tr class="current">
+      <td class="agent">Duloxetine (Cymbalta)</td>
+      <td class="dates">Started 09/30/2025 → CURRENT</td>
+      <td class="dose">60 mg AM</td>
+      <td class="outcome">Replaced long-running escitalopram. Titrated 20 → 60 mg by 11/3/2025. Generally tolerated at 60 mg. Two short taper attempts (5/12, 5/21) at 40 mg morning dose each reversed within 24 hours due to acute anxiety. Currently held at 60 mg pending ECT.</td>
+    </tr>
+
+    <tr class="current">
+      <td class="agent">Lorazepam (Ativan)</td>
+      <td class="dates">First dispensed 09/09/2025 → CURRENT PRN</td>
+      <td class="dose">1 mg PRN</td>
+      <td class="outcome">Started at 0.5 mg, escalated to 1 mg by 04/02/2026. Daily 1 mg midday late April–early May; then tapered to PRN. Used 5/22 PM and 5/23 AM. Effective for acute anxiety. Family concern about daily-use trajectory.</td>
+    </tr>
+
+    <tr class="current">
+      <td class="agent">Melatonin</td>
+      <td class="dates">10/31/2017 → CURRENT</td>
+      <td class="dose">10 mg HS</td>
+      <td class="outcome">Prescribed same day as RBD diagnosis (G47.52); for RBD specifically. Started 3 mg, later 10 mg. Continuous use 8.5 years.</td>
+    </tr>
+
+    <tr>
+      <td class="agent">Lemborexant (Dayvigo)</td>
+      <td class="dates">Tried first 5/22/2026 night</td>
+      <td class="dose">5 mg HS (taken sub-optimally)</td>
+      <td class="outcome">First trial 5/22 night taken as half-tablet + half-tablet later in the night (~5 mg total). Did not produce sleep. Family considering fair-dose retrial (5 or 10 mg HS).</td>
+    </tr>
+
+    <tr class="proposed">
+      <td class="agent">Quetiapine (Seroquel) — PROPOSED</td>
+      <td class="dates">Prior single fill 11/03/2025; proposed again 5/23/2026</td>
+      <td class="dose">Prior 50 mg; now 25 mg HS proposed</td>
+      <td class="outcome">11/2025 single fill — brief failed trial; reason for discontinuation not documented. Currently proposed at 25 mg HS by Dr. L (covering) as sleep bridge. Concerns: prior failure + prodromal Lewy-spectrum sensitivity profile + activation-intolerance pattern.</td>
+    </tr>
+
+    <tr class="proposed">
+      <td class="agent">Escitalopram (Lexapro) — PROPOSED retry</td>
+      <td class="dates">Long-running through 10/05/2025; proposed retry 5/19/2026</td>
+      <td class="dose">Historical steady state 30 mg; high-dose 40–50 mg trials in 2023 produced activation/failure</td>
+      <td class="outcome">Decades on this agent. Discontinued 10/2025 in favor of duloxetine. Currently proposed by Drs. Rubin + Chilton as Cymbalta replacement. Family deferring pending U-M input.</td>
+    </tr>
+
+    <tr class="proposed">
+      <td class="agent">Divalproex (Depakote) — UNDER DISCUSSION</td>
+      <td class="dates">Mentioned by Chilton early-mid May; not started</td>
+      <td class="dose">125 mg BID titrate to TID proposed</td>
+      <td class="outcome">Indication unclear (anxiety augmentation per Rubin; Chilton unclear if recommended or noted). Family deferring — weak evidence for VPA in unipolar TRD; DIP signal in elderly is concerning in prodromal-Lewy-spectrum profile; would confound Movement Disorders workup.</td>
+    </tr>
+
+    <tr class="discontinued">
+      <td class="agent">Doxepin (Silenor)</td>
+      <td class="dates">~05/04 → ~05/21</td>
+      <td class="dose">6 mg HS → 12 mg HS on 5/16</td>
+      <td class="outcome">Started for sleep maintenance (Rubin-prescribed). Titrated to 12 mg on 5/16. <strong>First acute shaking noted 5/17 morning — only med change.</strong> Discontinued ~5/21 in transition to lemborexant. Nordoxepin (active metabolite, 31-hr half-life) likely meaningfully present through ~5/26.</td>
+    </tr>
+
+    <tr class="discontinued">
+      <td class="agent">Trazodone</td>
+      <td class="dates">Single fill 12/17/2025; PRN quarter-pill resumed May 2026 with doxepin; discontinued ~5/21</td>
+      <td class="dose">50 mg PRN HS</td>
+      <td class="outcome">12/2025 single fill: tension and headache. Resumed as quarter-pill PRN in May 2026 in combination with doxepin for sleep ("okay not great" — 5.5–6 hrs sleep). Discontinued ~5/21 in transition to lemborexant.</td>
+    </tr>
+
+    <tr class="discontinued">
+      <td class="agent">Olanzapine (Zyprexa)</td>
+      <td class="dates">04/09/2026 → 04/21/2026</td>
+      <td class="dose">2.5 mg → 5 mg by 4/14 PM</td>
+      <td class="outcome">~12 days on board (~6 days at 5 mg). Stopped by Dr. Rubin via phone call. Reported near-panic-attack rebound on first full day off — possible activation-intolerance + withdrawal phenomenon.</td>
+    </tr>
+
+    <tr class="discontinued">
+      <td class="agent">Lithium</td>
+      <td class="dates">04/03/2026 → 04/21/2026</td>
+      <td class="dose">150 mg (CVS); 4/14 PCP list shows 300 mg — discrepancy unresolved</td>
+      <td class="outcome">~18 days. Discontinued by Dr. Rubin same call as olanzapine. Tremors prior to discontinuation; resolved post-discontinuation. Rebound anxiety same as olanzapine.</td>
+    </tr>
+
+    <tr class="discontinued">
+      <td class="agent">Pramipexole (Mirapex)</td>
+      <td class="dates">03/24/2026 → ~3/26–28</td>
+      <td class="dose">0.125 mg</td>
+      <td class="outcome">Discontinued within days for physical symptoms. Reaction pattern itself clinically informative (dopamine agonist intolerance in prodromal Lewy-spectrum is unusual but possible at low dose).</td>
+    </tr>
+
+    <tr class="discontinued">
+      <td class="agent">Brexpiprazole (Rexulti)</td>
+      <td class="dates">12/01/2025 → mid-March 2026</td>
+      <td class="dose">0.5 mg → 1 mg by 1/5/2026</td>
+      <td class="outcome">Self-discontinued by patient — stated reason: balance issues. Patient-attributed motor symptom to medication.</td>
+    </tr>
+
+    <tr class="discontinued">
+      <td class="agent">Aripiprazole (Abilify)</td>
+      <td class="dates">04/02/2025 → summer 2025</td>
+      <td class="dose">2 mg</td>
+      <td class="outcome">PCP note 5/19/2025 said "doing better on Abilify." Subsequent parkinsonian features summer 2025 led to discontinuation. No refills after 4/2/2025.</td>
+    </tr>
+
+    <tr class="discontinued">
+      <td class="agent">Mirtazapine</td>
+      <td class="dates">07/23/2025 → 10/01/2025</td>
+      <td class="dose">30 mg → 45 mg (9/4) → 30 mg (9/9)</td>
+      <td class="outcome">Stopped for agitation. Activation phenotype.</td>
+    </tr>
+
+    <tr class="discontinued">
+      <td class="agent">Quetiapine (prior trial)</td>
+      <td class="dates">11/03/2025 single fill</td>
+      <td class="dose">50 mg</td>
+      <td class="outcome">Brief failed trial. Reason for discontinuation not documented — clarification pending.</td>
+    </tr>
+
+    <tr class="discontinued">
+      <td class="agent">Escitalopram (Lexapro)</td>
+      <td class="dates">Decades to 10/05/2025</td>
+      <td class="dose">Historical steady-state 30 mg; high-dose 40–50 mg in 2023 → activation/failure</td>
+      <td class="outcome">Long-running primary antidepressant. Switched to duloxetine 9/30/2025. Currently proposed for retry.</td>
+    </tr>
+
+    <tr class="discontinued">
+      <td class="agent">Sublingual ketamine</td>
+      <td class="dates">02/2026 course</td>
+      <td class="dose">10–20 mg per session, lozenge</td>
+      <td class="outcome"><strong>Dramatic ~4-week response.</strong> Cognition, mood, physical activity all improved. Course completed; depression returning early March pre-procedure. Patient is documented ketamine-responder.</td>
+    </tr>
+
+    <tr class="discontinued">
+      <td class="agent">IV ketamine (Royal Oak)</td>
+      <td class="dates">05/18/2026 single session</td>
+      <td class="dose">Standard IV protocol</td>
+      <td class="outcome">Poorly tolerated. Dissociative; shaking; "convulsive" per Mom; Dad described "going to Africa" / runaway train. No subsequent session. Family deferred A2 ketamine restart in favor of ECT direction.</td>
+    </tr>
+
+    <tr class="discontinued">
+      <td class="agent">TMS (standard)</td>
+      <td class="dates">12/2024 course</td>
+      <td class="dose">Standard protocol</td>
+      <td class="outcome">Course completed. Response, durability, and discontinuation reason not in available records — pending TMS provider chart.</td>
+    </tr>
+
+    <tr class="discontinued">
+      <td class="agent">Finasteride</td>
+      <td class="dates">07/17/2025 → likely 10/2025</td>
+      <td class="dose">5 mg (BPH)</td>
+      <td class="outcome">Single CVS fill. Labeled depression/SI warning; temporal proximity to F33.9 coding 5/19/2025. Likely discontinued ~10/2025 per CVS pattern. Not on 4/14/2026 PCP list.</td>
+    </tr>
+
+    <tr class="discontinued">
+      <td class="agent">Alfuzosin</td>
+      <td class="dates">Through 5/4/2026</td>
+      <td class="dose">10 mg (BPH)</td>
+      <td class="outcome">Temporary perioperative course for prostate procedure. Confirmed discontinued 5/4/2026.</td>
+    </tr>
+
+    <tr class="discontinued">
+      <td class="agent">ZZZQuil (diphenhydramine)</td>
+      <td class="dates">Briefly used early May 2026</td>
+      <td class="dose">50 mg HS</td>
+      <td class="outcome">Family stopped after Adam's concern about anticholinergic burden in prodromal Lewy-spectrum profile (Beers Criteria caution + PCP prior counsel against Benadryl 12/16/2025).</td>
+    </tr>
+
+    <tr class="discontinued">
+      <td class="agent">Oxybutynin</td>
+      <td class="dates">12/24/2024 single fill</td>
+      <td class="dose">5 mg (anticholinergic bladder Rx)</td>
+      <td class="outcome">Single fill; not refilled. Likely long discontinued. Predates documented current-PCP encounters.</td>
+    </tr>
+
+  </tbody>
+</table>
+
+<div class="footer-note">
+  <strong>Document metadata.</strong> Sources: current-PCP (Dr. Eric Straka) EMR patient-portal export through 4/21/2026; CVS pharmacy dispensing 4/21/2023–4/21/2026; Birdi mail-order pharmacy 01/2024–04/2026; daily family observation logs; Dr. Rubin verbal communications 4/21, 4/23, 5/16, 5/19, 5/21; family-text-thread documentation 5/18–5/23; Mom's 5/23 detailed clarifications; OpenEvidence-summarized published guidance on individual clinical questions. Some events relying on family recall and verbal report from prescribers are noted with appropriate uncertainty in the open-questions section. Pharmacy dispensing dates and current-PCP EMR notes are the strongest primary sources; family-recall events have been cross-referenced across multiple family members where possible. Pre-2024 psychiatric history (escitalopram era, prior SSRI trials, possible buspirone trial Dad recalls) is incomplete pending records from prior PCPs (Dr. Babe, Dr. Oberdoerster).
+  <br><br>
+  <strong>Last updated:</strong> 2026-05-23. <strong>Supersedes:</strong> clinical brief dated 2026-05-04. <strong>Maintained by:</strong> Adam Plunkett (son) on behalf of the family. <strong>For new providers:</strong> please direct clarifying questions to Adam in the first instance; he can route to Mom (in-home observation), Dr. Rubin (psychiatric prescribing through ~5/22), Dr. Straka (PCP), or Dr. Maxner (U-M ECT going forward).
+</div>
+
+</body>
+</html>
