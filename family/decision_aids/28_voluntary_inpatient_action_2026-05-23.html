@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Voluntary inpatient care — action handout — 2026-05-23</title>
+<style>
+  @page { size: letter; margin: 0.5in 0.55in; }
+  :root {
+    --navy: #1a3a5c; --navy-dark: #0f2640;
+    --green: #2c5e3f; --green-bg: #e8f0ea; --green-border: #5a8a6a;
+    --blue-bg: #eef2f8; --blue-border: #6a8aaa;
+    --amber: #8a6a2c; --amber-bg: #f5efdf; --amber-border: #c8a86e;
+    --red: #8b2c2c; --red-bg: #f4e6e6; --red-border: #c87878;
+    --text: #1f1f1f; --text-muted: #5a5a5a;
+    --rule: #c8c8c8; --rule-strong: #6a6a6a;
+    --tint: #f5f3f0; --tint-neutral: #f3f3f1;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    font-family: "Charter", "Georgia", "Times New Roman", serif;
+    font-size: 10pt; line-height: 1.45; color: var(--text);
+    -webkit-font-smoothing: antialiased;
+  }
+  .doc-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    padding-bottom: 8pt; border-bottom: 1.5pt solid var(--navy); margin-bottom: 14pt;
+  }
+  .doc-header .title {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 700; font-size: 18pt; line-height: 1.15;
+    color: var(--navy-dark); letter-spacing: -0.015em;
+  }
+  .doc-header .subtitle {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 500; font-size: 9.5pt; color: var(--text-muted);
+    margin-top: 3pt;
+  }
+  .doc-header .meta {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 7.5pt; color: var(--text-muted); text-align: right;
+    letter-spacing: 0.03em; line-height: 1.5;
+  }
+  h2.page-heading {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 700; font-size: 13pt; color: var(--navy-dark);
+    margin: 16pt 0 8pt 0; padding-bottom: 4pt; border-bottom: 1pt solid var(--rule-strong);
+    page-break-after: avoid;
+  }
+  .recommend-block {
+    background: var(--green-bg); border: 2pt solid var(--green-border);
+    border-radius: 5pt; padding: 14pt 18pt; margin-bottom: 14pt;
+    page-break-inside: avoid;
+  }
+  .recommend-block .label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 700; font-size: 9pt; text-transform: uppercase;
+    letter-spacing: 0.14em; color: var(--green); margin-bottom: 8pt;
+  }
+  .recommend-block .action {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 700; font-size: 12pt; color: var(--navy-dark); margin-bottom: 8pt;
+  }
+  .recommend-block p { margin: 6pt 0; font-size: 10pt; line-height: 1.5; }
+  .recommend-block strong { color: var(--navy-dark); }
+  .step-block {
+    background: var(--blue-bg); border-left: 4pt solid var(--navy);
+    padding: 11pt 16pt; margin-bottom: 12pt;
+    border-radius: 0 4pt 4pt 0;
+    page-break-inside: avoid;
+  }
+  .step-block .label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 700; font-size: 8.5pt; text-transform: uppercase;
+    letter-spacing: 0.12em; color: var(--navy); margin-bottom: 6pt;
+  }
+  .step-block ol { margin: 0; padding-left: 18pt; font-size: 9.75pt; line-height: 1.5; }
+  .step-block ol li { margin-bottom: 5pt; }
+  .step-block strong { color: var(--navy-dark); }
+  .avoid-block {
+    background: var(--red-bg); border: 1.5pt solid var(--red-border);
+    border-radius: 5pt; padding: 12pt 16pt; margin-bottom: 14pt;
+    page-break-inside: avoid;
+  }
+  .avoid-block .label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 700; font-size: 9pt; text-transform: uppercase;
+    letter-spacing: 0.14em; color: var(--red); margin-bottom: 7pt;
+  }
+  .avoid-block p { margin: 4pt 0; font-size: 9.75pt; line-height: 1.5; }
+  .avoid-block ul { margin: 0; padding-left: 18pt; }
+  .avoid-block li { font-size: 9.5pt; line-height: 1.5; margin-bottom: 5pt; }
+  .avoid-block strong { color: var(--red); }
+  .info-block {
+    background: var(--tint-neutral); border-left: 3pt solid var(--rule-strong);
+    padding: 11pt 14pt; margin-bottom: 12pt;
+    page-break-inside: avoid;
+  }
+  .info-block .label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 700; font-size: 8.5pt; text-transform: uppercase;
+    letter-spacing: 0.12em; color: var(--navy); margin-bottom: 6pt;
+  }
+  .info-block p { margin: 4pt 0; font-size: 9.75pt; line-height: 1.5; }
+  .info-block strong { color: var(--navy-dark); }
+  ul.bulleted {
+    margin: 4pt 0 10pt 0; padding-left: 18pt; font-size: 9.75pt; line-height: 1.5;
+  }
+  ul.bulleted li { margin-bottom: 5pt; }
+  ul.bulleted strong { color: var(--navy-dark); }
+  .context { font-size: 9.75pt; line-height: 1.5; margin: 0 0 8pt 0; }
+  .context strong { color: var(--navy-dark); }
+  .footer-note {
+    font-size: 8pt; color: var(--text-muted); font-style: italic;
+    margin-top: 14pt; padding-top: 8pt; border-top: 0.5pt solid var(--rule);
+  }
+</style>
+</head>
+<body>
+
+<div class="doc-header">
+  <div>
+    <div class="title">Voluntary inpatient care — alternatives to ER</div>
+    <div class="subtitle">Action handout based on OE #27 (5/23) · 2026-05-23</div>
+  </div>
+  <div class="meta">
+    For Dad, Mom, Leah, David,<br>
+    Debbi, family team
+  </div>
+</div>
+
+<div class="recommend-block">
+  <div class="label">The single most leveraged action (per OE #27)</div>
+  <div class="action">Dr. L's doctor-to-doctor call to Dr. Maxner — Tuesday morning (5/26) first business day</div>
+  <p>This one call does double duty: <strong>(a) ECT acceleration</strong> — citing acute deterioration, may move the start window from 2–4 weeks down to 7–9 days under inpatient status (Kohli 2025 National Inpatient Sample median); <strong>(b) direct admission inquiry</strong> — Maxner's team may be able to facilitate voluntary admission to U-M Geriatric Psychiatry without ER intake.</p>
+  <p>Family role: ensure Dr. L is fully briefed with the comprehensive clinical brief (#26) and has Dad's verbal agreement to be voluntarily admitted if Maxner's team can arrange it.</p>
+</div>
+
+<h2 class="page-heading">Why voluntary inpatient is worth considering</h2>
+
+<div class="info-block">
+  <div class="label">What inpatient admission gets you</div>
+  <ul class="bulleted" style="margin-top: 4pt;">
+    <li><strong>ECT acceleration from 2–4 weeks to 7–9 days.</strong> Kohli 2025 (National Inpatient Sample) median time-to-first-ECT for inpatients is 7.3–9.1 days. This is the largest single benefit.</li>
+    <li><strong>Consolidated medication management</strong> under one inpatient team (U-M psychiatry) — removes the current covering-psychiatrist + outpatient-psychiatrist + ketamine-therapist + PCP fragmentation.</li>
+    <li><strong>Monitored sleep + anxiety stabilization</strong> — 24/7 nursing observation; ability to administer scheduled medications safely (e.g., lorazepam 0.5 mg scheduled if needed).</li>
+    <li><strong>Respite for Mom (primary caregiver)</strong> — currently sleep-deprived alongside Dad; "can't go through this again." Caregiver burden is itself a clinical variable now.</li>
+    <li><strong>Avoids ER-default-neuroleptic risk.</strong> Direct voluntary admission to a psychiatric unit (vs. ER intake) means Dad's neuroleptic-sensitivity profile is in the chart and not bypassed by ER-default protocols.</li>
+    <li><strong>Within U-M system</strong> — same chart as the pending Movement Disorders / DAT-SPECT workup; the inpatient team can flag the Lewy-spectrum question and avoid high-D2 agents.</li>
+  </ul>
+</div>
+
+<h2 class="page-heading">The operational sequence (physician-initiated)</h2>
+
+<div class="step-block">
+  <div class="label">What needs to happen, in order</div>
+  <ol>
+    <li><strong>Mom or Adam calls Dr. L today (Sunday)</strong> with the explicit ask: "Can you make a doctor-to-doctor call to Dr. Maxner at U-M Tuesday morning to (a) request ECT acceleration given Dad's acute deterioration, and (b) inquire about whether voluntary admission to U-M Geriatric Psychiatry could be arranged through his service?"</li>
+    <li><strong>Family confirms Dad's verbal agreement</strong> to be voluntarily admitted if Maxner's team can arrange it. Voluntary admission does NOT require meeting involuntary criteria (no SI required); severe TRD + sleep crisis + caregiver burnout meets medical-necessity threshold per Michigan Mental Health Code.</li>
+    <li><strong>Dr. L makes the call Tuesday morning</strong> with the comprehensive clinical brief (#26) in hand or sent in advance.</li>
+    <li><strong>If Maxner's team can accommodate:</strong> direct admission via psychiatric attending referral, bypassing the ER. Maxner's secretary or admissions coordinator arranges the bed.</li>
+    <li><strong>If direct admission isn't feasible:</strong> next step is U-M Psychiatric Emergency Services (the psychiatric front door at U-M, distinct from the general ER). Still preferable to a general-ER visit.</li>
+  </ol>
+</div>
+
+<div class="info-block">
+  <div class="label">Important: this is physician-initiated, not family-initiated</div>
+  <p>The family cannot independently arrange a direct voluntary admission to U-M Geriatric Psychiatry. The admission request must come from a physician (Dr. L, or Maxner if he agrees to take over). The family's role is to (a) make sure Dr. L is fully briefed; (b) confirm Dad's willingness; (c) have the comprehensive brief printed and available. Calling U-M Psychiatry directly as a family member will route the inquiry through the front desk and likely back to needing a physician referral.</p>
+</div>
+
+<h2 class="page-heading">If inpatient doesn't work or isn't the right call</h2>
+
+<div class="info-block">
+  <div class="label">Outpatient bridge alternatives</div>
+  <p><strong>Partial Hospitalization Programs (PHP) and Intensive Outpatient (IOP)</strong> are sometimes considered as middle-ground options. For Dad's profile, they are limited fits because they (a) do NOT provide overnight monitoring or sleep stabilization, (b) do NOT provide caregiver respite, (c) do NOT accelerate ECT access, (d) are typically unavailable holiday weekends. The severity of Dad's presentation (PHQ-9 = 24, &lt;3 hours sleep × several days) likely exceeds what PHP/IOP can manage.</p>
+  <p>If neither inpatient nor PHP is pursued, the outpatient bridge is: lemborexant retry (see handout #27); daily or every-other-day check-in with Dr. L; identified respite for Mom (Leah/David weekend travel if either can make it, then Debbi 5/26); the doctor-to-doctor call to Maxner Tuesday for ECT acceleration regardless of admission decision.</p>
+</div>
+
+<h2 class="page-heading">Thresholds to escalate to ER (if no inpatient arranged)</h2>
+
+<ul class="bulleted">
+  <li><strong>Any emergence of suicidal ideation</strong> — even passive ("better off not waking up"; "if something happened").</li>
+  <li><strong>Continued sleep &lt;3 hours/night for another 24 hours</strong> despite Tier 1 + Tier 1-alt regimens (see handout #27).</li>
+  <li><strong>New onset of falls or unwitnessed confusion.</strong></li>
+  <li><strong>Mom (primary caregiver) reaching a state where she cannot continue safely.</strong> Caregiver burnout is itself an indication; advocate for Dad on these grounds.</li>
+  <li><strong>Acute medical event</strong> — chest pain, syncope, sudden focal neurological change.</li>
+</ul>
+
+<h2 class="page-heading">If ER becomes unavoidable — critical preparation</h2>
+
+<div class="avoid-block">
+  <div class="label">Things to do before going to the ER</div>
+  <ul>
+    <li><strong>Print and bring the comprehensive clinical brief (#26).</strong> Physical print, not just available in EMR. ER physicians may not have full outside-records access.</li>
+    <li><strong>Lead with the critical alerts page.</strong> Hand the ER physician the printed brief and say: "Please read the critical alerts page first."</li>
+    <li><strong>Bold ask: avoid haloperidol and olanzapine.</strong> "Dad has documented activation-intolerance to multiple antipsychotics including olanzapine; he is being evaluated for prodromal Lewy-spectrum disease at U-M Movement Disorders; per Lancet Neurology 2025 guidance, high-D2-affinity neuroleptics are categorically avoided in confirmed DLB given severe sensitivity-reaction risk."</li>
+    <li><strong>If the ER physician believes an antipsychotic is necessary,</strong> ask them to use low-dose quetiapine (12.5–25 mg) rather than haloperidol or olanzapine. Quetiapine has the lowest D2 affinity and is the conditionally-considered atypical in suspected Lewy-spectrum disease.</li>
+    <li><strong>Ask the ER physician to call U-M ECT (Maxner) directly.</strong> A doctor-to-doctor call from the ER physician to Maxner's service may accelerate admission to U-M psychiatric inpatient rather than admission to whatever facility the ER routes to.</li>
+    <li><strong>Don't authorize benzodiazepine bolus + antipsychotic IM without questioning</strong> — these are standard ER agitation-management defaults that aren't right for Dad.</li>
+  </ul>
+</div>
+
+<h2 class="page-heading">Bottom-line decision tree for the next 24–72 hours</h2>
+
+<div class="info-block">
+  <div class="label">What the family is choosing among</div>
+  <p><strong>Path A — Outpatient bridge with Dr. L → Maxner call Tuesday:</strong> tonight follow handout #27 sleep regimen; tomorrow track sleep data; Monday Mom calls Dr. L with the bridge plan; Tuesday Dr. L calls Maxner. Lowest-friction path. Highest-risk for continued deterioration if sleep stays at &lt;3 hours/night.</p>
+  <p><strong>Path B — Aggressive pursuit of voluntary inpatient admission:</strong> Mom calls Dr. L today asking for the doctor-to-doctor call to Maxner's team Tuesday with admission inquiry; meanwhile family logistics shift toward potential admission timing; tonight still follow handout #27 sleep regimen. Best ECT acceleration (7–9 days vs 2–4 weeks). Requires Dad's verbal agreement and Dr. L's willingness.</p>
+  <p><strong>Path C — ER as a last resort if thresholds above are met.</strong> Bring the brief; lead with critical alerts; push back on standard neuroleptic defaults.</p>
+</div>
+
+<div class="footer-note">
+  This handout reflects OE #27 (5/23) interpreted for Dad's specific profile (age 76, severe TRD, findings under evaluation for possible prodromal Lewy-spectrum disease, activation-intolerance pattern, planned U-M ECT 2–4 weeks out, Ann Arbor location, family caregiver burnout). Key sources: Kohli 2025 (National Inpatient Sample ECT timing), Michigan Mental Health Code on voluntary admission, AGS Beers Criteria 2023, Lancet Neurology 2020/2025 LBD landscape reviews, PRIDE study (geriatric ECT). Operational details about specific U-M pathways are facility-specific and would benefit from confirmation with U-M Psychiatry intake directly.
+</div>
+
+</body>
+</html>
+
