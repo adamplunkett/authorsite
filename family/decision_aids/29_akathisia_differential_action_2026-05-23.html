@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Cymbalta-as-cause hypothesis — testing it carefully — 2026-05-23</title>
+<style>
+  @page { size: letter; margin: 0.5in 0.55in; }
+  :root {
+    --navy: #1a3a5c; --navy-dark: #0f2640;
+    --green: #2c5e3f; --green-bg: #e8f0ea; --green-border: #5a8a6a;
+    --blue-bg: #eef2f8; --blue-border: #6a8aaa;
+    --amber: #8a6a2c; --amber-bg: #f5efdf; --amber-border: #c8a86e;
+    --red: #8b2c2c; --red-bg: #f4e6e6; --red-border: #c87878;
+    --text: #1f1f1f; --text-muted: #5a5a5a;
+    --rule: #c8c8c8; --rule-strong: #6a6a6a;
+    --tint: #f5f3f0; --tint-neutral: #f3f3f1;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    font-family: "Charter", "Georgia", "Times New Roman", serif;
+    font-size: 10pt; line-height: 1.45; color: var(--text);
+    -webkit-font-smoothing: antialiased;
+  }
+  .doc-header {
+    display: flex; justify-content: space-between; align-items: flex-end;
+    padding-bottom: 8pt; border-bottom: 1.5pt solid var(--navy); margin-bottom: 14pt;
+  }
+  .doc-header .title {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 700; font-size: 18pt; line-height: 1.15;
+    color: var(--navy-dark); letter-spacing: -0.015em;
+  }
+  .doc-header .subtitle {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 500; font-size: 9.5pt; color: var(--text-muted);
+    margin-top: 3pt;
+  }
+  .doc-header .meta {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 7.5pt; color: var(--text-muted); text-align: right;
+    letter-spacing: 0.03em; line-height: 1.5;
+  }
+  h2.page-heading {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 700; font-size: 13pt; color: var(--navy-dark);
+    margin: 16pt 0 8pt 0; padding-bottom: 4pt; border-bottom: 1pt solid var(--rule-strong);
+    page-break-after: avoid;
+  }
+  h3.subsection {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 600; font-size: 11pt; color: var(--navy-dark);
+    margin: 10pt 0 5pt 0;
+    page-break-after: avoid;
+  }
+  .recommend-block {
+    background: var(--green-bg); border: 2pt solid var(--green-border);
+    border-radius: 5pt; padding: 14pt 18pt; margin-bottom: 14pt;
+    page-break-inside: avoid;
+  }
+  .recommend-block .label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 700; font-size: 9pt; text-transform: uppercase;
+    letter-spacing: 0.14em; color: var(--green); margin-bottom: 8pt;
+  }
+  .recommend-block .regimen {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 700; font-size: 12pt; color: var(--navy-dark); margin-bottom: 8pt;
+  }
+  .recommend-block p { margin: 6pt 0; font-size: 10pt; line-height: 1.5; }
+  .recommend-block strong { color: var(--navy-dark); }
+  .avoid-block {
+    background: var(--red-bg); border: 1.5pt solid var(--red-border);
+    border-radius: 5pt; padding: 12pt 16pt; margin-bottom: 14pt;
+    page-break-inside: avoid;
+  }
+  .avoid-block .label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 700; font-size: 9pt; text-transform: uppercase;
+    letter-spacing: 0.14em; color: var(--red); margin-bottom: 7pt;
+  }
+  .avoid-block ul { margin: 0; padding-left: 18pt; }
+  .avoid-block li { font-size: 9.5pt; line-height: 1.5; margin-bottom: 6pt; }
+  .avoid-block p { font-size: 9.75pt; margin: 6pt 0; }
+  .avoid-block strong { color: var(--red); }
+  .info-block {
+    background: var(--tint-neutral); border-left: 3pt solid var(--rule-strong);
+    padding: 11pt 14pt; margin-bottom: 14pt;
+    page-break-inside: avoid;
+  }
+  .info-block .label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 700; font-size: 8.5pt; text-transform: uppercase;
+    letter-spacing: 0.12em; color: var(--navy); margin-bottom: 6pt;
+  }
+  .info-block p { margin: 4pt 0; font-size: 9.75pt; line-height: 1.5; }
+  .info-block strong { color: var(--navy-dark); }
+  .uncertainty-block {
+    background: var(--amber-bg); border-left: 3pt solid var(--amber-border);
+    padding: 11pt 14pt; margin-bottom: 14pt;
+    page-break-inside: avoid;
+  }
+  .uncertainty-block .label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 700; font-size: 8.5pt; text-transform: uppercase;
+    letter-spacing: 0.12em; color: var(--amber); margin-bottom: 6pt;
+  }
+  .uncertainty-block p { margin: 4pt 0; font-size: 9.75pt; line-height: 1.5; }
+  .uncertainty-block strong { color: var(--navy-dark); }
+  ul.bulleted {
+    margin: 4pt 0 10pt 0; padding-left: 18pt; font-size: 9.75pt; line-height: 1.5;
+  }
+  ul.bulleted li { margin-bottom: 5pt; }
+  ul.bulleted strong { color: var(--navy-dark); }
+  ol.ranked {
+    margin: 4pt 0 10pt 0; padding-left: 22pt; font-size: 9.75pt; line-height: 1.5;
+  }
+  ol.ranked li { margin-bottom: 8pt; }
+  ol.ranked strong { color: var(--navy-dark); }
+  .context { font-size: 9.75pt; line-height: 1.5; margin: 0 0 8pt 0; }
+  .context strong { color: var(--navy-dark); }
+  .evidence-tag {
+    display: inline-block;
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 7.5pt; font-weight: 600;
+    padding: 1pt 5pt; border-radius: 3pt;
+    background: var(--blue-bg); color: var(--navy-dark);
+    letter-spacing: 0.04em; text-transform: uppercase;
+    margin-left: 4pt; vertical-align: 1pt;
+  }
+  .scenario-block {
+    background: var(--tint); border: 1pt solid var(--rule);
+    border-radius: 5pt; padding: 11pt 14pt; margin-bottom: 12pt;
+    page-break-inside: avoid;
+  }
+  .scenario-block .scen-label {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 700; font-size: 10pt; color: var(--navy-dark);
+    margin-bottom: 6pt;
+  }
+  .scenario-block .scen-meta {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 8pt; color: var(--text-muted);
+    margin-bottom: 6pt;
+  }
+  .scenario-block p { margin: 5pt 0; font-size: 9.75pt; line-height: 1.5; }
+  .scenario-block strong { color: var(--navy-dark); }
+  table.scenarios {
+    width: 100%; border-collapse: collapse; margin: 6pt 0 10pt 0;
+    font-size: 8.75pt; line-height: 1.4;
+  }
+  table.scenarios th {
+    background: var(--blue-bg); color: var(--navy-dark);
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 700; font-size: 8pt;
+    text-align: left; padding: 6pt 7pt; border: 0.75pt solid var(--rule-strong);
+    letter-spacing: 0.03em;
+  }
+  table.scenarios td {
+    padding: 6pt 7pt; border: 0.5pt solid var(--rule);
+    vertical-align: top;
+  }
+  table.scenarios td.scen { font-weight: 600; color: var(--navy-dark); }
+  table.scenarios td.shift-large { color: var(--green); font-weight: 600; }
+  table.scenarios td.shift-mod { color: var(--amber); font-weight: 600; }
+  table.scenarios td.shift-min { color: var(--text-muted); }
+  .citation {
+    background: var(--blue-bg); border-left: 3pt solid var(--blue-border);
+    padding: 10pt 13pt; margin-bottom: 10pt;
+    page-break-inside: avoid;
+  }
+  .citation .cite-title {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 700; font-size: 9.5pt; color: var(--navy-dark);
+    margin-bottom: 3pt;
+  }
+  .citation .cite-source {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-size: 8pt; color: var(--text-muted); margin-bottom: 6pt;
+  }
+  .citation .cite-finding {
+    font-size: 9.25pt; margin-bottom: 4pt; line-height: 1.5;
+  }
+  .citation .cite-apply {
+    font-size: 9.25pt; line-height: 1.5;
+  }
+  .citation .label-inline {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 600; font-size: 7.5pt; text-transform: uppercase;
+    letter-spacing: 0.06em; color: var(--navy);
+    margin-right: 6pt;
+  }
+  .tier-header {
+    font-family: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    font-weight: 700; font-size: 10pt; color: var(--navy-dark);
+    margin: 12pt 0 6pt 0;
+    padding-bottom: 3pt; border-bottom: 0.75pt solid var(--rule-strong);
+  }
+  .footer-note {
+    font-size: 8pt; color: var(--text-muted); font-style: italic;
+    margin-top: 14pt; padding-top: 8pt; border-top: 0.5pt solid var(--rule);
+  }
+</style>
+</head>
+<body>
+
+<div class="doc-header">
+  <div>
+    <div class="title">Testing Sharon's Cymbalta-as-cause hypothesis</div>
+    <div class="subtitle">Akathisia / restlessness differential — action handout based on OE #29 · 2026-05-23</div>
+  </div>
+  <div class="meta">
+    For Dad, Mom, Leah, David,<br>
+    Debbi, family team, U-M ECT
+  </div>
+</div>
+
+<div class="recommend-block">
+  <div class="label">BOTTOM LINE</div>
+  <p>Sharon has helped the family enormously on 5/23 — she took Mom's call, helped draft the script for Dr. L, and articulated a working hypothesis that Dad's recent symptom cluster (the shaking episodes + the "wants to jump out of his skin" inner restlessness) reflects <strong>duloxetine-induced akathisia</strong>. We're deeply grateful for her help and respect her clinical judgment.</p>
+  <p style="margin-top: 10pt;"><strong>This handout is an effort to test her hypothesis carefully against the published evidence, not to dismiss it.</strong> The conclusion: on the evidence as it stands, the Cymbalta attribution is <strong>underspecified</strong> — meaning the published literature doesn't yet support attributing the cluster primarily to Cymbalta, but doesn't rule it out either. There are several scenarios (laid out below) in which her hypothesis would become well-supported, and a <strong>single high-yield blood test — a duloxetine serum trough level, plus CYP2D6 pharmacogenomic testing</strong> — could substantially clarify the question.</p>
+  <p style="margin-top: 10pt;"><strong>Most likely contributors, ranked:</strong> (1) endogenous agitated depression on a probable prodromal Lewy-spectrum substrate; (2) doxepin-induced tremor with nordoxepin tail (for the <em>shaking</em> phenotype specifically); (3) severe sleep deprivation as amplifier; (4) post-olanzapine + concurrent lithium withdrawal phenomena; (5) duloxetine itself — the least temporally supported on the current evidence, but with several scenarios that would shift it upward (Section 4).</p>
+  <p style="margin-top: 10pt;"><strong>Practical implication:</strong> do NOT push another Cymbalta taper before ECT. The two single-day taper attempts (5/12, 5/21) each produced acute anxiety crisis requiring reinstatement within 24 hours, but tested only for withdrawal anxiety — not for akathisia resolution. Hold Cymbalta at 60 mg through ECT initiation per PRIDE study + Pluijms 2021 meta-analysis. ECT is the right move regardless of which contributor dominates — it treats both endogenous agitated depression and chronic akathisia.</p>
+</div>
+
+<h2 class="page-heading">1. Framing — Sharon's hypothesis, treated as a serious clinical question</h2>
+
+<div class="info-block">
+  <div class="label">What Sharon is right about</div>
+  <p>Sharon is right that the "wants to jump out of his skin" phenomenology is the textbook patient-language description of akathisia, and right that SSRI/SNRI-induced akathisia is real and well-documented as an entity. The DSM-5-TR (APA 2022) explicitly recognizes SSRI/SNRI-induced akathisia and notes it is "identical in phenomenology and treatment response" to antipsychotic-induced akathisia. Duloxetine specifically is listed in the FDA label adverse-reactions data as producing akathisia/psychomotor restlessness. The framing of the symptom as akathisia is reasonable, and the impulse to look at duloxetine first is reasonable.</p>
+</div>
+
+<div class="info-block">
+  <div class="label">Where the evidence as we currently understand it doesn't yet support the attribution</div>
+  <p><strong>1. Time-course mismatch.</strong> The DSM-5-TR specifies that medication-induced acute akathisia "typically occur[s] within 4 weeks of initiating or increasing the dose." The published SSRI/SNRI akathisia literature (Akgoz 2024, Koliscak 2009) samples patients during the 4–8 week initiation window. Dad has been at stable 60 mg AM since the titration completed on 11/03/2025 — <strong>~6.5 months</strong> of stable dosing without titration. <strong>De novo emergence of SNRI-induced akathisia after ~6 months of stable dosing without a dose change is not a well-documented entity</strong> in the published literature.</p>
+  <p><strong>2. The two 24-hour taper attempts didn't test the hypothesis.</strong> Duloxetine has a ~12-hour half-life, but downstream receptor adaptation takes days-to-weeks. A sustained reduction held for at least 7–14 days at a reduced dose, with daily BARS (Barnes Akathisia Rating Scale) scoring, would be needed to generate interpretable data. Each of the 5/12 and 5/21 attempts was reversed within 24 hours when acute anxiety surged — which is the rebound anxiety pattern, not evidence that Cymbalta is causing akathisia.</p>
+  <p><strong>3. Cleaner temporal alternatives exist for the motor phenotype.</strong> The chart-documented shaking episodes (5/17 AM, 5/22 PM, 5/23 AM) have a cleaner temporal link to the single-night doxepin 12 mg titration on 5/16 — the only medication change that night. Nordoxepin (31-hour half-life) remains meaningfully on board through ~5/26.</p>
+</div>
+
+<h2 class="page-heading">2. The phenotype distinction matters</h2>
+
+<div class="info-block">
+  <div class="label">Shaking ≠ akathisia (per DSM-5-TR definitions)</div>
+  <p><strong>Akathisia's motor component</strong> per DSM-5-TR is <em>"purposeless movements that relieve subjective tension"</em> — fidgeting, rocking, pacing, weight-shifting. It is goal-directed in service of relieving inner restlessness.</p>
+  <p><strong>Tremor</strong> is rhythmic, involuntary oscillation — neither purposeful nor responsive to inner state.</p>
+  <p>Mom's characterization of Dad's episodes — <em>"episodic, brief, like shaking when cold"</em> — sounds more consistent with <strong>tremor or myoclonus</strong> than with the stereotyped motor component of akathisia. This raises the real possibility that <strong>the shaking and the inner restlessness ("wants to jump out of his skin") are two distinct symptoms with potentially different etiologies</strong>, which would significantly complicate a single-agent attribution.</p>
+  <p style="margin-top: 8pt;"><strong>Highest-yield diagnostic step on this dimension:</strong> a formal Barnes Akathisia Rating Scale assessment by a clinician — separates the inner-restlessness component (BARS captures it) from the motor phenomenology, and provides a quantitative baseline for later comparison.</p>
+</div>
+
+<h2 class="page-heading">3. The differential, ranked by Bayesian probability</h2>
+
+<ol class="ranked">
+  <li><strong>Endogenous agitated depression / mixed-features TRD.</strong> <span class="evidence-tag">MODERATE</span><br>PHQ-9 = 24 is the worst in 40 years. Agitated depression characteristically <em>worsens with antidepressants</em>, which fits Dad's multi-class activation-intolerance pattern. The "jump out of skin" phenomenology is well-described in agitated depression (Alhau 2025), phenomenologically indistinguishable from akathisia per DSM-5-TR. <strong>This is the most likely dominant contributor.</strong></li>
+
+  <li><strong>Prodromal Lewy-spectrum substrate (not the trigger, but the underlying vulnerability).</strong> <span class="evidence-tag">MODERATE TO ROBUST</span><br>RBD 8.5 years + gait abnormality + balance findings + chronic constipation + peripheral neuropathy = high prior probability of synucleinopathy per Fereshtehnejad 2019, Joza 2023, McKeith 2020 prodromal-DLB research criteria. Motor signs accelerate 3–5 years before phenoconversion. <strong>The cross-class activation-intolerance pattern (6 documented agents) likely reflects this substrate</strong> — a dopaminergically compromised basal ganglia produces movement-disorder phenomena in response to many pharmacological interventions that would be tolerated by neurotypical patients.</li>
+
+  <li><strong>Doxepin-induced tremor + nordoxepin tail.</strong> <span class="evidence-tag">MODERATE</span><br>For the <em>shaking</em> phenotype specifically, the temporal correlation is the cleanest of any candidate: first acute shaking 5/17 AM directly followed the single-night 12 mg doxepin titration on 5/16. Nordoxepin's 31-hour half-life means accumulated metabolite remains meaningfully present through ~5/26. Less explanatory for the inner-restlessness component.</li>
+
+  <li><strong>Severe sleep deprivation as amplifier.</strong> <span class="evidence-tag">MODERATE</span><br><3 hours/night for several days produces irritability, agitation, and a restless-distress phenotype that mimics akathisia. Reversible with sleep restoration; compounds whatever else is contributing.</li>
+
+  <li><strong>Post-olanzapine + concurrent lithium withdrawal (compound).</strong> <span class="evidence-tag">SPARSE</span><br>Olanzapine + lithium simultaneously discontinued 4/21/2026 — current cluster is ~32 days out. The olanzapine exposure was brief (12 days, ~6 at 5 mg). Published literature on withdrawal akathisia is dominated by longer exposures; classical withdrawal akathisia at 32 days post a 12-day exposure sits at the outer edge of plausibility. The near-panic-attack rebound on 4/22 (first full day off) confirms Dad did experience acute withdrawal phenomenology.</li>
+
+  <li><strong>Duloxetine itself — Sharon's hypothesis on the current evidence.</strong> <span class="evidence-tag">SPARSE TO ABSENT (current evidence)</span><br>Dose stable at 60 mg since 11/3/2025. De novo emergence at ~6.5 months on stable dose without titration is not documented in the published SSRI/SNRI akathisia literature. <strong>This ranking would shift substantially upward under any of the five scenarios in Section 4.</strong></li>
+
+  <li><strong>Residual drug-induced tremor from prior agents (lithium, brexpiprazole, pramipexole, olanzapine).</strong> <span class="evidence-tag">SPARSE</span><br>Lithium-induced tremor specifically can persist weeks-to-months post-discontinuation. May be re-emerging on the underlying substrate.</li>
+
+  <li><strong>RBD exacerbation / dream-enactment.</strong> <span class="evidence-tag">SPARSE</span><br>Less consistent with Mom's characterization (brief, not associated with dream recall), but on the list given Dad's 8.5-year formal RBD.</li>
+</ol>
+
+<h2 class="page-heading">4. What would shift weight toward Sharon's Cymbalta hypothesis</h2>
+
+<p class="context">Five scenarios — some involving historical revision, some involving mechanistic reframing, some involving direct testing — that would legitimately increase the posterior probability for duloxetine as the dominant cause. Listed in roughly increasing order of how actionable they are.</p>
+
+<div class="scenario-block">
+  <div class="scen-label">Scenario 1 — Retrospective discovery of subtle akathisia dating to Cymbalta initiation/titration (9/30/2025 – 11/3/2025)</div>
+  <div class="scen-meta">Probability shift if confirmed: MODERATE ↑ &nbsp;·&nbsp; Mechanism evidence: MODERATE (canonical temporal criterion)</div>
+  <p>This is the most straightforward scenario and the one Adam directly asked about. If targeted history-taking with Dad and Mom revealed that Dad experienced <strong>low-grade inner restlessness, leg discomfort, or a subtle "can't get comfortable" sensation</strong> beginning within the first 4 weeks of Cymbalta initiation (started 9/30/2025) or titration (completed 11/3/2025), this would satisfy the DSM-5-TR canonical temporal criterion for medication-induced acute akathisia.</p>
+  <p><strong>How to test it:</strong> Targeted history with Dad ("In November or early December last year, when you were ramping up on the new Cymbalta, did you notice anything like leg discomfort, wanting to shift around, or feeling like you couldn't get comfortable?") + independent corroboration from Mom (any restlessness behaviors she recalls from that window) + chart review of any 11/2025–12/2025 follow-up visits for restlessness complaints.</p>
+  <p><strong>Methodological caveat:</strong> retrospective patient self-report of subtle symptoms 6 months later is highly susceptible to recall bias, especially in a patient with PHQ-9 = 24 and high current distress. The published literature on SSRI/SNRI-induced movement disorders identifies retrospective self-report as a known methodological limitation (Heinz 2022). A patient in acute distress who is told "your Cymbalta might be causing this" may retrospectively reinterpret prior nonspecific discomfort as early akathisia. <strong>Independent corroboration would be needed to make this finding credible.</strong></p>
+</div>
+
+<div class="scenario-block">
+  <div class="scen-label">Scenario 2 — The "unmasking" hypothesis: olanzapine was suppressing Cymbalta-induced akathisia</div>
+  <div class="scen-meta">Probability shift if confirmed: MODERATE ↑ &nbsp;·&nbsp; Mechanism evidence: ABSENT as documented entity (pharmacologically plausible)</div>
+  <p>This is the most intellectually interesting scenario and the one that could reframe the timeline entirely. The logic: olanzapine's <strong>5-HT2A antagonism and mild D2 blockade</strong> are precisely the pharmacological properties that treat akathisia — mirtazapine and 5-HT2A antagonists are among the most effective akathisia treatments (Factor 2019, Gerolymos 2024). If Cymbalta was producing low-grade akathisia that was being <em>pharmacologically suppressed</em> by concurrent olanzapine (started 4/9/2026), then olanzapine discontinuation on 4/21 would unmask the underlying SNRI-induced akathisia — and the symptom emergence ~26 days later (first shaking 5/17) could represent the gradual loss of that suppressive effect as the system re-equilibrates.</p>
+  <p><strong>How to test it:</strong> Retrospective comparison of Dad's symptom burden during the 12-day olanzapine trial (4/9–4/21) vs. the weeks before it and the weeks after. <strong>If Dad was notably calmer or less restless during the olanzapine window,</strong> that would be a meaningful signal in favor of this hypothesis. The 4/22 near-panic-attack (first full day off olanzapine) could be reinterpreted as the first signal of unmasked akathisia rather than pure withdrawal.</p>
+  <p><strong>Mechanism caveat:</strong> Olanzapine-treats-SNRI-akathisia is pharmacologically coherent, but the specific "unmasking on discontinuation" scenario is absent from the published literature as a documented entity. It would also still attribute the underlying cause to Cymbalta, which requires explaining why Cymbalta produced akathisia after ~5–6 months of stable dosing — returning to Scenario 1.</p>
+</div>
+
+<div class="scenario-block" style="border-color: var(--green-border); background: #f0f5ee;">
+  <div class="scen-label" style="color: var(--green);">Scenario 3 — Pharmacokinetic shift: Cymbalta levels rising without dose change [HIGHEST-YIELD TEST]</div>
+  <div class="scen-meta">Probability shift if confirmed: LARGE ↑↑ &nbsp;·&nbsp; Mechanism evidence: ROBUST &nbsp;·&nbsp; <strong>Directly testable today</strong></div>
+  <p>A previously tolerated stable dose could become effectively supratherapeutic if Cymbalta clearance has decreased. Duloxetine is metabolized primarily by <strong>CYP1A2 and CYP2D6</strong> (Knadler 2011). Several mechanisms could raise plasma levels without a dose change:</p>
+  <ul style="margin: 4pt 0 6pt 18pt; font-size: 9.5pt; line-height: 1.45;">
+    <li><strong>CYP2D6 poor metabolizer status</strong> — CYP2D6 PMs have ~95% higher duloxetine concentration-to-dose ratios; patients ≥65 years have ~56% higher ratios than younger patients (Hole 2024). If Dad is a CYP2D6 PM, his effective Cymbalta exposure at 60 mg could be equivalent to ~120 mg in a younger normal metabolizer.</li>
+    <li><strong>New CYP1A2 inhibitor</strong> — fluvoxamine co-administration increases duloxetine AUC by ~460%; any new ciprofloxacin, cimetidine, or certain herbal supplements could matter.</li>
+    <li><strong>Smoking cessation</strong> — smoking induces CYP1A2 and reduces duloxetine bioavailability by ~30%; recent cessation would raise levels. (Dad is not a recent quitter, but worth confirming.)</li>
+    <li><strong>Hepatic function decline</strong> — even modest impairment can produce a 5-fold AUC increase in moderate hepatic impairment per FDA label.</li>
+    <li><strong>Generic manufacturer switch</strong> — different generic formulations can vary within the FDA-permitted ±20% bioavailability range; in a CYP2D6 PM elderly patient this could be clinically meaningful.</li>
+  </ul>
+  <p><strong>How to test it:</strong> <strong>A duloxetine serum trough level (drawn before the morning dose) is the single most informative test for this entire question.</strong> Reference range at steady state is typically 30–120 ng/mL. If Dad's level is disproportionately high for 60 mg, this would substantially strengthen Sharon's attribution and the path forward becomes concrete (dose reduction targeted to a specific level rather than blind taper). If the level is within normal range, the PK-shift hypothesis is excluded.</p>
+  <p><strong>CYP2D6 pharmacogenomic testing</strong> is the complementary test — it would reveal if Dad is a poor or intermediate metabolizer, providing the mechanistic explanation if the level is high. Many large reference labs (Quest, LabCorp, Mayo Reference) offer both tests; turnaround is typically 1–2 weeks for genotyping, 2–5 business days for the serum level.</p>
+  <p><strong>Why this is the load-bearing recommendation:</strong> it is the only scenario in which a single clinical action can produce a clear, interpretable answer within the ECT bridge window without requiring a destabilizing taper attempt.</p>
+</div>
+
+<div class="scenario-block">
+  <div class="scen-label">Scenario 4 — Lewy-spectrum threshold lowering: Cymbalta as proximate trigger on a progressively vulnerable substrate</div>
+  <div class="scen-meta">Probability shift if confirmed: MODERATE ↑ &nbsp;·&nbsp; Mechanism evidence: MODERATE (DLB sensitivity well-documented) &nbsp;·&nbsp; Reframes as dual causation</div>
+  <p>This is the most important reframing. In DLB, progressive loss of nigrostriatal dopaminergic neurons creates a state where medications previously tolerated become intolerable — not because the drug changed, but because the <strong>brain's capacity to compensate</strong> has declined (Piggott 1998, Baskys 2004, McKeith 2005). DLB patients show a characteristic <em>failure to upregulate D2 receptors</em> in response to dopaminergic challenge, which is the proposed mechanism for their severe neuroleptic sensitivity. Approximately 50% of DLB patients experience severe adverse reactions to antipsychotics, and this sensitivity extends beyond antipsychotics to any agent that perturbs dopaminergic-serotonergic balance.</p>
+  <p>If Dad's prodromal synucleinopathy has progressed over the past 6 months (which is expected — motor signs accelerate ~3 years before phenoconversion), then Cymbalta's noradrenergic and serotonergic effects could now be producing akathisia on a substrate that previously compensated. <strong>This is the scenario where Sharon's attribution and the Lewy-spectrum attribution are not mutually exclusive</strong> — Cymbalta could be the proximate trigger on a progressively vulnerable substrate.</p>
+  <p><strong>How to test it:</strong> The <strong>DAT-SPECT (pending at U-M Movement Disorders)</strong> would be pivotal. If positive, it reframes the entire medication-intolerance history. The multi-class activation-intolerance pattern should also show a temporal progression — agents tolerated earlier in 2025 becoming intolerable later, consistent with declining neurological reserve. The symptom cluster should be progressive rather than abruptly tied to one medication change.</p>
+</div>
+
+<div class="scenario-block">
+  <div class="scen-label">Scenario 5 — Tardive akathisia from SNRI (chronic-exposure variant)</div>
+  <div class="scen-meta">Probability shift if confirmed: MINIMAL &nbsp;·&nbsp; Mechanism evidence: ABSENT (not documented with SNRIs)</div>
+  <p>Tardive akathisia is a recognized entity with antipsychotics — phenomenologically identical to acute akathisia but emerging during chronic stable dosing and, critically, <strong>worsening rather than improving</strong> when the causative agent is removed (Factor 2019, Frei 2018). If Cymbalta were producing tardive akathisia, the failed taper attempts could be reinterpreted as consistent with this — though the worsening was characterized as "anxiety" rather than akathisia specifically. Tardive akathisia is fundamentally a D2-receptor-blocking-agent phenomenon and has not been documented with SNRIs in the published literature. Very low probability without a novel mechanism not supported by current evidence.</p>
+</div>
+
+<div class="info-block">
+  <div class="label">Summary: what evidence would shift the picture</div>
+  <table class="scenarios">
+    <thead>
+      <tr>
+        <th style="width: 24%;">Scenario</th>
+        <th style="width: 28%;">What would need to be true</th>
+        <th style="width: 24%;">How to test it</th>
+        <th style="width: 13%;">Mechanism evidence</th>
+        <th style="width: 11%;">Probability shift</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="scen">1. Retrospective onset at initiation</td>
+        <td>Subtle restlessness Nov–Dec 2025, independently corroborated</td>
+        <td>Targeted history with Mom + Dad; chart review</td>
+        <td>Moderate</td>
+        <td class="shift-mod">Moderate ↑</td>
+      </tr>
+      <tr>
+        <td class="scen">2. Olanzapine unmasking</td>
+        <td>Dad calmer during olanzapine trial; cluster emerged after d/c</td>
+        <td>Retrospective comparison of symptom burden</td>
+        <td>Absent (plausible)</td>
+        <td class="shift-mod">Moderate ↑</td>
+      </tr>
+      <tr style="background: #f0f5ee;">
+        <td class="scen" style="color: var(--green);">3. PK shift (CYP/dose)</td>
+        <td>Elevated Cymbalta level, CYP2D6 PM, new CYP1A2 inhibitor, or generic switch</td>
+        <td><strong>Duloxetine serum level + CYP2D6 genotyping</strong></td>
+        <td>Robust</td>
+        <td class="shift-large">Large ↑↑</td>
+      </tr>
+      <tr>
+        <td class="scen">4. Lewy-spectrum threshold lowering</td>
+        <td>Progressive neurodegeneration reducing compensatory capacity</td>
+        <td>DAT-SPECT (pending); longitudinal trajectory</td>
+        <td>Moderate</td>
+        <td class="shift-mod">Moderate ↑ (dual causation)</td>
+      </tr>
+      <tr>
+        <td class="scen">5. Tardive akathisia from SNRI</td>
+        <td>Worsening on dose reduction as tardive phenomenon</td>
+        <td>Sustained taper trial with BARS</td>
+        <td>Absent</td>
+        <td class="shift-min">Minimal</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<h2 class="page-heading">5. What NOT to do — propranolol contraindication + don't push another Cymbalta taper</h2>
+
+<div class="avoid-block">
+  <div class="label">PROPRANOLOL IS CONTRAINDICATED IN DAD</div>
+  <p>Earlier framing in family-thread discussion floated propranolol 10–20 mg TID as first-line akathisia treatment. <strong>That recommendation does not apply to Dad and should be withdrawn.</strong></p>
+  <p><strong>Propranolol is contraindicated in sinus bradycardia per the FDA label.</strong> Dad's baseline HR is 49 bpm (frank sinus bradycardia, documented at the 12/2024 PCP wellness visit). Combined with LAFB and PR 214 ms (borderline 1° AV block), propranolol carries significant risk of hemodynamically significant bradycardia or progression of conduction disease. The AHA scientific statement on drug-induced arrhythmias (Tisdale 2020) advises that drugs inhibiting sinus or AV node function "should be avoided in patients with preexisting dysfunction." <strong>Propranolol should not be used in Dad without cardiology clearance and a refreshed EKG — and even then would require extreme caution.</strong></p>
+</div>
+
+<div class="avoid-block">
+  <div class="label">DO NOT push another Cymbalta taper before ECT</div>
+  <p>The two single-day taper attempts (5/12, 5/21) each produced acute anxiety crisis that required reinstatement within 24 hours. Continuing to attempt the taper without a sustained ≥7–14 day reduction-and-hold pattern (with daily BARS scoring) will produce more rebound anxiety crises without testing the akathisia-causation hypothesis. <strong>The published evidence supports holding Cymbalta steady at 60 mg through ECT initiation</strong> (PRIDE study; Pluijms 2021 meta-analysis on SNRI continuation through ECT). Any decision about Cymbalta's long-term role should be deferred to the U-M ECT team.</p>
+</div>
+
+<h2 class="page-heading">6. What to do — actionable next steps</h2>
+
+<div class="info-block">
+  <div class="label">1. Duloxetine serum trough level + CYP2D6 pharmacogenomic testing</div>
+  <p>The single highest-yield action to evaluate Sharon's hypothesis. Trough level drawn before the morning dose; CYP2D6 genotyping by buccal swab or blood. Both available through major reference labs (Quest, LabCorp, Mayo Reference). Turnaround: 2–5 business days for the serum level; 1–2 weeks for genotyping. Cost should be modest with insurance; out-of-pocket is typically $100–300 combined. <strong>Ask Dr. L (Tuesday) or the U-M ECT intake team to order both.</strong></p>
+</div>
+
+<div class="info-block">
+  <div class="label">2. Targeted history for Nov–Dec 2025 restlessness (Scenarios 1 + 2)</div>
+  <p>Ask Dad — gently and without leading — whether he recalls any leg discomfort, restlessness, or "can't get comfortable" feeling in the November or December 2025 window as Cymbalta titrated up. Ask Mom the same independently. Look at any 11/2025–12/2025 visit notes for restlessness complaints. <strong>Also compare Dad's symptom burden during the 12-day olanzapine trial (4/9–4/21) vs. before and after</strong> — if he was notably calmer during that window, that supports the unmasking hypothesis.</p>
+</div>
+
+<div class="info-block">
+  <div class="label">3. Formal BARS assessment + phenotype separation</div>
+  <p>Ask the next psychiatrist seeing Dad (Dr. L Tuesday, or U-M ECT intake) to do a formal Barnes Akathisia Rating Scale assessment. This separates inner-restlessness from motor phenomenology, gives a quantitative baseline, and creates the structure to test whether ECT (or any subsequent intervention) actually reduces akathisia vs. depression vs. tremor as discrete endpoints.</p>
+</div>
+
+<div class="info-block">
+  <div class="label">4. Refreshed EKG — appropriately framed as essential</div>
+  <p>The 5/19/2025 EKG is >1 year old. Given Dad's baseline bradycardia (HR 49), LAFB, borderline PR prolongation, and the imminent ECT pre-anesthesia assessment, an updated 12-lead EKG should be obtained before any new pharmacological intervention AND will be needed for ECT pre-anesthesia work-up anyway. Reframe: not "do we need this for tonight's Seroquel decision" but "we need this before ECT regardless." Michigan Medicine urgent care 12-lead in 1–2 hours, or PCP order at next visit. Doesn't need to gate tonight's sleep regimen.</p>
+</div>
+
+<div class="info-block">
+  <div class="label">5. Clonazepam 0.25 mg HS as the most dual-purpose add</div>
+  <p>Clonazepam 0.25–0.5 mg HS would address three things simultaneously: (a) benzodiazepine GABAergic floor for sleep; (b) expert-consensus treatment for RBD-related sleep disturbance in Lewy body disease (McKeith 2005, Taylor 2020, Lancet Neurology 2025); (c) strongest evidence base for benzodiazepine-responsive akathisia per Gerolymos 2024 and Gambolò 2024 network meta-analyses. Worth discussing with Dr. L or U-M as the right next addition if a single-agent add is wanted. Caveats: longer half-life than lorazepam (already in PRN use); fall risk additive with other CNS depressants; Beers Criteria caution still applies.</p>
+</div>
+
+<div class="info-block">
+  <div class="label">6. ECT itself as both treatment and diagnostic probe</div>
+  <p>ECT effectively treats psychomotor agitation in depression (van Diermen 2019: OR 4.9 for response in CORE-defined melancholic depression with psychomotor disturbance), and case-report evidence exists for ECT resolving chronic akathisia (Suzuki 2021). Rapid resolution of the restlessness phenotype following ECT initiation would support endogenous agitated depression as the dominant contributor. <strong>The acceleration of ECT remains the single most leveraged action</strong> — see handout #28.</p>
+</div>
+
+<div class="info-block">
+  <div class="label">7. For acute sleep tonight — separate from this differential</div>
+  <p>Handout #27 covers tonight's sleep regimen. Nothing in this analysis changes that recommendation. The two reasonable options remain lemborexant 10 mg single dose or quetiapine 25 mg HS per OE #28 follow-up; both compatible with the differential here. Clonazepam 0.25 mg HS could be considered as an alternative or adjunct if Dr. L is open to it (per item 5 above), but it's not necessary for tonight specifically.</p>
+</div>
+
+<h2 class="page-heading">7. What to ask the U-M ECT team about</h2>
+
+<ul class="bulleted">
+  <li><strong>Pre-ECT differential.</strong> Surface the phenotype distinction (shaking vs inner restlessness) and the underspecification of the current Cymbalta attribution. Request formal BARS at intake.</li>
+  <li><strong>Duloxetine serum level + CYP2D6 genotyping.</strong> Highest-yield single test for evaluating Sharon's hypothesis without a destabilizing taper. Can U-M order these as part of ECT intake labs?</li>
+  <li><strong>Cymbalta through ECT.</strong> Confirm hold at 60 mg per PRIDE study + Pluijms 2021 meta-analysis. Defer any taper decision to post-ECT.</li>
+  <li><strong>Bridge medication management.</strong> Would U-M favor clonazepam 0.25 mg HS over continued Ativan PRN for the bridge, given the dual-purpose RBD + akathisia coverage?</li>
+  <li><strong>Cardiac pre-anesthesia.</strong> Updated EKG and any cardiology clearance needed given LAFB + bradycardia + PR 214 + 1-year-old prior EKG.</li>
+  <li><strong>ECT as diagnostic probe.</strong> Plan to track the restlessness phenotype across the ECT course as a marker of endogenous-depression contribution vs. residual iatrogenic / Lewy-spectrum contribution.</li>
+</ul>
+
+<h2 class="page-heading">8. Evidence roundup — what the published literature actually supports</h2>
+
+<div class="tier-header">Tier 1 — Diagnostic criteria, pharmacology, and direct evidence on akathisia</div>
+
+<div class="citation">
+  <div class="cite-title">American Psychiatric Association. Diagnostic and Statistical Manual of Mental Disorders, 5th Edition, Text Revision (DSM-5-TR).</div>
+  <div class="cite-source">APA Publishing, 2022.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Medication-induced acute akathisia "typically occurs within 4 weeks of initiating or increasing the dose of a medication." SSRI/SNRI-induced akathisia is "identical in phenomenology and treatment response" to antipsychotic-induced akathisia — no published motor-exam or BARS pattern reliably separates them by drug class. Akathisia "may be clinically indistinguishable" from restlessness due to neurological conditions (including PD) or agitation as part of a mental disorder.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The canonical 4-week temporal window is what makes Sharon's attribution to Cymbalta hard to support on the current evidence — Dad has been at stable 60 mg AM for ~6.5 months. It is also why retrospective discovery of subtle akathisia in the 9/30–11/3/2025 initiation window (Scenario 1) would substantially strengthen the attribution.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Akgoz I, Kara H, Ozcelik O et al. Evaluation of Akathisia in Patients Receiving Selective Serotonin Reuptake Inhibitors/Serotonin and Noradrenaline Reuptake Inhibitors.</div>
+  <div class="cite-source">Behav Pharmacol 2024;35(8):460-463. doi:10.1097/FBP.0000000000000797.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>SSRI/SNRI-induced akathisia prevalence ~25% during the 4–8 week initiation/early-treatment window. The literature samples patients during initiation, not after months of stable dosing.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>SNRI akathisia is a real entity but the published literature is dominated by initiation-window cases. De novo emergence after ~6.5 months stable on the same dose is not where the evidence base lives.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Koliscak LP, Makela EH. Selective Serotonin Reuptake Inhibitor-Induced Akathisia.</div>
+  <div class="cite-source">J Am Pharm Assoc 2009;49(2):e28-36. doi:10.1331/JAPhA.2009.08083.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>SSRI-induced akathisia phenomenology, timing, and treatment review. Onset typically within weeks of initiation or dose increase; resolution typically within days-to-weeks of discontinuation or dose reduction.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Reinforces the temporal mismatch in Sharon's hypothesis as currently framed. Also informs what a sustained dose reduction would need to look like — ≥7–14 days at a reduced dose to observe symptomatic change.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Heinz MV, Price GD, Ruan F et al. Association of SSRI Use With Abnormal Physical Movement Patterns as Detected Using a Piezoelectric Accelerometer and Deep Learning.</div>
+  <div class="cite-source">JAMA Netw Open 2022;5(4):e225403. doi:10.1001/jamanetworkopen.2022.5403.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>SSRI use associated with detectable abnormal movement patterns via instrumented monitoring. Authors explicitly identify retrospective self-report as a limitation in the existing literature.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Methodological caveat for Scenario 1: retrospective patient self-report of subtle symptoms 6 months later in a high-distress patient is highly susceptible to recall bias. Independent corroboration (Mom's recall, chart documentation) would be needed.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Factor SA, Burkhard PR, Caroff S et al. Recent Developments in Drug-Induced Movement Disorders: A Mixed Picture.</div>
+  <div class="cite-source">Lancet Neurol 2019;18(9):880-890. doi:10.1016/S1474-4422(19)30152-8.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Comprehensive review of drug-induced movement disorders. Distinguishes acute akathisia (improves with discontinuation) from tardive akathisia (worsens with discontinuation; D2-blocker phenomenon). Mirtazapine and 5-HT2A antagonists named as effective akathisia treatments. Olanzapine has lowest reported akathisia incidence among atypicals (~4% annual).</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Supports Scenario 2's pharmacological coherence (olanzapine's 5-HT2A antagonism could mask SNRI akathisia). Also frames why Scenario 5 (tardive akathisia from SNRI) has essentially no support — tardive akathisia is a D2-blocker phenomenon.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Gerolymos C, Barazer R, Yon DK et al. Drug Efficacy in the Treatment of Antipsychotic-Induced Akathisia: A Systematic Review and Network Meta-Analysis.</div>
+  <div class="cite-source">JAMA Netw Open 2024;7(3):e241527. doi:10.1001/jamanetworkopen.2024.1527.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Network meta-analysis of akathisia treatments. Mirtazapine 15 mg had the largest effect (SMD −1.20); propranolol effective (SMD −0.78); benzodiazepines ranked highest in P-scores. None validated as differentially diagnostic across etiologies.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Justifies clonazepam as a rational dual-purpose add (Section 6, item 5). Also shows that propranolol response is not specific — would not adjudicate Sharon's hypothesis even if propranolol were safe for Dad (which it isn't, per the AHA statement).</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Gambolò L, Bottignole D, D'Angelo M et al. Comparative Efficacy of Akathisia Treatments: A Network Meta-Analysis.</div>
+  <div class="cite-source">CNS Spectr 2024;29(4):243-251. doi:10.1017/S1092852924000233.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Confirms efficacy of benzodiazepines, mirtazapine, and beta-blockers for antipsychotic-induced akathisia. Clonazepam specifically supported among benzodiazepines for chronic akathisia management.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Independent corroboration of the clonazepam recommendation; also confirms no treatment is differentially diagnostic.</div>
+</div>
+
+<div class="tier-header">Tier 2 — Duloxetine pharmacology and pharmacokinetics (load-bearing for Scenario 3)</div>
+
+<div class="citation">
+  <div class="cite-title">Knadler MP, Lobo E, Chappell J, Bergstrom R. Duloxetine: Clinical Pharmacokinetics and Drug Interactions.</div>
+  <div class="cite-source">Clin Pharmacokinet 2011;50(5):281-94. doi:10.2165/11539240-000000000-00000.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Duloxetine metabolized primarily by CYP1A2 and CYP2D6. Fluvoxamine (CYP1A2 inhibitor) increases duloxetine AUC by ~460%. Smoking induces CYP1A2 and reduces duloxetine bioavailability ~30%. Hepatic impairment substantially increases AUC.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Mechanistic basis for Scenario 3 (PK shift). Multiple plausible pathways for a stable dose to become supratherapeutic without a dose change — testable via serum level and CYP2D6 genotyping.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Hole K, Gangsø S, Jensstuen ÅT et al. Effect of CYP2D6 Genotype on Duloxetine Serum Concentration.</div>
+  <div class="cite-source">Basic Clin Pharmacol Toxicol 2024;134(1):186-192. doi:10.1111/bcpt.13954.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>CYP2D6 poor metabolizers have ~95% higher duloxetine concentration-to-dose ratios than normal metabolizers. Patients ≥65 years show ~56% higher ratios than younger patients.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Quantifies the magnitude of effect for the PK-shift hypothesis. A 76-year-old CYP2D6 PM at 60 mg could plausibly have exposure equivalent to ~120 mg in a younger normal metabolizer. <strong>This is why a serum level + genotype is the highest-yield single test.</strong></div>
+</div>
+
+<div class="tier-header">Tier 3 — Prodromal Lewy-spectrum framework (load-bearing for Scenario 4)</div>
+
+<div class="citation">
+  <div class="cite-title">Fereshtehnejad SM, Yao C, Pelletier A et al. Evolution of Prodromal Parkinson's Disease and Dementia With Lewy Bodies: A Prospective Study.</div>
+  <div class="cite-source">Brain 2019;142(7):2051-2067. doi:10.1093/brain/awz111.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Prospective cohort tracking prodromal phenoconversion. Motor signs accelerate ~3 years before phenoconversion; non-motor prodromal features (RBD, autonomic, olfactory) present 5–9 years earlier. RBD ≥5 years carries high prior probability of synucleinopathy.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Establishes the prior probability that Dad's 8.5-year RBD + gait/balance/autonomic findings represent prodromal synucleinopathy. Anchors Scenario 4: progressive substrate vulnerability could be lowering the threshold for medication-induced phenomena.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Joza S, Hu MT, Jung KY et al. Progression of Clinical Markers in Prodromal Parkinson's Disease and Dementia With Lewy Bodies: A Multicentre Study.</div>
+  <div class="cite-source">Brain 2023;146(8):3258-3272. doi:10.1093/brain/awad072.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Confirms acceleration of motor and cognitive markers in the 3-year window before phenoconversion across multiple international cohorts.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Independent corroboration of the prodromal-progression framework. Strengthens the rationale for prioritizing the U-M Movement Disorders workup + DAT-SPECT.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">McKeith IG, Ferman TJ, Thomas AJ et al. Research Criteria for the Diagnosis of Prodromal Dementia With Lewy Bodies.</div>
+  <div class="cite-source">Neurology 2020;94(17):743-755. doi:10.1212/WNL.0000000000009323.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Formal research criteria for prodromal DLB. Includes depression, anxiety, delirium-like fluctuations, RBD, and autonomic dysfunction as recognized prodromal features.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Anchors the framing that Dad's depression and anxiety, alongside the RBD and autonomic features, can themselves be prodromal-DLB features — not just psychiatric comorbidity.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Piggott MA, Perry EK, Marshall EF et al. Nigrostriatal Dopaminergic Activities in DLB in Relation to Neuroleptic Sensitivity: Comparisons With Parkinson's Disease.</div>
+  <div class="cite-source">Biol Psychiatry 1998;44(8):765-74. doi:10.1016/s0006-3223(98)00127-9.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>DLB patients show failure to upregulate D2 receptors in response to dopaminergic challenge — the proposed mechanism for severe neuroleptic sensitivity. ~50% of DLB patients experience severe adverse reactions to antipsychotics; sensitivity extends beyond antipsychotics to agents that perturb dopaminergic-serotonergic balance.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Mechanistic basis for Scenario 4. Explains why a multi-class activation-intolerance pattern across antipsychotics, antidepressants, and dopaminergics could reflect underlying substrate vulnerability rather than per-drug intolerance.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Kaila LV, Ikeda M, Sultana J et al. The Evolving Therapeutic Landscape of Dementia With Lewy Bodies.</div>
+  <div class="cite-source">Lancet Neurol 2025;24(12):1038-1052. doi:10.1016/S1474-4422(25)00323-0.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Current state of the art on DLB therapeutics. Cholinesterase inhibitors strongest evidence for neuropsychiatric symptoms; SSRIs/SNRIs acceptable for depression; clonazepam for RBD; quetiapine cautiously usable for sleep/neuropsychiatric symptoms at low doses; tricyclics and high-D2-affinity antipsychotics avoided.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Supports the clonazepam recommendation and the cautious low-dose quetiapine framing. Also informs the medium-term plan for Dad if Lewy-spectrum is confirmed.</div>
+</div>
+
+<div class="tier-header">Tier 4 — Cardiac safety and propranolol contraindication</div>
+
+<div class="citation">
+  <div class="cite-title">Tisdale JE, Chung MK, Campbell KB et al. Drug-Induced Arrhythmias: A Scientific Statement From the American Heart Association.</div>
+  <div class="cite-source">Circulation 2020;142(15):e214-e233. doi:10.1161/CIR.0000000000000905.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Drugs inhibiting sinus or AV node function "should be avoided in patients with preexisting dysfunction." Propranolol FDA label contraindicates sinus bradycardia. AV nodal blockade additive with conduction abnormalities.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span><strong>Reverses earlier family-thread floats about propranolol for akathisia.</strong> Dad's HR 49 + LAFB + PR 214 ms triplicate-stacks the contraindication. Propranolol is off the table without cardiology clearance.</div>
+</div>
+
+<div class="tier-header">Tier 5 — ECT in psychomotor-agitated depression (load-bearing for primary plan)</div>
+
+<div class="citation">
+  <div class="cite-title">van Diermen L, Vanmarcke S, Walther S et al. Can Psychomotor Disturbance Predict ECT Outcome in Depression?</div>
+  <div class="cite-source">J Psychiatr Res 2019;117:122-128. doi:10.1016/j.jpsychires.2019.07.009.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Psychomotor disturbance (agitation OR retardation) is a strong predictor of ECT response. OR 4.9 for response in CORE-defined melancholic depression with documented psychomotor disturbance.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span><strong>Dad's psychomotor agitation predicts good ECT response.</strong> Strong independent reason for ECT to be the primary plan regardless of how the akathisia differential resolves.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Suzuki A, Kobayashi R, Shirata T et al. Case Report: Changes in Regional Cerebral Blood Flow in Chronic Akathisia of a Depressed Patient Before and After ECT.</div>
+  <div class="cite-source">Front Psychiatry 2021;12:728265. doi:10.3389/fpsyt.2021.728265.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Documented case of chronic akathisia resolving with ECT, with imaging-correlated basal ganglia neuroplasticity changes.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Supports ECT as both treatment and diagnostic probe — rapid resolution of restlessness phenotype following ECT initiation would support endogenous agitated depression as dominant contributor (though it doesn't definitively exclude iatrogenic components).</div>
+</div>
+
+<div class="tier-header">Tier 6 — Antipsychotic withdrawal phenomena (for Scenarios involving olanzapine d/c)</div>
+
+<div class="citation">
+  <div class="cite-title">Brandt L, Bschor T, Henssler J et al. Antipsychotic Withdrawal Symptoms: A Systematic Review and Meta-Analysis.</div>
+  <div class="cite-source">Front Psychiatry 2020;11:569912. doi:10.3389/fpsyt.2020.569912.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Withdrawal symptoms occur in ~53% of patients after antipsychotic discontinuation. Literature dominated by longer-exposure cases; brief-exposure withdrawal phenomenology less well-characterized.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Constrains the post-olanzapine-withdrawal hypothesis (differential #5): Dad's olanzapine exposure was 12 days, ~6 at full 5 mg dose — at the brief end of where the literature applies.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-title">Cosci F, Chouinard G. Acute and Persistent Withdrawal Syndromes Following Discontinuation of Psychotropic Medications.</div>
+  <div class="cite-source">Psychother Psychosom 2020;89(5):283-306. doi:10.1159/000506868.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Comprehensive review of withdrawal syndromes across psychotropic classes. Lithium withdrawal: anxiety, irritability, mood instability, typically within 1–2 weeks. Atypical antipsychotic withdrawal: insomnia, anxiety, movement disturbances. Most withdrawal phenomena emerge within 1–2 weeks.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Places the 4/22 near-panic-attack rebound (first full day off olanzapine) within the expected window. Frames the ~32-day delay to current symptom cluster as outside the typical withdrawal-phenomenology window for a brief exposure.</div>
+</div>
+
+<div class="tier-header">Tier 7 — Agitated depression and SNRI continuation through ECT</div>
+
+<div class="citation">
+  <div class="cite-title">Alhau R, Rimawi M, Zubrzycka I, Mahgoub Y. Agitated Depression and the Potential Response to GABA Agonist: A Case Series and Literature Review.</div>
+  <div class="cite-source">J Clin Psychopharmacol 2025;45(1):32-36. doi:10.1097/JCP.0000000000001935.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Agitated depression characteristically worsens with antidepressants. "Jump out of skin" phenomenology recognized as agitated-depression presentation. GABAergic augmentation (benzodiazepine, gabapentinoid) can ameliorate.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Reinforces the endogenous-agitated-depression candidate as the most likely dominant contributor and frames clonazepam (Section 6, item 5) as both a sleep aid and a candidate for symptomatic relief of the restlessness phenotype.</div>
+</div>
+
+<h2 class="page-heading">9. Evidence quality summary</h2>
+
+<div class="uncertainty-block">
+  <div class="label">What the evidence actually supports</div>
+  <p><strong>Robust:</strong> Propranolol contraindication in bradycardia (FDA label + Tisdale 2020 AHA statement). Duloxetine PK and CYP-mediated interaction profile (Knadler 2011). Prodromal DLB phenoconversion framework (Fereshtehnejad 2019, Joza 2023). ECT efficacy in psychomotor-agitated depression (van Diermen 2019, OR 4.9).</p>
+  <p><strong>Moderate:</strong> SSRI/SNRI initiation akathisia (Akgoz 2024, Koliscak 2009). CYP2D6 PM status effect on duloxetine exposure (Hole 2024). DLB neuroleptic sensitivity mechanism (Piggott 1998). Endogenous agitated depression worsening with antidepressants (Alhau 2025). Clonazepam for RBD and for akathisia (Gerolymos 2024, Gambolò 2024, McKeith 2005, Taylor 2020).</p>
+  <p><strong>Sparse:</strong> Withdrawal akathisia 30+ days post brief antipsychotic exposure. SNRI akathisia de novo on chronic stable dosing without titration. Differential-diagnostic value of treatment response (propranolol response not differentially diagnostic). Olanzapine-suppressing-SNRI-akathisia as documented entity (pharmacologically plausible per Factor 2019 but not directly documented).</p>
+  <p><strong>Absent:</strong> Validated differential checklist for akathisia vs. agitated depression vs. prodromal-Lewy restlessness. Compound olanzapine + lithium withdrawal phenomenology as a studied entity. Tardive akathisia from SNRIs (D2-blocker phenomenon only per Frei 2018).</p>
+</div>
+
+<div class="footer-note">
+  This handout is based on OE #29 (5/23/2026), the comprehensive clinical brief #26, and the OE #29 follow-up on scenarios that would shift evidence toward the Cymbalta hypothesis. <strong>Sharon's role and judgment are valued by the family</strong> — this handout exists to test her hypothesis carefully against the published evidence, not to dismiss it. The single most actionable next step to evaluate her hypothesis is a duloxetine serum trough level + CYP2D6 pharmacogenomic testing, which can be done without destabilizing Dad's current regimen. Key references: DSM-5-TR (APA 2022); Akgoz 2024 (SSRI/SNRI akathisia); Koliscak 2009 (SSRI akathisia review); Heinz 2022 (SSRI movement effects); Factor 2019 (drug-induced movement disorders); Gerolymos 2024 + Gambolò 2024 (akathisia network meta-analyses); Knadler 2011 (duloxetine PK); Hole 2024 (CYP2D6 effect on duloxetine); Fereshtehnejad 2019, Joza 2023, McKeith 2020 (prodromal DLB framework); Piggott 1998, Baskys 2004 (DLB neuroleptic sensitivity mechanism); Kaila/Lancet Neurol 2025 (DLB therapeutic landscape); Tisdale 2020 AHA (drug-induced arrhythmias); van Diermen 2019 + Suzuki 2021 (ECT in agitated depression / chronic akathisia); Brandt 2020 + Cosci 2020 (psychotropic withdrawal); Alhau 2025 (agitated depression). The recommendations are interpreted for Dad's specific profile (age 76, severe TRD PHQ-9 = 24, multi-class activation-intolerance pattern, findings under evaluation for possible prodromal Lewy-spectrum disease, baseline HR 49 + LAFB + PR 214 + QRS 120 + QTc 401, residual nordoxepin from recent doxepin course, planned U-M ECT 2–4 weeks out).
+</div>
+
+</body>
+</html>
