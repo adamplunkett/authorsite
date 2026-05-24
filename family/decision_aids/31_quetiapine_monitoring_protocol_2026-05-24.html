@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Quetiapine medium-term monitoring protocol — 2026-05-24</title>
+<style>
+  @page { size: letter; margin: 0.5in 0.55in; }
+  :root {
+    --navy: #1a3a5c; --navy-dark: #0f2640;
+    --green: #2c5e3f; --green-bg: #e8f0ea; --green-border: #5a8a6a;
+    --blue-bg: #eef2f8; --blue-border: #6a8aaa;
+    --amber: #8a6a2c; --amber-bg: #f5efdf; --amber-border: #c8a86e;
+    --red: #8b2c2c; --red-bg: #f4e6e6; --red-border: #c87878;
+    --text: #1f1f1f; --text-muted: #5a5a5a;
+    --rule: #c8c8c8; --rule-strong: #6a6a6a;
+    --tint: #f5f3f0; --tint-neutral: #f3f3f1;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; font-family: "Charter", "Georgia", "Times New Roman", serif; font-size: 10pt; line-height: 1.45; color: var(--text); -webkit-font-smoothing: antialiased; }
+  .doc-header { display: flex; justify-content: space-between; align-items: flex-end; padding-bottom: 8pt; border-bottom: 1.5pt solid var(--navy); margin-bottom: 14pt; }
+  .doc-header .title { font-family: "Inter", "Helvetica Neue", system-ui, sans-serif; font-weight: 700; font-size: 18pt; line-height: 1.15; color: var(--navy-dark); letter-spacing: -0.015em; }
+  .doc-header .subtitle { font-family: "Inter", "Helvetica Neue", system-ui, sans-serif; font-weight: 500; font-size: 9.5pt; color: var(--text-muted); margin-top: 3pt; }
+  .doc-header .meta { font-family: "Inter", "Helvetica Neue", system-ui, sans-serif; font-size: 7.5pt; color: var(--text-muted); text-align: right; letter-spacing: 0.03em; line-height: 1.5; }
+  h2.page-heading { font-family: "Inter", "Helvetica Neue", system-ui, sans-serif; font-weight: 700; font-size: 13pt; color: var(--navy-dark); margin: 16pt 0 8pt 0; padding-bottom: 4pt; border-bottom: 1pt solid var(--rule-strong); page-break-after: avoid; }
+  h3.subsection { font-family: "Inter", "Helvetica Neue", system-ui, sans-serif; font-weight: 600; font-size: 11pt; color: var(--navy-dark); margin: 10pt 0 5pt 0; page-break-after: avoid; }
+  .recommend-block { background: var(--green-bg); border: 2pt solid var(--green-border); border-radius: 5pt; padding: 14pt 18pt; margin-bottom: 14pt; page-break-inside: avoid; }
+  .recommend-block .label { font-family: "Inter", "Helvetica Neue", system-ui, sans-serif; font-weight: 700; font-size: 9pt; text-transform: uppercase; letter-spacing: 0.14em; color: var(--green); margin-bottom: 8pt; }
+  .recommend-block p { margin: 6pt 0; font-size: 10pt; line-height: 1.5; }
+  .recommend-block strong { color: var(--navy-dark); }
+  .avoid-block { background: var(--red-bg); border: 1.5pt solid var(--red-border); border-radius: 5pt; padding: 12pt 16pt; margin-bottom: 14pt; page-break-inside: avoid; }
+  .avoid-block .label { font-family: "Inter", "Helvetica Neue", system-ui, sans-serif; font-weight: 700; font-size: 9pt; text-transform: uppercase; letter-spacing: 0.14em; color: var(--red); margin-bottom: 7pt; }
+  .avoid-block p { font-size: 9.75pt; margin: 6pt 0; }
+  .avoid-block ul { margin: 4pt 0 4pt 18pt; }
+  .avoid-block li { font-size: 9.5pt; line-height: 1.5; margin-bottom: 5pt; }
+  .avoid-block strong { color: var(--red); }
+  .info-block { background: var(--tint-neutral); border-left: 3pt solid var(--rule-strong); padding: 11pt 14pt; margin-bottom: 14pt; page-break-inside: avoid; }
+  .info-block .label { font-family: "Inter", "Helvetica Neue", system-ui, sans-serif; font-weight: 700; font-size: 8.5pt; text-transform: uppercase; letter-spacing: 0.12em; color: var(--navy); margin-bottom: 6pt; }
+  .info-block p { margin: 4pt 0; font-size: 9.75pt; line-height: 1.5; }
+  .info-block strong { color: var(--navy-dark); }
+  .uncertainty-block { background: var(--amber-bg); border-left: 3pt solid var(--amber-border); padding: 11pt 14pt; margin-bottom: 14pt; page-break-inside: avoid; }
+  .uncertainty-block .label { font-family: "Inter", "Helvetica Neue", system-ui, sans-serif; font-weight: 700; font-size: 8.5pt; text-transform: uppercase; letter-spacing: 0.12em; color: var(--amber); margin-bottom: 6pt; }
+  .uncertainty-block p { margin: 4pt 0; font-size: 9.75pt; line-height: 1.5; }
+  ul.bulleted { margin: 4pt 0 10pt 0; padding-left: 18pt; font-size: 9.75pt; line-height: 1.5; }
+  ul.bulleted li { margin-bottom: 5pt; }
+  ul.bulleted strong { color: var(--navy-dark); }
+  .stars { color: #d4a857; letter-spacing: 0.5pt; font-family: "Inter", "Helvetica Neue", system-ui, sans-serif; }
+  .stars-empty { color: #d4d4d4; }
+  .citation { background: var(--blue-bg); border-left: 3pt solid var(--blue-border); padding: 10pt 13pt; margin-bottom: 10pt; page-break-inside: avoid; }
+  .citation .cite-stars { font-size: 9pt; font-weight: 700; margin-bottom: 4pt; }
+  .citation .cite-title { font-family: "Inter", "Helvetica Neue", system-ui, sans-serif; font-weight: 700; font-size: 9.5pt; color: var(--navy-dark); margin-bottom: 3pt; }
+  .citation .cite-source { font-family: "Inter", "Helvetica Neue", system-ui, sans-serif; font-size: 8pt; color: var(--text-muted); margin-bottom: 6pt; }
+  .citation .cite-finding { font-size: 9.25pt; margin-bottom: 4pt; line-height: 1.5; }
+  .citation .cite-apply { font-size: 9.25pt; line-height: 1.5; }
+  .citation .label-inline { font-family: "Inter", "Helvetica Neue", system-ui, sans-serif; font-weight: 600; font-size: 7.5pt; text-transform: uppercase; letter-spacing: 0.06em; color: var(--navy); margin-right: 6pt; }
+  .tier-header { font-family: "Inter", "Helvetica Neue", system-ui, sans-serif; font-weight: 700; font-size: 10pt; color: var(--navy-dark); margin: 12pt 0 6pt 0; padding-bottom: 3pt; border-bottom: 0.75pt solid var(--rule-strong); }
+  table.protocol { width: 100%; border-collapse: collapse; margin: 6pt 0 10pt 0; font-size: 8.75pt; line-height: 1.4; }
+  table.protocol th { background: var(--blue-bg); color: var(--navy-dark); font-family: "Inter", "Helvetica Neue", system-ui, sans-serif; font-weight: 700; font-size: 8pt; text-align: left; padding: 6pt 7pt; border: 0.75pt solid var(--rule-strong); letter-spacing: 0.03em; }
+  table.protocol td { padding: 6pt 7pt; border: 0.5pt solid var(--rule); vertical-align: top; }
+  table.protocol td.first { font-weight: 600; color: var(--navy-dark); background: #f7f7f5; }
+  .checklist { font-size: 9.75pt; line-height: 1.5; margin: 4pt 0 10pt 0; padding-left: 0; list-style: none; }
+  .checklist li { padding-left: 22pt; position: relative; margin-bottom: 6pt; page-break-inside: avoid; }
+  .checklist li::before { content: "☐"; position: absolute; left: 4pt; top: -1pt; font-size: 13pt; color: var(--navy); font-family: "Inter", "Helvetica Neue", system-ui, sans-serif; }
+  .checklist li strong { color: var(--navy-dark); }
+  .footer-note { font-size: 8pt; color: var(--text-muted); font-style: italic; margin-top: 14pt; padding-top: 8pt; border-top: 0.5pt solid var(--rule); }
+</style>
+</head>
+<body>
+
+<div class="doc-header">
+  <div>
+    <div class="title">Quetiapine monitoring protocol — 1–4 week ECT bridge</div>
+    <div class="subtitle">Comprehensive monitoring framework · based on OE #34 · 2026-05-24</div>
+  </div>
+  <div class="meta">
+    For Mom, Dad, Leah, David, Debbi,<br>
+    family team, Dr. L, U-M ECT, Dr. Straka
+  </div>
+</div>
+
+<div class="recommend-block">
+  <div class="label">BOTTOM LINE</div>
+  <p>Quetiapine 25 mg HS + 25 mg around midnight (~50 mg overnight) produced 9 hours of sleep on 5/23 with no shaking and no orthostatic issues. With ECT planned 2–4 weeks out, quetiapine is the working sleep agent for the bridge. This handout is the <strong>monitoring protocol for the 1–4 week bridge window</strong>, calibrated to Dad's specific profile (LAFB + bradycardia + borderline 1° AV block + QRS 120 + low-normal BP + possible prodromal Lewy-spectrum + multi-class activation-intolerance pattern).</p>
+  <p style="margin-top: 10pt;"><strong>Five highest-priority actions to start this week:</strong></p>
+  <ul style="margin: 6pt 0 0 18pt; font-size: 9.75pt; line-height: 1.5;">
+    <li><strong>Refreshed 12-lead EKG (PCP Dr. Straka or U-M urgent care).</strong> 5/19/2025 EKG is over a year old. Required for both quetiapine baseline AND pre-ECT — order this week to serve both.</li>
+    <li><strong>CMP (electrolytes especially K+ and Mg²⁺), CBC, TSH, fasting glucose.</strong> Same batching logic — serves both purposes.</li>
+    <li><strong>Daily home orthostatic vital signs (supine → stand at 1 + 3 min)</strong> for first 3 days, then less frequent if stable.</li>
+    <li><strong>Daily family observation checklist</strong> (Section 4) for new motor symptoms, cognitive fluctuations, hallucinations — Lewy-spectrum sensitivity is the highest-vigilance concern.</li>
+    <li><strong>Sleep diary</strong> daily — bedtime, sleep onset, awakenings, total sleep, daytime naps.</li>
+  </ul>
+  <p style="margin-top: 10pt;"><strong>Most important "do NOT":</strong> do not add propranolol for any restlessness symptoms (contraindicated in Dad's bradycardia + LAFB per AHA guidance — see handout #29 Section 5). Do not start GabaCalm (see handout #30). Do not push another Cymbalta taper before ECT.</p>
+</div>
+
+<h2 class="page-heading">1. Baseline workup — order this week (serves both quetiapine monitoring AND pre-ECT)</h2>
+
+<div class="info-block">
+  <div class="label">Tests to order this week from PCP Dr. Straka or via U-M intake</div>
+  <ul class="checklist">
+    <li><strong>12-lead EKG.</strong> Highest priority. Dad's 5/19/2025 EKG (LAFB, HR 49, PR 214, QRS 120, QTc 401) is >1 year old. Required by FDA quetiapine label for patients with bradycardia / conduction abnormalities; required for pre-ECT anesthesia clearance. <span class="stars">★★★★★</span></li>
+    <li><strong>CMP including potassium and magnesium.</strong> Hypokalemia + hypomagnesemia are major risk factors for severe QTc prolongation (Wang 2024). Also required pre-ECT. <span class="stars">★★★★★</span></li>
+    <li><strong>CBC.</strong> Required pre-ECT; modest yield for quetiapine baseline. <span class="stars">★★★★</span><span class="stars-empty">★</span></li>
+    <li><strong>TSH (and free T4 if TSH abnormal).</strong> Quetiapine FDA label notes thyroid effects. Recent values may suffice. <span class="stars">★★★</span><span class="stars-empty">★★</span></li>
+    <li><strong>Fasting glucose or HbA1c.</strong> Baseline metabolic; recent value within 3 months may suffice. <span class="stars">★★★★</span><span class="stars-empty">★</span></li>
+    <li><strong>Weight measurement.</strong> Document baseline. Recent CVS records show 176 lbs at 12/2024 + unintentional weight loss noted. <span class="stars">★★★★</span><span class="stars-empty">★</span></li>
+    <li><strong>Orthostatic vital signs in office</strong> (supine → standing BP/HR at 1 + 3 min). <span class="stars">★★★★</span><span class="stars-empty">★</span></li>
+    <li><strong>Brief cognitive baseline — Mini-Cog (3-item recall + clock draw, ~3 min) or MoCA if PCP capable.</strong> Useful both for quetiapine monitoring AND as the pre-ECT cognitive baseline (ECT cognitive monitoring is standard). <span class="stars">★★★★</span><span class="stars-empty">★</span></li>
+  </ul>
+  <p style="margin-top: 6pt;"><strong>NOT needed for the bridge:</strong> echocardiogram (defer to U-M anesthesia decision); stress test (not indicated for asymptomatic stable bradycardia per ACC/AHA 2018 — Class III); Holter monitor (not indicated for asymptomatic stable conduction findings); repeat fasting lipids (already on rosuvastatin with recent values).</p>
+</div>
+
+<h2 class="page-heading">2. Daily home monitoring — orthostatic vitals</h2>
+
+<div class="info-block">
+  <div class="label">Orthostatic vital sign protocol</div>
+  <p><strong>Why daily for first 3 days:</strong> quetiapine's α₁-adrenergic blockade produces orthostatic hypotension in 6–18% of elderly users (El-Saifi 2016). Dad's baseline BP 112/58 is low-normal — already orthostatically vulnerable. The 5/24 morning was reassuring (no orthostasis observed), but day-to-day variability is real.</p>
+  <p style="margin-top: 6pt;"><strong>How to measure (per JAMA Internal Medicine 2026 / Moloney guidance):</strong></p>
+  <ul class="bulleted" style="margin-top: 4pt;">
+    <li>Sit Dad quietly for 3–5 minutes; measure BP/HR seated</li>
+    <li>Stand him up; wait 1 minute; measure BP/HR standing</li>
+    <li>Wait another 2 minutes (3 minutes total standing); measure again</li>
+    <li>Automated home BP cuff is adequate (no special equipment needed)</li>
+    <li>Note any symptoms during the standing phase (dizziness, lightheadedness, visual dimming, palpitations)</li>
+  </ul>
+  <p style="margin-top: 6pt;"><strong>Schedule:</strong></p>
+  <ul class="bulleted" style="margin-top: 4pt;">
+    <li><strong>Days 1–3 (5/24, 5/25, 5/26):</strong> Each morning before first activity AND 30–60 minutes after any HS quetiapine dose taken at unusual time</li>
+    <li><strong>Days 4–7:</strong> Once daily morning measurement if no drops detected</li>
+    <li><strong>Week 2 onward:</strong> Every other day or symptom-triggered</li>
+  </ul>
+  <p style="margin-top: 6pt;"><strong>Thresholds for action:</strong></p>
+  <ul class="bulleted" style="margin-top: 4pt;">
+    <li><strong>Symptomatic orthostatic event</strong> (dizziness, lightheadedness, visual dimming on standing): <strong>contact Dr. L / Dr. Rubin same day</strong> regardless of measured drop</li>
+    <li><strong>Asymptomatic SBP drop ≥20 mmHg or DBP drop ≥10 mmHg within 3 minutes</strong> = defined orthostatic hypotension. Document; report at next clinical contact</li>
+    <li><strong>Asymptomatic standing SBP &lt;90 mmHg:</strong> dose reduction discussion warranted</li>
+    <li><strong>Any near-syncope or syncope</strong> → immediate medical evaluation</li>
+  </ul>
+</div>
+
+<h2 class="page-heading">3. Daily home monitoring — fall risk and ambulation</h2>
+
+<div class="info-block">
+  <div class="label">Fall-precaution protocol — given baseline gait abnormality + balance + neuropathy</div>
+  <p>Hui 2025 showed HR 2.8 for falls with low-dose quetiapine vs. trazodone in chronic use. Dad's baseline already includes gait abnormality (R26.9), balance problem (R26.89), and peripheral neuropathy (G62.9). The OE #28 / handout #28 fall-precaution framework applies fully here.</p>
+  <ul class="bulleted" style="margin-top: 6pt;">
+    <li><strong>Sit-dangle-stand sequence</strong> for every bed-to-bathroom transfer, especially overnight: sit on edge of bed for 30–60 seconds, assess for dizziness, then stand holding stable surface for 10–15 seconds before walking</li>
+    <li><strong>Environment now:</strong> nightlight on path to bathroom; non-slip mats; remove throw rugs; bedside urinal for nighttime use to minimize nocturnal ambulation</li>
+    <li><strong>Family log of falls and near-falls.</strong> A "near-fall" is a stumble, grabbing furniture for support, or any episode where Dad reported needing to catch himself. Both falls and near-falls should be logged</li>
+    <li><strong>Walker consideration:</strong> introduce if any fall occurs, or if ≥2 near-falls during the bridge, or if family observes new gait unsteadiness beyond baseline</li>
+    <li><strong>Bedside commode:</strong> reasonable proactive measure given the nocturnal sedation + low BP + gait + neuropathy combination. Worth requesting from PCP this week</li>
+  </ul>
+  <p style="margin-top: 6pt;"><strong>Discontinuation thresholds:</strong></p>
+  <ul class="bulleted" style="margin-top: 4pt;">
+    <li><strong>Any fall WITH injury</strong> (fracture, head strike, laceration requiring care) → immediate quetiapine discontinuation discussion with Dr. L / Dr. Rubin</li>
+    <li><strong>Two or more falls (even without injury) during the bridge</strong> → reassessment of risk-benefit; likely dose reduction or change of agent</li>
+  </ul>
+</div>
+
+<h2 class="page-heading">4. Daily family observation — Lewy-spectrum sensitivity (highest-vigilance domain)</h2>
+
+<div class="info-block">
+  <div class="label">Why this matters most</div>
+  <p>Severe neuroleptic sensitivity reactions can occur in <strong>up to 50% of patients with established Lewy body dementia</strong> (DLB Consortium, Kaila 2025). Dad has <em>possible prodromal</em> Lewy-spectrum disease (not established DLB), and he tolerated quetiapine 50 mg × 4 weeks in 11/2025 without EPS — meaningful prior-tolerance signal. But the substrate can progress, and sensitivity may emerge. The DLB Consortium's standing recommendation: warn both patient and caregiver of the possibility of a severe sensitivity reaction before any antipsychotic trial. <strong>Quetiapine has the lowest D2 affinity of atypicals and is the preferred antipsychotic in DLB</strong> — but is not zero-risk.</p>
+</div>
+
+<div class="info-block">
+  <div class="label">Daily checklist — observe and log if any are new or worsened</div>
+  <ul class="checklist">
+    <li><strong>New or worsened rest tremor</strong> — especially hands or jaw, when sitting still</li>
+    <li><strong>Stiffness or rigidity</strong> — difficulty turning in bed, reduced arm swing while walking, "wooden" quality of movement</li>
+    <li><strong>Bradykinesia</strong> — slower dressing, slower eating, slower walking than baseline</li>
+    <li><strong>Postural instability</strong> — new tendency to fall backward, retropulsion</li>
+    <li><strong>Shuffling gait or freezing</strong> — feet stuck to floor, small steps</li>
+    <li><strong>Facial masking</strong> — reduced facial expressiveness compared to recent baseline</li>
+    <li><strong>Cognitive fluctuations</strong> — episodes of staring, marked inattention, or confusion that alternate with periods of near-normal function (this is the hallmark of DLB cognitive symptoms)</li>
+    <li><strong>Visual hallucinations or illusions</strong> — seeing people, animals, or shapes that aren't there; misidentifying objects (cardinal DLB feature)</li>
+    <li><strong>RBD worsening</strong> — more frequent dream enactment, more violent movements, vocalizations, falls from bed</li>
+    <li><strong>Dysphagia</strong> — any new difficulty swallowing</li>
+  </ul>
+  <p style="margin-top: 6pt;"><strong>If any one of these is new or markedly worsened: contact Dr. L / Dr. Rubin within 24 hours.</strong></p>
+</div>
+
+<div class="avoid-block">
+  <div class="label">ACUTE NEUROLEPTIC SENSITIVITY REACTION — immediate discontinuation + urgent medical evaluation</div>
+  <p>If ANY of the following emerge, <strong>stop quetiapine immediately and seek urgent medical evaluation</strong>:</p>
+  <ul>
+    <li>Sudden severe rigidity</li>
+    <li>High fever + rigidity (possible NMS — call 911)</li>
+    <li>Marked new cognitive decline (sudden confusion, unable to recognize family)</li>
+    <li>Severe sedation not clearing by mid-morning (unable to be roused)</li>
+    <li>Autonomic instability (wide BP swings, marked tachycardia, profuse diaphoresis)</li>
+    <li>New dysphagia with risk of aspiration</li>
+  </ul>
+</div>
+
+<h2 class="page-heading">5. Sedation, cognitive, and ADL monitoring</h2>
+
+<div class="info-block">
+  <div class="label">Pragmatic family-administrable assessments</div>
+  <ul class="bulleted">
+    <li><strong>Next-day sedation assessment.</strong> Family notes time Dad is "fully alert and functional" each morning. <strong>Threshold:</strong> if grogginess persists past ~10 AM (assuming ~7 AM wake), warrants dose-reduction discussion. (No published validated threshold specific to quetiapine — this is expert-consensus calibrated.)</li>
+    <li><strong>Weekly Mini-Cog (3-item recall + clock draw, ~3 minutes).</strong> Recommended by AGS for cognitive screening in older adults. Administer at baseline (this week with Dr. Straka or self-administered) and weekly during the bridge. Score &lt;3 / 5 OR clock-draw abnormal = concerning; report to Dr. L.</li>
+    <li><strong>ADL daily check.</strong> Simple observed checklist: dressing independently, eating, toileting, grooming, ambulating without assistance. Any new dependence or marked slowness should be logged.</li>
+    <li><strong>Epworth Sleepiness Scale (ESS) weekly.</strong> Validated 8-item self-report for daytime sleepiness. Score &gt;10 suggests excessive daytime sleepiness; report at next clinical contact.</li>
+    <li><strong>PHQ-9 weekly.</strong> Severe depression at baseline (24); track for any change. Worsening would inform ECT acceleration urgency.</li>
+  </ul>
+</div>
+
+<h2 class="page-heading">6. Sleep monitoring during the bridge</h2>
+
+<div class="info-block">
+  <div class="label">Sleep diary — standard clinical tool, strongly recommended</div>
+  <p>Simple daily log capturing: bedtime, estimated sleep onset, number and duration of awakenings, final wake time, total estimated sleep time, daytime naps, any new dream content or RBD-like episodes. This data will be valuable for the U-M ECT team. <span class="stars">★★★★★</span> (standard sleep medicine practice).</p>
+  <p style="margin-top: 6pt;"><strong>Consumer wearables (Oura, Fitbit, Apple Watch):</strong> reasonable accuracy for total sleep time and wake detection in healthy adults (~85% Oura/Fitbit), but <em>significant individual-level inaccuracies and not validated in RBD or possible-DLB populations</em>. May provide supplementary trend data but should not replace the sleep diary or drive clinical decisions. <span class="stars">★★</span><span class="stars-empty">★★★</span> for this population.</p>
+  <p style="margin-top: 6pt;"><strong>Dose adjustment triggers based on sleep data:</strong></p>
+  <ul class="bulleted" style="margin-top: 4pt;">
+    <li><strong>Total sleep time &lt;5 hours for 2+ consecutive nights</strong> → escalate to 50 mg HS as single dose (defensible from prior tolerance) OR continue split-dose but add midnight 25 mg at first awakening</li>
+    <li><strong>Total sleep time consistently &gt;9 hours with morning grogginess past noon</strong> → reduce to 25 mg HS only (no midnight redose); reassess after 2 nights</li>
+    <li><strong>New nightmares or dream enactment</strong> → log; report at next clinical contact; consider RBD-targeted adjustment with U-M</li>
+  </ul>
+</div>
+
+<h2 class="page-heading">7. Red flags — immediate action required</h2>
+
+<div class="avoid-block">
+  <div class="label">CALL PRESCRIBER OR 911 PER SEVERITY</div>
+  <ol style="margin: 0; padding-left: 18pt; font-size: 9.5pt; line-height: 1.5;">
+    <li><strong>Syncope or near-syncope</strong> (loss of consciousness, even momentary) → 911 if loss of consciousness or fall with head strike; otherwise urgent prescriber contact</li>
+    <li><strong>Any fall with injury</strong> → hold quetiapine, evaluate fracture / head injury; reassess risk-benefit with Dr. L / Dr. Rubin</li>
+    <li><strong>Chest pain, palpitations, or new irregular pulse</strong> → hold quetiapine, obtain EKG urgently</li>
+    <li><strong>Symptomatic bradycardia</strong> (HR &lt;45 with dizziness, fatigue, exertional dyspnea) → hold quetiapine, urgent evaluation</li>
+    <li><strong>Severe sedation not clearing by mid-morning</strong> (cannot be roused, persistently confused or somnolent past 10 AM) → hold next dose, contact prescriber</li>
+    <li><strong>Any new motor symptoms</strong> (new rigidity, marked tremor increase, dyskinesia, severe gait deterioration, dysphagia) → <strong>immediately discontinue quetiapine</strong>, urgent evaluation for neuroleptic sensitivity reaction</li>
+    <li><strong>New cognitive symptoms</strong> (acute confusion, visual hallucinations, delusions, failure to recognize family) → <strong>immediately discontinue quetiapine</strong>, urgent evaluation</li>
+    <li><strong>NMS pattern</strong> (high fever + rigidity + autonomic instability + altered mental status) → <strong>discontinue quetiapine, call 911</strong></li>
+    <li><strong>Significant unexpected weight gain</strong> (&gt;5 lbs in a week) → evaluate for fluid retention rather than metabolic effect; contact prescriber</li>
+  </ol>
+</div>
+
+<h2 class="page-heading">8. Clinical contact schedule</h2>
+
+<div class="info-block">
+  <div class="label">Recommended clinical contact during the 1–4 week bridge</div>
+  <ul class="bulleted">
+    <li><strong>Day 2–3 of quetiapine (by Tuesday 5/26):</strong> phone or telehealth check-in with Dr. Rubin (returning from holiday) or covering Dr. L — review first 48–72 hours of tolerability, orthostatic data, sedation, any motor/cognitive changes</li>
+    <li><strong>Week 1 (by ~5/30):</strong> formal psychiatric visit (telehealth or in-person) with Dr. Rubin — review sleep diary, orthostatic log, cognitive/motor status, PHQ-9, lab results</li>
+    <li><strong>Week 2 (~6/2 – 6/6):</strong> telehealth check-in — ongoing tolerability, sleep efficacy, any emerging concerns</li>
+    <li><strong>PCP Dr. Straka:</strong> schedule a visit during week 1–2 for refreshed EKG, baseline labs, orthostatic assessment, fall-risk evaluation. This visit can serve double duty as pre-ECT medical clearance if appropriately timed</li>
+    <li><strong>Weekly thereafter</strong> until ECT initiation</li>
+    <li><strong>Doctor-to-doctor: Dr. L → Dr. Maxner (U-M ECT)</strong> Tuesday 5/26 for ECT acceleration AND to inquire about direct admission (per handout #28) — also surface monitoring questions (Section 9)</li>
+  </ul>
+</div>
+
+<h2 class="page-heading">9. What to escalate at the Dr. L → Dr. Maxner U-M ECT call</h2>
+
+<div class="info-block">
+  <div class="label">Monitoring-specific agenda items beyond ECT scheduling acceleration</div>
+  <ul class="bulleted">
+    <li><strong>Bridge agent preference.</strong> Does U-M ECT prefer quetiapine to continue as the sleep bridge, or would they prefer a different agent? Some ECT programs have preferences regarding concurrent antipsychotics (quetiapine has modest anticonvulsant properties potentially affecting seizure threshold)</li>
+    <li><strong>Pre-ECT labs.</strong> Will the EKG + CMP + CBC + TSH ordered this week serve as the pre-ECT workup, or does U-M require their own? Most anesthesia departments accept labs within 30 days for low-risk procedures</li>
+    <li><strong>Cardiac substrate communication.</strong> Explicit communication of LAFB + HR 49 + PR 214 + QRS 120. Does U-M anesthesia want a cardiology consult or echocardiogram pre-ECT? (Per APA resource document, bradyarrhythmias with hypotension can elevate ECT risk)</li>
+    <li><strong>Quetiapine timing relative to ECT.</strong> Should quetiapine continue through ECT (many programs continue low-dose), taper before first session, or hold on treatment mornings only? At 25–50 mg HS, abrupt discontinuation is generally safe without taper</li>
+    <li><strong>Cognitive baseline preference.</strong> Does U-M want a specific cognitive instrument (MoCA, MMSE) administered pre-ECT for comparison during the course?</li>
+    <li><strong>Lewy-spectrum context.</strong> Communicate the pending DAT-SPECT and U-M Movement Disorders workup. ECT has case-report evidence of antidepressive and motor benefits in Lewy body disease, but robust evidence is sparse. The ECT team should be aware of the diagnostic consideration</li>
+    <li><strong>Cymbalta through ECT.</strong> Confirm hold at 60 mg per PRIDE study + Pluijms 2021 meta-analysis. Defer any taper decision to post-ECT</li>
+    <li><strong>Offer to forward monitoring data:</strong> sleep diary, orthostatic log, EKG/lab results to ECT team for their records</li>
+  </ul>
+</div>
+
+<h2 class="page-heading">10. Quick-reference summary table</h2>
+
+<div class="info-block">
+  <div class="label">Monitoring at a glance</div>
+  <table class="protocol">
+    <thead>
+      <tr>
+        <th style="width: 25%;">Domain</th>
+        <th style="width: 22%;">When</th>
+        <th style="width: 35%;">What</th>
+        <th style="width: 18%;">Evidence quality</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="first">Baseline EKG</td>
+        <td>This week</td>
+        <td>12-lead via PCP or urgent care; batched with pre-ECT</td>
+        <td><span class="stars">★★★★★</span></td>
+      </tr>
+      <tr>
+        <td class="first">Baseline labs</td>
+        <td>This week</td>
+        <td>CMP (K+, Mg²⁺), CBC, TSH, glucose, weight</td>
+        <td><span class="stars">★★★★★</span></td>
+      </tr>
+      <tr>
+        <td class="first">Orthostatic vitals</td>
+        <td>Daily ×3 days, then less</td>
+        <td>Supine → standing BP/HR at 1 + 3 min</td>
+        <td><span class="stars">★★★★</span><span class="stars-empty">★</span></td>
+      </tr>
+      <tr>
+        <td class="first">Fall precautions</td>
+        <td>Every night-time transfer</td>
+        <td>Sit-dangle-stand; nightlight; bedside urinal; family log</td>
+        <td><span class="stars">★★★★</span><span class="stars-empty">★</span></td>
+      </tr>
+      <tr>
+        <td class="first">Lewy-spectrum observation</td>
+        <td>Daily family check</td>
+        <td>10-item checklist (Section 4); immediate d/c if acute reaction</td>
+        <td><span class="stars">★★★</span><span class="stars-empty">★★</span></td>
+      </tr>
+      <tr>
+        <td class="first">Cognitive screen</td>
+        <td>Baseline + weekly</td>
+        <td>Mini-Cog (3-item recall + clock draw)</td>
+        <td><span class="stars">★★★★</span><span class="stars-empty">★</span></td>
+      </tr>
+      <tr>
+        <td class="first">Sedation / ESS</td>
+        <td>Daily + weekly</td>
+        <td>Time fully alert each AM; Epworth weekly</td>
+        <td><span class="stars">★★★</span><span class="stars-empty">★★</span></td>
+      </tr>
+      <tr>
+        <td class="first">Sleep diary</td>
+        <td>Daily</td>
+        <td>Bedtime, onset, awakenings, total sleep, naps</td>
+        <td><span class="stars">★★★★★</span></td>
+      </tr>
+      <tr>
+        <td class="first">PHQ-9</td>
+        <td>Weekly</td>
+        <td>Track depression severity; worsening informs ECT acceleration urgency</td>
+        <td><span class="stars">★★★★★</span></td>
+      </tr>
+      <tr>
+        <td class="first">Repeat EKG</td>
+        <td>3–5 days post-init OR symptom-triggered</td>
+        <td>Single repeat 12-lead; not routine serial</td>
+        <td><span class="stars">★★★</span><span class="stars-empty">★★</span></td>
+      </tr>
+      <tr>
+        <td class="first">Metabolic recheck</td>
+        <td>NOT needed during bridge</td>
+        <td>Quetiapine metabolic effects are chronic-use concerns</td>
+        <td><span class="stars">★★★★</span><span class="stars-empty">★</span></td>
+      </tr>
+      <tr>
+        <td class="first">Echo / stress test / Holter</td>
+        <td>NOT indicated</td>
+        <td>Asymptomatic stable conduction findings don't warrant; defer to U-M anesthesia</td>
+        <td><span class="stars">★★★★★</span></td>
+      </tr>
+      <tr>
+        <td class="first">Clinical contact</td>
+        <td>Day 2–3, week 1, week 2, weekly</td>
+        <td>Telehealth or in-person; coordinate Dr. Rubin + PCP + U-M</td>
+        <td><span class="stars">★★★</span><span class="stars-empty">★★</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<h2 class="page-heading">11. Evidence roundup — ranked by quality</h2>
+
+<p style="font-size: 9.5pt; line-height: 1.5; margin-bottom: 8pt;"><span class="stars">★★★★★</span> = robust. <span class="stars">★★★★</span><span class="stars-empty">★</span> = strong. <span class="stars">★★★</span><span class="stars-empty">★★</span> = moderate. <span class="stars">★★</span><span class="stars-empty">★★★</span> = sparse. <span class="stars">★</span><span class="stars-empty">★★★★</span> = minimal.</p>
+
+<div class="tier-header">5-star evidence (robust)</div>
+
+<div class="citation">
+  <div class="cite-stars"><span class="stars">★★★★★</span></div>
+  <div class="cite-title">Quetiapine Fumarate. FDA label. Updated 2025-09-11.</div>
+  <div class="cite-source">U.S. Food and Drug Administration.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Explicit warnings on QTc prolongation risk in patients with conduction abnormalities or bradycardia. Recommends baseline metabolic monitoring (glucose, lipids, weight). Patients should be cautioned about activities requiring mental alertness until they are "reasonably certain that quetiapine therapy does not affect them adversely."</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Foundational regulatory basis for the baseline EKG + metabolic + orthostatic monitoring protocol. The driving guidance is subjective and unreliable in elderly — handled separately in handout #25.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-stars"><span class="stars">★★★★★</span></div>
+  <div class="cite-title">Xiong GL, Pinkhasov A, Mangal JP et al. QTc Monitoring in Adults With Medical and Psychiatric Comorbidities: Expert Consensus.</div>
+  <div class="cite-source">J Psychosom Res 2020;135:110138. doi:10.1016/j.jpsychores.2020.110138.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>≥2 cardiac risk factors → baseline ECG recommendation before initiating any QT-active medication.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Dad has ≥3 risk factors (age ≥68, bradycardia HR 49, borderline 1° AV block with QRS 120/LAFB). Anchors the refreshed EKG as the highest-priority baseline test.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-stars"><span class="stars">★★★★★</span></div>
+  <div class="cite-title">Kusumoto FM, Schoenfeld MH, Barrett C et al. 2018 ACC/AHA/HRS Guideline on the Evaluation and Management of Patients With Bradycardia and Cardiac Conduction Delay.</div>
+  <div class="cite-source">J Am Coll Cardiol 2019;74(7):e51-e156. doi:10.1016/j.jacc.2018.10.044.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Class III recommendation: arrhythmia monitoring is NOT recommended for asymptomatic, hemodynamically stable patients with bradycardia. First-degree AV block and LAFB without symptoms do not warrant advanced cardiac testing.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Justifies NOT pursuing echocardiogram, stress test, or Holter at baseline. Defers any advanced cardiac workup to U-M anesthesia decision pre-ECT.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-stars"><span class="stars">★★★★★</span></div>
+  <div class="cite-title">American Geriatrics Society 2023 Updated AGS Beers Criteria.</div>
+  <div class="cite-source">J Am Geriatr Soc 2023;71(7):2052-2081. doi:10.1111/jgs.18372.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Antipsychotics (including quetiapine) listed as potentially inappropriate in older adults; recommended avoidance except for FDA-approved indications or short-term use. CNS-active polypharmacy flagged independently. Guidance on minimum effective dose for shortest duration with ongoing risk-benefit assessment.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The bridge-window framing — explicit short-term use with active monitoring and clear discontinuation criteria — aligns with Beers principles. Reinforces the priority of minimizing CNS polypharmacy (no GabaCalm addition; lorazepam PRN, not scheduled).</div>
+</div>
+
+<div class="tier-header">4-star evidence (strong)</div>
+
+<div class="citation">
+  <div class="cite-stars"><span class="stars">★★★★</span><span class="stars-empty">★</span></div>
+  <div class="cite-title">Tisdale JE, Chung MK, Campbell KB et al. Drug-Induced Arrhythmias: A Scientific Statement From the AHA.</div>
+  <div class="cite-source">Circulation 2020;142(15):e214-e233. doi:10.1161/CIR.0000000000000905.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Drugs inhibiting sinus or AV node function should be avoided in patients with preexisting dysfunction. Cumulative cardiac risk-factor stack (bradycardia + AV block + LAFB + QT-active concomitant) requires explicit cardiac monitoring.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Foundational for cardiac monitoring framework. Also: this is why propranolol is contraindicated for any restlessness-related use in Dad (per handout #29 Section 5).</div>
+</div>
+
+<div class="citation">
+  <div class="cite-stars"><span class="stars">★★★★</span><span class="stars-empty">★</span></div>
+  <div class="cite-title">Wang CL, Wu VC, Lee CH et al. Incidences, Risk Factors, and Clinical Correlates of Severe QT Prolongation After Quetiapine or Haloperidol.</div>
+  <div class="cite-source">Heart Rhythm 2024;21(3):321-328. doi:10.1016/j.hrthm.2023.10.027.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>&gt;13% of quetiapine users developed severe QTc prolongation (QTc &gt;500 ms or Δ &gt;60 ms). Risk factors: old age, heart failure, hypokalemia, baseline QTc.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Reinforces electrolyte monitoring (especially K⁺ and Mg²⁺) as part of baseline. Dad's baseline QTc 401 ms is within normal range, which is reassuring at 25–50 mg dose; but baseline labs are essential.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-stars"><span class="stars">★★★★</span><span class="stars-empty">★</span></div>
+  <div class="cite-title">Solhaug V, Tveito M, Waade RB et al. Impact of Age, Sex and CYP Genotype on Quetiapine and N-Desalkylquetiapine Serum Concentrations.</div>
+  <div class="cite-source">Br J Clin Pharmacol 2023;89(12):3503-3511. doi:10.1111/bcp.15849.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Real-world TDM study (n = 8,118). Concentration-to-dose ratios increase by ~28–29% in patients &gt;70 years. Oral clearance reduced 30–50% in elderly.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Pharmacokinetic basis for using lowest effective dose and starting with 25 mg. Also informs the driving handout's extended no-drive window.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-stars"><span class="stars">★★★★</span><span class="stars-empty">★</span></div>
+  <div class="cite-title">Moloney D, Youssef A, Okamoto LE. Management of Orthostatic Hypotension.</div>
+  <div class="cite-source">JAMA Internal Medicine 2026. doi:10.1001/jamainternmed.2026.0284.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Recommends OH screening in patients &gt;70 years with neurodegenerative diseases, peripheral neuropathies, or polypharmacy, using active stand test (supine 5 min → standing BP/HR at 1 + 3 min). OH defined as SBP drop ≥20 mmHg or DBP drop ≥10 mmHg within 3 min standing.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Foundational for the orthostatic monitoring protocol in Section 2. Dad meets multiple inclusion criteria (age &gt;70, peripheral neuropathy, polypharmacy).</div>
+</div>
+
+<div class="citation">
+  <div class="cite-stars"><span class="stars">★★★★</span><span class="stars-empty">★</span></div>
+  <div class="cite-title">El-Saifi N, Moyle W, Jones C, Tuffaha H. Quetiapine Safety in Older Adults: A Systematic Literature Review.</div>
+  <div class="cite-source">J Clin Pharm Ther 2016;41(1):7-18. doi:10.1111/jcpt.12357.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Quetiapine in elderly: somnolence 25–39%, dizziness 15–27%. Significantly greater falls and injury in patients with parkinsonism specifically (Kurlan/ADCS trial cited).</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Quantifies the sedation and dizziness rates that inform monitoring vigilance. Parkinsonism-specific fall finding is directly relevant to Dad's possible prodromal Lewy-spectrum profile.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-stars"><span class="stars">★★★★</span><span class="stars-empty">★</span></div>
+  <div class="cite-title">Eckstrom E, Vincenzo JL, Casey CM et al. American Geriatrics Society Response to the World Falls Guidelines.</div>
+  <div class="cite-source">J Am Geriatr Soc 2024;72(6):1669-1686. doi:10.1111/jgs.18734.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>AGS fall-prevention framework: TUG or gait speed assessment; PT referral for any gait instability; environmental modifications; medication review for fall risk; assistive device threshold after any fall or persistent gait instability.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Anchors Section 3 fall-precaution protocol and assistive-device thresholds (walker, bedside commode).</div>
+</div>
+
+<div class="citation">
+  <div class="cite-stars"><span class="stars">★★★★</span><span class="stars-empty">★</span></div>
+  <div class="cite-title">Denfeld QE, Turrise S, MacLaughlin EJ et al. Preventing and Managing Falls in Adults With Cardiovascular Disease: AHA Scientific Statement.</div>
+  <div class="cite-source">Circ Cardiovasc Qual Outcomes 2022;15(6):e000108. doi:10.1161/HCQ.0000000000000108.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Specific fall-prevention framework for cardiovascular patients. Emphasizes orthostatic vitals, medication review for cardiac and antipsychotic agents, and home environmental safety.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Directly applicable given Dad's bradycardia + LAFB + low-normal BP combined with quetiapine α₁-blockade.</div>
+</div>
+
+<div class="tier-header">3-star evidence (moderate)</div>
+
+<div class="citation">
+  <div class="cite-stars"><span class="stars">★★★</span><span class="stars-empty">★★</span></div>
+  <div class="cite-title">McKeith IG, Boeve BF, Dickson DW et al. Diagnosis and Management of DLB: Fourth Consensus Report of the DLB Consortium.</div>
+  <div class="cite-source">Neurology 2017;89(1):88-100. doi:10.1212/WNL.0000000000004058.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Severe neuroleptic sensitivity reactions in up to 50% of DLB patients. Quetiapine has lowest D2 affinity among atypicals and is preferred if antipsychotic is needed. Consortium recommends warning patient and caregiver about possibility of severe sensitivity reaction before any antipsychotic trial.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Foundational for Section 4 Lewy-spectrum daily observation checklist and acute-sensitivity-reaction red flags.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-stars"><span class="stars">★★★</span><span class="stars-empty">★★</span></div>
+  <div class="cite-title">Kaila LV, Ikeda M, Sultana J et al. The Evolving Therapeutic Landscape of Dementia With Lewy Bodies.</div>
+  <div class="cite-source">Lancet Neurol 2025;24(12):1038-1052. doi:10.1016/S1474-4422(25)00323-0.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Current DLB therapeutics: cholinesterase inhibitors strongest for neuropsychiatric symptoms; SSRIs/SNRIs acceptable; quetiapine cautiously usable for sleep/neuropsychiatric symptoms at low doses; tricyclics and high-D2-affinity antipsychotics avoided.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Modern context for quetiapine as the conditionally-preferred atypical in this profile. Informs medium-term planning if Lewy-spectrum confirmed.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-stars"><span class="stars">★★★</span><span class="stars-empty">★★</span></div>
+  <div class="cite-title">Hui RL, Lee AL, Lee EA, Lee RS, Niu F. Safety of Low-Dose Quetiapine for Insomnia in Older Adults.</div>
+  <div class="cite-source">Drugs Aging 2025;42(2):127-133. doi:10.1007/s40266-024-01170-5.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Retrospective cohort: low-dose quetiapine for insomnia in ≥65 associated with HR 3.1 mortality, HR 8.1 dementia, HR 2.8 falls vs trazodone. These are chronic-use endpoints over months.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Important context — these signals are chronic-use, NOT applicable to a 1–4 week bridge. But quantifies fall risk specifically (HR 2.8), informing the fall-precaution vigilance.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-stars"><span class="stars">★★★</span><span class="stars-empty">★★</span></div>
+  <div class="cite-title">Tess AV, Smetana GW. Medical Evaluation of Patients Undergoing Electroconvulsive Therapy.</div>
+  <div class="cite-source">N Engl J Med 2009;360(14):1437-44. doi:10.1056/NEJMra0707755.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Pre-ECT evaluation: history/physical; EKG advisable in patients &gt;50; laboratory testing tailored to medical history and medications. Cardiology consultation indicated for relevant cardiac substrate.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Foundational for batching strategy in Section 1. EKG and labs ordered this week can serve both quetiapine monitoring and pre-ECT clearance.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-stars"><span class="stars">★★★</span><span class="stars-empty">★★</span></div>
+  <div class="cite-title">Medved S, Žaja N, Gazdag G et al. Preliminary Assessment of Pre-ECT Evaluation Practices in European Countries.</div>
+  <div class="cite-source">J ECT 2022;38(4):230-237. doi:10.1097/YCT.0000000000000854.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>European ECT centers uniformly perform CBC, serum electrolytes, and renal function as standard pre-ECT labs. Cognitive baseline (MMSE/MoCA) standard practice.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Standardizes the pre-ECT lab list to confirm batching with quetiapine baseline.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-stars"><span class="stars">★★★</span><span class="stars-empty">★★</span></div>
+  <div class="cite-title">Unützer J. Late-Life Depression.</div>
+  <div class="cite-source">N Engl J Med 2007;357(22):2269-76. doi:10.1056/NEJMcp073754.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>During initial pharmacologic treatment of late-life depression, patients should be followed weekly or every other week (in person or by telephone) for side effects, drug interactions, and worsening depression.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Foundational for Section 8 clinical contact schedule.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-stars"><span class="stars">★★★</span><span class="stars-empty">★★</span></div>
+  <div class="cite-title">Steffens DC. Treatment-Resistant Depression in Older Adults.</div>
+  <div class="cite-source">N Engl J Med 2024;390(7):630-639. doi:10.1056/NEJMcp2305428.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Modern framework for TRD in older adults; supports close clinical contact during medication transitions and bridge management; emphasizes ECT for severe treatment-resistant cases.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Reinforces the urgency of ECT as the definitive intervention and the importance of structured bridge management.</div>
+</div>
+
+<div class="tier-header">2-star evidence (sparse but applicable)</div>
+
+<div class="citation">
+  <div class="cite-stars"><span class="stars">★★</span><span class="stars-empty">★★★</span></div>
+  <div class="cite-title">Kainec KA, Caccavaro J, Barnes M et al. Evaluating Accuracy in Five Commercial Sleep-Tracking Devices Compared to Research-Grade Actigraphy and PSG.</div>
+  <div class="cite-source">Sensors 2024;24(2):635. doi:10.3390/s24020635.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Consumer wearables show ~85% agreement with PSG for sleep duration in healthy adults but with significant individual-level differences that prohibit use in clinical sleep medicine.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Wearables can supplement but not replace the sleep diary, especially in RBD/possible-DLB populations where they're not validated.</div>
+</div>
+
+<div class="footer-note">
+  This handout is based on OE #34 (5/24/2026). The monitoring protocol is a synthesis across multiple evidence domains — no single published guideline addresses low-dose quetiapine sleep-bridging in elderly patients with this cardiac + possible-Lewy-spectrum profile. The strongest evidence supports the cardiac, orthostatic, and Lewy-spectrum sensitivity monitoring components; the metabolic and sedation monitoring components are extrapolated from chronic-use guidelines with appropriate de-escalation for the 1–4 week bridge duration. Key references: FDA quetiapine label; Xiong 2020 (QTc monitoring expert consensus); Wang 2024 (severe QTc prolongation with quetiapine); Solhaug 2023 (quetiapine PK in elderly); Tisdale 2020 AHA (drug-induced arrhythmias); ACC/AHA/HRS 2018 (bradycardia guideline); AGS Beers 2023; El-Saifi 2016 (quetiapine safety in elderly); Hui 2025 (chronic-use quetiapine fall HR); McKeith 2017 + Kaila 2025 (DLB consensus + therapeutic landscape); Moloney 2026 JAMA Internal Medicine (orthostatic hypotension); Eckstrom 2024 (AGS falls); Denfeld 2022 AHA (cardiac fall prevention); Tess + Smetana 2009 NEJM (pre-ECT); Medved 2022 (European ECT practices); Unützer 2007 + Steffens 2024 NEJM (late-life depression / TRD). The recommendations are interpreted for Dad's specific profile (age 76, severe TRD PHQ-9 = 24, possible prodromal Lewy-spectrum disease, multi-class activation-intolerance pattern, baseline HR 49 + LAFB + PR 214 + QRS 120 + BP 112/58, current regimen of quetiapine 50 mg overnight + melatonin 10 mg HS + lorazepam 1 mg PRN + duloxetine 60 mg AM + residual nordoxepin through ~5/26, planned U-M ECT 2–4 weeks out).
+</div>
+
+</body>
+</html>
