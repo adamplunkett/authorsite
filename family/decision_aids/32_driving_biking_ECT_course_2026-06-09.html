@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Driving and bicycling during the ECT course — 2026-06-09</title>
+<style>
+  @page { size: letter; margin: 0.5in 0.55in; }
+  :root {
+    --navy: #1a3a5c; --navy-dark: #0f2640;
+    --green: #2c5e3f; --green-bg: #e8f0ea; --green-border: #5a8a6a;
+    --blue-bg: #eef2f8; --blue-border: #6a8aaa;
+    --amber: #8a6a2c; --amber-bg: #f5efdf; --amber-border: #c8a86e;
+    --red: #8b2c2c; --red-bg: #f4e6e6; --red-border: #c87878;
+    --text: #1f1f1f; --text-muted: #5a5a5a;
+    --rule: #c8c8c8; --rule-strong: #6a6a6a;
+    --tint: #f5f3f0; --tint-neutral: #f3f3f1;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; font-family: "Charter", "Georgia", "Times New Roman", serif; font-size: 10pt; line-height: 1.45; color: var(--text); -webkit-font-smoothing: antialiased; }
+  .doc-header { display: flex; justify-content: space-between; align-items: flex-end; padding-bottom: 8pt; border-bottom: 1.5pt solid var(--navy); margin-bottom: 14pt; }
+  .doc-header .title { font-family: "Inter", "Helvetica Neue", system-ui, sans-serif; font-weight: 700; font-size: 18pt; line-height: 1.15; color: var(--navy-dark); letter-spacing: -0.015em; }
+  .doc-header .subtitle { font-family: "Inter", "Helvetica Neue", system-ui, sans-serif; font-weight: 500; font-size: 9.5pt; color: var(--text-muted); margin-top: 3pt; }
+  .doc-header .meta { font-family: "Inter", "Helvetica Neue", system-ui, sans-serif; font-size: 7.5pt; color: var(--text-muted); text-align: right; letter-spacing: 0.03em; line-height: 1.5; }
+  h2.page-heading { font-family: "Inter", "Helvetica Neue", system-ui, sans-serif; font-weight: 700; font-size: 13pt; color: var(--navy-dark); margin: 16pt 0 8pt 0; padding-bottom: 4pt; border-bottom: 1pt solid var(--rule-strong); page-break-after: avoid; }
+  h3.subsection { font-family: "Inter", "Helvetica Neue", system-ui, sans-serif; font-weight: 600; font-size: 11pt; color: var(--navy-dark); margin: 10pt 0 5pt 0; page-break-after: avoid; }
+  .recommend-block { background: var(--green-bg); border: 2pt solid var(--green-border); border-radius: 5pt; padding: 14pt 18pt; margin-bottom: 14pt; page-break-inside: avoid; }
+  .recommend-block .label { font-family: "Inter", "Helvetica Neue", system-ui, sans-serif; font-weight: 700; font-size: 9pt; text-transform: uppercase; letter-spacing: 0.14em; color: var(--green); margin-bottom: 8pt; }
+  .recommend-block p { margin: 6pt 0; font-size: 10pt; line-height: 1.5; }
+  .recommend-block strong { color: var(--navy-dark); }
+  .avoid-block { background: var(--red-bg); border: 1.5pt solid var(--red-border); border-radius: 5pt; padding: 12pt 16pt; margin-bottom: 14pt; page-break-inside: avoid; }
+  .avoid-block .label { font-family: "Inter", "Helvetica Neue", system-ui, sans-serif; font-weight: 700; font-size: 9pt; text-transform: uppercase; letter-spacing: 0.14em; color: var(--red); margin-bottom: 7pt; }
+  .avoid-block p { font-size: 9.75pt; margin: 6pt 0; }
+  .avoid-block ul { margin: 4pt 0 4pt 18pt; }
+  .avoid-block li { font-size: 9.5pt; line-height: 1.5; margin-bottom: 5pt; }
+  .avoid-block strong { color: var(--red); }
+  .info-block { background: var(--tint-neutral); border-left: 3pt solid var(--rule-strong); padding: 11pt 14pt; margin-bottom: 14pt; page-break-inside: avoid; }
+  .info-block .label { font-family: "Inter", "Helvetica Neue", system-ui, sans-serif; font-weight: 700; font-size: 8.5pt; text-transform: uppercase; letter-spacing: 0.12em; color: var(--navy); margin-bottom: 6pt; }
+  .info-block p { margin: 4pt 0; font-size: 9.75pt; line-height: 1.5; }
+  .info-block strong { color: var(--navy-dark); }
+  .uncertainty-block { background: var(--amber-bg); border-left: 3pt solid var(--amber-border); padding: 11pt 14pt; margin-bottom: 14pt; page-break-inside: avoid; }
+  .uncertainty-block .label { font-family: "Inter", "Helvetica Neue", system-ui, sans-serif; font-weight: 700; font-size: 8.5pt; text-transform: uppercase; letter-spacing: 0.12em; color: var(--amber); margin-bottom: 6pt; }
+  .uncertainty-block p { margin: 4pt 0; font-size: 9.75pt; line-height: 1.5; }
+  ul.bulleted { margin: 4pt 0 10pt 0; padding-left: 18pt; font-size: 9.75pt; line-height: 1.5; }
+  ul.bulleted li { margin-bottom: 5pt; }
+  ul.bulleted strong { color: var(--navy-dark); }
+  ol.numbered { margin: 4pt 0 10pt 0; padding-left: 22pt; font-size: 9.75pt; line-height: 1.5; }
+  ol.numbered li { margin-bottom: 6pt; }
+  ol.numbered strong { color: var(--navy-dark); }
+  .stars { color: #d4a857; letter-spacing: 0.5pt; font-family: "Inter", "Helvetica Neue", system-ui, sans-serif; }
+  .stars-empty { color: #d4d4d4; }
+  .citation { background: var(--blue-bg); border-left: 3pt solid var(--blue-border); padding: 10pt 13pt; margin-bottom: 10pt; page-break-inside: avoid; }
+  .citation .cite-stars { font-size: 9pt; font-weight: 700; margin-bottom: 4pt; }
+  .citation .cite-title { font-family: "Inter", "Helvetica Neue", system-ui, sans-serif; font-weight: 700; font-size: 9.5pt; color: var(--navy-dark); margin-bottom: 3pt; }
+  .citation .cite-source { font-family: "Inter", "Helvetica Neue", system-ui, sans-serif; font-size: 8pt; color: var(--text-muted); margin-bottom: 6pt; }
+  .citation .cite-finding { font-size: 9.25pt; margin-bottom: 4pt; line-height: 1.5; }
+  .citation .cite-apply { font-size: 9.25pt; line-height: 1.5; }
+  .citation .label-inline { font-family: "Inter", "Helvetica Neue", system-ui, sans-serif; font-weight: 600; font-size: 7.5pt; text-transform: uppercase; letter-spacing: 0.06em; color: var(--navy); margin-right: 6pt; }
+  .tier-header { font-family: "Inter", "Helvetica Neue", system-ui, sans-serif; font-weight: 700; font-size: 10pt; color: var(--navy-dark); margin: 12pt 0 6pt 0; padding-bottom: 3pt; border-bottom: 0.75pt solid var(--rule-strong); }
+  table.summary { width: 100%; border-collapse: collapse; margin: 6pt 0 10pt 0; font-size: 8.75pt; line-height: 1.4; }
+  table.summary th { background: var(--blue-bg); color: var(--navy-dark); font-family: "Inter", "Helvetica Neue", system-ui, sans-serif; font-weight: 700; font-size: 8pt; text-align: left; padding: 6pt 7pt; border: 0.75pt solid var(--rule-strong); letter-spacing: 0.03em; }
+  table.summary td { padding: 6pt 7pt; border: 0.5pt solid var(--rule); vertical-align: top; }
+  table.summary td.q { font-weight: 600; color: var(--navy-dark); background: #f7f7f5; }
+  .footer-note { font-size: 8pt; color: var(--text-muted); font-style: italic; margin-top: 14pt; padding-top: 8pt; border-top: 0.5pt solid var(--rule); }
+</style>
+</head>
+<body>
+
+<div class="doc-header">
+  <div>
+    <div class="title">Driving and bicycling during the ECT course</div>
+    <div class="subtitle">Activity-restriction handout based on OE #32 + OE #33 · 2026-06-09</div>
+  </div>
+  <div class="meta">
+    For Dad, Mom, Leah, David,<br>
+    Debbi, family team, U-M ECT (Dr. Maxner)
+  </div>
+</div>
+
+<div class="recommend-block">
+  <div class="label">BOTTOM LINE</div>
+  <p><strong>The published evidence supports a formal restriction on both driving and outdoor bicycling for the duration of Dad's ECT course at U-M</strong> (in progress, Tuesdays and Thursdays). The risks come from the convergence of four independent factors that don't pause between treatments: (1) standing-dose lorazepam (0.5 mg TID = 1.5 mg/day continuous); (2) nightly quetiapine (37.5 mg HS) with next-day sedation; (3) twice-weekly ECT (Tues + Thurs) with cumulative anterograde amnesia worsening across the course and resolving over weeks-to-months <em>after</em>; (4) the underlying neurological substrate (8.5-year formal RBD; gait abnormality; balance problem; peripheral neuropathy; possible prodromal Lewy-spectrum, DAT-SPECT pending).</p>
+  <p style="margin-top: 10pt;"><strong>Driving:</strong> no defensible safe window for the duration of the active ECT course or the weeks-to-months immediately following. After ECT completes, formal evaluation by a Certified Driver Rehabilitation Specialist (CDRS) is the right path to determining whether driving privileges can be restored.</p>
+  <p style="margin-top: 10pt;"><strong>Bicycling:</strong> no outdoor or traffic cycling for the duration of the ECT course. The only potentially defensible cycling envelope is <strong>supervised recumbent stationary cycling</strong> in a controlled setting (e.g., PT gym), not on ECT days, not within 2 hours of lorazepam dosing, with BP/HR monitored during initial sessions. Reassess after ECT and DAT-SPECT.</p>
+  <p style="margin-top: 10pt;"><strong>Key calibration point for the family conversation:</strong> driving risk is dominated by harm to others (third-party crash risk), and that case for restriction is overwhelming. <strong>Bicycling risk is dominated by harm to <em>him</em></strong> — the rider is unprotected, falls from ~1 meter onto pavement, and elderly cyclists who fall have a 50% fracture rate and 10% rate of concussion or worse, with most falls happening on/off the bike or on rough surfaces (Scheiman 2010), not from vehicle collisions. Both restrictions are supported — but for different reasons, which matters when explaining to Dad why outdoor cycling is also off the table.</p>
+</div>
+
+<h2 class="page-heading">1. The "I feel fine" problem — the foundational reason restriction is needed</h2>
+
+<div class="info-block">
+  <div class="label">Pomara 2015: objective impairment without subjective awareness in elderly lorazepam users</div>
+  <p>Double-blind, placebo-controlled crossover study in <strong>cognitively intact elderly long-term lorazepam users</strong>. Acute administration of their usual dose produced <strong>significant psychomotor slowing and impaired recall</strong> compared to placebo — yet there were <strong>no significant effects on self-ratings of sedation, mood, or anxiety</strong>. The patients felt fine while being demonstrably impaired. <span class="stars">★★★★★</span></p>
+  <p style="margin-top: 6pt;"><strong>Why this matters operationally:</strong> Dad's likely report — and probable genuine experience — is that he feels safe to drive or cycle. That report cannot be relied on to evaluate fitness. Pomara's evidence is Class I and the dissociation between subjective feel and objective performance is the foundational evidence-based reason why these restrictions exist at all.</p>
+  <p style="margin-top: 6pt;">Additional supporting data: 42.7% of older drivers overestimate their cognitive ability (Paire-Ficout 2021); in mild Alzheimer disease, 94% rated themselves as safe drivers but only 41% passed an on-road test (Iverson 2010 AAN practice parameter). 38.3% of crash-involved older drivers had reported no baseline driving concerns (Han 2026). These findings hold regardless of cognitive integrity at baseline.</p>
+</div>
+
+<h2 class="page-heading">2. Driving — evidence-supported restriction for the ECT course</h2>
+
+<div class="info-block">
+  <div class="label">The six independent risk factors that converge</div>
+  <ol class="numbered">
+    <li><strong>Standing lorazepam 0.5 mg TID</strong> (1.5 mg/day continuous). The 2023 AGS Beers Criteria strongly recommend avoiding all benzodiazepines in adults ≥65 due to increased risks of falls, cognitive impairment, and motor vehicle accidents. The FDA label explicitly states patients should be warned not to operate motor vehicles. Cohort meta-analysis: benzodiazepine use → OR 1.60 for motor vehicle accidents.</li>
+    <li><strong>Quetiapine 37.5 mg HS</strong> — residual next-day sedation, age-amplified (clearance reduced 30-50% in elderly per Solhaug 2023 TDM study, n = 8,118). El-Saifi 2016 systematic review: somnolence 25-39% in elderly quetiapine users.</li>
+    <li><strong>Twice-weekly ECT (Tues + Thurs)</strong> — 24-hour no-drive standard post-anesthesia (Chung 2005 simulator data). On top of that: <strong>cumulative anterograde amnesia worsening progressively over the ECT course</strong>, recovering only over 2-4 weeks <em>after</em> the course ends. Espinoza & Kellner 2022 NEJM: "the basis for the prohibition from driving, performing cognitively demanding work, or making important life or financial decisions during this convalescent period." Subacute attention and executive function deficits most pronounced in the days after the course ends.</li>
+    <li><strong>Possible prodromal Lewy-spectrum disease.</strong> Sandness 2022 (Sleep): patients with symptomatic RBD demonstrated significantly more collisions, safety warnings, and difficulty with car-following tasks on driving simulation. Even isolated RBD patients showed slower stimulus recognition associated with signal-light and stop-sign infractions. The iRBD-to-defined-neurodegenerative-disease phenoconversion rate is up to 91% over longitudinal follow-up.</li>
+    <li><strong>Documented neuro substrate</strong>: gait abnormality (R26.9), balance problem (R26.89), peripheral neuropathy (G62.9) — directly compromise the motor execution component of driving.</li>
+    <li><strong>Cardiovascular profile</strong>: sinus bradycardia (HR 49), borderline 1° AV block, baseline BP 112/58 → meaningful syncope/presyncope risk, particularly with the orthostatic effects of duloxetine + quetiapine + lorazepam stack.</li>
+  </ol>
+  <p style="margin-top: 6pt;"><strong>Inter-treatment window:</strong> for ECT twice weekly, there's effectively no period during the course when cognitive function has fully recovered before the next session. The entire course is a continuous period of impairment, not a series of recoverable events.</p>
+</div>
+
+<div class="avoid-block">
+  <div class="label">DRIVING RESTRICTION — for the full duration of the ECT course</div>
+  <p><strong>No driving for the duration of Dad's ECT course at U-M (currently in progress, Tuesdays and Thursdays).</strong> The convergence of standing-dose benzodiazepine + active ECT course + probable prodromal synucleinopathy is sufficient that no defensible safe window exists. After ECT completes:</p>
+  <ul>
+    <li>Wait minimum <strong>2-4 weeks post-ECT</strong> for anterograde amnesia to resolve (Espinoza & Kellner 2022)</li>
+    <li>Address the lorazepam question (taper plan with U-M / Dr. Rubin after ECT response is established — per benzodiazepine tapering guideline ACMT 2024 / ASAM 2025)</li>
+    <li>Wait for <strong>DAT-SPECT result and U-M Movement Disorders re-evaluation</strong></li>
+    <li>Then <strong>formal CDRS (Certified Driver Rehabilitation Specialist) on-road evaluation</strong> to determine whether privileges can be restored. CDRS composite scores have been validated against naturalistic driving crash and near-crash data (Swain 2021).</li>
+  </ul>
+</div>
+
+<h2 class="page-heading">3. Bicycling — the calculus inverts but the conclusion holds</h2>
+
+<div class="info-block">
+  <div class="label">Why bicycling is paradoxically MORE dangerous than driving in Dad's profile</div>
+  <p>For most people, bicycling is "safer" than driving because the third-party harm risk is minimal — no 2-ton vehicle, much lower kinetic energy. <strong>In Dad's profile, that intuition fails.</strong> First-party injury risk is dominant for cycling, and it's substantially higher than for driving:</p>
+  <ul class="bulleted">
+    <li><strong>Falls on/off the bike are the dominant injury mechanism in elderly cyclists, not vehicle collisions.</strong> Scheiman 2010 (Swedish population study): only 6% of elderly cyclist injuries were from vehicle collisions; <strong>20% were from getting on/off the bike</strong>, 13% from road surface irregularities. Getting on/off the bike caused the highest fraction of hip and femur fractures and accounted for 27% of all inpatient days.</li>
+    <li><strong>Injury severity in elderly cyclists is high.</strong> 50% of injured cyclists ≥65 suffered fractures or dislocations; 10% suffered concussion or more serious intracranial injuries (Scheiman 2010). Dutch national registry: bicycle-related TBI in adults ≥55 increased 54% over 15 years; older cyclists had highest injury severity, ICU admission rates, and costs (Scholten 2015).</li>
+    <li><strong>Pedal cycling was the single most common high-risk recreational activity causing trauma in elderly Americans</strong> (Swindall 2022): 45.8% of cases, with brain injuries 8.8% (vs 3.9% in non-high-risk trauma) and rib/sternal fractures 13.4% (vs 3.5%).</li>
+    <li><strong>The hemodynamic stack on a bike is catastrophic.</strong> Bicycling requires positional changes — mounting, dismounting, stopping, starting — each of which provokes orthostatic stress. Dad's baseline BP 112/58 + HR 49 leaves minimal hemodynamic reserve. A standard 20 mmHg orthostatic drop brings standing systolic to ~92 mmHg — symptomatic territory. Sinus bradycardia + borderline AV block impair compensatory tachycardia. <strong>An on-bike syncopal or presyncopal event means falling from ~1 meter onto pavement, often striking the head, with no seatbelt, no airbag, no crumple zone.</strong></li>
+    <li><strong>The α-synucleinopathy "malignant phenotype."</strong> Pilotto 2019: orthostatic hypotension + RBD together predict more rapid progression of postural instability and cognitive impairment in α-synucleinopathies. OH correlates with incident falls and postural instability in PD and DLB.</li>
+    <li><strong>Subtle balance impairment is documented in iRBD even before phenoconversion.</strong> Ehgoetz Martens 2019: increased step width variability during dual-task walking, step length asymmetry on fast-paced walking, reflecting early brainstem degeneration. Chen 2014: increased postural sway in iRBD, particularly under challenging conditions (eyes closed, dual task, tandem standing). de Natale 2018: abnormal vestibular evoked myogenic potentials in 75% of iRBD patients, correlating with Berg Balance Scale performance.</li>
+    <li><strong>Peripheral neuropathy adds proprioceptive loss</strong> (Hanewinckel 2017) — sensory ataxia, reduced cadence/velocity, direct impairment of the dynamic balance cycling requires.</li>
+  </ul>
+</div>
+
+<div class="avoid-block">
+  <div class="label">OUTDOOR / TRAFFIC BICYCLING — restricted for the duration of the ECT course</div>
+  <p>No outdoor cycling, no traffic cycling, no group rides for the duration of the ECT course. The first-party injury severity profile in Dad's profile makes this a categorically high-risk activity even on the "safest" outdoor scenario. Reassess after ECT completion, DAT-SPECT result, medication review, and formal balance assessment.</p>
+</div>
+
+<h2 class="page-heading">4. What CAN be permitted — supervised recumbent stationary cycling envelope</h2>
+
+<div class="info-block">
+  <div class="label">The defensible cycling envelope, if any activity is permitted</div>
+  <p>The published evidence does support a narrow envelope for <strong>supervised stationary cycling</strong>, ideally on a <strong>recumbent</strong> bike to minimize orthostatic transitions and fall height. Baughn 2022 found cycling correlated with better balance outcomes in older adults. Batcir 2025 RCT showed perturbation balance training during stationary cycling in adults ≥70 improved reactive and proactive balance (effect size 0.88 for mediolateral perturbations). Streckmann 2014 found exercise interventions including cycling were feasible and safe in peripheral neuropathy patients.</p>
+  <p style="margin-top: 6pt;"><strong>Concrete envelope (if pursued):</strong></p>
+  <ul class="bulleted">
+    <li><strong>Recumbent stationary cycle</strong> (not upright) — minimizes mounting/dismounting orthostatic stress + dramatically reduces fall height</li>
+    <li><strong>Supervised setting</strong> — PT gym, fitness center with staff present, or a family member physically present. Not solo.</li>
+    <li><strong>Not on ECT days</strong> — minimum 24-hour restriction post-procedure</li>
+    <li><strong>Not within 2 hours of lorazepam dosing</strong> — peak plasma concentration of lorazepam is at ~2 hours; that's the worst window for psychomotor performance</li>
+    <li><strong>Continuous BP/HR monitoring during initial sessions</strong> to establish hemodynamic tolerance. Discontinue if any pre-syncopal symptoms or BP drop ≥20 mmHg systolic on standing after the ride.</li>
+    <li><strong>Discuss with PT</strong> — this envelope is the kind of thing a physical therapist with neuro/geri experience can structure safely, including a graded re-entry plan after ECT.</li>
+  </ul>
+  <p style="margin-top: 6pt;"><strong>Honest framing:</strong> there's no published direct evidence on cycling restrictions in ECT patients specifically. This envelope is built from the converging risk-factor analysis + the specific stationary-cycling evidence base. If the family or Dad's care team disagree about any element, the U-M ECT team (Maxner / nursing) is the right place to raise it — they see this question all the time.</p>
+</div>
+
+<h2 class="page-heading">5. What this means in practice — for Dad and family</h2>
+
+<div class="info-block">
+  <div class="label">Conversational framing — for Mom or Leah talking with Dad</div>
+  <p>The challenge: Dad will likely feel fine to drive or bike and may resent the restriction. The Pomara 2015 evidence is the load-bearing point: <em>elderly long-term lorazepam users feel fine while being objectively impaired. This is a documented dissociation, not an opinion about Dad personally.</em></p>
+  <p style="margin-top: 6pt;">A possible script: <em>"This isn't about whether you feel fine. The published evidence shows that elderly people on standing-dose Ativan have measurable slowing on reaction time and recall — and they don't notice it. That's not unique to you; it's how the medication works. Add ECT twice a week and the recommendation across the medical literature is just unambiguous: no driving for the duration of the course. We're going to get a formal driving assessment after ECT is done, and then we'll know whether to bring it back. Same for outdoor biking — falls on bikes do a lot more damage than your sense of balance suggests, especially at our age."</em></p>
+  <p style="margin-top: 6pt;">For bicycling specifically, the family-conversation framing is different from driving: the issue isn't that Dad would hurt someone else — it's that the injury severity from a low-speed fall on a bike (head strike, hip fracture, intracranial injury) in a 76-year-old with this hemodynamic profile is catastrophic. Recumbent stationary cycling at a gym preserves the activity Dad values without the fall risk.</p>
+</div>
+
+<h2 class="page-heading">6. What to ask U-M ECT (Maxner / nursing) at the next session</h2>
+
+<ul class="bulleted">
+  <li><strong>Confirm driving restriction.</strong> Is the U-M ECT team's standard "no driving during the course" instruction documented? If so, that's the cleanest external authority for the family conversation with Dad.</li>
+  <li><strong>Lorazepam timing.</strong> Does the team want lorazepam adjusted around ECT session days (e.g., hold morning dose pre-procedure)? Standard practice varies; worth confirming.</li>
+  <li><strong>Cognitive monitoring schedule.</strong> Is U-M doing serial MoCA or similar across the course? The cognitive trajectory should be tracked formally for both clinical decision-making and the post-course driving reassessment.</li>
+  <li><strong>Post-ECT taper plan for lorazepam.</strong> The Maxner-recommended titration to 0.5 mg TID makes sense during the bridge if Dad's anxiety is severe — but the family wants to be clear-eyed that this creates a new question (physical dependence) that needs a defined taper plan once ECT response is established.</li>
+  <li><strong>CDRS referral.</strong> When ECT completes, what's U-M's preferred path to formal driving fitness reassessment? Many ECT programs have established CDRS referral patterns; worth asking now so the post-course plan is in hand.</li>
+  <li><strong>Physical therapy referral.</strong> Could U-M (or PCP Dr. Straka) place a PT referral for the supervised stationary-cycling envelope? This converts "no biking" into "supervised biking with structure," which is more sustainable than open-ended restriction.</li>
+</ul>
+
+<h2 class="page-heading">7. Reassessment timeline</h2>
+
+<div class="info-block">
+  <div class="label">When to revisit driving and outdoor cycling</div>
+  <p><strong>Both restrictions should remain in place through:</strong></p>
+  <ul class="bulleted" style="margin-top: 4pt;">
+    <li>ECT course completion</li>
+    <li>+ 2–4 weeks for anterograde amnesia to resolve (Espinoza & Kellner 2022)</li>
+    <li>+ Lorazepam taper to PRN or off (per ACMT 2024 / ASAM 2025 benzodiazepine tapering guideline; not a 1-week project — typically months at low dose with this profile)</li>
+    <li>+ DAT-SPECT result and U-M Movement Disorders re-evaluation</li>
+    <li>+ Formal cognitive screen (MoCA or full neuropsych battery)</li>
+    <li>+ For driving: CDRS on-road evaluation (Swain 2021 validation against crash/near-crash data)</li>
+    <li>+ For outdoor cycling: PT-administered balance assessment (Berg Balance Scale, TUG, or equivalent)</li>
+  </ul>
+  <p style="margin-top: 6pt;">This is a multi-month reassessment trajectory, not a "wait two weeks after the last ECT and re-check." Worth being upfront about that timeline with Dad so the restriction doesn't feel arbitrary or open-ended.</p>
+</div>
+
+<h2 class="page-heading">8. Evidence roundup — ranked by quality</h2>
+
+<p style="font-size: 9.5pt; line-height: 1.5; margin-bottom: 8pt;"><span class="stars">★★★★★</span> = robust (RCTs, meta-analyses, FDA labels, guideline-level). <span class="stars">★★★★</span><span class="stars-empty">★</span> = strong (large observational, consistent findings). <span class="stars">★★★</span><span class="stars-empty">★★</span> = moderate (consensus statements, expert recommendations, mechanistic data). <span class="stars">★★</span><span class="stars-empty">★★★</span> = sparse. <span class="stars">★</span><span class="stars-empty">★★★★</span> = minimal/absent.</p>
+
+<div class="tier-header">5-star evidence (robust) — load-bearing for both restrictions</div>
+
+<div class="citation">
+  <div class="cite-stars"><span class="stars">★★★★★</span></div>
+  <div class="cite-title">Pomara N, Lee SH, Bruno D et al. Adverse Performance Effects of Acute Lorazepam Administration in Elderly Long-Term Users.</div>
+  <div class="cite-source">Prog Neuropsychopharmacol Biol Psychiatry 2015;56:129-35. doi:10.1016/j.pnpbp.2014.08.014.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Double-blind placebo-controlled crossover in cognitively intact elderly long-term lorazepam users. Acute administration of usual dose produced significant psychomotor slowing and impaired recall compared to placebo, with NO significant effects on self-ratings of sedation, mood, or anxiety. Self-assessment was not just unreliable but actively wrong.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The foundational evidence-based reason the restriction can't be modulated by Dad's report of feeling fine. Class I evidence; directly relevant population (elderly chronic users); directly relevant exposure (their usual dose).</div>
+</div>
+
+<div class="citation">
+  <div class="cite-stars"><span class="stars">★★★★★</span></div>
+  <div class="cite-title">American Geriatrics Society 2023 Updated AGS Beers Criteria.</div>
+  <div class="cite-source">J Am Geriatr Soc 2023;71(7):2052-2081. doi:10.1111/jgs.18372.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Strong recommendation: avoid all benzodiazepines in adults ≥65 due to increased risks of falls, cognitive impairment, and motor vehicle accidents. Antipsychotics also listed as potentially inappropriate; CNS-active polypharmacy flagged independently.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Standing 0.5 mg TID Ativan in a 76-year-old is exactly the Beers exposure. The "least bad" framing for the ECT bridge stands clinically — but the Beers logic is the foundation of why both driving and outdoor cycling restriction follow.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-stars"><span class="stars">★★★★★</span></div>
+  <div class="cite-title">Iverson DJ, Gronseth GS, Reger MA et al. Practice Parameter Update: Evaluation and Management of Driving Risk in Dementia (AAN).</div>
+  <div class="cite-source">Neurology 2010;74(16):1316-24. doi:10.1212/WNL.0b013e3181da3b0f.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Performance-based road test recommended for patients with: (1) caregiver observation of new impairment, (2) prominent deficits in attention/executive/visuospatial, or (3) CDR = 1 (mild dementia). 94% of mild AD patients self-rated as safe drivers; only 41% passed road test.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Anchors the formal driving evaluation pathway. The mild-AD self-rating finding (94% confident, 41% passing) generalizes the Pomara dissociation finding to the broader elderly cognitively-impaired population.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-stars"><span class="stars">★★★★★</span></div>
+  <div class="cite-title">Espinoza RT, Kellner CH. Electroconvulsive Therapy.</div>
+  <div class="cite-source">N Engl J Med 2022;386(7):667-672. doi:10.1056/NEJMra2034954.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Cumulative anterograde amnesia worsening over the ECT course. "Prohibition from driving, performing cognitively demanding work, or making important life or financial decisions during this convalescent period." Anterograde amnesia typically resolves within 2-4 weeks post-course; retrograde amnesia (autobiographical) resolves over weeks-to-months.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Anchors the "no driving for the duration of the course + 2-4 weeks post" framing. Authoritative NEJM review explicitly making the driving-prohibition recommendation.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-stars"><span class="stars">★★★★★</span></div>
+  <div class="cite-title">Chung F, Kayumov L, Sinclair DR et al. Driving Performance After General Anesthesia.</div>
+  <div class="cite-source">Anesthesiology 2005;103(5):951-6.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Driving simulation RCT: significantly impaired driving skills and alertness at 2 hours post-general anesthesia in otherwise healthy patients. Return to baseline by 24 hours.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Anchors the 24-hour post-ECT no-drive minimum, on top of the ECT-specific cumulative cognitive effects from Espinoza/Kellner.</div>
+</div>
+
+<div class="tier-header">4-star evidence (strong)</div>
+
+<div class="citation">
+  <div class="cite-stars"><span class="stars">★★★★</span><span class="stars-empty">★</span></div>
+  <div class="cite-title">Sandness DJ, McCarter SJ, Dueffert LG et al. Cognition and Driving Ability in Isolated and Symptomatic REM Sleep Behavior Disorder.</div>
+  <div class="cite-source">Sleep 2022;45(4):zsab253. doi:10.1093/sleep/zsab253.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Patients with symptomatic RBD demonstrated significantly more collisions, safety warnings, and difficulty with car-following on driving simulation. Even isolated RBD patients showed slower stimulus recognition associated with signal-light and stop-sign infractions. Deficits correlated with processing speed, executive function, and visuospatial impairment.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Direct evidence that Dad's 8.5-year RBD itself impairs driving-relevant cognition independent of the medications. The iRBD-to-defined-neurodegeneration phenoconversion rate is up to 91%.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-stars"><span class="stars">★★★★</span><span class="stars-empty">★</span></div>
+  <div class="cite-title">Seppala LJ, Wermelink AMAT, de Vries M et al. Fall-Risk-Increasing Drugs: A Systematic Review and Meta-Analysis: II. Psychotropics.</div>
+  <div class="cite-source">J Am Med Dir Assoc 2018;19(4):371.e11-371.e17. doi:10.1016/j.jamda.2017.12.098.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Pooled adjusted ORs for falls: benzodiazepines 1.42 (95% CI 1.22–1.65); antidepressants 1.57 (1.43–1.74); antipsychotics 1.54 (1.28–1.85). Effects multiplicative in combination.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Quantifies the cumulative fall risk from Dad's regimen (BZD + SNRI + atypical antipsychotic). Directly relevant to bicycling — falls are the dominant mechanism of injury — and to driving (orthostatic episodes while driving).</div>
+</div>
+
+<div class="citation">
+  <div class="cite-stars"><span class="stars">★★★★</span><span class="stars-empty">★</span></div>
+  <div class="cite-title">Bhanu C, Nimmons D, Petersen I et al. Drug-Induced Orthostatic Hypotension: A Systematic Review and Meta-Analysis of RCTs.</div>
+  <div class="cite-source">PLoS Med 2021;18(11):e1003821. doi:10.1371/journal.pmed.1003821.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Antipsychotics up to 2× increased OH odds vs placebo. Polypharmacy with multiple agents targeting parts of the orthostatic BP reflex pathway carries cumulative risk; combinations of psychoactive drugs identified as high-risk clusters (Bhanu 2024 follow-up).</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Anchors the orthostatic-hypotension concern with Dad's stack (quetiapine + duloxetine + lorazepam) on a baseline BP of 112/58. Particularly load-bearing for the bicycling restriction (positional changes provoke OH).</div>
+</div>
+
+<div class="citation">
+  <div class="cite-stars"><span class="stars">★★★★</span><span class="stars-empty">★</span></div>
+  <div class="cite-title">Scheiman S, Moghaddas HS, Björnstig U et al. Bicycle Injury Events Among Older Adults in Northern Sweden: A 10-Year Population Based Study.</div>
+  <div class="cite-source">Accid Anal Prev 2010;42(2):758-63. doi:10.1016/j.aap.2009.11.005.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Among injured cyclists ≥65: 50% suffered fractures or dislocations; 10% suffered concussion or more serious intracranial injuries. Only 6% of injuries were from vehicle collisions. <strong>20% were from falls getting on or off the bicycle; 13% from road surface irregularities.</strong> Getting on/off caused the highest fraction of hip and femur fractures and accounted for 27% of all inpatient days.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Most directly load-bearing study for the bicycling restriction. The injury severity (50% fracture rate) and the mounting/dismounting-as-dominant-mechanism finding both make the case stronger than intuition would suggest.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-stars"><span class="stars">★★★★</span><span class="stars-empty">★</span></div>
+  <div class="cite-title">Swain TA, McGwin G, Antin JF, Owsley C. Driving Specialist's Ratings of on-Road Performance and Naturalistic Driving Crashes and Near-Crashes.</div>
+  <div class="cite-source">J Am Geriatr Soc 2021;69(11):3186-3193. doi:10.1111/jgs.17359.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>CDRS composite scores validated against naturalistic driving crash and near-crash data: older drivers with worse CDRS scores had significantly higher rates of at-fault crashes and near-crashes.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Validates the CDRS evaluation pathway as the right post-ECT reassessment mechanism for driving fitness. Class II evidence with naturalistic outcomes.</div>
+</div>
+
+<div class="tier-header">3-star evidence (moderate)</div>
+
+<div class="citation">
+  <div class="cite-stars"><span class="stars">★★★</span><span class="stars-empty">★★</span></div>
+  <div class="cite-title">Pilotto A, Romagnolo A, Tuazon JA et al. Orthostatic Hypotension and RBD: Impact on Clinical Outcomes in α-Synucleinopathies.</div>
+  <div class="cite-source">J Neurol Neurosurg Psychiatry 2019;90(11):1257-1263.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>OH + RBD together associated with a "malignant phenotype" in α-synucleinopathies: more rapid progression of postural instability and cognitive impairment. OH correlated with incident falls and postural instability in PD and DLB.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Anchors the bicycling restriction specifically given Dad's RBD + the medication-induced OH stack. The malignant-phenotype framing also raises the stakes on broader medication-management decisions.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-stars"><span class="stars">★★★</span><span class="stars-empty">★★</span></div>
+  <div class="cite-title">Ehgoetz Martens KA, Matar E, Hall JM et al. Subtle Gait and Balance Impairments Occur in Idiopathic RBD.</div>
+  <div class="cite-source">Mov Disord 2019;34(9):1374-1380. doi:10.1002/mds.27780.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Increased step width variability during dual-task walking and step length asymmetry during fast-paced walking in iRBD patients, reflecting early brainstem degeneration. Chen 2014 + de Natale 2018: increased postural sway under challenging conditions; abnormal vestibular evoked myogenic potentials in 75% of iRBD patients.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Direct evidence that even pre-phenoconversion RBD impairs the dynamic balance that cycling requires. Independent of the medication stack.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-stars"><span class="stars">★★★</span><span class="stars-empty">★★</span></div>
+  <div class="cite-title">Scholten AC, Polinder S, Panneman MJ et al. Bicycle-Related Traumatic Brain Injuries in the Netherlands.</div>
+  <div class="cite-source">Accid Anal Prev 2015;81:51-60.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Bicycle-related TBI in adults ≥55 increased 54% over 15 years. Older cyclists had highest injury severity, ICU admission rates, and costs.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Quantifies the severity-of-bicycle-injury concern across an aging population. Independent corroboration of Scheiman 2010.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-stars"><span class="stars">★★★</span><span class="stars-empty">★★</span></div>
+  <div class="cite-title">Hanewinckel R, Drenthen J, Verlinden VJA et al. Polyneuropathy Relates to Impairment in Daily Activities, Worse Gait, and Fall-Related Injuries.</div>
+  <div class="cite-source">Neurology 2017;89(1):76-83.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Peripheral polyneuropathy in older adults independently impairs gait (reduced cadence/velocity), increases fall risk, and impairs ADLs. Mechanism: proprioceptive loss + sensory ataxia.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Dad has documented peripheral neuropathy (G62.9 since 2018). This is independently relevant to bicycling balance and to all the gait/balance/fall concerns aggregating in his profile.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-stars"><span class="stars">★★★</span><span class="stars-empty">★★</span></div>
+  <div class="cite-title">Batcir S, Livne K, Lehman RL et al. Perturbation Balance Training During Stationary Cycling Improves Balance Among Older Adults: RCT.</div>
+  <div class="cite-source">Age Ageing 2025;54(8):afaf215.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Perturbation balance training during stationary cycling in adults ≥70 improved reactive and proactive balance measures, effect size 0.88 for mediolateral perturbations.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Supports the supervised stationary cycling envelope as the defensible cycling option. Direct RCT evidence that stationary cycling can be safely conducted in this age group with balance benefit.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-stars"><span class="stars">★★★</span><span class="stars-empty">★★</span></div>
+  <div class="cite-title">Tess AV, Smetana GW. Medical Evaluation of Patients Undergoing Electroconvulsive Therapy.</div>
+  <div class="cite-source">N Engl J Med 2009;360(14):1437-44.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>ECT produces dramatic hemodynamic changes — bradycardia/asystole between stimulus and seizure, followed by catecholamine surge with tachycardia/hypertension. Cardiovascular complication rates higher in patients &gt;80 (36% vs 12% in 65-80).</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Anchors the ECT-day restriction. Dad's baseline bradycardia + borderline AV block make the vagal phase particularly relevant; the hemodynamic recovery period extends the no-activity window beyond simple post-anesthesia recovery.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-stars"><span class="stars">★★★</span><span class="stars-empty">★★</span></div>
+  <div class="cite-title">Solhaug V, Tveito M, Waade RB et al. Impact of Age, Sex and CYP Genotype on Quetiapine Serum Concentrations.</div>
+  <div class="cite-source">Br J Clin Pharmacol 2023;89(12):3503-3511.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Real-world TDM (n = 8,118). Concentration-to-dose ratios 28-29% higher in patients &gt;70. Oral clearance reduced 30-50% in elderly.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>Effective half-life extended in elderly. The 37.5 mg HS dose has a longer "tail" of action than the general-population data would suggest, extending the next-day sedation window.</div>
+</div>
+
+<div class="citation">
+  <div class="cite-stars"><span class="stars">★★★</span><span class="stars-empty">★★</span></div>
+  <div class="cite-title">American College of Medical Toxicology / American Society of Addiction Medicine Joint Clinical Practice Guideline on Benzodiazepine Tapering.</div>
+  <div class="cite-source">ACMT 2024 / ASAM 2025.</div>
+  <div class="cite-finding"><span class="label-inline">Key finding</span>Standing benzodiazepine use in elderly carries dependence risk that requires structured tapering. Guideline emphasizes slow tapers (often months at low doses) and recommends against abrupt discontinuation.</div>
+  <div class="cite-apply"><span class="label-inline">How it applies</span>The post-ECT taper plan for lorazepam should be developed with this guideline as a baseline, not as a few-week project. The reassessment timeline for driving / outdoor cycling depends on getting through the taper.</div>
+</div>
+
+<h2 class="page-heading">9. Quick-reference summary</h2>
+
+<div class="info-block">
+  <div class="label">At a glance</div>
+  <table class="summary">
+    <thead>
+      <tr>
+        <th style="width: 32%;">Activity</th>
+        <th style="width: 28%;">During ECT course</th>
+        <th style="width: 28%;">After ECT (reassess via)</th>
+        <th style="width: 12%;">Evidence</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="q">Driving</td>
+        <td>Restricted — no driving</td>
+        <td>CDRS on-road evaluation</td>
+        <td><span class="stars">★★★★★</span></td>
+      </tr>
+      <tr>
+        <td class="q">Outdoor / traffic bicycling</td>
+        <td>Restricted — no outdoor cycling</td>
+        <td>PT balance assessment + DAT-SPECT</td>
+        <td><span class="stars">★★★★</span><span class="stars-empty">★</span></td>
+      </tr>
+      <tr>
+        <td class="q">Supervised recumbent stationary cycling</td>
+        <td>Potentially permitted with guardrails (Section 4)</td>
+        <td>Continue as PT-administered program</td>
+        <td><span class="stars">★★★</span><span class="stars-empty">★★</span></td>
+      </tr>
+      <tr>
+        <td class="q">Solo upright stationary cycling</td>
+        <td>Not recommended — orthostatic risk on mounting/dismounting + no observer</td>
+        <td>Reassess at PT</td>
+        <td><span class="stars">★★★</span><span class="stars-empty">★★</span></td>
+      </tr>
+      <tr>
+        <td class="q">Walking with family / supervised</td>
+        <td>Encouraged — exercise + caregiver respite + supervised environment</td>
+        <td>Continue</td>
+        <td><span class="stars">★★★★</span><span class="stars-empty">★</span></td>
+      </tr>
+      <tr>
+        <td class="q">Solo walking</td>
+        <td>Caution — fall risk on uneven ground; OK on familiar interior routes</td>
+        <td>Reassess</td>
+        <td><span class="stars">★★★</span><span class="stars-empty">★★</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="footer-note">
+  This handout is based on OE #32 (driving safety) and OE #33 (bicycling safety), both performed 6/9/2026. The recommendations are interpreted for Dad's specific profile (age 76, severe TRD PHQ-9 = 24, possible prodromal Lewy-spectrum disease pending workup, multi-class activation-intolerance pattern, baseline HR 49 + LAFB + PR 214 + QRS 120 + BP 112/58, current regimen of quetiapine 37.5 mg HS + lorazepam 0.5 mg TID standing + duloxetine 60 mg AM + ECT Tues/Thurs at U-M with Dr. Maxner). Key references — driving: Pomara 2015 (elderly long-term lorazepam objective vs subjective impairment); AGS Beers 2023 (benzodiazepines in elderly); Iverson 2010 AAN practice parameter (driving and dementia); Sandness 2022 (RBD + driving simulation); Espinoza/Kellner 2022 NEJM (ECT driving prohibition); Chung 2005 (post-anesthesia driving simulation); Swain 2021 (CDRS validation); Carr 2023 JAMA Netw Open (SSRI/SNRI + sedative road test failure HRs in elderly). Key references — bicycling: Scheiman 2010 (Swedish elderly cyclist injury epidemiology); Scholten 2015 (Dutch TBI registry); Swindall 2022 (US elderly high-risk recreational trauma); Seppala 2018 (fall-risk-increasing drug meta-analysis); Bhanu 2021 + 2024 (drug-induced OH); Pilotto 2019 (OH + RBD malignant phenotype); Ehgoetz Martens 2019 + Chen 2014 + de Natale 2018 (iRBD balance/vestibular impairment); Hanewinckel 2017 (peripheral neuropathy gait/falls); Batcir 2025 (stationary cycling balance training RCT); Streckmann 2014 (exercise in peripheral neuropathy); Baughn 2022 (cycling and balance in older adults). ECT-specific: Tess + Smetana 2009 NEJM (medical evaluation pre-ECT); ACMT 2024 + ASAM 2025 (benzodiazepine tapering guideline). The post-ECT reassessment trajectory is multi-month, not multi-week — worth surfacing explicitly with Dad so the restriction doesn't feel arbitrary or open-ended.
+</div>
+
+</body>
+</html>
