@@ -711,7 +711,7 @@ render();
     var s=document.createElement('script'); s.textContent=document.getElementById('app').textContent;
     document.body.appendChild(s); window.dispatchEvent(new Event('load')); }
   async function go(pw){
-    var enc=await (await fetch('data.enc',{cache:'force-cache'})).json();
+    var enc=await (await fetch('data.enc?v=b47531c450',{cache:'force-cache'})).json();
     var base=await crypto.subtle.importKey('raw',new TextEncoder().encode(pw),'PBKDF2',false,['deriveKey']);
     var key=await crypto.subtle.deriveKey({name:'PBKDF2',salt:b64(enc.s),iterations:enc.n,hash:'SHA-256'},base,{name:'AES-GCM',length:256},false,['decrypt']);
     var pt=await crypto.subtle.decrypt({name:'AES-GCM',iv:b64(enc.i)},key,b64(enc.c));
