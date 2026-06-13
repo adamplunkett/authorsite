@@ -826,16 +826,21 @@ function concordanceHTML(word){
   });
   hits.sort((a,b)=>(+a.f.slice(1))-(+b.f.slice(1)));
   if(!hits.length)return `<div class="kv">— no use of “${word}” found —</div>`;
+  const poems=hits.filter(h=>h.f[0]==='F'), letts=hits.filter(h=>h.f[0]==='L');
   const uses=hits.reduce((n,h)=>n+h.lines.length,0);
-  const body=hits.map(h=>`<div class="conc"><a class="conctitle" data-f="${h.f}"><span class="vfl">${h.l}</span> <span class="vff">${h.f}</span></a>`+
-    h.lines.map(x=>`<div class="concline">${x}</div>`).join('')+`</div>`).join('');
-  return `<div class="nlabel" style="margin-top:10px">“${word}” <span class="nsub">— ${uses} use${uses===1?'':'s'} in ${hits.length} poem${hits.length===1?'':'s'}</span></div><div class="conclist">${body}</div>`;
+  const row=h=>`<div class="conc"><a class="conctitle" data-f="${h.f}"><span class="vfl">${h.l}</span> <span class="vff">${h.f}</span></a>`+
+    h.lines.map(x=>`<div class="concline">${x}</div>`).join('')+`</div>`;
+  let out=`<div class="nlabel" style="margin-top:10px">“${word}” <span class="nsub">— ${uses} use${uses===1?'':'s'} in ${poems.length} poem${poems.length===1?'':'s'}${letts.length?` &amp; ${letts.length} letter${letts.length===1?'':'s'}`:''}</span></div>`;
+  out+=`<div class="conclist">${poems.map(row).join('')}</div>`;
+  if(letts.length)out+=`<div class="nlabel" style="margin-top:8px">In the letters <span class="nsub">— ${letts.length}</span></div><div class="conclist">${letts.map(row).join('')}</div>`;
+  return out;
 }
 function openCorpusPoem(fr){ const p=PBYF.get(fr); if(p){studyPoem(p);return;}
   const c=LEXBYF.get(fr); if(!c)return;
+  const isL=c.f[0]==='L';
   showStudy(`<div class="sbar"><a class="sback" onclick="studyLexicon()">← back to the lexical field</a></div>`+
-    `<div class="scol"><h2>${c.l}</h2><div class="smeta">${c.f} · not yet annotated for echoes</div>`+
-    `<div class="nlabel">The poem</div><div class="poemtext big">${c.t.replace(/\n/g,'<br>')}</div></div>`);
+    `<div class="scol"><h2>${c.l}</h2><div class="smeta">${c.f}${isL?(c.y?' · '+c.y:'')+' · letter':' · not yet annotated for echoes'}</div>`+
+    `<div class="nlabel">${isL?'The letter':'The poem'}</div><div class="poemtext big">${c.t.replace(/\n/g,'<br>')}</div></div>`);
 }
 function studyAuthorSpine(author){
   const byWork=new Map();
@@ -958,7 +963,7 @@ render();
     var s=document.createElement('script'); s.textContent=document.getElementById('app').textContent;
     document.body.appendChild(s); window.dispatchEvent(new Event('load')); }
   async function go(pw){
-    var enc=await (await fetch('data.enc?v=624bbc8bed',{cache:'force-cache'})).json();
+    var enc=await (await fetch('data.enc?v=ab33cbddad',{cache:'force-cache'})).json();
     var base=await crypto.subtle.importKey('raw',new TextEncoder().encode(pw),'PBKDF2',false,['deriveKey']);
     var key=await crypto.subtle.deriveKey({name:'PBKDF2',salt:b64(enc.s),iterations:enc.n,hash:'SHA-256'},base,{name:'AES-GCM',length:256},false,['decrypt']);
     var pt=await crypto.subtle.decrypt({name:'AES-GCM',iv:b64(enc.i)},key,b64(enc.c));
