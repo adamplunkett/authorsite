@@ -150,6 +150,13 @@
   .mtrack{flex:1;height:9px;background:#efe9df;border-radius:5px;overflow:hidden}
   .mbar{display:block;height:100%;background:linear-gradient(90deg,#b7a3d8,#8a74b8);border-radius:5px}
   .mn{flex:none;width:30px;text-align:right;color:#8a8073;font-variant-numeric:tabular-nums;font-size:11px}
+  .littbl{margin:3px 0 6px}
+  .lit{border-left:3px solid #6fae9b;background:#f4f8f6;border-radius:0 7px 7px 0;padding:6px 11px;margin:5px 0}
+  .lith{display:flex;align-items:center;gap:7px;font-size:12.5px;flex-wrap:wrap}
+  .litau{color:#2f4a40}
+  .litwk{font-style:italic;color:#4a5566}
+  .tdot{width:8px;height:8px;border-radius:50%;flex:none}
+  .litg{font-size:11.5px;color:#6a6256;margin-top:3px;line-height:1.46}
   #tip{position:fixed;z-index:60;background:#241f18;color:#fff;font-size:11.5px;line-height:1.4;padding:6px 10px;
        border-radius:7px;pointer-events:none;display:none;max-width:380px;box-shadow:0 4px 14px rgba(0,0,0,.22)}
   #tip .t1{font-weight:600;margin-bottom:2px} #tip .t2{color:#d8cdbb;font-size:11px}
@@ -634,10 +641,24 @@ function studyPoem(p){
     `<div class="scol"><h2>${p.first_line}</h2><div class="smeta">${p.franklin} · ${yr} · ${ls.length} scriptural echo${ls.length===1?'':'es'}</div>`+
     `<div class="nlabel">The poem</div><div class="poemtext big">${p.poem_text||p.first_line}</div>`+
     `<div class="nlabel">Scriptural echoes</div>${ech||'<div class="kv">— none —</div>'}`+
-    kindredHTML(p)+`</div>`);
+    literaryHTML(p)+kindredHTML(p)+`</div>`);
   focusForPoem(p.franklin);
   document.querySelectorAll('#study .slink').forEach(el=>el.onclick=()=>studyScope(el.dataset.b,+el.dataset.c,+el.dataset.v));
   document.querySelectorAll('#study .klink').forEach(el=>el.onclick=()=>{const q=PBYF.get(el.dataset.f);if(q)studyPoem(q);});
+}
+function literaryHTML(p){
+  const ls=(p.literary||[]).slice().sort((a,b)=>tierRank[a.strength]-tierRank[b.strength]||(a.author||'').localeCompare(b.author||''));
+  if(!ls.length)return '';
+  const NP=D.notes_pool;
+  const rows=ls.map(L=>{
+    const work=L.work?` — <span class="litwk">${L.work}${L.locus?' '+L.locus:''}</span>`:'';
+    const rev=L.parse_conf==='parsed-low'?'<span class="lowconf">review</span>':'';
+    const g=L.gloss!=null?NP[L.gloss]:'';
+    return `<div class="lit"><div class="lith"><span class="tdot" style="background:${markFill(L.strength)}"></span>`+
+      `<b class="litau">${L.author}</b>${work}<span class="srctag">${SRC_LBL[srcFamily(L.asserted_by)]||''}</span>${rev}</div>`+
+      (g?`<div class="litg">${g}</div>`:'')+`</div>`;
+  }).join('');
+  return `<div class="nlabel">Literary echoes <span class="nsub">— ${ls.length} non-scripture</span></div><div class="littbl">${rows}</div>`;
 }
 function kindredHTML(p){
   const ks=(p.kindred||[]).filter(k=>PBYF.has(k.fr)).slice(0,8);
@@ -689,12 +710,16 @@ function studyMostReached(){
   const bookClick =it=>`data-sb="${bk(it.key)}"`;
   const chapClick =it=>{const m=it.key.match(/^(.*)\s+(\d+)$/);return m?`data-sb="${bk(m[1])}" data-sc="${m[2]}"`:'';};
   const verseClick=it=>{const m=it.key.match(/^(.*)\s+(\d+):(\d+)$/);return m?`data-sb="${bk(m[1])}" data-sc="${m[2]}" data-sv="${m[3]}"`:'';};
+  const al=D.most_alluded, none=()=>"";
+  const litsec = al ? (section('Literary authors','most-alluded writers, with the tail',al.authors,none)+
+                       section('Literary works','most-alluded works',al.works,none)) : "";
   showStudy(`<div class="sbar"><a class="sback" onclick="closeStudy()">← back to the map</a></div>`+
-    `<div class="scol"><h2>Most echoed scripture</h2>`+
-    `<div class="smeta">where the poems reach most often — by how many distinct poems touch each locus. Click any line to read its poems.</div>`+
+    `<div class="scol"><h2>Most echoed &amp; alluded</h2>`+
+    `<div class="smeta">where the poems reach most often — by how many distinct poems touch each locus. Click a scripture line to read its poems.</div>`+
     section('Books','Genesis → Revelation',mr.books,bookClick)+
     section('Chapters','single chapters',mr.chapters,chapClick)+
-    section('Verses','single verses',mr.verses,verseClick)+`</div>`);
+    section('Verses','single verses',mr.verses,verseClick)+
+    litsec+`</div>`);
   document.querySelectorAll('#study .mrow').forEach(el=>{ if(!el.dataset.sb)return; el.style.cursor='pointer';
     el.onclick=()=>studyScope(el.dataset.sb, el.dataset.sc?+el.dataset.sc:null, el.dataset.sv?+el.dataset.sv:null);});
 }
@@ -765,7 +790,7 @@ render();
     var s=document.createElement('script'); s.textContent=document.getElementById('app').textContent;
     document.body.appendChild(s); window.dispatchEvent(new Event('load')); }
   async function go(pw){
-    var enc=await (await fetch('data.enc?v=c38b8dfde6',{cache:'force-cache'})).json();
+    var enc=await (await fetch('data.enc?v=ba98b04577',{cache:'force-cache'})).json();
     var base=await crypto.subtle.importKey('raw',new TextEncoder().encode(pw),'PBKDF2',false,['deriveKey']);
     var key=await crypto.subtle.deriveKey({name:'PBKDF2',salt:b64(enc.s),iterations:enc.n,hash:'SHA-256'},base,{name:'AES-GCM',length:256},false,['decrypt']);
     var pt=await crypto.subtle.decrypt({name:'AES-GCM',iv:b64(enc.i)},key,b64(enc.c));
