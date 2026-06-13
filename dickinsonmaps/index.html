@@ -127,6 +127,15 @@
   .sech.econ{border-color:#e3c79a;box-shadow:0 0 0 1px #e3c79a}
   .sechh{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;margin-bottom:6px}
   .slink{color:var(--accent);cursor:pointer;font-weight:600} .slink:hover{text-decoration:underline}
+  .passage.interlin{border:0;background:none}
+  .ivs{border-bottom:1px solid #f0ebe1;padding:2px 0 5px}
+  .ivs .pv.tgt{background:none;border:0;color:var(--ink);padding:5px 2px 1px}
+  .vechoes{padding:1px 0 3px 30px;display:flex;flex-direction:column;gap:1px}
+  .vlink{font-size:11.5px;color:#7a7065;cursor:pointer;display:flex;align-items:center;gap:6px;text-decoration:none;line-height:1.45}
+  .vlink:hover{color:var(--accent)}
+  .vd{width:7px;height:7px;border-radius:50%;flex:none}
+  .vfl{font-style:italic;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .vff{color:#a89e8e;font-variant-numeric:tabular-nums;flex:none}
   #tip{position:fixed;z-index:60;background:#241f18;color:#fff;font-size:11.5px;line-height:1.4;padding:6px 10px;
        border-radius:7px;pointer-events:none;display:none;max-width:380px;box-shadow:0 4px 14px rgba(0,0,0,.22)}
   #tip .t1{font-weight:600;margin-bottom:2px} #tip .t2{color:#d8cdbb;font-size:11px}
@@ -613,21 +622,27 @@ function studyPoem(p){
 function gatherEchoes(book,chapter,verse){const out=[];
   D.poems.forEach(p=>POEMLOCI.get(p.franklin).forEach(L=>{if(L.book!==book)return;if(chapter!=null&&L.chapter!==chapter)return;if(verse!=null&&L.verse!==verse)return;out.push({p,L});}));
   return out.sort((a,b)=>a.L.seq-b.L.seq||tierRank[a.L.strength]-tierRank[b.L.strength]);}
+function vnum(ref){const m=ref.match(/(\d+):(\d+)\s*$/);return m?(+m[1])*1000+(+m[2]):0;}
 function studyScope(book,chapter,verse){
-  const title=BMAP[book].name+(chapter!=null?' '+chapter:'')+(verse!=null&&!isNaN(verse)?':'+verse:'');
-  const ech=gatherEchoes(book, chapter, (verse!=null&&!isNaN(verse))?verse:null);
-  let passage='', seen=new Set();
-  ech.forEach(({L})=>ctxFor(L).forEach(c=>{const key=c.ref; if(!seen.has(key)){seen.add(key);
-    passage+=`<div class="pv${c.target?' tgt':''}"><span class="vn">${c.ref.split(' ').pop()}</span>${c.text}</div>`;}}));
-  const rows=ech.map(({p,L})=>{const yr=p.year?(p.year_circa?'c.'+p.year:''+p.year):'—';
-    return `<div class="sech click${L.contested?' econ':''}" data-f="${p.franklin}"><div class="sechh"><span class="badge" style="background:${markFill(L.strength)}">${L.strength}</span>`+
-      `<b>${L.label}</b><span class="srctag">${SRC_LBL[L.source]||L.source}</span> <span class="pf">${p.franklin}</span> <span class="pfl">${p.first_line}</span> <span class="pyr">${yr}</span></div>`+
-      (L.note?`<div class="note">${L.note}</div>`:'')+`</div>`;}).join('');
+  const v0=(verse!=null&&!isNaN(verse))?verse:null;
+  const title=BMAP[book].name+(chapter!=null?' '+chapter:'')+(v0!=null?':'+v0:'');
+  const ech=gatherEchoes(book, chapter, v0);
+  // line-level interlinking: verse -> the readings that echo it
+  const vm=new Map();
+  ech.forEach(o=>ctxFor(o.L).filter(c=>c.target).forEach(c=>{
+    let e=vm.get(c.ref); if(!e){e={ref:c.ref,text:c.text,echoes:[]};vm.set(c.ref,e);} e.echoes.push(o);}));
+  const verses=[...vm.values()].sort((a,b)=>vnum(a.ref)-vnum(b.ref));
+  const npoems=new Set(ech.map(o=>o.p.franklin)).size;
+  const body=verses.map(v=>{
+    const tags=v.echoes.slice().sort((a,b)=>tierRank[a.L.strength]-tierRank[b.L.strength]||(+a.p.franklin.slice(1))-(+b.p.franklin.slice(1)))
+      .map(({p,L})=>`<a class="vlink" data-f="${p.franklin}" title="${L.strength}${L.source==='chatgpt'?' · ChatGPT':''}">`+
+        `<span class="vd" style="background:${markFill(L.strength)}"></span><span class="vfl">${p.first_line}</span> <span class="vff">${p.franklin}</span></a>`).join('');
+    return `<div class="ivs"><div class="pv tgt"><span class="vn">${v.ref.split(' ').pop()}</span>${v.text}</div><div class="vechoes">${tags}</div></div>`;
+  }).join('');
   showStudy(`<div class="sbar"><a class="sback" onclick="closeStudy()">← back to the map</a></div>`+
-    `<div class="scol"><h2>${title}</h2><div class="smeta">echoed by ${ech.length} poem${ech.length===1?'':'s'}</div>`+
-    `<div class="nlabel">KJV — passage</div><div class="passage">${passage||'—'}</div>`+
-    `<div class="nlabel">Echoed by</div>${rows||'<div class="kv">— none —</div>'}</div>`);
-  document.querySelectorAll('#study .sech.click').forEach(el=>el.onclick=()=>studyPoem(D.poems.find(x=>x.franklin===el.dataset.f)));
+    `<div class="scol"><h2>${title}</h2><div class="smeta">echoed by ${npoems} poem${npoems===1?'':'s'} · ${ech.length} reading${ech.length===1?'':'s'} across ${verses.length} verse${verses.length===1?'':'s'}</div>`+
+    `<div class="nlabel">KJV — interlinked line by line</div><div class="passage interlin">${body||'<div class="kv">— none —</div>'}</div></div>`);
+  document.querySelectorAll('#study .vlink').forEach(el=>el.onclick=()=>studyPoem(D.poems.find(x=>x.franklin===el.dataset.f)));
 }
 addEventListener('keydown',e=>{if(e.key==='Escape')closeStudy();});
 
