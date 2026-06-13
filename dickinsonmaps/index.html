@@ -162,6 +162,8 @@
   .stoggle{font-size:12px;color:var(--muted);cursor:pointer;border:1px solid var(--line);border-radius:6px;padding:2px 9px;white-space:nowrap}
   .stoggle:hover{border-color:var(--accent);color:var(--accent)}
   .interlin.hidep .vechoes{display:none}
+  .xref{margin:2px 0}
+  .xrefg{font-size:11px;color:#857a6c;padding:0 4px 3px 12px;line-height:1.45;font-style:italic}
   .interlin.hidep .ivs{margin-bottom:2px}
   .littbl{margin:3px 0 6px}
   .lit{border-left:3px solid #6fae9b;background:#f4f8f6;border-radius:0 7px 7px 0;padding:6px 11px;margin:5px 0}
@@ -655,7 +657,7 @@ function studyPoem(p){
     `<div class="scol"><h2>${p.first_line}</h2><div class="smeta">${p.franklin} · ${yr} · ${ls.length} scriptural echo${ls.length===1?'':'es'}</div>`+
     `<div class="nlabel">The poem</div><div class="poemtext big">${p.poem_text||p.first_line}</div>`+
     `<div class="nlabel">Scriptural echoes</div>${ech||'<div class="kv">— none —</div>'}`+
-    literaryHTML(p)+kindredHTML(p)+`</div>`);
+    literaryHTML(p)+internalHTML(p)+kindredHTML(p)+`</div>`);
   focusForPoem(p.franklin);
   document.querySelectorAll('#study .slink').forEach(el=>el.onclick=()=>studyScope(el.dataset.b,+el.dataset.c,+el.dataset.v));
   document.querySelectorAll('#study .klink').forEach(el=>el.onclick=()=>{const q=PBYF.get(el.dataset.f);if(q)studyPoem(q);});
@@ -673,6 +675,17 @@ function literaryHTML(p){
       (g?`<div class="litg">${g}</div>`:'')+`</div>`;
   }).join('');
   return `<div class="nlabel">Literary echoes <span class="nsub">— ${ls.length} non-scripture</span></div><div class="littbl">${rows}</div>`;
+}
+function internalHTML(p){
+  const is=(p.internal||[]).filter(L=>PBYF.has(L.target_fr));
+  if(!is.length)return '';
+  const NP=D.notes_pool, seen=new Set();
+  const rows=is.filter(L=>!seen.has(L.target_fr)&&seen.add(L.target_fr)).map(L=>{
+    const q=PBYF.get(L.target_fr), g=L.gloss!=null?NP[L.gloss]:'';
+    return `<div class="xref"><a class="klink" data-f="${L.target_fr}"><span class="kfl">${q.first_line}</span><span class="kff">${L.target_fr}</span></a>`+
+      (g?`<div class="xrefg">${g}</div>`:'')+`</div>`;
+  }).join('');
+  return `<div class="nlabel">Dickinson's cross-references <span class="nsub">— the kin her own notes pair this with</span></div><div class="kindred">${rows}</div>`;
 }
 function kindredHTML(p){
   const ks=(p.kindred||[]).filter(k=>PBYF.has(k.fr)).slice(0,8);
@@ -843,7 +856,7 @@ render();
     var s=document.createElement('script'); s.textContent=document.getElementById('app').textContent;
     document.body.appendChild(s); window.dispatchEvent(new Event('load')); }
   async function go(pw){
-    var enc=await (await fetch('data.enc?v=a836b77b93',{cache:'force-cache'})).json();
+    var enc=await (await fetch('data.enc?v=99ad64bb9d',{cache:'force-cache'})).json();
     var base=await crypto.subtle.importKey('raw',new TextEncoder().encode(pw),'PBKDF2',false,['deriveKey']);
     var key=await crypto.subtle.deriveKey({name:'PBKDF2',salt:b64(enc.s),iterations:enc.n,hash:'SHA-256'},base,{name:'AES-GCM',length:256},false,['decrypt']);
     var pt=await crypto.subtle.decrypt({name:'AES-GCM',iv:b64(enc.i)},key,b64(enc.c));
