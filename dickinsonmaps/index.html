@@ -136,6 +136,20 @@
   .vd{width:7px;height:7px;border-radius:50%;flex:none}
   .vfl{font-style:italic;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
   .vff{color:#a89e8e;font-variant-numeric:tabular-nums;flex:none}
+  .nsub{font-weight:400;font-style:italic;color:var(--muted);font-size:11.5px}
+  .kindred{display:flex;flex-direction:column;gap:1px;margin:2px 0 4px}
+  .klink{font-size:12px;color:#5a5247;cursor:pointer;display:flex;align-items:baseline;gap:7px;text-decoration:none;line-height:1.5;padding:1.5px 4px;border-radius:5px}
+  .klink:hover{background:#f1edf8;color:var(--accent)}
+  .kfl{font-style:italic;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .kff{color:#a89e8e;font-variant-numeric:tabular-nums;flex:none}
+  .kvia{margin-left:auto;flex:none;font-size:10px;color:#8a8073;background:#f3efe7;border-radius:4px;padding:0 6px;white-space:nowrap}
+  .mr{margin:3px 0 6px}
+  .mrow{display:flex;align-items:center;gap:9px;padding:2px 4px;border-radius:5px;font-size:12px}
+  .mrow:hover{background:#f1edf8}
+  .mlbl{flex:none;width:128px;color:#4a443a;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .mtrack{flex:1;height:9px;background:#efe9df;border-radius:5px;overflow:hidden}
+  .mbar{display:block;height:100%;background:linear-gradient(90deg,#b7a3d8,#8a74b8);border-radius:5px}
+  .mn{flex:none;width:30px;text-align:right;color:#8a8073;font-variant-numeric:tabular-nums;font-size:11px}
   #tip{position:fixed;z-index:60;background:#241f18;color:#fff;font-size:11.5px;line-height:1.4;padding:6px 10px;
        border-radius:7px;pointer-events:none;display:none;max-width:380px;box-shadow:0 4px 14px rgba(0,0,0,.22)}
   #tip .t1{font-weight:600;margin-bottom:2px} #tip .t2{color:#d8cdbb;font-size:11px}
@@ -278,6 +292,8 @@ function contestedTarget(franklin,tid){const s=(TSRC.get(franklin)||{})[tid];
 let CONTESTED_N=0; D.poems.forEach(p=>{const m=TSRC.get(p.franklin)||{};
   for(const tid in m)if(contestedTarget(p.franklin,tid))CONTESTED_N++;});
 const POEMLOCI=new Map(); D.poems.forEach(p=>POEMLOCI.set(p.franklin,loci(p)));
+const PBYF=new Map(); D.poems.forEach(p=>PBYF.set(p.franklin,p));
+function prettyRef(t){const p=t.split('.');const b=BMAP[p[0]]?BMAP[p[0]].name:p[0];return b+' '+p.slice(1).join(':');}
 const REF_BOOKS=[...new Set(D.poems.flatMap(p=>p.edges.map(e=>e.book)))].sort((a,b)=>BMAP[a].start-BMAP[b].start);
 const poemVis=p=>POEMLOCI.get(p.franklin).filter(L=>tierVisible(L.strength)&&srcVis.has(L.source)&&(!facetBook||L.book===facetBook)&&(!contestedOnly||L.contested));
 const yearPass=p=>!facetDecade||(p.year&&Math.floor(p.year/10)*10===facetDecade);
@@ -323,6 +339,7 @@ function renderControls(){
      [1850,1860,1870,1880].map(d=>`<option value="${d}"${facetDecade===d?' selected':''}>${d}s</option>`).join('')+`</select>`+
    (mode==='kjv'?`<span class="toggle${heatOn?'':' off'}" id="heatbtn">▦ heat</span>`:'')+
    `<span class="toggle${contestedOnly?'':' off'}" id="conbtn" title="verses where ours & ChatGPT disagree (one presses, the other waves off)">⚡ contested <b>${CONTESTED_N}</b></span>`+
+   `<span class="toggle" id="reachbtn" title="which scripture the poems reach most — the leaderboard, drillable into each verse's poems">✦ most echoed</span>`+
    `<span style="flex:1"></span><input type="search" id="q" value="${query}" placeholder="filter poems / books / verses…">`;
   c.querySelectorAll('.seg button[data-m]').forEach(b=>b.onclick=()=>{mode=b.dataset.m;renderControls();render();scrollTo(0,0);});
   c.querySelectorAll('.seg button[data-x]').forEach(b=>b.onclick=()=>{xaxis=b.dataset.x;renderControls();render();});
@@ -338,6 +355,7 @@ function renderControls(){
   document.getElementById('fdec').onchange=e=>{facetDecade=+e.target.value||null;render();};
   const hb=document.getElementById('heatbtn'); if(hb)hb.onclick=()=>{heatOn=!heatOn;hb.classList.toggle('off');render();};
   document.getElementById('conbtn').onclick=()=>{contestedOnly=!contestedOnly;document.getElementById('conbtn').classList.toggle('off');render();};
+  document.getElementById('reachbtn').onclick=()=>studyMostReached();
   document.getElementById('q').oninput=e=>{query=e.target.value.toLowerCase();render();};
   document.getElementById('sub').textContent = mode==='kjv'
     ? 'Scripture × time. Vertical = the KJV (Genesis → Revelation); horizontal = when ED wrote; color = the year. A vertical band is one book across her career; hover a dot to light up that poem, click to read both.'
@@ -615,9 +633,19 @@ function studyPoem(p){
   showStudy(`<div class="sbar"><a class="sback" onclick="closeStudy()">← back to the map</a></div>`+
     `<div class="scol"><h2>${p.first_line}</h2><div class="smeta">${p.franklin} · ${yr} · ${ls.length} scriptural echo${ls.length===1?'':'es'}</div>`+
     `<div class="nlabel">The poem</div><div class="poemtext big">${p.poem_text||p.first_line}</div>`+
-    `<div class="nlabel">Scriptural echoes</div>${ech||'<div class="kv">— none —</div>'}</div>`);
+    `<div class="nlabel">Scriptural echoes</div>${ech||'<div class="kv">— none —</div>'}`+
+    kindredHTML(p)+`</div>`);
   focusForPoem(p.franklin);
   document.querySelectorAll('#study .slink').forEach(el=>el.onclick=()=>studyScope(el.dataset.b,+el.dataset.c,+el.dataset.v));
+  document.querySelectorAll('#study .klink').forEach(el=>el.onclick=()=>{const q=PBYF.get(el.dataset.f);if(q)studyPoem(q);});
+}
+function kindredHTML(p){
+  const ks=(p.kindred||[]).filter(k=>PBYF.has(k.fr)).slice(0,8);
+  if(!ks.length)return '';
+  const rows=ks.map(k=>{const q=PBYF.get(k.fr);
+    const via=prettyRef(k.via[0])+(k.n>1?` +${k.n-1}`:'');
+    return `<a class="klink" data-f="${k.fr}" title="shares ${k.n} verse${k.n===1?'':'s'}"><span class="kfl">${q.first_line}</span><span class="kff">${k.fr}</span><span class="kvia">${via}</span></a>`;}).join('');
+  return `<div class="nlabel">Kindred poems <span class="nsub">— reaching the same scripture</span></div><div class="kindred">${rows}</div>`;
 }
 function gatherEchoes(book,chapter,verse){const out=[];
   D.poems.forEach(p=>POEMLOCI.get(p.franklin).forEach(L=>{if(L.book!==book)return;if(chapter!=null&&L.chapter!==chapter)return;if(verse!=null&&L.verse!==verse)return;out.push({p,L});}));
@@ -645,6 +673,31 @@ function studyScope(book,chapter,verse){
   document.querySelectorAll('#study .vlink').forEach(el=>el.onclick=()=>studyPoem(D.poems.find(x=>x.franklin===el.dataset.f)));
 }
 addEventListener('keydown',e=>{if(e.key==='Escape')closeStudy();});
+
+const NAME2KEY=new Map(); for(const k in BMAP)NAME2KEY.set(BMAP[k].name,k);
+function studyMostReached(){
+  const mr=D.most_reached; if(!mr)return;
+  const bar=(n,max)=>`<span class="mbar" style="width:${Math.max(3,100*n/max)}%"></span>`;
+  function section(title,sub,items,onclickAttr){
+    const max=items[0]?items[0].poems:1;
+    const rows=items.map(it=>`<div class="mrow" ${onclickAttr(it)}><span class="mlbl">${it.key}</span>`+
+      `<span class="mtrack">${bar(it.poems,max)}</span><span class="mn">${it.poems}</span></div>`).join('');
+    return `<div class="nlabel">${title} <span class="nsub">— ${sub}</span></div><div class="mr">${rows}</div>`;
+  }
+  // book key + chapter/verse parsing back out of the display labels, for studyScope drill
+  const bk=name=>NAME2KEY.get(name)||name;
+  const bookClick =it=>`data-sb="${bk(it.key)}"`;
+  const chapClick =it=>{const m=it.key.match(/^(.*)\s+(\d+)$/);return m?`data-sb="${bk(m[1])}" data-sc="${m[2]}"`:'';};
+  const verseClick=it=>{const m=it.key.match(/^(.*)\s+(\d+):(\d+)$/);return m?`data-sb="${bk(m[1])}" data-sc="${m[2]}" data-sv="${m[3]}"`:'';};
+  showStudy(`<div class="sbar"><a class="sback" onclick="closeStudy()">← back to the map</a></div>`+
+    `<div class="scol"><h2>Most echoed scripture</h2>`+
+    `<div class="smeta">where the poems reach most often — by how many distinct poems touch each locus. Click any line to read its poems.</div>`+
+    section('Books','Genesis → Revelation',mr.books,bookClick)+
+    section('Chapters','single chapters',mr.chapters,chapClick)+
+    section('Verses','single verses',mr.verses,verseClick)+`</div>`);
+  document.querySelectorAll('#study .mrow').forEach(el=>{ if(!el.dataset.sb)return; el.style.cursor='pointer';
+    el.onclick=()=>studyScope(el.dataset.sb, el.dataset.sc?+el.dataset.sc:null, el.dataset.sv?+el.dataset.sv:null);});
+}
 
 function openDrawer(L,p){
   const yr=p.year?(p.year_circa?'c.'+p.year:''+p.year):'—';
@@ -689,7 +742,8 @@ addEventListener('load',()=>{setHH();
   if(facetBook||facetDecade)renderControls();
   render();
   const pf=u.get('poem'); if(pf){const p=D.poems.find(x=>x.franklin===pf); if(p)studyPoem(p);}
-  const st=u.get('study'); if(st){const[b,c,v]=st.split('.'); if(BMAP[b])studyScope(b,c?+c:null,v?+v:null);}});
+  const st=u.get('study'); if(st){const[b,c,v]=st.split('.'); if(BMAP[b])studyScope(b,c?+c:null,v?+v:null);}
+  if(u.get('reach'))studyMostReached();});
 render();
 </script>
 
@@ -711,7 +765,7 @@ render();
     var s=document.createElement('script'); s.textContent=document.getElementById('app').textContent;
     document.body.appendChild(s); window.dispatchEvent(new Event('load')); }
   async function go(pw){
-    var enc=await (await fetch('data.enc?v=b47531c450',{cache:'force-cache'})).json();
+    var enc=await (await fetch('data.enc?v=c38b8dfde6',{cache:'force-cache'})).json();
     var base=await crypto.subtle.importKey('raw',new TextEncoder().encode(pw),'PBKDF2',false,['deriveKey']);
     var key=await crypto.subtle.deriveKey({name:'PBKDF2',salt:b64(enc.s),iterations:enc.n,hash:'SHA-256'},base,{name:'AES-GCM',length:256},false,['decrypt']);
     var pt=await crypto.subtle.decrypt({name:'AES-GCM',iv:b64(enc.i)},key,b64(enc.c));
