@@ -487,10 +487,9 @@ function renderPlane(){
       strip.onmousemove=ev=>{const r=strip.getBoundingClientRect();const frac=Math.min(1,Math.max(0,(ev.clientX-r.left)/r.width));
         const bi=Math.min(DBINS-1,Math.floor(frac*DBINS));
         const here=items.filter(({p})=>{const x=xNorm(p);return x!=null&&Math.min(DBINS-1,Math.floor(x*DBINS))===bi;})
-          .sort((a,b)=>tierRank[a.L.strength]-tierRank[b.L.strength]||a.L.seq-b.L.seq);
+          .sort((a,b)=>a.L.seq-b.L.seq);   // scripture order (by verse)
         const val=xaxis==='year'?'c.'+Math.round(YMIN+frac*(YMAX-YMIN)):'F'+Math.round(frac*FMAX);
-        const rows=here.slice(0,8).map(({L,p})=>`<div class="ti"><b>${L.label}</b> · <i>${p.first_line}</i> <span class="tf">${p.franklin}${L.source==='chatgpt'?' · GPT':''}</span></div>`).join('')
-          +(here.length>8?`<div class="tmore">+${here.length-8} more near here</div>`:'');
+        const rows=here.map(({L,p})=>`<div class="ti"><b>${L.label}</b> · <i>${p.first_line}</i> <span class="tf">${p.franklin}${L.source==='chatgpt'?' · GPT':''}</span></div>`).join('');
         cur.style.display='block';cur.style.left=(frac*100)+'%';
         showTip(ev,`${lab.main} — ${val} · ${here.length} ref${here.length===1?'':'s'}`,rows||'<div class="tmore">— nothing in this year —</div>');};
       strip.onmouseleave=()=>{cur.style.display='none';hideTip();};
