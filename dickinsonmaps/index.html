@@ -108,6 +108,21 @@
   .scursor{position:absolute;top:0;bottom:0;width:1px;background:var(--accent);opacity:.45;pointer-events:none}
   #lanerows.foc .pt{opacity:.16}
   #lanerows.foc .pt.hi{opacity:1}
+  /* full-page study view */
+  #study{position:fixed;left:0;right:0;top:var(--hh);bottom:0;background:var(--bg);overflow:auto;z-index:40;display:none}
+  body.studying #plane,body.studying #scroll,body.studying #ruler{display:none}
+  .sbar{position:sticky;top:0;background:var(--panel);border-bottom:1px solid var(--line);padding:9px 26px;z-index:2}
+  .sback{color:var(--accent);cursor:pointer;font-size:13px;text-decoration:none} .sback:hover{text-decoration:underline}
+  .scol{max-width:840px;margin:0 auto;padding:20px 28px 90px}
+  .scol h2{font:500 23px/1.2 Georgia,'Times New Roman',serif;margin:0;color:var(--ink)}
+  .smeta{color:var(--muted);font-size:12.5px;margin-top:3px}
+  .twocol{display:grid;grid-template-columns:1fr;gap:0}
+  .poemtext.big{font:15px/1.6 Georgia,'Times New Roman',serif;margin:14px 0 4px}
+  .sech{border:1px solid var(--line);border-radius:10px;padding:11px 14px 6px;margin:10px 0;background:var(--panel)}
+  .sech.click{cursor:pointer} .sech.click:hover{background:#f7f3ec}
+  .sech.econ{border-color:#e3c79a;box-shadow:0 0 0 1px #e3c79a}
+  .sechh{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;margin-bottom:6px}
+  .slink{color:var(--accent);cursor:pointer;font-weight:600} .slink:hover{text-decoration:underline}
   #tip{position:fixed;z-index:60;background:#241f18;color:#fff;font-size:11.5px;line-height:1.4;padding:6px 10px;
        border-radius:7px;pointer-events:none;display:none;max-width:380px;box-shadow:0 4px 14px rgba(0,0,0,.22)}
   #tip .t1{font-weight:600;margin-bottom:2px} #tip .t2{color:#d8cdbb;font-size:11px}
@@ -159,7 +174,7 @@
 </head>
 <body class="m-poem">
 <header>
-  <h1>Emily Dickinson<span class="rm"> — a reference map of her allusions</span></h1>
+  <h1>Emily Dickinson<span class="rm"> — mapping the echoes in her writing</span></h1>
   <div class="sub" id="sub"></div>
   <div class="stats" id="stats"></div>
   <div class="controls" id="controls"></div>
@@ -177,6 +192,7 @@
 <div id="tip"></div>
 <div id="scrim" onclick="closeDrawer()"></div>
 <div id="drawer"><span class="x" onclick="closeDrawer()">×</span><div id="dbody"></div></div>
+<div id="study"></div>
 
 <script id="app" type="text/plain">
 const D=window.ED_DATA, TOTAL=D.kjv_total, BOOKS=D.kjv_books;
@@ -280,10 +296,10 @@ function renderControls(){
    `<button data-m="kjv" class="${mode==='kjv'?'active':''}">By scripture</button></span>`+
    (mode==='kjv'?`<span class="seg"><button data-x="year" class="${xaxis==='year'?'active':''}">Year</button>`+
      `<button data-x="franklin" class="${xaxis==='franklin'?'active':''}">F#</button></span>`:'')+
-   `<span class="toggle" data-t="strong">${mk('strong')}strong <b>${bs.strong}</b></span>`+
-   `<span class="toggle" data-t="saturation">${mk('saturation')}saturation <b>${bs.saturation}</b></span>`+
-   `<span class="toggle off" data-t="plausible">${mk('plausible')}plausible <b>${bs.plausible}</b></span>`+
-   `<span class="toggle off" data-t="other">${mk('other')}set-aside · register <b>${bs['set-aside']+bs.register+bs.commonplace}</b></span>`+
+   `<span class="toggle${visTiers.has('strong')?'':' off'}" data-t="strong">${mk('strong')}strong <b>${bs.strong}</b></span>`+
+   `<span class="toggle${visTiers.has('saturation')?'':' off'}" data-t="saturation">${mk('saturation')}saturation <b>${bs.saturation}</b></span>`+
+   `<span class="toggle${showPlausible?'':' off'}" data-t="plausible">${mk('plausible')}plausible <b>${bs.plausible}</b></span>`+
+   `<span class="toggle${showOther?'':' off'}" data-t="other">${mk('other')}set-aside · register <b>${bs['set-aside']+bs.register+bs.commonplace}</b></span>`+
    `<span class="srcsep"></span>`+
    `<span class="toggle src${srcVis.has('ours')?'':' off'}" data-s="ours">ours <b>${SRC_EDGES.ours}</b></span>`+
    `<span class="toggle src${srcVis.has('chatgpt')?'':' off'}" data-s="chatgpt">ChatGPT <b>${SRC_EDGES.chatgpt}</b></span>`+
@@ -363,9 +379,8 @@ function renderPoemWindow(){            // render only the rows in (or near) the
   rows.innerHTML='';
   let html=''; for(let i=start;i<end;i++) html+=poemRowHTML(ps[i],i);
   rows.innerHTML=html;
-  rows.querySelectorAll('.mark').forEach(el=>el.onclick=e=>{e.stopPropagation();const p=D.poems.find(x=>x.franklin===el.dataset.f);
-    openDrawer(POEMLOCI.get(p.franklin).find(x=>x.label===decodeURIComponent(el.dataset.l)),p);});
-  rows.querySelectorAll('.poemrow').forEach(row=>row.onclick=()=>openPoem(D.poems.find(x=>x.franklin===row.dataset.f)));
+  rows.querySelectorAll('.mark').forEach(el=>el.onclick=e=>{e.stopPropagation();studyPoem(D.poems.find(x=>x.franklin===el.dataset.f));});
+  rows.querySelectorAll('.poemrow').forEach(row=>row.onclick=()=>studyPoem(D.poems.find(x=>x.franklin===row.dataset.f)));
 }
 let _rowRAF=0;
 addEventListener('scroll',()=>{if(mode!=='poem')return; if(_rowRAF)return;
@@ -464,6 +479,12 @@ function streamSVG(b,gmax,gid){const H=100,amp=84,base=H-1;
     `<stop offset="0" stop-color="${eraColor(YMIN)}"/><stop offset=".5" stop-color="${eraColor((YMIN+YMAX)/2)}"/>`+
     `<stop offset="1" stop-color="${eraColor(YMAX)}"/></linearGradient></defs>`+
     `<path d="${d}" fill="url(#${gid})" opacity=".62"/><path d="${d}" fill="none" stroke="${eraColor((YMIN+YMAX)/2)}" stroke-opacity=".5" stroke-width=".5"/></svg>`;}
+// the (book,chapter,verse) a lane key represents, for the scripture-study view
+function laneScopeArgs(k){
+  if(scope.level==='all') return [k, null, null];
+  if(scope.level==='book') return [scope.book, +k, null];
+  return [scope.book, scope.chapter, +k];
+}
 function renderPlane(){
   renderLegend(); renderCrumb(); renderTimeRuler(); renderLanesGrid();
   const rows=document.getElementById('lanerows'); rows.innerHTML=''; rows.classList.remove('foc');
@@ -477,7 +498,7 @@ function renderPlane(){
               : scope.level==='book' ? {main:'Chapter '+k, drill:true}
               : {main:scope.book_name+' '+scope.chapter+':'+k, drill:false};
     const lane=document.createElement('div'); lane.className='lane';
-    lane.innerHTML=`<div class="lanelabel${lab.drill?' drill':''}" data-k="${k}"><div class="lm">${lab.main}</div>`+
+    lane.innerHTML=`<div class="lanelabel drill" data-k="${k}" title="all echoes of ${lab.main}"><div class="lm">${lab.main}</div>`+
       `<div class="lc">${n} ref${n>1?'s':''}</div></div><div class="lanestrip"></div>`;
     const strip=lane.querySelector('.lanestrip');
     if(heatOn && items.length>HEAT_MIN){            // dense lane -> smooth era-colored density stream
@@ -493,7 +514,7 @@ function renderPlane(){
         cur.style.display='block';cur.style.left=(frac*100)+'%';
         showTip(ev,`${lab.main} — ${val} · ${here.length} ref${here.length===1?'':'s'}`,rows||'<div class="tmore">— nothing in this year —</div>');};
       strip.onmouseleave=()=>{cur.style.display='none';hideTip();};
-      if(lab.drill)strip.style.cursor='pointer',strip.onclick=()=>drill(k);
+      strip.style.cursor='pointer'; strip.onclick=()=>lab.drill?drill(k):studyScope(...laneScopeArgs(k));
     } else {
       items.forEach(({L,p})=>{
         const xn=xNorm(p); if(xn===null)return;
@@ -506,12 +527,13 @@ function renderPlane(){
         el.onmouseenter=()=>focusPoem(p.franklin);
         el.onmousemove=ev=>showTip(ev,p.first_line,`${L.label} · ${L.strength} · ${p.franklin} · ${yr}`);
         el.onmouseleave=()=>{clearFocus();hideTip();};
-        el.onclick=()=>openDrawer(L,p);
+        el.onclick=e=>{e.stopPropagation();studyPoem(p);};
         strip.appendChild(el);});
+      strip.style.cursor='pointer'; strip.onclick=()=>lab.drill?drill(k):studyScope(...laneScopeArgs(k));
     }
     rows.appendChild(lane);
   });
-  rows.querySelectorAll('.lanelabel.drill').forEach(el=>el.onclick=()=>drill(el.dataset.k));
+  rows.querySelectorAll('.lanelabel').forEach(el=>el.onclick=e=>{e.stopPropagation();studyScope(...laneScopeArgs(el.dataset.k));});
   if(!units.length)rows.innerHTML='<div style="padding:40px 26px;color:var(--muted)">No references here at the current filters.</div>';
 }
 function focusPoem(f){const pts=document.getElementById('lanerows');pts.classList.add('foc');
@@ -520,7 +542,9 @@ function clearFocus(){const pts=document.getElementById('lanerows');pts.classLis
   pts.querySelectorAll('.pt.hi').forEach(e=>e.classList.remove('hi'));}
 const tip=document.getElementById('tip');
 function showTip(ev,t1,t2){tip.style.display='block';tip.innerHTML=`<div class="t1">${t1}</div><div class="t2">${t2}</div>`;
-  tip.style.left=Math.min(ev.clientX+13,innerWidth-260)+'px';tip.style.top=(ev.clientY+15)+'px';}
+  const h=tip.offsetHeight,w=tip.offsetWidth;
+  let top=ev.clientY+15; if(top+h>innerHeight-8)top=Math.max(8,ev.clientY-h-14);   // flip up if it would run off the bottom
+  tip.style.left=Math.min(ev.clientX+13,innerWidth-w-8)+'px';tip.style.top=top+'px';}
 function hideTip(){tip.style.display='none';}
 
 /* ---------- poem-centric drawer: poem on top, its KJV echoes below ---------- */
@@ -559,6 +583,47 @@ function openPoem(p){
 function openPoemF(f){openPoem(D.poems.find(x=>x.franklin===f));}
 
 /* ---------- passage-centric drawer ---------- */
+/* ---------- STUDY VIEW: substantive full-page detail (poem <-> scripture) ---------- */
+function showStudy(html){const s=document.getElementById('study');s.innerHTML=html;document.body.classList.add('studying');s.scrollTop=0;}
+function closeStudy(){document.body.classList.remove('studying');document.getElementById('study').style.display='none';}
+function passageHTML(ctx){return ctx.map(c=>`<div class="pv${c.target?' tgt':''}"><span class="vn">${c.ref.split(' ').pop()}</span>${c.text}</div>`).join('');}
+function studyPoem(p){
+  const yr=p.year?(p.year_circa?'c.'+p.year:''+p.year):'—';
+  const ls=POEMLOCI.get(p.franklin).slice().sort((a,b)=>tierRank[a.strength]-tierRank[b.strength]||a.seq-b.seq);
+  const ech=ls.map(L=>`<div class="sech${L.contested?' econ':''}"><div class="sechh"><span class="badge" style="background:${markFill(L.strength)}">${L.strength}</span>`+
+    `<b class="slink" data-b="${L.book}" data-c="${L.chapter}" data-v="${L.verse}">${L.label}</b>`+
+    (L.relation?`<span class="emuted">${L.relation}</span>`:'')+`<span class="srctag">${SRC_LBL[L.source]||L.source}</span>`+
+    (L.parse_conf==='parsed-low'?`<span class="lowconf">review</span>`:'')+`</div>`+
+    `<div class="passage">${passageHTML(ctxFor(L))}</div>`+(L.note?`<div class="note">${L.note}</div>`:'')+`</div>`).join('');
+  showStudy(`<div class="sbar"><a class="sback" onclick="closeStudy()">← back to the map</a></div>`+
+    `<div class="scol"><h2>${p.first_line}</h2><div class="smeta">${p.franklin} · ${yr} · ${ls.length} scriptural echo${ls.length===1?'':'es'}</div>`+
+    `<div class="nlabel">The poem</div><div class="poemtext big">${p.poem_text||p.first_line}</div>`+
+    `<div class="nlabel">Scriptural echoes</div>${ech||'<div class="kv">— none —</div>'}</div>`);
+  document.getElementById('study').style.display='block';
+  document.querySelectorAll('#study .slink').forEach(el=>el.onclick=()=>studyScope(el.dataset.b,+el.dataset.c,+el.dataset.v));
+}
+function gatherEchoes(book,chapter,verse){const out=[];
+  D.poems.forEach(p=>POEMLOCI.get(p.franklin).forEach(L=>{if(L.book!==book)return;if(chapter!=null&&L.chapter!==chapter)return;if(verse!=null&&L.verse!==verse)return;out.push({p,L});}));
+  return out.sort((a,b)=>a.L.seq-b.L.seq||tierRank[a.L.strength]-tierRank[b.L.strength]);}
+function studyScope(book,chapter,verse){
+  const title=BMAP[book].name+(chapter!=null?' '+chapter:'')+(verse!=null&&!isNaN(verse)?':'+verse:'');
+  const ech=gatherEchoes(book, chapter, (verse!=null&&!isNaN(verse))?verse:null);
+  let passage='', seen=new Set();
+  ech.forEach(({L})=>ctxFor(L).forEach(c=>{const key=c.ref; if(!seen.has(key)){seen.add(key);
+    passage+=`<div class="pv${c.target?' tgt':''}"><span class="vn">${c.ref.split(' ').pop()}</span>${c.text}</div>`;}}));
+  const rows=ech.map(({p,L})=>{const yr=p.year?(p.year_circa?'c.'+p.year:''+p.year):'—';
+    return `<div class="sech click${L.contested?' econ':''}" data-f="${p.franklin}"><div class="sechh"><span class="badge" style="background:${markFill(L.strength)}">${L.strength}</span>`+
+      `<b>${L.label}</b><span class="srctag">${SRC_LBL[L.source]||L.source}</span> <span class="pf">${p.franklin}</span> <span class="pfl">${p.first_line}</span> <span class="pyr">${yr}</span></div>`+
+      (L.note?`<div class="note">${L.note}</div>`:'')+`</div>`;}).join('');
+  showStudy(`<div class="sbar"><a class="sback" onclick="closeStudy()">← back to the map</a></div>`+
+    `<div class="scol"><h2>${title}</h2><div class="smeta">echoed by ${ech.length} poem${ech.length===1?'':'s'}</div>`+
+    `<div class="nlabel">KJV — passage</div><div class="passage">${passage||'—'}</div>`+
+    `<div class="nlabel">Echoed by</div>${rows||'<div class="kv">— none —</div>'}</div>`);
+  document.getElementById('study').style.display='block';
+  document.querySelectorAll('#study .sech.click').forEach(el=>el.onclick=()=>studyPoem(D.poems.find(x=>x.franklin===el.dataset.f)));
+}
+addEventListener('keydown',e=>{if(e.key==='Escape')closeStudy();});
+
 function openDrawer(L,p){
   const yr=p.year?(p.year_circa?'c.'+p.year:''+p.year):'—';
   const passage=ctxFor(L).map(c=>`<div class="pv${c.target?' tgt':''}"><span class="vn">${c.ref.split(' ').pop()}</span>${c.text}</div>`).join('');
@@ -601,14 +666,15 @@ addEventListener('load',()=>{setHH();
   if(facetBook&&mode==='kjv'&&scope.level==='all')scope={level:'book',book:facetBook,book_name:BMAP[facetBook].name,chapter:null};
   if(facetBook||facetDecade)renderControls();
   render();
-  const pf=u.get('poem'); if(pf){const p=D.poems.find(x=>x.franklin===pf); if(p)openPoem(p);}});
+  const pf=u.get('poem'); if(pf){const p=D.poems.find(x=>x.franklin===pf); if(p)studyPoem(p);}
+  const st=u.get('study'); if(st){const[b,c,v]=st.split('.'); if(BMAP[b])studyScope(b,c?+c:null,v?+v:null);}});
 render();
 </script>
 
 <div id="pwgate" style="position:fixed;inset:0;z-index:9999;background:#fbfaf7;display:flex;align-items:center;justify-content:center;font-family:Georgia,'Times New Roman',serif">
   <form id="pwform" style="text-align:center;max-width:340px;padding:24px">
     <div style="font:500 24px/1.15 Georgia,serif;color:#211c16">Emily Dickinson</div>
-    <div style="font-style:italic;color:#857a6c;margin:4px 0 20px">a reference map of her allusions</div>
+    <div style="font-style:italic;color:#857a6c;margin:4px 0 20px">mapping the echoes in Dickinson's writing</div>
     <input id="pwin" type="password" placeholder="password" autofocus autocomplete="current-password"
       style="font:14px Georgia,serif;padding:9px 12px;width:100%;border:1px solid #d8d2c6;border-radius:8px;text-align:center;background:#fff">
     <button type="submit" style="font:13px Georgia,serif;margin-top:11px;padding:8px 22px;border:0;border-radius:8px;background:#5a4a8a;color:#fff;cursor:pointer">Enter</button>
