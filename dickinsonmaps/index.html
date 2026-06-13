@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ED Reference Maps</title>
+<style>
+  :root{
+    --bg:#fbfaf7; --panel:#fff; --ink:#211c16; --muted:#857a6c; --line:#e8e2d6;
+    --accent:#5a4a8a; --hh:96px; --specleft:400px; --pad:22px; --gutter:58px; --axis:26px; --legendh:40px; --lanelabel:120px;
+    --band:#f2eee4; --divider:#9a7a5a;
+    --m-strong:#a3302a; --m-saturation:#7c3a8e; --m-plausible:#3d77a0; --m-other:#9a9488;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
+       background:var(--bg);color:var(--ink)}
+  header{padding:15px 28px 11px;border-bottom:1px solid var(--line);background:var(--panel);position:sticky;top:0;z-index:30}
+  h1{margin:0;font:500 23px/1.12 Georgia,'Times New Roman',serif;letter-spacing:.004em;color:var(--ink)}
+  h1 .rm{color:var(--muted);font-weight:400;font-style:italic;font-size:19px}
+  .sub{color:#6b6257;font:italic 13px/1.45 Georgia,'Times New Roman',serif;margin-top:4px;max-width:74ch}
+  .stats{margin-top:9px;font-size:11.5px;color:var(--muted);display:flex;gap:8px;flex-wrap:wrap;
+         font-variant-numeric:tabular-nums;letter-spacing:.01em;align-items:center}
+  .stats .dot{color:#cdc4b4}
+  .stats b{color:var(--ink);font-weight:600}
+  .controls{margin-top:10px;display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+  .seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+  .seg button{font:inherit;font-size:12px;padding:5px 13px;border:0;background:#fff;cursor:pointer;color:var(--ink)}
+  .seg button.active{background:var(--accent);color:#fff}
+  .toggle{font-size:12px;padding:4px 11px;border:1px solid var(--line);border-radius:20px;cursor:pointer;
+          user-select:none;background:#fff;display:inline-flex;gap:7px;align-items:center}
+  .toggle:not(.off){background:#f1edf8;border-color:#cabbe4}   /* ON = clearly tinted/selected */
+  .toggle.off{opacity:.5;background:#fff;border-color:var(--line)}
+  .toggle .mk{width:13px;height:13px;display:inline-flex}
+  .toggle.src{border-style:dashed}
+  .srcsep{width:1px;height:18px;background:var(--line);margin:0 2px}
+  .mark.cg, .pt.cg{outline:1.4px dotted #8a8073;outline-offset:1.5px;border-radius:50%}
+  .mark.con, .pt.con{box-shadow:0 0 0 2px #d98a2b;border-radius:50%}
+  .toggle#conbtn{border-color:#e3c79a}
+  input[type=search]{font:inherit;font-size:13px;padding:5px 10px;border:1px solid var(--line);border-radius:7px;width:185px;background:#fff}
+  .facet{font:inherit;font-size:12px;padding:4px 6px;border:1px solid var(--line);border-radius:7px;background:#fff;cursor:pointer}
+  body.m-kjv #ruler{display:none} body.m-kjv #scroll{display:none}
+  body.m-poem #plane{display:none}
+  /* top KJV ruler (poem mode) — aligned to the spine column */
+  #ruler{position:sticky;top:var(--hh);z-index:8;height:44px;background:var(--panel);border-bottom:1px solid var(--line)}
+  #ruler .rulhd{position:absolute;left:26px;top:0;bottom:0;width:calc(var(--specleft) - 40px);display:flex;align-items:center;
+                font-size:10px;letter-spacing:.06em;color:var(--muted);text-transform:uppercase}
+  #rtrack{position:absolute;left:var(--specleft);right:var(--pad);top:0;bottom:0}
+  .rulcap{position:absolute;top:6px;font-size:9px;color:var(--muted);letter-spacing:.09em}
+  .rultick{position:absolute;bottom:0;width:1px;height:6px;background:#c9bda6}
+  .rullbl{position:absolute;bottom:6px;transform:translateX(-50%);font-size:9.5px;color:#8a8073;white-space:nowrap;cursor:pointer}
+  .rullbl:hover{color:var(--accent)}
+  .ruldiv{position:absolute;top:0;bottom:0;width:1px;background:var(--divider);opacity:.7}
+  .ruldiv span{position:absolute;top:1px;left:3px;font-size:8px;color:var(--divider);letter-spacing:.1em;font-weight:600}
+  /* poem-mode rows: name column + inline spine on ONE line */
+  #scroll{position:relative;padding-bottom:60px}
+  #grid{position:absolute;inset:0;pointer-events:none;z-index:0}
+  .gband{position:absolute;top:0;bottom:0;background:var(--band);opacity:.6}
+  .gline{position:absolute;top:0;bottom:0;width:1px;background:#dccfb6}
+  .gdiv{position:absolute;top:0;bottom:0;width:1px;background:var(--divider);opacity:.45}
+  #rows{position:relative;z-index:1}
+  .poemrow{position:absolute;left:0;right:0;height:44px;border-bottom:1px solid var(--line);cursor:pointer}
+  .poemrow:hover{background:#fcfaf5}
+  .prname{position:absolute;left:26px;width:calc(var(--specleft) - 40px);top:50%;transform:translateY(-50%);
+          display:flex;align-items:baseline;gap:9px;overflow:hidden;white-space:nowrap}
+  .prf{color:var(--accent);font-weight:600;font-size:12.5px;font-variant-numeric:tabular-nums;flex:none}
+  .prfl{flex:1;min-width:0;font-weight:500;overflow:hidden;text-overflow:ellipsis}
+  .pryr{color:var(--muted);font-size:11.5px;flex:none;font-variant-numeric:tabular-nums}
+  .hspine{position:absolute;left:var(--specleft);right:var(--pad);top:50%;transform:translateY(-50%);height:22px}
+  .hbase{position:absolute;left:0;right:0;top:50%;height:1px;background:var(--line)}
+  .mark{position:absolute;top:50%;transform:translate(-50%,-50%);cursor:pointer;transition:transform .08s}
+  .mark:hover{transform:translate(-50%,-50%) scale(1.45);z-index:3}
+  .mark.flash{outline:2px solid var(--accent);outline-offset:2px;border-radius:50%}
+  /* scripture-mode: scrollable, drill-down lanes (book -> chapter -> verse) */
+  #plane{position:fixed;left:0;right:0;top:var(--hh);bottom:0;background:var(--bg);display:flex;flex-direction:column}
+  #planetop{flex:none;background:var(--panel);border-bottom:1px solid var(--line)}
+  #crumb{padding:8px 16px 3px;font-size:13px;color:var(--ink)}
+  #crumb a{color:var(--accent);cursor:pointer;text-decoration:none}
+  #crumb a:hover{text-decoration:underline}
+  #crumb .sep{color:var(--muted);margin:0 7px}
+  #planelegend{display:flex;align-items:center;gap:18px;padding:3px 16px 7px;font-size:11.5px;color:var(--muted);flex-wrap:wrap}
+  #planelegend b{color:var(--ink);font-weight:600}
+  .lgbar{display:inline-block;width:110px;height:9px;border-radius:5px;vertical-align:middle;margin:0 7px;
+    background:linear-gradient(to right, rgb(216,164,65), rgb(150,108,92), rgb(59,42,107))}
+  .lgtier svg{vertical-align:middle;margin:0 1px}
+  #timehead{position:relative;height:19px;border-top:1px solid var(--line)}
+  #timeruler{position:absolute;left:var(--lanelabel);right:18px;top:0;bottom:0}
+  #lanes{flex:1;overflow-y:auto;overflow-x:hidden;position:relative}
+  #lanesgrid{position:absolute;left:var(--lanelabel);right:18px;top:0;bottom:0;pointer-events:none;z-index:0}
+  #lanerows{position:relative;z-index:1}
+  .lane{position:relative;display:flex;border-bottom:1px solid #f0ebe1;min-height:48px}
+  .lanelabel{width:var(--lanelabel);flex:none;padding:6px 9px;font-size:12.5px;border-right:1px solid var(--line);
+    display:flex;flex-direction:column;justify-content:center;background:var(--panel)}
+  .lanelabel.drill{cursor:pointer}
+  .lanelabel.drill .lm{color:var(--accent);font-weight:600}
+  .lanelabel.drill:hover{background:#f2eef7}
+  .lanelabel .lm{font-weight:500}
+  .lanelabel .lc{font-size:10px;color:var(--muted);margin-top:1px}
+  .lanestrip{position:relative;flex:1;margin-right:18px}
+  .vline{position:absolute;top:0;bottom:0;width:1px;background:#e6dfd0}
+  .vband{position:absolute;top:0;bottom:0;background:#ece3d2;opacity:.4}
+  .tlab{position:absolute;top:3px;font-size:10px;color:var(--muted);transform:translateX(-50%);font-variant-numeric:tabular-nums}
+  .pt{position:absolute;transform:translate(-50%,-50%);cursor:pointer;transition:opacity .1s}
+  .pt:hover{z-index:6}
+  .pt.flash{outline:2px solid var(--accent);outline-offset:2px;border-radius:50%}
+  .heatcell{position:absolute;top:6px;bottom:6px;border-radius:3px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+  .heatcell:hover{outline:1.5px solid var(--accent);outline-offset:-1px}
+  .hcn{font-size:9.5px;color:#2a2118;font-weight:700}
+  .scursor{position:absolute;top:0;bottom:0;width:1px;background:var(--accent);opacity:.45;pointer-events:none}
+  #lanerows.foc .pt{opacity:.16}
+  #lanerows.foc .pt.hi{opacity:1}
+  #tip{position:fixed;z-index:60;background:#241f18;color:#fff;font-size:11.5px;line-height:1.4;padding:6px 10px;
+       border-radius:7px;pointer-events:none;display:none;max-width:380px;box-shadow:0 4px 14px rgba(0,0,0,.22)}
+  #tip .t1{font-weight:600;margin-bottom:2px} #tip .t2{color:#d8cdbb;font-size:11px}
+  #tip .ti{white-space:nowrap;overflow:hidden;text-overflow:ellipsis} #tip .ti b{color:#fff;font-weight:600}
+  #tip .ti i{color:#cbbfae} #tip .tf{color:#9a8f7e} #tip .tmore{color:#9a8f7e;font-style:italic;margin-top:1px}
+  /* drawer */
+  #drawer{position:fixed;top:0;right:0;width:460px;max-width:93vw;height:100vh;background:var(--panel);
+          border-left:1px solid var(--line);box-shadow:-8px 0 28px rgba(0,0,0,.10);z-index:50;
+          transform:translateX(100%);transition:transform .18s ease;overflow:auto;padding:18px 22px 70px}
+  #drawer.open{transform:translateX(0)}
+  #scrim{position:fixed;inset:0;background:rgba(20,16,10,.18);z-index:49;opacity:0;pointer-events:none;transition:opacity .18s}
+  #scrim.open{opacity:1;pointer-events:auto}
+  #drawer .x{position:absolute;top:11px;right:14px;cursor:pointer;color:var(--muted);font-size:22px;line-height:1}
+  #drawer h3{margin:2px 40px 3px 0;font-size:16px}
+  .nlabel{font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:16px 0 5px;display:flex;align-items:center;gap:7px}
+  .nlabel::after{content:'';flex:1;height:1px;background:var(--line)}
+  .passage{border:1px solid var(--line);border-radius:9px;overflow:hidden}
+  .pv{padding:6px 12px;font-size:13.5px;line-height:1.5;border-bottom:1px solid #f0ebe1;color:#6d6457}
+  .pv:last-child{border-bottom:0}
+  .pv.tgt{background:#f6f0e2;color:var(--ink);font-weight:500}
+  .pv .vn{color:var(--muted);font-size:11px;font-variant-numeric:tabular-nums;margin-right:7px}
+  .poemtext{white-space:pre-wrap;font:14px/1.55 Georgia,'Times New Roman',serif;color:#2c2820;
+            background:#faf7f0;border:1px solid var(--line);border-radius:9px;padding:12px 15px}
+  .note{font-size:13.5px;line-height:1.62;color:#33302a}
+  .kv{font-size:12.5px;color:var(--muted);margin:9px 0 0}
+  .badge{font-size:10px;text-transform:uppercase;letter-spacing:.03em;padding:1px 7px;border-radius:4px;color:#fff;font-weight:600}
+  .lowconf{font-size:9.5px;color:#a06a2a;border:1px solid #e3c79a;border-radius:4px;padding:0 4px}
+  .other a{display:inline-block;margin:2px 6px 2px 0;color:var(--accent);text-decoration:none;cursor:pointer;
+           border:1px solid var(--line);border-radius:14px;padding:1px 9px;font-size:12.5px}
+  .other a:hover{background:#f2eef7}
+  .dpoem{font-size:12.5px;color:var(--muted);margin-bottom:11px}
+  .echo{margin:9px 0;padding:9px 11px 5px;border:1px solid var(--line);border-radius:9px;cursor:pointer;transition:background .1s}
+  .echo:hover{background:#f7f3ec}
+  .echo .drill{float:right;color:var(--muted);font-size:12px}
+  .erow{display:flex;align-items:center;gap:8px;margin-bottom:5px;flex-wrap:wrap}
+  .elink{font-size:13.5px;color:var(--accent);font-weight:600}
+  .emuted{font-size:11.5px;color:var(--muted)}
+  .srctag{font-size:9.5px;text-transform:uppercase;letter-spacing:.04em;color:#6b6257;border:1px solid var(--line);border-radius:4px;padding:0 5px}
+  .contag{font-size:9.5px;color:#9a5a12;background:#fbf0dc;border:1px solid #e3c79a;border-radius:4px;padding:0 5px}
+  .echo.econ{border-color:#e3c79a;box-shadow:0 0 0 1px #e3c79a}
+  .enote{font-size:12.5px;line-height:1.55;color:#4a443c;margin-top:6px}
+  .moreech{font-size:12.5px;color:var(--accent);cursor:pointer;margin:11px 2px;user-select:none}
+  .moreech:hover{text-decoration:underline}
+  .backlink{font-size:12.5px;color:var(--accent);cursor:pointer;margin:0 0 9px;display:inline-block}
+  .backlink:hover{text-decoration:underline}
+  a.anchor{color:var(--accent);font-size:12.5px;text-decoration:none}
+  a.anchor:hover{text-decoration:underline}
+</style>
+</head>
+<body class="m-poem">
+<header>
+  <h1>Emily Dickinson<span class="rm"> — a reference map of her allusions</span></h1>
+  <div class="sub" id="sub"></div>
+  <div class="stats" id="stats"></div>
+  <div class="controls" id="controls"></div>
+</header>
+<div id="ruler"><div class="rulhd">Poem</div><div id="rtrack"></div></div>
+<div id="scroll"><div id="grid"></div><div id="rows"></div></div>
+<div id="plane">
+  <div id="planetop">
+    <div id="crumb"></div>
+    <div id="planelegend"></div>
+    <div id="timehead"><div id="timeruler"></div></div>
+  </div>
+  <div id="lanes"><div id="lanesgrid"></div><div id="lanerows"></div></div>
+</div>
+<div id="tip"></div>
+<div id="scrim" onclick="closeDrawer()"></div>
+<div id="drawer"><span class="x" onclick="closeDrawer()">×</span><div id="dbody"></div></div>
+
+<script id="app" type="text/plain">
+const D=window.ED_DATA, TOTAL=D.kjv_total, BOOKS=D.kjv_books;
+const BMAP={}; BOOKS.forEach(b=>BMAP[b.key]=b);
+const NT_FIRST=BOOKS.find(b=>b.name==='Matthew');
+const FMAX=Math.max(...D.poems.map(p=>+p.franklin.slice(1)));
+const YMIN=1850, YMAX=1886;
+const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const slug=s=>s.replace(/[^a-zA-Z0-9]/g,'_');
+const yPct=seq=>((seq-0.5)/TOTAL)*100;
+// By-poem x-axis domain: whole KJV, or just the faceted book (chapter/verse scale)
+function xDomain(){ if(mode==='poem'&&facetBook){const b=BMAP[facetBook];return [b.start-0.5,b.end+0.5];} return [0.5,TOTAL+0.5]; }
+function xpct(seq){const d=xDomain();return ((seq-d[0])/(d[1]-d[0]))*100;}
+let mode='poem', xaxis='year', visTiers=new Set(['strong','saturation']), showPlausible=false, showOther=false, query='';
+let facetBook=null, facetDecade=null, heatOn=true, contestedOnly=false;
+const HEAT_MIN=12;   // a lane with more refs than this renders as time-binned heat cells
+// initial state from URL (?view=poem|kjv & x=year|franklin & tiers=strong,plausible,…) — deep-linkable + screenshot-able
+{const u=new URLSearchParams(location.search);
+ if(u.get('view')==='kjv'||u.get('view')==='poem')mode=u.get('view');
+ if(u.get('x')==='franklin'||u.get('x')==='year')xaxis=u.get('x');
+ if(u.has('tiers')){const ts=new Set(u.get('tiers').split(','));visTiers=new Set([...ts].filter(t=>t==='strong'||t==='saturation'));
+   showPlausible=ts.has('plausible');showOther=['set-aside','register','commonplace','rejected','other'].some(t=>ts.has(t));}}
+
+function markFill(t){return css(t==='strong'?'--m-strong':t==='saturation'?'--m-saturation':t==='plausible'?'--m-plausible':'--m-other');}
+function tierVisible(t){if(t==='strong'||t==='saturation')return visTiers.has(t);if(t==='plausible')return showPlausible;return showOther;}
+const tierRank={strong:0,saturation:1,plausible:2,commonplace:3,register:4,'set-aside':5,rejected:6};
+let srcVis=new Set(['ours','chatgpt']);
+function srcFamily(ab){return !ab?'other':ab.indexOf('ed-notes')===0?'ours':ab==='chatgpt-notes'?'chatgpt':'other';}
+const SRC_LBL={ours:'ours',chatgpt:'ChatGPT'};
+const SRC_EDGES={ours:0,chatgpt:0,other:0}; D.poems.forEach(p=>p.edges.forEach(e=>SRC_EDGES[srcFamily(e.asserted_by)]++));
+// tier marks: By-poem colors by tier; the plane colors by YEAR (col passed in) and lets shape carry tier
+function markSVG(t,col){const f=col||markFill(t);
+  if(t==='saturation')return `<svg width="14" height="14"><circle cx="7" cy="7" r="5.2" fill="none" stroke="${f}" stroke-width="2.4"/></svg>`;
+  const r=t==='strong'?6:t==='plausible'?4.4:3.4, d=Math.ceil(r*2+2), op=t==='strong'?1:t==='plausible'?.92:.62;
+  return `<svg width="${d}" height="${d}"><circle cx="${d/2}" cy="${d/2}" r="${r}" fill="${f}" opacity="${op}"/></svg>`;}
+function lerp(a,b,t){return a.map((v,i)=>Math.round(v+(b[i]-v)*t));}
+function eraColor(year){if(!year)return '#b9b2a6';const t=Math.min(1,Math.max(0,(year-YMIN)/(YMAX-YMIN)));
+  const c=lerp([216,164,65],[59,42,107],t);return `rgb(${c[0]},${c[1]},${c[2]})`;}
+
+function loci(p){
+  const NP=D.notes_pool, rs=s=>s==null?null:NP[s];   // resolve pooled note/gloss indices -> text
+  const g={}; p.edges.forEach(e0=>{const e={...e0,note:rs(e0.note),gloss:rs(e0.gloss)};
+    const k=(e.note||e.gloss||'')+'|'+e.book;(g[k]=g[k]||[]).push(e);});
+  const runs=[]; Object.values(g).forEach(es=>{es.sort((a,b)=>a.seq-b.seq);let r=[es[0]];
+    for(let i=1;i<es.length;i++){if(es[i].seq===r[r.length-1].seq+1)r.push(es[i]);else{runs.push(r);r=[es[i]];}}runs.push(r);});
+  return runs.map(es=>{const f=es[0],l=es[es.length-1];
+    const label=es.length===1?f.ref:f.chapter===l.chapter?`${f.book_name} ${f.chapter}:${f.verse}–${l.verse}`
+                                                          :`${f.book_name} ${f.chapter}:${f.verse}–${l.chapter}:${l.verse}`;
+    return {seq:f.seq,seqFrom:f.seq,seqTo:l.seq,target_id:f.target_id,book:f.book,book_name:f.book_name,chapter:f.chapter,verse:f.verse,
+            strength:f.strength,relation:f.relation,
+            note:f.note,gloss:f.gloss,asserted_by:f.asserted_by,source:srcFamily(f.asserted_by),md_anchor:f.md_anchor,
+            contested:es.some(e=>contestedTarget(p.franklin,e.target_id)),
+            parse_conf:es.some(e=>e.parse_conf==='parsed-low')?'parsed-low':'parsed-high',label};});}
+// build the ±2-verse passage on demand from the shared verse map (clamped to the book)
+function ctxFor(L){const b=BMAP[L.book],out=[];
+  for(let s=Math.max(b.start,L.seqFrom-2);s<=Math.min(b.end,L.seqTo+2);s++){const v=D.verses[s];
+    if(v)out.push({ref:v.r,text:v.t,target:s>=L.seqFrom&&s<=L.seqTo});}
+  return out;}
+const vtext=L=>(D.verses[L.seqFrom]||{}).t||'';   // target verse text (for search/snippets)
+// "contested": ours and ChatGPT both speak to a (poem, verse) but land on opposite
+// sides of the press/decline line (one strong/saturation/plausible/commonplace, the
+// other register/set-aside/rejected) — i.e. one presses what the other waves off.
+const pressed=t=>tierRank[t]<=3;
+const TSRC=new Map();
+D.poems.forEach(p=>{const m={};p.edges.forEach(e=>{const fam=srcFamily(e.asserted_by);
+  if(fam!=='ours'&&fam!=='chatgpt')return; const cur=(m[e.target_id]=m[e.target_id]||{});
+  if(cur[fam]==null||tierRank[e.strength]<tierRank[cur[fam]])cur[fam]=e.strength;});TSRC.set(p.franklin,m);});
+function contestedTarget(franklin,tid){const s=(TSRC.get(franklin)||{})[tid];
+  return !!(s&&s.ours&&s.chatgpt&&pressed(s.ours)!==pressed(s.chatgpt));}
+let CONTESTED_N=0; D.poems.forEach(p=>{const m=TSRC.get(p.franklin)||{};
+  for(const tid in m)if(contestedTarget(p.franklin,tid))CONTESTED_N++;});
+const POEMLOCI=new Map(); D.poems.forEach(p=>POEMLOCI.set(p.franklin,loci(p)));
+const REF_BOOKS=[...new Set(D.poems.flatMap(p=>p.edges.map(e=>e.book)))].sort((a,b)=>BMAP[a].start-BMAP[b].start);
+const poemVis=p=>POEMLOCI.get(p.franklin).filter(L=>tierVisible(L.strength)&&srcVis.has(L.source)&&(!facetBook||L.book===facetBook)&&(!contestedOnly||L.contested));
+const yearPass=p=>!facetDecade||(p.year&&Math.floor(p.year/10)*10===facetDecade);
+function refBookCentroids(){
+  const acc={};
+  D.poems.forEach(p=>poemVis(p).forEach(L=>{const a=acc[L.book]||(acc[L.book]={sum:0,n:0,name:L.book_name});a.sum+=L.seq;a.n++;}));
+  return Object.entries(acc).map(([key,a])=>({key,name:abbr(a.name),frac:(a.sum/a.n)/TOTAL,seq:Math.round(a.sum/a.n)})).sort((x,y)=>x.frac-y.frac);
+}
+const ABBR={Genesis:'Gen',Exodus:'Exod',Leviticus:'Lev',Numbers:'Num',Deuteronomy:'Deut',Joshua:'Josh',
+  Judges:'Judg',Samuel:'Sam',Kings:'Kgs',Chronicles:'Chr',Nehemiah:'Neh',Esther:'Esth',Psalms:'Ps',
+  Proverbs:'Prov',Ecclesiastes:'Eccl',Solomon:'Song',Isaiah:'Isa',Jeremiah:'Jer',Lamentations:'Lam',
+  Ezekiel:'Ezek',Daniel:'Dan',Hosea:'Hos',Obadiah:'Obad',Habakkuk:'Hab',Zephaniah:'Zeph',Haggai:'Hag',
+  Zechariah:'Zech',Malachi:'Mal',Matthew:'Matt',Romans:'Rom',Corinthians:'Cor',Galatians:'Gal',
+  Ephesians:'Eph',Philippians:'Phil',Colossians:'Col',Thessalonians:'Thess',Timothy:'Tim',
+  Philemon:'Phlm',Hebrews:'Heb',Revelation:'Rev',Peter:'Pet'};
+function abbr(n){const ps=n.split(' '),num=ps.length>1&&/^[123]$/.test(ps[0])?ps[0]:'';const w=ps[ps.length-1];return num+(ABBR[w]||w.slice(0,4));}
+function jit(s){let h=2166136261;for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619);}return ((h>>>0)%1000)/1000-0.5;}
+
+function renderStats(){const s=D.stats;
+  const items=[`<b>${s.annotated_poems}</b> poems`,`<b>${s.total_edges.toLocaleString()}</b> references`,
+               `<b>${s.kjv_verses.toLocaleString()}</b> KJV verses`,`<b>${s.review_queue.toLocaleString()}</b> in review`];
+  document.getElementById('stats').innerHTML=items.join('<span class="dot">·</span>');}
+
+function renderControls(){
+  const mk=t=>`<span class="mk">${markSVG(t)}</span>`;
+  const bs=D.stats.by_strength, c=document.getElementById('controls');
+  c.innerHTML=
+   `<span class="seg"><button data-m="poem" class="${mode==='poem'?'active':''}">By poem</button>`+
+   `<button data-m="kjv" class="${mode==='kjv'?'active':''}">By scripture</button></span>`+
+   (mode==='kjv'?`<span class="seg"><button data-x="year" class="${xaxis==='year'?'active':''}">Year</button>`+
+     `<button data-x="franklin" class="${xaxis==='franklin'?'active':''}">F#</button></span>`:'')+
+   `<span class="toggle" data-t="strong">${mk('strong')}strong <b>${bs.strong}</b></span>`+
+   `<span class="toggle" data-t="saturation">${mk('saturation')}saturation <b>${bs.saturation}</b></span>`+
+   `<span class="toggle off" data-t="plausible">${mk('plausible')}plausible <b>${bs.plausible}</b></span>`+
+   `<span class="toggle off" data-t="other">${mk('other')}set-aside · register <b>${bs['set-aside']+bs.register+bs.commonplace}</b></span>`+
+   `<span class="srcsep"></span>`+
+   `<span class="toggle src${srcVis.has('ours')?'':' off'}" data-s="ours">ours <b>${SRC_EDGES.ours}</b></span>`+
+   `<span class="toggle src${srcVis.has('chatgpt')?'':' off'}" data-s="chatgpt">ChatGPT <b>${SRC_EDGES.chatgpt}</b></span>`+
+   `<span class="srcsep"></span>`+
+   `<select id="fbook" class="facet"><option value="">All books</option>`+
+     REF_BOOKS.map(k=>`<option value="${k}"${facetBook===k?' selected':''}>${BMAP[k].name}</option>`).join('')+`</select>`+
+   `<select id="fdec" class="facet"><option value="">All years</option>`+
+     [1850,1860,1870,1880].map(d=>`<option value="${d}"${facetDecade===d?' selected':''}>${d}s</option>`).join('')+`</select>`+
+   (mode==='kjv'?`<span class="toggle${heatOn?'':' off'}" id="heatbtn">▦ heat</span>`:'')+
+   `<span class="toggle${contestedOnly?'':' off'}" id="conbtn" title="verses where ours & ChatGPT disagree (one presses, the other waves off)">⚡ contested <b>${CONTESTED_N}</b></span>`+
+   `<span style="flex:1"></span><input type="search" id="q" value="${query}" placeholder="filter poems / books / verses…">`;
+  c.querySelectorAll('.seg button[data-m]').forEach(b=>b.onclick=()=>{mode=b.dataset.m;renderControls();render();scrollTo(0,0);});
+  c.querySelectorAll('.seg button[data-x]').forEach(b=>b.onclick=()=>{xaxis=b.dataset.x;renderControls();render();});
+  c.querySelectorAll('.toggle[data-t]').forEach(t=>t.onclick=()=>{const k=t.dataset.t;
+    if(k==='strong'||k==='saturation')visTiers.has(k)?visTiers.delete(k):visTiers.add(k);
+    else if(k==='plausible')showPlausible=!showPlausible; else showOther=!showOther;
+    t.classList.toggle('off');render();});
+  c.querySelectorAll('.toggle[data-s]').forEach(t=>t.onclick=()=>{const s=t.dataset.s;
+    srcVis.has(s)?srcVis.delete(s):srcVis.add(s); t.classList.toggle('off');render();});
+  document.getElementById('fbook').onchange=e=>{facetBook=e.target.value||null;
+    if(mode==='kjv')scope=facetBook?{level:'book',book:facetBook,book_name:BMAP[facetBook].name,chapter:null}:{level:'all',book:null,book_name:null,chapter:null};
+    render();};
+  document.getElementById('fdec').onchange=e=>{facetDecade=+e.target.value||null;render();};
+  const hb=document.getElementById('heatbtn'); if(hb)hb.onclick=()=>{heatOn=!heatOn;hb.classList.toggle('off');render();};
+  document.getElementById('conbtn').onclick=()=>{contestedOnly=!contestedOnly;document.getElementById('conbtn').classList.toggle('off');render();};
+  document.getElementById('q').oninput=e=>{query=e.target.value.toLowerCase();render();};
+  document.getElementById('sub').textContent = mode==='kjv'
+    ? 'Scripture × time. Vertical = the KJV (Genesis → Revelation); horizontal = when ED wrote; color = the year. A vertical band is one book across her career; hover a dot to light up that poem, click to read both.'
+    : 'The poems are the spine, by Franklin number. Each row maps where in the KJV it reaches, Genesis → Revelation.';
+}
+
+function render(){
+  document.body.className='m-'+mode;
+  document.getElementById('rows').innerHTML='';document.getElementById('grid').innerHTML='';
+  if(mode==='kjv') renderPlane(); else { renderPoem(); renderRuler(); }
+}
+
+/* ---------- BY POEM: name column + inline horizontal KJV spine (virtualized) ---------- */
+const ROWH=44; let PS_POEM=[];
+function poemRowHTML(p,i){
+  const ls=poemVis(p), yr=p.year?(p.year_circa?'c.'+p.year:''+p.year):'—';
+  const marks=ls.map(L=>`<div class="mark${L.source==='chatgpt'?' cg':''}${L.contested?' con':''}" id="m_${p.franklin}_${slug(L.label)}" data-f="${p.franklin}" `+
+      `data-l="${encodeURIComponent(L.label)}" title="${L.label} — ${L.strength}" style="left:${xpct(L.seq)}%">${markSVG(L.strength)}</div>`).join('');
+  return `<div class="poemrow" id="P${p.franklin}" data-f="${p.franklin}" style="top:${i*ROWH}px">`+
+    `<div class="prname"><span class="prf">${p.franklin}</span><span class="prfl">${p.first_line}</span><span class="pryr">${yr}</span></div>`+
+    `<div class="hspine"><div class="hbase"></div>${marks}</div></div>`;
+}
+function renderPoem(){
+  let ps=D.poems.filter(p=>poemVis(p).length&&yearPass(p));
+  if(query)ps=ps.filter(p=>(p.franklin+' '+p.first_line+' '+
+     poemVis(p).map(L=>L.label+' '+vtext(L)).join(' ')).toLowerCase().includes(query));
+  PS_POEM=ps;
+  const grid=document.getElementById('grid');
+  const gx=frac=>`calc(var(--specleft) + (100% - var(--specleft) - var(--pad))*${frac})`;
+  if(facetBook){   // chapter bands within the drilled book
+    const b=BMAP[facetBook], chs=D.kjv_chapters[facetBook]||[];
+    chs.forEach(([c,s],i)=>{ if(i%2)return; const nextS=(i+1<chs.length?chs[i+1][1]:b.end+1);
+      const l=xpct(s-0.5)/100, r=xpct(nextS-0.5)/100;
+      grid.insertAdjacentHTML('beforeend',`<div class="gband" style="left:${gx(l)};width:calc((100% - var(--specleft) - var(--pad))*${r-l})"></div>`);});
+  } else {
+    BOOKS.forEach((b,i)=>{ if(i%2) return; const l=(b.start-0.5)/TOTAL, r=(b.end+0.5)/TOTAL;
+      grid.insertAdjacentHTML('beforeend',`<div class="gband" style="left:${gx(l)};width:calc((100% - var(--specleft) - var(--pad))*${r-l})"></div>`);});
+    refBookCentroids().forEach(c=>grid.insertAdjacentHTML('beforeend',`<div class="gline" style="left:${gx(c.frac)}"></div>`));
+    if(NT_FIRST)grid.insertAdjacentHTML('beforeend',`<div class="gdiv" style="left:${gx((NT_FIRST.start-0.5)/TOTAL)}"></div>`);
+  }
+  const rows=document.getElementById('rows');
+  rows.style.height=(ps.length*ROWH)+'px';
+  if(!ps.length){rows.innerHTML='<div style="padding:40px 30px;color:var(--muted)">No poems match these filters.</div>';return;}
+  renderPoemWindow();
+}
+function renderPoemWindow(){            // render only the rows in (or near) the viewport
+  if(mode!=='poem')return;
+  const ps=PS_POEM, rows=document.getElementById('rows'); if(!ps.length)return;
+  const above=Math.max(0,-rows.getBoundingClientRect().top);
+  const start=Math.max(0,Math.floor(above/ROWH)-6);
+  const end=Math.min(ps.length,start+Math.ceil(innerHeight/ROWH)+12);
+  rows.innerHTML='';
+  let html=''; for(let i=start;i<end;i++) html+=poemRowHTML(ps[i],i);
+  rows.innerHTML=html;
+  rows.querySelectorAll('.mark').forEach(el=>el.onclick=e=>{e.stopPropagation();const p=D.poems.find(x=>x.franklin===el.dataset.f);
+    openDrawer(POEMLOCI.get(p.franklin).find(x=>x.label===decodeURIComponent(el.dataset.l)),p);});
+  rows.querySelectorAll('.poemrow').forEach(row=>row.onclick=()=>openPoem(D.poems.find(x=>x.franklin===row.dataset.f)));
+}
+let _rowRAF=0;
+addEventListener('scroll',()=>{if(mode!=='poem')return; if(_rowRAF)return;
+  _rowRAF=requestAnimationFrame(()=>{_rowRAF=0;renderPoemWindow();});},{passive:true});
+function renderRuler(){
+  const rt=document.getElementById('rtrack');rt.innerHTML='';
+  const w=rt.clientWidth||900;
+  if(facetBook){   // drilled into a book: chapter scale
+    const b=BMAP[facetBook], chs=D.kjv_chapters[facetBook]||[];
+    rt.insertAdjacentHTML('beforeend',`<span class="rulcap" style="left:0">${b.name} ch.1</span>`+
+      (chs.length?`<span class="rulcap" style="right:0">ch.${chs[chs.length-1][0]}</span>`:''));
+    const minGap=22/w; let lastX=-9;
+    chs.forEach(([c,s])=>{const fr=xpct(s)/100; if(fr-lastX<minGap)return; lastX=fr;
+      rt.insertAdjacentHTML('beforeend',`<div class="rultick" style="left:${fr*100}%"></div>`+
+        `<div class="rullbl" style="left:${fr*100}%">${c}</div>`);});
+    return;
+  }
+  rt.insertAdjacentHTML('beforeend',`<span class="rulcap" style="left:0">GENESIS</span><span class="rulcap" style="right:0">REVELATION</span>`);
+  if(NT_FIRST)rt.insertAdjacentHTML('beforeend',`<div class="ruldiv" style="left:${xpct(NT_FIRST.start-0.5)}%"><span>NT</span></div>`);
+  const minGap=34/w; let lastX=-9;
+  refBookCentroids().forEach(c=>{ if(c.frac-lastX<minGap)return; lastX=c.frac;
+    rt.insertAdjacentHTML('beforeend',`<div class="rultick" style="left:${c.frac*100}%"></div>`+
+      `<div class="rullbl" data-seq="${c.seq}" style="left:${c.frac*100}%">${c.name}</div>`);});
+  rt.querySelectorAll('.rullbl').forEach(l=>l.onclick=()=>{const target=+l.dataset.seq;let best=null,bd=1e9;
+    document.querySelectorAll('.mark').forEach(m=>{const f=parseFloat(m.style.left)/100*TOTAL;const d=Math.abs(f-target);if(d<bd){bd=d;best=m;}});
+    if(best)best.closest('.poemrow').scrollIntoView({behavior:'smooth',block:'center'});});
+}
+
+/* ---------- BY SCRIPTURE: 2D scripture × time plane (color = year) ---------- */
+function xNorm(p){if(xaxis==='franklin')return (+p.franklin.slice(1))/FMAX;
+  return p.year?Math.min(1,Math.max(0,(p.year-YMIN)/(YMAX-YMIN))):null;}
+let scope={level:'all',book:null,book_name:null,chapter:null};
+function setScope(lvl){
+  if(lvl===0){scope={level:'all',book:null,book_name:null,chapter:null}; if(facetBook){facetBook=null;renderControls();}}
+  else if(lvl===1)scope={level:'book',book:scope.book,book_name:scope.book_name,chapter:null};
+  document.getElementById('lanes').scrollTop=0; renderPlane();
+}
+function drill(k){
+  if(scope.level==='all'){scope={level:'book',book:k,book_name:BMAP[k].name,chapter:null}; if(facetBook!==k){facetBook=k;renderControls();}}
+  else if(scope.level==='book'){scope={...scope,level:'chapter',chapter:+k};}
+  document.getElementById('lanes').scrollTop=0; renderPlane();
+}
+function renderLegend(){
+  const tk=t=>markSVG(t,'#6b6257');
+  document.getElementById('planelegend').innerHTML=
+    `<span><b>↔</b> ${xaxis==='year'?'composition year':'Franklin #'} &nbsp;·&nbsp; color = year <span class="lgbar"></span> <b>1850</b>…<b>1886</b></span>`+
+    `<span class="lgtier">shape: ${tk('strong')} strong &nbsp; ${tk('saturation')} saturation &nbsp; ${tk('plausible')} plausible &nbsp; ${tk('set-aside')} other</span>`+
+    `<span>source: <b>•</b> ours &nbsp; <span style="display:inline-block;width:9px;height:9px;border:1.4px dotted #8a8073;border-radius:50%;vertical-align:middle"></span> ChatGPT</span>`;
+}
+function renderCrumb(){
+  let h=`<a onclick="setScope(0)">All KJV</a>`;
+  if(scope.level!=='all')h+=`<span class="sep">›</span>`+(scope.level==='chapter'?`<a onclick="setScope(1)">${scope.book_name}</a>`:`<span>${scope.book_name}</span>`);
+  if(scope.level==='chapter')h+=`<span class="sep">›</span><span>Chapter ${scope.chapter}</span>`;
+  h+=`<span class="sep">·</span><span style="color:var(--muted);font-size:12px">${scope.level==='all'?'click a book to drill in':scope.level==='book'?'click a chapter to drill in':'verse level'}</span>`;
+  document.getElementById('crumb').innerHTML=h;
+}
+function timeXY(){ // returns {xn(p), ticks:[{x,label}], band:[x,w]|null}
+  if(xaxis==='year'){const yx=y=>((y-YMIN)/(YMAX-YMIN))*100;
+    return {ticks:[1850,1860,1870,1880,1886].map(y=>({x:yx(y),label:y})), band:[yx(1862),yx(1866)-yx(1862)]};}
+  const t=[];for(let f=300;f<=FMAX;f+=300)t.push({x:f/FMAX*100,label:'F'+f});
+  return {ticks:t, band:null};
+}
+function renderTimeRuler(){
+  const tr=document.getElementById('timeruler');tr.innerHTML='';
+  timeXY().ticks.forEach(t=>tr.insertAdjacentHTML('beforeend',`<div class="tlab" style="left:${t.x}%">${t.label}</div>`));
+}
+function renderLanesGrid(){
+  const g=document.getElementById('lanesgrid');g.innerHTML='';const tx=timeXY();
+  if(tx.band)g.insertAdjacentHTML('beforeend',`<div class="vband" style="left:${tx.band[0]}%;width:${tx.band[1]}%"></div>`);
+  tx.ticks.forEach(t=>g.insertAdjacentHTML('beforeend',`<div class="vline" style="left:${t.x}%"></div>`));
+}
+function planeUnits(){
+  const all=[]; const q=query;
+  D.poems.forEach(p=>{ if(!yearPass(p))return; poemVis(p).forEach(L=>{
+    if(scope.level==='book'&&L.book!==scope.book)return;
+    if(scope.level==='chapter'&&(L.book!==scope.book||L.chapter!==scope.chapter))return;
+    if(q && !(p.franklin+' '+p.first_line).toLowerCase().includes(q) &&
+       !(L.label+' '+vtext(L)).toLowerCase().includes(q)) return;
+    all.push({L,p});})});
+  const groups=new Map(), keyOf=({L})=>scope.level==='all'?L.book:scope.level==='book'?L.chapter:L.verse;
+  all.forEach(o=>{const k=keyOf(o);(groups.get(k)||groups.set(k,[]).get(k)).push(o);});
+  let units=[...groups.entries()];
+  units.sort(scope.level==='all'?(a,b)=>BMAP[a[0]].start-BMAP[b[0]].start:(a,b)=>a[0]-b[0]);
+  return units;
+}
+const DBINS=44;   // fine bins for the density-stream area
+function densBins(items){const b=new Array(DBINS).fill(0);
+  items.forEach(({p})=>{const xn=xNorm(p); if(xn==null)return; b[Math.min(DBINS-1,Math.max(0,Math.floor(xn*DBINS)))]++;}); return b;}
+function streamSVG(b,gmax,gid){const H=100,amp=84,base=H-1;
+  // smooth-ish area: a point per bin, mirrored baseline; straight segments read clean at 44 bins
+  let d=`M0,${base}`;
+  for(let i=0;i<DBINS;i++) d+=` L${(i+0.5).toFixed(2)},${(base-(b[i]/gmax)*amp).toFixed(2)}`;
+  d+=` L${DBINS},${base} Z`;
+  return `<svg viewBox="0 0 ${DBINS} ${H}" preserveAspectRatio="none" style="position:absolute;inset:0;width:100%;height:100%">`+
+    `<defs><linearGradient id="${gid}" x1="0" x2="1" y1="0" y2="0">`+
+    `<stop offset="0" stop-color="${eraColor(YMIN)}"/><stop offset=".5" stop-color="${eraColor((YMIN+YMAX)/2)}"/>`+
+    `<stop offset="1" stop-color="${eraColor(YMAX)}"/></linearGradient></defs>`+
+    `<path d="${d}" fill="url(#${gid})" opacity=".62"/><path d="${d}" fill="none" stroke="${eraColor((YMIN+YMAX)/2)}" stroke-opacity=".5" stroke-width=".5"/></svg>`;}
+function renderPlane(){
+  renderLegend(); renderCrumb(); renderTimeRuler(); renderLanesGrid();
+  const rows=document.getElementById('lanerows'); rows.innerHTML=''; rows.classList.remove('foc');
+  const units=planeUnits();
+  // global density max across the dense lanes, so stream heights are comparable book-to-book
+  let gmax=1; const UB=new Map();
+  if(heatOn) units.forEach(([k,items])=>{ if(items.length>HEAT_MIN){const b=densBins(items);UB.set(k,b);gmax=Math.max(gmax,...b);} });
+  units.forEach(([k,items])=>{
+    const n=items.length;
+    const lab = scope.level==='all' ? {main:BMAP[k].name, drill:true}
+              : scope.level==='book' ? {main:'Chapter '+k, drill:true}
+              : {main:scope.book_name+' '+scope.chapter+':'+k, drill:false};
+    const lane=document.createElement('div'); lane.className='lane';
+    lane.innerHTML=`<div class="lanelabel${lab.drill?' drill':''}" data-k="${k}"><div class="lm">${lab.main}</div>`+
+      `<div class="lc">${n} ref${n>1?'s':''}</div></div><div class="lanestrip"></div>`;
+    const strip=lane.querySelector('.lanestrip');
+    if(heatOn && items.length>HEAT_MIN){            // dense lane -> smooth era-colored density stream
+      const bins=UB.get(k);
+      strip.innerHTML=streamSVG(bins,gmax,'g'+slug(String(k)))+`<div class="scursor" style="display:none"></div>`;
+      const cur=strip.querySelector('.scursor');
+      strip.onmousemove=ev=>{const r=strip.getBoundingClientRect();const frac=Math.min(1,Math.max(0,(ev.clientX-r.left)/r.width));
+        const bi=Math.min(DBINS-1,Math.floor(frac*DBINS));
+        const here=items.filter(({p})=>{const x=xNorm(p);return x!=null&&Math.min(DBINS-1,Math.floor(x*DBINS))===bi;})
+          .sort((a,b)=>tierRank[a.L.strength]-tierRank[b.L.strength]||a.L.seq-b.L.seq);
+        const val=xaxis==='year'?'c.'+Math.round(YMIN+frac*(YMAX-YMIN)):'F'+Math.round(frac*FMAX);
+        const rows=here.slice(0,8).map(({L,p})=>`<div class="ti"><b>${L.label}</b> · <i>${p.first_line}</i> <span class="tf">${p.franklin}${L.source==='chatgpt'?' · GPT':''}</span></div>`).join('')
+          +(here.length>8?`<div class="tmore">+${here.length-8} more near here</div>`:'');
+        cur.style.display='block';cur.style.left=(frac*100)+'%';
+        showTip(ev,`${lab.main} — ${val} · ${here.length} ref${here.length===1?'':'s'}`,rows||'<div class="tmore">— nothing in this year —</div>');};
+      strip.onmouseleave=()=>{cur.style.display='none';hideTip();};
+      if(lab.drill)strip.style.cursor='pointer',strip.onclick=()=>drill(k);
+    } else {
+      items.forEach(({L,p})=>{
+        const xn=xNorm(p); if(xn===null)return;
+        const left=Math.min(99.5,Math.max(0.5,xn*100+jit(p.franklin)*1.4));
+        const top=Math.min(86,Math.max(14,50+jit(p.franklin+L.label)*58));
+        const col=eraColor(p.year), yr=p.year?(p.year_circa?'c.'+p.year:''+p.year):'—';
+        const el=document.createElement('div'); el.className='pt'+(L.source==='chatgpt'?' cg':'')+(L.contested?' con':'');
+        el.id='pt_'+p.franklin+'_'+slug(L.label); el.dataset.f=p.franklin;
+        el.style.left=left+'%'; el.style.top=top+'%'; el.innerHTML=markSVG(L.strength,col);
+        el.onmouseenter=()=>focusPoem(p.franklin);
+        el.onmousemove=ev=>showTip(ev,p.first_line,`${L.label} · ${L.strength} · ${p.franklin} · ${yr}`);
+        el.onmouseleave=()=>{clearFocus();hideTip();};
+        el.onclick=()=>openDrawer(L,p);
+        strip.appendChild(el);});
+    }
+    rows.appendChild(lane);
+  });
+  rows.querySelectorAll('.lanelabel.drill').forEach(el=>el.onclick=()=>drill(el.dataset.k));
+  if(!units.length)rows.innerHTML='<div style="padding:40px 26px;color:var(--muted)">No references here at the current filters.</div>';
+}
+function focusPoem(f){const pts=document.getElementById('lanerows');pts.classList.add('foc');
+  pts.querySelectorAll('.pt[data-f="'+f+'"]').forEach(e=>e.classList.add('hi'));}
+function clearFocus(){const pts=document.getElementById('lanerows');pts.classList.remove('foc');
+  pts.querySelectorAll('.pt.hi').forEach(e=>e.classList.remove('hi'));}
+const tip=document.getElementById('tip');
+function showTip(ev,t1,t2){tip.style.display='block';tip.innerHTML=`<div class="t1">${t1}</div><div class="t2">${t2}</div>`;
+  tip.style.left=Math.min(ev.clientX+13,innerWidth-260)+'px';tip.style.top=(ev.clientY+15)+'px';}
+function hideTip(){tip.style.display='none';}
+
+/* ---------- poem-centric drawer: poem on top, its KJV echoes below ---------- */
+function echoCard(L,franklin){
+  const tv=ctxFor(L).filter(c=>c.target).map(c=>`<div class="pv tgt"><span class="vn">${c.ref.split(' ').pop()}</span>${c.text}</div>`).join('');
+  let con='';
+  if(L.contested&&franklin){const s=(TSRC.get(franklin)||{})[L.target_id]||{};
+    con=`<span class="contag">⚡ contested · ours <b>${s.ours||'—'}</b> / ChatGPT <b>${s.chatgpt||'—'}</b></span>`;}
+  return `<div class="echo${L.contested?' econ':''}" data-l="${encodeURIComponent(L.label)}"><div class="erow"><span class="drill">drill in →</span>`+
+    `<span class="badge" style="background:${markFill(L.strength)}">${L.strength}</span>`+
+    `<b class="elink">${L.label}</b>`+(L.relation?`<span class="emuted">${L.relation}</span>`:'')+
+    `<span class="srctag">${SRC_LBL[L.source]||L.source}</span>`+con+
+    (L.parse_conf==='parsed-low'?`<span class="lowconf">review</span>`:'')+`</div>`+
+    `<div class="passage">${tv}</div>`+(L.note?`<div class="enote">${L.note}</div>`:'')+`</div>`;}
+function openPoem(p){
+  const yr=p.year?(p.year_circa?'c.'+p.year:''+p.year):'—';
+  const all=POEMLOCI.get(p.franklin).slice().sort((a,b)=>tierRank[a.strength]-tierRank[b.strength]||a.seq-b.seq);
+  // lead with the strongest: show strong+saturation by default; if none, the single top tier present
+  let primary=all.filter(L=>L.strength==='strong'||L.strength==='saturation'), rest;
+  if(primary.length){rest=all.filter(L=>!(L.strength==='strong'||L.strength==='saturation'));}
+  else if(all.length){const top=all[0].strength;primary=all.filter(L=>L.strength===top);rest=all.filter(L=>L.strength!==top);}
+  else {primary=[];rest=[];}
+  primary.sort((a,b)=>a.seq-b.seq); rest.sort((a,b)=>tierRank[a.strength]-tierRank[b.strength]||a.seq-b.seq);
+  const restTiers=[...new Set(rest.map(L=>L.strength))].join(' · ');
+  const more = rest.length ? `<div class="moreech" id="moreech">▸ Show ${rest.length} more (${restTiers})</div>`+
+    `<div id="restech" style="display:none">${rest.map(L=>echoCard(L,p.franklin)).join('')}</div>` : '';
+  document.getElementById('dbody').innerHTML=
+    `<h3>${p.first_line}</h3><div class="dpoem">${p.franklin} · ${yr} · ${all.length} scriptural echo${all.length===1?'':'es'}</div>`+
+    `<div class="nlabel">The poem</div><div class="poemtext">${p.poem_text||p.first_line}</div>`+
+    `<div class="nlabel">KJV echoes</div>${primary.map(L=>echoCard(L,p.franklin)).join('')||'<div class="kv">— none —</div>'}${more}`;
+  const wire=el=>el.onclick=()=>openDrawer(POEMLOCI.get(p.franklin).find(x=>x.label===decodeURIComponent(el.dataset.l)),p);
+  document.querySelectorAll('#dbody .echo').forEach(wire);
+  const m=document.getElementById('moreech'); if(m)m.onclick=()=>{document.getElementById('restech').style.display='block';m.style.display='none';};
+  document.getElementById('drawer').classList.add('open');document.getElementById('scrim').classList.add('open');
+}
+function openPoemF(f){openPoem(D.poems.find(x=>x.franklin===f));}
+
+/* ---------- passage-centric drawer ---------- */
+function openDrawer(L,p){
+  const yr=p.year?(p.year_circa?'c.'+p.year:''+p.year):'—';
+  const passage=ctxFor(L).map(c=>`<div class="pv${c.target?' tgt':''}"><span class="vn">${c.ref.split(' ').pop()}</span>${c.text}</div>`).join('');
+  const others=POEMLOCI.get(p.franklin).filter(L2=>L2.label!==L.label)
+    .map(L2=>`<a onclick="navOther('${p.franklin}','${L2.book}',decodeURIComponent('${encodeURIComponent(L2.label)}'))">${L2.label}</a>`).join('')
+    ||'<span style="color:var(--muted)">— none —</span>';
+  document.getElementById('dbody').innerHTML=
+    `<div class="backlink" onclick="openPoemF('${p.franklin}')">← ${p.franklin} · all echoes</div>`+
+    `<h3>${L.label}</h3>`+
+    `<span class="badge" style="background:${markFill(L.strength)}">${L.strength}</span>`+
+    (L.relation?` <span class="badge" style="background:#6b6257">${L.relation}</span>`:'')+
+    (L.parse_conf==='parsed-low'?` <span class="lowconf" style="margin-left:6px">tier defaulted — review</span>`:'')+
+    `<div class="nlabel">KJV — passage in context</div><div class="passage">${passage}</div>`+
+    `<div class="nlabel">Emily Dickinson — ${p.franklin} · ${yr}</div><div class="poemtext">${p.poem_text||p.first_line}</div>`+
+    (L.note?`<div class="nlabel">Why this echo fits</div><div class="note">${L.note}</div>`:'')+
+    `<div class="nlabel">This poem also reaches into</div><div class="other">${others}</div>`+
+    `<div class="kv">Asserted by <b>${L.asserted_by||p.franklin}</b>`+
+    (L.md_anchor?` · <a class="anchor" href="obsidian://open?file=${encodeURIComponent(L.md_anchor)}">↗ annotation</a>`:'')+`</div>`;
+  document.getElementById('drawer').classList.add('open');document.getElementById('scrim').classList.add('open');
+}
+function navOther(franklin,book,label){
+  const id=(mode==='poem'?'m_':'pt_')+franklin+'_'+slug(label);const el=document.getElementById(id);if(!el)return;
+  if(mode==='poem'){closeDrawer();(el.closest('.poemrow')||el).scrollIntoView({behavior:'smooth',block:'center'});}
+  el.classList.add('flash');setTimeout(()=>el.classList.remove('flash'),1500);}
+function closeDrawer(){document.getElementById('drawer').classList.remove('open');document.getElementById('scrim').classList.remove('open');}
+addEventListener('keydown',e=>{if(e.key==='Escape')closeDrawer();});
+addEventListener('resize',()=>{if(mode==='kjv')renderPlane();else renderPoemWindow();});
+
+renderStats();renderControls();
+// keep --hh (the fixed-plane top offset) locked to the real header height at all times
+const _hdr=document.querySelector('header');
+const setHH=()=>document.documentElement.style.setProperty('--hh',_hdr.offsetHeight+'px');
+try{new ResizeObserver(setHH).observe(_hdr);}catch(e){} setHH();
+addEventListener('load',()=>{setHH();
+  const u=new URLSearchParams(location.search), bk=u.get('book');
+  if(bk&&BMAP[bk])scope={level:u.get('chapter')?'chapter':'book',book:bk,book_name:BMAP[bk].name,chapter:u.get('chapter')?+u.get('chapter'):null};
+  if(u.get('fbook')&&BMAP[u.get('fbook')])facetBook=u.get('fbook');
+  if(u.get('fdec'))facetDecade=+u.get('fdec')||null;
+  if(u.get('contested'))contestedOnly=true;
+  if(facetBook&&mode==='kjv'&&scope.level==='all')scope={level:'book',book:facetBook,book_name:BMAP[facetBook].name,chapter:null};
+  if(facetBook||facetDecade)renderControls();
+  render();
+  const pf=u.get('poem'); if(pf){const p=D.poems.find(x=>x.franklin===pf); if(p)openPoem(p);}});
+render();
+</script>
+
+<div id="pwgate" style="position:fixed;inset:0;z-index:9999;background:#fbfaf7;display:flex;align-items:center;justify-content:center;font-family:Georgia,'Times New Roman',serif">
+  <form id="pwform" style="text-align:center;max-width:340px;padding:24px">
+    <div style="font:500 24px/1.15 Georgia,serif;color:#211c16">Emily Dickinson</div>
+    <div style="font-style:italic;color:#857a6c;margin:4px 0 20px">a reference map of her allusions</div>
+    <input id="pwin" type="password" placeholder="password" autofocus autocomplete="current-password"
+      style="font:14px Georgia,serif;padding:9px 12px;width:100%;border:1px solid #d8d2c6;border-radius:8px;text-align:center;background:#fff">
+    <button type="submit" style="font:13px Georgia,serif;margin-top:11px;padding:8px 22px;border:0;border-radius:8px;background:#5a4a8a;color:#fff;cursor:pointer">Enter</button>
+    <div id="pwerr" style="color:#a3302a;font-size:12.5px;margin-top:10px;height:14px"></div>
+  </form>
+</div>
+<script>
+(function(){
+  var g=document.getElementById('pwgate'),f=document.getElementById('pwform'),inp=document.getElementById('pwin'),er=document.getElementById('pwerr');
+  var b64=s=>Uint8Array.from(atob(s),c=>c.charCodeAt(0));
+  function boot(){ g.remove();
+    var s=document.createElement('script'); s.textContent=document.getElementById('app').textContent;
+    document.body.appendChild(s); window.dispatchEvent(new Event('load')); }
+  async function go(pw){
+    var enc=await (await fetch('data.enc',{cache:'force-cache'})).json();
+    var base=await crypto.subtle.importKey('raw',new TextEncoder().encode(pw),'PBKDF2',false,['deriveKey']);
+    var key=await crypto.subtle.deriveKey({name:'PBKDF2',salt:b64(enc.s),iterations:enc.n,hash:'SHA-256'},base,{name:'AES-GCM',length:256},false,['decrypt']);
+    var pt=await crypto.subtle.decrypt({name:'AES-GCM',iv:b64(enc.i)},key,b64(enc.c));
+    var txt=await new Response(new Blob([pt]).stream().pipeThrough(new DecompressionStream('gzip'))).text();
+    window.ED_DATA=JSON.parse(txt);
+    try{sessionStorage.setItem('ed_pw',pw);}catch(e){}
+    boot();
+  }
+  f.onsubmit=function(e){e.preventDefault();er.textContent='';go(inp.value).catch(function(){er.textContent='Incorrect password.';});};
+  var saved; try{saved=sessionStorage.getItem('ed_pw');}catch(e){}
+  if(saved) go(saved).catch(function(){});
+})();
+</script>
+
+</body>
+</html>
