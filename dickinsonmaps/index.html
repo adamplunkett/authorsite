@@ -150,6 +150,19 @@
   .mtrack{flex:1;height:9px;background:#efe9df;border-radius:5px;overflow:hidden}
   .mbar{display:block;height:100%;background:linear-gradient(90deg,#b7a3d8,#8a74b8);border-radius:5px}
   .mn{flex:none;width:30px;text-align:right;color:#8a8073;font-variant-numeric:tabular-nums;font-size:11px}
+  .spines{display:flex;flex-wrap:wrap;align-items:baseline;gap:5px 4px;margin:7px 0 2px}
+  .spinelbl{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-right:4px}
+  .spine{font-size:12px;color:#4a443c;cursor:pointer;text-decoration:none;border:1px solid var(--line);border-radius:13px;padding:2px 10px;white-space:nowrap;background:#fff}
+  .spine:hover{border-color:var(--accent);color:var(--accent)}
+  .spine.scrip{border-color:#cabbe4;background:#f5f1fa}
+  .spine b{color:#a89e8e;font-weight:600;font-variant-numeric:tabular-nums}
+  .wtitle{font-weight:600;color:#2f3a44}
+  .wn{color:#a89e8e;font-size:11px;font-variant-numeric:tabular-nums}
+  .sbar{display:flex;align-items:center;justify-content:space-between;gap:10px}
+  .stoggle{font-size:12px;color:var(--muted);cursor:pointer;border:1px solid var(--line);border-radius:6px;padding:2px 9px;white-space:nowrap}
+  .stoggle:hover{border-color:var(--accent);color:var(--accent)}
+  .interlin.hidep .vechoes{display:none}
+  .interlin.hidep .ivs{margin-bottom:2px}
   .littbl{margin:3px 0 6px}
   .lit{border-left:3px solid #6fae9b;background:#f4f8f6;border-radius:0 7px 7px 0;padding:6px 11px;margin:5px 0}
   .lith{display:flex;align-items:center;gap:7px;font-size:12.5px;flex-wrap:wrap}
@@ -210,6 +223,7 @@
 <header>
   <h1>Emily Dickinson<span class="rm"> — mapping the echoes in her writing</span></h1>
   <div class="sub" id="sub"></div>
+  <div class="spines" id="spines"></div>
   <div class="stats" id="stats"></div>
   <div class="controls" id="controls"></div>
 </header>
@@ -683,19 +697,58 @@ function studyScope(book,chapter,verse){
   const verses=[...vm.values()].sort((a,b)=>vnum(a.ref)-vnum(b.ref));
   const npoems=new Set(ech.map(o=>o.p.franklin)).size;
   const body=verses.map(v=>{
-    const tags=v.echoes.slice().sort((a,b)=>tierRank[a.L.strength]-tierRank[b.L.strength]||(+a.p.franklin.slice(1))-(+b.p.franklin.slice(1)))
+    const byF={};   // one entry per poem per verse (a poem may cite a verse from several sources)
+    v.echoes.forEach(o=>{const f=o.p.franklin; if(!byF[f]||tierRank[o.L.strength]<tierRank[byF[f].L.strength])byF[f]=o;});
+    const tags=Object.values(byF).sort((a,b)=>(+a.p.franklin.slice(1))-(+b.p.franklin.slice(1)))
       .map(({p,L})=>`<a class="vlink" data-f="${p.franklin}" title="${L.strength}${L.source==='chatgpt'?' · ChatGPT':''}">`+
         `<span class="vd" style="background:${markFill(L.strength)}"></span><span class="vfl">${p.first_line}</span> <span class="vff">${p.franklin}</span></a>`).join('');
     return `<div class="ivs"><div class="pv tgt"><span class="vn">${v.ref.split(' ').pop()}</span>${v.text}</div><div class="vechoes">${tags}</div></div>`;
   }).join('');
-  showStudy(`<div class="sbar"><a class="sback" onclick="closeStudy()">← back to the map</a></div>`+
+  showStudy(`<div class="sbar"><a class="sback" onclick="closeStudy()">← back to the map</a><a class="stoggle" id="ppt">hide poems</a></div>`+
     `<div class="scol"><h2>${title}</h2><div class="smeta">echoed by ${npoems} poem${npoems===1?'':'s'} · ${ech.length} reading${ech.length===1?'':'s'} across ${verses.length} verse${verses.length===1?'':'s'}</div>`+
     `<div class="nlabel">KJV — interlinked line by line</div><div class="passage interlin">${body||'<div class="kv">— none —</div>'}</div></div>`);
   document.querySelectorAll('#study .vlink').forEach(el=>el.onclick=()=>studyPoem(D.poems.find(x=>x.franklin===el.dataset.f)));
+  wireScopeToggle();
+}
+function wireScopeToggle(){
+  const t=document.getElementById('ppt'); if(!t)return;
+  t.onclick=()=>{const il=document.querySelector('#study .interlin'); if(!il)return;
+    const hid=il.classList.toggle('hidep'); t.textContent=hid?'show poems':'hide poems';};
 }
 addEventListener('keydown',e=>{if(e.key==='Escape')closeStudy();});
 
 const NAME2KEY=new Map(); for(const k in BMAP)NAME2KEY.set(BMAP[k].name,k);
+function renderSpines(){
+  const el=document.getElementById('spines'); if(!el)return;
+  const auths=(D.most_alluded&&D.most_alluded.authors||[]).slice(0,11);
+  const scripN=D.poems.filter(p=>p.edges&&p.edges.length).length;
+  el.innerHTML=`<span class="spinelbl">spines</span>`+
+    `<a class="spine scrip" data-sp="scripture" title="the KJV, Genesis → Revelation">Scripture <b>${scripN}</b></a>`+
+    auths.map(a=>`<a class="spine" data-a="${a.key.replace(/"/g,'&quot;')}" title="${a.poems} poems reach ${a.key}">${a.key} <b>${a.poems}</b></a>`).join('');
+  el.querySelector('.spine[data-sp]').onclick=()=>{ if(mode!=='kjv'){mode='kjv';renderControls();render();} closeStudy(); scrollTo(0,0); };
+  el.querySelectorAll('.spine[data-a]').forEach(s=>s.onclick=()=>studyAuthorSpine(s.dataset.a));
+}
+function studyAuthorSpine(author){
+  const byWork=new Map();
+  D.poems.forEach(p=>(p.literary||[]).forEach(L=>{ if(L.author!==author)return;
+    const w=L.work||'(unspecified work)';
+    (byWork.get(w)||byWork.set(w,[]).get(w)).push({p,L}); }));
+  const works=[...byWork.entries()].sort((a,b)=>b[1].length-a[1].length);
+  const npoems=new Set(works.flatMap(([,arr])=>arr.map(x=>x.p.franklin))).size;
+  const body=works.map(([w,arr])=>{
+    const byF={};   // one entry per poem per work
+    arr.forEach(o=>{const f=o.p.franklin; if(!byF[f]||tierRank[o.L.strength]<tierRank[byF[f].L.strength])byF[f]=o;});
+    const ded=Object.values(byF).sort((a,b)=>(+a.p.franklin.slice(1))-(+b.p.franklin.slice(1)));
+    const tags=ded.map(({p,L})=>`<a class="vlink" data-f="${p.franklin}" title="${L.strength}${L.locus?' · '+L.locus:''}">`+
+      `<span class="vd" style="background:${markFill(L.strength)}"></span><span class="vfl">${p.first_line}</span> <span class="vff">${p.franklin}</span></a>`).join('');
+    return `<div class="ivs"><div class="pv tgt"><span class="wtitle">${w}</span> <span class="wn">${ded.length}</span></div><div class="vechoes">${tags}</div></div>`;
+  }).join('');
+  showStudy(`<div class="sbar"><a class="sback" onclick="closeStudy()">← back to the map</a><a class="stoggle" id="ppt">hide poems</a></div>`+
+    `<div class="scol"><h2>${author}</h2><div class="smeta">${works.length} work${works.length===1?'':'s'} echoed by ${npoems} poem${npoems===1?'':'s'} — a literary spine, parallel to scripture</div>`+
+    `<div class="nlabel">Works — and the poems that reach them</div><div class="passage interlin">${body||'<div class="kv">— none —</div>'}</div></div>`);
+  document.querySelectorAll('#study .vlink').forEach(el=>el.onclick=()=>{const q=PBYF.get(el.dataset.f);if(q)studyPoem(q);});
+  wireScopeToggle();
+}
 function studyMostReached(){
   const mr=D.most_reached; if(!mr)return;
   const bar=(n,max)=>`<span class="mbar" style="width:${Math.max(3,100*n/max)}%"></span>`;
@@ -752,7 +805,7 @@ function closeDrawer(){document.getElementById('drawer').classList.remove('open'
 addEventListener('keydown',e=>{if(e.key==='Escape')closeDrawer();});
 addEventListener('resize',()=>{if(mode==='kjv')renderPlane();else renderPoemWindow();});
 
-renderStats();renderControls();
+renderStats();renderControls();renderSpines();
 // keep --hh (the fixed-plane top offset) locked to the real header height at all times
 const _hdr=document.querySelector('header');
 const setHH=()=>document.documentElement.style.setProperty('--hh',_hdr.offsetHeight+'px');
@@ -790,7 +843,7 @@ render();
     var s=document.createElement('script'); s.textContent=document.getElementById('app').textContent;
     document.body.appendChild(s); window.dispatchEvent(new Event('load')); }
   async function go(pw){
-    var enc=await (await fetch('data.enc?v=12e4537f74',{cache:'force-cache'})).json();
+    var enc=await (await fetch('data.enc?v=a836b77b93',{cache:'force-cache'})).json();
     var base=await crypto.subtle.importKey('raw',new TextEncoder().encode(pw),'PBKDF2',false,['deriveKey']);
     var key=await crypto.subtle.deriveKey({name:'PBKDF2',salt:b64(enc.s),iterations:enc.n,hash:'SHA-256'},base,{name:'AES-GCM',length:256},false,['decrypt']);
     var pt=await crypto.subtle.decrypt({name:'AES-GCM',iv:b64(enc.i)},key,b64(enc.c));
