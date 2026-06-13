@@ -165,6 +165,18 @@
   .xref{margin:2px 0}
   .xrefg{font-size:11px;color:#857a6c;padding:0 4px 3px 12px;line-height:1.45;font-style:italic}
   .spine.words{border-color:#cdbfa0;background:#faf6ee}
+  .spine.work2d{border-color:#bcd0c8;background:#f2f7f5}
+  .spine.work2d:hover{border-color:#3f8a72;color:#2f6a56}
+  #litspine{position:fixed;left:0;right:0;bottom:0;top:var(--hh);background:#fbfaf7;z-index:50;display:none;overflow:auto}
+  #litspine.open{display:block}
+  .sphd{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:9px 16px;border-bottom:1px solid var(--line);background:#fff;position:sticky;top:0;z-index:2}
+  .sphd b{font:500 17px Georgia,serif}
+  .spsub{font-size:12px;color:var(--muted);font-style:italic;margin-left:8px}
+  .spclose{font-size:12.5px;color:var(--accent);cursor:pointer;white-space:nowrap}
+  .spsvg{display:block}
+  .spsvg .sd{cursor:pointer} .spsvg .sd:hover{stroke:#241f18;stroke-width:1.4}
+  .slbl{font-size:10px;fill:#8a8073;text-transform:uppercase;letter-spacing:.05em}
+  .ytk{font-size:10px;fill:#a89e8e;text-anchor:middle}
   .lexsearch{font:15px Georgia,serif;width:100%;box-sizing:border-box;padding:8px 12px;margin:4px 0 6px;border:1px solid #d8d2c6;border-radius:8px;background:#fff}
   .lexsearch:focus{outline:none;border-color:var(--accent)}
   .lexcloud{display:flex;flex-wrap:wrap;gap:5px 6px;margin:3px 0 8px}
@@ -257,6 +269,7 @@
 <div id="scrim" onclick="closeDrawer()"></div>
 <div id="drawer"><span class="x" onclick="closeDrawer()">×</span><div id="dbody"></div></div>
 <div id="study"></div>
+<div id="litspine"></div>
 
 <script id="app" type="text/plain">
 const D=window.ED_DATA, TOTAL=D.kjv_total, BOOKS=D.kjv_books;
@@ -748,16 +761,44 @@ const NAME2KEY=new Map(); for(const k in BMAP)NAME2KEY.set(BMAP[k].name,k);
 const LEXBYF=new Map(); (D.lex_corpus||[]).forEach(p=>LEXBYF.set(p.f,p));
 function renderSpines(){
   const el=document.getElementById('spines'); if(!el)return;
-  const auths=(D.most_alluded&&D.most_alluded.authors||[]).slice(0,10);
+  const sp=D.litspines||{};
+  const works=Object.keys(sp).filter(k=>(sp[k].dots.length+sp[k].unplaced.length)>=8)
+    .sort((a,b)=>(sp[b].dots.length+sp[b].unplaced.length)-(sp[a].dots.length+sp[a].unplaced.length));
   const scripN=D.poems.filter(p=>p.edges&&p.edges.length).length;
   el.innerHTML=`<span class="spinelbl">spines</span>`+
-    `<a class="spine scrip" data-sp="scripture" title="the KJV, Genesis → Revelation">Scripture <b>${scripN}</b></a>`+
-    auths.map(a=>`<a class="spine" data-a="${a.key.replace(/"/g,'&quot;')}" title="${a.poems} poems reach ${a.key}">${a.key} <b>${a.poems}</b></a>`).join('')+
+    `<a class="spine scrip" data-sp="scripture" title="the KJV, Genesis → Revelation — the full 2D map">Scripture <b>${scripN}</b></a>`+
+    works.map(k=>{const v=sp[k],n=v.dots.length+v.unplaced.length;
+      return `<a class="spine work2d" data-w2d="${k}" title="${v.dots.length} placed by ${v.axis.toLowerCase()}, ${v.unplaced.length} work-level">${v.label} <b>${n}</b></a>`;}).join('')+
     (D.lex_corpus?`<a class="spine words" data-lex="1" title="a concordance — every use of a word across her ${D.lex_corpus.length} poems">✦ Words <b>${(D.lexicon||[]).length}</b></a>`:'');
-  el.querySelector('.spine[data-sp]').onclick=()=>{ if(mode!=='kjv'){mode='kjv';renderControls();render();} closeStudy(); scrollTo(0,0); };
-  el.querySelectorAll('.spine[data-a]').forEach(s=>s.onclick=()=>studyAuthorSpine(s.dataset.a));
-  const lw=el.querySelector('.spine[data-lex]'); if(lw)lw.onclick=()=>studyLexicon();
+  el.querySelector('.spine[data-sp]').onclick=()=>{ closeLitSpine(); if(mode!=='kjv'){mode='kjv';renderControls();render();} closeStudy(); scrollTo(0,0); };
+  el.querySelectorAll('.spine[data-w2d]').forEach(s=>s.onclick=()=>openLitSpine(s.dataset.w2d));
+  const lw=el.querySelector('.spine[data-lex]'); if(lw)lw.onclick=()=>{closeLitSpine();studyLexicon();};
 }
+function openLitSpine(key){
+  const sp=(D.litspines||{})[key]; if(!sp||!sp.dots)return;
+  closeStudy();
+  const host=document.getElementById('litspine');
+  const hh=document.querySelector('header').offsetHeight;
+  const W=Math.max(620,innerWidth), H=Math.max(440,innerHeight-hh);
+  const L=66,R=24,T=24,Bb=74, innerW=W-L-R, innerH=H-T-Bb, YMIN=1850,YMAX=1887;
+  const xx=y=>L+(Math.min(YMAX,Math.max(YMIN,y||1862))-YMIN)/(YMAX-YMIN)*innerW;
+  const yy=pos=>T+(pos-1)/((sp.max-1)||1)*innerH;
+  let ticks=''; for(let y=1850;y<=1885;y+=5){const x=xx(y);ticks+=`<line x1="${x}" y1="${T}" x2="${x}" y2="${H-Bb}" stroke="#f1ece2"/><text x="${x}" y="${H-Bb+16}" class="ytk">${y}</text>`;}
+  let bands=''; (sp.sections||[]).forEach(s=>{const y=yy(s.start);bands+=`<line x1="${L}" y1="${y}" x2="${W-R}" y2="${y}" stroke="#ece4d4" stroke-dasharray="2 3"/><text x="6" y="${y+3}" class="slbl">${s.label}</text>`;});
+  const esc=s=>(s||'').replace(/"/g,'&#39;').replace(/</g,'');
+  const dot=(d,cy)=>`<circle class="sd" cx="${xx(d.y)}" cy="${cy.toFixed(1)}" r="${d.tier==='strong'?5:4}" fill="${markFill(d.tier)}" fill-opacity="${d.tier==='set-aside'||d.tier==='register'?0.45:0.82}" data-fr="${d.fr}" data-l="${esc(d.l)}" data-w="${esc(d.work)}" data-t="${d.tier}"/>`;
+  const dots=sp.dots.map(d=>dot(d,yy(d.pos))).join('');
+  const uly=H-Bb+40, ul=sp.unplaced.map(d=>dot(d,uly)).join('');
+  host.innerHTML=`<div class="sphd"><div><b>${sp.label}</b><span class="spsub">vertical = ${sp.axis} · horizontal = when ED wrote · ${sp.dots.length} placed, ${sp.unplaced.length} without a locus</span></div><a class="spclose" onclick="closeLitSpine()">✕ back to the map</a></div>`+
+    `<svg width="${W}" height="${H}" class="spsvg"><text x="6" y="14" class="slbl">${sp.axis}</text>${ticks}${bands}${dots}<line x1="${L}" y1="${uly-13}" x2="${W-R}" y2="${uly-13}" stroke="#e6ddcc"/><text x="6" y="${uly+3}" class="slbl">no locus</text>${ul}</svg>`;
+  host.classList.add('open');
+  host.querySelectorAll('.sd').forEach(c=>{
+    c.onmousemove=e=>showTip(e,c.dataset.l||c.dataset.fr,`${c.dataset.fr} · ${c.dataset.w||sp.label} · ${c.dataset.t}`);
+    c.onmouseleave=hideTip;
+    c.onclick=()=>{hideTip();const p=PBYF.get(c.dataset.fr);if(p)studyPoem(p);else openCorpusPoem(c.dataset.fr);};
+  });
+}
+function closeLitSpine(){const h=document.getElementById('litspine');if(h)h.classList.remove('open');hideTip();}
 function studyLexicon(prefill){
   const lex=D.lexicon||[];
   const chips=lex.map(w=>`<a class="lexw${w.seed?' seed':''}" data-w="${w.word}">${w.word} <b>${w.poems}</b></a>`).join('');
@@ -832,7 +873,8 @@ function studyMostReached(){
   const chapClick =it=>{const m=it.key.match(/^(.*)\s+(\d+)$/);return m?`data-sb="${bk(m[1])}" data-sc="${m[2]}"`:'';};
   const verseClick=it=>{const m=it.key.match(/^(.*)\s+(\d+):(\d+)$/);return m?`data-sb="${bk(m[1])}" data-sc="${m[2]}" data-sv="${m[3]}"`:'';};
   const al=D.most_alluded, none=()=>"";
-  const litsec = al ? (section('Literary authors','most-alluded writers, with the tail',al.authors,none)+
+  const auClick=it=>`data-au="${it.key.replace(/"/g,'&#39;')}"`;
+  const litsec = al ? (section('Literary authors','most-alluded writers — click to open the author','authors' in al?al.authors:[],auClick)+
                        section('Literary works','most-alluded works',al.works,none)) : "";
   showStudy(`<div class="sbar"><a class="sback" onclick="closeStudy()">← back to the map</a></div>`+
     `<div class="scol"><h2>Most echoed &amp; alluded</h2>`+
@@ -843,6 +885,8 @@ function studyMostReached(){
     litsec+`</div>`);
   document.querySelectorAll('#study .mrow').forEach(el=>{ if(!el.dataset.sb)return; el.style.cursor='pointer';
     el.onclick=()=>studyScope(el.dataset.sb, el.dataset.sc?+el.dataset.sc:null, el.dataset.sv?+el.dataset.sv:null);});
+  document.querySelectorAll('#study .mrow[data-au]').forEach(el=>{el.style.cursor='pointer';
+    el.onclick=()=>studyAuthorSpine(el.dataset.au);});
 }
 
 function openDrawer(L,p){
@@ -890,7 +934,9 @@ addEventListener('load',()=>{setHH();
   const pf=u.get('poem'); if(pf){const p=D.poems.find(x=>x.franklin===pf); if(p)studyPoem(p);}
   const st=u.get('study'); if(st){const[b,c,v]=st.split('.'); if(BMAP[b])studyScope(b,c?+c:null,v?+v:null);}
   if(u.get('reach'))studyMostReached();
-  if(u.get('word'))studyLexicon(u.get('word')); else if(u.get('lex'))studyLexicon();});
+  if(u.get('word'))studyLexicon(u.get('word')); else if(u.get('lex'))studyLexicon();
+  if(u.get('spine'))openLitSpine(u.get('spine'));});
+addEventListener('keydown',e=>{if(e.key==='Escape')closeLitSpine();});
 render();
 </script>
 
@@ -912,7 +958,7 @@ render();
     var s=document.createElement('script'); s.textContent=document.getElementById('app').textContent;
     document.body.appendChild(s); window.dispatchEvent(new Event('load')); }
   async function go(pw){
-    var enc=await (await fetch('data.enc?v=563c4a0a9a',{cache:'force-cache'})).json();
+    var enc=await (await fetch('data.enc?v=624bbc8bed',{cache:'force-cache'})).json();
     var base=await crypto.subtle.importKey('raw',new TextEncoder().encode(pw),'PBKDF2',false,['deriveKey']);
     var key=await crypto.subtle.deriveKey({name:'PBKDF2',salt:b64(enc.s),iterations:enc.n,hash:'SHA-256'},base,{name:'AES-GCM',length:256},false,['decrypt']);
     var pt=await crypto.subtle.decrypt({name:'AES-GCM',iv:b64(enc.i)},key,b64(enc.c));
