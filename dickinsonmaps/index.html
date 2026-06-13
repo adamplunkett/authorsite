@@ -108,12 +108,16 @@
   .scursor{position:absolute;top:0;bottom:0;width:1px;background:var(--accent);opacity:.45;pointer-events:none}
   #lanerows.foc .pt{opacity:.16}
   #lanerows.foc .pt.hi{opacity:1}
-  /* full-page study view */
-  #study{position:fixed;left:0;right:0;top:var(--hh);bottom:0;background:var(--bg);overflow:auto;z-index:40;display:none}
-  body.studying #plane,body.studying #scroll,body.studying #ruler{display:none}
-  .sbar{position:sticky;top:0;background:var(--panel);border-bottom:1px solid var(--line);padding:9px 26px;z-index:2}
+  /* study view as a wide right panel (the map stays visible & homes in) */
+  #study{position:fixed;right:0;top:var(--hh);bottom:0;width:560px;max-width:94vw;background:var(--panel);
+    border-left:1px solid var(--line);box-shadow:-10px 0 30px rgba(0,0,0,.10);overflow:auto;z-index:45;
+    transform:translateX(100%);transition:transform .18s ease}
+  #study.open{transform:translateX(0)}
+  .sbar{position:sticky;top:0;background:var(--panel);border-bottom:1px solid var(--line);padding:9px 20px;z-index:2}
   .sback{color:var(--accent);cursor:pointer;font-size:13px;text-decoration:none} .sback:hover{text-decoration:underline}
-  .scol{max-width:840px;margin:0 auto;padding:20px 28px 90px}
+  .scol{padding:16px 22px 70px}
+  .poemrow.rowsel{background:#f1edf8;box-shadow:inset 3px 0 0 var(--accent)}
+  .lane.lanesel{background:#f3eff8;box-shadow:inset 3px 0 0 var(--accent)}
   .scol h2{font:500 23px/1.2 Georgia,'Times New Roman',serif;margin:0;color:var(--ink)}
   .smeta{color:var(--muted);font-size:12.5px;margin-top:3px}
   .twocol{display:grid;grid-template-columns:1fr;gap:0}
@@ -206,7 +210,7 @@ const yPct=seq=>((seq-0.5)/TOTAL)*100;
 // By-poem x-axis domain: whole KJV, or just the faceted book (chapter/verse scale)
 function xDomain(){ if(mode==='poem'&&facetBook){const b=BMAP[facetBook];return [b.start-0.5,b.end+0.5];} return [0.5,TOTAL+0.5]; }
 function xpct(seq){const d=xDomain();return ((seq-d[0])/(d[1]-d[0]))*100;}
-let mode='poem', xaxis='year', visTiers=new Set(['strong','saturation']), showPlausible=false, showOther=false, query='';
+let mode='poem', xaxis='year', visTiers=new Set(['strong','saturation']), showPlausible=true, showOther=false, query='';
 let facetBook=null, facetDecade=null, heatOn=true, contestedOnly=false;
 const HEAT_MIN=12;   // a lane with more refs than this renders as time-binned heat cells
 // initial state from URL (?view=poem|kjv & x=year|franklin & tiers=strong,plausible,…) — deep-linkable + screenshot-able
@@ -514,7 +518,7 @@ function renderPlane(){
         cur.style.display='block';cur.style.left=(frac*100)+'%';
         showTip(ev,`${lab.main} — ${val} · ${here.length} ref${here.length===1?'':'s'}`,rows||'<div class="tmore">— nothing in this year —</div>');};
       strip.onmouseleave=()=>{cur.style.display='none';hideTip();};
-      strip.style.cursor='pointer'; strip.onclick=()=>lab.drill?drill(k):studyScope(...laneScopeArgs(k));
+      strip.style.cursor='pointer'; strip.onclick=()=>{if(lab.drill)drill(k);else{clearSel();strip.closest('.lane').classList.add('lanesel');studyScope(...laneScopeArgs(k));}};
     } else {
       items.forEach(({L,p})=>{
         const xn=xNorm(p); if(xn===null)return;
@@ -529,11 +533,11 @@ function renderPlane(){
         el.onmouseleave=()=>{clearFocus();hideTip();};
         el.onclick=e=>{e.stopPropagation();studyPoem(p);};
         strip.appendChild(el);});
-      strip.style.cursor='pointer'; strip.onclick=()=>lab.drill?drill(k):studyScope(...laneScopeArgs(k));
+      strip.style.cursor='pointer'; strip.onclick=()=>{if(lab.drill)drill(k);else{clearSel();strip.closest('.lane').classList.add('lanesel');studyScope(...laneScopeArgs(k));}};
     }
     rows.appendChild(lane);
   });
-  rows.querySelectorAll('.lanelabel').forEach(el=>el.onclick=e=>{e.stopPropagation();studyScope(...laneScopeArgs(el.dataset.k));});
+  rows.querySelectorAll('.lanelabel').forEach(el=>el.onclick=e=>{e.stopPropagation();clearSel();el.closest('.lane').classList.add('lanesel');studyScope(...laneScopeArgs(el.dataset.k));});
   if(!units.length)rows.innerHTML='<div style="padding:40px 26px;color:var(--muted)">No references here at the current filters.</div>';
 }
 function focusPoem(f){const pts=document.getElementById('lanerows');pts.classList.add('foc');
@@ -584,8 +588,12 @@ function openPoemF(f){openPoem(D.poems.find(x=>x.franklin===f));}
 
 /* ---------- passage-centric drawer ---------- */
 /* ---------- STUDY VIEW: substantive full-page detail (poem <-> scripture) ---------- */
-function showStudy(html){const s=document.getElementById('study');s.innerHTML=html;document.body.classList.add('studying');s.scrollTop=0;}
-function closeStudy(){document.body.classList.remove('studying');document.getElementById('study').style.display='none';}
+function showStudy(html){const s=document.getElementById('study');s.innerHTML=html;s.classList.add('open');s.scrollTop=0;}
+function closeStudy(){document.getElementById('study').classList.remove('open');clearFocus();clearSel();}
+function clearSel(){document.querySelectorAll('.poemrow.rowsel,.lane.lanesel').forEach(e=>e.classList.remove('rowsel','lanesel'));}
+function focusForPoem(fr){clearFocus();clearSel();   // home the map in on the selected poem's echoes
+  if(mode==='kjv')focusPoem(fr);
+  else{const row=document.getElementById('P'+fr);if(row){row.classList.add('rowsel');row.scrollIntoView({behavior:'smooth',block:'center'});}}}
 function passageHTML(ctx){return ctx.map(c=>`<div class="pv${c.target?' tgt':''}"><span class="vn">${c.ref.split(' ').pop()}</span>${c.text}</div>`).join('');}
 function studyPoem(p){
   const yr=p.year?(p.year_circa?'c.'+p.year:''+p.year):'—';
@@ -599,7 +607,7 @@ function studyPoem(p){
     `<div class="scol"><h2>${p.first_line}</h2><div class="smeta">${p.franklin} · ${yr} · ${ls.length} scriptural echo${ls.length===1?'':'es'}</div>`+
     `<div class="nlabel">The poem</div><div class="poemtext big">${p.poem_text||p.first_line}</div>`+
     `<div class="nlabel">Scriptural echoes</div>${ech||'<div class="kv">— none —</div>'}</div>`);
-  document.getElementById('study').style.display='block';
+  focusForPoem(p.franklin);
   document.querySelectorAll('#study .slink').forEach(el=>el.onclick=()=>studyScope(el.dataset.b,+el.dataset.c,+el.dataset.v));
 }
 function gatherEchoes(book,chapter,verse){const out=[];
@@ -619,7 +627,6 @@ function studyScope(book,chapter,verse){
     `<div class="scol"><h2>${title}</h2><div class="smeta">echoed by ${ech.length} poem${ech.length===1?'':'s'}</div>`+
     `<div class="nlabel">KJV — passage</div><div class="passage">${passage||'—'}</div>`+
     `<div class="nlabel">Echoed by</div>${rows||'<div class="kv">— none —</div>'}</div>`);
-  document.getElementById('study').style.display='block';
   document.querySelectorAll('#study .sech.click').forEach(el=>el.onclick=()=>studyPoem(D.poems.find(x=>x.franklin===el.dataset.f)));
 }
 addEventListener('keydown',e=>{if(e.key==='Escape')closeStudy();});
