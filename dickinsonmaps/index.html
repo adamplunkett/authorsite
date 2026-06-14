@@ -14,19 +14,19 @@
   *{box-sizing:border-box}
   body{margin:0;font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif;
        background:var(--bg);color:var(--ink)}
-  header{padding:15px 28px 11px;border-bottom:1px solid var(--line);background:var(--panel);position:sticky;top:0;z-index:30}
-  h1{margin:0;font:500 23px/1.12 Georgia,'Times New Roman',serif;letter-spacing:.004em;color:var(--ink)}
-  h1 .rm{color:var(--muted);font-weight:400;font-style:italic;font-size:19px}
-  .sub{color:#6b6257;font:italic 13px/1.45 Georgia,'Times New Roman',serif;margin-top:4px;max-width:74ch}
-  .stats{margin-top:9px;font-size:11.5px;color:var(--muted);display:flex;gap:8px;flex-wrap:wrap;
+  header{padding:8px 22px 7px;border-bottom:1px solid var(--line);background:var(--panel);position:sticky;top:0;z-index:30}
+  h1{margin:0;font:500 18px/1.1 Georgia,'Times New Roman',serif;letter-spacing:.004em;color:var(--ink);display:inline}
+  h1 .rm{color:var(--muted);font-weight:400;font-style:italic;font-size:14.5px}
+  .sub{color:#6b6257;font:italic 11px/1.3 Georgia,'Times New Roman',serif;margin-top:1px;max-width:90ch;display:inline-block}
+  .stats{margin-top:4px;font-size:10.5px;color:var(--muted);display:flex;gap:7px;flex-wrap:wrap;
          font-variant-numeric:tabular-nums;letter-spacing:.01em;align-items:center}
   .stats .dot{color:#cdc4b4}
   .stats b{color:var(--ink);font-weight:600}
-  .controls{margin-top:10px;display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+  .controls{margin-top:6px;display:flex;gap:7px;flex-wrap:wrap;align-items:center}
   .seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden}
-  .seg button{font:inherit;font-size:12px;padding:5px 13px;border:0;background:#fff;cursor:pointer;color:var(--ink)}
+  .seg button{font:inherit;font-size:11.5px;padding:3px 11px;border:0;background:#fff;cursor:pointer;color:var(--ink)}
   .seg button.active{background:var(--accent);color:#fff}
-  .toggle{font-size:12px;padding:4px 11px;border:1px solid var(--line);border-radius:20px;cursor:pointer;
+  .toggle{font-size:11.5px;padding:2.5px 9px;border:1px solid var(--line);border-radius:20px;cursor:pointer;
           user-select:none;background:#fff;display:inline-flex;gap:7px;align-items:center}
   .toggle:not(.off){background:#f1edf8;border-color:#cabbe4}   /* ON = clearly tinted/selected */
   .toggle.off{opacity:.5;background:#fff;border-color:var(--line)}
@@ -150,9 +150,9 @@
   .mtrack{flex:1;height:9px;background:#efe9df;border-radius:5px;overflow:hidden}
   .mbar{display:block;height:100%;background:linear-gradient(90deg,#b7a3d8,#8a74b8);border-radius:5px}
   .mn{flex:none;width:30px;text-align:right;color:#8a8073;font-variant-numeric:tabular-nums;font-size:11px}
-  .spines{display:flex;flex-wrap:wrap;align-items:baseline;gap:5px 4px;margin:7px 0 2px}
-  .spinelbl{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-right:4px}
-  .spine{font-size:12px;color:#4a443c;cursor:pointer;text-decoration:none;border:1px solid var(--line);border-radius:13px;padding:2px 10px;white-space:nowrap;background:#fff}
+  .spines{display:flex;flex-wrap:wrap;align-items:baseline;gap:3px 3px;margin:5px 0 1px}
+  .spinelbl{font-size:9.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-right:3px}
+  .spine{font-size:11.5px;color:#4a443c;cursor:pointer;text-decoration:none;border:1px solid var(--line);border-radius:12px;padding:1.5px 8px;white-space:nowrap;background:#fff}
   .spine:hover{border-color:var(--accent);color:var(--accent)}
   .spine.scrip{border-color:#cabbe4;background:#f5f1fa}
   .spine b{color:#a89e8e;font-weight:600;font-variant-numeric:tabular-nums}
@@ -177,6 +177,21 @@
   .spsvg .sd{cursor:pointer} .spsvg .sd:hover{stroke:#241f18;stroke-width:1.4}
   .slbl{font-size:10px;fill:#8a8073;text-transform:uppercase;letter-spacing:.05em}
   .ytk{font-size:10px;fill:#a89e8e;text-anchor:middle}
+  .axl{font-size:10.5px;fill:#5a5247;text-anchor:middle;font-weight:600}
+  /* By-work-as-poems (lit spine, By poem view) */
+  .wsruler{display:flex;align-items:center;height:24px;border-bottom:1px solid var(--line);background:#fbfaf7;position:sticky;top:0;z-index:2}
+  .wsrname{width:224px;flex:none;font-size:10px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);padding-left:14px;box-sizing:border-box}
+  .wsaxis{position:relative;flex:1;height:100%;margin-right:8px}
+  .wstk{position:absolute;top:6px;transform:translateX(-50%);font-size:10px;color:#8a8073;white-space:nowrap}
+  .wsrows{position:relative}
+  .wsband{position:absolute;top:0;bottom:0;width:1px;background:#efe9dd;pointer-events:none} .wsband.nl{background:#e6ddcc}
+  .wsrow{display:flex;align-items:center;height:27px;border-bottom:1px solid #f4efe6;position:relative;cursor:pointer}
+  .wsrow:hover{background:#faf7f1}
+  .wsrow .prname{width:224px;flex:none;display:flex;gap:7px;align-items:baseline;padding-left:14px;box-sizing:border-box;overflow:hidden}
+  .wsspine{position:relative;flex:1;height:100%;margin-right:8px}
+  .wsbase{position:absolute;top:50%;left:0;right:0;height:1px;background:#efe9dd}
+  .wsm{position:absolute;top:50%;transform:translate(-50%,-50%);width:9px;height:9px;border-radius:50%;cursor:pointer;box-shadow:0 0 0 2px #fbfaf7}
+  .wsm:hover{outline:1.5px solid #241f18}
   .lexsearch{font:15px Georgia,serif;width:100%;box-sizing:border-box;padding:8px 12px;margin:4px 0 6px;border:1px solid #d8d2c6;border-radius:8px;background:#fff}
   .lexsearch:focus{outline:none;border-color:var(--accent)}
   .lexcloud{display:flex;flex-wrap:wrap;gap:5px 6px;margin:3px 0 8px}
@@ -371,8 +386,9 @@ function renderControls(){
   const mk=t=>`<span class="mk">${markSVG(t)}</span>`;
   const bs=D.stats.by_strength, c=document.getElementById('controls');
   c.innerHTML=
-   `<span class="seg"><button data-m="poem" class="${mode==='poem'?'active':''}">By poem</button>`+
-   `<button data-m="kjv" class="${mode==='kjv'?'active':''}">By scripture</button></span>`+
+   (litKey
+     ? `<span class="seg"><button data-lv="poem" class="${litView==='poem'?'active':''}">By poem</button><button data-lv="work" class="${litView==='work'?'active':''}">By work</button></span>`
+     : `<span class="seg"><button data-m="poem" class="${mode==='poem'?'active':''}">By poem</button><button data-m="kjv" class="${mode==='kjv'?'active':''}">By scripture</button></span>`)+
    (mode==='kjv'?`<span class="seg"><button data-x="year" class="${xaxis==='year'?'active':''}">Year</button>`+
      `<button data-x="franklin" class="${xaxis==='franklin'?'active':''}">F#</button></span>`:'')+
    `<span class="toggle${visTiers.has('strong')?'':' off'}" data-t="strong">${mk('strong')}strong <b>${bs.strong}</b></span>`+
@@ -393,6 +409,7 @@ function renderControls(){
    `<span class="toggle" id="reachbtn" title="which scripture the poems reach most — the leaderboard, drillable into each verse's poems">✦ most echoed</span>`+
    `<span style="flex:1"></span><input type="search" id="q" value="${query}" placeholder="filter poems / books / verses…">`;
   c.querySelectorAll('.seg button[data-m]').forEach(b=>b.onclick=()=>{mode=b.dataset.m;renderControls();render();scrollTo(0,0);});
+  c.querySelectorAll('.seg button[data-lv]').forEach(b=>b.onclick=()=>setLitView(b.dataset.lv));
   c.querySelectorAll('.seg button[data-x]').forEach(b=>b.onclick=()=>{xaxis=b.dataset.x;renderControls();render();});
   c.querySelectorAll('.toggle[data-t]').forEach(t=>t.onclick=()=>{const k=t.dataset.t;
     if(k==='strong'||k==='saturation')visTiers.has(k)?visTiers.delete(k):visTiers.add(k);
@@ -782,39 +799,62 @@ function spreadDots(items){    // fan out dots that land on the same spot so non
     arr.forEach((it,i)=>{it.x+=(i-(n-1)/2)*6.4;});});
   return items;
 }
-function openLitSpine(key){    // non-KJV spine, axes inverted from By-scripture: vertical = year, horizontal = position in the work
-  const sp=(D.litspines||{})[key]; if(!sp||!sp.dots)return;
-  closeStudy();
+let litKey=null, litView='work';     // a selected lit spine; default view "By work" (the whole work in one view)
+function openLitSpine(key){ if(!(D.litspines||{})[key])return; closeStudy(); litKey=key; litView='work'; renderLitSpine(); renderControls(); }
+function setLitView(v){ litView=v; renderLitSpine(); renderControls(); }
+function closeLitSpine(){ const h=document.getElementById('litspine'); if(h)h.classList.remove('open'); hideTip(); if(litKey){litKey=null;renderControls();} }
+function renderLitSpine(){
+  const sp=(D.litspines||{})[litKey]; if(!sp)return;
   const host=document.getElementById('litspine');
-  const hh=document.querySelector('header').offsetHeight;
-  const W=Math.max(620,innerWidth), H=Math.max(440,innerHeight-hh);
-  const L=56,T=24,B=40, NLW=86, plotR=W-NLW-30, innerW=plotR-L, innerH=H-T-B, YMIN=1850,YMAX=1887;
-  const xx=pos=>L+(pos-1)/((sp.max-1)||1)*innerW;
-  const yy=y=>T+(Math.min(YMAX,Math.max(YMIN,y||1862))-YMIN)/(YMAX-YMIN)*innerH;
-  let years=''; for(let y=1850;y<=1885;y+=5){const yp=yy(y);years+=`<line x1="${L}" y1="${yp}" x2="${W-18}" y2="${yp}" stroke="#f1ece2"/><text x="6" y="${yp+3}" class="ytk" style="text-anchor:start">${y}</text>`;}
-  // X-axis legend: section bands where defined (Acts, books, sonnet decades), else numeric line ticks
-  const secs=(sp.sections&&sp.sections.length)?sp.sections
-    :[1,Math.round(sp.max/4),Math.round(sp.max/2),Math.round(3*sp.max/4),sp.max].map(n=>({label:String(n),start:n}));
-  let bands=''; secs.forEach(s=>{const xp=xx(s.start);
-    bands+=`<line x1="${xp}" y1="${T}" x2="${xp}" y2="${H-B+4}" stroke="#ece4d4" stroke-dasharray="2 3"/><text x="${xp}" y="${H-B+16}" class="ytk">${s.label}</text>`;});
-  const esc=s=>(s||'').replace(/"/g,'&#39;').replace(/</g,'');
-  const placed=spreadDots(sp.dots.map(d=>({x:xx(d.pos),y:yy(d.y),d})));
-  const nlcx=plotR+18+(NLW-30)/2;
-  const nl=spreadDots(sp.unplaced.map(d=>({x:nlcx,y:yy(d.y),d})));
-  const draw=a=>a.map(o=>{const d=o.d;return `<circle class="sd" cx="${o.x.toFixed(1)}" cy="${o.y.toFixed(1)}" r="${d.tier==='strong'?5:3.7}" fill="${markFill(d.tier)}" fill-opacity="${d.tier==='set-aside'||d.tier==='register'?0.5:0.82}" data-fr="${d.fr}" data-l="${esc(d.l)}" data-w="${esc(d.work)}" data-t="${d.tier}"/>`;}).join('');
-  host.innerHTML=`<div class="sphd"><div><b>${sp.label}</b><span class="spsub">vertical = when ED wrote · horizontal = ${sp.axis} · ${sp.dots.length} placed, ${sp.unplaced.length} work-level (far right)</span></div><a class="spclose" onclick="closeLitSpine()">✕ back to the map</a></div>`+
-    `<svg width="${W}" height="${H}" class="spsvg">${years}${bands}`+
-    `<text x="${L+innerW/2}" y="${H-4}" class="slbl" style="text-anchor:middle">${sp.axis} →</text>`+
-    `<line x1="${plotR+14}" y1="${T}" x2="${plotR+14}" y2="${H-B}" stroke="#e6ddcc"/><text x="${nlcx}" y="${H-B+15}" class="ytk">no locus</text>`+
-    draw(placed)+draw(nl)+`</svg>`;
-  host.classList.add('open');
-  host.querySelectorAll('.sd').forEach(c=>{
-    c.onmousemove=e=>showTip(e,c.dataset.l||c.dataset.fr,`${c.dataset.fr} · ${c.dataset.w||sp.label} · ${c.dataset.t}`);
-    c.onmouseleave=hideTip;
-    c.onclick=()=>{hideTip();const p=PBYF.get(c.dataset.fr);if(p)studyPoem(p);else openCorpusPoem(c.dataset.fr);};
-  });
+  const sub=litView==='work'
+    ? `the whole work in one view · vertical = when ED wrote, horizontal = ${sp.axis}`
+    : `poems on the left · horizontal = ${sp.axis} (where each lands)`;
+  host.innerHTML=`<div class="sphd"><div><b>${sp.label}</b><span class="spsub">${sub}</span></div><a class="spclose" onclick="closeLitSpine()">✕ back to the map</a></div>`+
+    (litView==='work'?spineWork(sp):spinePoem(sp));
+  host.classList.add('open'); host.scrollTop=0;
+  wireSpine(host,sp);
 }
-function closeLitSpine(){const h=document.getElementById('litspine');if(h)h.classList.remove('open');hideTip();}
+const SECS=sp=>(sp.sections&&sp.sections.length)?sp.sections
+  :[1,Math.round(sp.max/4),Math.round(sp.max/2),Math.round(3*sp.max/4),sp.max].map(n=>({label:String(n),start:n}));
+const SPESC=s=>(s||'').replace(/"/g,'&#39;').replace(/</g,'');
+function spineWork(sp){     // overview scatter — x-axis (the work) along the TOP, year down the side
+  const hh=document.querySelector('header').offsetHeight;
+  const W=Math.max(620,innerWidth), H=Math.max(360,innerHeight-hh-46);
+  const L=54,T=42,B=14, NLW=86, plotR=W-NLW-30, innerW=plotR-L, innerH=H-T-B, YMIN=1850,YMAX=1887;
+  const xx=pos=>L+(pos-1)/((sp.max-1)||1)*innerW, yy=y=>T+(Math.min(YMAX,Math.max(YMIN,y||1862))-YMIN)/(YMAX-YMIN)*innerH;
+  let years=''; for(let y=1850;y<=1885;y+=5){const yp=yy(y);years+=`<line x1="${L}" y1="${yp}" x2="${W-18}" y2="${yp}" stroke="#f1ece2"/><text x="6" y="${yp+3}" class="ytk" style="text-anchor:start">${y}</text>`;}
+  let bands=''; SECS(sp).forEach(s=>{const xp=xx(s.start);bands+=`<line x1="${xp}" y1="${T-10}" x2="${xp}" y2="${H-B}" stroke="#ece4d4" stroke-dasharray="2 3"/><text x="${xp}" y="${T-14}" class="axl">${s.label}</text>`;});
+  const placed=spreadDots(sp.dots.map(d=>({x:xx(d.pos),y:yy(d.y),d})));
+  const nlcx=plotR+18+(NLW-30)/2, nl=spreadDots(sp.unplaced.map(d=>({x:nlcx,y:yy(d.y),d})));
+  const draw=a=>a.map(o=>{const d=o.d;return `<circle class="sd" cx="${o.x.toFixed(1)}" cy="${o.y.toFixed(1)}" r="${d.tier==='strong'?5:3.7}" fill="${markFill(d.tier)}" fill-opacity="${d.tier==='set-aside'||d.tier==='register'?0.5:0.82}" data-fr="${d.fr}" data-l="${SPESC(d.l)}" data-w="${SPESC(d.work)}" data-t="${d.tier}"/>`;}).join('');
+  return `<svg width="${W}" height="${H}" class="spsvg"><text x="6" y="18" class="axl" style="text-anchor:start">${sp.axis} →</text>${years}${bands}`+
+    `<line x1="${plotR+14}" y1="${T-10}" x2="${plotR+14}" y2="${H-B}" stroke="#e6ddcc"/><text x="${nlcx}" y="${T-14}" class="axl">no locus</text>${draw(placed)}${draw(nl)}</svg>`;
+}
+function spinePoem(sp){     // By-poem style — poems enumerated on the left, the work as the horizontal spine
+  const byp=new Map();
+  const add=(d,pos)=>{let e=byp.get(d.fr);if(!e){e={fr:d.fr,l:d.l,y:d.y,yc:d.yc,marks:[]};byp.set(d.fr,e);}e.marks.push({pos,tier:d.tier,work:d.work});};
+  (sp.dots||[]).forEach(d=>add(d,d.pos)); (sp.unplaced||[]).forEach(d=>add(d,null));
+  const poems=[...byp.values()].sort((a,b)=>(+a.fr.slice(1))-(+b.fr.slice(1)));
+  const frac=pos=>(pos-1)/((sp.max-1)||1);
+  const px=f=>`calc((100% - 72px) * ${f.toFixed(4)})`, bx=f=>`calc(224px + (100% - 224px - 72px) * ${f.toFixed(4)})`;
+  const NLX='calc(100% - 34px)';
+  const ruler=`<div class="wsruler"><div class="wsrname">${sp.axis} →</div><div class="wsaxis">`+
+    SECS(sp).map(s=>`<span class="wstk" style="left:${px(frac(s.start))}">${s.label}</span>`).join('')+`<span class="wstk" style="left:${NLX}">no&nbsp;loc</span></div></div>`;
+  const grid=SECS(sp).map(s=>`<div class="wsband" style="left:${bx(frac(s.start))}"></div>`).join('')+`<div class="wsband nl" style="left:calc(100% - 34px)"></div>`;
+  const rows=poems.map(p=>{const seen=new Set();
+    const marks=p.marks.filter(m=>{const k=m.pos==null?'nl':Math.round(m.pos*10);if(seen.has(k))return false;seen.add(k);return true;})
+      .map(m=>`<span class="wsm" style="left:${m.pos==null?NLX:px(frac(m.pos))};background:${markFill(m.tier)}" data-fr="${p.fr}" data-l="${SPESC(p.l)}" data-w="${SPESC(m.work||sp.label)}" data-t="${m.tier}"></span>`).join('');
+    const yr=p.y?(p.yc?'c.'+p.y:''+p.y):'—';
+    return `<div class="wsrow" data-fr="${p.fr}"><div class="prname"><span class="prf">${p.fr}</span><span class="prfl">${p.l||''}</span><span class="pryr">${yr}</span></div><div class="wsspine"><div class="wsbase"></div>${marks}</div></div>`;}).join('');
+  return ruler+`<div class="wsrows">${grid}${rows}</div>`;
+}
+function wireSpine(host,sp){
+  const go=fr=>{hideTip();const q=PBYF.get(fr);if(q)studyPoem(q);else openCorpusPoem(fr);};
+  host.querySelectorAll('.sd,.wsm').forEach(c=>{
+    c.onmousemove=e=>{e.stopPropagation();showTip(e,c.dataset.l||c.dataset.fr,`${c.dataset.fr} · ${c.dataset.w||sp.label} · ${c.dataset.t}`);};
+    c.onmouseleave=hideTip; c.onclick=e=>{e.stopPropagation();go(c.dataset.fr);};});
+  host.querySelectorAll('.wsrow').forEach(r=>r.onclick=()=>go(r.dataset.fr));
+}
 function studyLexicon(prefill){
   const lex=D.lexicon||[];
   const chips=lex.map(w=>`<a class="lexw${w.seed?' seed':''}" data-w="${w.word}">${w.word} <b>${w.poems}</b></a>`).join('');
@@ -956,7 +996,7 @@ addEventListener('load',()=>{setHH();
   const st=u.get('study'); if(st){const[b,c,v]=st.split('.'); if(BMAP[b])studyScope(b,c?+c:null,v?+v:null);}
   if(u.get('reach'))studyMostReached();
   if(u.get('word'))studyLexicon(u.get('word')); else if(u.get('lex'))studyLexicon();
-  if(u.get('spine'))openLitSpine(u.get('spine'));});
+  if(u.get('spine')){openLitSpine(u.get('spine')); if(u.get('sv')==='poem')setLitView('poem');}});
 addEventListener('keydown',e=>{if(e.key==='Escape')closeLitSpine();});
 render();
 </script>
@@ -979,7 +1019,7 @@ render();
     var s=document.createElement('script'); s.textContent=document.getElementById('app').textContent;
     document.body.appendChild(s); window.dispatchEvent(new Event('load')); }
   async function go(pw){
-    var enc=await (await fetch('data.enc?v=24d4a3900d',{cache:'force-cache'})).json();
+    var enc=await (await fetch('data.enc?v=8eadded871',{cache:'force-cache'})).json();
     var base=await crypto.subtle.importKey('raw',new TextEncoder().encode(pw),'PBKDF2',false,['deriveKey']);
     var key=await crypto.subtle.deriveKey({name:'PBKDF2',salt:b64(enc.s),iterations:enc.n,hash:'SHA-256'},base,{name:'AES-GCM',length:256},false,['decrypt']);
     var pt=await crypto.subtle.decrypt({name:'AES-GCM',iv:b64(enc.i)},key,b64(enc.c));
