@@ -201,6 +201,7 @@
   .lstname{flex:none;width:300px;display:flex;gap:7px;align-items:baseline;overflow:hidden;white-space:nowrap}
   .lstname .tdot{width:8px;height:8px;border-radius:50%;flex:none;align-self:center}
   .lstg{flex:1;font-size:12px;color:#6a6256;line-height:1.5;overflow:hidden}
+  .srctext{font:13.5px/1.55 Georgia,serif;color:#33302a;background:#f6f2ea;border-left:3px solid #cabbe4;border-radius:0 8px 8px 0;padding:11px 14px;margin:2px 0 6px}
   .lexsearch{font:15px Georgia,serif;width:100%;box-sizing:border-box;padding:8px 12px;margin:4px 0 6px;border:1px solid #d8d2c6;border-radius:8px;background:#fff}
   .lexsearch:focus{outline:none;border-color:var(--accent)}
   .lexcloud{display:flex;flex-wrap:wrap;gap:5px 6px;margin:3px 0 8px}
@@ -849,8 +850,10 @@ function posLabel(sp,pos){pos=Math.max(1,pos);
 function spClickAxis(sp,pos){
   if(spHier(sp)&&!litZoom){const s=spSectionAt(sp,pos); if(s){const nx=sp.sections[sp.sections.indexOf(s)+1];
     litZoom={lo:s.start,hi:(s.end!=null?s.end:(nx?nx.start-0.001:sp.max)),label:s.label}; renderLitSpine(); return;}}
-  const [lo,hi]=spRange(sp), w=Math.max(0.5,(hi-lo)*0.03);
-  studyWorkScope(spineKeyOf(sp),pos-w,pos+w,posLabel(sp,pos));
+  let lo,hi,n=Math.round(pos);
+  if(spHier(sp)){const [r0,r1]=spRange(sp),w=Math.max(1,(r1-r0)*0.02); lo=pos-w; hi=pos+w;}  // zoomed lines/scenes: small window
+  else { lo=n-0.5; hi=n+0.5; }                                                                // flat unit (sonnet/canto/stage): exactly that one
+  studyWorkScope(spineKeyOf(sp),lo,hi,posLabel(sp,n));
 }
 function closeLitSpine(){ const h=document.getElementById('litspine'); if(h)h.classList.remove('open'); hideTip(); if(litKey){litKey=null;renderControls();} }
 function renderLitSpine(){
@@ -944,9 +947,14 @@ function studyWorkScope(key,lo,hi,title){     // drill into one locus of a work 
   const seen=new Set();
   const rows=ds.filter(d=>!seen.has(d.fr)&&seen.add(d.fr)).map(d=>{const yr=d.y?(d.yc?'c.'+d.y:''+d.y):'—';
     return `<div class="wsrow lst" data-fr="${d.fr}"><div class="lstname"><span class="tdot" style="background:${markFill(d.tier)}"></span><span class="prf">${d.fr}</span><span class="prfl">${d.l||''}</span><span class="pryr">${yr}</span></div><div class="lstg">${SPESC(d.g)||''}</div></div>`;}).join('');
+  const LS=D.litsource||{}; let src='';
+  if(key==='sonnets'&&LS.sonnets){const t=LS.sonnets[Math.round((lo+hi)/2)];
+    if(t)src=`<div class="nlabel">${title} <span class="nsub">— Shakespeare</span></div><div class="srctext">${t.replace(/</g,'&lt;').replace(/\n/g,'<br>')}</div>`;}
+  else if(key==='paradise_lost'&&LS.paradise_lost){const ls=LS.paradise_lost.filter(d=>d.seq>=lo&&d.seq<=hi);
+    if(ls.length)src=`<div class="nlabel">${title} <span class="nsub">— Milton</span></div><div class="srctext">${ls.map(d=>d.t.replace(/</g,'&lt;')).join('<br>')}</div>`;}
   showStudy(`<div class="sbar"><a class="sback" onclick="closeStudy()">← back to ${sp.label}</a></div>`+
     `<div class="scol"><h2>${sp.label} <span class="nsub">— ${title}</span></h2>`+
-    `<div class="smeta">${seen.size} poem${seen.size===1?'':'s'} reach here</div>`+
+    `<div class="smeta">${seen.size} poem${seen.size===1?'':'s'} reach here</div>`+src+
     `<div class="nlabel">the poems & how each echoes it</div><div class="wsrows">${rows||'<div class="kv">— none —</div>'}</div></div>`);
   document.querySelectorAll('#study .wsrow').forEach(r=>r.onclick=()=>{const q=PBYF.get(r.dataset.fr);if(q)studyPoem(q);else openCorpusPoem(r.dataset.fr);});
 }
@@ -1134,7 +1142,7 @@ render();
     var s=document.createElement('script'); s.textContent=document.getElementById('app').textContent;
     document.body.appendChild(s); window.dispatchEvent(new Event('load')); }
   async function go(pw){
-    var enc=await (await fetch('data.enc?v=53e9e97aad',{cache:'force-cache'})).json();
+    var enc=await (await fetch('data.enc?v=83771e0256',{cache:'force-cache'})).json();
     var base=await crypto.subtle.importKey('raw',new TextEncoder().encode(pw),'PBKDF2',false,['deriveKey']);
     var key=await crypto.subtle.deriveKey({name:'PBKDF2',salt:b64(enc.s),iterations:enc.n,hash:'SHA-256'},base,{name:'AES-GCM',length:256},false,['decrypt']);
     var pt=await crypto.subtle.decrypt({name:'AES-GCM',iv:b64(enc.i)},key,b64(enc.c));
