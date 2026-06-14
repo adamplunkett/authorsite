@@ -187,11 +187,15 @@
   .wsband{position:absolute;top:0;bottom:0;width:1px;background:#efe9dd;pointer-events:none} .wsband.nl{background:#e6ddcc}
   .wsrow{display:flex;align-items:center;height:27px;border-bottom:1px solid #f4efe6;position:relative;cursor:pointer}
   .wsrow:hover{background:#faf7f1}
-  .wsrow .prname{width:224px;flex:none;display:flex;gap:7px;align-items:baseline;padding-left:14px;box-sizing:border-box;overflow:hidden}
+  .wsrow .prname{position:static;transform:none;top:auto;left:auto;width:224px;flex:none;display:flex;gap:7px;align-items:baseline;padding-left:14px;box-sizing:border-box;overflow:hidden;white-space:nowrap}
   .wsspine{position:relative;flex:1;height:100%;margin-right:8px}
   .wsbase{position:absolute;top:50%;left:0;right:0;height:1px;background:#efe9dd}
   .wsm{position:absolute;top:50%;transform:translate(-50%,-50%);width:9px;height:9px;border-radius:50%;cursor:pointer;box-shadow:0 0 0 2px #fbfaf7}
   .wsm:hover{outline:1.5px solid #241f18}
+  .wsrow.lst{height:auto;min-height:28px;padding:5px 16px;align-items:baseline;gap:14px}
+  .lstname{flex:none;width:300px;display:flex;gap:7px;align-items:baseline;overflow:hidden;white-space:nowrap}
+  .lstname .tdot{width:8px;height:8px;border-radius:50%;flex:none;align-self:center}
+  .lstg{flex:1;font-size:12px;color:#6a6256;line-height:1.5;overflow:hidden}
   .lexsearch{font:15px Georgia,serif;width:100%;box-sizing:border-box;padding:8px 12px;margin:4px 0 6px;border:1px solid #d8d2c6;border-radius:8px;background:#fff}
   .lexsearch:focus{outline:none;border-color:var(--accent)}
   .lexcloud{display:flex;flex-wrap:wrap;gap:5px 6px;margin:3px 0 8px}
@@ -806,11 +810,14 @@ function closeLitSpine(){ const h=document.getElementById('litspine'); if(h)h.cl
 function renderLitSpine(){
   const sp=(D.litspines||{})[litKey]; if(!sp)return;
   const host=document.getElementById('litspine');
-  const sub=litView==='work'
+  const structured=!!(sp.sections&&sp.sections.length);   // a real position axis (Acts, books, sonnet #s)
+  const sub=!structured
+    ? `${(sp.dots.length+sp.unplaced.length)} poems echo it — a single poem, so no internal position; listed by Franklin`
+    : litView==='work'
     ? `the whole work in one view · vertical = when ED wrote, horizontal = ${sp.axis}`
     : `poems on the left · horizontal = ${sp.axis} (where each lands)`;
   host.innerHTML=`<div class="sphd"><div><b>${sp.label}</b><span class="spsub">${sub}</span></div><a class="spclose" onclick="closeLitSpine()">✕ back to the map</a></div>`+
-    (litView==='work'?spineWork(sp):spinePoem(sp));
+    (!structured?spineList(sp):litView==='work'?spineWork(sp):spinePoem(sp));
   host.classList.add('open'); host.scrollTop=0;
   wireSpine(host,sp);
 }
@@ -847,6 +854,15 @@ function spinePoem(sp){     // By-poem style — poems enumerated on the left, t
     const yr=p.y?(p.yc?'c.'+p.y:''+p.y):'—';
     return `<div class="wsrow" data-fr="${p.fr}"><div class="prname"><span class="prf">${p.fr}</span><span class="prfl">${p.l||''}</span><span class="pryr">${yr}</span></div><div class="wsspine"><div class="wsbase"></div>${marks}</div></div>`;}).join('');
   return ruler+`<div class="wsrows">${grid}${rows}</div>`;
+}
+function spineList(sp){     // single-poem works: a Franklin-ordered list of the poems that echo it
+  const byp=new Map();
+  (sp.dots||[]).concat(sp.unplaced||[]).forEach(d=>{const e=byp.get(d.fr);
+    if(!e||tierRank[d.tier]<tierRank[e.tier])byp.set(d.fr,{fr:d.fr,l:d.l,y:d.y,yc:d.yc,tier:d.tier,g:d.g});});
+  const poems=[...byp.values()].sort((a,b)=>(+a.fr.slice(1))-(+b.fr.slice(1)));
+  const rows=poems.map(p=>{const yr=p.y?(p.yc?'c.'+p.y:''+p.y):'—';
+    return `<div class="wsrow lst" data-fr="${p.fr}"><div class="lstname"><span class="tdot" style="background:${markFill(p.tier)}"></span><span class="prf">${p.fr}</span><span class="prfl">${p.l||''}</span><span class="pryr">${yr}</span></div><div class="lstg">${SPESC(p.g)||''}</div></div>`;}).join('');
+  return `<div class="wsrows">${rows}</div>`;
 }
 function wireSpine(host,sp){
   const go=fr=>{hideTip();const q=PBYF.get(fr);if(q)studyPoem(q);else openCorpusPoem(fr);};
@@ -1019,7 +1035,7 @@ render();
     var s=document.createElement('script'); s.textContent=document.getElementById('app').textContent;
     document.body.appendChild(s); window.dispatchEvent(new Event('load')); }
   async function go(pw){
-    var enc=await (await fetch('data.enc?v=8eadded871',{cache:'force-cache'})).json();
+    var enc=await (await fetch('data.enc?v=fcecba3dad',{cache:'force-cache'})).json();
     var base=await crypto.subtle.importKey('raw',new TextEncoder().encode(pw),'PBKDF2',false,['deriveKey']);
     var key=await crypto.subtle.deriveKey({name:'PBKDF2',salt:b64(enc.s),iterations:enc.n,hash:'SHA-256'},base,{name:'AES-GCM',length:256},false,['decrypt']);
     var pt=await crypto.subtle.decrypt({name:'AES-GCM',iv:b64(enc.i)},key,b64(enc.c));
